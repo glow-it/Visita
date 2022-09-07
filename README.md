@@ -1,5 +1,5 @@
 # Under Development 💖✨🖥
-Using MERN STACK
+# REALEASING ON 12 DECEMBER 2022 MONDAY 🥳
 
 # PROJECT STARTED IN 3 SEPTEMBER 2022 SATURDAY 👋
 
@@ -14,7 +14,5 @@ Using MERN STACK
 ## 👉 Hosting Days `2days`
 ## 👉 Final Bug Testing `2days`
 ## 👉 Extra Days `10days`
-
-# REALEASING ON 12 DECEMBER 2022 MONDAY 🥳
 
 ## Total Days : 102 🔥
