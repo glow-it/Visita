@@ -1,7 +1,7 @@
 # Under Development 💖✨🖥
 Using MERN STACK
 
-# PROJECT STARTED IN 3 SEPTEMBER SATURDAY 👋
+# PROJECT STARTED IN 3 SEPTEMBER 2022 SATURDAY 👋
 
 ## 👉 Learn Backend (Nodejs) and Learn All About Razorpay `20days`
 ## 👉 Integrate Nodes to Visita And Others `1day`
@@ -15,6 +15,6 @@ Using MERN STACK
 ## 👉 Final Bug Testing `2days`
 ## 👉 Extra Days `10days`
 
-# REALEASING ON 12 DECEMBER MONDAY 🥳
+# REALEASING ON 12 DECEMBER 2022 MONDAY 🥳
 
 ## Total Days : 102 🔥
