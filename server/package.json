@@ -1,0 +1,28 @@
+{
+  "name": "visita",
+  "version": "1.0.0",
+  "description": "Visita is the smartest way to grow your business by creating Digital Visiting Card",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glow-it/Visita.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glow-it/Visita/issues"
+  },
+  "homepage": "https://github.com/glow-it/Visita#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
