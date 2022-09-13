@@ -141,6 +141,9 @@
   .cta-wrapper{
     height: 50vh !important;
   }
+  svg{
+    display: none !important;
+  }
 }
 .templates-show-wrapper{
   height: 500px;
