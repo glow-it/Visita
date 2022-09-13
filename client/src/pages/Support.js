@@ -212,7 +212,7 @@ function Support() {
                </div>
             </div>
          </div>
-         <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
+         <div class="w-full lg:w-1/2 xl:w-5/12 lg:px-4">
             <div  class="bg-white relative rounded-3xl p-8 sm:p-12 shadow-lg">
                <form  className='contact_form'>
                   <div class="mb-6">
