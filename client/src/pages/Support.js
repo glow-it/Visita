@@ -126,7 +126,7 @@ function Support() {
                   GET IN TOUCH WITH US
                </h2>
                <p data-aos="fade-up" data-aos-delay="300" class="text-base font-visita-medium text-body-color leading-relaxed mb-9">
-                 This time to ask your needs or problems with us.You can ask bugs,issues,improvements,new features and more in just one click. we included our location,phone number,mail. your can mail or call with given details
+                 This time to ask your needs or problems with us.You can ask bugs,issues,improvements,new features and more in just one click. we included our location,phone number,mail. you can mail or call with given details
                </p>
                <div class="flex mb-8 max-w-[370px] w-full">
                   <div

@@ -134,14 +134,12 @@
   .benefits-wrapper{
     height: 95vh !important;
   }
-  svg{
-    display: none !important;
-  }
+
   body{
     padding: 0 0px;
   }
   .cta-wrapper{
-    height: 40vh !important;
+    height: 50vh !important;
   }
 }
 .templates-show-wrapper{
@@ -262,4 +260,3 @@ footer {
 .support input{
   border-radius: 0.75rem
 }
-

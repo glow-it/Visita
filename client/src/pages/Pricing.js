@@ -2,7 +2,7 @@ import React from 'react'
 
 function Pricing() {
   return (
-    <div className='w-full h-screen flex lg:pt-12 pt-24' >
+    <div className='w-full h-screen flex lg:pt-12 pt-24 lg:px-0 px-6' >
 
 <svg className='absolute h-[600px] rotate-45'
       xmlns="http://www.w3.org/2000/svg"
@@ -106,38 +106,38 @@ function Pricing() {
 
        <div className="w-full h-full flex flex-col lg:pt-16 lg:pl-12 items-center">
 
-       <span data-aos='fade-in' className='font-visita-bold text-green-500 mb-6' >100% Secure</span>
+       <span  className='font-visita-bold text-green-500 mb-6' >100% Secure</span>
 
-            <h1 data-aos='fade-in' data-aos-duration='400' className='leading-[60px] text-center font-visita-bold text-black text-5xl' >Pay <span className='text-primary text-blue-600' >
+            <h1  className='lg:leading-[60px] text-center font-visita-bold text-black lg:text-5xl text-3xl' >Pay <span className='text-primary text-blue-600' >
             ₹499/Year</span> And <br /> Use It Forever</h1>
 
-<h1 data-aos='fade-in' data-aos-duration='800' className='text-center text-md font-visita-medium mt-6' >Now just only ₹499 per year. Pay once and we take payment <br /> automatically from your bank per year. payment secured by Razorpay</h1>
+<h1  className='text-center lg:text-md text-xs font-visita-medium mt-6' >Now just only ₹499 per year. Pay once and we take payment <br /> automatically from your bank per year. payment secured by Razorpay</h1>
 
-<div data-aos='fade-in' data-aos-duration='1200' className="flex flex-col items-start">
-<h1 className=' font-visita-medium text-xl mt-12 flex' > <span className='text-2xl flex items-center justify-center text-green-600 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span> Automatically Debit ₹499 From Your Bank Per Year</h1>
+<div   className="flex flex-col items-start">
+<h1 className=' font-visita-medium lg:text-xl text-lg mt-12 flex' > <span className='text-2xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span> Automatically Debit ₹499 From Your Bank Per Year</h1>
 
-<h1 data-aos='fade-in' data-aos-duration='1600' className='font-visita-medium text-xl mt-2 flex' > <span className='text-2xl flex items-center justify-center text-green-600 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>You Can Close It At Any Time</h1>
+<h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>You Can Close It At Any Time</h1>
 
-<h1 data-aos='fade-in' data-aos-duration='2000' className='font-visita-medium text-xl mt-2 flex' > <span className='text-2xl flex items-center justify-center text-green-600 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>All Payment Methods Available</h1>
+<h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>All Payment Methods Available</h1>
 </div>
 
 
-<div className="flex items-center mt-12">
-<button data-aos='fade-in' data-aos-duration='2400'  type="button" class="text-white bg-blue-600 bg-primary ml-1  shadow-md shadow-blue-600 hover:shadow-blue-500 transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-lg font-visita-medium px-10 py-2.5 mr-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create Now</button>
+<div className="flex lg:flex-row flex-col items-center mt-12">
+<button    type="button" class="text-white bg-blue-600 bg-primary ml-1  shadow-md shadow-blue-600 hover:shadow-blue-500 transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-lg font-visita-medium px-10 py-2.5 mr-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create Now</button>
 
-<button data-aos='fade-in' data-aos-duration='2800' type="button"  class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-lg font-visita-medium px-10 py-2.5 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demos</button>
+<button   type="button"  class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white lg:ml-1 lg:mt-0 mt-3 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-lg font-visita-medium px-10 py-2.5 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demos</button>
 
 </div>
 
-<div data-aos='fade-in' data-aos-duration='3100' className="flex justify-center">
-<h1 className='text-md font-visita-medium text-slate-400 mt-16' >Payment Secured By</h1>
+<div   className="flex lg:flex-row flex-col justify-center lg:items-start items-center">
+<h1 className='lg:text-md text-sm font-visita-medium lg:ml-24 text-slate-400 lg:mt-16 mt-12' >Payment Secured By</h1>
 
 <a onClick={()=> window.open('https://www.razorpay.com')} className='cursor-pointer'>
 
-<svg className='mt-[60px] -ml-14'
+<svg className='lg:mt-[65px] lg:-ml-14 mt-2'
       xmlns="http://www.w3.org/2000/svg"
-      width="276"
-      height="27"
+      width="216"
+      height="17"
       fill="#072654"
       viewBox="0 0 1896 401"
     >

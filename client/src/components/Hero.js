@@ -60,24 +60,25 @@ function Hero() {
     </svg>
        
         <div className="lg:w-1/2 w-full flex flex-col sm:pl-16 pl-4" >
-            <h1 data-aos="fade-up"  className='font-visita-black pt-16 lg:text-6xl text-5xl' >Take A Boost For Your <span className="text-primary">Business</span></h1>
+            <h1 className='font-visita-black pt-16 lg:text-6xl text-5xl' >Take A Boost For Your <span className="text-primary">Business</span></h1>
 
-            <p data-aos="fade-up" data-aos-delay="200"  className='font-visita-medium text-xl mt-6 sm:ml-3 text-slate-600 lg:pr-16' >Visita is the smartest way to grow your business by creating Digital Visiting Card</p>
+            <p  className='font-visita-medium text-xl mt-6 sm:ml-3 text-slate-600 lg:pr-16' >Visita is the smartest way to grow your business by creating Digital Visiting Card</p>
+
 
             <div className="w-full mt-12 py-2">
 
-            <button type="button" data-aos="fade-up" data-aos-delay="400" class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create now</button>
+            <button type="button" class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create now</button>
 
-            <button data-aos="fade-up" data-aos-delay="500" type="button" class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demos</button>
+            <button type="button" class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demos</button>
 
 
             </div>
 
             <div className="w-full mt-12 py-2 flex">
 
-           <h1 data-aos="fade-up" data-aos-delay="600" className='font-visita-bold text-3xl sm:text-4xl ' >1000+ <br /> <span className='sm:text-2xl text-xl' >Site Visitors</span> </h1>
-           <h1 data-aos="fade-up" data-aos-delay="700" className='text-4xl mt-4 text-slate-600 ml-6 mr-6' > | </h1>
-           <h1 data-aos="fade-up" data-aos-delay="800" className='font-visita-bold text-3xl sm:text-4xl ' >600+ <br /> <span className='sm:text-2xl text-xl' >Cards Created</span> </h1>
+           <h1 className='font-visita-bold text-3xl sm:text-4xl ' >1000+ <br /> <span className='sm:text-2xl text-xl' >Site Visitors</span> </h1>
+           <h1 className='text-4xl mt-4 text-slate-600 ml-6 mr-6' > | </h1>
+           <h1 className='font-visita-bold text-3xl sm:text-4xl ' >600+ <br /> <span className='sm:text-2xl text-xl' >Cards Created</span> </h1>
            
 
             </div>

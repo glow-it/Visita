@@ -376,7 +376,7 @@ function Footer() {
                   </a>
                </div>
                <p class="text-base text-body-color">&copy; 2022 Visita</p>
-               <p class="text-black mt-3 font-visita-medium">This Project By GlowiIt Labs</p>
+               <p class="text-black mt-3 font-visita-medium">Project By GlowiIt Labs</p>
             </div>
          </div>
       </div>

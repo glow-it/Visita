@@ -100,13 +100,13 @@ function Features() {
 
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 ">
       <div class="max-w-screen-md mb-8 lg:mb-16">
-          <h2 data-aos="fade-up"  class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 :text-white"><span className='text-primary mr-3' >Here!</span> Digital Visiting Card Features</h2>
-          <p data-aos="fade-up" data-aos-delay="200" class="text-gray-500 sm:text-xl :text-gray-400 font-visita-medium">Here is the more features have in visita - digital visiting card</p>
+          <h2   class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 :text-white"><span className='text-primary mr-3' >Here!</span> Digital Visiting Card Features</h2>
+          <p   class="text-gray-500 sm:text-xl :text-gray-400 font-visita-medium">Here is the more features have in visita - digital visiting card</p>
       </div>
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
 
 
-          <div data-aos="fade-in" data-aos-delay="400" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="business"></ion-icon></span>
               </div>
@@ -115,7 +115,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="450" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="globe"></ion-icon></span>
               </div>
@@ -124,7 +124,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="500" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="qr-code"></ion-icon></span>
               </div>
@@ -133,7 +133,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="550" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="mail"></ion-icon></span>
               </div>
@@ -142,7 +142,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="600" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="chatbubble-ellipses"></ion-icon></span>
               </div>
@@ -151,7 +151,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="650" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="cash"></ion-icon></span>
               </div>
@@ -160,7 +160,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="700" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="navigate-circle"></ion-icon></span>
               </div>
@@ -169,7 +169,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="750" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="logo-whatsapp"></ion-icon></span>
               </div>
@@ -178,7 +178,7 @@ function Features() {
           </div>
 
 
-          <div data-aos="fade-in" data-aos-delay="800" >
+          <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="cart"></ion-icon></span>
               </div>

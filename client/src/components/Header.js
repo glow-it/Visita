@@ -4,25 +4,17 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
   useDisclosure,
 } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
 } from '@chakra-ui/react'
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -113,11 +105,11 @@ let navigate = useNavigate()
           <DrawerBody>
             <p className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demos</span></span> </p>
 
-            <Link to='/pricing' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </Link>
+            <p onClick={()=> {navigate('/pricing');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </p>
 
-            <a onClick={()=> onClose()} href='#features' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="logo-buffer"></ion-icon> <span className="ml-2 text-slate-600" >Features</span></span> </a>
+            <p onClick={()=> onClose()} href='#features' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="logo-buffer"></ion-icon> <span className="ml-2 text-slate-600" >Features</span></span> </p>
 
-            <a onClick={()=> onClose()} href='#benefits' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="bulb"></ion-icon> <span className="ml-2 text-slate-600" >Benefits</span></span> </a>
+            <p onClick={()=> onClose()} href='#benefits' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="bulb"></ion-icon> <span className="ml-2 text-slate-600" >Benefits</span></span> </p>
 
             <p className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="scan-circle"></ion-icon> <span className="ml-2 text-slate-600" >Templates</span></span> </p>
 
