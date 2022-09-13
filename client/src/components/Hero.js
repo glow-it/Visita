@@ -5,7 +5,7 @@ function Hero() {
 
 
   return (
-    <div className='w-full hero lg:flex sm:p-6 border-b bg-blend-multiply mt-16' >
+    <div className='w-full hero lg:flex sm:p-6  border-b bg-blend-multiply mt-16' >
 
 <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_KEGDadFUuIGk85" async> </script> </form>
 

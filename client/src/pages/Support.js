@@ -107,11 +107,11 @@ function Support() {
       <div class="flex flex-wrap lg:justify-between -mx-4">
          <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
             <div class="max-w-[570px] mb-12 lg:mb-0">
-               <span data-aos="fade-up" class="block mb-4 text-base text-primary font-visita-bold">
+               <span  class="block mb-4 text-base text-primary font-visita-bold">
                Help Center
                </span>
                <h2
-               data-aos="fade-up" data-aos-delay="200"
+               
                   class="
                   text-dark
                   mb-6
@@ -125,12 +125,12 @@ function Support() {
                   >
                   GET IN TOUCH WITH US
                </h2>
-               <p data-aos="fade-up" data-aos-delay="300" class="text-base font-visita-medium text-body-color leading-relaxed mb-9">
+               <p  class="text-base font-visita-medium text-body-color leading-relaxed mb-9">
                  This time to ask your needs or problems with us.You can ask bugs,issues,improvements,new features and more in just one click. we included our location,phone number,mail. you can mail or call with given details
                </p>
                <div class="flex mb-8 max-w-[370px] w-full">
                   <div
-                  data-aos="fade-up" data-aos-delay="400"
+                  
                      class="
                      max-w-[50px]
                      sm:max-w-[50px]
@@ -149,7 +149,7 @@ function Support() {
                      >
                    <span className='text-white text-2xl' ><ion-icon name="location"></ion-icon></span>
                   </div>
-                  <div data-aos="fade-up" data-aos-delay="500" class="w-full">
+                  <div  class="w-full">
                      <h4 class="font-visita-bold text-dark text-xl mb-1">Our Location</h4>
                      <p class="text-base text-body-color font-visita-medium">
                         (66) Manjeri Mullampara 676121, Kerala | India
@@ -158,7 +158,7 @@ function Support() {
                </div>
                <div class="flex mb-8 max-w-[370px] w-full">
                   <div
-                  data-aos="fade-up" data-aos-delay="500"
+                  
                      class="
                      max-w-[60px]
                      sm:max-w-[50px]
@@ -177,14 +177,14 @@ function Support() {
                      >
                      <span className='text-white text-2xl' ><ion-icon name="call"></ion-icon></span>
                   </div>
-                  <div data-aos="fade-up" data-aos-delay="500" class="w-full">
+                  <div  class="w-full">
                      <h4 class="font-visita-bold text-dark text-xl mb-1">Phone Number</h4>
                      <p class="flex text-base text-body-color font-visita-medium">(+91) 9946365417 <a href='tel:+919946365417' className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
                   </div>
                </div>
                <div class="flex mb-8 max-w-[370px] w-full">
                   <div
-                  data-aos="fade-up" data-aos-delay="600"
+                  
                      class="
                      max-w-[50px]
                      sm:max-w-[50px]
@@ -203,7 +203,7 @@ function Support() {
                      >
                    <span className='text-white text-2xl' ><ion-icon name="mail"></ion-icon></span>
                   </div>
-                  <div data-aos="fade-up" data-aos-delay="600" class="w-full">
+                  <div  class="w-full">
                      <h4 class="font-visita-bold text-dark text-xl mb-1">
                         Email Address
                      </h4>
@@ -213,13 +213,13 @@ function Support() {
             </div>
          </div>
          <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
-            <div data-aos="fade-up" data-aos-delay="700" class="bg-white relative rounded-3xl p-8 sm:p-12 shadow-lg">
+            <div  class="bg-white relative rounded-3xl p-8 sm:p-12 shadow-lg">
                <form  className='contact_form'>
                   <div class="mb-6">
                      <input
                      autoComplete='off'
                      required
-                     data-aos="fade-up" data-aos-delay="800"
+                     
                         type="text"
                         placeholder="Your Name"
                         name='from_name'
@@ -242,7 +242,7 @@ function Support() {
                      <input
                      autoComplete='off'
                      required
-                     data-aos="fade-up" data-aos-delay="900"
+                     
                         type="email"
                         placeholder="Your Email"
                         name='from_mail'
@@ -265,7 +265,6 @@ function Support() {
                      <input
                      autoComplete='off'
                      required
-                     data-aos="fade-up" data-aos-delay="1000"
                         type="text"
                         placeholder="Your Phone"
                         name='phone'
@@ -288,7 +287,7 @@ function Support() {
                      <input
                      autoComplete='off'
                      required
-                     data-aos="fade-up" data-aos-delay="1000"
+                     
                         type="text"
                         placeholder="Reply To"
                         name='reply_to'
@@ -301,7 +300,7 @@ function Support() {
                   <div class="mb-6">
                      <textarea
                      required
-                     data-aos="fade-up" data-aos-delay="1100"
+                     
                         rows="6"
                         placeholder="Your Message"
                         name='message'
@@ -324,7 +323,7 @@ function Support() {
                      
 
                      <Button
-                     data-aos="fade-up" data-aos-delay="1200"
+                     
                      onClick={sendMessage}
                      className='w-full
                      text-white
