@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Pricing() {
+
+
+
+  useEffect(()=> {
+    document.title = 'Visita | Pricing'
+  },[])
+
   return (
     <div className='w-full h-screen flex lg:pt-12 pt-24 lg:px-0 px-6' >
 

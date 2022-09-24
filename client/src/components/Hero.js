@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import {Link} from 'react-router-dom'
 
 
 function Hero() {
 
 
   return (
-    <div className='w-full hero lg:flex sm:p-6  border-b bg-blend-multiply mt-16' >
-
-<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_KEGDadFUuIGk85" async> </script> </form>
+    <div className='w-full hero lg:flex sm:p-6 border-b bg-blend-multiply mt-16' >
 
 <svg className='absolute hero-aura'
       xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +65,7 @@ function Hero() {
 
             <div className="w-full mt-12 py-2">
 
-            <button type="button" class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create now</button>
+            <Link to='/create' type="button" class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create now</Link>
 
             <button type="button" class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-lg font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demos</button>
 
@@ -84,7 +82,7 @@ function Hero() {
             </div>
 
         </div>
-        <div className="lg:w-1/2 w-full  h-3/4 
+        <div className="lg:w-1/2 w-full -mt-6
         lg:pr-24 pr-0 lg:block hidden">
         <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_vo1qtepr.json"  background="transparent"  speed="1"  autoplay></lottie-player>
         </div>

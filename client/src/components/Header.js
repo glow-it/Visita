@@ -61,7 +61,7 @@ let navigate = useNavigate()
               <a href="#benefits" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
                 Benefits
               </a>
-              <a href="#" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+              <a onClick={()=> navigate('/templates')} className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
                 Templates
               </a>
               <Menu>
@@ -88,7 +88,7 @@ let navigate = useNavigate()
         <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
                 <span className="underline hover:decoration-blue-500 ">How to</span> ?
               </h1>
-        <button type="button" class="py-1.5 px-8 text-md font-medium text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 transition-shadow  hover:shadow-md hover:shadow-blue-300 focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium">Create now</button>
+        <Link to="/create" class="py-1.5 px-8 text-md font-medium text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 transition-shadow  hover:shadow-md hover:shadow-blue-300 focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium">Create now</Link>
         </div>
       </header>
 

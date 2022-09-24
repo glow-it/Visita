@@ -8,6 +8,10 @@ import { useState } from 'react';
 
 function Support() {
 
+   useEffect(()=> {
+      document.title = 'Visita | Help'
+    },[])
+
     let toast = useToast()
 
     let [isLoading,setIsLoading] = useState(false)
@@ -152,7 +156,7 @@ function Support() {
                   <div  class="w-full">
                      <h4 class="font-visita-bold text-dark text-xl mb-1">Our Location</h4>
                      <p class="text-base text-body-color font-visita-medium">
-                        (66) Manjeri Mullampara 676121, Kerala | India
+                        Manjeri Kerala, India  676121
                      </p>
                   </div>
                </div>

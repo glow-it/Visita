@@ -1,6 +1,9 @@
 import React from 'react'
 
 function Features() {
+
+
+  
   return (
    <section id='features' class="bg-white :bg-gray-900 font-visita-bold relative mt-12">
 

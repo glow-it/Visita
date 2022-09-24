@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 function Cta() {
   return (
     <div id='cta' class="border lg:my-20 my-4 rounded-2xl  cta-wrapper relative flex flex-col items-center overflow-hidden">
-        <h1   className='lg:text-6xl text-2xl font-visita-bold text-primary lg:mt-16 mt-8' >Ready To Create ?</h1>
-        <h1   className='lg:text-4xl text-xl font-visita-bold text-black lg:mt-6 mt-4' > Now Just Only <span className='text-primary lg:ml-3' >₹499 / Year</span></h1>
+        <h1   className='lg:text-6xl text-2xl font-visita-bold text-primary lg:mt-16 mt-8' >Ready To Create</h1>
+        <h1   className='lg:text-3xl text-xl font-visita-bold text-black lg:mt-6 mt-4' > Now Just Only <span className='text-primary lg:ml-3' >₹499 / Year</span></h1>
 
       <div className="flex lg:flex-row flex-col mt-16">
-      <button  type="button" class="text-white bg-blue-600 bg-primary lg:-mt-0 -mt-6 font-visita-bold lg:text-2xl text-md  focus:ring-4 focus:ring-blue-300  rounded-full shadow-md shadow-blue-600 hover:shadow-blue-500 px-12 py-2.5 mr-2 lg:mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800 transition-shadow">Create Now</button>
+      <Link  to="/create" class="text-white bg-blue-600 bg-primary lg:-mt-0 -mt-6 font-visita-bold lg:text-2xl text-md  focus:ring-4 focus:ring-blue-300  rounded-full shadow-md shadow-blue-600 hover:shadow-blue-500 px-12 py-2.5 mr-2 lg:mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800 transition-shadow">Create Now</Link>
 
       <Link to='/pricing'  type="button" class="text-primary bg-white border-2 lg:mt-0 mt-3 border-blue-600 font-visita-bold flex justify-center lg:text-2xl text-md shadow-md shadow-blue-300 hover:shadow-blue-100 transition-shadow focus:ring-4 focus:ring-blue-300  rounded-full px-12 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800 ">Pricing</Link>
 
