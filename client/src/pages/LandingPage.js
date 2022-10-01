@@ -8,7 +8,7 @@ import Hero from '../components/Hero'
 function LandingPage() {
 
   useEffect(()=> {
-    document.title = 'Visita | Digital vCard'
+    document.title = 'Visita | Create Digital Visiting Card - Mini Website'
   },[])
 
 

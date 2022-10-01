@@ -69,10 +69,11 @@ export class GridFSBucketWriteStream extends Writable implements NodeJS.Writable
    */
   static readonly FINISH = 'finish';
 
-  /** @internal
+  /**
    * @param bucket - Handle for this stream's corresponding bucket
    * @param filename - The value of the 'filename' key in the files doc
    * @param options - Optional settings.
+   * @internal
    */
   constructor(bucket: GridFSBucket, filename: string, options?: GridFSBucketWriteStreamOptions) {
     super();
@@ -145,6 +146,7 @@ export class GridFSBucketWriteStream extends Writable implements NodeJS.Writable
    * @param callback - called when chunks are successfully removed or error occurred
    */
   abort(): Promise<void>;
+  /** @deprecated Callbacks are deprecated and will be removed in the next major version. See [mongodb-legacy](https://github.com/mongodb-js/nodejs-mongodb-legacy) for migration assistance */
   abort(callback: Callback<void>): void;
   abort(callback?: Callback<void>): Promise<void> | void {
     return maybePromise(callback, callback => {

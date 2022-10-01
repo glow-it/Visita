@@ -8,7 +8,12 @@ import { MongoCredentials } from './cmap/auth/mongo_credentials';
 import { AUTH_MECHS_AUTH_SRC_EXTERNAL, AuthMechanism } from './cmap/auth/providers';
 import { Compressor, CompressorName } from './cmap/wire_protocol/compression';
 import { Encrypter } from './encrypter';
-import { MongoAPIError, MongoInvalidArgumentError, MongoParseError } from './error';
+import {
+  MongoAPIError,
+  MongoInvalidArgumentError,
+  MongoMissingCredentialsError,
+  MongoParseError
+} from './error';
 import { Logger, LoggerLevel } from './logger';
 import {
   DriverInfo,
@@ -407,6 +412,12 @@ export function parseOptions(
       });
     }
 
+    if (isAws && mongoOptions.credentials.username && !mongoOptions.credentials.password) {
+      throw new MongoMissingCredentialsError(
+        `When using ${mongoOptions.credentials.mechanism} password must be set when a username is specified`
+      );
+    }
+
     mongoOptions.credentials.validate();
 
     // Check if the only auth related option provided was authSource, if so we can remove credentials
@@ -427,7 +438,9 @@ export function parseOptions(
 
   checkTLSOptions(mongoOptions);
 
-  if (options.promiseLibrary) PromiseProvider.set(options.promiseLibrary);
+  if (options.promiseLibrary) {
+    PromiseProvider.set(options.promiseLibrary);
+  }
 
   const lbError = validateLoadBalancedOptions(hosts, mongoOptions, isSRV);
   if (lbError) {
