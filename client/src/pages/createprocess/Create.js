@@ -280,9 +280,7 @@ function Create() {
               setLoading(true)
               onClose()
               let cardForm = document.getElementById("cardForm");
-                setTimeout(()=> {
                   cardForm.submit()
-                },3000)
             }}>
               <span className="font-visita-bold" >Yes' Iam Sure</span>
             </Button>
