@@ -31,7 +31,7 @@ function CreateHeader({processIndex,loading}) {
         <div className={`flex ${ loading ? 'block' : 'hidden'}`}>
         <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-1 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full mr-2 `}></div>
         <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-2 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full mr-2 `}></div>
-        <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-3 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full mr-2 `}></div>
+        <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-3 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full`}></div>
         </div>
 
 
