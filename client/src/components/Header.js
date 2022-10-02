@@ -40,7 +40,7 @@ let navigate = useNavigate()
     
     <div>
 
-      <header className=" w-full h-16 flex py-8 pl-8  bg-white fixed z-50 transition-shadow">
+      <header className="lg:-ml-0 -ml-4 w-full h-16 flex py-8 pl-8  bg-white fixed z-50 transition-shadow">
         <div className="w-3/4 h-full flex items-center">
           <img
             src="../assets/images/logos/visitalogo.png"
