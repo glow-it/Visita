@@ -73,7 +73,7 @@ function Create() {
   ]);
   let [loading,setLoading] = useState(false)
   let [choosedThemeColor,setChoosedThemeColor] = useState('purple')
-  let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"])
+  let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","fuchsia","pink","rose"])
 
 
     // Normal Use Effect
@@ -280,7 +280,9 @@ function Create() {
               setLoading(true)
               onClose()
               let cardForm = document.getElementById("cardForm");
-                cardForm.submit()
+                setTimeout(()=> {
+                  cardForm.submit()
+                },3000)
             }}>
               <span className="font-visita-bold" >Yes' Iam Sure</span>
             </Button>

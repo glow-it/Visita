@@ -18,13 +18,13 @@ function CreateHeader({processIndex,loading}) {
        </div>
 
        <div className="create-process-indicator-wrapper flex">
-       <div className={`h-4 ${processIndex == 1 ? 'w-10' : loading ? 'opacity-0 ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-1`}></div>
-        <div className={`h-4 ${processIndex == 2 ? 'w-10' : loading ? 'opacity-0 ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-2`}></div>
-        <div className={`h-4 ${processIndex == 3 ? 'w-10' : loading ? 'opacity-0 ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-3`}></div>
-        <div className={`h-4 ${processIndex == 4 ? 'w-10' : loading ? 'opacity-0 ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-4`}></div>
-        <div className={`h-4 ${processIndex == 5 ? 'w-10' : loading ? 'opacity-0 ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-5`}></div>
-        <div className={`h-4 ${processIndex == 6 ? 'w-10' : loading ? 'opacity-0 ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-6`}></div>
-        <div className={`h-4 ${loading ? 'opacity-0 ' : processIndex == 7 ? 'w-10'  : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-7`}></div>
+       <div className={`h-4 ${processIndex == 1 ? 'w-10' : loading ? 'hidden ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-1`}></div>
+        <div className={`h-4 ${processIndex == 2 ? 'w-10' : loading ? 'hidden ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-2`}></div>
+        <div className={`h-4 ${processIndex == 3 ? 'w-10' : loading ? 'hidden ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-3`}></div>
+        <div className={`h-4 ${processIndex == 4 ? 'w-10' : loading ? 'hidden ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-4`}></div>
+        <div className={`h-4 ${processIndex == 5 ? 'w-10' : loading ? 'hidden ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-5`}></div>
+        <div className={`h-4 ${processIndex == 6 ? 'w-10' : loading ? 'hidden ' : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-6`}></div>
+        <div className={`h-4 ${loading ? 'hidden ' : processIndex == 7 ? 'w-10'  : 'w-4'} bg-blue-600 rounded-full mr-2 process_indicator-7`}></div>
 
 
 
