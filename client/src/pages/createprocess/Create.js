@@ -1733,7 +1733,7 @@ function Create() {
           id="process5"
           class={`${
             processIndex != 5 ? "hidden" : ""
-          }  my-3 process4_wrapper pb-40 overflow-scroll lg:px-0 px-10`}
+          }  my-3 process4_wrapper pb-40 overflow-scroll lg:px-0 `}
         >
           <label
             for="large-input"
@@ -1917,7 +1917,7 @@ function Create() {
           id="process6"
           class={`${
             processIndex != 6 ? "hidden" : ""
-          }  my-3 process5_wrapper pb-40 overflow-scroll w-full px-20`}
+          }  my-3 process5_wrapper pb-40 overflow-scroll w-full`}
         >
           {["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].map((data) => {
             return (
@@ -2016,7 +2016,7 @@ function Create() {
           id="process7"
           class={`${
             processIndex != 7 ? "hidden" : ""
-          }  my-3 process6_wrapper pb-40 overflow-scroll w-full px-20`}
+          }  my-3 process6_wrapper pb-40 overflow-scroll w-full`}
         >
           {imageGalleryQuantity.map((data) => {
             return (
@@ -2102,9 +2102,7 @@ function Create() {
               className="w-[150px] lg:mr-6 mr-2 font-visita-bold"
               size="md"
             >
-              <span className="flex items-center justify-center text-white text-xl mr-2">
-                <ion-icon name="arrow-back-outline"></ion-icon>
-              </span>{" "}
+              
               Previous
             </Button>
 
@@ -2116,7 +2114,7 @@ function Create() {
               loadingText="Creating Card"
               onClick={() => handleNextClick()}
               backgroundColor="rgb(37 99 235 / 1)"
-              className="w-[150px] font-visita-bold lg:mr-6 mr-2"
+              className="w-[200px] font-visita-bold lg:mr-6 mr-2"
               size="md"
             >
              {processIndex == maximumProcesses ? 'Create Card' : 'Next'}
@@ -2133,9 +2131,6 @@ function Create() {
               onClick={() => setProcessIndex(processIndex + 1)}
             >
               Skip{" "}
-              <span className="flex items-center justify-center text-white text-xl ml-2">
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </span>
             </Button>
           </div>
         </div>
