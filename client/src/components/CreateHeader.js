@@ -6,7 +6,7 @@ function CreateHeader({processIndex,loading}) {
     let navigate = useNavigate()
 
   return (
-    <header className="lg:-ml-6 w-full h-16 flex py-8 items-center bg-white justify-center fixed z-50 transition-shadow border-b shadow-lg shadow-black/5">
+    <header id='create-header' className="lg:-ml-6 w-full h-16 flex py-8 items-center bg-white justify-center fixed z-50 transition-shadow border-b shadow-lg shadow-black/5">
 
        <div className="absolute lg:left-8 flex items-center justify-center lg:visible invisible">
        <img
@@ -28,9 +28,11 @@ function CreateHeader({processIndex,loading}) {
 
 
 
+        <div className={`flex ${ loading ? 'block' : 'hidden'}`}>
         <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-1 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full mr-2 `}></div>
         <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-2 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full mr-2 `}></div>
         <div className={`h-4 w-4  ${ loading ? 'loading-indicator-active-3 opacity-1' : 'opacity-0'} bg-blue-600 rounded-full mr-2 `}></div>
+        </div>
 
 
        </div>

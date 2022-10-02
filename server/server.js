@@ -49,7 +49,6 @@ async function run() {
 
      app.get(`/card/:company_name`,(req,res)=> {
      let comp_name = (req.params.company_name.replace(/[-]/g,' '))
-     console.log(comp_name);
         getCardData(comp_name,client_db).then((response)=> {
             res.json(response)
             res.end()

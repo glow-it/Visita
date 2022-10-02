@@ -38,6 +38,13 @@
   outline: none !important;
 }
 
+form{
+  z-index: 1px !important;
+}
+#create-header{
+  z-index: 10px !important;
+}
+
 /* Visita Text Animation */
 
 
@@ -398,12 +405,12 @@ footer {
 
 /* Create Upload Logo */
 #create-logo-preview {
-  width: 155px;
+  width: 145px;
   margin-bottom: 20px;
 }
 #create-logo-preview img {
-  width: 100%;
-  height: auto;
+  max-width: 100px;
+  max-height: 100px;
   display: block;
 }
 .create-logo-upload [type="file"] {
@@ -427,10 +434,14 @@ footer {
   color: #fff;
 }
 #create-logo-preview img {
-  animation: animate_logo_preview .1s ease-in-out-in-out forwards;
-  border-radius: 30px;
+  border-radius: 50px;
 }
-@keyframes animate_logo_preview {
+
+.active-choose-theme{
+  animation: slide_up 1s cubic-bezier(0.075, 0.82, 0.165, 1) .3s forwards;
+}
+
+@keyframes slide_up {
   0%{
     transform: translateY(50px);
     opacity: 0;

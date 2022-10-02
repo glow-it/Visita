@@ -13,6 +13,8 @@ import {
 } from '@chakra-ui/react'
 
 function Create() {
+
+
   const toast = useToast();
 
   let [previuos, setPrevious] = useState(false);
@@ -70,6 +72,19 @@ function Create() {
     "",
   ]);
   let [loading,setLoading] = useState(false)
+  let [choosedThemeColor,setChoosedThemeColor] = useState('purple')
+  let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"])
+
+
+    // Normal Use Effect
+    useEffect(()=> {
+      const imgPreview = document.getElementById("create-logo-preview");
+     if( imgPreview.querySelector('img').src == ""){
+      imgPreview.querySelector('img').classList.replace('visible','invisible')
+     }else{
+      imgPreview.querySelector('img').classList.replace('invisible','visible')
+     }
+    },[choosedThemeColor])
 
   let maximumProcesses = 7;
 
@@ -83,6 +98,7 @@ function Create() {
     const chooseFile = document.getElementById("create-choose-logo");
     const imgPreview = document.getElementById("create-logo-preview");
     const chooseLogoButton = document.getElementById("choose_logo_button");
+    const choose_theme_color = document.getElementById('choose_theme_color');
 
     chooseFile.addEventListener("change", function () {
       getImgData();
@@ -95,10 +111,12 @@ function Create() {
         fileReader.readAsDataURL(files);
         fileReader.addEventListener("load", function () {
           imgPreview.style.display = "block";
-          imgPreview.innerHTML = '<img src="' + this.result + '" />';
+          imgPreview.querySelector('img').setAttribute('src',this.result)
+          imgPreview.querySelector('img').classList.replace('invisible','visible')
+          document.getElementById('logo-upload-svg').style.display = 'none'
           chooseLogoButton.innerText = "Change Logo";
-          chooseFile.style.marginRight = "28px";
-          chooseLogoButton.style.marginLeft = "0";
+          chooseLogoButton.style.marginLeft = "-20px";
+          choose_theme_color.classList.add("active-choose-theme")
         });
       }
     }
@@ -145,6 +163,7 @@ function Create() {
 
     
   }, [processIndex]);
+
 
 
 
@@ -226,6 +245,14 @@ function Create() {
       setProcessIndex(processIndex == maximumProcesses ? maximumProcesses : processIndex + 1);
     }
   }
+
+   // Iterate When Choose Theme Use Effect
+   useEffect(()=> {
+    document.querySelectorAll('.theme_color').forEach((elem)=> {
+      elem.classList.remove("ring-4")
+    });
+    document.getElementById(`choose-theme-${choosedThemeColor}`).classList.add("ring-4")
+  },[choosedThemeColor])
 
   return (
     <form
@@ -1114,8 +1141,8 @@ function Create() {
       </div>
 
 
-      <div className="visita-text-animation w-full flex flex-col items-center justify-center lg:pt-28 pt-24 z-50">
-        <h1 className="text-center lg:text-5xl text-2xl text-black font-visita-black">
+      <div className="visita-text-animation w-full flex flex-col items-center justify-center lg:pt-28 pt-24 ">
+        <h1 className="text-center lg:text-5xl text-xl text-black font-visita-black">
           <span>
             {processIndex == 1
               ? "Business Or Company Name"
@@ -1136,18 +1163,18 @@ function Create() {
 
       <div
         className={`create-inputs-wrapper ${
-          processIndex == 2 ? "lg:w-[90%] pt-0" : "lg:w-[70%] w-full lg:pt-8"
-        }  border lg:rounded-t-3xl lg:h-[75%] h-[78%] absolute   flex  flex-row justify-center min-w-100vh bg-white z-50 `}
+          processIndex == 2 ? "lg:w-[90%] pt-0" : processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
+        }  lg:border border-t lg:rounded-t-3xl lg:h-[75%]  h-[80%] absolute px-8   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
-        <div className=" flex  h-full ">
-          <div className=" flex flex-col items-center ">
+        <div className=" flex  h-full  ">
+          <div className=" flex flex-col items-center  ">
             {/* Company Or Business Name */}
 
             <div
               id="process1"
               class={`${
                 processIndex != 1 ? "hidden" : ""
-              } mb-6 my-3 process1_wrapper`}
+              } mb-6 my-3 process1_wrapper pb-32`}
             >
               <label
                 for="large-input"
@@ -1173,7 +1200,9 @@ function Create() {
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
+                <img className={`ring-4 invisible transition-all ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
                   <svg
+                  id="logo-upload-svg"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsSvgjs="http://svgjs.com/svgjs"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -1208,12 +1237,51 @@ function Create() {
                 <label
                   for="create-choose-logo"
                   id="choose_logo_button"
-                  className="lg:-ml-12 -ml-40"
+                  className="lg:-ml-12 -ml-36 lg:text-md text:sm"
                 >
                   Choose Logo
                 </label>
               </div>
+
+
+              <div id="choose_theme_color" className="flex flex-col opacity-0 transition-all">
+              <label
+                for="large-input"
+                class="block mb-2 text-lg font-visita-medium text-gray-900 :text-gray-300 mt-4"
+              >
+                Choose Matching Theme Color <span className="text-blue-600">*</span>
+              </label>
+                
+
+                <div className="flex w-full flex-wrap lg:pr-6  py-2">
+                  <input name="theme_color" type="text" className="hidden" value={choosedThemeColor} />
+
+                  {
+                    themeColors.map((color)=> {
+                     return (
+                      <div>
+                        <div  id={`choose-theme-${color}`} onClick={()=> setChoosedThemeColor(color)} className={`w-8 h-8 mr-4 lg:my-1 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}></div>
+                      
+                     
+                      </div>
+
+
+                     )
+                    })
+                  }
+
+
+
+                </div>
+
+              </div>
+
+
             </div>
+
+            
+           
+           
 
             {/* Choose A Template */}
 
@@ -2017,7 +2085,7 @@ function Create() {
         <div className="flex items-center justify-center fixed bg-white  w-full bottom-0  ">
           <div
             className={`h-full ${
-              processIndex == 2 ? "lg:w-[90%] w-full" : "lg:w-[70%] w-full"
+              processIndex == 2 ? "lg:w-[90%] w-full" : processIndex == 1 ? "lg:w-[80%] w-full" : "lg:w-[70%] w-full"
             }  create-next-buttons-wrapper  flex items-center justify-center border py-8 lg:px-0 px-6`}
           >
             <Button
@@ -2048,7 +2116,7 @@ function Create() {
               loadingText="Creating Card"
               onClick={() => handleNextClick()}
               backgroundColor="rgb(37 99 235 / 1)"
-              className="w-[200px] font-visita-bold lg:mr-6 mr-2"
+              className="w-[150px] font-visita-bold lg:mr-6 mr-2"
               size="md"
             >
              {processIndex == maximumProcesses ? 'Create Card' : 'Next'}
