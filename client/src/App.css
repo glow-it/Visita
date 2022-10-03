@@ -239,14 +239,17 @@ form{
     height: 95vh !important;
   }
   .benefits-wrapper{
-    height: 95vh !important;
+    height: 120vh !important;
+  }
+  .comp-logo-footer{
+    transform: scale(2.5) !important;
   }
 
   body{
     padding: 0 0px;
   }
   .cta-wrapper{
-    height: 50vh !important;
+    height: 45vh !important;
   }
   svg{
     display: none !important;

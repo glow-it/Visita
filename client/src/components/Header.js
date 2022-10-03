@@ -111,7 +111,7 @@ let navigate = useNavigate()
 
             <p onClick={()=> onClose()} href='#benefits' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="bulb"></ion-icon> <span className="ml-2 text-slate-600" >Benefits</span></span> </p>
 
-            <p className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="scan-circle"></ion-icon> <span className="ml-2 text-slate-600" >Templates</span></span> </p>
+            <p onClick={()=> {navigate('/templates');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="scan-circle"></ion-icon> <span className="ml-2 text-slate-600" >Templates</span></span> </p>
 
             <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >

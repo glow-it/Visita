@@ -7,7 +7,7 @@ function TemplatesPreview() {
       },[])
 
   return (
-    <div className='h-screen w-full' >
+    <div className='h-screen w-full ' >
 
 <div className="z-10">
 <svg className='absolute h-[800px] rotate-45'
@@ -112,9 +112,9 @@ function TemplatesPreview() {
 
 </div>
 
-        <div className="visita-text-animation w-full flex flex-col items-center justify-center pt-44 z-50">
+        <div className="visita-text-animation w-full flex flex-col items-center justify-center lg:pt-44 pt-24 z-50 px-4">
         
-<h1 className='text-center text-7xl text-black font-visita-black' >
+<h1 className='text-center  lg:text-7xl text-4xl text-black font-visita-black' >
 <span className='text-blue-600' ><p id="change_text_templates"></p></span>
 <span>vCard</span>
 <span>Templates,</span>
@@ -125,7 +125,8 @@ function TemplatesPreview() {
 <span>Like</span>
 </h1>
 
-<h1 className='text-center text-lg text-black font-visita-medium mt-8  min-w-[800px]' >We Provide Premium Templates To You. You Can Customize This Template As You Like. We Creating And Updating Templates Every Time. You Can Change Your Templates At Any Time</h1>
+
+<h1 className='text-center lg:text-lg text-sm text-black font-visita-medium mt-8  lg:min-w-[800px]' >We Provide Premium Templates To You. You Can Customize This Template As You Like. We Creating And Updating Templates Every Time. You Can Change Your Templates At Any Time</h1>
 
 </div>
 
@@ -145,7 +146,7 @@ function TemplatesPreview() {
           <img className='mt-8 h-[350px] rounded-[30px]' src="https://i.postimg.cc/xTHRPHsF/Screenshot-2022-09-21-10-33-35-20-40deb401b9ffe8e1df2f1cc5ba480b12.jpg"  />
 
           {/* Mobile Screen Image  */}
-          <img className='absolute  mt-6' src="https://i.postimg.cc/g2H1N1M5/mobilescreen.png" alt="no image found (Mobile Screen)" />
+          <img className='absolute min-w-[400px]  mt-6' src="https://i.postimg.cc/g2H1N1M5/mobilescreen.png" alt="no image found (Mobile Screen)" />
 
         </div>
 
@@ -160,7 +161,7 @@ function TemplatesPreview() {
           <img className='mt-8 h-[350px] rounded-[30px]' src="https://i.postimg.cc/MGgQFZpK/Screenshot-2022-09-21-10-48-13-54-40deb401b9ffe8e1df2f1cc5ba480b12.jpg"  />
 
           {/* Mobile Screen Image  */}
-          <img className='absolute  mt-6' src="https://i.postimg.cc/g2H1N1M5/mobilescreen.png" alt="no image found (Mobile Screen)" />
+          <img className='absolute min-w-[400px]  mt-6' src="https://i.postimg.cc/g2H1N1M5/mobilescreen.png" alt="no image found (Mobile Screen)" />
 
         </div>
 

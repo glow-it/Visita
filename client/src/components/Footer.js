@@ -105,7 +105,7 @@ function Footer() {
                <a
                   href="javascript:void(0)"
                   class="inline-block
-                  font-visita-medium max-w-[160px] mb-6"
+                  font-visita-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                   >
                <img
                   src="../assets/images/glowitlogos/glowitlabs_text.png"

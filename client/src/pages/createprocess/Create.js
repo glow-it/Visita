@@ -282,7 +282,7 @@ function Create() {
               let cardForm = document.getElementById("cardForm");
                   cardForm.submit()
             }}>
-              <span className="font-visita-bold" >Yes' Iam Sure</span>
+              <span className="font-visita-bold" >Yes' Create Card</span>
             </Button>
             <Button variant='solid' onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
           </ModalFooter>
@@ -1141,7 +1141,7 @@ function Create() {
       </div>
 
 
-      <div className="visita-text-animation w-full flex flex-col items-center justify-center lg:pt-28 pt-24 ">
+      <div className="visita-text-animation lg:block hidden w-full flex flex-col items-center justify-center lg:pt-28 pt-24 ">
         <h1 className="text-center lg:text-5xl text-xl text-black font-visita-black">
           <span>
             {processIndex == 1
@@ -1164,7 +1164,7 @@ function Create() {
       <div
         className={`create-inputs-wrapper ${
           processIndex == 2 ? "lg:w-[90%] pt-0" : processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
-        }  lg:border border-t lg:rounded-t-3xl lg:h-[75%]  h-[80%] absolute px-8   flex  flex-row justify-center min-w-100vh bg-white  `}
+        }  lg:border  lg:rounded-t-3xl lg:h-[75%]  h-[80%] absolute px-8   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
         <div className=" flex  h-full  ">
           <div className=" flex flex-col items-center  ">
@@ -1188,7 +1188,7 @@ function Create() {
                 required
                 id="large-input"
                 name="company_name"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1347,7 +1347,7 @@ function Create() {
                 required
                 id="large-input"
                 name="company_category"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1362,7 +1362,7 @@ function Create() {
                 required
                 id="large-input"
                 name="first_name"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1377,7 +1377,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="last_name"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1392,7 +1392,7 @@ function Create() {
                 id="large-input"
                 required
                 name="position"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1407,7 +1407,7 @@ function Create() {
                 id="large-input"
                 required
                 name="phone_no"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1422,7 +1422,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="alt_phone_no"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1437,7 +1437,7 @@ function Create() {
                 required
                 id="large-input"
                 name="whatsapp_no"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1452,7 +1452,7 @@ function Create() {
                 required
                 id="large-input"
                 name="address"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1467,7 +1467,7 @@ function Create() {
                 required
                 id="large-input"
                 name="email_id"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1482,7 +1482,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="website"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1497,7 +1497,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="location"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1512,7 +1512,7 @@ function Create() {
                 id="large-input"
                 required
                 name="city"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1527,7 +1527,7 @@ function Create() {
                 id="large-input"
                 required
                 name="since"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1542,7 +1542,7 @@ function Create() {
                 id="large-input"
                 required
                 name="about"
-                class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
             </div>
           </div>
@@ -1567,7 +1567,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="facebook_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1582,7 +1582,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="instagram_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1597,7 +1597,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="twitter_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1612,7 +1612,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="linkedin_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1627,7 +1627,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="youtube_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1642,7 +1642,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="pinterest_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
@@ -1664,7 +1664,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_1_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1679,7 +1679,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1694,7 +1694,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_3_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1709,7 +1709,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_4_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1724,7 +1724,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_5_link"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
         </div>
 
@@ -1747,7 +1747,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="paytm_number"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1762,7 +1762,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="googlepay_number"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1777,7 +1777,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="phonepe"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
@@ -1795,7 +1795,7 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             name="paytm_qrcode"
             type="file"
@@ -1809,7 +1809,7 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             name="googlepay_qrcode"
             type="file"
@@ -1823,7 +1823,7 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             name="phonepe_qrcode"
             type="file"
@@ -1848,7 +1848,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_name"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1863,7 +1863,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="account_holder_name"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1878,7 +1878,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_account_number"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1893,7 +1893,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_ifsc_code"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1908,7 +1908,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="gst"
-            class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
         </div>
 
@@ -1985,7 +1985,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_name`}
-                      class=" font-visita-medium block py-3.5 capitalize  hover:border-blue-200 lg: pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium block py-3.5 capitalize   lg: pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -1993,7 +1993,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_orgprice`}
-                      class=" font-visita-medium hover:border-blue-200 mt-4 block py-3  pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -2001,7 +2001,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_offerprice`}
-                      class=" font-visita-medium hover:border-blue-200 mt-4 block py-3  pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-gray-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
                   </div>
                 </div>
