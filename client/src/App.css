@@ -26,6 +26,7 @@
 }
 *{
   scroll-padding-top: 100px;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -236,10 +237,10 @@ form{
 
 @media only screen and (min-width: 350px) and (max-width: 1000px) {
   .hero{
-    height: 95vh !important;
+    height: 115vh !important;
   }
   .benefits-wrapper{
-    height: 120vh !important;
+    height: 135vh !important;
   }
   .comp-logo-footer{
     transform: scale(2.5) !important;
@@ -525,12 +526,7 @@ footer {
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.5s;
 }
-.process_indicator-7{
-  transform: translateX(-20px);
-  opacity: 0;
-  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.6s;
-}
+
 
 
 
@@ -614,5 +610,37 @@ footer {
   100%{
     opacity: 1;
     transform: translateY(0vh);
+  }
+}
+
+/* template */
+.logo{
+  min-width: 108px;
+  height: 108px;
+  margin-top: 20px;
+}
+.offer-image{
+  object-fit: contain !important;
+}
+.nav-bottom{
+  min-width: 120px;
+}
+.overlays{
+  z-index: 10px !important;
+}
+.card-preview{
+  z-index: 50px !important;
+}
+
+.card-preview-successfull-animation{
+  animation: animate_successfull 1s cubic-bezier(0.075, 0.82, 0.165, 1) 2s forwards;
+}
+
+@keyframes animate_successfull{
+  0%{
+    transform: translateY(-0vh);
+  }
+  100%{
+    transform: translateY(-100vh);
   }
 }

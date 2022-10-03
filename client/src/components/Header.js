@@ -43,7 +43,7 @@ let navigate = useNavigate()
       <header className="lg:-ml-6  w-full h-16 flex py-8 pl-8  bg-white fixed z-50 transition-shadow">
         <div className="w-3/4 h-full flex items-center">
           <img
-            src="../assets/images/logos/visitalogo.png"
+            src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
             className="h-12 mr-4 cursor-pointer"
             onClick={()=> navigate('/')}
           />
@@ -61,8 +61,8 @@ let navigate = useNavigate()
               <a href="#benefits" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
                 Benefits
               </a>
-              <a onClick={()=> navigate('/templates')} className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
-                Templates
+              <a onClick={()=> navigate('/template')} className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+                Template Model
               </a>
               <Menu>
                 <MenuButton rightIcon={<ChevronDownIcon />}>
@@ -107,11 +107,11 @@ let navigate = useNavigate()
 
             <p onClick={()=> {navigate('/pricing');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </p>
 
-            <p onClick={()=> onClose()} href='#features' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="logo-buffer"></ion-icon> <span className="ml-2 text-slate-600" >Features</span></span> </p>
+            <p onClick={()=> onClose()} href='#features' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="scan-circle"></ion-icon> <span className="ml-2 text-slate-600" >Features</span></span> </p>
 
             <p onClick={()=> onClose()} href='#benefits' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="bulb"></ion-icon> <span className="ml-2 text-slate-600" >Benefits</span></span> </p>
 
-            <p onClick={()=> {navigate('/templates');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="scan-circle"></ion-icon> <span className="ml-2 text-slate-600" >Templates</span></span> </p>
+            <p onClick={()=> {navigate('/template');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="logo-buffer"></ion-icon> <span className="ml-2 text-slate-600" >Template Model</span></span> </p>
 
             <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >

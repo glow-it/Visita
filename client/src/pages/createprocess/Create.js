@@ -11,8 +11,11 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
 
 function Create() {
+
+  let navigate = useNavigate()
 
 
   const toast = useToast();
@@ -33,44 +36,7 @@ function Create() {
     "10",
   ]);
 
-  let [templates, setTemplates] = useState([
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ",",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ]);
+
   let [loading,setLoading] = useState(false)
   let [choosedThemeColor,setChoosedThemeColor] = useState('purple')
   let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","fuchsia","pink","rose"])
@@ -86,7 +52,7 @@ function Create() {
      }
     },[choosedThemeColor])
 
-  let maximumProcesses = 7;
+  let maximumProcesses = 6;
 
   // Last Confirm Modal Disclosure
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -263,7 +229,7 @@ function Create() {
     >
 
 
-<CreateHeader processIndex={processIndex} loading={loading} />
+<CreateHeader processIndex={processIndex} loading={loading} hideIndicators={false} />
 
 
 
@@ -281,6 +247,7 @@ function Create() {
               onClose()
               let cardForm = document.getElementById("cardForm");
                   cardForm.submit()
+                  navigate('/loading/creating-card')
             }}>
               <span className="font-visita-bold" >Yes' Create Card</span>
             </Button>
@@ -1147,14 +1114,12 @@ function Create() {
             {processIndex == 1
               ? "Business Or Company Name"
               : processIndex == 2
-              ? "Choose A Template"
-              : processIndex == 3
               ? "Company Details"
-              : processIndex == 4
+              : processIndex == 3
               ? "Social Media Links"
-              : processIndex == 5
+              : processIndex == 4
               ? "Payment Options"
-              : processIndex == 6
+              : processIndex == 5
               ? "Products Or Services"
               : "Image Gallery"}
           </span>
@@ -1163,7 +1128,7 @@ function Create() {
 
       <div
         className={`create-inputs-wrapper ${
-          processIndex == 2 ? "lg:w-[90%] pt-0" : processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
+         processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
         }  lg:border  lg:rounded-t-3xl lg:h-[75%]  h-[80%] absolute px-8   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
         <div className=" flex  h-full  ">
@@ -1280,59 +1245,14 @@ function Create() {
             </div>
 
             
-           
-           
 
-            {/* Choose A Template */}
-
-            <div
-              id="process2"
-              className={`min-w-[100%] overflow-scroll  h-full pt-4 pb-44   flex flex-row flex-wrap justify-center ${
-                processIndex != 2 ? "hidden" : ""
-              } process2_wrapper `}
-            >
-              <input
-                required
-                type="text"
-                name="template_id"
-                className="hidden"
-              />
-
-              {templates &&
-                templates.map((data, index) => {
-                  return (
-                    <div
-                      onClick={(e) => handleTemplateChoose(e, index + 1)}
-                      className="template-wrapper lg:h-[300px] lg:w-[400px] h-[200px] w-[300px] bg-white transition-colors  hover:border-blue-500 cursor-pointer mx-2 my-2 rounded-2xl border-2 shadow-md flex justify-center overflow-hidden relative "
-                    >
-                      <div className="template-redirect-button-wrapper h-10 w-10 absolute right-6 top-4 bg-white rounded-full shadow-md flex justify-center items-center transition-transform">
-                        <span className="template_index text-blue-600 transition-colors flex justify-center items-center text-xl font-visita-bold">
-                          <ion-icon name="checkmark-outline"></ion-icon>
-                        </span>
-                      </div>
-
-                      {/* Template Image */}
-                      <img
-                        className="mt-8 lg:h-[350px] h-[280px] rounded-[30px]"
-                        src="https://i.postimg.cc/MGgQFZpK/Screenshot-2022-09-21-10-48-13-54-40deb401b9ffe8e1df2f1cc5ba480b12.jpg"
-                      />
-
-                      {/* Mobile Screen Image  */}
-                      <img
-                        className="absolute  mt-6"
-                        src="https://i.postimg.cc/g2H1N1M5/mobilescreen.png"
-                        alt="no image found (Mobile Screen)"
-                      />
-                    </div>
-                  );
-                })}
-            </div>
+        
 
             {/* Company Details */}
             <div
-              id="process3"
+              id="process2"
               class={`${
-                processIndex != 3 ? "hidden" : ""
+                processIndex != 2 ? "hidden" : ""
               }  my-3 process3_wrapper pb-40 overflow-scroll`}
             >
               <label
@@ -1550,9 +1470,9 @@ function Create() {
 
         {/* Social Media Links */}
         <div
-          id="process4"
+          id="process3"
           class={`${
-            processIndex != 4 ? "hidden" : ""
+            processIndex != 3 ? "hidden" : ""
           }  my-3 process3_wrapper pb-40 overflow-scroll`}
         >
           <label
@@ -1730,9 +1650,9 @@ function Create() {
 
         {/* Payment Options */}
         <div
-          id="process5"
+          id="process4"
           class={`${
-            processIndex != 5 ? "hidden" : ""
+            processIndex != 4 ? "hidden" : ""
           }  my-3 process4_wrapper pb-40 overflow-scroll lg:px-0 `}
         >
           <label
@@ -1914,9 +1834,9 @@ function Create() {
 
         {/* Products Or Services */}
         <div
-          id="process6"
+          id="process5"
           class={`${
-            processIndex != 6 ? "hidden" : ""
+            processIndex != 5 ? "hidden" : ""
           }  my-3 process5_wrapper pb-40 overflow-scroll w-full`}
         >
           {["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].map((data) => {
@@ -2013,9 +1933,9 @@ function Create() {
         {/* Image Gallery */}
 
         <div
-          id="process7"
+          id="process6"
           class={`${
-            processIndex != 7 ? "hidden" : ""
+            processIndex != 6 ? "hidden" : ""
           }  my-3 process6_wrapper pb-40 overflow-scroll w-full`}
         >
           {imageGalleryQuantity.map((data) => {
@@ -2085,7 +2005,7 @@ function Create() {
         <div className="flex items-center justify-center fixed bg-white  w-full bottom-0  ">
           <div
             className={`h-full ${
-              processIndex == 2 ? "lg:w-[90%] w-full" : processIndex == 1 ? "lg:w-[80%] w-full" : "lg:w-[70%] w-full"
+              processIndex == 1 ? "lg:w-[80%] w-full" : "lg:w-[70%] w-full"
             }  create-next-buttons-wrapper  flex items-center justify-center border py-8 lg:px-0 px-6`}
           >
             <Button

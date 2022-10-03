@@ -5,7 +5,7 @@ function Hero() {
 
 
   return (
-    <div className='w-full hero lg:flex sm:p-6 border-b bg-blend-multiply mt-16' >
+    <div className='w-full hero lg:flex sm:p-10 border-b bg-blend-multiply mt-12' >
 
 <svg className='absolute hero-aura'
       xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +74,9 @@ function Hero() {
 
             <div className="w-full mt-12 py-2 flex">
 
-           <h1 className='font-visita-bold text-3xl sm:text-4xl ' >1000+ <br /> <span className='sm:text-2xl text-xl' >Site Visitors</span> </h1>
-           <h1 className='text-4xl mt-4 text-slate-600 ml-6 mr-6' > | </h1>
-           <h1 className='font-visita-bold text-3xl sm:text-4xl ' >600+ <br /> <span className='sm:text-2xl text-xl' >Cards Created</span> </h1>
+           <h1 className='font-visita-bold text-2xl sm:text-4xl ' >1000+ <br /> <span className='sm:text-2xl text-xl' >Site Visitors</span> </h1>
+           <h1 className='lg:text-4xl text-7xl lg:mt-4 -mt-3 lg:text-slate-600 text-slate-300 lg:ml-6 lg:mr-6 ml-3 mr-3' > | </h1>
+           <h1 className='font-visita-bold text-2xl sm:text-4xl ' >600+ <br /> <span className='sm:text-2xl text-xl' >Cards Created</span> </h1>
            
 
             </div>

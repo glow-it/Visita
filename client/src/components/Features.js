@@ -113,8 +113,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="business"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Business Ads</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">You can add your Business ads. Very easily can check your offers</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Business Ads</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your Business ads. Very easily can check your offers</p>
           </div>
 
 
@@ -122,8 +122,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="globe"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Website Link</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">People can visit your website by just clicking on web icon.!</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Website Link</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">People can visit your website by just clicking on web icon.!</p>
           </div>
 
 
@@ -131,8 +131,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="qr-code"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">QR Codes</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">You can add your QR Codes. That can help your clients find your qr codes and read it quickly</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">QR Codes</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your QR Codes. That can help your clients find your qr codes and read it quickly</p>
           </div>
 
 
@@ -140,8 +140,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="mail"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Email on Click</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">Your clients can send you an email by just click on mail icon.!</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Email on Click</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">Your clients can send you an email by just click on mail icon.!</p>
           </div>
 
 
@@ -149,8 +149,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="chatbubble-ellipses"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Social Media Links</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">You can add your Business ads. Very easily can check your offers</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Social Media Links</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your Business ads. Very easily can check your offers</p>
           </div>
 
 
@@ -158,8 +158,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="cash"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Payment Detais</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">You can add your payment details,  payment qr codes, upi id and payment links.</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Payment Detais</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your payment details,  payment qr codes, upi id and payment links.</p>
           </div>
 
 
@@ -167,8 +167,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="navigate-circle"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Navigate on click</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">People can navigate your premises by just clicking on map icon.!</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Navigate on click</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">People can navigate your premises by just clicking on map icon.!</p>
           </div>
 
 
@@ -176,8 +176,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="logo-whatsapp"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">WhatsApp on click</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">Your clients can WhatsApp you without saving your number.!</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">WhatsApp on click</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">Your clients can WhatsApp you without saving your number.!</p>
           </div>
 
 
@@ -185,8 +185,8 @@ function Features() {
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="cart"></ion-icon></span>
               </div>
-              <h3 class="mb-2 text-xl font-bold :text-white">Products</h3>
-              <p class="text-gray-500 :text-gray-400 font-visita-medium">with product all details. That can help your clients order your products easily</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Products</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">with product all details. That can help your clients order your products easily</p>
           </div>
 
 

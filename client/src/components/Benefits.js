@@ -82,11 +82,11 @@ function Benefits() {
                <span className='text-green-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8'><ion-icon name="checkmark"></ion-icon></span>
                 <h1 className='font-visita-medium lg:text-lg text-[15px]  -ml-4  text-black' >Having your contact information on your customer's mobile phone is a business opportunity.</h1>
             </div>
-            <div   className="w-full h-12 mt-12 lg:mt-2 flex items-center lg:-ml-0 -ml-12">
+            <div   className="w-full h-12 mt-16 lg:mt-2 flex items-center lg:-ml-0 -ml-12">
                <span className='text-green-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8'><ion-icon name="checkmark"></ion-icon></span>
                 <h1 className='font-visita-medium lg:text-lg text-[15px]  -ml-4  text-black' >With a digital business cards, you can express yourself in ways you couldn't before.</h1>
             </div>
-            <div   className="w-full h-12 mt-6 lg:mt-2 flex items-center lg:-ml-0 -ml-12">
+            <div   className="w-full h-12 mt-12 lg:mt-2 flex items-center lg:-ml-0 -ml-12">
                <span className='text-green-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8'><ion-icon name="checkmark"></ion-icon></span>
                 <h1 className='font-visita-medium lg:text-lg text-[15px]  -ml-4  text-black' >It can do many features that cannot be done in normal vCard</h1>
             </div>
