@@ -3,7 +3,8 @@ let app = express()
 const cors=require("cors");
 const { client_database_name, admin_database_name, mongo_url } = require("./Common/strings");
 const { client_collections } = require("./Common/Collections");
-const { createCard, getCardData } = require("./Helpers/clientHelpers");
+const clientHelpers = require("./Helpers/clientHelpers");
+const adminHelpers = require("./Helpers//adminHelpers");
 const MongoClient = require("mongodb").MongoClient;
 
 
@@ -38,7 +39,8 @@ async function run() {
     // Database Codes
 
     app.post('/createcard',(req,res)=> {
-        createCard(req.body,client_db).then((response,card_data)=> {
+        clientHelpers
+        clientHelpers.createCard(req.body,client_db).then((response,card_data)=> {
             res.redirect(`create/preview/${req.body.company_name.replace(/[ ]/g,'-')}`)
             res.end()
         }).catch((err)=> {
@@ -49,13 +51,15 @@ async function run() {
 
      app.get(`/card/:company_name`,(req,res)=> {
      let comp_name = (req.params.company_name.replace(/[-]/g,' '))
-        getCardData(comp_name,client_db).then((response)=> {
+        clientHelpers.getCardData(comp_name,client_db).then((response)=> {
             res.json(response)
             res.end()
         }).catch((err)=> {
             console.log(err);
         })
     })
+
+
 
 
     // Database Codes End
