@@ -57,7 +57,7 @@ function Hero() {
       </g>
     </svg>
        
-        <div className="lg:w-1/2 w-full flex flex-col sm:pl-16 pl-4" >
+        <div className="lg:w-1/2 w-full flex flex-col sm:pl-6 pl-6" >
             <h1 className='font-visita-black pt-16 lg:text-6xl text-5xl' >Take A Boost For Your <span className="text-primary">Business</span></h1>
 
             <p  className='font-visita-medium text-xl mt-6 sm:ml-3 text-slate-600 lg:pr-16' >Visita is the smartest way to grow your business by creating Digital Visiting Card - Mini Website</p>

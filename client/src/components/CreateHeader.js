@@ -6,9 +6,9 @@ function CreateHeader({processIndex,loading}) {
     let navigate = useNavigate()
 
   return (
-    <header id='create-header' className="lg:-ml-6 w-full lg:h-16 h-32 lg:flex-row flex-col flex py-8 items-center bg-white justify-center fixed z-50 transition-shadow border-b shadow-md shadow-black/5">
+    <header id='create-header' className=" w-full lg:h-16 h-32 lg:flex-row flex-col flex py-8 items-center bg-white justify-center fixed z-50 transition-shadow border-b shadow-md shadow-black/5">
 
-       <div className="absolute lg:left-8 flex  items-center justify-center lg:visible invisible">
+       <div className="absolute lg:left-14 flex  items-center justify-center lg:visible invisible">
        <img
             src="../assets/images/logos/visitalogo.png"
             className="h-10 cursor-pointer"

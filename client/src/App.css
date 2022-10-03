@@ -369,10 +369,13 @@ footer {
   --tw-shadow-color: rgb(15 23 42 / 0.03);
     --tw-shadow: var(--tw-shadow-colored);
     border-bottom-width: 1px;
+    
+    
 }
 .support input{
   border-radius: 0.75rem
 }
+
 
 
 
