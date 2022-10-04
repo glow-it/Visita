@@ -1,8 +1,14 @@
+import axios from 'axios'
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import CreateHeader from '../../components/CreateHeader'
 import Template from '../../template/Template'
 
 function CardPreview() {
+
+  let params = useParams()
+  let name = params.name
+
 
     useEffect(()=> {
         document.title = 'Complete Purchase'
@@ -125,7 +131,7 @@ function CardPreview() {
       xmlns="http://www.w3.org/2000/svg"
       width="1000"
       height="700"
-      opacity="0.07"
+      opacity="0.10"
       viewBox="0 0 800 800"
       className="absolute -left-56"
     >
@@ -498,7 +504,7 @@ function CardPreview() {
       xmlns="http://www.w3.org/2000/svg"
       width="1000"
       height="700"
-      opacity="0.05"
+      opacity="0.10"
       viewBox="0 0 800 800"
       className="absolute -right-20"
     >
@@ -869,31 +875,29 @@ function CardPreview() {
       </div>
 
 
-        <CreateHeader hideIndicators={true}  />
+        <CreateHeader hideIndicators={true} live_preview_url={`http://localhost:3000/${name}`}  />
 
         <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
 
-       <div className="lg:h-[80%] h-full z-40  lg:mt-10 mt-44 lg:w-[25%] w-full overflow-y-scroll mr-4 bg-white border-4 border-purple-500 rounded-3xl">
-       
-        <Template preview={true} />
-       </div>
+      
 
-       <div className="h-[80%] z-40 mt-10 w-[50%] ml-4 flex flex-col bg-white border items-center justify-center rounded-3xl ">
+       <div className="h-[80%] z-40 mt-10 w-[60%] ml-4 flex flex-col bg-white border-2  items-center justify-center rounded-3xl ">
 
        
 
-       <h1 className='text-3xl font-visita-bold' ><i class="fa-solid fa-check border-2 p-2 mr-3 rounded-full text-white bg-green-500 border-green-500"></i> Successfully Your Card Has <span className='text-green-600' >Created!</span></h1>
+       <h1 className='text-3xl font-visita-bold' ><i class="fa-solid fa-check border-2 p-2 mr-3 rounded-full text-white bg-green-500 border-green-500"></i> Successfully Your Card Was <span className='text-green-600' >Created!</span></h1>
 
-       <h1 className='text-xl font-visita-medium text-blue-600 mt-4 text-center px-6 py-1 bg-blue-100 rounded-full' > Complete Purchase To  Activate Your Card</h1>
+       <h1 className='text-xl font-visita-medium text-blue-600 mt-4 text-center px-6 py-1 bg-blue-50 rounded-full' > Complete Purchase To  Activate Your Card</h1>
 
 
      <div className="flex">
-     <h1 className='text-4xl font-visita-medium mt-14 bg-blue-100 py-12 px-12 rounded-3xl mr-6 text-blue-600 text-center' >₹499</h1>
-     <h1 className='text-4xl font-visita-medium mt-14  py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-100 text-center' >₹799</h1>
+     <h1 className='text-4xl font-visita-medium mt-14 bg-blue-50 py-12 px-12 rounded-3xl mr-6 text-blue-600 text-center' >₹599</h1>
+     <h1 className='text-4xl font-visita-medium mt-14  py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-50 text-center' >₹799</h1>
      </div>
 
 
-        <button className="text-2xl mt-12 font-visita-bold hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600">Complete Purchase</button>
+        <button className="text-2xl mt-12 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600">Complete Purchase</button>
+
         <button className="text-2xl mt-6 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 text-black-600 rounded-full">Cancel Purchase</button>
 
        

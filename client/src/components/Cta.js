@@ -12,7 +12,7 @@ function Cta() {
       </h1>
       <h1 className="lg:text-3xl text-md font-visita-bold text-black lg:mt-6 mt-2">
         {" "}
-        Now Just Only <span className="text-primary lg:ml-3">₹499 / Year</span>
+        Now Just Only <span className="text-primary lg:ml-3">₹599 / Year</span>
       </h1>
 
       <div className="flex lg:flex-row flex-col mt-16">

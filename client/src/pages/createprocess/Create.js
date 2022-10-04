@@ -12,6 +12,7 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Create() {
 
@@ -19,6 +20,7 @@ function Create() {
 
 
   const toast = useToast();
+  const toastIdRef = React.useRef()
 
   let [previuos, setPrevious] = useState(false);
   let [skip, setSkip] = useState(false);
@@ -219,6 +221,24 @@ function Create() {
     });
     document.getElementById(`choose-theme-${choosedThemeColor}`).classList.add("ring-4")
   },[choosedThemeColor])
+
+  // Upload Files To Cloud
+  async function uploadImage(files,id){
+    toastIdRef.current = toast({ description: 'Upoading Image...',position:'top' })
+    const formData = new FormData();
+    formData.append("file",files[0]);
+    formData.append("upload_preset","xav0wsx1")
+
+    let response = await axios.post("https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",formData)
+    document.getElementById(id).value = response.data.url
+
+    if (toastIdRef.current) {
+      toast.close(toastIdRef.current)
+    }
+
+  }
+
+
 
   return (
     <form
@@ -1153,7 +1173,7 @@ function Create() {
                 required
                 id="large-input"
                 name="company_name"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1195,14 +1215,15 @@ function Create() {
                 </div>
                 <input
                   type="file"
+                  onChange={(e)=> {uploadImage(e.target.files,"logo")}}
                   id="create-choose-logo"
-                  name="logo"
                   accept="image/*"
                 />
+                <input type="text" name="logo" id="logo" className="hidden" />
                 <label
                   for="create-choose-logo"
                   id="choose_logo_button"
-                  className="lg:-ml-12 -ml-36 lg:text-md text:sm"
+                  className="lg:-ml-12 -ml-36 lg:text-md text:sm cursor-pointer border-blue-600 border-2 px-4 py-2 rounded-full font-visita-bold text-blue-600"
                 >
                   Choose Logo
                 </label>
@@ -1267,7 +1288,7 @@ function Create() {
                 required
                 id="large-input"
                 name="company_category"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1282,7 +1303,7 @@ function Create() {
                 required
                 id="large-input"
                 name="first_name"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1297,7 +1318,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="last_name"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1312,7 +1333,7 @@ function Create() {
                 id="large-input"
                 required
                 name="position"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1327,7 +1348,7 @@ function Create() {
                 id="large-input"
                 required
                 name="phone_no"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1342,7 +1363,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="alt_phone_no"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1357,7 +1378,7 @@ function Create() {
                 required
                 id="large-input"
                 name="whatsapp_no"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1372,7 +1393,7 @@ function Create() {
                 required
                 id="large-input"
                 name="address"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1387,7 +1408,7 @@ function Create() {
                 required
                 id="large-input"
                 name="email_id"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1402,7 +1423,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="website"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1417,7 +1438,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="location"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1432,7 +1453,7 @@ function Create() {
                 id="large-input"
                 required
                 name="city"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1447,7 +1468,7 @@ function Create() {
                 id="large-input"
                 required
                 name="since"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1462,7 +1483,7 @@ function Create() {
                 id="large-input"
                 required
                 name="about"
-                class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
             </div>
           </div>
@@ -1487,7 +1508,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="facebook_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1502,7 +1523,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="instagram_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1517,7 +1538,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="twitter_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1532,7 +1553,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="linkedin_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1547,7 +1568,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="youtube_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1562,7 +1583,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="pinterest_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
@@ -1584,7 +1605,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_1_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1599,7 +1620,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1614,7 +1635,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_3_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1629,7 +1650,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_4_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1644,7 +1665,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_5_link"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
         </div>
 
@@ -1667,7 +1688,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="paytm_number"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1682,7 +1703,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="googlepay_number"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1697,7 +1718,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="phonepe"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
@@ -1715,11 +1736,12 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
-            name="paytm_qrcode"
             type="file"
+            onChange={(e)=> {uploadImage(e.target.files,"paytm_qrcode")}}
           />
+          <input type="text" name="paytm_qrcode" id="paytm_qrcode" className="hidden" />
 
           <label
             for="large-input"
@@ -1729,11 +1751,12 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
-            name="googlepay_qrcode"
             type="file"
+            onChange={(e)=> {uploadImage(e.target.files,"googlepay_qrcode")}}
           />
+          <input type="text" name="googlepay_qrcode" id="googlepay_qrcode" className="hidden" />
 
           <label
             for="large-input"
@@ -1743,11 +1766,12 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
-            name="phonepe_qrcode"
             type="file"
+            onChange={(e)=> {uploadImage(e.target.files,"phonepe_qrcode")}}
           />
+          <input type="text" name="phonepe_qrcode" id="phonepe_qrcode" className="hidden" />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
             <span className="flex mr-2 items-center justify-center">
@@ -1768,7 +1792,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_name"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1783,7 +1807,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="account_holder_name"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1798,7 +1822,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_account_number"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1813,7 +1837,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_ifsc_code"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1828,7 +1852,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="gst"
-            class=" font-visita-medium block py-3.5 capitalize   lg:pr-[650px] pr-[100px] pl-[30px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
         </div>
 
@@ -1851,52 +1875,16 @@ function Create() {
                     (Optional)
                   </span>
                 </label>
-                <div className="lg:w-full  lg:pb-4 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-4 lg:px-4 px-32 border-b">
+                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
-                    <label
-                      for="dropzone-file"
-                      class="flex flex-col justify-center items-center hover:border-blue-400 transition-colors w-full h-48 bg-gray-50 rounded-3xl border-2 border-gray-300  cursor-pointer 800 ver:bg-gray-100 500 600"
-                    >
-                      <div class="flex flex-col justify-center items-center hover:border-blue-400 transition-colors pt-5 pb-6">
-                        <svg
-                          aria-hidden="true"
-                          class="mb-3 w-10 h-10 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                          ></path>
-                        </svg>
-                        <p class="mb-2 text-sm text-gray-500 ">
-                          <span class="font-visita-medium">
-                            Upload Product Image
-                          </span>
-                        </p>
-                        <p class="text-xs text-gray-500 0 font-visita-medium">
-                          Click to upload
-                        </p>
-                      </div>
-                      <input
-                        onChange={(e) => {
-                          toast({
-                            title: "Product Image Uploaded",
-                            status: "success",
-                            duration: 2000,
-                            position: "top",
-                          });
-                        }}
-                        id="dropzone-file"
-                        type="file"
-                        class={`hidden ${data}`}
-                        name={`product_${data}_image`}
-                      />
-                    </label>
+                  <input
+            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            id="large_size"
+            type="file"
+            onChange={(e)=> {uploadImage(e.target.files,`product_image_${data}`)}}
+          />
+          <input type="text" name={`product_image_${data}`} id={`product_image_${data}`} className="hidden" />
+          
                   </div>
 
                   <div className="w-full flex flex-col justify-center px-2">
@@ -1905,7 +1893,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_name`}
-                      class=" font-visita-medium block py-3.5 capitalize   lg: pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -1913,7 +1901,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_orgprice`}
-                      class=" font-visita-medium  mt-4 block py-3  pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -1921,8 +1909,17 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_offerprice`}
-                      class=" font-visita-medium  mt-4 block py-3  pl-[30px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
+
+                    <input
+                      placeholder="Enter Product Link (Optional)"
+                      autoComplete="off"
+                      id="large-input"
+                      name={`product_${data}_link`}
+                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                    />
+
                   </div>
                 </div>
               </div>
@@ -1938,67 +1935,40 @@ function Create() {
             processIndex != 6 ? "hidden" : ""
           }  my-3 process6_wrapper pb-40 overflow-scroll w-full`}
         >
-          {imageGalleryQuantity.map((data) => {
-            return (
-              <div>
-                <label
-                  for="large-input"
-                  class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 :text-gray-300 mt-6"
-                >
-                  Image {data}
-                  <span className="text-slate-400 ml-1 text-sm">
-                    (Optional)
-                  </span>
-                </label>
-                <div className="w-full  rounded-3xl flex flex-row items-center border py-4 px-4">
-                  <div class="flex justify-center w-full items-center">
-                    <label
-                      for="dropzone-file"
-                      class="flex flex-col justify-center items-center hover:border-blue-400 transition-colors w-full h-48 bg-gray-50 rounded-3xl border-2 border-gray-300  cursor-pointer 800 ver:bg-gray-100 500 600"
-                    >
-                      <div class="flex flex-col justify-center items-center hover:border-blue-400 transition-colors pt-5 pb-6">
-                        <svg
-                          aria-hidden="true"
-                          class="mb-3 w-10 h-10 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                          ></path>
-                        </svg>
-                        <p class="mb-2 text-sm text-gray-500 ">
-                          <span class="font-visita-medium">Upload Image</span>
-                        </p>
-                        <p class="text-xs text-gray-500 0 font-visita-medium">
-                          Click to upload
-                        </p>
-                      </div>
-                      <input
-                        onChange={(e) => {
-                          toast({
-                            title: "Image Uploaded",
-                            status: "success",
-                            duration: 2000,
-                            position: "top",
-                          });
-                        }}
-                        id="dropzone-file"
-                        type="file"
-                        class={`hidden ${data}`}
-                        name={`image_${data}`}
-                      />
-                    </label>
+        
+        {
+          imageGalleryQuantity.map((data)=> {
+            return(
+             <div >
+               <label
+              for="large-input"
+              class="block mb-2 lg:text-lg  text-md font-visita-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
+            >
+              Image {data}
+              <span className="text-slate-400 ml-1 text-sm">
+                (Optional)
+              </span>
+            </label>
+              <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
+                  <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
+                  <input
+            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            id="large_size"
+            type="file"
+            onChange={(e)=> {uploadImage(e.target.files,`image_${data}`)}}
+          />
+
+<input type="text" name={`image_${data}`} id={`image_${data}`} className="hidden" />
+
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                  </div>
+             </div>
+            )
+          })
+        }
+
+
+
         </div>
 
         {/* Form Buttons */}

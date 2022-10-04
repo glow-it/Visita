@@ -13,7 +13,7 @@ function LandingPage() {
 
 
   return (
-    <div className='flex flex-col items-center pr-4 pl-3' >
+    <div className='landing-page flex flex-col items-center pr-4 pl-3' >
         <Hero />
         <Features />
         <Benefits />

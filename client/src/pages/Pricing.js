@@ -117,9 +117,9 @@ function Pricing() {
        <span  className='font-visita-bold text-green-500 mb-6' >100% Secure</span>
 
             <h1  className='lg:leading-[60px] text-center font-visita-bold text-black lg:text-5xl text-3xl' >Pay <span className='text-primary text-blue-600' >
-            ₹499/Year</span> And <br /> Use It Forever</h1>
+            ₹599/Year</span> And <br /> Use It Forever</h1>
 
-<h1  className='text-center lg:text-md text-xs font-visita-medium mt-6' >Now just only ₹499 per year. Pay once and we take payment <br /> automatically from your bank per year. payment secured by Razorpay</h1>
+<h1  className='text-center lg:text-md text-xs font-visita-medium mt-6' >Now just only ₹599 per year. Pay once and we take payment <br /> automatically from your bank per year. payment secured by Razorpay</h1>
 
 <div   className="flex flex-col items-start">
 <h1 className=' font-visita-medium lg:text-xl text-lg mt-12 flex' > <span className='text-2xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span> Automatically Debit ₹499 From Your Bank Per Year</h1>
