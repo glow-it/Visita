@@ -28,15 +28,17 @@
   scroll-behavior: smooth;
 }
 
-* {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: #0062FF;
 }
+
+::selection {
+  color: white;
+  background: #0062FF;
+}
+
+
 *:focus {
   outline: none !important;
 }
@@ -468,7 +470,7 @@ footer {
 }
 .create-next-buttons-wrapper{
   margin-bottom: -200vh;
-  animation: animate_create_next_buttons_wrapper 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1s;
+  animation: animate_create_next_buttons_wrapper 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1s;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -632,14 +634,16 @@ footer {
 }
 
 .card-preview-successfull-animation{
-  animation: animate_successfull 1s cubic-bezier(0.075, 0.82, 0.165, 1) 2s forwards;
+  animation: animate_successfull 2s cubic-bezier(0.075, 0.82, 0.165, 1) 1.5s forwards;
 }
 
 @keyframes animate_successfull{
   0%{
-    transform: translateY(-0vh);
+    opacity: 1;
+    visibility: visible;
   }
   100%{
-    transform: translateY(-100vh);
+    opacity: 0;
+    visibility: hidden;
   }
 }

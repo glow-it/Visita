@@ -11,6 +11,10 @@ import Loading from './components/Loading';
 import CardPreview from './pages/createprocess/CardPreview';
 import { useEffect } from 'react';
 import Template from './template/Template';
+import ActivateWarning from './pages/createprocess/ActivateWarning';
+import Successfull from './pages/createprocess/Successfull';
+import ManageCard from './pages/createprocess/ManageCard';
+import EditCard from './pages/createprocess/EditCard';
 
 
 function App() {
@@ -43,6 +47,10 @@ link.href = 'https://i.postimg.cc/ZKnK7rC2/visitalogo.png';
         <Route path="create/preview/:name" element={<CardPreview />} />
         <Route path="loading/:type" element={<Loading />} />
         <Route path="/:comp_name" element={<Template />} />
+        <Route path="/activate-warning/:comp_name" element={<ActivateWarning />} />
+        <Route path="/create/successfull/:comp_name" element={<Successfull />} />
+        <Route path="/manage/card/:comp_name" element={<ManageCard />} />
+        <Route path="/manage/card/:comp_name/edit" element={<EditCard />} />
 
       </Routes>
     </div>

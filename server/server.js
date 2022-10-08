@@ -9,7 +9,9 @@ const {
 const { client_collections } = require("./Common/Collections");
 const clientHelpers = require("./Helpers/clientHelpers");
 const adminHelpers = require("./Helpers//adminHelpers");
+const paymentHelpers = require("./Helpers/paymentHelpers");
 const MongoClient = require("mongodb").MongoClient;
+var nodemailer = require('nodemailer');
 
 const corsOptions = {
   origin: "*",
@@ -67,6 +69,89 @@ async function run() {
           console.log(err);
         });
     });
+
+    app.post('/update/feedback/:name',(req,res)=> {
+      console.log(req.body);
+      let obj = {
+        name : req.body.name,
+        feedback: req.body.feedback,
+        date: new Date().getTime()
+      }
+
+      clientHelpers.updateFeedback(obj,client_db,req.params.name).then((response)=> {
+        let redirect_url = req.params.name.replace(/[ ]/g,'-')
+        res.redirect(`/${redirect_url}`)
+        window.location.reload()
+        res.end()
+      }).catch((err)=> {
+        console.log(err);
+        res.end()
+      })
+
+    })
+
+    app.post('/update/view/:comp_name',(req,res)=> {
+      clientHelpers.updateViews(req.params.comp_name,client_db).then((response)=> {
+        res.end()
+      }).catch((err)=> {
+        console.log(err);
+      })
+    })
+
+    app.post('/complete-purchase',(req,res)=> {
+      paymentHelpers.createSubscription().then((response)=> {
+        console.log(response);
+        res.json(response)
+      }).catch((err)=> {
+        res.json({message: 'Payment Failed',err: err.message})
+      })
+    })
+
+    app.post('/verify-payment',(req,res)=> {
+      paymentHelpers.verifyPayment(req.body).then(()=> {
+        res.json({status: true})
+      }).catch(()=> {
+        res.json({status: false})
+      })
+    })
+
+    app.post('/payment-successfull/:comp_name',(req,res)=> {
+      clientHelpers.afterPaymentCompleteProcessess(req.body,client_db).then(()=> {
+        adminHelpers.updateCreatedCard(admin_db,req.params.comp_name).then(()=> {
+          res.json({status: true,req_datas: req.body})
+        }).catch((err)=> {
+          res.json({status: false,err: err.message})
+        })
+        
+      }).catch((err)=> {
+        res.json({status: false,err: err.message})
+      })
+    })
+
+    app.get('/bg-images',(req,res)=> {
+      adminHelpers.getBgImages(admin_db).then((response)=> {
+        console.log(admin_db);
+        res.json(response)
+      })
+    })
+
+    app.post('/create/cancel-purchase/:comp_name',(req,res)=> {
+      clientHelpers.cancelPurchase(client_db,req.params.comp_name).then(()=> {
+          res.json({status: true})
+      }).catch((err)=> {
+        res.json({status: false})
+      })
+    })
+
+    app.post('/updatecard/:comp_name',(req,res)=> {
+      clientHelpers.updateCleanCardDatas(req.body).then((response)=> {
+        clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
+          res.json({status: true})
+        }).catch((err)=> {
+          res.json({status: false,err: err.message})
+        })
+      })
+    })
 
     // Database Codes End
   } finally {

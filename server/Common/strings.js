@@ -3,4 +3,9 @@ module.exports = {
   mongo_url: "mongodb+srv://glowitlabs:7UIsVXgOXAEeax5m@cluster0.86nvnue.mongodb.net/?retryWrites=true&w=majority",
   client_database_name: "Visita_Database_Client",
   admin_database_name: "Visita_Database_Admin",
+  razorpay: {
+    key_id: 'rzp_test_dmlTkaZOt6xpLt',
+    key_secret: 'wfxCcYBTSewCkEjdYfYP5Vka',
+    plan_id: 'plan_KQKeIkK6WClO0S'
+  }
 };

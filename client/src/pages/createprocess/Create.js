@@ -135,83 +135,66 @@ function Create() {
 
 
 
-  // Handle Template Choose
-  function handleTemplateChoose(e, templateId) {
-    document.forms["cardForm"].elements["template_id"].value = templateId;
-
-    let template = e.target.parentElement;
-    let template_wrappers = document.querySelectorAll(".template-wrapper");
-    let template_index_wrapper = template.childNodes[0];
-    let template_index_elem = template_index_wrapper.children[0];
-    let template_index_wrapper_all = document.querySelectorAll(
-      ".template-redirect-button-wrapper"
-    );
-
-    template_wrappers.forEach((elem) => {
-      elem.classList.remove("border-blue-600", "hover:border-blue-600");
-    });
-
-    template.classList.add("border-blue-600", "hover:border-blue-600");
-
-    template_index_wrapper_all.forEach((elem) => {
-      elem.classList.add("invisible");
-    });
-
-    template_index_wrapper.classList.replace("invisible", "visible");
-    template_index_wrapper.style.transform = "translateY(0)";
-  }
 
   // Handle Form Next Process Click
   function handleNextClick() {
-    // Check If All Required Feilds Filled
 
-    let currentForm;
-    if (processIndex == 1) {
-      currentForm = document.getElementById("process1");
-    } else if (processIndex == 2) {
-      currentForm = document.getElementById("process2");
-    } else if (processIndex == 3) {
-      currentForm = document.getElementById("process3");
-    } else if (processIndex == 4) {
-      currentForm = document.getElementById("process4");
-    } else if (processIndex == 5) {
-      currentForm = document.getElementById("process5");
-    } else if (processIndex == 6) {
-      currentForm = document.getElementById("process6");
-    } else if (processIndex == 7) {
-      currentForm = document.getElementById("process7");
+    // Check Company Name Is Exists
+    if( document.querySelector('.error-message').classList[3] != "text-red-600"){
+ // Check If All Required Feilds Filled
+
+ let currentForm;
+ if (processIndex == 1) {
+   currentForm = document.getElementById("process1");
+ } else if (processIndex == 2) {
+   currentForm = document.getElementById("process2");
+ } else if (processIndex == 3) {
+   currentForm = document.getElementById("process3");
+ } else if (processIndex == 4) {
+   currentForm = document.getElementById("process4");
+ } else if (processIndex == 5) {
+   currentForm = document.getElementById("process5");
+ } else if (processIndex == 6) {
+   currentForm = document.getElementById("process6");
+ } else if (processIndex == 7) {
+   currentForm = document.getElementById("process7");
+ }
+ 
+ let allAreFilled = true;
+ currentForm.querySelectorAll("[required]").forEach(function (i) {
+   if (!allAreFilled) return;
+   if (i.type === "radio") {
+     let radioValueCheck = false;
+     currentForm.querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
+       if (r.checked) radioValueCheck = true;
+     });
+     allAreFilled = radioValueCheck;
+     return;
+   }
+   if (!i.value) {
+     allAreFilled = false;
+     return;
+   }
+ });
+ if (!allAreFilled) {
+   toast({
+     title: "Fill All Required Fields",
+     status: "error",
+     duration: 2000,
+     position: "top",
+   });
+ } else {
+   // Submit Datas
+   if(processIndex == maximumProcesses) {
+     onOpen()
+   }
+   setProcessIndex(processIndex == maximumProcesses ? maximumProcesses : processIndex + 1);
+ }
     }
 
-    let allAreFilled = true;
-    currentForm.querySelectorAll("[required]").forEach(function (i) {
-      if (!allAreFilled) return;
-      if (i.type === "radio") {
-        let radioValueCheck = false;
-        currentForm.querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
-          if (r.checked) radioValueCheck = true;
-        });
-        allAreFilled = radioValueCheck;
-        return;
-      }
-      if (!i.value) {
-        allAreFilled = false;
-        return;
-      }
-    });
-    if (!allAreFilled) {
-      toast({
-        title: "Fill All Required Fields",
-        status: "error",
-        duration: 2000,
-        position: "top",
-      });
-    } else {
-      // Submit Datas
-      if(processIndex == maximumProcesses) {
-        onOpen()
-      }
-      setProcessIndex(processIndex == maximumProcesses ? maximumProcesses : processIndex + 1);
-    }
+   
+
+    
   }
 
    // Iterate When Choose Theme Use Effect
@@ -236,6 +219,40 @@ function Create() {
       toast.close(toastIdRef.current)
     }
 
+  }
+
+  function checkCompanyNameExists(value){
+    // Check The Company Name Already Exists
+      let company_name_input = document.querySelector('.company_name_input')
+      let company_name = value
+      axios.get('http://localhost:3005/card/all').then((response)=> {
+        response.data.map((data)=> {
+
+        if(data.company_name == company_name){
+
+            company_name_input.classList.replace('bg-green-50','bg-red-50')
+            company_name_input.classList.replace('border-green-500','border-red-500')
+            company_name_input.classList.replace('text-green-900','text-red-900')
+            company_name_input.classList.replace('placeholder-green-700','placeholder-red-700')
+
+            document.querySelector('.error-message').classList.replace('text-green-600','text-red-600')
+            document.querySelector('.error-message').innerText = 'Oh, snapp! Company name already exists'
+          }else{
+
+            company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
+
+            company_name_input.classList.replace('bg-red-50','bg-green-50')
+            company_name_input.classList.replace('border-red-500','border-green-500')
+            company_name_input.classList.replace('text-red-900','text-green-900')
+            company_name_input.classList.replace('placeholder-red-700','placeholder-green-700')
+
+            document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
+            document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
+
+
+          }
+        })
+      })
   }
 
 
@@ -1171,10 +1188,13 @@ function Create() {
                 placeholder="Enter company name"
                 autoComplete="off"
                 required
+                onChange={(e)=> checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class="company_name_input font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
+
+<p class="error-message mt-2 text-sm text-green-600 font-visita-medium"></p>
 
               <label
                 for="large-input"
@@ -1485,6 +1505,40 @@ function Create() {
                 name="about"
                 class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
+
+              <label
+                for="large-input"
+                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 :text-gray-300"
+              >
+                Specialities <span className="text-slate-400">(Optional)</span>
+              </label>
+              <input
+                placeholder="Specialities Of Your Company"
+                autoComplete="off"
+                id="large-input"
+                required
+                name="specials"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+              />
+
+              <label
+                for="large-input"
+                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 :text-gray-300"
+              >
+                Features <span className="text-slate-400">(Optional)</span>
+              </label>
+              <input
+                placeholder="Features Of Your Company"
+                autoComplete="off"
+                id="large-input"
+                required
+                name="features"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+              />
+
+
+
+
             </div>
           </div>
         </div>

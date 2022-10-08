@@ -12,7 +12,7 @@ function CreateHeader({
     <header
       id="create-header"
       className={` w-full lg:h-16  ${
-        hideIndicators == true ? "h-16 -ml-6" : "h-32"
+        hideIndicators == true ? "h-16 lg:-ml-6" : "h-32"
       } lg:flex-row flex-col flex py-8 items-center bg-white justify-center fixed z-50 transition-shadow border-b shadow-md shadow-black/5`}
     >
       <div
@@ -32,13 +32,6 @@ function CreateHeader({
         <h1
           onClick={() => {
             window.open(live_preview_url);
-            this.props.router.push({
-              pathname: live_preview_url,
-              state: {
-                id: 7,
-                color: "green",
-              },
-            });
           }}
           className="text-sm hover:underline flex cursor-pointer font-visita-bold text-blue-600  text-center px-6 py-1 bg-blue-50 rounded-full"
         >

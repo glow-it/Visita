@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
+import { QRCode } from "react-qrcode-logo";
 import {
   Modal,
   ModalOverlay,
@@ -23,46 +24,124 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import QRCode from "qrcode";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-function Template({ preview }) {
+function Template({preview}) {
   const toast = useToast();
   let params = useParams();
   let [cardDatas, setCardDatas] = useState([]);
+  let [products, setProducts] = useState([]);
+  let [galleryImages, setGalleryImages] = useState([]);
+  let [ytVideos, setYtVideos] = useState([]);
+  let [feedbacks, setFeedbacks] = useState([]);
+  let navigate = useNavigate()
+  let location = useLocation()
+  let [bgImage, setBgImage] = useState();  
+
+
+  axios.get('/bg-images').then((response)=>{
+    response.data.map((data)=> {
+      if(data.name == cardDatas.theme_color){
+        setBgImage(data.image_url)
+      }
+    })
+  })
 
   // Get Card Datas
   useEffect(() => {
     let card_url = "http://localhost:3005/card/" + params.comp_name;
 
-    console.log(card_url);
+     // Function To Capitalize Strings
+ function capitalize(string) {
+  return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+    letter.toUpperCase()
+  );
+
+
+
+}
 
     axios
       .get(card_url)
       .then((response) => {
         setCardDatas(response.data);
+        setProducts(response.data.products);
+        setGalleryImages(response.data.image_gallery);
+        setYtVideos(response.data.yt_videos);
+        setFeedbacks(response.data.feedbacks);
+
+        
+
+        if(response.data.isActivated) {
+          document.title = capitalize(response.data.company_name) + ' | Mini Website';
+
+        // Set Favicon
+        var link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+          link = document.createElement("link");
+          link.rel = "icon";
+          document.getElementsByTagName("head")[0].appendChild(link);
+        }
+        link.href = response.data.logo;
+        }
+
+
+        // Update View Count
+        axios.post(`/update/view/${response.data.company_name}`)
+
+        // Calculate How Much Days Ago Created This Card
+        var date1, date2;
+        //define two date object variables with dates inside it
+        date1 = response.data.created_at;
+        date2 = new Date();
+
+        //calculate time difference
+        var time_difference = date2.getTime() - parseInt(date1);
+
+        //calculate days difference by dividing total milliseconds in a day
+        var days_difference = time_difference / (1000 * 60 * 60 * 24);
+
+        let days = Math.trunc(days_difference)
+
+        if(days > 0) {
+          if(!response.data.isActivated){
+            navigate(`/activate-warning/${response.data.company_name}`)
+          }
+        }
+
+        if(days < 1) {
+          document.title = capitalize(response.data.company_name) + ' || Mini Website';
+
+          // Set Favicon
+          var link = document.querySelector("link[rel~='icon']");
+          if (!link) {
+            link = document.createElement("link");
+            link.rel = "icon";
+            document.getElementsByTagName("head")[0].appendChild(link);
+          }
+          link.href = response.data.logo;
+        }
+      
+
+
+
       })
       .catch((err) => {
         toast({
           title: "An Error Occured",
+          description: err.message,
           status: "error",
           duration: 3000,
           position: "top-right",
         });
       });
+
+
   }, []);
 
   useEffect(() => {
-    var canvas = document.getElementById("qrcodecanvas");
-    let qrCodeUrl = window.location.href;
-
-    QRCode.toCanvas(canvas, qrCodeUrl, function (error) {
-      if (error) console.error(error);
-      console.log("QR code successfully generated!");
-    });
-
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
@@ -95,18 +174,22 @@ function Template({ preview }) {
   let share_twitter_url = `https://twitter.com/intent/tweet?text=${window.location.href}}`;
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}}`;
 
+  console.log(bgImage && bgImage);
+
+
   return (
-    <div className=" flex justify-center items-center ">
+    <div className=" flex justify-center items-center ">  
+
+
       <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
         <div
           id="home"
           style={{
-            backgroundImage: `url("https://i.postimg.cc/t4MJdrZK/image.png")`,
+            backgroundImage: `url(${bgImage && bgImage})`,
           }}
           className=" template-1 flex justify-center bg-no-repeat bg-cover "
         >
           <div className="card">
-
             <span className="z-50 absolute top-4 right-4 text-white text-xs font-visita-medium border border-white py-1 px-2 rounded-full">
               Views: {cardDatas && cardDatas.views}
             </span>
@@ -190,51 +273,55 @@ function Template({ preview }) {
                 >
                   <span className=" ml-6 text-lg flex items-center font-visita-medium">
                     <ion-icon name="call"></ion-icon>{" "}
-                    <span className=" ml-3">+91 {cardDatas && cardDatas.phone_no}</span>{" "}
-                  </span>
-                </div>
-               {
-                cardDatas && cardDatas.alt_phone_no != "" ?
-                <div
-                className={`w-full h-12 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
-              >
-                <span className=" ml-6 text-lg flex items-center font-visita-medium">
-                  <ion-icon name="call"></ion-icon>{" "}
-                  <span className=" ml-3">+91 {cardDatas && cardDatas.alt_phone_no}</span>{" "}
-                </span>
-              </div>
-              : ''
-               }
-               
-                {cardDatas && cardDatas.email_id != "" ?
-                  <div
-                  className={`w-full h-12 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
-                >
-                  <span className=" ml-6 text-lg flex items-center font-visita-medium">
-                    <ion-icon name="mail"></ion-icon>{" "}
                     <span className=" ml-3">
-                      {cardDatas.email_id}
+                      +91 {cardDatas && cardDatas.phone_no}
                     </span>{" "}
                   </span>
                 </div>
-              
-              : ''
-              }
-                
-                {cardDatas && cardDatas.location != "" ?
+                {cardDatas && cardDatas.alt_phone_no != "" ? (
                   <div
-                  className={`w-full  py-3 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
-                >
-                  <span className=" ml-6 text-sm flex items-center font-visita-medium">
-                    <ion-icon name="location"></ion-icon>{" "}
-                    <span className=" ml-3">
-                      {`${cardDatas && cardDatas.location} - ${cardDatas && cardDatas.city}`}
-                    </span>{" "}
-                  </span>
-                </div>
-              :''  
-              }
+                    className={`w-full h-12 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
+                  >
+                    <span className=" ml-6 text-lg flex items-center font-visita-medium">
+                      <ion-icon name="call"></ion-icon>{" "}
+                      <span className=" ml-3">
+                        +91 {cardDatas && cardDatas.alt_phone_no}
+                      </span>{" "}
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
 
+                {cardDatas && cardDatas.email_id != "" ? (
+                  <div
+                    className={`w-full h-12 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
+                  >
+                    <span className=" ml-6 text-lg flex items-center font-visita-medium">
+                      <ion-icon name="mail"></ion-icon>{" "}
+                      <span className=" ml-3">{cardDatas.email_id}</span>{" "}
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                {cardDatas && cardDatas.location != "" ? (
+                  <div
+                    className={`w-full  py-3 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
+                  >
+                    <span className=" ml-6 text-sm flex items-center font-visita-medium">
+                      <ion-icon name="location"></ion-icon>{" "}
+                      <span className=" ml-3">
+                        {`${cardDatas && cardDatas.location} - ${
+                          cardDatas && cardDatas.city
+                        }`}
+                      </span>{" "}
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
 
                 <div className=" flex relative mt-12">
                   <input
@@ -264,8 +351,7 @@ function Template({ preview }) {
                   <button
                     className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mr-3`}
                   >
-                    Save{" "}
-                    <span className=" ml-1 text-white text-xl"></span>
+                    Save <span className=" ml-1 text-white text-xl"></span>
                     <ion-icon name="arrow-down-circle"></ion-icon>
                   </button>
 
@@ -279,37 +365,71 @@ function Template({ preview }) {
                   </button>
                 </div>
                 <div className=" flex justify-center bg-white px-4 h-12 my-16 items-center rounded-full">
+                  {cardDatas && cardDatas.facebook_link != "" ? (
+                    <i
+                      onClick={() =>
+                        window.open(cardDatas && cardDatas.facebook_link)
+                      }
+                      className="  cursor-pointer fa-brands fa-facebook text-4xl my-12 rounded-full mr-4 text-blue-500 "
+                    ></i>
+                  ) : (
+                    ""
+                  )}
 
-                  { cardDatas && cardDatas.facebook_link != "" ?
-                    <i onClick={()=> window.open(cardDatas && cardDatas.facebook_link)} className="  cursor-pointer fa-brands fa-facebook text-4xl my-12 rounded-full mr-4 text-blue-500 "></i>
-                  :''
-                  }
+                  {cardDatas && cardDatas.twitter_link != "" ? (
+                    <i
+                      onClick={() =>
+                        window.open(cardDatas && cardDatas.twitter_link)
+                      }
+                      className=" cursor-pointer fa-brands fa-twitter text-3xl my-12 rounded-full mr-4 text-cyan-500 "
+                    ></i>
+                  ) : (
+                    ""
+                  )}
 
-                  {cardDatas && cardDatas.twitter_link != "" ?
-                    <i onClick={()=> window.open(cardDatas && cardDatas.twitter_link)} className=" cursor-pointer fa-brands fa-twitter text-3xl my-12 rounded-full mr-4 text-cyan-500 "></i>
-                  :''
-                  }
+                  {cardDatas && cardDatas.instagram_link != "" ? (
+                    <i
+                      onClick={() =>
+                        window.open(cardDatas && cardDatas.instagram_link)
+                      }
+                      className=" cursor-pointer fa-brands fa-instagram text-3xl my-12 rounded-full mr-4 text-purple-500 "
+                    ></i>
+                  ) : (
+                    ""
+                  )}
 
-                  {cardDatas && cardDatas.instagram_link != "" ?
-                    <i onClick={()=> window.open(cardDatas && cardDatas.instagram_link)} className=" cursor-pointer fa-brands fa-instagram text-3xl my-12 rounded-full mr-4 text-purple-500 "></i>
-                  : ''
-                  }
+                  {cardDatas && cardDatas.linkedin_link != "" ? (
+                    <i
+                      onClick={() =>
+                        window.open(cardDatas && cardDatas.linkedin_link)
+                      }
+                      className=" cursor-pointer fa-brands fa-linkedin text-3xl my-12 rounded-full mr-4 text-blue-500 "
+                    ></i>
+                  ) : (
+                    ""
+                  )}
 
-                  {cardDatas && cardDatas.linkedin_link != "" ?
-                    <i onClick={()=> window.open(cardDatas && cardDatas.linkedin_link)} className=" cursor-pointer fa-brands fa-linkedin text-3xl my-12 rounded-full mr-4 text-blue-500 "></i>
-                  :''
-                  }
+                  {cardDatas && cardDatas.youtube_link != "" ? (
+                    <i
+                      onClick={() =>
+                        window.open(cardDatas && cardDatas.youtube_link)
+                      }
+                      className=" cursor-pointer fa-brands fa-youtube text-3xl my-12 rounded-full mr-4 text-red-500 "
+                    ></i>
+                  ) : (
+                    ""
+                  )}
 
-                  {cardDatas && cardDatas.youtube_link != "" ?
-                    <i onClick={()=> window.open(cardDatas && cardDatas.youtube_link)} className=" cursor-pointer fa-brands fa-youtube text-3xl my-12 rounded-full mr-4 text-red-500 "></i>
-                  :''
-                  }
-
-                  {cardDatas && cardDatas.pinterest_link != "" ?
-                    <i onClick={()=> window.open(cardDatas && cardDatas.pinterest_link)} className=" cursor-pointer fa-brands fa-pinterest text-3xl my-12 rounded-full mr-4 text-red-500 "></i>
-                  :''
-                  }
-
+                  {cardDatas && cardDatas.pinterest_link != "" ? (
+                    <i
+                      onClick={() =>
+                        window.open(cardDatas && cardDatas.pinterest_link)
+                      }
+                      className=" cursor-pointer fa-brands fa-pinterest text-3xl my-12 rounded-full mr-4 text-red-500 "
+                    ></i>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <Modal
@@ -397,11 +517,21 @@ function Template({ preview }) {
         {/* Scan qr Code */}
         <div className=" w-full h-72 flex flex-col items-center justify-center relative">
           <h1
-            className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
+            className={`text-lg  text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
           >
             Scan QR Code to go to Visiting Card
           </h1>
-          <canvas className=" h-96 mt-12" id="qrcodecanvas"></canvas>
+          <div className="mt-10">
+            <QRCode
+              value={window.location.href}
+              eyeRadius={10}
+              logoImage={cardDatas && cardDatas.logo}
+              logoWidth={30}
+              logoHeight={30}
+              qrStyle="dots"
+              fgColor={cardDatas && cardDatas.theme_color}
+            />
+          </div>
         </div>
 
         {/* About Us */}
@@ -415,39 +545,45 @@ function Template({ preview }) {
             About Us
           </h1>
           <h1 className=" text-xl font-visita-medium">
-
-            {cardDatas && cardDatas.since != "" ?
+            {cardDatas && cardDatas.since != "" ? (
               <span className="  text-lg font-visita-bold">
-              Est {cardDatas && cardDatas.since}
-            </span>
-            :''
-          }
+                Est {cardDatas && cardDatas.since}
+              </span>
+            ) : (
+              ""
+            )}
 
             <br />
-            Google LLC is an American multinational technology company that
-            focuses on search engine technology,
+            {cardDatas && cardDatas.about}
           </h1>
 
           {/* Specialities */}
-          <div className=" flex flex-col items-start">
-            <span className="  text-md font-visita-bold text-lg mt-8 mb-6 flex">
-              Our Specialities
-            </span>
-            <h1 className=" text-xl font-visita-medium list-item mb-4">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
-              nobis?
-            </h1>
-          </div>
 
-          <div className=" flex flex-col items-start">
-            <span className="  text-md font-visita-bold text-lg mt-8 mb-6 flex">
-              Our Features
-            </span>
-            <h1 className=" text-xl font-visita-medium list-item mb-4">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
-              nobis?
-            </h1>
-          </div>
+          {cardDatas && cardDatas.specials != "" ? (
+            <div className=" flex flex-col items-start">
+              <span className="  text-md font-visita-bold text-lg mt-8 mb-6 flex">
+                Our Specialities
+              </span>
+              <h1 className=" text-xl font-visita-medium list-item mb-4">
+                {cardDatas && cardDatas.specials}
+              </h1>
+            </div>
+          ) : (
+            ""
+          )}
+
+          {cardDatas && cardDatas.features != "" ? (
+            <div className=" flex flex-col items-start">
+              <span className="  text-md font-visita-bold text-lg mt-8 mb-6 flex">
+                Our Features
+              </span>
+              <h1 className=" text-xl font-visita-medium list-item mb-4">
+                {cardDatas && cardDatas.features}
+              </h1>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         {/* Products And Services */}
@@ -462,40 +598,56 @@ function Template({ preview }) {
           </h1>
 
           {/* Products */}
-          <div
-            className={`w-full pb-12 mb-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative mt-20`}
-          >
-            <img
-              src="https://i.pinimg.com/736x/bb/c4/5f/bbc45ff75eff8ac2bc602936f4d9e76b--juice.jpg"
-              className=" h-full  w-full rounded-3xl offer-image"
-            />
-            <h1 className=" pt-6 text-xl font-visita-bold">
-              Tasty Juices
-            </h1>
-            <h1 className=" pt-3 font-visita-medium text-green-500 text-xl">
-              <span className=" mr-2 text-slate-600 line-through">
-                ₹99
-              </span>
-              ₹29
-            </h1>
-            <a
-              href="https://api.whatsapp.com/send/?phone=9946365417&text=👋Hey,Enquiry%20For%20-%20Smart%20Digital%20Visiting%20Card"
-              className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mt-6`}
-            >
-              Enquiry Now
-              <span className=" ml-1 text-white text-xl"></span>
-              <ion-icon name="open"></ion-icon>
-            </a>
 
-            <a
-              href=""
-              className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-visita-bold text-lg mt-2 `}
-            >
-              View Product
-              <span className=" ml-1 text-white text-xl"></span>
-              <ion-icon name="link"></ion-icon>
-            </a>
-          </div>
+          {products &&
+            products
+              .filter((data, index) => {
+                return data.product_name != "";
+              })
+              .map((data) => {
+                return (
+                  <div
+                    z
+                    div
+                    className={`w-full pb-12 mb-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative mt-20`}
+                  >
+                    <img
+                      src={data.product_image}
+                      className=" h-full  w-full py-6 rounded-3xl offer-image"
+                    />
+                    <h1 className=" pt-6 text-xl font-visita-bold">
+                      {data.product_name}
+                    </h1>
+                    <h1 className=" pt-3 font-visita-medium text-green-500 text-xl">
+                      <span className=" mr-2 text-slate-600 line-through">
+                        {`₹${data.product_orgprice}`}
+                      </span>
+                      {`₹${data.product_offerprice}`}
+                    </h1>
+                    <a
+                      href={`https://api.whatsapp.com/send/?phone=${data.phone_no}&text=👋Hey,Enquiry For ${data.product_name}`}
+                      className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mt-6`}
+                    >
+                      Enquiry Now
+                      <span className=" ml-1 text-white text-xl"></span>
+                      <ion-icon name="open"></ion-icon>
+                    </a>
+
+                    {data.product_link != "" ? (
+                      <a
+                        href={data.product_link}
+                        className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-visita-bold text-lg mt-2 `}
+                      >
+                        View Product
+                        <span className=" ml-1 text-white text-xl"></span>
+                        <ion-icon name="link"></ion-icon>
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                );
+              })}
         </div>
 
         {/* Image Gallery */}
@@ -521,91 +673,51 @@ function Template({ preview }) {
           modules={[Autoplay, Pagination, Navigation]}
           className=" mySwiper"
         >
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-06/pride-whopper-tease-lc-220603-bae464.jpg"
-              alt=""
-            />
-          </SwiperSlide>
+          {galleryImages &&
+            galleryImages
+              .filter((data) => {
+                return data != "";
+              })
+              .map((data) => {
+                return (
+                  <SwiperSlide>
+                    <img src={data} />
+                  </SwiperSlide>
+                );
+              })}
         </Swiper>
 
         {/* Youtube Videos */}
-        <div
-          id="ytvideos"
-          className=" flex flex-col items-center mt-6"
-        >
+        <div id="ytvideos" className=" flex flex-col items-center mt-6">
           <h1
             className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
           >
             Youtube Videos
           </h1>
 
-          <iframe
-            className=" rounded-xl my-4"
-            src="https://www.youtube.com/embed/yZIy61LjFFU"
-            title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-          <iframe
-            className=" rounded-xl my-4"
-            src="https://www.youtube.com/embed/cGHhqJhxrrk"
-            title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-          <iframe
-            className=" rounded-xl my-4"
-            src="https://www.youtube.com/embed/PTZ-kZ1Zo-A"
-            title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+          {ytVideos &&
+            ytVideos
+              .filter((data) => {
+                return data != "";
+              })
+              .map((data) => {
+                var video_id = data.split("v=")[1];
+                var ampersandPosition = video_id.indexOf("&");
+                if (ampersandPosition != -1) {
+                  video_id = video_id.substring(0, ampersandPosition);
+                }
+
+                return (
+                  <iframe
+                    className=" rounded-xl my-4"
+                    src={`https://www.youtube.com/embed/${video_id}`}
+                    title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                );
+              })}
         </div>
 
         {/* Payment Info */}
@@ -616,57 +728,83 @@ function Template({ preview }) {
             Payment Info
           </h1>
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Paytm Number
-            </span>{" "}
-            <br /> 9946365417
-          </span>
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              GooglePay Number
-            </span>{" "}
-            <br /> 9946365417
-          </span>
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Phonepe Number
-            </span>{" "}
-            <br /> 9946365417
-          </span>
+          {cardDatas && cardDatas.paytm_number != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Paytm Number
+              </span>{" "}
+              <br /> {cardDatas && cardDatas.paytm_number}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              GooglePay QrCode
-            </span>{" "}
-            <br />
-            <img
-              src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market_full/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
-              className=" h-44"
-            />
-          </span>
+          {cardDatas && cardDatas.googlepay_number != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Google Pay Number
+              </span>{" "}
+              <br /> {cardDatas && cardDatas.googlepay_number}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Paytm QrCode
-            </span>{" "}
-            <br />
-            <img
-              src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market_full/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
-              className=" h-44"
-            />
-          </span>
+          {cardDatas && cardDatas.phonepe_number != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                PhonePe Number
+              </span>{" "}
+              <br /> {cardDatas && cardDatas.phonepe}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              PhonePe QrCode
-            </span>{" "}
-            <br />
-            <img
-              src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market_full/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
-              className=" h-44"
-            />
-          </span>
+          {cardDatas && cardDatas.googlepay_qrcode != "" ? (
+            <span className=" font-visita-bold ml-6 mt-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                GooglePay QrCode
+              </span>{" "}
+              <br />
+              <img
+                src={cardDatas && cardDatas.googlepay_qrcode}
+                className=" h-44"
+              />
+            </span>
+          ) : (
+            ""
+          )}
+
+          {cardDatas && cardDatas.paytm_qrcode != "" ? (
+            <span className=" font-visita-bold ml-6 mt-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Paytm QrCode
+              </span>{" "}
+              <br />
+              <img
+                src={cardDatas && cardDatas.paytm_qrcode}
+                className=" h-44"
+              />
+            </span>
+          ) : (
+            ""
+          )}
+
+          {cardDatas && cardDatas.phonepe_qrcode != "" ? (
+            <span className=" font-visita-bold ml-6 mt-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                PhonePe QrCode
+              </span>{" "}
+              <br />
+              <img
+                src={cardDatas && cardDatas.phonepe_qrcode}
+                className=" h-44"
+              />
+            </span>
+          ) : (
+            ""
+          )}
 
           {/* Bank Details */}
         </div>
@@ -678,43 +816,63 @@ function Template({ preview }) {
             Bank Details
           </h1>
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Bank Name
-            </span>{" "}
-            <br /> Union Bank Of India
-          </span>
+          {cardDatas && cardDatas.bank_name != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Bank Name
+              </span>{" "}
+              <br /> {cardDatas && cardDatas.bank_name}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Accound Holder Name
-            </span>{" "}
-            <br /> Subair P
-          </span>
+          {cardDatas && cardDatas.account_holder_name != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Accound Holder Name
+              </span>{" "}
+              <br /> {cardDatas && cardDatas.account_holder_name}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Bank Accound Number
-            </span>{" "}
-            <br />
-            364410007400
-          </span>
+          {cardDatas && cardDatas.bank_account_number != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Bank Accound Number
+              </span>{" "}
+              <br />
+              {cardDatas && cardDatas.bank_account_number}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Bank IFSC Code
-            </span>{" "}
-            <br />
-            UNIBIC4433
-          </span>
+          {cardDatas && cardDatas.bank_ifsc_code != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                Bank IFSC Code
+              </span>{" "}
+              <br />
+              {cardDatas && cardDatas.bank_ifsc_code}
+            </span>
+          ) : (
+            ""
+          )}
 
-          <span className=" font-visita-bold ml-6 mb-5">
-            <span className=" text-slate-600 text-md font-visita-medium">
-              Bank GST
-            </span>{" "}
-            <br />
-            2332455
-          </span>
+          {cardDatas && cardDatas.gst != "" ? (
+            <span className=" font-visita-bold ml-6 mb-5">
+              <span className=" text-slate-600 text-md font-visita-medium">
+                GST
+              </span>{" "}
+              <br />
+              {cardDatas && cardDatas.gst}
+            </span>
+          ) : (
+            ""
+          )}
         </div>
 
         {/* Feedbacks */}
@@ -741,76 +899,99 @@ function Template({ preview }) {
           <div className=" relative z-10 container px-4 mx-auto">
             {/* Testimornial Wrapper */}
 
-            <div className=" flex flex-wrap -m-3">
-              <div className=" w-full  p-3">
-                <div className=" p-6 h-full bg-white bg-opacity-60 border rounded-3xl">
-                  <div className=" flex flex-col justify-between h-full">
-                    <div className=" mb-5 block">
-                      <div className=" flex flex-wrap mb-4 -m-2">
-                        <div className=" w-auto p-2">
-                          <h3 className=" font-semibold leading-normal mb-3">
-                            Jacob Jones
-                          </h3>
-                          <p className=" text-gray-500 uppercase">
-                            <span className={`text-${theme_color}-500`}>
-                              <ion-icon name="star"></ion-icon>
-                            </span>
-                            <span className={`text-${theme_color}-500`}>
-                              <ion-icon name="star"></ion-icon>
-                            </span>
-                            <span className={`text-${theme_color}-500`}>
-                              <ion-icon name="star"></ion-icon>
-                            </span>
-                            <span className={`text-${theme_color}-500`}>
-                              <ion-icon name="star-outline"></ion-icon>
-                            </span>
-                          </p>
+            {feedbacks &&
+              feedbacks.map((data) => {
+                var date1, date2;
+                //define two date object variables with dates inside it
+                date1 = data.date;
+                date2 = new Date();
+
+                //calculate time difference
+                var time_difference = date2.getTime() - parseInt(date1);
+
+                //calculate days difference by dividing total milliseconds in a day
+                var days_difference = time_difference / (1000 * 60 * 60 * 24);
+                let days;
+
+                if (Math.trunc(days_difference) == 0) {
+                  days = "today";
+                } else if(Math.trunc(days_difference) == 1) {
+                  days = '1 day ago'
+                }else {
+                  days = Math.trunc(days_difference) + " days ago";
+                }
+
+                return (
+                  <div className=" flex flex-wrap -m-3">
+                    <div className=" w-full  p-3">
+                      <div className=" p-6 h-full bg-white bg-opacity-60 border rounded-3xl">
+                        <div className=" flex flex-col justify-between h-full">
+                          <div className=" mb-5 block">
+                            <div className=" flex flex-wrap mb-4 -m-2">
+                              <div className=" w-auto p-2">
+                                <h3 className=" font-visita-bold leading-normal">
+                                  {data.name}
+                                </h3>
+                              </div>
+                            </div>
+                            <p className=" text-lg font-visita-medium">
+                              {data.feedback}
+                            </p>
+                          </div>
+                          <div className=" block">
+                            <p className=" text-sm text-gray-500 font-visita-medium">
+                              {`${days}`}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <p className=" text-lg font-medium">
-                        Your product is amazing and awesome. Should Buy 🤙🏻
-                      </p>
-                    </div>
-                    <div className=" block">
-                      <p className=" text-sm text-gray-500 font-medium">
-                        3 days ago
-                      </p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                );
+              })}
           </div>
         </section>
 
         <div class="w-full px-4 flex flex-col items-center mt-6">
-          <form class="bg-white shadow-sm rounded-3xl w-full px-6  pt-6 pb-8 mb-4">
+          <form
+            action={`/update/feedback/${cardDatas && cardDatas.company_name}`}
+            method="POST"
+            class="bg-white shadow-sm rounded-3xl w-full px-6  pt-6 pb-8 mb-4"
+            id="feedback-form"
+          >
             <div class="mb-4">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                class="block text-gray-700 text-sm font-visita-bold mb-2"
                 for="username"
               >
                 Name
               </label>
               <input
-                class="shadow-sm appearance-none border rounded-md w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow-sm appearance-none border rounded-md font-visita-medium w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Name"
+                name="name"
               />
             </div>
             <div class="mb-6">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                class="block text-gray-700 text-sm font-visita-bold mb-2"
                 for="password"
               >
                 Feedback
               </label>
               <input
-                class="shadow-sm appearance-none border rounded-md w-full pt-4 pb-16  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow-sm font-visita-medium appearance-none border rounded-md w-full pt-4 pb-16  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter your feedback"
+                name="feedback"
               />
             </div>
             <div class="flex items-center justify-start">
-              <button class=" font-visita-bold py-2 px-6 rounded-md text-white bg-blue-600">
+              <button
+                onClick={() =>
+                  document.getElementById("feedback-form").submit()
+                }
+                class=" font-visita-bold py-2 px-6 rounded-md text-white bg-blue-600"
+              >
                 Send Feedback
               </button>
             </div>
