@@ -111,10 +111,10 @@ function Features() {
 
           <div   >
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 :bg-primary-900">
-              <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="business"></ion-icon></span>
+              <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="image"></ion-icon></span>
               </div>
-              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Business Ads</h3>
-              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your Business ads. Very easily can check your offers</p>
+              <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Image Gallery</h3>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your Images or Posters.It can very easily check your offers and images</p>
           </div>
 
 
@@ -150,7 +150,7 @@ function Features() {
               <span className='w-5 h-5 text-primary text-2xl lg:w-6 lg:h-6 :text-primary-300' ><ion-icon name="chatbubble-ellipses"></ion-icon></span>
               </div>
               <h3 class="mb-2 lg:text-xl text-lg font-bold :text-white">Social Media Links</h3>
-              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your Business ads. Very easily can check your offers</p>
+              <p class="text-gray-500 :text-gray-400 lg:text-lg text-sm font-visita-medium">You can add your Social Media Links. It can very easily navigate to your social media accounts</p>
           </div>
 
 

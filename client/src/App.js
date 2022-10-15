@@ -15,6 +15,7 @@ import ActivateWarning from './pages/createprocess/ActivateWarning';
 import Successfull from './pages/createprocess/Successfull';
 import ManageCard from './pages/createprocess/ManageCard';
 import EditCard from './pages/createprocess/EditCard';
+import FranchiseeRegister from './pages/FranchiseeRegister';
 
 
 function App() {
@@ -51,6 +52,7 @@ link.href = 'https://i.postimg.cc/ZKnK7rC2/visitalogo.png';
         <Route path="/create/successfull/:comp_name" element={<Successfull />} />
         <Route path="/manage/card/:comp_name" element={<ManageCard />} />
         <Route path="/manage/card/:comp_name/edit" element={<EditCard />} />
+        <Route path="/franchisee/register" element={<FranchiseeRegister />} />
 
       </Routes>
     </div>

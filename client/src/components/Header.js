@@ -73,9 +73,9 @@ let navigate = useNavigate()
                   <MenuItem><a href="mailto:sprt.visita@gmail.com" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
                 </MenuList>
               </Menu>
-              <a href="#"  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
-              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
-              </a>
+              <Link to='/franchisee/register'  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Register
+              </Link>
 
             </ul>
           </nav>
@@ -86,7 +86,17 @@ let navigate = useNavigate()
         </div>
         <div className="h-full w-1/4 flex  items-center lg:visible invisible">
         <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
-                <span className="underline hover:decoration-blue-500 ">How to</span> ?
+                <span onClick={()=> {
+
+
+var doc = prompt("Enter Company Name");
+           
+if (doc != null) {
+    navigate('/manage/card/' + doc)
+}
+
+
+                }} className="underline hover:decoration-blue-500 ">Manage My Card</span>
               </h1>
         <Link to="/create" class="py-1.5 px-8 text-md font-medium text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 transition-shadow  hover:shadow-md hover:shadow-blue-300 focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium">Create now</Link>
         </div>
@@ -112,6 +122,12 @@ let navigate = useNavigate()
             <p onClick={()=> onClose()} href='#benefits' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="bulb"></ion-icon> <span className="ml-2 text-slate-600" >Benefits</span></span> </p>
 
             <p onClick={()=> {navigate('/template');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="logo-buffer"></ion-icon> <span className="ml-2 text-slate-600" >Template Model</span></span> </p>
+            
+            <p onClick={()=> {var doc = prompt("Enter Company Name");
+           
+           if (doc != null) {
+               navigate('/manage/card/' + doc)
+           };onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="create"></ion-icon> <span className="ml-2 text-slate-600" >Manage My Card</span></span> </p>
 
             <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >
@@ -130,7 +146,7 @@ let navigate = useNavigate()
           </DrawerHeader>
 
 
-          <p className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </p>
+          <Link to='/franchisee/register' className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Register</span></span> </Link>
 
           </DrawerBody>
         </DrawerContent>

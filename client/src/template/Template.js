@@ -66,6 +66,7 @@ function Template({preview}) {
     axios
       .get(card_url)
       .then((response) => {
+        console.log(response);
         setCardDatas(response.data);
         setProducts(response.data.products);
         setGalleryImages(response.data.image_gallery);
@@ -701,6 +702,7 @@ function Template({preview}) {
                 return data != "";
               })
               .map((data) => {
+                console.log(data);
                 var video_id = data.split("v=")[1];
                 var ampersandPosition = video_id.indexOf("&");
                 if (ampersandPosition != -1) {

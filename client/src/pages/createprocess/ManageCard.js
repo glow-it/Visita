@@ -37,6 +37,43 @@ function ManageCard() {
         }
     }
 
+
+    // Handle Close Card Click
+    function closeCardClick(){
+      axios({
+        method: 'post',
+        url: '/manage/card/close-card',
+        data: {
+          sub_id: cardDatas.activated.razorpay.subscription_id,
+          company_name
+        }
+      }).then((response)=> {
+        if(response.status){
+          toast({
+            title: 'Succesfully Card Was Closed',
+            status: 'success',
+            duration: 1000,
+            position: 'top-right'
+          })
+          setTimeout(()=> {
+            window.location.href = '/'
+          },1000)
+        }else{
+          toast({
+            title: 'Try again!!',
+            description: 'We are troubling to close your card',
+            status: 'error',
+            duration: 2000,
+            position: 'top-right'
+          })
+        }
+      })
+      navigate('/loading/closing-card')
+    }
+
+
+
+
   return (
    <div className='flex flex-col items-center' >
 
@@ -45,7 +82,7 @@ function ManageCard() {
   <div>
     
     <div class="form-group mb-6">
-      <label for="card_pass_input" class="form-label inline-block mb-2 text-gray-700">Password</label>
+      <label for="card_pass_input" class="form-label inline-block mb-2 text-gray-700">Card Password</label>
       <input  class="form-control block
         w-full
         px-3
@@ -60,10 +97,12 @@ function ManageCard() {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="card_pass_input"
-        placeholder="Password"   />
+        placeholder="Password"
+        autoComplete='off'
+        />
     </div>
     <div class="flex justify-between items-center mb-6">
-      <a href=""
+      <a href={`https://api.whatsapp.com/send/?phone=+919544562748&text=I Forgot My Password - Company Name : ${company_name}`}
         class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
         password?</a>
     </div>
@@ -944,11 +983,11 @@ function ManageCard() {
         </svg>
       </div>
 
-<h1 className='text-4xl font-visita-bold mb-10 mt-24' >Blue Berry Bakers</h1>
+<h1 className='text-4xl font-visita-bold mb-10 mt-24 capitalize' >{company_name.replace(/[-]/g," ")}</h1>
 
      <div className="h-16 w-full flex items-center justify-center mt-4 z-50">
 
-         <button className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Card</button>
+         <button onClick={()=> closeCardClick()} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Card</button>
 
         <button onClick={()=> navigate('/manage/card/' + company_name + '/edit')} className="px-6 py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit Card</button>
     </div>

@@ -19,7 +19,8 @@ function EditCard() {
   let navigate = useNavigate()
   let params = useParams()
   let company_name = params.comp_name
-  let clean_company_name = params.comp_name.replace(/[-]/g," ")
+
+  
 
 
   const toast = useToast();
@@ -28,18 +29,6 @@ function EditCard() {
   let [previuos, setPrevious] = useState(false);
   let [skip, setSkip] = useState(false);
   let [processIndex, setProcessIndex] = useState(1);
-  let [imageGalleryQuantity, setImageGalleryQuantity] = useState([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-  ]);
 
 
   let [cardDatas,setCardDatas] = useState([])
@@ -48,6 +37,18 @@ function EditCard() {
   let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","fuchsia","pink","rose"])
   let products = cardDatas && cardDatas.products
   let image_gallery = cardDatas && cardDatas.image_gallery
+
+  useEffect(()=> {
+    if(cardDatas.activated){
+      var doc = prompt("Enter Card Password");
+           
+            if (doc != null) {
+                if(doc != cardDatas.activated.access_password){
+                  navigate('/')
+                }
+            }
+    }
+  },[cardDatas])
 
 
     // Normal Use Effect
@@ -68,7 +69,7 @@ function EditCard() {
   useEffect(() => {
 
 
-    document.title = "Visita | Create";
+    document.title = "Visita | Update Card";
 
     axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
         setCardDatas(response.data);
@@ -249,6 +250,9 @@ function EditCard() {
       id="cardForm"
       className="h-screen w-full flex flex-col items-center"
     >
+
+
+      
 
 
 <CreateHeader processIndex={processIndex} loading={loading} hideIndicators={false} />
@@ -1199,7 +1203,7 @@ function EditCard() {
                   id="create-choose-logo"
                   accept="image/*"
                 />
-                <input type="text" name="logo" id="logo" className="hidden" />
+                <input type="text" defaultValue={cardDatas && cardDatas.logo} name="logo" id="logo" className="hidden" />
                 <label
                   for="create-choose-logo"
                   id="choose_logo_button"
@@ -1915,9 +1919,7 @@ function EditCard() {
             processIndex != 5 ? "hidden" : ""
           }  my-3 process5_wrapper pb-40 overflow-scroll w-full`}
         >
-          {products && products.filter((data)=> {
-            return data.product_image != ""
-          }).map((data,index) => {
+          {products && products.map((data,index) => {
             return (
               <div className="flex flex-col lg:items-start items-center">
                 <label
@@ -1996,9 +1998,7 @@ function EditCard() {
         >
         
         {
-          image_gallery && image_gallery.filter((data)=> {
-            return data != ""
-          }).map((data,index)=> {
+          image_gallery && image_gallery.map((data,index)=> {
             return(
              <div >
                <label
@@ -2069,7 +2069,7 @@ function EditCard() {
               className="w-[200px] font-visita-bold lg:mr-6 mr-2"
               size="md"
             >
-             {processIndex == maximumProcesses ? 'Create Card' : 'Next'}
+             {processIndex == maximumProcesses ? 'Update Card' : 'Next'}
             </Button>
 
             <Button

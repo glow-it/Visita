@@ -33,6 +33,17 @@ module.exports = {
                reject()
             }
         })
+    },
+
+    cancelSubscription: (data)=> {
+        return new Promise(async(resolve,reject)=> {
+            let response = await  instance.subscriptions.cancel(data.sub_id)
+        if(response){
+            resolve()
+        }else{
+            reject()
+        }
+        })
     }
 
 

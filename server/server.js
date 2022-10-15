@@ -145,11 +145,28 @@ async function run() {
 
     app.post('/updatecard/:comp_name',(req,res)=> {
       clientHelpers.updateCleanCardDatas(req.body).then((response)=> {
+        console.log(
+          'Cleaned Datas : ',
+         response
+        );
         clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
+          let new_comp_name = req.body.company_name.replace(/[ ]/g,'-')
+          res.redirect('/create/successfull/' + new_comp_name)
+        }).catch((err)=> { 
+          console.log(err.message);
+        })
+      })
+    })
+
+    app.post('/manage/card/close-card',(req,res)=> {
+      paymentHelpers.cancelSubscription(req.body).then(()=> {
+        clientHelpers.deleteCard(req.body,client_db).then(()=> {
           res.json({status: true})
         }).catch((err)=> {
-          res.json({status: false,err: err.message})
+          res.json({status: false})
         })
+      }).catch((err)=> {
+        res.json({status: false})
       })
     })
 
