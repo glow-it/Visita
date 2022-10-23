@@ -4,14 +4,18 @@ const cors = require("cors");
 const {
   client_database_name,
   admin_database_name,
-  mongo_url,
+  mongo_uri,
+  franchisee_database_name,
 } = require("./Common/strings");
 const { client_collections } = require("./Common/Collections");
 const clientHelpers = require("./Helpers/clientHelpers");
 const adminHelpers = require("./Helpers//adminHelpers");
 const paymentHelpers = require("./Helpers/paymentHelpers");
 const MongoClient = require("mongodb").MongoClient;
-var nodemailer = require('nodemailer');
+const { createFranchisee } = require("./Helpers/FranchiseeHelpers");
+const session = require('express-session');
+const FranchiseeHelpers = require("./Helpers/FranchiseeHelpers");
+const cookieParser = require('cookie-parser');
 
 const corsOptions = {
   origin: "*",
@@ -19,17 +23,31 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
+
+
 app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(session({
+  secret:'qdwefwejfnHGCCfschGSVvTDSXSCStcvtctbctsctctthfTAgf7hthfg7FSTf6tF^SRHfh6f^SF6rf6CNSrc6rsbcb6rSc',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+ 
+    // Session expires after 1 day of inactivity.
+    expires: 86400000
+}
+}))
+// cookieParser middleware
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.send("Connected To React");
+  res.send("Server Is Running");
 });
 
 // Replace the uri string with your connection string.
-const uri = mongo_url;
+const uri = mongo_uri;
 
 const client = new MongoClient(uri);
 
@@ -37,6 +55,7 @@ async function run() {
   try {
     const client_db = client.db(client_database_name);
     const admin_db = client.db(admin_database_name);
+    const franchisee_db = client.db(franchisee_database_name);
 
     // Database Codes
 
@@ -100,7 +119,7 @@ async function run() {
 
     app.post('/complete-purchase',(req,res)=> {
       paymentHelpers.createSubscription().then((response)=> {
-        console.log(response);
+        
         res.json(response)
       }).catch((err)=> {
         res.json({message: 'Payment Failed',err: err.message})
@@ -117,13 +136,27 @@ async function run() {
 
     app.post('/payment-successfull/:comp_name',(req,res)=> {
       clientHelpers.afterPaymentCompleteProcessess(req.body,client_db).then(()=> {
-        adminHelpers.updateCreatedCard(admin_db,req.params.comp_name).then(()=> {
-          res.json({status: true,req_datas: req.body})
+        adminHelpers.updateCreatedCard(admin_db,req.params.comp_name,req.body.phone_no,req.body.franchisee_email).then(()=> {
+
+          if(req.body.franchisee_email != "no franchisee"){
+            FranchiseeHelpers.updateCreatedCards(req.body.franchisee_email,franchisee_db).then(()=> {
+              res.json({status: true,req_datas: req.body})
+            }).catch((err)=> {
+              res.json({status: false,err: err.message})
+            })
+          }else{
+            res.json({status: true,req_datas: req.body})
+          }
+
+          
         }).catch((err)=> {
           res.json({status: false,err: err.message})
         })
+
+
         
       }).catch((err)=> {
+        console.log(err.message);
         res.json({status: false,err: err.message})
       })
     })
@@ -169,6 +202,64 @@ async function run() {
         res.json({status: false})
       })
     })
+
+
+    app.post('/create-franchisee-payment',(req,res)=> {
+      paymentHelpers.franchiseeCreatePayment().then((response)=> {
+        let payment_data = response
+        res.json({status: true,payment_data: payment_data})
+      }).catch((err)=> {
+        res.json({status: false})
+      })
+    })
+
+
+    app.post('/franchisee/register',(req,res)=> {
+     createFranchisee(franchisee_db,req.body).then(()=> {
+        res.cookie('isFranchiseeLogined',true)
+        res.cookie('frachiseeEmail',req.body.email)
+        res.redirect('/manage/franchisee')
+     }).catch((err)=> {
+      res.cookie('isFranchiseeLogined',false)
+      res.end()
+     })
+    })
+
+    app.post('/franchisee/login',(req,res)=> {
+      FranchiseeHelpers.loginFranchisee(req.body,franchisee_db).then(()=> {
+        res.cookie('franchiseeEmail',req.body.email)
+        res.cookie('isFranchiseeLogined',true)
+        res.send({status: true})
+        
+      }).catch((err)=> {
+        res.cookie('isFranchiseeLogined',false)
+        console.log('Login Failed',err);
+        res.send({status: false,err})
+        res.end()
+      })
+    })
+
+    app.get('/get-franchisee-datas',(req,res)=> {
+
+      console.log(req.cookies.franchiseeEmail);
+        FranchiseeHelpers.getFranchisee(req.cookies.franchiseeEmail,franchisee_db).then((response)=> {
+          res.json({franchisee_data:response,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+        }).catch((err)=> {
+          console.log(err);
+          res.json({status: false,err:err.message,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+        })
+      
+      
+    
+
+    })
+
+    app.get('/get-all-created-cards',(req,res)=> {
+      adminHelpers.getAllCreatedDatas(admin_db).then((response)=> {
+        res.json(response)
+      })
+    })
+
 
     // Database Codes End
   } finally {

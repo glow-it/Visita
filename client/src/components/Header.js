@@ -7,6 +7,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import Cookies from 'js-cookie';
 
 import {
   Drawer,
@@ -16,6 +17,7 @@ import {
   DrawerContent,
 } from '@chakra-ui/react'
 import { Link, useNavigate } from "react-router-dom";
+
 
 
 function Header() {
@@ -33,6 +35,11 @@ window.onscroll = ()=> {
 }
 
 let navigate = useNavigate()
+
+
+
+
+
 
 
 
@@ -73,9 +80,20 @@ let navigate = useNavigate()
                   <MenuItem><a href="mailto:sprt.visita@gmail.com" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
                 </MenuList>
               </Menu>
-              <Link to='/franchisee/register'  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
-              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Register
+
+             { 
+             
+             Cookies.get("isFranchiseeLogined") != "true" ?
+             <Link to='/franchisee/login'  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
               </Link>
+              :
+              <Link to='/manage/franchisee'  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
+                Go To Franchisee
+              <span className="flex items-center justify-center ml-2" ><ion-icon name="arrow-forward-circle"></ion-icon></span> 
+              </Link>
+              
+              }
 
             </ul>
           </nav>
@@ -146,7 +164,7 @@ if (doc != null) {
           </DrawerHeader>
 
 
-          <Link to='/franchisee/register' className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Register</span></span> </Link>
+          <Link to='/franchisee/login' className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link>
 
           </DrawerBody>
         </DrawerContent>

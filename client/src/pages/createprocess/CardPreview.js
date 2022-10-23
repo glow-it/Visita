@@ -14,6 +14,8 @@ function CardPreview() {
   let navigate = useNavigate()
   let send_pass_form = document.getElementById('send_pass_form');
 
+  console.log(cardDatas && cardDatas);
+
   useEffect(() => {
     document.title = "Complete Purchase";
 
@@ -67,14 +69,15 @@ function CardPreview() {
               data: {
                 company_name: name,
                 razorpay: res_obj,
-                franchisee: false,
-                franchisee_id: null,
+                franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
                 access_password: name + new Date().getTime(),
-                activated_at: new Date().getTime()
+                activated_at: new Date().getTime(),
+                phone_no: cardDatas.phone_no,
+                franchisee_email: cardDatas.franchisee
               }
 
             }).then((response)=> {
-              if(response.status){
+              if(response.data.status){
                 let card_pass = send_pass_form.childNodes[2]
                 card_pass.value = response.data.req_datas.access_password
 
@@ -135,7 +138,7 @@ function CardPreview() {
   function cancelPurchase(){
     axios.post('/create/cancel-purchase/' + name).then((res)=> {
       console.log(res.status);
-      if(res.status){
+      if(res.data.status){
         toast({
           title: "Cancel Successfull",
           status: "success",
@@ -1058,6 +1061,7 @@ function CardPreview() {
           </div>
 
           }
+
 
          {
           cardDatas && cardDatas.activated ?

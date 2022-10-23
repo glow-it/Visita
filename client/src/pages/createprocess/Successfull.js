@@ -52,6 +52,14 @@ function Successfull() {
   return (
     <div  >
 
+      {
+        cardDatas && cardDatas.franchisee != "no franchisee" ?
+        <h1 onClick={()=> navigate('/manage/franchisee')} className="cursor-pointer hover:scale-105 transition-transform py-3 px-6 bg-blue-600 font-visita-bold rounded-full text-white absolute right-12 top-6">
+        Go To Franchisee
+      </h1>
+    :''  
+    }
+
       <div className="h-screen w-full -ml-6 z-[100] bg-white  absolute card-preview-successfull-animation flex items-center justify-center">
         <div className="w-[200px] -mt-16">
         <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_pqnfmone.json"  background="transparent"  speed="1" autoplay></lottie-player>

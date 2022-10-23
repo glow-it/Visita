@@ -6,5 +6,8 @@ module.exports = {
     },
     client_collections:{
         visiting_card_datas: 'Visiting Card Datas'
+    },
+    franchisee_collections: {
+        franchisees: 'franchisees'
     }
 }

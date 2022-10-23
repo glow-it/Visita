@@ -1,6 +1,6 @@
 const { razorpay } = require("../Common/strings")
 let Razorpay = require('razorpay');
-const crypto = require('crypto')
+const crypto = require('crypto');
 
 var instance = new Razorpay({ key_id: razorpay.key_id, key_secret: razorpay.key_secret })
 
@@ -44,6 +44,17 @@ module.exports = {
             reject()
         }
         })
+    },
+
+    franchiseeCreatePayment:()=> {
+       return new Promise(async(resolve,reject)=> {
+        let response = await  instance.orders.create({
+            amount: 99900,
+            currency: "INR",
+            receipt: new Date().getTime(),
+          })
+          resolve(response)
+       })
     }
 
 

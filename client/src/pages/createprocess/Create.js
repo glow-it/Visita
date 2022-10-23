@@ -11,12 +11,15 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Create() {
+function Create(props) {
 
   let navigate = useNavigate()
+  let location = useLocation()
+
+
 
 
   const toast = useToast();
@@ -264,6 +267,10 @@ function Create() {
       id="cardForm"
       className="h-screen w-full flex flex-col items-center"
     >
+
+
+        
+        <input type="text" name="franchisee" value={location.state ? location.state.franchisee_email : 'no franchisee'} />
 
 
 <CreateHeader processIndex={processIndex} loading={loading} hideIndicators={false} />
@@ -1191,7 +1198,7 @@ function Create() {
                 onChange={(e)=> checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
-                class="company_name_input font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class="company_name_input focus:ring-blue-500 focus:border-blue-500 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
 <p class="error-message mt-2 text-sm text-green-600 font-visita-medium"></p>

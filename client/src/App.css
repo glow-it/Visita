@@ -470,7 +470,7 @@ footer {
 }
 .create-next-buttons-wrapper{
   margin-bottom: -200vh;
-  animation: animate_create_next_buttons_wrapper 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1s;
+  animation: animate_create_next_buttons_wrapper 1.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1.2s;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -647,3 +647,9 @@ footer {
     visibility: hidden;
   }
 }
+
+.franch-register-inputs{
+  border-radius: 50px;
+  padding: 12px 30px;
+}
+

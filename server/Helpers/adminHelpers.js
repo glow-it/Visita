@@ -8,13 +8,14 @@ module.exports = {
         })
     },
 
-    updateCreatedCard: (admin_db,comp_name)=> {
+    updateCreatedCard: (admin_db,comp_name,phone_no,franchisee_email)=> {
         return new Promise((resolve,reject)=> {
             let obj = {
                 comp_name: comp_name,
                 created_at: Date.now(),
-                active: true,
-                created_date: new Date()
+                created_date: new Date(),
+                phone_no,
+                franchisee_email
             }
             admin_db.collection(admin_collections.created_cards).insertOne(obj).then(()=> {
                 resolve()
@@ -23,5 +24,16 @@ module.exports = {
             })
         })
     },
+
+    getAllCreatedDatas:(admin_db)=> {
+        return new Promise(async(resolve,reject)=> {
+            let response = await admin_db.collection(admin_collections.created_cards).find()
+            if(response){
+                resolve(response.toArray())
+            }
+        })
+    },
+
+    
 
 }

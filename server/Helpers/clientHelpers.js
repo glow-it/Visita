@@ -329,6 +329,7 @@ module.exports = {
         specials: data.specials,
         features: data.features,
         created_at: new Date().getTime(),
+        franchisee: data.franchisee
       };
 
       resolve(obj);
