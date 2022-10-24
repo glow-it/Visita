@@ -752,7 +752,7 @@ function Template({preview}) {
             ""
           )}
 
-          {cardDatas && cardDatas.phonepe_number != "" ? (
+          {cardDatas && cardDatas.phonepe != "" ? (
             <span className=" font-visita-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-visita-medium">
                 PhonePe Number

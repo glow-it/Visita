@@ -129,7 +129,7 @@ function Footer() {
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="mail"></ion-icon>
                   </span>
-                  <span>sprt.visita@gmail.com</span>
+                  <span>support@visitasmart.com</span>
                </p>
             </div>
          </div>
@@ -143,13 +143,15 @@ function Footer() {
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
                         mb-2
                         "
                         >
-                     Templates
+                     Template Model
                      </a>
                   </li>
                   <li>
@@ -158,6 +160,8 @@ function Footer() {
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -173,6 +177,8 @@ function Footer() {
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -195,6 +201,8 @@ function Footer() {
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -206,10 +214,12 @@ function Footer() {
                   </li>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="/support"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -225,6 +235,8 @@ function Footer() {
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -243,10 +255,12 @@ function Footer() {
                <ul>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="/pricing"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -262,6 +276,8 @@ function Footer() {
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -273,10 +289,12 @@ function Footer() {
                   </li>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="#features"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -288,10 +306,12 @@ function Footer() {
                   </li>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="#benefits"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -303,25 +323,29 @@ function Footer() {
                   </li>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="/template"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
                         mb-2
                         "
                         >
-                    Templates
+                    Template Model
                      </a>
                   </li>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="/support"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -333,10 +357,12 @@ function Footer() {
                   </li>
                   <li>
                      <a
-                        href="javascript:void(0)"
+                        href="/franchisee/login"
                         class="
                         inline-block
                         font-visita-medium
+                        hover:text-blue-600
+                        hover:underline
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -354,7 +380,7 @@ function Footer() {
                <h4 class="text-dark text-lg font-semibold mb-9">Follow Us On</h4>
                <div class="flex items-center mb-6">
                   <a
-                     href="javascript:void(0)"
+                     href="https://www.instagram.com/visita.smart/"
                      class="
                      w-8
                      h-8

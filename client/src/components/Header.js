@@ -52,11 +52,11 @@ let navigate = useNavigate()
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
             className="h-12 mr-4 cursor-pointer"
-            onClick={()=> navigate('/')}
+            onClick={()=> window.location.href = '/'}
           />
           <nav className="w-full h-full flex items-center lg:block hidden">
             <ul className="w-full h-full flex items-center">
-              <a href="#" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+              <a href="https://www.visitasmart.com/Visita-Digital-Visiting-Card" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
                 See Demos
               </a>
               <Link to='/pricing' className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
@@ -131,7 +131,7 @@ if (doc != null) {
           </div>
           </DrawerHeader>
           <DrawerBody>
-            <p className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demos</span></span> </p>
+            <a href="https://www.visitasmart.com/Visita-Digital-Visiting-Card" className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demos</span></span> </a>
 
             <p onClick={()=> {navigate('/pricing');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </p>
 
@@ -164,7 +164,21 @@ if (doc != null) {
           </DrawerHeader>
 
 
-          <Link to='/franchisee/login' className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link>
+          {/* <Link to='/franchisee/login' className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
+
+          { 
+             
+             Cookies.get("isFranchiseeLogined") != "true" ?
+             <Link to='/franchisee/login'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
+              </Link>
+              :
+              <Link to='/manage/franchisee'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+                Go To Franchisee
+              <span className="flex items-center justify-center ml-2" ><ion-icon name="arrow-forward-circle"></ion-icon></span> 
+              </Link>
+              
+              }
 
           </DrawerBody>
         </DrawerContent>

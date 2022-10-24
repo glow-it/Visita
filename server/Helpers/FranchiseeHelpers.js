@@ -7,6 +7,8 @@ module.exports = {
             let franchisee = franchisee_data
             franchisee.franchisee_id = new Date().getTime()
             franchisee.created_cards_thismonth = 0
+            franchisee.created_cards_total = 0
+            franchisee.payed_at = new Date().getTime()
 
             franchisee_db.collection(franchisee_collections.franchisees).insertOne(franchisee).then(()=> {
                 resolve()
@@ -33,6 +35,7 @@ module.exports = {
     },
 
     getFranchisee: (franchisee_email,franchisee_db)=> {
+        console.log("Sanam",franchisee_email);
         return new Promise((resolve,reject)=> {
             franchisee_db.collection(franchisee_collections.franchisees).findOne({email:franchisee_email}).then((response)=> {
                 resolve(response)
@@ -46,13 +49,22 @@ module.exports = {
         return new Promise((resolve, reject) => {
             franchisee_db
               .collection(franchisee_collections.franchisees)
-              .updateOne({ email: franchisee_email }, { $inc: { created_cards_thismonth : 1 } }).then(()=> {
+              .updateOne({ email: franchisee_email }, { $inc: { created_cards_thismonth : 1,created_cards_total: 1 } }).then(()=> {
                 resolve()
               }).catch((err)=> {
                 reject(err)
               })
           });
-    }
+    },
+
+    getAllFranchisees:(franchisee_db)=> {
+        return new Promise(async(resolve,reject)=> {
+            let response = await franchisee_db.collection(franchisee_collections.franchisees).find()
+            if(response){
+                resolve(response.toArray())
+            }
+        })
+    },
 
 
 

@@ -28,7 +28,7 @@ function franchiseeRegisterClick(button){
       setLoading(false)
 
       var options = {
-        key: 'rzp_test_dmlTkaZOt6xpLt', // Enter the Key ID generated from the Dashboard
+        key: 'rzp_live_kucmC1FpLUFMBr', // Enter the Key ID generated from the Dashboard
         amount: 99900, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Visita | Digital Visiting Card",
@@ -148,6 +148,23 @@ function franchiseeRegisterClick(button){
               
               className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter phone no"
+            />
+          </div>
+
+          <div>
+            <label className="sr-only">
+              UPI ID
+            </label>
+            <input
+              
+              name="upi_id"
+              id='franchisee_upi_id'
+              autoComplete="off"
+              required
+              type={"tel"}
+              
+              className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+              placeholder="Enter Upi Id"
             />
           </div>
 

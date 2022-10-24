@@ -5,8 +5,8 @@ module.exports = {
   admin_database_name: "Visita_Database_Admin",
   franchisee_database_name: "Visita_Database_Franchisee",
   razorpay: {
-    key_id: 'rzp_test_dmlTkaZOt6xpLt',
-    key_secret: 'wfxCcYBTSewCkEjdYfYP5Vka',
-    plan_id: 'plan_KQKeIkK6WClO0S'
+    key_id: 'rzp_live_kucmC1FpLUFMBr',
+    key_secret: 'PiME6bSvBpjAZcrhfN941Lvz',
+    plan_id: 'plan_KXZEtsRl2OtaIo'
   }
 };

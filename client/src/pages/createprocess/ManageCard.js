@@ -1,22 +1,31 @@
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function ManageCard() {
 
     let params = useParams()
     let company_name = params.comp_name
-    let cardDatas;
     let navigate = useNavigate()
     let toast = useToast()
+    let [cardDatas,setCardDatas] = useState([])
+    let [franchiseeDatas,setFranchiseeDatas] = useState([])
+
 
     useEffect(()=> {
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
         axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
-        cardDatas = response.data
+          setCardDatas( response.data )
+          if(response.data.franchisee != "no franchisee"){
+            axios.get('/get-franchisee-datas/' + response.data.franchisee).then((res)=> {
+              if(res.status){
+                setFranchiseeDatas(res.data.franchisee_data);
+              }
+            })
+          }
         })
     },[])
 
@@ -70,6 +79,8 @@ function ManageCard() {
       })
       navigate('/loading/closing-card')
     }
+
+    
 
 
 
@@ -983,9 +994,9 @@ function ManageCard() {
         </svg>
       </div>
 
-<h1 className='text-4xl font-visita-bold mb-10 mt-24 capitalize' >{company_name.replace(/[-]/g," ")}</h1>
+<h1 className='text-4xl font-visita-bold mb-10 mt-16 capitalize' >{company_name.replace(/[-]/g," ")}</h1>
 
-     <div className="h-16 w-full flex items-center justify-center mt-4 z-50">
+     <div className="h-16 w-full flex items-center justify-center  z-50">
 
          <button onClick={()=> closeCardClick()} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Card</button>
 
@@ -996,24 +1007,39 @@ function ManageCard() {
 
         <div className="h-44 w-72 bg-white rounded-3xl mr-6 border flex flex-col items-center justify-center">
             <h6 className='text-xl font-visita-medium' >Total Views</h6>
-            <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >299</h1>
+            <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas && cardDatas.views}</h1>
         </div>
 
         <div className="h-44 w-72 bg-white rounded-3xl mr-6 border flex flex-col items-center justify-center">
             <h6 className='text-xl font-visita-medium' >Total Feedbaks</h6>
-            <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >12</h1>
+            <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas.feedbacks && cardDatas.feedbacks.length}</h1>
         </div>
 
     </div>
 
-    <div className=" w-[576px]  mt-5 flex flex-col items-center justify-center z-50">
+    {
+
+franchiseeDatas.length != 0 ?
+      
+      <div className=" w-[576px]  mt-5 flex flex-col items-center justify-center z-50">
 
     <div className="h-16 w-full bg-white rounded-3xl mt-4 border flex  items-center justify-center">
         <h6 className='text-xl font-visita-medium' >Created Via</h6>
-        <h1 className='text-xl font-visita-bold ml-2  text-blue-600' >ABC Card Printers - 3</h1>
+        <h1 className='text-xl font-visita-bold ml-2  text-blue-600' >{franchiseeDatas && franchiseeDatas.franchisee_name}</h1>
+    </div>
+
+    <div className="h-16 w-full bg-white rounded-3xl mt-4 border flex  items-center justify-center">
+        <h6 className='text-xl font-visita-medium' >Contact {franchiseeDatas && franchiseeDatas.franchisee_name}</h6>
+        <h1 className='text-xl font-visita-bold ml-2  text-blue-600' >+91 {franchiseeDatas && franchiseeDatas.phone_no}</h1>
     </div>
 
     </div>
+  :''  
+  }
+
+<div className="w-full h-10 bg-purple-50 fixed bottom-10  flex items-center justify-center">
+            <h1 className='font-visita-medium' >Company Name - <span className='text-[#6635E3]' >{cardDatas && cardDatas.company_name}</span> <span className="mx-4">|</span>  For any help <span onClick={()=> window.location.href = '/support'} className="cursor-pointer text-[#6635E3] hover:underline">contact visita</span> with this company name</h1>
+       </div>
     
    </div>
   )

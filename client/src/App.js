@@ -18,6 +18,7 @@ import EditCard from './pages/createprocess/EditCard';
 import FranchiseeRegister from './pages/FranchiseeRegister';
 import FranchiseeLogin from './pages/FranchiseeLogin';
 import ManageFranchisee from './pages/ManageFranchisee';
+import AdminPage from './pages/Admin/AdminPage';
 
 
 function App() {
@@ -57,6 +58,7 @@ link.href = 'https://i.postimg.cc/ZKnK7rC2/visitalogo.png';
         <Route path="/franchisee/register" element={<FranchiseeRegister />} />
         <Route path="/franchisee/login" element={<FranchiseeLogin />} />
         <Route path="/manage/franchisee" element={<ManageFranchisee />} />
+        <Route path="/admin/:type" element={<AdminPage />} />
 
       </Routes>
     </div>

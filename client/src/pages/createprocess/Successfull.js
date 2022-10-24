@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import html2canvas from 'html2canvas';
 
 function Successfull() {
   // Function To Capitalize Strings
@@ -17,7 +16,7 @@ function Successfull() {
   let comp_name_clean = comp_name.replace(/[-]/g, " ");
   let [cardDatas,setCardDatas] = useState([])
   let navigate = useNavigate()
-  let base_url = 'http://localhost:3000'
+  let base_url = 'https://visitasmart.com'
   let manage_card_url = base_url + '/manage/card/' + comp_name
   
 

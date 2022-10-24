@@ -45,7 +45,7 @@ function CardPreview() {
   // Open Payment Checkout When Create Subscription Is Successfull
   const openPayment = (res) => {
     var options = {
-      key: "rzp_test_dmlTkaZOt6xpLt",
+      key: "rzp_live_kucmC1FpLUFMBr",
       subscription_id: res.data.id,
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",

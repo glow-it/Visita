@@ -135,6 +135,8 @@ function ManageFranchisee() {
     },[createdCards])
 
 
+    console.log(franchiseeData && franchiseeData);
+
 
 
 
@@ -152,8 +154,10 @@ function ManageFranchisee() {
         <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-visita-bold absolute flex right-28 text-white bg-[#6635E3] px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create Card</h1>
 
        </div>
-       <div className="w-full h-10 bg-purple-50 fixed bottom-10 rounded-full flex items-center justify-center">
+       <div className="w-full flex justify-center items-center">
+       <div className=" h-10 bg-purple-50 fixed bottom-6  px-12 rounded-full  flex items-center justify-center">
             <h1 className='font-visita-medium' >Franchisee Id - <span className='text-[#6635E3]' >{franchiseeData && franchiseeData.franchisee_id}</span> <span className="mx-4">|</span>  For any help <span onClick={()=> window.location.href = '/support'} className="cursor-pointer text-[#6635E3] hover:underline">contact visita</span> with this franchisee id</h1>
+       </div>
        </div>
 
        <div className="w-full font-visita-bold mt-6">
@@ -177,17 +181,17 @@ function ManageFranchisee() {
                     <h1  className=' text-5xl mt-3 text-[#6635E3]' >{cards_created_this_month}</h1>
                 </div>
             </div>
-            <div className="w-full h-[300px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
+            <div className="w-full h-[290px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
 
                 {
                     createdCardsThisMonth && createdCardsThisMonth.map((data,index)=> {
                         return(
                             <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
 
-                    <h1 className='text-lg' >{index + 1} <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
+                    <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
                     <div className="flex-1  h-full  flex justify-end items-center pr-12">
 
-                    <h1 onClick={()=> navigate('/' + data.comp_name)} className='text-blue-600 flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
+                    <h1 onClick={()=> navigate('/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
 
                         <h1>+91{data.phone_no}</h1>
                        
@@ -217,17 +221,17 @@ function ManageFranchisee() {
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >{cards_created_today}</h1>
                 </div>
             </div>
-            <div className="w-full h-[300px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
+            <div className="w-full h-[290px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
 
                 {
                     createdCardsToday && createdCardsToday.map((data,index)=> {
                         return(
                             <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
 
-                    <h1 className='text-lg' >{index + 1} <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
+                    <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
                     <div className="flex-1  h-full  flex justify-end items-center pr-12">
 
-                    <h1 onClick={()=> navigate('/' + data.comp_name)} className='text-blue-600 flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
+                    <h1 onClick={()=> navigate('/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
 
                         <h1>+91{data.phone_no}</h1>
                        
@@ -257,17 +261,17 @@ function ManageFranchisee() {
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >{cards_created}</h1>
                 </div>
             </div>
-            <div className="w-full h-[300px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
+            <div className="w-full h-[290px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
 
                 {
                     createdCards && createdCards.map((data,index)=> {
                         return(
                             <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
 
-                    <h1 className='text-lg' >{index + 1} <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
+                    <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
                     <div className="flex-1  h-full  flex justify-end items-center pr-12">
 
-                    <h1 onClick={()=> navigate('/' + data.comp_name)} className='text-blue-600 flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
+                    <h1 onClick={()=> navigate('/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
 
                         <h1>+91{data.phone_no}</h1>
                        

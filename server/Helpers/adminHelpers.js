@@ -1,4 +1,4 @@
-const { admin_collections } = require("../Common/Collections");
+const { admin_collections, franchisee_collections } = require("../Common/Collections");
 
 module.exports = {
     getBgImages: (admin_db)=> {
@@ -33,6 +33,16 @@ module.exports = {
             }
         })
     },
+
+    salaryPayed:(franchisee_db,franchisee_email)=> {
+        return new Promise((resolve,reject)=> {
+            franchisee_db.collection(franchisee_collections.franchisees).updateOne({email: franchisee_email},{$set:{created_cards_thismonth: 0}}).then(()=> {
+                resolve()
+            }).catch((err)=> {
+                reject(err)
+            })
+        })
+    }
 
     
 

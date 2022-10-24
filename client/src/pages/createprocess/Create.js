@@ -1152,7 +1152,7 @@ function Create(props) {
       </div>
 
 
-      <div className="visita-text-animation lg:block hidden w-full flex flex-col items-center justify-center lg:pt-28 pt-24 ">
+      <div className="visita-text-animation lg:block hidden w-full flex flex-col items-center justify-center lg:pt-16 pt-24 ">
         <h1 className="text-center lg:text-5xl text-xl text-black font-visita-black">
           <span>
             {processIndex == 1

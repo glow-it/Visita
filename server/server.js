@@ -217,7 +217,7 @@ async function run() {
     app.post('/franchisee/register',(req,res)=> {
      createFranchisee(franchisee_db,req.body).then(()=> {
         res.cookie('isFranchiseeLogined',true)
-        res.cookie('frachiseeEmail',req.body.email)
+        res.cookie('franchiseeEmail',req.body.email)
         res.redirect('/manage/franchisee')
      }).catch((err)=> {
       res.cookie('isFranchiseeLogined',false)
@@ -241,8 +241,22 @@ async function run() {
 
     app.get('/get-franchisee-datas',(req,res)=> {
 
-      console.log(req.cookies.franchiseeEmail);
         FranchiseeHelpers.getFranchisee(req.cookies.franchiseeEmail,franchisee_db).then((response)=> {
+          res.json({franchisee_data:response,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+        }).catch((err)=> {
+          console.log(err.message);
+          res.json({status: false,err:err.message,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+        })
+      
+      
+    
+
+    })
+
+    app.get('/get-franchisee-datas/:franchisee_email',(req,res)=> {
+
+
+        FranchiseeHelpers.getFranchisee(req.params.franchisee_email,franchisee_db).then((response)=> {
           res.json({franchisee_data:response,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
         }).catch((err)=> {
           console.log(err);
@@ -259,6 +273,26 @@ async function run() {
         res.json(response)
       })
     })
+
+    app.get('/get-all-franchisees',(req,res)=> {
+      FranchiseeHelpers.getAllFranchisees(franchisee_db).then((response)=> {
+        res.json(response)
+      })
+    })
+
+    app.post('/salary-payed/:franchisee_email',(req,res)=> {
+      adminHelpers.salaryPayed(franchisee_db,req.params.franchisee_email).then(()=> {
+        console.log('Successfull');
+        res.json({status:true})
+      }).catch((err)=> {
+        console.log("err",err);
+        res.json({status:false})
+        res.json({err: err.message})
+
+      })
+    })
+
+    
 
 
     // Database Codes End
