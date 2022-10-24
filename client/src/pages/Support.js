@@ -211,7 +211,7 @@ function Support() {
                      <h4 class="font-visita-bold text-dark text-xl mb-1">
                         Email Address
                      </h4>
-                     <p class="flex text-base text-body-color font-visita-medium">support@visitasmart.com <a href='mailto:support@visitasmart.com' className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
+                     <p class="flex text-base text-body-color font-visita-medium">sprt.visita@gmail.com <a href='mailto:sprt.visita@gmail.com' className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
                   </div>
                </div>
             </div>
