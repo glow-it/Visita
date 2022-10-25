@@ -129,7 +129,7 @@ function Footer() {
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="mail"></ion-icon>
                   </span>
-                  <span>sprt.visita@gmail.com</span>
+                  <span>support@visitasmart.com</span>
                </p>
             </div>
          </div>
