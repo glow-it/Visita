@@ -113,24 +113,24 @@ function Footer() {
                   class="comp-logo-footer rounded-full"
                   />
                </a>
-               <p class="flex items-center text-sm text-dark font-medium">
+               <p class="flex items-center text-sm text-dark font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="call"></ion-icon>
                   </span>
                   <span>+91 9946365417</span>
                </p>
-               <p class="flex mt-6 items-center text-sm text-dark font-medium">
+               <p class="flex mt-6 items-center text-sm text-dark font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="logo-whatsapp"></ion-icon>
                   </span>
                   <span>+91 9544562748</span>
                </p>
-               <p class="flex mt-6 items-center text-sm text-dark font-medium">
+               <a href='mailto:team@visitasmart.com' class="flex mt-6 items-center text-sm text-dark font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="mail"></ion-icon>
                   </span>
-                  <span>support@visitasmart.com</span>
-               </p>
+                  <span>team@visitasmart.com</span>
+               </a>
             </div>
          </div>
          <div class="w-full sm:w-1/2 lg:w-2/12 px-4">
