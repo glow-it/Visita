@@ -1494,7 +1494,6 @@ function EditCard() {
                 placeholder="Specialities Of Your Company"
                 autoComplete="off"
                 id="large-input"
-                required
                 name="specials"
                 defaultValue={cardDatas && cardDatas.specials}
                 class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
@@ -1510,7 +1509,6 @@ function EditCard() {
                 placeholder="Features Of Your Company"
                 autoComplete="off"
                 id="large-input"
-                required
                 name="features"
                 defaultValue={cardDatas && cardDatas.features}
                 class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"

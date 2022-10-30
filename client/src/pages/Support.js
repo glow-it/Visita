@@ -36,7 +36,6 @@ function Support() {
             setIsLoading(false)
             toast({
                 title: 'Message not send, Try Again!',
-                description: "We Will Read It And Response Shortly",
                 status: 'error',
                 duration: 6000,
               })
@@ -130,7 +129,7 @@ function Support() {
                   GET IN TOUCH WITH US
                </h2>
                <p  class="text-base font-visita-medium text-body-color leading-relaxed mb-9">
-                 This time to ask your needs or problems with us.You can ask bugs,issues,improvements,new features and more in just one click. we included our location,phone number,mail. you can mail or call with given details
+               At this time you can ask us your needs or problems. You can easily ask for bugs, issues, improvements, new features and more. We have included location, phone number and mail. So you can contact us with the given details.
                </p>
                <div class="flex mb-8 max-w-[370px] w-full">
                   <div
@@ -183,7 +182,7 @@ function Support() {
                   </div>
                   <div  class="w-full">
                      <h4 class="font-visita-bold text-dark text-xl mb-1">Phone Number</h4>
-                     <p class="flex text-base text-body-color font-visita-medium">(+91) 9946365417 <a href='tel:+919946365417' className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
+                     <p class="flex text-base text-body-color font-visita-medium">{apiKeys.call_phone_no} <a href={`tel:${apiKeys.call_phone_no}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
                   </div>
                </div>
                <div class="flex mb-8 max-w-[370px] w-full">
@@ -211,7 +210,7 @@ function Support() {
                      <h4 class="font-visita-bold text-dark text-xl mb-1">
                         Email Address
                      </h4>
-                     <p class="flex text-base text-body-color font-visita-medium">team@visitasmart.com <a href='mailto:team@visitasmart.com' className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
+                     <p class="flex text-base text-body-color font-visita-medium">{apiKeys.visita_email}<a href={`mailto:${apiKeys.visita_email}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
                   </div>
                </div>
             </div>

@@ -25,6 +25,7 @@ import "swiper/css/navigation";
 
 import QRCode from "qrcode";
 import { Autoplay, Navigation, Pagination } from "swiper";
+import apiKeys from "../Api/apiKeys";
 
 function TemplateModel() {
   const toast = useToast();
@@ -54,10 +55,9 @@ function TemplateModel() {
   let theme_color = "purple";
 
   // URLS
-  let message_whatsapp_url =
-    "https://api.whatsapp.com/send/?phone=+919946365417&text=%F0%9F%91%8BHey,Visita";
+  let message_whatsapp_url =  `https://api.whatsapp.com/send/?phone=${apiKeys.call_phone_no}&text=%F0%9F%91%8BHey,Visita`;
   let mail_url = "mailto:sprt.visita@gmail.com";
-  let call_url = "tel:+919946365417";
+  let call_url = `tel:${apiKeys.call_phone_no}`;
   let website_url = "https://visitatest.netlify.app";
   let share_whatsapp_url = `https://api.whatsapp.com/send?text=${window.location.href}`;
   let share_sms_url = `sms:?body=${window.location.href}}`;
@@ -148,7 +148,7 @@ function TemplateModel() {
                 >
                   <span className="ml-6 text-lg flex items-center font-visita-medium">
                     <ion-icon name="call"></ion-icon>{" "}
-                    <span className="ml-3">+91 9544562748</span>{" "}
+                    <span className="ml-3">+91 {apiKeys.visita_phone_no}</span>{" "}
                   </span>
                 </div>
                 <div

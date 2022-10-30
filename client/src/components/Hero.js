@@ -1,7 +1,9 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 
 function Hero() {
+
+  let navigate = useNavigate()
 
 
   return (
@@ -67,7 +69,7 @@ function Hero() {
 
             <Link to='/create' type="button" class="text-blue-500 hover:shadow-md hover:shadow-blue-300 transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">Create now</Link>
 
-            <a href='https://www.visitasmart.com/Visita-Digital-Visiting-Card' type="button" class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demos</a>
+            <a onClick={()=> navigate('/visita')} type="button" class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 cursor-pointer transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800">See Demo</a>
 
 
             </div>

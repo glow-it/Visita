@@ -3,4 +3,7 @@ export default {
     emailjs_serviceId: 'service_i2qpw9t',
     emailjs_templateId: 'template_g2w5ujc',
     emailjs_templateId2: 'template_2ydotyp',
+    visita_phone_no: '+919544562748',
+    call_phone_no: '+919946365417',
+    visita_email: 'team@visitasmart.com'
 }

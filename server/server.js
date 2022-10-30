@@ -118,10 +118,11 @@ async function run() {
     })
 
     app.post('/complete-purchase',(req,res)=> {
+      console.log('In Complete Purchase');
       paymentHelpers.createSubscription().then((response)=> {
-        
         res.json(response)
       }).catch((err)=> {
+        console.log(err);
         res.json({message: 'Payment Failed',err: err.message})
       })
     })

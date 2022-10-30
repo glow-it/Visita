@@ -15,7 +15,7 @@ function Cta() {
         Now Just Only <span className="text-primary lg:ml-3">₹599 / Year</span>
       </h1>
 
-      <div className="flex lg:flex-row flex-col mt-16">
+      <div className="flex lg:flex-row flex-col lg:mt-12 mt-16">
         <Link
           to="/create"
           class="text-white bg-blue-600 bg-primary lg:-mt-0 -mt-6 font-visita-bold lg:text-2xl text-xl  focus:ring-4 focus:ring-blue-300  rounded-full shadow-md shadow-blue-600 hover:shadow-blue-500 px-12 py-2.5 mr-2 lg:mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800 transition-shadow"

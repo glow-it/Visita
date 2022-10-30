@@ -1,4 +1,4 @@
-import { useToast } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -13,6 +13,7 @@ function CardPreview() {
   let [cardDatas, setCardDatas] = useState([]);
   let navigate = useNavigate()
   let send_pass_form = document.getElementById('send_pass_form');
+  let [isProcessingPayment,setIsProcessingPayment] = useState(false)
 
   console.log(cardDatas && cardDatas);
 
@@ -45,7 +46,7 @@ function CardPreview() {
   // Open Payment Checkout When Create Subscription Is Successfull
   const openPayment = (res) => {
     var options = {
-      key: "rzp_live_kucmC1FpLUFMBr",
+      key: "rzp_test_VxJtXE6pHNOoky",
       subscription_id: res.data.id,
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",
@@ -129,7 +130,7 @@ function CardPreview() {
         contact: "+91" + cardDatas.phone_no,
       },
     };
-    document.getElementById('complete-purchase-button').innerText = 'Compete Purchase'
+    setIsProcessingPayment(false)
     const rzp1 = new window.Razorpay(options); //instead of new Razorpay(options)
     rzp1.open();
   };
@@ -156,6 +157,7 @@ function CardPreview() {
         });
       }
     })
+    navigate('/loading/cancelling')
   }
 
   return (
@@ -166,6 +168,7 @@ function CardPreview() {
         <input type="text" name="to_mail" value={cardDatas && cardDatas.email_id} />
         <input type="text" name="company_name" value={cardDatas && cardDatas.company_name} />
         <input type="text" name="card_pass" value={name + new Date().getTime()} />
+        <input type="text" name="message" value="ThankYou For Creatind Card" />
       </form>
       
 
@@ -1072,17 +1075,15 @@ function CardPreview() {
           Open Preview
         </button>
         :
-        <button
-            onClick={(e) => {handleCompletePurchase();e.target.innerText = 'Processing Payment...'}} id='complete-purchase-button'
-            className="lg:text-2xl text-xl mt-12 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600"
-          >
-            Complete Purchase
-          </button>
+        <Button className="font-visita-bold" fontSize='2xl' loadingText="Processing Payment" isLoading={isProcessingPayment} rounded='full' py="7" px='7' mt='8' color='#fff' _hover bgColor='#0062FF' mr={3} onClick={()=> {
+          setIsProcessingPayment(true)
+          handleCompletePurchase()
+        }}> Complete Purchase</Button>
          }
           
 {
   cardDatas && cardDatas.activated ? '' : 
-  <button onClick={()=> cancelPurchase()} className="lg:text-2xl text-xl mt-6 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 text-black-600 rounded-full">
+  <button onClick={()=> cancelPurchase()} className="lg:text-2xl text-xl mt-4 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 text-black-600 rounded-full">
             Cancel Purchase
           </button>
 }

@@ -15,9 +15,8 @@ module.exports = {
                 total_count: 10,
             }
             
-            const response = await instance.subscriptions.create(params)
-
-            resolve(response)
+             let response = await  instance.subscriptions.create(params)
+                    resolve(response)
               
         })
     },

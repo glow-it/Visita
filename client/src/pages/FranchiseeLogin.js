@@ -4,6 +4,7 @@ import { useToast } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import $ from 'jquery'
 import { Button, ButtonGroup } from '@chakra-ui/react'
+import apiKeys from '../Api/apiKeys'
 
 function FranchiseeLogin() {
 
@@ -102,18 +103,24 @@ function FranchiseeLogin() {
               required
               type={"password"}
               id='franchisee_password'
-              className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 bg-indigo-800 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+              className="relative mb-4 block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 bg-indigo-800 focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter password"
             />
           </div>
 
+          <div class="flex justify-between items-center">
+      <a href={`https://api.whatsapp.com/send/?phone=${apiKeys.visita_phone_no}&text=Hey Visita,Iam Forgot My Franchisee Password! `}
+        class="cursor-pointer font-visita-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out">Forgot
+        password?</a>
+    </div>
+
         </div>
 
         <div >
-        <Button isLoading={loading} loadingText='Logging In' onClick={()=> onFranchiseeeLoginClick()} className='font-visita-bold' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='blue'>Login</Button>
+        <Button isLoading={loading} loadingText='Logging In' onClick={()=> onFranchiseeeLoginClick()} className='font-visita-bold' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='indigo'>Login</Button>
         </div>
         <div className="w-full flex justify-center items-center">
-        <p onClick={()=> navigate('/franchisee/register')} className='font-visita-medium' >not yet a franchisee? <span className='ml-1 text-blue-500 cursor-pointer hover:underline' >Register now</span></p>
+        <p onClick={()=> navigate('/franchisee/register')} className='font-visita-medium' >not yet a franchisee? <span className='ml-1 text-indigo-500 cursor-pointer hover:underline' >Register now</span></p>
         </div>
       </form>
     </div>

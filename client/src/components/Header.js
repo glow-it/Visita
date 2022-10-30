@@ -52,43 +52,43 @@ let navigate = useNavigate()
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
             className="h-12 mr-4 cursor-pointer"
-            onClick={()=> window.location.href = '/'}
+            onClick={()=> navigate('/')}
           />
           <nav className="w-full h-full flex items-center lg:block hidden">
             <ul className="w-full h-full flex items-center">
-              <a href="https://www.visitasmart.com/Visita-Digital-Visiting-Card" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
-                See Demos
-              </a>
-              <Link to='/pricing' className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+              <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+                See Demo
+              </p>
+              <Link to='/pricing' className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 Pricing
               </Link>
-              <a href="#features" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+              <a href="#features" className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 Features
               </a>
-              <a href="#benefits" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+              <a href="#benefits" className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 Benefits
               </a>
-              <a onClick={()=> navigate('/template')} className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center">
+              <a onClick={()=> navigate('/template')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 Template Model
               </a>
               <Menu>
                 <MenuButton rightIcon={<ChevronDownIcon />}>
-                  <span className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center" >Support <ion-icon name="chevron-down-outline"></ion-icon> </span>
+                  <span className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center" >Support <ion-icon name="chevron-down-outline"></ion-icon> </span>
                 </MenuButton>
                 <MenuList>
-                  <MenuItem><Link to='/support' className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</Link></MenuItem>
-                  <MenuItem><a href="mailto:sprt.visita@gmail.com" className="font-visita-medium mx-3  cursor-pointer text-third hover:text-blue-600 transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
+                  <MenuItem className="hover:text-blue-600 hover:bg-blue-50"  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</a></MenuItem>
+                  <MenuItem className="hover:text-blue-600 hover:bg-blue-50" ><a href="mailto:sprt.visita@gmail.com" className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
                 </MenuList>
               </Menu>
 
              { 
              
              Cookies.get("isFranchiseeLogined") != "true" ?
-             <Link to='/franchisee/login'  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
+             <Link to='/franchisee/login'  className="font-visita-medium  cursor-pointer text-blue-600 transition-colors flex items-center">
               <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
               </Link>
               :
-              <Link to='/manage/franchisee'  className="font-visita-medium mx-3  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <Link to='/manage/franchisee'  className="font-visita-medium  cursor-pointer text-blue-600 transition-colors flex items-center">
                 Go To Franchisee
               <span className="flex items-center justify-center ml-2" ><ion-icon name="arrow-forward-circle"></ion-icon></span> 
               </Link>
@@ -131,7 +131,7 @@ if (doc != null) {
           </div>
           </DrawerHeader>
           <DrawerBody>
-            <a href="https://www.visitasmart.com/Visita-Digital-Visiting-Card" className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demos</span></span> </a>
+            <p onClick={()=> navigate('/visita')} className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demo</span></span> </p>
 
             <p onClick={()=> {navigate('/pricing');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </p>
 
@@ -149,7 +149,7 @@ if (doc != null) {
 
             <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >
-           <span className="font-visita-bold cursor-pointer text-sm -ml-6" >Support</span>
+           <span className="font-visita-bold cursor-pointer  text-sm -ml-6" >Support</span>
           </div>
           </DrawerHeader>
 

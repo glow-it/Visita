@@ -9,6 +9,9 @@ function LandingPage() {
 
   useEffect(()=> {
     document.title = 'Visita | Create Digital Visiting Card - Mini Website'
+    document.querySelectorAll('header').forEach((elem)=> {
+      elem.style.display = 'flex'
+    })
   },[])
 
 

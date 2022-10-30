@@ -2,6 +2,8 @@ import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import emailjs from '@emailjs/browser';
+import apiKeys from '../../Api/apiKeys'
 
 function ManageCard() {
 
@@ -60,13 +62,12 @@ function ManageCard() {
         if(response.status){
           toast({
             title: 'Succesfully Card Was Closed',
+            description: 'For any help contact visita',
             status: 'success',
-            duration: 1000,
-            position: 'top-right'
+            duration: 4000,
+            position: 'top'
           })
-          setTimeout(()=> {
-            window.location.href = '/'
-          },1000)
+          navigate('/')
         }else{
           toast({
             title: 'Try again!!',
@@ -80,13 +81,40 @@ function ManageCard() {
       navigate('/loading/closing-card')
     }
 
+    let send_pass_form_2 = document.getElementById('send_pass_form_2');
     
+function HandleForgotPasswordClick(){
 
+  emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
+    toast({
+      title: 'Card Password Has Been Send To ' + cardDatas && cardDatas.email_id,
+      status: 'success',
+      duration: 6000,
+      position: 'top'
+    })
+}, (error) => {
+  console.log(error);
+   toast({
+      title: 'Card Password Send Failed',
+      status: 'error',
+      duration: 6000,
+      position: 'top'
+    })
+})
+}
 
 
 
   return (
    <div className='flex flex-col items-center' >
+
+    {/* Send Card Password Form */}
+    <form id="send_pass_form_2" className="hidden" >
+        <input type="text" name="to_mail" value={cardDatas && cardDatas.email_id} />
+        <input type="text" name="company_name" value={cardDatas && cardDatas.company_name} />
+        <input type="text" name="card_pass" value={cardDatas.activated && cardDatas.activated.access_password} />
+        <input type="text" name="message" value="Card Password Of" />
+      </form>
 
     <div id='manage_auth_wrapper' className="h-screen scale-125 w-full absolute font-visita-medium bg-white z-[100] flex items-center justify-center">
     <div class="block p-6 rounded-3xl ow-lg bg-white border max-w-sm">
@@ -113,9 +141,9 @@ function ManageCard() {
         />
     </div>
     <div class="flex justify-between items-center mb-6">
-      <a href={`https://api.whatsapp.com/send/?phone=+919544562748&text=I Forgot My Password - Company Name : ${company_name}`}
-        class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
-        password?</a>
+      <p onClick={()=> HandleForgotPasswordClick()}
+        class="text-blue-600 cursor-pointer hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
+        password?</p>
     </div>
     <button  class="
       w-full

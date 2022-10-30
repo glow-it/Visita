@@ -1,4 +1,5 @@
 import React from 'react'
+import apiKeys from '../Api/apiKeys'
 
 function Footer() {
   return (
@@ -117,19 +118,19 @@ function Footer() {
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="call"></ion-icon>
                   </span>
-                  <span>+91 9946365417</span>
+                  <span>{apiKeys.call_phone_no}</span>
                </p>
                <p class="flex mt-6 items-center text-sm text-dark font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="logo-whatsapp"></ion-icon>
                   </span>
-                  <span>+91 9544562748</span>
+                  <span>{apiKeys.visita_phone_no}</span>
                </p>
-               <a href='mailto:team@visitasmart.com' class="flex mt-6 items-center text-sm text-dark font-visita-medium">
+               <a href={`mailto:${apiKeys.visita_email}`} class="flex mt-6 items-center text-sm text-dark font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="mail"></ion-icon>
                   </span>
-                  <span>team@visitasmart.com</span>
+                  <span>{apiKeys.visita_email}</span>
                </a>
             </div>
          </div>
