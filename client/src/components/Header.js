@@ -18,6 +18,18 @@ import {
 } from '@chakra-ui/react'
 import { Link, useNavigate } from "react-router-dom";
 
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+} from '@chakra-ui/react'
+
 
 
 function Header() {
@@ -120,19 +132,34 @@ onClick={()=> navigate('/')}
         
         </div>
         <div className="h-full w-1/4 flex  items-center lg:visible invisible">
-        <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
-                <span onClick={()=> {
 
 
-var doc = prompt("Enter Company Name");
-           
-if (doc != null) {
-    navigate('/manage/card/' + doc)
-}
+        <Popover placement="bottom" >
+  <PopoverTrigger>
+  <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
+                <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage my card</span>
+           </h1>
+  </PopoverTrigger>
+  <PopoverContent>
+   
+    
+    <PopoverHeader><span className="font-visita-bold">Enter Company Name</span></PopoverHeader>
+    <PopoverBody>
+      
+      <div className="flex flex-col">
+      <input id="manage_card_comp_name" className="border py-2 w-full pl-4 rounded-full font-visita-medium"  />
+      <div className="w-full h-12 my-4 flex items-center">
+        <button onClick={()=> navigate('/manage/card/' + document.getElementById('manage_card_comp_name').value)} className="px-6 py-1 bg-blue-600 rounded-full text-xl font-visita-bold text-white" >Continue</button>
+      </div>
+      </div>
+      
+      </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+        
 
 
-                }} className="underline hover:decoration-blue-500 ">Manage My Card</span>
-              </h1>
         <Link to="/create" class="py-1.5 px-8 text-md font-medium text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 transition-shadow  hover:shadow-md hover:shadow-blue-300 focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium">Create now</Link>
         </div>
       </header>
