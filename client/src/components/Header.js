@@ -51,9 +51,26 @@ let navigate = useNavigate()
         <div className="w-3/4 h-full flex items-center">
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
-            className="h-12 mr-4 cursor-pointer"
+            className="h-12 hover:h-10 z-20 mr-4 cursor-pointer"
+            id="header_logo"
             onClick={()=> navigate('/')}
+            onMouseEnter={()=> document.getElementById('header_logo_bg').classList.add('header-logo-bg-active')}
+            onMouseLeave={()=> document.getElementById('header_logo_bg').classList.remove('header-logo-bg-active')}
           />
+
+
+          <div
+
+onClick={()=> navigate('/')}
+          
+          onMouseEnter={()=> document.getElementById('header_logo').classList.add('h-10')}
+          onMouseLeave={()=> document.getElementById('header_logo').classList.remove('h-10')}
+          
+          id="header_logo_bg" className=" invisible opacity-0 w-44  h-12 absolute -ml-4 -mt-44 z-10 bg-white border rounded-full flex items-center">
+            <h1 className="text-2xl text-purple-600 absolute right-10 font-visita-bold">Visita</h1>
+          </div>
+
+
           <nav className="w-full h-full flex items-center lg:block hidden">
             <ul className="w-full h-full flex items-center">
               <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">

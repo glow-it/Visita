@@ -653,3 +653,34 @@ footer {
   padding: 12px 30px;
 }
 
+#header_logo_bg{
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#header_logo{
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.header-logo-bg-active{
+  margin-top: 0;
+  visibility: visible;
+  opacity: 1;
+}
+
+#header_logo_bg:hover{
+  margin-top: 0;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) and (min-width: 300px)  {
+  #header_logo_bg{
+    margin-top: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+  #header_logo{
+    height: 2.5rem/* 40px */;
+  }
+}

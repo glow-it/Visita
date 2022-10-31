@@ -27,8 +27,8 @@ function Support() {
         .then((result) => {
             setIsLoading(false)
             toast({
-                title: 'Message Sended',
-                description: "We Will Read It And Response Shortly",
+                title: 'Message Send',
+                description: "We will read it and respond soon",
                 status: 'success',
                 duration: 6000,
               })
