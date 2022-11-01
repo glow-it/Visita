@@ -40,9 +40,11 @@ function Header() {
 window.onscroll = ()=> {
   let header = document.querySelector('header');
   if(window.scrollY >= 50){
+    header.classList.remove('header-inactive')
     header.classList.add('header-active')
   }else{
     header.classList.remove('header-active')
+    header.classList.add('header-inactive')
   }
 }
 
@@ -126,7 +128,7 @@ onClick={()=> navigate('/')}
 
             </ul>
           </nav>
-          <div className="lg:hidden block bg-red-500 w-full flex justify-end -mr-32 items-center h-full" >
+          <div className="lg:hidden block  w-full flex justify-end -mr-32 items-center h-full" >
           <span onClick={onOpen} className="text-3xl sm:-mr-24 cursor-pointer" ><ion-icon name="menu"></ion-icon></span>
           </div>
         

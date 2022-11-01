@@ -369,11 +369,19 @@ footer {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  --tw-shadow-color: rgb(15 23 42 / 0.03);
+  --tw-shadow-color: rgba(15, 23, 42, 0.063);
     --tw-shadow: var(--tw-shadow-colored);
     border-bottom-width: 1px;
-    
-    
+  transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    height: 5rem;
+}
+
+
+
+
+.header-inactive{
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  height: 4rem; 
 }
 .support input{
   border-radius: 0.75rem
