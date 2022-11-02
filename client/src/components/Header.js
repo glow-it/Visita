@@ -39,6 +39,7 @@ function Header() {
 
 window.onscroll = ()=> {
   let header = document.querySelector('header');
+  let header_create_button = document.getElementById('header_create_button');
   if(window.scrollY >= 50){
     header.classList.remove('header-inactive')
     header.classList.add('header-active')
@@ -46,6 +47,20 @@ window.onscroll = ()=> {
     header.classList.remove('header-active')
     header.classList.add('header-inactive')
   }
+
+  if(window.scrollY >= 400){
+    header_create_button.classList.replace('text-blue-600','text-white')
+    header_create_button.classList.remove('border-2')
+    header_create_button.classList.add('scale-110')
+    header_create_button.classList.add('bg-blue-600')
+  }else{
+    header_create_button.classList.replace('text-white','text-blue-600')
+    header_create_button.classList.add('border-2')
+    header_create_button.classList.remove('scale-110')
+    header_create_button.classList.remove('bg-blue-600')
+    
+  }
+
 }
 
 let navigate = useNavigate()
@@ -90,7 +105,7 @@ onClick={()=> navigate('/')}
               <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 See Demo
               </p>
-              <Link to='/pricing' className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+              <Link to='/pricing' className=" font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 Pricing
               </Link>
               <a href="#features" className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
@@ -108,7 +123,13 @@ onClick={()=> navigate('/')}
                 </MenuButton>
                 <MenuList>
                   <MenuItem className="hover:text-blue-600 hover:bg-blue-50"  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</a></MenuItem>
-                  <MenuItem className="hover:text-blue-600 hover:bg-blue-50" ><a href={`mailto:team@visitasmart.com`} className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
+                  <MenuItem onClick={()=> {
+
+window.tidioChatApi.show();
+window.tidioChatApi.open();
+
+
+                  }} className="hover:text-blue-600 hover:bg-blue-50" ><p className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="chatbubble-ellipses"></ion-icon></span>Chat with us</p></MenuItem>
                 </MenuList>
               </Menu>
 
@@ -162,7 +183,7 @@ onClick={()=> navigate('/')}
         
 
 
-        <Link to="/create" class="py-1.5 px-8 text-md font-medium text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 transition-shadow  hover:shadow-md hover:shadow-blue-300 focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium">Create now</Link>
+        <Link id="header_create_button" to="/create" class="py-1.5 px-8 text-md  text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-bold">Create now</Link>
         </div>
       </header>
 
@@ -201,7 +222,13 @@ onClick={()=> navigate('/')}
 
           <p onClick={() => {navigate('/support');onClose()}} className=" font-visita-bold cursor-pointer mt-3" ><span className="text-md flex items-center text-primary" ><ion-icon name="help-buoy"></ion-icon> <span className="ml-2 text-slate-600" >Help Center</span></span> </p>
 
-          <a href="mailto:team@visitasmart" className=" font-visita-bold cursor-pointer mt-3" ><span className="text-md flex items-center text-primary" ><ion-icon name="mail"></ion-icon> <span className="ml-2 text-slate-600" >Mail</span></span> </a>
+          <p onClick={()=> {
+
+
+  window.tidioChatApi.show();
+  window.tidioChatApi.open();
+
+          }} className=" font-visita-bold cursor-pointer mt-3" ><span className="text-md flex items-center text-primary" ><ion-icon name="chatbubble-ellipses"></ion-icon><span className="ml-2 text-slate-600" >Chat with us</span></span> </p>
 
           <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >

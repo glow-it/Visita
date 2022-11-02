@@ -693,3 +693,7 @@ footer {
     height: 2.5rem/* 40px */;
   }
 }
+
+#header_create_button{
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
