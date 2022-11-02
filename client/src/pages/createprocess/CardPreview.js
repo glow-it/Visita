@@ -46,7 +46,7 @@ function CardPreview() {
   // Open Payment Checkout When Create Subscription Is Successfull
   const openPayment = (res) => {
     var options = {
-      key: "rzp_test_VxJtXE6pHNOoky",
+      key: "rzp_test_8xbLPHIxzMSp3W",
       subscription_id: res.data.id,
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",
@@ -168,7 +168,7 @@ function CardPreview() {
         <input type="text" name="to_mail" value={cardDatas && cardDatas.email_id} />
         <input type="text" name="company_name" value={cardDatas && cardDatas.company_name} />
         <input type="text" name="card_pass" value={name + new Date().getTime()} />
-        <input type="text" name="message" value="ThankYou For Creatind Card" />
+        <input type="text" name="message" value="ThankYou For Creating Card" />
       </form>
       
 

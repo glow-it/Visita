@@ -16,7 +16,7 @@ function AdminPage() {
 
 useEffect(()=> {
 
-    if(params.type == 'salary_pay'){
+    if(params.type == 'pay-salary'){
         setIndex(3)
     }
 
@@ -87,7 +87,7 @@ let toast = useToast()
 function handleSalaryPayedClick(franchisee_email){
     axios.post('/salary-payed/' + franchisee_email).then((response)=> {
         if(response.status){
-            window.location.href = '/admin/salary_pay'
+            window.location.href = '/admin/pay-salary'
         }else{
             toast({
                 position: 'bottom',

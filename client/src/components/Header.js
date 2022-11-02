@@ -108,7 +108,7 @@ onClick={()=> navigate('/')}
                 </MenuButton>
                 <MenuList>
                   <MenuItem className="hover:text-blue-600 hover:bg-blue-50"  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</a></MenuItem>
-                  <MenuItem className="hover:text-blue-600 hover:bg-blue-50" ><a href="mailto:sprt.visita@gmail.com" className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
+                  <MenuItem className="hover:text-blue-600 hover:bg-blue-50" ><a href={`mailto:team@visitasmart.com`} className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="mail" ></ion-icon></span> Mail</a></MenuItem>
                 </MenuList>
               </Menu>
 
@@ -139,7 +139,7 @@ onClick={()=> navigate('/')}
         <Popover placement="bottom" >
   <PopoverTrigger>
   <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
-                <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage my card</span>
+                <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage Card</span>
            </h1>
   </PopoverTrigger>
   <PopoverContent>
@@ -191,7 +191,7 @@ onClick={()=> navigate('/')}
            
            if (doc != null) {
                navigate('/manage/card/' + doc)
-           };onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="create"></ion-icon> <span className="ml-2 text-slate-600" >Manage My Card</span></span> </p>
+           };onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="create"></ion-icon> <span className="ml-2 text-slate-600" >Manage Card</span></span> </p>
 
             <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >
@@ -201,7 +201,7 @@ onClick={()=> navigate('/')}
 
           <p onClick={() => {navigate('/support');onClose()}} className=" font-visita-bold cursor-pointer mt-3" ><span className="text-md flex items-center text-primary" ><ion-icon name="help-buoy"></ion-icon> <span className="ml-2 text-slate-600" >Help Center</span></span> </p>
 
-          <a href="mailto:sprt.visita@gmail.com" className=" font-visita-bold cursor-pointer mt-3" ><span className="text-md flex items-center text-primary" ><ion-icon name="mail"></ion-icon> <span className="ml-2 text-slate-600" >Mail</span></span> </a>
+          <a href="mailto:team@visitasmart" className=" font-visita-bold cursor-pointer mt-3" ><span className="text-md flex items-center text-primary" ><ion-icon name="mail"></ion-icon> <span className="ml-2 text-slate-600" >Mail</span></span> </a>
 
           <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >

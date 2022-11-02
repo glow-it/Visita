@@ -1,9 +1,17 @@
-import { useToast } from '@chakra-ui/react'
+import { Button, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
 import apiKeys from '../../Api/apiKeys'
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+} from '@chakra-ui/react'
 
 function ManageCard() {
 
@@ -13,6 +21,9 @@ function ManageCard() {
     let toast = useToast()
     let [cardDatas,setCardDatas] = useState([])
     let [franchiseeDatas,setFranchiseeDatas] = useState([])
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = React.useRef()
 
 
     useEffect(()=> {
@@ -50,7 +61,7 @@ function ManageCard() {
 
 
     // Handle Close Card Click
-    function closeCardClick(){
+    function HandleCloseCard(){
       axios({
         method: 'post',
         url: '/manage/card/close-card',
@@ -67,7 +78,7 @@ function ManageCard() {
             duration: 4000,
             position: 'top'
           })
-          navigate('/')
+          navigate('/card-closed')
         }else{
           toast({
             title: 'Try again!!',
@@ -83,15 +94,18 @@ function ManageCard() {
 
     let send_pass_form_2 = document.getElementById('send_pass_form_2');
     
-function HandleForgotPasswordClick(){
+function HandleForgotPasswordClick(e){
+
+  e.target.innerText = 'Please Wait...'
 
   emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
     toast({
-      title: 'Card Password Has Been Send To ' + cardDatas && cardDatas.email_id,
+      title: `Card Password Has Been Send To ${cardDatas && cardDatas.email_id}`,
       status: 'success',
       duration: 6000,
       position: 'top'
     })
+    e.target.innerText = 'Forgot password?'
 }, (error) => {
   console.log(error);
    toast({
@@ -100,6 +114,7 @@ function HandleForgotPasswordClick(){
       duration: 6000,
       position: 'top'
     })
+    e.target.innerText = 'Forgot password?'
 })
 }
 
@@ -107,6 +122,33 @@ function HandleForgotPasswordClick(){
 
   return (
    <div className='flex flex-col items-center' >
+
+<AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="3px" >
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+              <span className='font-visita-bold' >Close Card</span>
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              <span className='font-visita-medium' >Are you sure? You can't undo this action afterwards.</span>
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                <span className='font-visita-bold' >Cancel</span>
+              </Button>
+              <Button colorScheme='red' onClick={()=> HandleCloseCard()} ml={3}>
+                <span className='font-visita-bold' >Yes' Close Card</span>
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
 
     {/* Send Card Password Form */}
     <form id="send_pass_form_2" className="hidden" >
@@ -141,7 +183,7 @@ function HandleForgotPasswordClick(){
         />
     </div>
     <div class="flex justify-between items-center mb-6">
-      <p onClick={()=> HandleForgotPasswordClick()}
+      <p onClick={(e)=> HandleForgotPasswordClick(e)}
         class="text-blue-600 cursor-pointer hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
         password?</p>
     </div>
@@ -1026,7 +1068,7 @@ function HandleForgotPasswordClick(){
 
      <div className="h-16 w-full flex items-center justify-center  z-50">
 
-         <button onClick={()=> closeCardClick()} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Card</button>
+         <button onClick={onOpen} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Card</button>
 
         <button onClick={()=> navigate('/manage/card/' + company_name + '/edit')} className="px-6 py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit Card</button>
     </div>
