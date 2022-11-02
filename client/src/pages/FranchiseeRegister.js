@@ -28,7 +28,7 @@ function franchiseeRegisterClick(button){
       setLoading(false)
 
       var options = {
-        key: 'rzp_test_8xbLPHIxzMSp3W', // Enter the Key ID generated from the Dashboard
+        key: 'rzp_live_5bsv690sbS0AHj', // Enter the Key ID generated from the Dashboard
         amount: 99900, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Visita | Digital Visiting Card",
