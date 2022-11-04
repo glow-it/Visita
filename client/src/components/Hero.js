@@ -107,17 +107,7 @@ function Hero() {
         </p>
 
         <div className="w-full mt-12 py-2">
-          <Tooltip
-            label="Very easy to create!"
-            fontSize="lg"
-            placement="bottom-start"
-            border="1px"
-            borderColor="blue.50"
-            px="6"
-            rounded="full"
-            bgColor="white"
-            className="font-visita-medium"
-          >
+         
             <Link
               to="/create"
               type="button"
@@ -125,7 +115,7 @@ function Hero() {
             >
               Create now
             </Link>
-          </Tooltip>
+        
 
           <a
             onClick={() => navigate("/visita")}

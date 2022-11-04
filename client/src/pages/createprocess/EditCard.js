@@ -38,6 +38,8 @@ function EditCard() {
   let products = cardDatas && cardDatas.products
   let image_gallery = cardDatas && cardDatas.image_gallery
 
+  console.log();
+
   useEffect(()=> {
     if(cardDatas.activated){
       var doc = prompt("Enter Card Password");
@@ -46,6 +48,8 @@ function EditCard() {
                 if(doc != cardDatas.activated.access_password){
                   navigate('/')
                 }
+            }else{
+              navigate('/')
             }
     }
   },[cardDatas])
@@ -73,6 +77,7 @@ function EditCard() {
 
     axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
         setCardDatas(response.data);
+        setChoosedThemeColor(response.data.theme_color)
     }).catch((err)=> {
         toast({
             title: err.message,
@@ -1134,8 +1139,8 @@ function EditCard() {
       </div>
 
 
-      <div className="visita-text-animation lg:block hidden w-full flex flex-col items-center justify-center lg:pt-16 pt-24 ">
-        <h1 className="text-center lg:text-5xl text-xl text-black font-visita-black">
+      <div className="visita-text-animation lg:block hidden w-full flex flex-col items-center justify-center lg:pt-16 pt-24  ">
+        <h1 className="text-center lg:text-5xl text-xl text-black font-visita-black mt-14">
           <span>
             {processIndex == 1
               ? "Business Or Company Name"
@@ -1180,7 +1185,7 @@ function EditCard() {
                 id="large-input"
                 defaultValue={cardDatas && cardDatas.company_name}
                 name="company_name"
-                class="company_name_input font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class="company_name_input focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
 <p class="error-message mt-2 text-sm text-green-600 font-visita-medium"></p>
@@ -1207,7 +1212,7 @@ function EditCard() {
                 <label
                   for="create-choose-logo"
                   id="choose_logo_button"
-                  className="lg:-ml-5 -ml-4 lg:text-md text:sm cursor-pointer border-blue-600 border-2 px-4 py-2 rounded-full font-visita-bold text-blue-600"
+                  className="lg:-ml-5 -ml-4 lg:text-md text:sm cursor-pointer border-blue-600 border-2 px-4 py-2 rounded-full font-visita-bold text-blue-600 hover:bg-blue-600 hover:text-white transition-all"
                 >
                   Change Logo
                 </label>
@@ -1273,7 +1278,7 @@ function EditCard() {
                 defaultValue={cardDatas && cardDatas.company_category}
                 id="large-input"
                 name="company_category"
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1289,7 +1294,7 @@ function EditCard() {
                 id="large-input"
                 defaultValue={cardDatas && cardDatas.first_name}
                 name="first_name"
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1305,7 +1310,7 @@ function EditCard() {
                 id="large-input"
                 name="last_name"
                 defaultValue={cardDatas && cardDatas.last_name}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1321,7 +1326,7 @@ function EditCard() {
                 required
                 name="position"
                 defaultValue={cardDatas && cardDatas.position}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1337,7 +1342,7 @@ function EditCard() {
                 required
                 name="phone_no"
                 defaultValue={cardDatas && cardDatas.phone_no}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1353,7 +1358,7 @@ function EditCard() {
                 id="large-input"
                 name="alt_phone_no"
                 defaultValue={cardDatas && cardDatas.alt_phone_no}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1369,7 +1374,7 @@ function EditCard() {
                 id="large-input"
                 name="whatsapp_no"
                 defaultValue={cardDatas && cardDatas.whatsapp_no}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1385,7 +1390,7 @@ function EditCard() {
                 id="large-input"
                 name="address"
                 defaultValue={cardDatas && cardDatas.address}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1401,7 +1406,7 @@ function EditCard() {
                 id="large-input"
                 name="email_id"
                 defaultValue={cardDatas && cardDatas.email_id}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1417,7 +1422,7 @@ function EditCard() {
                 id="large-input"
                 name="website"
                 defaultValue={cardDatas && cardDatas.website}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1433,7 +1438,23 @@ function EditCard() {
                 id="large-input"
                 name="location"
                 defaultValue={cardDatas && cardDatas.location}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+              />
+
+<label
+                for="large-input"
+                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 :text-gray-300"
+              >
+                Google Map Location Url{" "}
+                <span className="text-slate-400 text-sm ml-1">(Optional)</span>
+              </label>
+              <input
+                placeholder="Your location url GOOGLE MAP"
+                autoComplete="off"
+                id="large-input"
+                defaultValue={cardDatas && cardDatas.gmap_location}
+                name="gmap_location"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover: sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1449,7 +1470,7 @@ function EditCard() {
                 required
                 name="city"
                 defaultValue={cardDatas && cardDatas.city}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1465,7 +1486,7 @@ function EditCard() {
                 required
                 name="since"
                 defaultValue={cardDatas && cardDatas.since}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1481,7 +1502,7 @@ function EditCard() {
                 required
                 name="about"
                 defaultValue={cardDatas && cardDatas.about}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1496,7 +1517,7 @@ function EditCard() {
                 id="large-input"
                 name="specials"
                 defaultValue={cardDatas && cardDatas.specials}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
               <label
@@ -1511,7 +1532,7 @@ function EditCard() {
                 id="large-input"
                 name="features"
                 defaultValue={cardDatas && cardDatas.features}
-                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
 
@@ -1541,7 +1562,7 @@ function EditCard() {
             id="large-input"
             name="facebook_link"
             defaultValue={cardDatas && cardDatas.facebook_link}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1557,7 +1578,7 @@ function EditCard() {
             id="large-input"
             name="instagram_link"
             defaultValue={cardDatas && cardDatas.instagram_link}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1573,7 +1594,7 @@ function EditCard() {
             id="large-input"
             name="twitter_link"
             defaultValue={cardDatas && cardDatas.twitter_link}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1589,7 +1610,7 @@ function EditCard() {
             id="large-input"
             name="linkedin_link"
             defaultValue={cardDatas && cardDatas.linkedin_link}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1605,7 +1626,7 @@ function EditCard() {
             id="large-input"
             name="youtube_link"
             defaultValue={cardDatas && cardDatas.youtube_link}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1621,7 +1642,7 @@ function EditCard() {
             id="large-input"
             name="pinterest_link"
             defaultValue={cardDatas && cardDatas.pinterest_link}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
@@ -1644,7 +1665,7 @@ function EditCard() {
             id="large-input"
             name="ytvideo_1_link"
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[0]}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1660,7 +1681,7 @@ function EditCard() {
             id="large-input"
             name="ytvideo_2_link"
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[1]} 
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1676,7 +1697,7 @@ function EditCard() {
             id="large-input"
             name="ytvideo_3_link"
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[2]}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1692,7 +1713,7 @@ function EditCard() {
             id="large-input"
             name="ytvideo_4_link"
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[3]}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1708,7 +1729,7 @@ function EditCard() {
             id="large-input"
             name="ytvideo_5_link"
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[4]}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
         </div>
 
@@ -1732,7 +1753,7 @@ function EditCard() {
             id="large-input"
             name="paytm_number"
             defaultValue={cardDatas && cardDatas.paytm_number}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1748,7 +1769,7 @@ function EditCard() {
             id="large-input"
             name="googlepay_number"
             defaultValue={cardDatas && cardDatas.googlepay_number}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1764,7 +1785,7 @@ function EditCard() {
             id="large-input"
             name="phonepe"
             defaultValue={cardDatas && cardDatas.phonepe}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
@@ -1781,9 +1802,12 @@ function EditCard() {
             Paytm QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
-          <img src={cardDatas && cardDatas.paytm_qrcode} className='h-32 mb-4'  />
+          {cardDatas && cardDatas.paytm_qrcode ?
+            <img src={cardDatas && cardDatas.paytm_qrcode} className='h-32 mb-4'  />
+          :''
+          }
           <input
-            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"paytm_qrcode")}}
@@ -1797,9 +1821,12 @@ function EditCard() {
             Google Pay QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
-          <img src={cardDatas && cardDatas.googlepay_qrcode} className='h-32 mb-4'  />
+          {cardDatas && cardDatas.googlepay_qrcode ?
+            <img src={cardDatas && cardDatas.googlepay_qrcode} className='h-32 mb-4'  />
+          :''
+          }
           <input
-            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"googlepay_qrcode")}}
@@ -1813,9 +1840,12 @@ function EditCard() {
             PhonePe QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
-          <img src={cardDatas && cardDatas.phonepe_qrcode} className='h-32 mb-4'  />
+          {cardDatas && cardDatas.phonepe_qrcode ?
+            <img src={cardDatas && cardDatas.phonepe_qrcode} className='h-32 mb-4'  />
+          :''
+          }
           <input
-            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"phonepe_qrcode")}}
@@ -1842,7 +1872,7 @@ function EditCard() {
             id="large-input"
             name="bank_name"
             defaultValue={cardDatas && cardDatas.bank_name}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1858,7 +1888,7 @@ function EditCard() {
             id="large-input"
             name="account_holder_name"
             defaultValue={cardDatas && cardDatas.account_holder_name}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1874,7 +1904,7 @@ function EditCard() {
             id="large-input"
             name="bank_account_number"
             defaultValue={cardDatas && cardDatas.bank_account_number}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1890,7 +1920,7 @@ function EditCard() {
             id="large-input"
             name="bank_ifsc_code"
             defaultValue={cardDatas && cardDatas.bank_ifsc_code}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
           <label
@@ -1906,7 +1936,7 @@ function EditCard() {
             id="large-input"
             name="gst"
             defaultValue={cardDatas && cardDatas.gst}
-            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
         </div>
 
@@ -1933,7 +1963,7 @@ function EditCard() {
                     <img src={data.product_image} className="h-32 rounded-xl" />
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`product_image_${index + 1}`)}}
@@ -1949,7 +1979,7 @@ function EditCard() {
                       id="large-input"
                       name={`product_${index + 1}_name`}
                       defaultValue={data.product_name}
-                      class=" font-visita-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -1958,7 +1988,7 @@ function EditCard() {
                       id="large-input"
                       name={`product_${index + 1}_orgprice`}
                       defaultValue={data.product_orgprice}
-                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -1967,7 +1997,7 @@ function EditCard() {
                       id="large-input"
                       name={`product_${index + 1}_offerprice`}
                       defaultValue={data.product_offerprice}
-                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input
@@ -1976,7 +2006,7 @@ function EditCard() {
                       id="large-input"
                       name={`product_${index + 1}_link`}
                       defaultValue={data.product_link}
-                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                   </div>
@@ -2012,7 +2042,7 @@ function EditCard() {
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                     <img src={data} className='h-32 rounded-xl' />
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2 border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`image_${index + 1}`)}}

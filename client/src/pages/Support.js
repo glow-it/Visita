@@ -215,7 +215,7 @@ function Support() {
                </div>
             </div>
          </div>
-         <h1 className='font-visita-bold text-4xl absolute right-44 bottom-44' >Click On The Chat Button <br /> For Chat With Our Staff <span className='animate-pulse text-7xl absolute rotate-45 text-blue-600 top-20' ><ion-icon name="arrow-forward"></ion-icon></span></h1>
+         <h1 className='lg:block hidden font-visita-bold text-4xl absolute right-44 bottom-44' >Click On The Chat Button <br /> For Chat With Our Staff <span className='animate-pulse text-7xl absolute rotate-45 text-blue-600 top-20' ><ion-icon name="arrow-forward"></ion-icon></span></h1>
       </div>
    </div>
 </section>

@@ -179,7 +179,7 @@ function Template({preview}) {
 
 
   return (
-    <div className=" flex justify-center items-center ">  
+    <div className=" flex justify-center items-center pb-24">  
 
 
       <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
@@ -298,7 +298,7 @@ function Template({preview}) {
                   <div
                     className={`w-full h-12 border-2 text-white bg-black/70 border-${theme_color}-500 mt-4 flex items-center rounded-full`}
                   >
-                    <span className=" ml-6 text-lg flex items-center font-visita-medium">
+                    <span className=" ml-6 text-sm flex items-center font-visita-medium">
                       <ion-icon name="mail"></ion-icon>{" "}
                       <span className=" ml-3">{cardDatas.email_id}</span>{" "}
                     </span>
@@ -349,12 +349,18 @@ function Template({preview}) {
                 </div>
 
                 <div className=" w-full flex items-center justify-center mt-8">
+                 
+                 {
+                  cardDatas && cardDatas.gmap_location ?
                   <button
-                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mr-3`}
-                  >
-                    Save <span className=" ml-1 text-white text-xl"></span>
-                    <ion-icon name="arrow-down-circle"></ion-icon>
-                  </button>
+                  onClick={()=> window.open(cardDatas.gmap_location)}
+                  className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mr-3`}
+                >
+                  Location <span className=" ml-1 text-white text-xl"></span>
+                  <ion-icon name="location"></ion-icon>
+                </button>
+                : ''
+                 }
 
                   <button
                     onClick={onOpen}
@@ -958,7 +964,7 @@ function Template({preview}) {
           <form
             action={`/update/feedback/${cardDatas && cardDatas.company_name}`}
             method="POST"
-            class="bg-white shadow-sm rounded-3xl w-full px-6  pt-6 pb-8 mb-4"
+            class="bg-white shadow-md rounded-3xl w-full px-6  pt-6 pb-8 mb-4"
             id="feedback-form"
           >
             <div class="mb-4">
@@ -992,13 +998,13 @@ function Template({preview}) {
                 onClick={() =>
                   document.getElementById("feedback-form").submit()
                 }
-                class=" font-visita-bold py-2 px-6 rounded-md text-white bg-blue-600"
+                class={`font-visita-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
               >
                 Send Feedback
               </button>
             </div>
           </form>
-          <p class="text-center text-gray-500 text-xs pb-6">
+          <p class="text-center mt-8 text-gray-500 text-xs pb-6">
             &copy;2022 Visita. All rights reserved.
           </p>
         </div>

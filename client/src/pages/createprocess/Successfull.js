@@ -75,7 +75,7 @@ function Successfull() {
         </h1>
         <div className="px-10 z-50 h-12 bg-green-50 flex items-center justify-center border border-green-600 text-green-600 rounded-full">
           <h1 className="font-visita-medium lg:text-xl text-center">
-          {base_url}/ {comp_name}
+          {base_url}/card/ {comp_name}
             <i
               data-tooltip-target="tooltip-light"
               data-tooltip-style="light"

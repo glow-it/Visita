@@ -1478,6 +1478,21 @@ function Create(props) {
                 class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
+<label
+                for="large-input"
+                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 :text-gray-300"
+              >
+                Google Map Location Url{" "}
+                <span className="text-slate-400 text-sm ml-1">(Optional)</span>
+              </label>
+              <input
+                placeholder="Your location url GOOGLE MAP"
+                autoComplete="off"
+                id="large-input"
+                name="gmap_location"
+                class=" font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border  shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+              />
+
               <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 :text-gray-300"

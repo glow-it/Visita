@@ -28,7 +28,7 @@ function franchiseeRegisterClick(button){
       setLoading(false)
 
       var options = {
-        key: 'rzp_live_5bsv690sbS0AHj', // Enter the Key ID generated from the Dashboard
+        key: 'rzp_test_5jgipooQj0bmkG', // Enter the Key ID generated from the Dashboard
         amount: 99900, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Visita | Digital Visiting Card",
@@ -201,6 +201,15 @@ function franchiseeRegisterClick(button){
               placeholder="Enter password"
             />
           </div>
+
+          <input
+              
+              name="isFranchiseeFirstCardCreated"
+              autoComplete="off"
+              value={false}
+              className="hidden relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+              placeholder="Enter phone no"
+            />
 
         </div>
 

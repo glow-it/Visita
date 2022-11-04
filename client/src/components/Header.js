@@ -102,7 +102,7 @@ onClick={()=> navigate('/')}
 
           <nav className="w-full h-full flex items-center lg:block hidden">
             <ul className="w-full h-full flex items-center">
-              <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+              <p onClick={()=> navigate('/card/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 See Demo
               </p>
               <Link to='/pricing' className=" font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
@@ -125,8 +125,7 @@ onClick={()=> navigate('/')}
                   <MenuItem className="hover:text-blue-600 hover:bg-blue-50"  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</a></MenuItem>
                   <MenuItem onClick={()=> {
 
-window.tidioChatApi.show();
-window.tidioChatApi.open();
+
 
 
                   }} className="hover:text-blue-600 hover:bg-blue-50" ><p className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="chatbubble-ellipses"></ion-icon></span>Chat with us</p></MenuItem>
@@ -183,7 +182,7 @@ window.tidioChatApi.open();
         
 
 
-        <p id="header_create_button" onClick={()=> navigate('/create')} class="py-1.5 px-8 text-md  text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-bold">Create now</p>
+        <p id="header_create_button" onClick={()=> navigate('/create')} class="py-1.5 px-8 text-md  text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-bold">Create now</p>
         </div>
       </header>
 
@@ -198,7 +197,7 @@ window.tidioChatApi.open();
           </div>
           </DrawerHeader>
           <DrawerBody>
-            <p onClick={()=> navigate('/visita')} className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demo</span></span> </p>
+            <p onClick={()=> navigate('/card/visita')} className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demo</span></span> </p>
 
             <p onClick={()=> {navigate('/pricing');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </p>
 

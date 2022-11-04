@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import Cookies from 'js-cookie';
 
 function ManageFranchisee() {
 
@@ -29,6 +30,10 @@ function ManageFranchisee() {
     let navigate = useNavigate()
 
     useEffect(()=> {
+
+        localStorage.setItem('franchisee_top_information_closed',false)
+
+        document.querySelector('body').style.padding = '0 0 0 0'
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
@@ -135,7 +140,7 @@ function ManageFranchisee() {
     },[createdCards])
 
 
-    console.log(franchiseeData && franchiseeData);
+
 
 
 
@@ -145,7 +150,33 @@ function ManageFranchisee() {
 
 
   return (
-    <div className='flex flex-col' >
+    <div >
+
+         {/* Top Information */}
+
+         {
+            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != true ?
+            <div id='franchisee_top_information' className="h-10 w-full bg-green-500 flex items-center justify-center relative">
+            <h1 className='font-visita-bold text-white' >Creating the first card is absolutely free!</h1>
+            <div className="text-white absolute justify-center h-full flex items-center right-8">
+            <span className='cursor-pointer' onClick={()=> {
+                
+                document.getElementById('franchisee_top_information').style.display = 'none'
+        
+        }} ><ion-icon name="close"></ion-icon></span>
+            </div>
+        </div>
+        : ''
+         }
+
+       
+
+{/* Top Information */}
+
+        <div className='flex flex-col w-full h-screen' >
+
+
+
        <div className="w-full h-16  flex items-center justify-center border-b">
         <img onClick={()=> window.location.href = '/'} className='cursor-pointer h-12 left-12 absolute' src=" https://i.postimg.cc/ZKnK7rC2/visitalogo.png />" />
         <h1 className='font-visita-bold absolute left-28 text-2xl' >Franchisee</h1>
@@ -294,6 +325,7 @@ function ManageFranchisee() {
 </Tabs>
        </div>
 
+    </div>
     </div>
   )
 }

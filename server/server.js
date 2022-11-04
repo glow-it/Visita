@@ -99,7 +99,7 @@ async function run() {
 
       clientHelpers.updateFeedback(obj,client_db,req.params.name).then((response)=> {
         let redirect_url = req.params.name.replace(/[ ]/g,'-')
-        res.redirect(`/${redirect_url}`)
+        res.redirect(`/card/${redirect_url}`)
         window.location.reload()
         res.end()
       }).catch((err)=> {
