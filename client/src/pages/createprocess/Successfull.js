@@ -41,11 +41,11 @@ function Successfull() {
   },[]);
 
 
-  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${base_url + '/' + comp_name}`;
-  let share_sms_url = `sms:?body=${base_url + '/' + comp_name}`;
-  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${base_url + '/' + comp_name}`;
-  let share_twitter_url = `https://twitter.com/intent/tweet?text=${base_url + '/' + comp_name}`;
-  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${base_url + '/' + comp_name}`;
+  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${base_url + '/card/' + comp_name}`;
+  let share_sms_url = `sms:?body=${base_url + '/card/' + comp_name}`;
+  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${base_url + '/card/' + comp_name}`;
+  let share_twitter_url = `https://twitter.com/intent/tweet?text=${base_url + '/card/' + comp_name}`;
+  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${base_url + '/card/' + comp_name}`;
 
 
   return (
@@ -87,7 +87,7 @@ function Successfull() {
                   document.getElementById("copy-tooltip").innerText =
                     "Copy Link";
                 }, 2000);
-                navigator.clipboard.writeText(base_url + "/" + comp_name);
+                navigator.clipboard.writeText(base_url + "/card/" + comp_name);
               }}
             ></i>
           </h1>
@@ -118,7 +118,7 @@ function Successfull() {
           <div className="w-[50%] mt-4 h-16 flex items-center justify-center z-50">
 
 
-              <button onClick={()=> window.open(base_url + '/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
+              <button onClick={()=> window.open(base_url + '/card/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
           </div>
 
           <div className="w-50 z-50 h-16 mt-10 flex items-center justify-center">

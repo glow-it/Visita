@@ -279,7 +279,7 @@ function Create(props) {
     >
 
 
-        
+
         <input type="text" name="franchisee" value={location.state ? location.state.franchisee_email : 'no franchisee'} />
 
 

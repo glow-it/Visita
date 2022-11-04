@@ -183,7 +183,7 @@ window.tidioChatApi.open();
         
 
 
-        <Link id="header_create_button" to="/create" class="py-1.5 px-8 text-md  text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-bold">Create now</Link>
+        <p id="header_create_button" onClick={()=> navigate('/create')} class="py-1.5 px-8 text-md  text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-bold">Create now</p>
         </div>
       </header>
 

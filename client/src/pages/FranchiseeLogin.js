@@ -20,7 +20,7 @@ function FranchiseeLogin() {
 
   
 
-  function onFranchiseeeLoginClick(){
+  function onFranchiseeeLoginClick(){ 
     setLoading(true)
     axios({
       url: '/franchisee/login',
@@ -109,9 +109,26 @@ function FranchiseeLogin() {
           </div>
 
           <div class="flex justify-between items-center">
-      <a href={`https://api.whatsapp.com/send/?phone=${apiKeys.visita_phone_no}&text=Hey Visita,Iam Forgot My Franchisee Password! `}
-        class="cursor-pointer font-visita-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out">Forgot
-        password?</a>
+      <p
+        class="cursor-pointer font-visita-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out" onClick={()=> {
+
+          window.tidioChatApi.show();
+          window.tidioChatApi.open();
+
+          
+
+          toast({
+            title: 'Hit On The "Iam Forgot Franchisee Password" Button',
+            status: 'info',
+            duration: 6000,
+            position: 'top-right'
+          })
+
+ 
+
+
+        }}>Forgot
+        password?</p>
     </div>
 
         </div>

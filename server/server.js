@@ -172,7 +172,7 @@ async function run() {
     app.post('/create/cancel-purchase/:comp_name',(req,res)=> {
       clientHelpers.cancelPurchase(client_db,req.params.comp_name).then(()=> {
           res.json({status: true})
-      }).catch((err)=> {
+      }).catch((err)=> { 
         res.json({status: false})
       })
     })
