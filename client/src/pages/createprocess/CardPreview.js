@@ -3,34 +3,110 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CreateHeader from "../../components/CreateHeader";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
 
 function CardPreview() {
+  let [franchiseeData, setFranchiseeData] = useState([]);
   let params = useParams();
   let name = params.name;
   let toast = useToast();
   let [cardDatas, setCardDatas] = useState([]);
-  let navigate = useNavigate()
-  let send_pass_form = document.getElementById('send_pass_form');
-  let [isProcessingPayment,setIsProcessingPayment] = useState(false)
-
-  console.log(cardDatas && cardDatas);
+  let navigate = useNavigate();
+  let send_pass_form = document.getElementById("send_pass_form");
+  let [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   useEffect(() => {
     document.title = "Complete Purchase";
 
     axios.get("http://localhost:3005/card/" + name).then((response) => {
       setCardDatas(response.data);
+
+      if (response.data.franchisee != "no franchisee") {
+        axios
+          .get("/get-franchisee-datas/" + response.data.franchisee)
+          .then((res) => {
+            if (res.status) {
+              setFranchiseeData(res.data.franchisee_data);
+            } else {
+              toast({
+                title: res.data.err,
+                status: "error",
+                position: "top-right",
+              });
+              navigate("/");
+            }
+          });
+      } else {
+        setFranchiseeData(null);
+      }
     });
   }, []);
 
   // Handle Complete Purchase Click
   const handleCompletePurchase = () => {
-    axios
-      .post("/complete-purchase")
+    axios({
+      method: "post",
+      url: "/complete-purchase",
+      data: franchiseeData,
+    })
       .then((response) => {
-        openPayment(response);
+        // Check Card Creation Is First
+
+
+
+        if (response.data.isFirst == true) {
+
+
+          axios({
+            method: "post",
+            url: "/payment-successfull/" + name,
+            data: {
+              company_name: name,
+              razorpay: null,
+              franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
+              access_password: name + new Date().getTime(),
+              activated_at: new Date().getTime(),
+              phone_no: cardDatas.phone_no,
+              franchisee_email: cardDatas.franchisee,
+            },
+          }).then((response) => {
+            if (response.data.status) {
+              let card_pass = send_pass_form.childNodes[2];
+              card_pass.value = response.data.req_datas.access_password;
+
+              emailjs
+                .sendForm(
+                  apiKeys.emailjs_serviceId,
+                  apiKeys.emailjs_templateId2,
+                  send_pass_form,
+                  apiKeys.emailjs_publicKey
+                )
+                .then(
+                  (result) => {
+                    navigate("/create/successfull/" + name);
+                  },
+                  (error) => {
+                    console.log(error);
+                  }
+                );
+            } else {
+              toast({
+                title: "An error occured",
+                status: "error",
+                description: response.err,
+                isClosable: false,
+                position: "top-right",
+              });
+            }
+          });
+
+          navigate("/loading/processing-card");
+
+
+        } else {
+          openPayment(response.data.sub_data);
+        }
       })
       .catch((err) => {
         toast({
@@ -47,7 +123,7 @@ function CardPreview() {
   const openPayment = (res) => {
     var options = {
       key: "rzp_test_5jgipooQj0bmkG",
-      subscription_id: res.data.id,
+      subscription_id: res.id,
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",
       image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
@@ -64,9 +140,10 @@ function CardPreview() {
         }).then((response) => {
           if (response) {
 
+
             axios({
-              method: 'post',
-              url: '/payment-successfull/' + name,
+              method: "post",
+              url: "/payment-successfull/" + name,
               data: {
                 company_name: name,
                 razorpay: res_obj,
@@ -74,25 +151,29 @@ function CardPreview() {
                 access_password: name + new Date().getTime(),
                 activated_at: new Date().getTime(),
                 phone_no: cardDatas.phone_no,
-                franchisee_email: cardDatas.franchisee
-              }
+                franchisee_email: cardDatas.franchisee,
+              },
+            }).then((response) => {
+              if (response.data.status) {
+                let card_pass = send_pass_form.childNodes[2];
+                card_pass.value = response.data.req_datas.access_password;
 
-            }).then((response)=> {
-              if(response.data.status){
-                let card_pass = send_pass_form.childNodes[2]
-                card_pass.value = response.data.req_datas.access_password
-
-              emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form, apiKeys.emailjs_publicKey).then((result) => {
-                navigate('/create/successfull/' + name)
-            }, (error) => {
-               console.log(error);
-            })
-
-
-
-
-                
-              }else{
+                emailjs
+                  .sendForm(
+                    apiKeys.emailjs_serviceId,
+                    apiKeys.emailjs_templateId2,
+                    send_pass_form,
+                    apiKeys.emailjs_publicKey
+                  )
+                  .then(
+                    (result) => {
+                      navigate("/create/successfull/" + name);
+                    },
+                    (error) => {
+                      console.log(error);
+                    }
+                  );
+              } else {
                 toast({
                   title: "An error occured",
                   status: "error",
@@ -101,7 +182,7 @@ function CardPreview() {
                   position: "top-right",
                 });
               }
-            })
+            });
 
             toast({
               title: "Payment Successfull",
@@ -109,7 +190,7 @@ function CardPreview() {
               isClosable: false,
               position: "top-right",
             });
-            navigate('/loading/processing-card')
+            navigate("/loading/processing-card");
           } else {
             toast({
               title: "Payment Failed",
@@ -130,47 +211,57 @@ function CardPreview() {
         contact: "+91" + cardDatas.phone_no,
       },
     };
-    setIsProcessingPayment(false)
+    setIsProcessingPayment(false);
     const rzp1 = new window.Razorpay(options); //instead of new Razorpay(options)
     rzp1.open();
   };
 
   // When Cancel Purchase Button Click
-  function cancelPurchase(){
-    axios.post('/create/cancel-purchase/' + name).then((res)=> {
+  function cancelPurchase() {
+    axios.post("/create/cancel-purchase/" + name).then((res) => {
       console.log(res.status);
-      if(res.data.status){
+      if (res.data.status) {
         toast({
           title: "Cancel Successfull",
           status: "success",
           isClosable: false,
           position: "top-right",
         });
-        navigate('/create')
-      }else{
+        navigate("/create");
+      } else {
         toast({
           title: "Oohh Snap!!",
-          description: 'We are struggling to cancel purchase',
+          description: "We are struggling to cancel purchase",
           status: "error",
           isClosable: false,
           position: "top-right",
         });
       }
-    })
-    navigate('/loading/cancelling')
+    });
+    navigate("/loading/cancelling");
   }
 
   return (
     <div className="h-screen w-full ">
-
       {/* Send Card Password Form */}
-      <form id="send_pass_form" className="hidden" >
-        <input type="text" name="to_mail" value={cardDatas && cardDatas.email_id} />
-        <input type="text" name="company_name" value={cardDatas && cardDatas.company_name} />
-        <input type="text" name="card_pass" value={name + new Date().getTime()} />
+      <form id="send_pass_form" className="hidden">
+        <input
+          type="text"
+          name="to_mail"
+          value={cardDatas && cardDatas.email_id}
+        />
+        <input
+          type="text"
+          name="company_name"
+          value={cardDatas && cardDatas.company_name}
+        />
+        <input
+          type="text"
+          name="card_pass"
+          value={name + new Date().getTime()}
+        />
         <input type="text" name="message" value="ThankYou For Creating Card" />
       </form>
-      
 
       <div className="overlays z-10">
         <svg
@@ -1028,68 +1119,99 @@ function CardPreview() {
       />
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
-        <div className={`${cardDatas && cardDatas.activated ? 'h-[50%]' : 'lg:h-[80%]'}  z-40 lg:mt-16 mt-32 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl `}>
-          <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 mt-16">
-            <i class="fa-solid fa-check border-2 p-2 mr-3 rounded-full text-white bg-green-500 border-green-500"></i>
-        {
-           cardDatas && cardDatas.activated ? 'Successfully Your Card Is ' : 'Successfully Your Card Was '
-        }
-        
-            
-            <span className="text-green-600">
-              {
-                cardDatas && cardDatas.activated ? 'Activated!' : 'Created!'
-              }
-              
-              
-              </span>
-          </h1>
-
-          <h1 className={`text-xl font-visita-medium ${cardDatas && cardDatas.activated ? 'text-green-600' : 'text-blue-600'} lg:mt-4 mt-8 text-center px-6 py-1 ${cardDatas && cardDatas.activated ? 'bg-green-50' : 'bg-blue-50'} rounded-full`}>
-           {
-             cardDatas && cardDatas.activated ? 'Payment Was Successfull' : 'Complete Purchase To Activate Your Card'
-           }
-            
-          </h1>
-
-          {
-             cardDatas && cardDatas.activated ? '' :
-<div className="flex lg:flex-row flex-col-reverse">
-            <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
-              ₹599
-            </h1>
-            <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-50 text-center">
-              ₹799
-            </h1>
-          </div>
-
-          }
-
-
-         {
-          cardDatas && cardDatas.activated ?
-          <button
-          onClick={() => navigate('/create/successfull/' + name)} id='complete-purchase-button'
-          className="lg:text-2xl text-xl mt-12 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600"
+        <div
+          className={`${
+            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[80%]"
+          }  z-40 lg:mt-16 mt-32 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl `}
         >
-          Open Preview
-        </button>
-        :
-        <Button className="font-visita-bold" fontSize='2xl' loadingText="Processing Payment" isLoading={isProcessingPayment} rounded='full' py="7" px='7' mt='8' color='#fff' _hover bgColor='#0062FF' mr={3} onClick={()=> {
-          setIsProcessingPayment(true)
-          handleCompletePurchase()
-        }}> Complete Purchase</Button>
-         }
-          
-{
-  cardDatas && cardDatas.activated ? '' : 
-  <button onClick={()=> cancelPurchase()} className="lg:text-2xl text-xl mt-4 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 text-black-600 rounded-full">
-            Cancel Purchase
-          </button>
-}
-         
+          <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 -mt-44">
+            <i class="fa-solid fa-check border-2 p-2 mr-3 rounded-full text-white bg-green-500 border-green-500"></i>
+            {cardDatas && cardDatas.activated
+              ? "Successfully Your Card Is "
+              : "Successfully Your Card Was "}
 
-          
+            <span className="text-green-600">
+              {cardDatas && cardDatas.activated ? "Activated!" : "Created!"}
+            </span>
+          </h1>
+
+          <h1
+            className={`text-xl font-visita-medium ${
+              cardDatas && cardDatas.activated
+                ? "text-green-600"
+                : "text-blue-600"
+            } lg:mt-4 mt-8 text-center px-6 py-1 ${
+              cardDatas && cardDatas.activated ? "bg-green-50" : "bg-blue-50"
+            } rounded-full`}
+          >
+            {cardDatas && cardDatas.activated
+              ? "Payment Was Successfull"
+              : "Complete Purchase To Activate Your Card"}
+          </h1>
+
+          {cardDatas && cardDatas.activated ? (
+            ""
+          ) : (
+            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != false ?
+            <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
+              <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
+                ₹599
+              </h1>
+              <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-50 text-center">
+                ₹799
+              </h1>
+            </div>
+            : 
+            <div className="flex lg:flex-row flex-col-reverse">
+            <h1 className="text-xl font-visita-medium mb-12 lg:mt-4 mt-2 bg-green-50 py-1 px-12 rounded-3xl lg:mr-6 text-green-600 text-center">
+              This card is absolutely free
+            </h1>
+           
+          </div>
+          )}
+
+          {cardDatas && cardDatas.activated ? (
+            <button
+              onClick={() => navigate("/create/successfull/" + name)}
+              id="complete-purchase-button"
+              className="lg:text-2xl text-xl mt-12 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600"
+            >
+              Open Preview
+            </button>
+          ) : (
+            <Button
+              className="font-visita-bold"
+              fontSize="2xl"
+              loadingText="Processing Payment"
+              isLoading={isProcessingPayment}
+              rounded="full"
+              py="7"
+              px="7"
+              mt="8"
+              color="#fff"
+              _hover
+              bgColor="#0062FF"
+              mr={3}
+              onClick={() => {
+                setIsProcessingPayment(true);
+                handleCompletePurchase();
+              }}
+            >
+             
+            Complete Purchase
+            </Button>
+          )}
+
+          {cardDatas && cardDatas.activated ? (
+            ""
+          ) : (
+            <button
+              onClick={() => cancelPurchase()}
+              className="lg:text-2xl text-xl mt-4 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 text-black-600 rounded-full"
+            >
+              Cancel Purchase
+            </button>
+          )}
         </div>
       </div>
     </div>

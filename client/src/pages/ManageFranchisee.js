@@ -157,7 +157,8 @@ function ManageFranchisee() {
          {
             franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != true ?
             <div id='franchisee_top_information' className="h-10 w-full bg-green-500 flex items-center justify-center relative">
-            <h1 className='font-visita-bold text-white' >Creating the first card is absolutely free!</h1>
+            <h1 className='flex font-visita-bold text-white' ><span className="mr-2 flex items-center justify-center">
+            <ion-icon name="checkmark"></ion-icon></span> Creating The First Card Is Absolutely Free !</h1>
             <div className="text-white absolute justify-center h-full flex items-center right-8">
             <span className='cursor-pointer' onClick={()=> {
                 
@@ -177,20 +178,15 @@ function ManageFranchisee() {
 
 
 
-       <div className="w-full h-16  flex items-center justify-center border-b">
-        <img onClick={()=> window.location.href = '/'} className='cursor-pointer h-12 left-12 absolute' src=" https://i.postimg.cc/ZKnK7rC2/visitalogo.png />" />
-        <h1 className='font-visita-bold absolute left-28 text-2xl' >Franchisee</h1>
+       <div className="w-full lg:min-h-[100px] min-h-[130px]  flex lg:flex-row flex-col items-center justify-center border-b">
+        <img onClick={()=> window.location.href = '/'} className='lg:block hidden cursor-pointer h-12 left-12 absolute' src=" https://i.postimg.cc/ZKnK7rC2/visitalogo.png />" />
+        <h1 className='lg:block hidden font-visita-bold absolute left-28 text-2xl' >Franchisee</h1>
         <h1 className='font-visita-bold text-3xl text-[#6635E3] capitalize' >{franchiseeData && franchiseeData.franchisee_name}</h1>
 
-        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-visita-bold absolute flex right-28 text-white bg-[#6635E3] px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create Card</h1>
+        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-visita-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-[#6635E3] px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create Card</h1>
 
        </div>
-       <div className="w-full flex justify-center items-center">
-       <div className=" h-10 bg-purple-50 fixed bottom-6  px-12 rounded-full  flex items-center justify-center">
-            <h1 className='font-visita-medium' >Franchisee Id - <span className='text-[#6635E3]' >{franchiseeData && franchiseeData.franchisee_id}</span> <span className="mx-4">|</span>  For any help <span onClick={()=> window.location.href = '/support'} className="cursor-pointer text-[#6635E3] hover:underline">contact visita</span> with this franchisee id</h1>
-       </div>
-       </div>
-
+      
        <div className="w-full font-visita-bold mt-6">
        <Tabs isFitted variant='line' colorScheme="purple">
   <TabList mb='1em'>
@@ -212,12 +208,12 @@ function ManageFranchisee() {
                     <h1  className=' text-5xl mt-3 text-[#6635E3]' >{cards_created_this_month}</h1>
                 </div>
             </div>
-            <div className="w-full h-[290px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
+            <div className="w-full h-[330px] overflow-scroll flex flex-col lg:items-center mt-6 border-t border-purple-600">
 
                 {
                     createdCardsThisMonth && createdCardsThisMonth.map((data,index)=> {
                         return(
-                            <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
+                            <div className="lg:min-w-[100%] min-w-[200%] pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
 
                     <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
                     <div className="flex-1  h-full  flex justify-end items-center pr-12">
@@ -252,12 +248,12 @@ function ManageFranchisee() {
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >{cards_created_today}</h1>
                 </div>
             </div>
-            <div className="w-full h-[290px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
+            <div className="w-full h-[330px] overflow-scroll flex flex-col lg:items-center mt-6 border-t border-purple-600">
 
                 {
                     createdCardsToday && createdCardsToday.map((data,index)=> {
                         return(
-                            <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
+                            <div className="lg:min-w-[100%] min-w-[200%] pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
 
                     <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
                     <div className="flex-1  h-full  flex justify-end items-center pr-12">
@@ -292,12 +288,12 @@ function ManageFranchisee() {
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >{cards_created}</h1>
                 </div>
             </div>
-            <div className="w-full h-[290px] overflow-scroll flex flex-col items-center mt-6 border-t border-purple-600">
+            <div className="w-full h-[330px] overflow-scroll flex flex-col lg:items-center mt-6 border-t border-purple-600">
 
                 {
                     createdCards && createdCards.map((data,index)=> {
                         return(
-                            <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
+                            <div className="lg:min-w-[100%] min-w-[200%] pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
 
                     <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
                     <div className="flex-1  h-full  flex justify-end items-center pr-12">

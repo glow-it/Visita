@@ -118,13 +118,31 @@ async function run() {
     })
 
     app.post('/complete-purchase',(req,res)=> {
-      console.log('In Complete Purchase');
-      paymentHelpers.createSubscription().then((response)=> {
-        res.json(response)
-      }).catch((err)=> {
-        console.log(err);
-        res.json({message: 'Payment Failed',err: err.message})
-      })
+
+      
+
+      // Check Is This First Card
+      if(req.body != null){
+        if(req.body.isFranchiseeFirstCardCreated == false){
+          res.json({isFirst: true})
+        }else{
+          paymentHelpers.createSubscription().then((response)=> {
+            res.json({sub_data:response,isFirst: false})
+          }).catch((err)=> {
+            console.log(err);
+            res.json({message: 'Payment Failed',err: err.message})
+          })
+        }
+      }else{
+        paymentHelpers.createSubscription().then((response)=> {
+          res.json({sub_data:response,isFirst: false})
+        }).catch((err)=> {
+          console.log(err);
+          res.json({message: 'Payment Failed',err: err.message})
+        })
+      }
+
+    
     })
 
     app.post('/verify-payment',(req,res)=> {

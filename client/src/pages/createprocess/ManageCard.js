@@ -1080,7 +1080,7 @@ function HandleForgotPasswordClick(e){
             <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas && cardDatas.views}</h1>
         </div>
 
-        <div className="h-44 w-72 bg-white rounded-3xl mr-6 border flex flex-col items-center justify-center">
+        <div className="h-44 w-72 bg-white rounded-3xl mr-6 lg:mt-0 mt-4 border flex flex-col items-center justify-center">
             <h6 className='text-xl font-visita-medium' >Total Feedbaks</h6>
             <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas.feedbacks && cardDatas.feedbacks.length}</h1>
         </div>
@@ -1107,7 +1107,7 @@ franchiseeDatas.length != 0 ?
   :''  
   }
 
-<div className="w-full h-10 bg-purple-50 fixed bottom-10  flex items-center justify-center">
+<div className="w-full h-10 bg-purple-50 fixed bottom-10  lg:flex hidden items-center justify-center">
             <h1 className='font-visita-medium' >Company Name - <span className='text-[#6635E3]' >{cardDatas && cardDatas.company_name}</span> <span className="mx-4">|</span>  For any help <span onClick={()=> window.location.href = '/support'} className="cursor-pointer text-[#6635E3] hover:underline">contact visita</span> with this company name</h1>
        </div>
     
