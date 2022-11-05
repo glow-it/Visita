@@ -118,7 +118,7 @@ function Hero() {
         
 
           <a
-            onClick={() => navigate("/visita")}
+            onClick={() => navigate("/card/visita")}
             type="button"
             class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 cursor-pointer transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
           >

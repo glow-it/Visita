@@ -114,9 +114,7 @@ onClick={()=> navigate('/')}
               <a href="#benefits" className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 Benefits
               </a>
-              <a onClick={()=> navigate('/template')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
-                Template Model
-              </a>
+            
               <Menu>
                 <MenuButton rightIcon={<ChevronDownIcon />}>
                   <span className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center" >Support <ion-icon name="chevron-down-outline"></ion-icon> </span>
@@ -125,7 +123,8 @@ onClick={()=> navigate('/')}
                   <MenuItem className="hover:text-blue-600 hover:bg-blue-50"  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</a></MenuItem>
                   <MenuItem onClick={()=> {
 
-
+window.tidioChatApi.show();
+window.tidioChatApi.open();
 
 
                   }} className="hover:text-blue-600 hover:bg-blue-50" ><p className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="chatbubble-ellipses"></ion-icon></span>Chat with us</p></MenuItem>
@@ -205,7 +204,7 @@ onClick={()=> navigate('/')}
 
             <p onClick={()=> onClose()} href='#benefits' className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="bulb"></ion-icon> <span className="ml-2 text-slate-600" >Benefits</span></span> </p>
 
-            <p onClick={()=> {navigate('/template');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="logo-buffer"></ion-icon> <span className="ml-2 text-slate-600" >Template Model</span></span> </p>
+          
             
             <p onClick={()=> {var doc = prompt("Enter Company Name");
            
