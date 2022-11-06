@@ -699,3 +699,29 @@ footer {
 #header_create_button{
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+#pass_strength_display{
+  margin-top: -10px;
+  opacity: 0;
+  animation: slide-up .5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#whatis_strong_pass{
+  margin-top: -10px;
+  opacity: 0;
+  animation: slide-up .5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes slide-up{
+  0%{
+    margin-top: -15px;
+    opacity: 0; 
+  }
+  100%{
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+
+input{
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
