@@ -5,7 +5,7 @@ function Cta() {
   return (
     <div
       id="cta"
-      class="border lg:my-20 my-4 rounded-2xl  cta-wrapper relative flex flex-col items-center justify-center overflow-hidden"
+      class="border lg:my-20 my-4 rounded-3xl  cta-wrapper relative flex flex-col items-center justify-center overflow-hidden"
     >
       <h1 className="lg:text-6xl text-3xl font-visita-bold text-primary ">
         Ready To Create

@@ -76,7 +76,7 @@ let navigate = useNavigate()
     
     <div>
 
-      <header className="lg:-ml-6  w-full h-16 flex py-8 pl-8  bg-white fixed z-50 transition-shadow">
+      <header className="  w-full h-16 flex py-8 pl-8  bg-white fixed z-50 transition-shadow">
         <div className="w-3/4 h-full flex items-center">
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
@@ -155,7 +155,7 @@ window.tidioChatApi.open();
         <div className="h-full w-1/4 flex  items-center lg:visible invisible">
 
 
-        <Popover placement="bottom" >
+        <Popover autoFocus={false} placement="bottom" >
   <PopoverTrigger>
   <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
                 <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage Card</span>

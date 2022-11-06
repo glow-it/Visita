@@ -1161,6 +1161,18 @@ function CardPreview() {
                 ₹799
               </h1>
             </div>
+            
+          : cardDatas && cardDatas.franchisee == "no franchisee" ?
+
+          <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
+          <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
+            ₹599
+          </h1>
+          <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-50 text-center">
+            ₹799
+          </h1>
+        </div>
+
             : 
             <div className="flex lg:flex-row flex-col-reverse">
             <h1 className="text-xl font-visita-medium mb-12 lg:mt-4 mt-2 bg-green-50 py-1 px-12 rounded-3xl lg:mr-6 text-green-600 text-center">

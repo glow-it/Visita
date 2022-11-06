@@ -5,7 +5,7 @@ function Hero() {
   let navigate = useNavigate();
 
   return (
-    <div className="w-full hero lg:flex sm:p-10 border-b bg-blend-multiply mt-12">
+    <div className="w-full hero lg:flex sm:p-10 bg-blend-multiply mt-12">
       <svg
         className="absolute hero-aura"
         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ function Hero() {
         </g>
       </svg>
 
-      <div className="lg:w-1/2  w-full  flex flex-col sm:pl-6 pl-6">
+      <div className="lg:w-1/2  w-full  flex flex-col sm:pl-14 pl-6">
 
 
 
@@ -97,7 +97,7 @@ function Hero() {
             {/* See What Is Digital Visiting Card Video */}
 
 
-        <h1 className="font-visita-black lg:pt-16 pt-16 lg:text-6xl text-5xl">
+        <h1 className="font-visita-black lg:pt-18 pt-16 lg:text-6xl text-5xl">
           Take A Boost For Your <span className="text-primary">Business</span>
         </h1>
 

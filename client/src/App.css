@@ -155,7 +155,6 @@ form{
   }
 
   body{
-    padding: 0 24px;
     overflow-x: hidden;
   }
   
@@ -692,6 +691,9 @@ footer {
   #header_logo{
     height: 2.5rem/* 40px */;
   }
+  /* body{
+    padding: 0 24px;
+  } */
 }
 
 #header_create_button{
