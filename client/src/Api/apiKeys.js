@@ -5,5 +5,6 @@ export default {
     emailjs_templateId2: 'template_2ydotyp',
     visita_phone_no: '+919544562748',
     call_phone_no: '+919946365417',
-    visita_email: 'team@visitasmart.com'
+    visita_email: 'team@visitasmart.com',
+    razorpay_key: 'rzp_test_5jgipooQj0bmkG'
 }

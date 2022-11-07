@@ -119,13 +119,32 @@ async function run() {
 
     app.post('/complete-purchase',(req,res)=> {
 
-      
+
+      console.log(req.body);
 
       // Check Is This First Card
-      if(req.body != null){
-        if(req.body.isFranchiseeFirstCardCreated == false){
+      if(req.body.length == 0){
+
+        console.log('No Franchisee'); 
+        paymentHelpers.createSubscription().then((response)=> {
+          res.json({sub_data:response,isFirst: false})
+        }).catch((err)=> {
+          console.log(err);
+          res.json({message: 'Payment Failed',err: err.message})
+        })
+        
+       
+      }else{
+
+console.log('Yes Franchsiee');
+
+
+
+        if(req.body.isFranchiseeFirstCardCreated == "false"){
+          console.log('Franchisee First');
           res.json({isFirst: true})
         }else{
+          console.log('Franchisee Not First');
           paymentHelpers.createSubscription().then((response)=> {
             res.json({sub_data:response,isFirst: false})
           }).catch((err)=> {
@@ -133,13 +152,9 @@ async function run() {
             res.json({message: 'Payment Failed',err: err.message})
           })
         }
-      }else{
-        paymentHelpers.createSubscription().then((response)=> {
-          res.json({sub_data:response,isFirst: false})
-        }).catch((err)=> {
-          console.log(err);
-          res.json({message: 'Payment Failed',err: err.message})
-        })
+
+
+        
       }
 
     

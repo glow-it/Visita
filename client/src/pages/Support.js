@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import { useToast } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useState } from 'react';
+import { Toast } from '../miniComponents/Toast';
 
 function Support() {
 
@@ -26,19 +27,22 @@ function Support() {
         emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId, contact_form, apiKeys.emailjs_publicKey)
         .then((result) => {
             setIsLoading(false)
-            toast({
-                title: 'Message Send',
-                description: "We will read it and respond soon",
-                status: 'success',
-                duration: 6000,
-              })
+            Toast({
+               status:'success',
+               title: 'Message send',
+               description: 'We will read it and response shortly',
+               postition: 'top',
+               toast
+             })
         }, (error) => {
             setIsLoading(false)
-            toast({
-                title: 'Message not send, Try Again!',
-                status: 'error',
-                duration: 6000,
-              })
+            Toast({
+               status:'error',
+               title: 'Message not send',
+               description: 'Try again!',
+               postition: 'top',
+               toast
+             })
         });
     };
 

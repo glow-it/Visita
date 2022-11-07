@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Toast } from "../../miniComponents/Toast";
 
 function Create(props) {
 
@@ -183,12 +184,13 @@ function Create(props) {
    }
  });
  if (!allAreFilled) {
-   toast({
-     title: "Fill All Required Fields",
-     status: "error",
-     duration: 2000,
-     position: "top",
-   });
+  Toast({
+    status:'error',
+    title: 'Fill all required fields',
+    postition: 'top-right',
+    description: 'Check again!',
+    toast
+  })
  } else {
    // Submit Datas
    if(processIndex == maximumProcesses) {
@@ -220,7 +222,13 @@ function Create(props) {
 
   // Upload Files To Cloud
   async function uploadImage(files,id){
-    toastIdRef.current = toast({ description: 'Upoading Image...',position:'top' })
+    toastIdRef.current =  Toast({
+      status:'uploading',
+      title: 'Uploading image...',
+      postition: 'top-right',
+      toast
+    })
+
     const formData = new FormData();
     formData.append("file",files[0]);
     formData.append("upload_preset","xav0wsx1")

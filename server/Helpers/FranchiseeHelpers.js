@@ -52,7 +52,7 @@ module.exports = {
               .updateOne({ email: franchisee_email }, { $inc: { created_cards_thismonth : 1,created_cards_total: 1 } }).then(()=> {
                 
 
-                franchisee_db.collection(franchisee_collections.franchisees).updateOne({email: franchisee_email},{$set : {isFranchiseeFirstCardCreated : true}}).then(()=> {
+                franchisee_db.collection(franchisee_collections.franchisees).updateOne({email: franchisee_email},{$set : {isFranchiseeFirstCardCreated : "true"}}).then(()=> {
                     resolve()
                 }).catch(()=> {
                     reject()

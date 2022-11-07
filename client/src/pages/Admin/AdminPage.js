@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Tooltip, useToast } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { Toast } from '../../miniComponents/Toast'
 
 function AdminPage() {
 
@@ -89,11 +90,11 @@ function handleSalaryPayedClick(franchisee_email){
         if(response.status){
             window.location.href = '/admin/pay-salary'
         }else{
-            toast({
-                position: 'bottom',
+            Toast({
+                status:'error',
                 title: response.data.err,
-                status: 'success',
-                duration: 500
+                postition: 'top',
+                toast
             })
         }
         

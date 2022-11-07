@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Tooltip } from '@chakra-ui/react'
 
 function Successfull() {
   // Function To Capitalize Strings
@@ -76,20 +77,14 @@ function Successfull() {
         <div className="px-10 z-50 h-12 bg-green-50 flex items-center justify-center border border-green-600 text-green-600 rounded-full">
           <h1 className="font-visita-medium lg:text-xl text-center">
           {base_url}/card/ {comp_name}
-            <i
-              data-tooltip-target="tooltip-light"
-              data-tooltip-style="light"
-              data-tooltip-placement="right"
-              class="fa-solid fa-copy text-green-900 cursor-pointer ml-3"
-              onClick={() => {
-                document.getElementById("copy-tooltip").innerText = "Copied!";
-                setTimeout(() => {
-                  document.getElementById("copy-tooltip").innerText =
-                    "Copy Link";
-                }, 2000);
-                navigator.clipboard.writeText(base_url + "/card/" + comp_name);
-              }}
+            
+          <Tooltip   px='4' bg='black' py='2' color='white' rounded='xl' label='click to copy' placement='right'>
+ <i
+             
+              class={`fa-solid fa-copy text-${cardDatas && cardDatas.theme_color}-900 cursor-pointer ml-3`}
+              onClick={()=> navigator.clipboard.writeText(base_url + '/card/' + comp_name)}
             ></i>
+</Tooltip>
           </h1>
           <div
             id="tooltip-light"
@@ -147,20 +142,18 @@ function Successfull() {
           </div>
           <h1 className="font-visita-medium lg:text-xl text-center">
           {manage_card_url}
-            <i
-              data-tooltip-target="tooltip-light"
-              data-tooltip-style="light"
-              data-tooltip-placement="right"
+
+
+          <Tooltip   px='4' bg='black' py='2' color='white' rounded='xl' label='click to copy' placement='right'>
+ <i
+             
               class="fa-solid fa-copy text-blue-900 cursor-pointer ml-3"
-              onClick={() => {
-                document.getElementById("copy-tooltip").innerText = "Copied!";
-                setTimeout(() => {
-                  document.getElementById("copy-tooltip").innerText =
-                    "Copy Link";
-                }, 2000);
-                navigator.clipboard.writeText(manage_card_url);
-              }}
+              onClick={()=> navigator.clipboard.writeText(manage_card_url)}
             ></i>
+</Tooltip>
+
+
+           
           </h1>
           <div
             id="tooltip-light"

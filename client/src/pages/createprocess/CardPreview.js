@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CreateHeader from "../../components/CreateHeader";
 import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
+import { Toast } from "../../miniComponents/Toast";
 
 function CardPreview() {
   let [franchiseeData, setFranchiseeData] = useState([]);
@@ -22,19 +23,22 @@ function CardPreview() {
     axios.get("http://localhost:3005/card/" + name).then((response) => {
       setCardDatas(response.data);
 
+      console.log(response.data);
+
       if (response.data.franchisee != "no franchisee") {
         axios
           .get("/get-franchisee-datas/" + response.data.franchisee)
           .then((res) => {
             if (res.status) {
+              console.log('Franchsiee Yes');
               setFranchiseeData(res.data.franchisee_data);
             } else {
-              toast({
+              Toast({
+                status:'error',
                 title: res.data.err,
-                status: "error",
-                position: "top-right",
-              });
-              navigate("/");
+                postition: 'top',
+                toast
+              })
             }
           });
       } else {
@@ -45,6 +49,7 @@ function CardPreview() {
 
   // Handle Complete Purchase Click
   const handleCompletePurchase = () => {
+    console.log(franchiseeData);
     axios({
       method: "post",
       url: "/complete-purchase",
@@ -52,7 +57,7 @@ function CardPreview() {
     })
       .then((response) => {
         // Check Card Creation Is First
-
+console.log(response.data.isFirst);
 
 
         if (response.data.isFirst == true) {
@@ -91,13 +96,13 @@ function CardPreview() {
                   }
                 );
             } else {
-              toast({
-                title: "An error occured",
-                status: "error",
-                description: response.err,
-                isClosable: false,
-                position: "top-right",
-              });
+              Toast({
+                status:'error',
+                title: 'An error occured',
+                postition: 'top',
+                description: 'Try again!',
+                toast
+              })
             }
           });
 
@@ -109,20 +114,19 @@ function CardPreview() {
         }
       })
       .catch((err) => {
-        toast({
+        Toast({
+          status:'error',
           title: err.message,
-          description: err.err,
-          status: "error",
-          isClosable: false,
-          position: "top-right",
-        });
+          postition: 'top',
+          toast
+        })
       });
   };
 
   // Open Payment Checkout When Create Subscription Is Successfull
   const openPayment = (res) => {
     var options = {
-      key: "rzp_test_5jgipooQj0bmkG",
+      key: apiKeys.razorpay_key,
       subscription_id: res.id,
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",
@@ -174,31 +178,31 @@ function CardPreview() {
                     }
                   );
               } else {
-                toast({
-                  title: "An error occured",
-                  status: "error",
-                  description: response.err,
-                  isClosable: false,
-                  position: "top-right",
-                });
+                Toast({
+                  status:'error',
+                  title: 'An error occured',
+                  postition: 'top',
+                  description: 'Try again!',
+                  toast
+                })
               }
             });
 
-            toast({
-              title: "Payment Successfull",
-              status: "success",
-              isClosable: false,
-              position: "top-right",
-            });
+            Toast({
+              status:'success',
+              title: 'Payment was successfull',
+              postition: 'top',
+              toast
+            })
             navigate("/loading/processing-card");
           } else {
-            toast({
-              title: "Payment Failed",
-              description: "try again!",
-              status: "error",
-              isClosable: false,
-              position: "top-right",
-            });
+            Toast({
+              status:'error',
+              title: 'Payment was failed',
+              postition: 'top',
+              description: 'Try again!',
+              toast
+            })
           }
         });
       },
@@ -221,21 +225,22 @@ function CardPreview() {
     axios.post("/create/cancel-purchase/" + name).then((res) => {
       console.log(res.status);
       if (res.data.status) {
-        toast({
-          title: "Cancel Successfull",
-          status: "success",
-          isClosable: false,
-          position: "top-right",
-        });
+        Toast({
+          status:'success',
+          title: 'Card is cancelled',
+          postition: 'top',
+          description: 'Try again!',
+          toast
+        })
         navigate("/create");
       } else {
-        toast({
-          title: "Oohh Snap!!",
-          description: "We are struggling to cancel purchase",
-          status: "error",
-          isClosable: false,
-          position: "top-right",
-        });
+        Toast({
+          status:'error',
+          title: 'Ohh snap!!',
+          postition: 'top',
+          description: 'We are struggling to cancel card',
+          toast
+        })
       }
     });
     navigate("/loading/cancelling");
@@ -1119,13 +1124,25 @@ function CardPreview() {
       />
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
+
+      <div className="w-[100px] lg:hidden block -mt-12 absolute top-32">
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_pqnfmone.json"  background="transparent"  speed="1" autoplay></lottie-player>
+        </div>
+
         <div
           className={`${
-            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[70%]"
-          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl `}
+            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[75%]"
+          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl`}
         >
+
+
+<div className="w-[100px] lg:block hidden -mt-12 mb-6">
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_pqnfmone.json"  background="transparent"  speed="1" autoplay></lottie-player>
+        </div>
+
+
           <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 -mt-44">
-            <i class="fa-solid fa-check border-2 p-2 mr-3 rounded-full text-white bg-green-500 border-green-500"></i>
+            
             {cardDatas && cardDatas.activated
               ? "Successfully Your Card Is "
               : "Successfully Your Card Was "}
@@ -1152,7 +1169,7 @@ function CardPreview() {
           {cardDatas && cardDatas.activated ? (
             ""
           ) : (
-            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != false ?
+            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != "false" ?
             <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
               <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
                 ₹599

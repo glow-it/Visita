@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from '@chakra-ui/react'
+import apiKeys from '../Api/apiKeys'
+import { Toast } from '../miniComponents/Toast'
 
 
 function FranchiseeRegister() {
@@ -30,7 +32,7 @@ function franchiseeRegisterClick(button){
       setLoading(false)
 
       var options = {
-        key: 'rzp_test_5jgipooQj0bmkG', // Enter the Key ID generated from the Dashboard
+        key: apiKeys.razorpay_key, // Enter the Key ID generated from the Dashboard
         amount: 99900, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Visita | Digital Visiting Card",
@@ -51,19 +53,21 @@ function franchiseeRegisterClick(button){
             data: res_obj,
           }).then((response) => {
             if (response) {
-              toast({
-                title: 'Successfully Registered',
-                position: 'top-right',
-                status: 'success'
+              Toast({
+                status:'success',
+                title: 'Successfully registered',
+                description: 'Lets start!',
+                postition: 'top',
+                toast
               })
               document.getElementById('franchisee_register_form').submit()
             }else{
               setLoading(false)
-              toast({
-                title: 'We Have Troubling To Register Franchisee',
-                description: 'Try again later!',
-                position: 'top-right',
-                status: 'error'
+              Toast({
+                status:'error',
+                title: 'We have troubling to register franchisee!',
+                postition: 'top',
+                toast
               })
             }
           })
@@ -86,12 +90,13 @@ function franchiseeRegisterClick(button){
 
 
     }else{
-      toast({
-        title: 'We Have Troubling To Register Franchisee',
-        description: 'Try again later!',
-        position: 'top-right',
-        status: 'error'
+      Toast({
+        status:'error',
+        title: 'We have troubling to register franchisee!',
+        postition: 'top',
+        toast
       })
+
     }
   })
 }

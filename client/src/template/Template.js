@@ -27,6 +27,7 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Toast } from "../miniComponents/Toast";
 
 function Template({preview}) {
   const toast = useToast();
@@ -130,13 +131,12 @@ function Template({preview}) {
 
       })
       .catch((err) => {
-        toast({
-          title: "An Error Occured",
-          description: err.message,
-          status: "error",
-          duration: 3000,
-          position: "top-right",
-        });
+        Toast({
+          status:'error',
+          title: err.message,
+          postition: 'top',
+          toast
+        })
       });
 
 
@@ -152,12 +152,12 @@ function Template({preview}) {
 
   function copyCardUrl() {
     navigator.clipboard.writeText(window.location.href);
-    toast({
-      title: "Card Copied!",
-      status: "success",
-      duration: 2000,
-      position: "top",
-    });
+    Toast({
+      status:'success',
+      title: 'Card copied!',
+      postition: 'top',
+      toast
+    })
   }
 
   let theme_color = cardDatas && cardDatas.theme_color;

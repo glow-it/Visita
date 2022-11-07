@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Toast } from "../../miniComponents/Toast";
 
 function EditCard() {
 
@@ -79,12 +80,16 @@ function EditCard() {
         setCardDatas(response.data);
         setChoosedThemeColor(response.data.theme_color)
     }).catch((err)=> {
-        toast({
-            title: err.message,
-            status: "error",
-            duration: 2000,
-            position: "top",
-          });
+      toast({
+        position: 'top',
+        duration: 1500,
+        render: () => (
+          <div className='py-2 px-3 mt-14 rounded-full bg-red-50 border border-red-300 text-red-600 flex items-center justify-center' >
+            <span className='mr-1 flex items-center justify-center' ><ion-icon name="close-circle-outline"></ion-icon></span>
+            <span className="font-visita-medium text-sm">{err.message}</span>
+          </div>
+        ),
+      })
     })
 
     // Logo Preview Show
@@ -201,12 +206,13 @@ function EditCard() {
    }
  });
  if (!allAreFilled) {
-   toast({
-     title: "Fill All Required Fields",
-     status: "error",
-     duration: 2000,
-     position: "top",
-   });
+  Toast({
+    status:'error',
+    title: 'Fill all required fields',
+    postition: 'top-right',
+    description: 'Check again!',
+    toast
+  })
  } else {
    // Submit Datas
    if(processIndex == maximumProcesses) {
@@ -231,7 +237,13 @@ function EditCard() {
 
   // Upload Files To Cloud
   async function uploadImage(files,id){
-    toastIdRef.current = toast({ description: 'Upoading Image...',position:'top' })
+    toastIdRef.current = Toast({
+      status:'uploading',
+      title: 'Uploading image...',
+      postition: 'top-right',
+      toast
+    })
+
     const formData = new FormData();
     formData.append("file",files[0]);
     formData.append("upload_preset","xav0wsx1")

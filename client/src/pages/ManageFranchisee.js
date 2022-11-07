@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import Cookies from 'js-cookie';
+import { Toast } from '../miniComponents/Toast'
 
 function ManageFranchisee() {
 
@@ -72,11 +73,12 @@ function ManageFranchisee() {
                     navigate('/franchisee/login')
                 }
             }else{
-                toast({
+                Toast({
+                    status:'error',
                     title: res.data.err,
-                    status: 'error',
-                    position: 'top-right'
-                })
+                    postition: 'top',
+                    toast
+                  })
                 navigate('/')
             }
         })
@@ -155,7 +157,7 @@ function ManageFranchisee() {
          {/* Top Information */}
 
          {
-            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != true ?
+            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != "true" ?
             <div id='franchisee_top_information' className="h-10 w-full bg-green-500 flex items-center justify-center relative">
             <h1 className='flex font-visita-bold text-white' ><span className="mr-2 lg:flex hidden items-center justify-center">
             <ion-icon name="checkmark"></ion-icon></span> Creating The First Card Is Absolutely Free !</h1>

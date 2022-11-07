@@ -12,6 +12,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
 } from '@chakra-ui/react'
+import { Toast } from '../../miniComponents/Toast';
 
 function ManageCard() {
 
@@ -27,6 +28,8 @@ function ManageCard() {
 
 
     useEffect(()=> {
+
+
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
@@ -47,12 +50,13 @@ function ManageCard() {
             if(cardDatas.activated.access_password == password){
                 document.getElementById('manage_auth_wrapper').style.display = 'none'
             }else{
-                toast({
-                    title: 'Invalid Password',
-                    description: 'Try again!! or click forgot password',
-                    position: 'top',
-                    status: 'error'
-                })
+              Toast({
+                status:'error',
+                title: 'Invalid password',
+                description: 'Please enter valid password',
+                postition: 'top',
+                toast
+              })
             }
         }else{
             navigate('/create/preview/' + company_name)
@@ -71,22 +75,24 @@ function ManageCard() {
         }
       }).then((response)=> {
         if(response.status){
-          toast({
-            title: 'Succesfully Card Was Closed',
-            description: 'For any help contact visita',
-            status: 'success',
-            duration: 4000,
-            position: 'top'
+          Toast({
+            status:'success',
+            title: 'Card was closed',
+            postition: 'top',
+            toast
           })
           navigate('/card-closed')
         }else{
-          toast({
-            title: 'Try again!!',
-            description: 'We are troubling to close your card',
-            status: 'error',
-            duration: 2000,
-            position: 'top-right'
+         
+
+          Toast({
+            status:'error',
+            title: 'Card closing failed',
+            description: 'Try again!',
+            postition: 'top',
+            toast
           })
+
         }
       })
       navigate('/loading/closing-card')
@@ -99,21 +105,22 @@ function HandleForgotPasswordClick(e){
   e.target.innerText = 'Please Wait...'
 
   emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
-    toast({
-      title: `Card Password Has Been Send To ${cardDatas && cardDatas.email_id}`,
-      status: 'success',
-      duration: 6000,
-      position: 'top'
+    Toast({
+      status:'success',
+      title: 'Card password has been send to your email',
+      postition: 'top',
+      toast
     })
     e.target.innerText = 'Forgot password?'
 }, (error) => {
   console.log(error);
-   toast({
-      title: 'Card Password Send Failed',
-      status: 'error',
-      duration: 6000,
-      position: 'top'
-    })
+  Toast({
+    status:'error',
+    title: 'Card password send failed',
+    description: 'Try again!',
+    postition: 'top',
+    toast
+  })
     e.target.innerText = 'Forgot password?'
 })
 }

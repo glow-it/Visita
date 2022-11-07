@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import $ from 'jquery'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import apiKeys from '../Api/apiKeys'
+import { Toast } from '../miniComponents/Toast'
 
 function FranchiseeLogin() {
 
@@ -28,21 +29,23 @@ function FranchiseeLogin() {
       data: $("#franchisee_login_form").serialize()
     }).then((response)=> {
       if(response.data.status == true){
-        toast({
-          title: 'Login Successfull',
-          status: 'success',
-          duration: 2000,
-          position: 'top-right'
+        Toast({
+          status:'success',
+          title: 'Login successfull',
+          postition: 'top',
+          toast
         })
+
         navigate('/manage/franchisee')
       }else{
         setLoading(false)
-        toast({
+        Toast({
+          status:'error',
           title: response.data.err,
-          status: 'error',
-          duration: 2000,
-          position: 'top-right'
+          postition: 'top',
+          toast
         })
+
       }
 
       
@@ -115,13 +118,13 @@ function FranchiseeLogin() {
           window.tidioChatApi.show();
           window.tidioChatApi.open();
 
-          
+ 
 
-          toast({
+          Toast({
+            status:'info',
             title: 'Hit On The "Iam Forgot Franchisee Password" Button',
-            status: 'info',
-            duration: 6000,
-            position: 'top-right'
+            postition: 'top',
+            toast
           })
 
  
