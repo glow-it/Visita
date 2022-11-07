@@ -14,17 +14,17 @@ import {
 
 function WhatIsDigitalCard() {
   return (
-    <div className=' w-full flex h-[400px] flex-col relative border-t pl-24' >
+    <div className='lg:w-full lg:border-t-transparent border-t flex lg:h-[400px] h-[850px] flex-col relative lg:pl-24 pl-4' >
 
         <h1 className=' text-4xl font-visita-bold text-blue-600 mt-16' >What Is Digital Visiting Card?</h1>
 
-        <p className=' font-visita-medium text-gray-500 text-lg w-[900px] mt-8' >A digital visiting card is the virtual version of a paper visiting card. Depending on your region, digital visiting cards are also known as digital business cards, smart business cards, mobile business cards, and electronic name cards. Digital cards often take the form of a mobile app.</p>
+        <p className=' font-visita-medium text-gray-500 text-lg lg:w-[900px] w-[300px] mt-8' >A digital visiting card is the virtual version of a paper visiting card. Depending on your region, digital visiting cards are also known as digital business cards, smart business cards, mobile business cards, and electronic name cards. Digital cards often take the form of a mobile app.</p>
 
-        <div className="w-full  absolute bottom-0 flex flex-wrap">
+        <div className="lg:w-full  absolute bottom-0 flex flex-wrap">
 
         <Popover autoFocus={false} placement='top'>
   <PopoverTrigger>
-  <div className="w-1/4 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center rounded-2xl hover:border-blue-600">
+  <div className="min-w-1/4 lg:px-8 px-3 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center lg:text-start text-center rounded-2xl hover:border-blue-600">
                 <p className='text-blue-500 font-visita-medium' >Why Are Digital Disiting Card Important?</p>
             </div>
   </PopoverTrigger>
@@ -41,7 +41,7 @@ function WhatIsDigitalCard() {
 
 <Popover autoFocus={false} placement='top'>
   <PopoverTrigger>
-  <div className="w-1/4 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center rounded-2xl hover:border-blue-600">
+  <div className="min-w-1/4 lg:px-8 px-3 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center lg:text-start text-center rounded-2xl hover:border-blue-600">
                 <p className='text-blue-500 font-visita-medium' >Where Can I Get A Digital Card?</p>
             </div>
   </PopoverTrigger>
@@ -54,7 +54,7 @@ function WhatIsDigitalCard() {
 
 <Popover autoFocus={false} placement='top'>
   <PopoverTrigger>
-  <div className="w-1/4 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center rounded-2xl hover:border-blue-600">
+  <div className="min-w-1/4 lg:px-8 px-3 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center lg:text-start text-center rounded-2xl hover:border-blue-600">
                 <p className='text-blue-500 font-visita-medium' >How Do I Make A Digital Visiting Card?</p>
             </div>
   </PopoverTrigger>
@@ -66,7 +66,7 @@ function WhatIsDigitalCard() {
 
 <Popover autoFocus={false} placement='top'>
   <PopoverTrigger>
-  <div className="w-1/4 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center rounded-2xl hover:border-blue-600">
+  <div className="min-w-1/4 lg:px-8 px-3 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center lg:text-start text-center rounded-2xl hover:border-blue-600">
                 <p className='text-blue-500 font-visita-medium' >How Do I Send A Digital Visiting Card?</p>
             </div>
   </PopoverTrigger>
@@ -91,7 +91,7 @@ function WhatIsDigitalCard() {
 <Popover autoFocus={false} placement='top'>
     
   <PopoverTrigger>
-  <div className="w-1/4 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center rounded-2xl hover:border-blue-600">
+  <div className="min-w-1/4 lg:px-8 px-3 h-16 cursor-pointer border mr-4 mt-4 border-blue-100 bg-blue-50 transition-colors flex items-center justify-center lg:text-start text-center rounded-2xl hover:border-blue-600">
                 <p className='text-blue-500 font-visita-medium' >Are Visiting Cards Still Relevant?</p>
             </div>
   </PopoverTrigger>

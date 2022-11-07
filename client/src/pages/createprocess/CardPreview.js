@@ -1121,8 +1121,8 @@ function CardPreview() {
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
         <div
           className={`${
-            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[80%]"
-          }  z-40 lg:mt-16 mt-32 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl `}
+            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[70%]"
+          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl `}
         >
           <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 -mt-44">
             <i class="fa-solid fa-check border-2 p-2 mr-3 rounded-full text-white bg-green-500 border-green-500"></i>
@@ -1136,7 +1136,7 @@ function CardPreview() {
           </h1>
 
           <h1
-            className={`text-xl font-visita-medium ${
+            className={`lg:text-xl text-sm font-visita-medium ${
               cardDatas && cardDatas.activated
                 ? "text-green-600"
                 : "text-blue-600"
@@ -1182,28 +1182,45 @@ function CardPreview() {
           </div>
           )}
 
-          {cardDatas && cardDatas.activated ? (
+
+<div className="w-full flex lg:justify-center mt-8 flex-col-reverse items-center lg:flex-row">
+
+
+{cardDatas && cardDatas.activated ? (
+            ""
+          ) : (
+            <button
+              onClick={() => cancelPurchase()}
+              className="text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
+            >
+              Cancel Purchase
+            </button>
+          )}
+
+{cardDatas && cardDatas.activated ? (
+
+
+
             <button
               onClick={() => navigate("/create/successfull/" + name)}
               id="complete-purchase-button"
-              className="lg:text-2xl text-xl mt-12 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600"
+              className=" text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600"
             >
               Open Preview
             </button>
           ) : (
             <Button
               className="font-visita-bold"
-              fontSize="2xl"
+              fontSize="lg"
               loadingText="Processing Payment"
               isLoading={isProcessingPayment}
               rounded="full"
               py="7"
               px="7"
-              mt="8"
               color="#fff"
               _hover
               bgColor="#0062FF"
-              mr={3}
+              disabled={false}
               onClick={() => {
                 setIsProcessingPayment(true);
                 handleCompletePurchase();
@@ -1214,16 +1231,10 @@ function CardPreview() {
             </Button>
           )}
 
-          {cardDatas && cardDatas.activated ? (
-            ""
-          ) : (
-            <button
-              onClick={() => cancelPurchase()}
-              className="lg:text-2xl text-xl mt-4 font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 text-black-600 rounded-full"
-            >
-              Cancel Purchase
-            </button>
-          )}
+          
+</div>
+
+
         </div>
       </div>
     </div>

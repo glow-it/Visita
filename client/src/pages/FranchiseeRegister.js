@@ -283,13 +283,9 @@ if(e.target.value.length>= 5){
 <Tooltip   px='4' bg='black' py='4' color='white' rounded='xl' label='this used for pay your
 salary' placement='right'>
 
-<span className='absolute right-4 mt-3 cursor-pointer flex items-center justify-center' > <ion-icon name="help-circle"></ion-icon></span>
+<span className='absolute right-4 mt-3 cursor-pointer flex items-center justify-center' > <ion-icon title='s' name="help-circle"></ion-icon></span>
 
 </Tooltip>
-
-
-            
-
 
           </div>
 

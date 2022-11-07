@@ -238,7 +238,7 @@ form{
 
 @media only screen and (min-width: 350px) and (max-width: 1000px) {
   .hero{
-    height: 115vh !important;
+    height: 107vh !important;
   }
   .benefits-wrapper{
     height: 135vh !important;
@@ -247,9 +247,7 @@ form{
     transform: scale(2.5) !important;
   }
 
-  body{
-    padding: 0 0px;
-  }
+ 
   .cta-wrapper{
     height: 45vh !important;
   }
@@ -691,9 +689,7 @@ footer {
   #header_logo{
     height: 2.5rem/* 40px */;
   }
-  /* body{
-    padding: 0 24px;
-  } */
+  
 }
 
 #header_create_button{

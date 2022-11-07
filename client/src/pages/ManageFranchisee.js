@@ -157,10 +157,10 @@ function ManageFranchisee() {
          {
             franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != true ?
             <div id='franchisee_top_information' className="h-10 w-full bg-green-500 flex items-center justify-center relative">
-            <h1 className='flex font-visita-bold text-white' ><span className="mr-2 flex items-center justify-center">
+            <h1 className='flex font-visita-bold text-white' ><span className="mr-2 lg:flex hidden items-center justify-center">
             <ion-icon name="checkmark"></ion-icon></span> Creating The First Card Is Absolutely Free !</h1>
             <div className="text-white absolute justify-center h-full flex items-center right-8">
-            <span className='cursor-pointer' onClick={()=> {
+            <span className='cursor-pointer lg:block hidden' onClick={()=> {
                 
                 document.getElementById('franchisee_top_information').style.display = 'none'
         
@@ -211,6 +211,12 @@ function ManageFranchisee() {
             <div className="w-full h-[330px] overflow-scroll flex flex-col lg:items-center mt-6 border-t border-purple-600">
 
                 {
+                    createdCardsThisMonth && createdCardsThisMonth.length == 0 ?
+                    <h1 className='text-2xl mt-16 text-slate-600' >No Cards Created This Month!</h1>
+                    : ''
+                }
+
+                {
                     createdCardsThisMonth && createdCardsThisMonth.map((data,index)=> {
                         return(
                             <div className="lg:min-w-[100%] min-w-[200%] pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
@@ -249,6 +255,12 @@ function ManageFranchisee() {
                 </div>
             </div>
             <div className="w-full h-[330px] overflow-scroll flex flex-col lg:items-center mt-6 border-t border-purple-600">
+
+            {
+                    createdCardsToday && createdCardsToday.length == 0 ?
+                    <h1 className='text-2xl mt-16 text-slate-600' >No Cards Created This Today!</h1>
+                    : ''
+                }
 
                 {
                     createdCardsToday && createdCardsToday.map((data,index)=> {
@@ -289,6 +301,12 @@ function ManageFranchisee() {
                 </div>
             </div>
             <div className="w-full h-[330px] overflow-scroll flex flex-col lg:items-center mt-6 border-t border-purple-600">
+
+            {
+                    createdCards && createdCards.length == 0 ?
+                    <h1 className='text-2xl mt-16 text-slate-600' >No Cards Created!</h1>
+                    : ''
+                }
 
                 {
                     createdCards && createdCards.map((data,index)=> {
