@@ -85,6 +85,7 @@ function Create(props) {
           imgPreview.style.display = "block";
           imgPreview.querySelector('img').setAttribute('src',this.result)
           imgPreview.querySelector('img').classList.replace('invisible','visible')
+          imgPreview.querySelector('img').classList.add('min-w-[100px]','min-h-[100px]')
           document.getElementById('logo-upload-svg').style.display = 'none'
           chooseLogoButton.innerText = "Change Logo";
           chooseLogoButton.style.marginLeft = "-20px";
@@ -223,7 +224,7 @@ function Create(props) {
   // Upload Files To Cloud
   async function uploadImage(files,id){
     toastIdRef.current =  Toast({
-      status:'uploading',
+      status:'loading',
       title: 'Uploading image...',
       postition: 'top-right',
       toast
@@ -1230,7 +1231,7 @@ function Create(props) {
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
-                <img className={`ring-4 invisible transition-all ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
+                <img className={`ring-4 invisible transition-all  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
                   <svg
                   id="logo-upload-svg"
                     xmlns="http://www.w3.org/2000/svg"

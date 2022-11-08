@@ -111,6 +111,7 @@ function EditCard() {
           imgPreview.style.display = "block";
           imgPreview.querySelector('img').setAttribute('src',this.result)
           imgPreview.querySelector('img').classList.replace('invisible','visible')
+          imgPreview.querySelector('img').classList.add('min-w-[100px]', 'min-h-[100px]')
           chooseLogoButton.innerText = "Change Logo";
           chooseLogoButton.style.marginLeft = "-20px";
           choose_theme_color.classList.add("active-choose-theme")
@@ -160,6 +161,10 @@ function EditCard() {
 
     
   }, [processIndex]);
+
+
+
+
 
 
 
@@ -238,7 +243,7 @@ function EditCard() {
   // Upload Files To Cloud
   async function uploadImage(files,id){
     toastIdRef.current = Toast({
-      status:'uploading',
+      status:'loading',
       title: 'Uploading image...',
       postition: 'top-right',
       toast
@@ -255,6 +260,40 @@ function EditCard() {
       toast.close(toastIdRef.current)
     }
 
+  }
+
+
+  function checkCompanyNameExists(value){
+    // Check The Company Name Already Exists
+      let company_name_input = document.querySelector('.company_name_input')
+      axios.get('http://localhost:3005/card/all').then((response)=> {
+        response.data.map((data)=> {
+
+        if(data.company_name == value){
+
+            company_name_input.classList.replace('bg-green-50','bg-red-50')
+            company_name_input.classList.replace('border-green-500','border-red-500')
+            company_name_input.classList.replace('text-green-900','text-red-900')
+            company_name_input.classList.replace('placeholder-green-700','placeholder-red-700')
+
+            document.querySelector('.error-message').classList.replace('text-green-600','text-red-600')
+            document.querySelector('.error-message').innerText = 'Oh, snapp! Company name already exists'
+          }else{
+
+            company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
+
+            company_name_input.classList.replace('bg-red-50','bg-green-50')
+            company_name_input.classList.replace('border-red-500','border-green-500')
+            company_name_input.classList.replace('text-red-900','text-green-900')
+            company_name_input.classList.replace('placeholder-red-700','placeholder-green-700')
+
+            document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
+            document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
+
+
+          }
+        })
+      })
   }
 
 
@@ -1195,6 +1234,7 @@ function EditCard() {
                 autoComplete="off"
                 required
                 id="large-input"
+                onChange={(e)=> checkCompanyNameExists(e.target.value)}
                 defaultValue={cardDatas && cardDatas.company_name}
                 name="company_name"
                 class="company_name_input focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
@@ -1211,7 +1251,7 @@ function EditCard() {
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
-                <img src={cardDatas && cardDatas.logo} className={`ring-4  transition-all ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
+                <img src={cardDatas && cardDatas.logo} className={`ring-4 min-w-[100px] min-h-[100px]  transition-all ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
                   
                 </div>
                 <input

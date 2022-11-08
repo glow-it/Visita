@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useToast } from "@chakra-ui/react";
+import { Tooltip, useToast } from "@chakra-ui/react";
 import { QRCode } from "react-qrcode-logo";
 import {
   Modal,
@@ -501,17 +501,33 @@ function Template({preview}) {
                       <div
                         className={` w-full h-16 flex items-center rounded-full border-2 border-${theme_color}-600 pl-4`}
                       >
-                        <span
+
+
+
+
+<span
                           onClick={copyCardUrl}
                           className={`flex text-${theme_color}-600 font-visita-medium text-md w-96`}
                         >
+                         
+
                           <span
                             className={`mr-2 cursor-pointer text-${theme_color}-900 text-xl flex items-center`}
                           >
+                             <Tooltip hasArrow isOpen={true}   px='4' bg='black' py='4' color='white' rounded='xl' label='click to copy!' placement='top'>
                             <ion-icon name="copy"></ion-icon>
+                            </Tooltip>
                           </span>
+                          
                           {window.location.href}
                         </span>
+
+
+
+
+                        
+
+
                       </div>
                     </ModalFooter>
                   </ModalContent>

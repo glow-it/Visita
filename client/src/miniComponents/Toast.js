@@ -13,7 +13,7 @@ export function Toast(props) {
         duration: 2000,
         isClosable : true,
         render: () => (
-          <div className='p-1 px1 mt-6 rounded-full bg-white shadow-md flex items-center' >
+          <div className={`p-1 px1 ${position == 'top-right' ? 'mt-24' : 'mt-3'}  rounded-full bg-white shadow-md flex items-center`} >
            <div className={`h-12 w-12 flex items-center justify-center rounded-full bg-${color}-50`}>
 
             <span className={`text-3xl flex items-center justify-center text-${color}-600`}>
@@ -22,8 +22,8 @@ export function Toast(props) {
                     <ion-icon name="checkmark-circle"></ion-icon>
                     :  props.status == "error" ?
                     <ion-icon name="alert-circle"></ion-icon>
-                    :  props.status == "uploading" ?
-                    <ion-icon name="arrow-down-circle"></ion-icon>
+                    :  props.status == "loading" ?
+                    <ion-icon name="refresh-outline"></ion-icon>
                     :<ion-icon name="information-circle"></ion-icon>
                 }
             

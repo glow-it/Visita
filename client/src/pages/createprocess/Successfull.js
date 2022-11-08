@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { Tooltip } from '@chakra-ui/react'
+import { Tooltip, useToast } from '@chakra-ui/react'
+import { Toast } from "../../miniComponents/Toast";
 
 function Successfull() {
   // Function To Capitalize Strings
@@ -16,13 +17,24 @@ function Successfull() {
   let comp_name = params.comp_name;
   let comp_name_clean = comp_name.replace(/[-]/g, " ");
   let [cardDatas,setCardDatas] = useState([])
+  let [tooltipIsOpen,setTooltipIsOpen] = useState(false)
   let navigate = useNavigate()
   let base_url = 'https://visitasmart.com'
   let manage_card_url = base_url + '/manage/card/' + comp_name
+  let toast = useToast()
   
 
 
   useEffect(() => {
+
+    setTimeout(()=> {
+      setTooltipIsOpen(true)
+    },2500)
+
+    setTimeout(()=> {
+      setTooltipIsOpen(false)
+    },6000)
+
     document.title = "Successfull | " + capitalize(comp_name_clean);
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";  
@@ -78,11 +90,21 @@ function Successfull() {
           <h1 className="font-visita-medium lg:text-xl text-center">
           {base_url}/card/ {comp_name}
             
-          <Tooltip   px='4' bg='black' py='2' color='white' rounded='xl' label='click to copy' placement='right'>
+          <Tooltip  isOpen={tooltipIsOpen} hasArrow   px='4' bg='black' py='2' color='white' rounded='lg' label='click to copy' placement='right'>
  <i
              
               class={`fa-solid fa-copy text-${cardDatas && cardDatas.theme_color}-900 cursor-pointer ml-3`}
-              onClick={()=> navigator.clipboard.writeText(base_url + '/card/' + comp_name)}
+              onClick={()=> {navigator.clipboard.writeText(base_url + '/card/' + comp_name)
+            
+              Toast({
+                status: 'success',
+                title: 'Copied!',
+                postition: 'top',
+                toast
+              })
+              
+            
+            }}
             ></i>
 </Tooltip>
           </h1>
@@ -148,7 +170,18 @@ function Successfull() {
  <i
              
               class="fa-solid fa-copy text-blue-900 cursor-pointer ml-3"
-              onClick={()=> navigator.clipboard.writeText(manage_card_url)}
+              onClick={()=> {navigator.clipboard.writeText(manage_card_url)
+              
+
+                Toast({
+                  status: 'success',
+                  title: 'Copied!',
+                  postition: 'top',
+                  toast
+                })
+              
+              
+              }}
             ></i>
 </Tooltip>
 
