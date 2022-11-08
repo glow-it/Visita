@@ -1020,9 +1020,13 @@ function Template({preview}) {
               </button>
             </div>
           </form>
-          <p class="text-center mt-8 text-gray-500 text-xs pb-6">
-            &copy;2022 Visita. All rights reserved.
+          <p class="text-center mt-8 text-gray-500 text-xs font-visita-medium pb-6">
+            &copy;2022 Visita. All rights reserved. <br />
+           
           </p>
+          <span className="font-visita-bold -mt-4 text-center text-gray-500 text-xs pb-6">
+            visitasmart.com
+            </span>
         </div>
       </div>
 

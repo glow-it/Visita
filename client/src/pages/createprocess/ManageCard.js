@@ -102,7 +102,7 @@ function ManageCard() {
     
 function HandleForgotPasswordClick(e){
 
-  e.target.innerText = 'Please Wait...'
+  e.target.innerText = 'please wait...'
 
   emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
     Toast({
@@ -128,7 +128,7 @@ function HandleForgotPasswordClick(e){
 
 
   return (
-   <div className='flex flex-col items-center' >
+   <div className='flex flex-col items-center pb-28' >
 
 <AlertDialog
         isOpen={isOpen}
@@ -146,10 +146,10 @@ function HandleForgotPasswordClick(e){
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button rounded='full' ref={cancelRef} onClick={onClose}>
                 <span className='font-visita-bold' >Cancel</span>
               </Button>
-              <Button colorScheme='red' onClick={()=> HandleCloseCard()} ml={3}>
+              <Button rounded='full' colorScheme='red' onClick={()=> HandleCloseCard()} ml={3}>
                 <span className='font-visita-bold' >Yes' Close Card</span>
               </Button>
             </AlertDialogFooter>
@@ -1114,8 +1114,13 @@ franchiseeDatas.length != 0 ?
   :''  
   }
 
-<div className="w-full h-10 bg-purple-50 fixed bottom-10  lg:flex hidden items-center justify-center">
-            <h1 className='font-visita-medium' >Company Name - <span className='text-[#6635E3]' >{cardDatas && cardDatas.company_name}</span> <span className="mx-4">|</span>  For any help <span onClick={()=> window.location.href = '/support'} className="cursor-pointer text-[#6635E3] hover:underline">contact visita</span> with this company name</h1>
+ <div className="z-50 flex flex-col items-center">
+ <h1 className='font-visita-medium mt-8' >Do you want to see QRCODE and more?</h1>
+  <button onClick={()=> window.open('/create/successfull/' + company_name)} className="px-6 mt-4 cursor-pointer py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold">Go To Details Page</button>
+ </div>
+
+<div className="w-full lg:h-10 h-14 z-[100] bg-purple-50 fixed lg:bottom-10 bottom-0  flex items-center justify-center">
+            <h1 className='font-visita-medium text-purple-600' >© Visita - All rights reserved</h1>
        </div>
     
    </div>
