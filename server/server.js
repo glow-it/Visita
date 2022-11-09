@@ -164,7 +164,7 @@ console.log('Yes Franchsiee');
       paymentHelpers.verifyPayment(req.body).then(()=> {
         res.json({status: true})
       }).catch(()=> {
-        res.json({status: false})
+        res.json({status: false}) 
       })
     })
 

@@ -24,7 +24,7 @@ export function Toast(props) {
         duration: 2000,
         isClosable : true,
         render: () => (
-          <div className={`p-1 px1 ${position == 'top-right' ? 'mt-24' : position == 'top' ? 'mt-0' : 'mt-4'}  rounded-full bg-white shadow-md flex items-center`} >
+          <div className={`p-1 px1 ${position == 'top-right' ? 'mt-24' :  'mt-4'}  rounded-full bg-white shadow-md flex items-center`} >
            <div className={`h-12 w-12 flex items-center justify-center rounded-full bg-${color}-50`}>
 
             <span className={`text-3xl flex items-center justify-center text-${color}-600`}>
