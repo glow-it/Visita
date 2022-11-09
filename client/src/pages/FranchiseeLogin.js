@@ -6,6 +6,17 @@ import $ from 'jquery'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import apiKeys from '../Api/apiKeys'
 import { Toast } from '../miniComponents/Toast'
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+} from '@chakra-ui/react'
 
 function FranchiseeLogin() {
 
@@ -76,7 +87,7 @@ function FranchiseeLogin() {
       </div>
       <form id='franchisee_login_form' className="mt-8 space-y-6" >
        
-        <div className="-space-y-px rounded-md shadow-sm">
+        <div className="-space-y-px rounded-md ">
           
 
           <div>
@@ -112,26 +123,36 @@ function FranchiseeLogin() {
           </div>
 
           <div class="flex justify-between items-center">
-      <p
-        class="cursor-pointer font-visita-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out" onClick={()=> {
 
-          window.tidioChatApi.show();
-          window.tidioChatApi.open();
-
- 
-
-          Toast({
-            status:'info',
-            title: 'Hit On The "Iam Forgot Franchisee Password" Button',
-            postition: 'top',
-            toast
-          })
-
- 
-
-
-        }}>Forgot
+          <Popover
+        autoFocus={false}
+        placement='auto'
+        closeOnBlur={false}
+      >
+        <PopoverTrigger>
+        <p
+        class="cursor-pointer font-visita-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out">Forgot
         password?</p>
+        </PopoverTrigger>
+        
+        <PopoverContent p={5}>
+
+          <PopoverCloseButton mt='3' mr='2' rounded='full' />
+
+          <h1 className='font-visita-bold text-lg' >Enter Franchisee Email</h1>
+
+          <input id='franchisee_email_input' className='py-2 border-b border-purple-600 font-visita-medium mb-4 mt-2' placeholder='Enter franchisee email' />
+
+          <PopoverFooter>
+          <button onClick={()=> navigate('/franchisee/forgot-password/' + document.getElementById('franchisee_email_input').value)} type='button'  className='franchisee_password_forgot_button mt-4 bg-purple-600 text-white rounded-full py-1.5 px-6 font-visita-bold' >Continue</button>
+        </PopoverFooter>
+        
+        </PopoverContent>
+       
+      </Popover>
+     
+
+
     </div>
 
         </div>
