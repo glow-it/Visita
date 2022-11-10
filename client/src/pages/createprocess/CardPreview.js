@@ -174,7 +174,14 @@ console.log(response.data.isFirst);
                       navigate("/create/successfull/" + name);
                     },
                     (error) => {
-                      console.log(error);
+                      Toast({
+                        status:'error',
+                        title: 'Unable to send card password to your mail',
+                        postition: 'top',
+                        description: 'Contact Visita',
+                        toast
+                      })
+                      navigate("/create/successfull/" + name);
                     }
                   );
               } else {

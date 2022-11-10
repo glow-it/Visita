@@ -44,6 +44,7 @@ module.exports = {
         {
           product_image: data.product_image_1,
           product_name: data.product_1_name,
+          product_description: data.product_1_description,
           product_offerprice: data.product_1_offerprice,
           product_orgprice: data.product_1_orgprice,
           product_link: data.product_1_link,
@@ -52,6 +53,7 @@ module.exports = {
         {
           product_image: data.product_image_2,
           product_name: data.product_2_name,
+          product_description: data.product_2_description,
           product_offerprice: data.product_2_offerprice,
           product_orgprice: data.product_2_orgprice,
           product_link: data.product_2_link,
@@ -60,6 +62,7 @@ module.exports = {
         {
           product_image: data.product_image_3,
           product_name: data.product_3_name,
+          product_description: data.product_3_description,
           product_offerprice: data.product_3_offerprice,
           product_orgprice: data.product_3_orgprice,
           product_link: data.product_3_link,
@@ -68,6 +71,7 @@ module.exports = {
         {
           product_image: data.product_image_4,
           product_name: data.product_4_name,
+          product_description: data.product_4_description,
           product_offerprice: data.product_4_offerprice,
           product_orgprice: data.product_4_orgprice,
           product_link: data.product_4_link,
@@ -76,6 +80,7 @@ module.exports = {
         {
           product_image: data.product_image_5,
           product_name: data.product_5_name,
+          product_description: data.product_5_description,
           product_offerprice: data.product_5_offerprice,
           product_orgprice: data.product_5_orgprice,
           product_link: data.product_5_link,
@@ -84,6 +89,7 @@ module.exports = {
         {
           product_image: data.product_image_6,
           product_name: data.product_6_name,
+          product_description: data.product_6_description,
           product_offerprice: data.product_6_offerprice,
           product_orgprice: data.product_6_orgprice,
         },
@@ -91,6 +97,7 @@ module.exports = {
         {
           product_image: data.product_image_7,
           product_name: data.product_7_name,
+          product_description: data.product_7_description,
           product_offerprice: data.product_7_offerprice,
           product_orgprice: data.product_7_orgprice,
           product_link: data.product_7_link,
@@ -99,6 +106,7 @@ module.exports = {
         {
           product_image: data.product_image_8,
           product_name: data.product_8_name,
+          product_description: data.product_8_description,
           product_offerprice: data.product_8_offerprice,
           product_orgprice: data.product_8_orgprice,
           product_link: data.product_8_link,
@@ -107,6 +115,7 @@ module.exports = {
         {
           product_image: data.product_image_9,
           product_name: data.product_9_name,
+          product_description: data.product_9_description,
           product_offerprice: data.product_9_offerprice,
           product_orgprice: data.product_9_orgprice,
           product_link: data.product_9_link,
@@ -115,6 +124,7 @@ module.exports = {
         {
           pproduct_image: data.pproduct_image_10,
           product_name: data.product_10_name,
+          product_description: data.product_10_description,
           product_offerprice: data.product_10_offerprice,
           product_orgprice: data.product_10_orgprice,
           product_link: data.product_10_link,
@@ -234,6 +244,7 @@ module.exports = {
           {
             product_image: data.product_image_1,
             product_name: data.product_1_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_1_offerprice,
             product_orgprice: data.product_1_orgprice,
             product_link: data.product_1_link,
@@ -242,6 +253,7 @@ module.exports = {
           {
             product_image: data.product_image_2,
             product_name: data.product_2_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_2_offerprice,
             product_orgprice: data.product_2_orgprice,
             product_link: data.product_2_link,
@@ -250,6 +262,7 @@ module.exports = {
           {
             product_image: data.product_image_3,
             product_name: data.product_3_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_3_offerprice,
             product_orgprice: data.product_3_orgprice,
             product_link: data.product_3_link,
@@ -258,6 +271,7 @@ module.exports = {
           {
             product_image: data.product_image_4,
             product_name: data.product_4_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_4_offerprice,
             product_orgprice: data.product_4_orgprice,
             product_link: data.product_4_link,
@@ -266,6 +280,7 @@ module.exports = {
           {
             product_image: data.product_image_5,
             product_name: data.product_5_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_5_offerprice,
             product_orgprice: data.product_5_orgprice,
             product_link: data.product_5_link,
@@ -274,6 +289,7 @@ module.exports = {
           {
             product_image: data.product_image_6,
             product_name: data.product_6_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_6_offerprice,
             product_orgprice: data.product_6_orgprice,
           },
@@ -281,6 +297,7 @@ module.exports = {
           {
             product_image: data.product_image_7,
             product_name: data.product_7_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_7_offerprice,
             product_orgprice: data.product_7_orgprice,
             product_link: data.product_7_link,
@@ -289,6 +306,7 @@ module.exports = {
           {
             product_image: data.product_image_8,
             product_name: data.product_8_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_8_offerprice,
             product_orgprice: data.product_8_orgprice,
             product_link: data.product_8_link,
@@ -297,6 +315,7 @@ module.exports = {
           {
             product_image: data.product_image_9,
             product_name: data.product_9_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_9_offerprice,
             product_orgprice: data.product_9_orgprice,
             product_link: data.product_9_link,
@@ -305,6 +324,7 @@ module.exports = {
           {
             pproduct_image: data.pproduct_image_10,
             product_name: data.product_10_name,
+            product_description: data.product_1_description,
             product_offerprice: data.product_10_offerprice,
             product_orgprice: data.product_10_orgprice,
             product_link: data.product_10_link,

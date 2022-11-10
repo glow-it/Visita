@@ -1990,6 +1990,14 @@ function Create(props) {
                     />
 
                     <input
+                      placeholder="Enter Product Description (Optional)"
+                      autoComplete="off"
+                      id="large-input"
+                      name={`product_${data}_description`}
+                      class=" font-visita-medium block py-3.5 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                    />
+
+                    <input
                       placeholder="₹ Enter Product Original Price"
                       autoComplete="off"
                       id="large-input"

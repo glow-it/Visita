@@ -316,7 +316,7 @@ function EditCard() {
 
 
     {/* Last Confirm Modal */}
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="3px"  isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader><span className="font-visita-bold" >Are You Sure To Update?</span></ModalHeader>
@@ -324,7 +324,7 @@ function EditCard() {
             <span className="font-visita-medium" >You Can Confirm You Have Entered Informations Is Correct</span>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={()=> {
+            <Button rounded='full' color='#fff' _hover bgColor='#0062FF' mr={3} onClick={()=> {
               setLoading(true)
               onClose()
               let cardForm = document.getElementById("cardForm");
@@ -333,7 +333,7 @@ function EditCard() {
             }}>
               <span className="font-visita-bold" >Yes' Update Card</span>
             </Button>
-            <Button variant='solid' onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
+            <Button rounded='full'  variant='solid' onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -2032,6 +2032,15 @@ function EditCard() {
                       name={`product_${index + 1}_name`}
                       defaultValue={data.product_name}
                       class=" font-visita-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                    />
+
+<input
+                      placeholder="Enter Product Description (Optional)"
+                      autoComplete="off"
+                      id="large-input"
+                      name={`product_${index + 1}_description`}
+                      defaultValue={data.product_description}
+                      class=" font-visita-medium block py-3.5 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
                     <input

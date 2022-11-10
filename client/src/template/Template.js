@@ -170,10 +170,10 @@ function Template({preview}) {
   let call_url = `tel:+91${cardDatas && cardDatas.phone_no}`;
   let website_url = cardDatas && cardDatas.website;
   let share_whatsapp_url = `https://api.whatsapp.com/send?text=${window.location.href}`;
-  let share_sms_url = `sms:?body=${window.location.href}}`;
-  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}}`;
-  let share_twitter_url = `https://twitter.com/intent/tweet?text=${window.location.href}}`;
-  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}}`;
+  let share_sms_url = `sms:?body=${window.location.href}`;
+  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
+  let share_twitter_url = `https://twitter.com/intent/tweet?text=${window.location.href}`;
+  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}`;
 
   console.log(bgImage && bgImage);
 
@@ -584,8 +584,8 @@ function Template({preview}) {
 
           {cardDatas && cardDatas.specials != "" ? (
             <div className=" flex flex-col items-start">
-              <span className="  text-md font-visita-bold text-lg mt-8 mb-6 flex">
-                Our Specialities
+              <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
+                Our Specialities <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-down-circle"></ion-icon></span>
               </span>
               <h1 className=" text-xl font-visita-medium list-item mb-4">
                 {cardDatas && cardDatas.specials}
@@ -597,8 +597,8 @@ function Template({preview}) {
 
           {cardDatas && cardDatas.features != "" ? (
             <div className=" flex flex-col items-start">
-              <span className="  text-md font-visita-bold text-lg mt-8 mb-6 flex">
-                Our Features
+              <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
+                Our Features <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-down-circle"></ion-icon></span>
               </span>
               <h1 className=" text-xl font-visita-medium list-item mb-4">
                 {cardDatas && cardDatas.features}
@@ -632,16 +632,21 @@ function Template({preview}) {
                   <div
                     z
                     div
-                    className={`w-full pb-12 mb-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative mt-20`}
+                    className={`w-full pb-12 mb-8 px-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative mt-20`}
                   >
                     <img
                       src={data.product_image}
                       className=" h-full  w-full py-6 rounded-3xl offer-image"
                     />
-                    <h1 className=" pt-6 text-xl font-visita-bold">
+                    <h1 className=" pt-6 text-center text-xl font-visita-bold">
                       {data.product_name}
                     </h1>
-                    <h1 className=" pt-3 font-visita-medium text-green-500 text-xl">
+
+                    <h1 className=" mt-4 text-center  text-md font-visita-medium text-slate-400">
+                      {data.product_description}
+                    </h1>
+
+                    <h1 className=" pt-4 font-visita-medium text-green-500 text-xl">
                       <span className=" mr-2 text-slate-600 line-through">
                         {`₹${data.product_orgprice}`}
                       </span>
@@ -662,8 +667,6 @@ function Template({preview}) {
                         className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-visita-bold text-lg mt-2 `}
                       >
                         View Product
-                        <span className=" ml-1 text-white text-xl"></span>
-                        <ion-icon name="link"></ion-icon>
                       </a>
                     ) : (
                       ""

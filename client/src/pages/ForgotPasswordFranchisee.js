@@ -1,57 +1,73 @@
 import { Button, Link, Spinner, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import apiKeys from "../Api/apiKeys";
 import Timer from "../miniComponents/Timer";
 import { Toast } from "../miniComponents/Toast";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 function ForgotPasswordFranchisee() {
 
     let [otp,setOtp] = useState()
     let [otpSend,setOtpSend] = useState(false)
     let [otpSendError,setOtpSendError] = useState(false)
+    let [franchiseeDatas,setFranchiseeDatas] = useState([])
     let toast = useToast()
+    let navigate = useNavigate()
 
     useEffect(()=> {
         let otp = Math.floor(100000 + Math.random() * 900000)
         setOtp(otp)
+
+
+        axios.get('/get-franchisee-datas/' + params.franchisee_email).then((response)=> {
+            setFranchiseeDatas(response.data.franchisee_data)
+        })
+
+
     },[])
 
-    useEffect(()=> {
-        let send_otp_form = document.getElementById('otp_email_send_form')
-
-        emailjs
-                  .sendForm(
-                    apiKeys.emailjs_serviceId,
-                    apiKeys.emailjs_templateId,
-                    send_otp_form,
-                    apiKeys.emailjs_publicKey
-                  )
-                  .then(
-                    (result) => {
-            setOtpSend(true)
-                        Toast({
-                            postition : 'top',
-                            status: 'success',
-                            title: 'OTP Send Successfull',
-                            toast
-                          })
-                    },
-                    (error) => {
-                     
-                      setOtpSendError(true)
-                    }
-        );
 
 
-    },[otp])
+    function sendOTP(){
+      let send_otp_form = document.getElementById('otp_email_send_form')
+      document.getElementById('otp_sending_wrapper').classList.replace('hidden','flex')
+      document.getElementById('send_otp_button_wrapper').classList.replace('flex','hidden')
+
+      emailjs
+                .sendForm(
+                  apiKeys.emailjs_serviceId,
+                  apiKeys.emailjs_templateId,
+                  send_otp_form,
+                  apiKeys.emailjs_publicKey
+                )
+                .then(
+                  (result) => {
+          setOtpSend(true)
+                      Toast({
+                          postition : 'top',
+                          status: 'success',
+                          title: 'OTP Send Successfull',
+                          toast
+                        })
+                  },
+                  (error) => {
+                    setOtpSendError(true)
+                  }
+      );
+
+    }
+
+       
+
+
 
     let params = useParams()
     let franchisee_email = params.franchisee_email
 
 
-    document.addEventListener("DOMContentLoaded", function (event) {
+
         function OTPInput() {
           const inputs = document.querySelectorAll("#otp > *[id]");
           for (let i = 0; i < inputs.length; i++) {
@@ -75,8 +91,12 @@ function ForgotPasswordFranchisee() {
             });
           }
         }
-        OTPInput();
-      });
+
+        setTimeout(()=> {
+
+          OTPInput();
+
+        },2000)
 
 
 
@@ -86,6 +106,21 @@ function ForgotPasswordFranchisee() {
       elem.style.display = "none";
     });
   }, []);
+
+
+  function verifyOtp(){
+    let entered_otp = `${document.getElementById('first').value}${document.getElementById('second').value}${document.getElementById('third').value}${document.getElementById('fourth').value}${document.getElementById('fifth').value}${document.getElementById('sixth').value}`
+
+    if(entered_otp == otp){
+      document.querySelector('.forgot_franchisee_password_successfull').classList.replace('hidden','flex')
+    }else{
+      alert('Invalid OTP')
+    }
+
+
+  }
+
+  console.log(franchiseeDatas && franchiseeDatas);
 
  
 
@@ -104,18 +139,33 @@ function ForgotPasswordFranchisee() {
       <div class="container mx-auto">
         <div class="max-w-sm mx-auto md:max-w-lg "> 
           <div class="w-full ">
-            <div class="bg-white relative shadow-md h-[450px] flex flex-col justify-center py-3 rounded-3xl text-center">
+            <div class="bg-white overflow-hidden relative shadow-md h-[450px] flex flex-col justify-center py-3 rounded-3xl text-center">
+
+              <div className="forgot_franchisee_password_successfull h-full z-50 absolute w-full rounded-3xl bg-white hidden flex-col items-center  pt-24">
+                <span className="text-green-500 text-6xl" ><ion-icon name="checkmark-circle"></ion-icon></span>
+                <span className="mt-4 font-visita-medium mb-1" >Your Franchisee Password Is</span>
+                <span className="mt-2 font-visita-bold py-1.5 px-6 bg-green-100 text-green-600 rounded-full" >{franchiseeDatas && franchiseeDatas.password}</span>
+              </div>
 
 
-                <div className={`h-[75%] rounded-3xl absolute w-full bg-white ${otpSend ? 'hidden' : 'flex'}  pt-16 justify-center bottom-0`}>
+                <div className={`h-[75%] z-10 rounded-3xl absolute w-full bg-white ${otpSend ? 'hidden' : 'flex'}  pt-16 justify-center bottom-0`}>
                     { !otpSendError ? 
-                        <div className="flex">
+                     <div>
+                         <div id="otp_sending_wrapper" className="hidden">
                     <Spinner color='purple.600' thickness='3px'
   speed='0.5s' />
                     <span className="font-visita-medium ml-3">
                     Sending OTP
                     </span>
                     </div>
+
+                    <div id='send_otp_button_wrapper' className="flex">
+                       <button onClick={()=> sendOTP()} className="border border-purple-600 transition-transform  font-visita-bold rounded-full px-6 py-2 text-purple-600 hover:scale-105 mt-4 text-md">
+                    send OTP
+                </button>
+
+                    </div>
+                     </div>
                 : 
                 <div className="flex flex-col" >
 
@@ -178,13 +228,13 @@ function ForgotPasswordFranchisee() {
               </div>
 
               <div class="flex flex-col items-center text-center mt-5">
-              <button className="bg-purple-600 transition-colors mb-4 mt-8 font-visita-bold rounded-full px-6 py-2 text-white hover:bg-purple-800 text-xl">
+              <button onClick={()=> verifyOtp()} className="bg-purple-600 transition-colors mb-4 mt-8 font-visita-bold rounded-full px-6 py-2 text-white hover:bg-purple-800 text-xl">
                     Verify Otp
                 </button>
 
                {
                 otpSend ?
-                <div> <Timer initialSeconds={30} />
+                <div> <Timer initialMinute={1} />
 
                 <a id="forgot_franchisee_password_resend_otp_button" class="hidden font-visita-bold items-center text-purple-600 hover:text-purple-900 cursor-pointer">
                     <Button bg='white' _hover >Resend OTP</Button>
