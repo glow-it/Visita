@@ -1,4 +1,4 @@
-const { franchisee_collections } = require("../Common/Collections")
+const { franchisee_collections } = require("../Common/collections")
 
 module.exports = {
     createFranchisee:(franchisee_db,franchisee_data)=> {

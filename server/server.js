@@ -7,7 +7,7 @@ const {
   mongo_uri,
   franchisee_database_name,
 } = require("./Common/strings");
-const { client_collections } = require("./Common/Collections");
+const { client_collections } = require("./Common/collections");
 const clientHelpers = require("./Helpers/clientHelpers");
 const adminHelpers = require("./Helpers//adminHelpers");
 const paymentHelpers = require("./Helpers/paymentHelpers");

@@ -1,5 +1,5 @@
 const { ObjectId, Db } = require("mongodb");
-const { client_collections } = require("../Common/Collections");
+const { client_collections } = require("../Common/collections");
 
 module.exports = {
   createCard: (data, client_db) => {
