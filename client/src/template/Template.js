@@ -348,7 +348,15 @@ function Template({preview}) {
                   </div>
                 </div>
 
-                <div className=" w-full flex items-center justify-center mt-8">
+                <div className=" w-full flex flex-wrap items-center justify-center mt-8">
+
+                <button
+                  className={`flex w-full justify-center mb-4 items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg`}
+                >
+                  Save Card <span className=" ml-1 text-white text-xl"></span>
+                  <ion-icon name="arrow-down-circle"></ion-icon>
+                </button>
+                
                  
                  {
                   cardDatas && cardDatas.gmap_location ?
