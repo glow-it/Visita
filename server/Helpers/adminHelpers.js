@@ -1,4 +1,4 @@
-const { admin_collections, franchisee_collections } = require("../Common/Collections");
+const { admin_collections, franchisee_collections } = require("../Common/collections");
 
 module.exports = {
     getBgImages: (admin_db)=> {
