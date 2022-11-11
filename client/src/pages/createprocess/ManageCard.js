@@ -34,7 +34,7 @@ function ManageCard() {
             elem.style.display = 'none'
         })
         axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
-          console.log(response);
+
           if(response.data != null){
             setCardDatas( response.data )
             if(response.data.franchisee != "no franchisee"){
@@ -60,7 +60,7 @@ function ManageCard() {
     },[])
 
     function handleClickManage(password){
-      console.log(cardDatas && cardDatas);
+
         if(cardDatas.activated) {
             if(cardDatas.activated.access_password == password){
                 document.getElementById('manage_auth_wrapper').style.display = 'none'

@@ -432,13 +432,7 @@ module.exports = {
       let products = update_data.products
       let image_gallery = update_data.image_gallery
 
-      console.log(
-        'In Update Card : ',
-        all_data,
-        yt_videos,
-        products,
-        image_gallery
-      );
+     
 
       client_db.collection(client_collections.visiting_card_datas).updateOne( { company_name: company_name },
       {

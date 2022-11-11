@@ -21,7 +21,7 @@ module.exports = {
         })
     },
     verifyPayment: (res_datas)=> {
-        console.log(res_datas);
+       
         return new Promise((resolve,reject)=> {
             const crypt = crypto.createHmac('sha256', razorpay.key_secret)
             crypt.update(res_datas.payment_id+'|'+res_datas.subscription_id)

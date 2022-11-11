@@ -39,7 +39,7 @@ function EditCard() {
   let products = cardDatas && cardDatas.products
   let image_gallery = cardDatas && cardDatas.image_gallery
 
-  console.log();
+
 
   useEffect(()=> {
     if(cardDatas.activated){

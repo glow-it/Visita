@@ -120,7 +120,7 @@ function ForgotPasswordFranchisee() {
 
   }
 
-  console.log(franchiseeDatas && franchiseeDatas);
+
 
  
 

@@ -35,7 +35,7 @@ module.exports = {
     },
 
     getFranchisee: (franchisee_email,franchisee_db)=> {
-        console.log("Sanam",franchisee_email);
+       
         return new Promise((resolve,reject)=> {
             franchisee_db.collection(franchisee_collections.franchisees).findOne({email:franchisee_email}).then((response)=> {
                 resolve(response)

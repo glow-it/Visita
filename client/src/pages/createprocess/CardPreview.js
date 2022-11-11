@@ -23,14 +23,13 @@ function CardPreview() {
     axios.get("http://localhost:3005/card/" + name).then((response) => {
       setCardDatas(response.data);
 
-      console.log(response.data);
+
 
       if (response.data.franchisee != "no franchisee") {
         axios
           .get("/get-franchisee-datas/" + response.data.franchisee)
           .then((res) => {
             if (res.status) {
-              console.log('Franchsiee Yes');
               setFranchiseeData(res.data.franchisee_data);
             } else {
               Toast({
@@ -49,7 +48,7 @@ function CardPreview() {
 
   // Handle Complete Purchase Click
   const handleCompletePurchase = () => {
-    console.log(franchiseeData);
+
     axios({
       method: "post",
       url: "/complete-purchase",
@@ -57,7 +56,7 @@ function CardPreview() {
     })
       .then((response) => {
         // Check Card Creation Is First
-console.log(response.data.isFirst);
+
 
 
         if (response.data.isFirst == true) {
@@ -230,7 +229,7 @@ console.log(response.data.isFirst);
   // When Cancel Purchase Button Click
   function cancelPurchase() {
     axios.post("/create/cancel-purchase/" + name).then((res) => {
-      console.log(res.status);
+
       if (res.data.status) {
         Toast({
           status:'success',

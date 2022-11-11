@@ -90,7 +90,7 @@ async function run() {
     });
 
     app.post('/update/feedback/:name',(req,res)=> {
-      console.log(req.body);
+
       let obj = {
         name : req.body.name,
         feedback: req.body.feedback,
@@ -120,12 +120,12 @@ async function run() {
     app.post('/complete-purchase',(req,res)=> {
 
 
-      console.log(req.body);
+
 
       // Check Is This First Card
       if(req.body.length == 0){
 
-        console.log('No Franchisee'); 
+      
         paymentHelpers.createSubscription().then((response)=> {
           res.json({sub_data:response,isFirst: false})
         }).catch((err)=> {
@@ -136,15 +136,15 @@ async function run() {
        
       }else{
 
-console.log('Yes Franchsiee');
+
 
 
 
         if(req.body.isFranchiseeFirstCardCreated == "false"){
-          console.log('Franchisee First');
+         
           res.json({isFirst: true})
         }else{
-          console.log('Franchisee Not First');
+         
           paymentHelpers.createSubscription().then((response)=> {
             res.json({sub_data:response,isFirst: false})
           }).catch((err)=> {
@@ -197,7 +197,7 @@ console.log('Yes Franchsiee');
 
     app.get('/bg-images',(req,res)=> {
       adminHelpers.getBgImages(admin_db).then((response)=> {
-        console.log(admin_db);
+       
         res.json(response)
       })
     })
@@ -212,10 +212,7 @@ console.log('Yes Franchsiee');
 
     app.post('/updatecard/:comp_name',(req,res)=> {
       clientHelpers.updateCleanCardDatas(req.body).then((response)=> {
-        console.log(
-          'Cleaned Datas : ',
-         response
-        );
+       
         clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
           let new_comp_name = req.body.company_name.replace(/[ ]/g,'-')
           res.redirect('/create/successfull/' + new_comp_name)
@@ -316,7 +313,7 @@ console.log('Yes Franchsiee');
 
     app.post('/salary-payed/:franchisee_email',(req,res)=> {
       adminHelpers.salaryPayed(franchisee_db,req.params.franchisee_email).then(()=> {
-        console.log('Successfull');
+
         res.json({status:true})
       }).catch((err)=> {
         console.log("err",err);

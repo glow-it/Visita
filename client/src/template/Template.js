@@ -67,7 +67,7 @@ function Template({preview}) {
     axios
       .get(card_url)
       .then((response) => {
-        console.log(response);
+
         setCardDatas(response.data);
         setProducts(response.data.products);
         setGalleryImages(response.data.image_gallery);
@@ -175,7 +175,7 @@ function Template({preview}) {
   let share_twitter_url = `https://twitter.com/intent/tweet?text=${window.location.href}`;
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}`;
 
-  console.log(bgImage && bgImage);
+
 
 
   return (
@@ -727,7 +727,7 @@ function Template({preview}) {
                 return data != "";
               })
               .map((data) => {
-                console.log(data);
+
                 var video_id = data.split("v=")[1];
                 var ampersandPosition = video_id.indexOf("&");
                 if (ampersandPosition != -1) {

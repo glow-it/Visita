@@ -382,6 +382,7 @@ function Footer() {
                <div class="flex items-center mb-6">
                   <a
                      href="https://www.instagram.com/visita.smart/"
+                     target='_blank'
                      class="
                      w-8
                      h-8
@@ -392,7 +393,7 @@ function Footer() {
                      border border-[#E5E5E5]
                      text-dark
                      hover:text-blue-500 hover:bg-primary hover:border-primary
-                     mr-3
+                     mr-2
                      sm:mr-4
                      lg:mr-3
                      xl:mr-4
@@ -401,6 +402,57 @@ function Footer() {
                      <ion-icon name="logo-instagram"></ion-icon>
                  
                   </a>
+
+
+                  <a
+                     href="https://www.twitter.com/TeamVisita"
+                     target='_blank'
+                     class="
+                     w-8
+                     h-8
+                     flex
+                     items-center
+                     justify-center
+                     rounded-full
+                     border border-[#E5E5E5]
+                     text-dark
+                     hover:text-blue-500 hover:bg-primary hover:border-primary
+                     mr-2
+                     sm:mr-4
+                     lg:mr-3
+                     xl:mr-4
+                     "
+                     >
+                     <ion-icon name="logo-twitter"></ion-icon>
+                 
+                  </a>
+
+
+                  <a
+                     href="https://www.facebook.com/profile.php?id=100087219987593"
+                     target='_blank'
+                     class="
+                     w-8
+                     h-8
+                     flex
+                     items-center
+                     justify-center
+                     rounded-full
+                     border border-[#E5E5E5]
+                     text-dark
+                     hover:text-blue-500 hover:bg-primary hover:border-primary
+                     mr-2
+                     sm:mr-4
+                     lg:mr-3
+                     xl:mr-4
+                     "
+                     >
+                     <ion-icon name="logo-facebook"></ion-icon>
+                 
+                  </a>
+
+
+
                </div>
                <p class="text-base text-body-color">&copy; 2022 Visita</p>
                <p class="text-black mt-3 font-visita-medium">Powered By GlowiIt Labs</p>
