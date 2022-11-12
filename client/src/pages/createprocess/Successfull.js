@@ -4,7 +4,8 @@ import { QRCode } from "react-qrcode-logo";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Tooltip, useToast } from '@chakra-ui/react'
 import { Toast } from "../../miniComponents/Toast";
-import html2canvas from 'html2canvas';
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 
 function Successfull() {
@@ -65,7 +66,7 @@ function Successfull() {
 
 
   // Download QR Code
-  function PrintDiv()
+  function downloadQrCode()
 {
 
   let company_name = cardDatas && cardDatas.company_name.replace(/[ ]/g,'-').toLowerCase()
@@ -77,6 +78,17 @@ function Successfull() {
   var dataURL = canvas.toDataURL("image/jpg");
   downloadLink.setAttribute('href', dataURL);
   downloadLink.click();
+}
+
+function downloadQrCodeDesign(){
+  htmlToImage.toJpeg(document.getElementById('qr-code-design'), { quality: 0.95 })
+  .then(function (dataUrl) {
+    var link = document.createElement('a');
+    link.download = `${params.comp_name}-qrcode-design.jpeg`;
+    link.href = dataUrl;
+    link.click();
+  });
+
 }
 
 
@@ -107,7 +119,7 @@ function Successfull() {
         </h1>
         <div className="px-10 z-50 h-12 bg-green-50 flex items-center justify-center border border-green-600 text-green-600 rounded-full">
           <h1 className="font-visita-medium lg:text-xl text-center">
-          {base_url}/card/ {comp_name}
+          {base_url}/card/{comp_name}
             
           <Tooltip  isOpen={tooltipIsOpen} hasArrow   px='4' bg='black' py='2' color='white' rounded='lg' label='click to copy' placement='right'>
  <i
@@ -138,16 +150,16 @@ function Successfull() {
           </div>
         </div>
 
-          <div className="lg:w-[50%] relative w-full py-10 lg:pt-10 pt-16 bg-white border mt-8 rounded-3xl z-50 flex items-center justify-center">
+          <div id="qr-code-design" className={`lg:w-[50%] flex-col  ring-2 ring-offset-2 ring-${cardDatas && cardDatas.theme_color}-600 relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${cardDatas && cardDatas.theme_color}-600 border mt-8 rounded-3xl z-50 flex items-center justify-center`}>
 
-          <Tooltip  isOpen={tooltipIsOpen} hasArrow   px='4' bg='black' py='2' color='white' rounded='lg' label='click to download qrcode' placement='right'>
+          
 
-            <span onClick={()=> PrintDiv()}  className="py-2 px-2 transition-all rounded-full cursor-pointer text-xl hover:bg-blue-600 hover:text-white absolute right-5 top-4 flex items-center justify-center bg-white border-blue-600 border text-blue-600" ><ion-icon name="arrow-down-outline"></ion-icon></span>
+            <div className={`w-full h-16 absolute top-0 rounded-2xl rounded-b bg-white text-${cardDatas && cardDatas.theme_color}-600 flex items-center justify-center`}>
+              <h1 className="font-visita-bold text-4xl capitalize" >{params.comp_name}</h1>
+            </div>
 
-            </Tooltip>
-
-        
-         <QRCode
+        <div className="py-3 px-3 rounded-2xl bg-white">
+        <QRCode
          id="qr-code"
          enableCORS={true}
               value={`${base_url}/${comp_name}`}
@@ -158,16 +170,36 @@ function Successfull() {
               size={280}
               qrStyle="dots"
               fgColor={cardDatas && cardDatas.theme_color}
+              bgColor='transparent'
             />
+        </div>
+
+        <div className="py-3 px-6 rounded-full mt-6 bg-white">
+          <h1 className={`font-visita-medium text-${cardDatas && cardDatas.theme_color}-600`} >visitasmart.com/card/{comp_name}</h1>
+        </div>
+
+        <h1 className="font-visita-bold text-xl text-center mt-6 text-white ">
+          Scan This QR Code To <br /> Go to Our Website
+        </h1>
+        
          </div>
 
-          <div className="w-[50%] mt-4 h-16 flex items-center justify-center z-50">
+          <div className="w-[50%] mt-16 h-32 flex flex-col items-center justify-center z-50">
 
 
-              <button onClick={()=> window.open(base_url + '/card/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
+
+
+          <button onClick={()=> window.open(base_url + '/card/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
+
+
+<button onClick={()=> downloadQrCode()} className=" py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Download QRCODE</button>
+
+
+<button onClick={()=> downloadQrCodeDesign()} className=" py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Download QRCODE Design</button>
+
           </div>
 
-          <div className="w-50 z-50 h-16 mt-10 flex items-center justify-center">
+          <div className="w-50 z-50 h-16 mt-16 flex items-center justify-center">
 
          <a href={share_facebook_url}> <i class="fa-brands text-blue-600 hover:text-blue-900 text-4xl fa-facebook mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
 
