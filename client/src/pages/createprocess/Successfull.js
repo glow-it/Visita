@@ -22,7 +22,7 @@ function Successfull() {
   let [cardDatas,setCardDatas] = useState([])
   let [tooltipIsOpen,setTooltipIsOpen] = useState(false)
   let navigate = useNavigate()
-  let base_url = 'https://visitasmart.com'
+  let base_url = 'https://visitasmart.com/#'
   let manage_card_url = base_url + '/manage/card/' + comp_name
   let toast = useToast()
   
@@ -43,7 +43,7 @@ function Successfull() {
       elem.style.display = "none";  
     });
 
-  axios.get('/api/card/' + comp_name).then((response)=> {
+  axios.get('card/' + comp_name).then((response)=> {
     setCardDatas(response.data)
     if(!response.data.activated){
       navigate('/create/preview/' + comp_name)
@@ -175,7 +175,7 @@ function downloadQrCodeDesign(){
         </div>
 
         <div className="py-3 px-6 rounded-full mt-6 bg-white">
-          <h1 className={`font-visita-medium text-${cardDatas && cardDatas.theme_color}-600`} >visitasmart.com/card/{comp_name}</h1>
+          <h1 className={`font-visita-medium text-${cardDatas && cardDatas.theme_color}-600`} >visitasmart.com/card/#/{comp_name}</h1>
         </div>
 
         <h1 className="font-visita-bold text-xl text-center mt-6 text-white ">
@@ -189,7 +189,7 @@ function downloadQrCodeDesign(){
 
 
 
-          <button onClick={()=> window.open(base_url + '/card/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
+          <button onClick={()=> window.open(base_url + '/#/card/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
 
 
 <button onClick={()=> downloadQrCode()} className=" py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Download QRCODE</button>

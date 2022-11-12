@@ -76,7 +76,7 @@ function EditCard() {
 
     document.title = "Visita | Update Card";
 
-    axios.get('/api/card/' + company_name).then((response)=> {
+    axios.get('/card/' + company_name).then((response)=> {
         setCardDatas(response.data);
         setChoosedThemeColor(response.data.theme_color)
     }).catch((err)=> {
@@ -266,7 +266,7 @@ function EditCard() {
   function checkCompanyNameExists(value){
     // Check The Company Name Already Exists
       let company_name_input = document.querySelector('.company_name_input')
-      axios.get('/api/card/all').then((response)=> {
+      axios.get('/card/all').then((response)=> {
         response.data.map((data)=> {
 
         if(data.company_name == value){
@@ -2015,7 +2015,7 @@ function EditCard() {
                     <img src={data.product_image} className="h-32 rounded-xl" />
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-3.5    pr-[50px] pl-[20px]  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`product_image_${index + 1}`)}}
@@ -2031,7 +2031,7 @@ function EditCard() {
                       id="large-input"
                       name={`product_${index + 1}_name`}
                       defaultValue={data.product_name}
-                      class=" font-visita-medium block py-3.5    lg: pl-[20px] lg:ml-6  pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px]  pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
                     />
 
 <input
@@ -2103,7 +2103,7 @@ function EditCard() {
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                     <img src={data} className='h-32 rounded-xl' />
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-3.5    pr-[50px] pl-[20px]  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`image_${index + 1}`)}}

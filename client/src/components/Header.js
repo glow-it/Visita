@@ -240,11 +240,11 @@ window.tidioChatApi.open();
           { 
              
              Cookies.get("isFranchiseeLogined") != "true" ?
-             <Link to='/franchisee/login'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+             <Link to='/#/franchisee/login'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
               <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
               </Link>
               :
-              <Link to='/manage/franchisee'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <Link to='/#/manage/franchisee'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
                 Go To Franchisee
               <span className="flex items-center justify-center ml-2" ><ion-icon name="arrow-forward-circle"></ion-icon></span> 
               </Link>

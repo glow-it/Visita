@@ -49,7 +49,7 @@ function franchiseeRegisterClick(button){
           };
           axios({
             method: "post",
-            url: "/api/verify-payment",
+            url: "/verify-payment",
             data: res_obj,
           }).then((response) => {
             if (response) {

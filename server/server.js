@@ -16,15 +16,16 @@ const { createFranchisee } = require("./Helpers/FranchiseeHelpers");
 const session = require('express-session');
 const FranchiseeHelpers = require("./Helpers/FranchiseeHelpers");
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 const corsOptions = {
   origin: "*",
   credentials: true,
   optionSuccessStatus: 200,
 };
+    
 
-
-
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(cors(corsOptions));
 
 
@@ -42,14 +43,14 @@ app.use(session({
 }
 
 
-
+   
 
 }))
 // cookieParser middleware
 app.use(cookieParser());
 
-app.get("/", (req, res, next) => {
-  res.send("Server Is Running");
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 // Replace the uri string with your connection string.
@@ -71,7 +72,7 @@ async function run() {
           .createCard(data, client_db)
           .then((response, card_data) => {
             res.redirect(
-              `create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`
+              `/#/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`
             );
             res.end();
           })
@@ -87,7 +88,7 @@ async function run() {
       clientHelpers
         .getCardData(comp_name, client_db)
         .then((response) => {
-          res.json(response);
+          res.json(response)
           res.end();
         })
         .catch((err) => {
@@ -105,7 +106,7 @@ async function run() {
 
       clientHelpers.updateFeedback(obj,client_db,req.params.name).then((response)=> {
         let redirect_url = req.params.name.replace(/[ ]/g,'-')
-        res.redirect(`/card/${redirect_url}`)
+        res.redirect(`/#/card/${redirect_url}`)
         window.location.reload()
         res.end()
       }).catch((err)=> {
@@ -221,7 +222,7 @@ async function run() {
        
         clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
           let new_comp_name = req.body.company_name.replace(/[ ]/g,'-')
-          res.redirect('/create/successfull/' + new_comp_name)
+          res.redirect('/#/create/successfull/' + new_comp_name)
         }).catch((err)=> { 
           console.log(err.message);
         })
@@ -255,7 +256,7 @@ async function run() {
      createFranchisee(franchisee_db,req.body).then(()=> {
         res.cookie('isFranchiseeLogined',true)
         res.cookie('franchiseeEmail',req.body.email)
-        res.redirect('/manage/franchisee')
+        res.redirect('/#/manage/franchisee')
      }).catch((err)=> {
       res.cookie('isFranchiseeLogined',false)
       res.end()

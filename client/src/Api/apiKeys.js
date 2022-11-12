@@ -7,4 +7,4 @@ export default {
     call_phone_no: '+919946365417',
     visita_email: 'team@visitasmart.com',
     razorpay_key: 'rzp_live_5bsv690sbS0AHj'
-}
+} 

@@ -20,14 +20,14 @@ function CardPreview() {
   useEffect(() => {
     document.title = "Complete Purchase";
 
-    axios.get("/api/card/" + name).then((response) => {
+    axios.get("/card/" + name).then((response) => {
       setCardDatas(response.data);
 
 
 
       if (response.data.franchisee != "no franchisee") {
         axios
-          .get("/get-franchisee-datas/" + response.data.franchisee)
+          .get("/get-franchisee-datas" + response.data.franchisee)
           .then((res) => {
             if (res.status) {
               setFranchiseeData(res.data.franchisee_data);
@@ -91,6 +91,14 @@ function CardPreview() {
                     navigate("/create/successfull/" + name);
                   },
                   (error) => {
+                    Toast({
+                      status:'error',
+                      title: 'Unable to send card password to your mail',
+                      postition: 'top',
+                      description: 'Contact Visita',
+                      toast
+                    })
+                    navigate("/create/successfull/" + name);
                     console.log(error);
                   }
                 );
@@ -130,6 +138,14 @@ function CardPreview() {
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",
       image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
+      theme: {
+        color: "#6733E4",
+      },
+      prefill: {
+        name: cardDatas.first_name,
+        email: cardDatas.email_id,
+        contact: "+91" + cardDatas.phone_no,
+      },
       handler: function (response) {
         let res_obj = {
           payment_id: response.razorpay_payment_id,
@@ -211,15 +227,7 @@ function CardPreview() {
             })
           }
         });
-      },
-      theme: {
-        color: "#6733E4",
-      },
-      prefill: {
-        name: cardDatas.first_name,
-        email: cardDatas.email_id,
-        contact: "+91" + cardDatas.phone_no,
-      },
+      }
     };
     setIsProcessingPayment(false);
     const rzp1 = new window.Razorpay(options); //instead of new Razorpay(options)
@@ -228,7 +236,7 @@ function CardPreview() {
 
   // When Cancel Purchase Button Click
   function cancelPurchase() {
-    axios.post("/api/create/cancel-purchase/" + name).then((res) => {
+    axios.post("/create/cancel-purchase/" + name).then((res) => {
 
       if (res.data.status) {
         Toast({
@@ -251,6 +259,10 @@ function CardPreview() {
     });
     navigate("/loading/cancelling");
   }
+
+
+  console.log(cardDatas && cardDatas);
+  console.log(franchiseeData && franchiseeData);
 
   return (
     <div className="h-screen w-full ">
@@ -1126,7 +1138,7 @@ function CardPreview() {
 
       <CreateHeader
         hideIndicators={true}
-        live_preview_url={`http://localhost:3000/card/${name}`}
+        live_preview_url={`http://localhost:3005/#/card/${name}`}
       />
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">

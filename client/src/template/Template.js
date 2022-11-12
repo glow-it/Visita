@@ -54,7 +54,6 @@ function Template({preview}) {
 
   // Get Card Datas
   useEffect(() => {
-    let card_url = "/card/" + params.comp_name;
 
      // Function To Capitalize Strings
  function capitalize(string) {
@@ -67,9 +66,8 @@ function Template({preview}) {
 }
 
 
-
     axios
-      .get(card_url)
+      .get("/card/" + params.comp_name)
       .then((response) => {
 
         console.log(response);
