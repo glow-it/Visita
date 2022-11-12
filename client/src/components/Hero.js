@@ -97,8 +97,8 @@ function Hero() {
             {/* See What Is Digital Visiting Card Video */}
 
 
-        <h1 className="font-visita-black lg:pt-18 pt-16 lg:text-6xl text-5xl">
-          Take A Boost For Your <span className="text-primary">Business</span>
+        <h1 className="capitalize font-visita-black lg:pt-18 pt-16 lg:text-6xl text-5xl">
+          Take a boost for Your <span className="text-primary">Business</span>
         </h1>
 
         <p className="font-visita-medium text-xl mt-6 sm:ml-3 text-slate-600 lg:pr-16">

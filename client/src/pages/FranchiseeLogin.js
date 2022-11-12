@@ -117,7 +117,7 @@ function FranchiseeLogin() {
               required
               type={"password"}
               id='franchisee_password'
-              className="relative mb-4 block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 bg-indigo-800 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+              className="relative mb-4 block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500  focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter password"
             />
           </div>
