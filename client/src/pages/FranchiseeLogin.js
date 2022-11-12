@@ -35,7 +35,7 @@ function FranchiseeLogin() {
   function onFranchiseeeLoginClick(){ 
     setLoading(true)
     axios({
-      url: '/api/franchisee/login',
+      url: '/franchisee/login',
       method: 'post',
       data: $("#franchisee_login_form").serialize()
     }).then((response)=> {
