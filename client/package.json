@@ -1,7 +1,6 @@
 {
   "name": "visita",
   "version": "0.1.0",
-  "proxy": "http://localhost:3005",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",

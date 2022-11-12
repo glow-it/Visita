@@ -43,7 +43,7 @@ function Template({preview}) {
   let [isCardLoaded, setIsCardLoaded] = useState(false);  
 
 
-  axios.get('/bg-images').then((response)=>{
+  axios.get('/api/bg-images').then((response)=>{
     response.data.map((data)=> {
       if(data.name == cardDatas.theme_color){
         setBgImage(data.image_url)
@@ -53,7 +53,7 @@ function Template({preview}) {
 
   // Get Card Datas
   useEffect(() => {
-    let card_url = "http://localhost:3005/card/" + params.comp_name;
+    let card_url = "/api/card/" + params.comp_name;
 
      // Function To Capitalize Strings
  function capitalize(string) {
@@ -96,7 +96,7 @@ function Template({preview}) {
 
 
         // Update View Count
-        axios.post(`/update/view/${response.data.company_name}`)
+        axios.post(`/api/update/view/${response.data.company_name}`)
 
         // Calculate How Much Days Ago Created This Card
         var date1, date2;

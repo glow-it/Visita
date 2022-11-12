@@ -33,12 +33,12 @@ function ManageCard() {
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
-        axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
+        axios.get('/api/card/' + company_name).then((response)=> {
 
           if(response.data != null){
             setCardDatas( response.data )
             if(response.data.franchisee != "no franchisee"){
-              axios.get('/get-franchisee-datas/' + response.data.franchisee).then((res)=> {
+              axios.get('/api/get-franchisee-datas/' + response.data.franchisee).then((res)=> {
                 if(res.status){
                   setFranchiseeDatas(res.data.franchisee_data);
                 }

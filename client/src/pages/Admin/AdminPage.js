@@ -26,12 +26,12 @@ useEffect(()=> {
     })
 
 
-    axios.get('/get-all-created-cards').then((response)=> {
+    axios.get('/api/get-all-created-cards').then((response)=> {
         setCreatedCards(response.data);
         
     })
     
-    axios.get('/get-all-franchisees').then((response)=> {
+    axios.get('/api/get-all-franchisees').then((response)=> {
         setFranchisees(response.data);
     })
 
@@ -86,7 +86,7 @@ let earnings_from_franchisee_creation = total_franchisees * price_for_create_fra
 let toast = useToast()
 
 function handleSalaryPayedClick(franchisee_email){
-    axios.post('/salary-payed/' + franchisee_email).then((response)=> {
+    axios.post('/api/salary-payed/' + franchisee_email).then((response)=> {
         if(response.status){
             window.location.href = '/admin/pay-salary'
         }else{

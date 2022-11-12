@@ -43,7 +43,7 @@ function Successfull() {
       elem.style.display = "none";  
     });
 
-  axios.get('http://localhost:3005/card/' + comp_name).then((response)=> {
+  axios.get('/api/card/' + comp_name).then((response)=> {
     setCardDatas(response.data)
     if(!response.data.activated){
       navigate('/create/preview/' + comp_name)

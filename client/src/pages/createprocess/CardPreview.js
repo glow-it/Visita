@@ -20,7 +20,7 @@ function CardPreview() {
   useEffect(() => {
     document.title = "Complete Purchase";
 
-    axios.get("http://localhost:3005/card/" + name).then((response) => {
+    axios.get("/api/card/" + name).then((response) => {
       setCardDatas(response.data);
 
 
@@ -228,7 +228,7 @@ function CardPreview() {
 
   // When Cancel Purchase Button Click
   function cancelPurchase() {
-    axios.post("/create/cancel-purchase/" + name).then((res) => {
+    axios.post("/api/create/cancel-purchase/" + name).then((res) => {
 
       if (res.data.status) {
         Toast({

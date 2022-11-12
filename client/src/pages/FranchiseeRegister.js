@@ -27,7 +27,7 @@ let toast = useToast()
 // When Click On Franchisee Register Button
 function franchiseeRegisterClick(button){
   setLoading(true)
-  axios.post('/create-franchisee-payment').then((response)=> {
+  axios.post('/api/create-franchisee-payment').then((response)=> {
     if(response.data.status){
       setLoading(false)
 
@@ -49,7 +49,7 @@ function franchiseeRegisterClick(button){
           };
           axios({
             method: "post",
-            url: "/verify-payment",
+            url: "/api/verify-payment",
             data: res_obj,
           }).then((response) => {
             if (response) {

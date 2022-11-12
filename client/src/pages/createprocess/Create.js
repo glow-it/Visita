@@ -247,7 +247,7 @@ function Create(props) {
     // Check The Company Name Already Exists
       let company_name_input = document.querySelector('.company_name_input')
       let company_name = value
-      axios.get('http://localhost:3005/card/all').then((response)=> {
+      axios.get('/api/card/all').then((response)=> {
         response.data.map((data)=> {
 
         if(data.company_name == company_name){
@@ -1264,6 +1264,7 @@ function Create(props) {
                   onChange={(e)=> {uploadImage(e.target.files,"logo")}}
                   id="create-choose-logo"
                   accept="image/*"
+                  required
                 />
                 <input type="text" name="logo" id="logo" className="hidden" />
                 <label
@@ -1971,7 +1972,7 @@ function Create(props) {
                 <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-3.5     pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`product_image_${data}`)}}

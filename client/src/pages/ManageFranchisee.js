@@ -38,7 +38,7 @@ function ManageFranchisee() {
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
-        axios.get('/get-franchisee-datas').then((res)=> {
+        axios.get('/api/get-franchisee-datas').then((res)=> {
             if(res.status){
                 if(res.data.isFranchiseeLogined == "true"){
                     
@@ -46,7 +46,7 @@ function ManageFranchisee() {
 
 
 
-                    axios.get('/get-all-created-cards').then((response)=> {
+                    axios.get('/api/get-all-created-cards').then((response)=> {
                         let cards = response.data
                         
                         let array = []
