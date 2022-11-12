@@ -44,6 +44,7 @@ function Template({preview}) {
 
 
   axios.get('/bg-images').then((response)=>{
+    console.log(response.data);
     response.data.map((data)=> {
       if(data.name == cardDatas.theme_color){
         setBgImage(data.image_url)
@@ -70,6 +71,8 @@ function Template({preview}) {
     axios
       .get(card_url)
       .then((response) => {
+
+        console.log(response);
 
         setCardDatas(response.data);
         setProducts(response.data.products);
