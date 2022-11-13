@@ -22,8 +22,8 @@ function Successfull() {
   let [cardDatas,setCardDatas] = useState([])
   let [tooltipIsOpen,setTooltipIsOpen] = useState(false)
   let navigate = useNavigate()
-  let base_url = 'https://visitasmart.com/#'
-  let manage_card_url = base_url + '/manage/card/' + comp_name
+  let base_url = 'https://visitasmart.com/#/'
+  let manage_card_url = base_url + 'manage/card/' + comp_name
   let toast = useToast()
   
 
@@ -57,11 +57,11 @@ function Successfull() {
   },[]);
 
 
-  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${base_url + '/card/' + comp_name}`;
-  let share_sms_url = `sms:?body=${base_url + '/card/' + comp_name}`;
-  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${base_url + '/card/' + comp_name}`;
-  let share_twitter_url = `https://twitter.com/intent/tweet?text=${base_url + '/card/' + comp_name}`;
-  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${base_url + '/card/' + comp_name}`;
+  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${base_url + comp_name}`;
+  let share_sms_url = `sms:?body=${base_url + comp_name}`;
+  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${base_url + comp_name}`;
+  let share_twitter_url = `https://twitter.com/intent/tweet?text=${base_url + comp_name}`;
+  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${base_url + comp_name}`;
 
 
 
@@ -81,7 +81,7 @@ function Successfull() {
 }
 
 function downloadQrCodeDesign(){
-  htmlToImage.toJpeg(document.getElementById('qr-code-design'), { quality: 0.95 })
+  htmlToImage.toJpeg(document.getElementById('qr-code-design'), { quality: 1.0 })
   .then(function (dataUrl) {
     var link = document.createElement('a');
     link.download = `${params.comp_name}-qrcode-design.jpeg`;
@@ -117,15 +117,15 @@ function downloadQrCodeDesign(){
         <h1 className="text-4xl font-visita-bold mb-6 capitalize">
           Send Card
         </h1>
-        <div className="px-10 z-50 h-12 bg-green-50 flex items-center justify-center border border-green-600 text-green-600 rounded-full">
+        <div className={`lg:px-10 px-1 mb-8 z-50 h-12 bg-${cardDatas && cardDatas.theme_color}-50 flex items-center justify-center border border-${cardDatas && cardDatas.theme_color}-600 text-${cardDatas && cardDatas.theme_color}-600 rounded-full`}>
           <h1 className="font-visita-medium lg:text-xl text-center">
-          {base_url}/card/{comp_name}
+          {base_url}{comp_name}
             
           <Tooltip  isOpen={tooltipIsOpen} hasArrow   px='4' bg='black' py='2' color='white' rounded='lg' label='click to copy' placement='right'>
  <i
              
-              class={`fa-solid fa-copy text-green-900 cursor-pointer ml-3`}
-              onClick={()=> {navigator.clipboard.writeText(base_url + '/card/' + comp_name)
+              class={`fa-solid fa-copy text-${cardDatas && cardDatas.theme_color}-900 cursor-pointer ml-3`}
+              onClick={()=> {navigator.clipboard.writeText(base_url + comp_name)
             
               Toast({
                 status: 'success',
@@ -150,7 +150,7 @@ function downloadQrCodeDesign(){
           </div>
         </div>
 
-          <div id="qr-code-design" className={`lg:w-[50%] flex-col  ring-2 ring-offset-2 ring-${cardDatas && cardDatas.theme_color}-600 relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${cardDatas && cardDatas.theme_color}-600 border mt-8 rounded-3xl z-50 flex items-center justify-center`}>
+          <div id="qr-code-design" className={`lg:w-[50%] transition-all flex-col  ring-2 ring-offset-2 ring-${cardDatas && cardDatas.theme_color}-600 relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${cardDatas && cardDatas.theme_color}-600 border  rounded-3xl z-50 flex items-center justify-center`}>
 
           
 
@@ -158,7 +158,7 @@ function downloadQrCodeDesign(){
               <h1 className="font-visita-bold text-4xl capitalize" >{params.comp_name}</h1>
             </div>
 
-        <div className="py-3 px-3 rounded-2xl bg-white">
+        <div id="qr_code_wrapper" className="py-3 px-3 transition-all rounded-2xl bg-white">
         <QRCode
          id="qr-code"
          enableCORS={true}
@@ -170,12 +170,12 @@ function downloadQrCodeDesign(){
               size={280}
               qrStyle="dots"
               fgColor={cardDatas && cardDatas.theme_color}
-              bgColor='transparent'
+              bgColor='white'
             />
         </div>
 
         <div className="py-3 px-6 rounded-full mt-6 bg-white">
-          <h1 className={`font-visita-medium text-${cardDatas && cardDatas.theme_color}-600`} >visitasmart.com/card/#/{comp_name}</h1>
+          <h1 className={`font-visita-medium text-${cardDatas && cardDatas.theme_color}-600`} >{base_url + comp_name}</h1>
         </div>
 
         <h1 className="font-visita-bold text-xl text-center mt-6 text-white ">
@@ -184,18 +184,51 @@ function downloadQrCodeDesign(){
         
          </div>
 
-          <div className="w-[50%] mt-16 h-32 flex flex-col items-center justify-center z-50">
+          <div className="lg:w-[50%] w-full mt-16 h-32 flex flex-col items-center justify-center z-50">
 
 
 
 
-          <button onClick={()=> window.open(base_url + '/#/card/' + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
+          <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
 
 
-<button onClick={()=> downloadQrCode()} className=" py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Download QRCODE</button>
+<button onMouseEnter={()=> {
 
 
-<button onClick={()=> downloadQrCodeDesign()} className=" py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold">Download QRCODE Design</button>
+document.getElementById('qr_code_wrapper').classList.add('ring-4',`ring-${cardDatas && cardDatas.theme_color}-800`,'ring-offset-2')
+
+
+}}
+
+onMouseLeave={()=> {
+
+  document.getElementById('qr_code_wrapper').classList.remove('ring-4',`ring-${cardDatas && cardDatas.theme_color}-800`,'ring-offset-2')
+  
+  
+  }}
+
+onClick={()=> downloadQrCode()} className="relative flex items-center justify-center py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold"><span className=" absolute left-6 flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span> Download QRCODE</button>
+
+
+<button
+
+onMouseEnter={()=> {
+
+  document.getElementById('qr-code-design').classList.replace('ring-2','ring-4')
+  
+  
+  }}
+  
+  onMouseLeave={()=> {
+  
+    document.getElementById('qr-code-design').classList.replace('ring-4','ring-2')
+    
+    
+    }}
+
+
+
+onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center justify-center w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold"><span className=" absolute left-6  flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span>Download QRCODE Design</button>
 
           </div>
 
@@ -260,7 +293,7 @@ function downloadQrCodeDesign(){
           </div>
         </div>
 
-        <div className="px-10 lg:h-12 h-24 w-[60%] relative mt-16 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
+        <div className="px-10 lg:h-12 h-24 lg:w-full w-[60%]  relative mt-16 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
           <div className="lg:w-full w-[70%] absolute  font-visita-bold text-blue-600 text-xl rounded-t-xl -top-10 h-10 flex items-center justify-center bg-blue-200">
             <h1>Card Password</h1>
           </div>

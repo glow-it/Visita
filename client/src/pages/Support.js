@@ -17,34 +17,6 @@ function Support() {
 
     let [isLoading,setIsLoading] = useState(false)
 
-    function sendMessage(){
-
-        setIsLoading(true)
-        let contact_form = document.querySelector('.contact_form');
-
-        contact_form.reply_to.innerText = contact_form.from_mail.value
-
-        emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId, contact_form, apiKeys.emailjs_publicKey)
-        .then((result) => {
-            setIsLoading(false)
-            Toast({
-               status:'success',
-               title: 'Message send',
-               description: 'We will read it and response shortly',
-               postition: 'top',
-               toast
-             })
-        }, (error) => {
-            setIsLoading(false)
-            Toast({
-               status:'error',
-               title: 'Message not send',
-               description: 'Try again!',
-               postition: 'top',
-               toast
-             })
-        });
-    };
 
     
 

@@ -200,7 +200,7 @@ return(
     <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
     <div className="flex-1  h-full  flex justify-end items-center pr-12">
     
-    <h1 onClick={()=> window.open('/#/card/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
+    <h1 onClick={()=> window.open('/#/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
     
         <h1 className='mr-4' >+91{data.phone_no}</h1>
 

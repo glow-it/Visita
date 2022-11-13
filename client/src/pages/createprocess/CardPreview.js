@@ -1138,7 +1138,7 @@ function CardPreview() {
 
       <CreateHeader
         hideIndicators={true}
-        live_preview_url={`http://localhost:3005/#/card/${name}`}
+        live_preview_url={`http://localhost:3005/#/${name}`}
       />
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">

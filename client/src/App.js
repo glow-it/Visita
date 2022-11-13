@@ -44,7 +44,7 @@ function App() {
         <Route path="create" element={<Create />} />
         <Route path="create/preview/:name" element={<CardPreview />} />
         <Route path="loading/:type" element={<Loading />} />
-        <Route path="/card/:comp_name" element={<Template />} />
+        <Route path="/:comp_name" element={<Template />} />
         <Route
           path="/activate-warning/:comp_name"
           element={<ActivateWarning />}

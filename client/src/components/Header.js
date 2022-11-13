@@ -102,7 +102,7 @@ onClick={()=> navigate('/')}
 
           <nav className="w-full h-full flex items-center lg:block hidden">
             <ul className="w-full h-full flex items-center">
-              <p onClick={()=> navigate('/card/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+              <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                 See Demo
               </p>
               <Link to='/pricing' className=" font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
@@ -196,7 +196,7 @@ window.tidioChatApi.open();
           </div>
           </DrawerHeader>
           <DrawerBody>
-            <p onClick={()=> navigate('/card/visita')} className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demo</span></span> </p>
+            <p onClick={()=> navigate('/visita')} className="font-visita-bold cursor-pointer mt-4" ><span className=" text-md flex items-center text-primary" ><ion-icon name="albums"></ion-icon> <span className="ml-2 text-slate-600" >See Demo</span></span> </p>
 
             <p onClick={()=> {navigate('/pricing');onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" ><ion-icon name="card"></ion-icon> <span className="ml-2 text-slate-600" >Pricing</span></span> </p>
 
@@ -240,11 +240,11 @@ window.tidioChatApi.open();
           { 
              
              Cookies.get("isFranchiseeLogined") != "true" ?
-             <Link to='/#/franchisee/login'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+             <Link to='/franchisee/login'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
               <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
               </Link>
               :
-              <Link to='/#/manage/franchisee'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <Link to='/manage/franchisee'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
                 Go To Franchisee
               <span className="flex items-center justify-center ml-2" ><ion-icon name="arrow-forward-circle"></ion-icon></span> 
               </Link>

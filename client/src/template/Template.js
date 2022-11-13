@@ -55,6 +55,7 @@ function Template({preview}) {
   // Get Card Datas
   useEffect(() => {
 
+
      // Function To Capitalize Strings
  function capitalize(string) {
   return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
@@ -144,6 +145,24 @@ function Template({preview}) {
           toast
         })
       });
+
+
+          // Set Manifest Icon and Name Dynamically
+    let iconUrl = cardDatas && cardDatas.logo; 
+    let manifest = { 
+      name: cardDatas && cardDatas.company_name, 
+      icons: [{ src: iconUrl, sizes: "512x512", type:"image/png" }] 
+    }; 
+    let content = encodeURIComponent(JSON.stringify(manifest)); 
+    let url = "data:application/manifest+json,"+content; 
+    let element = document.createElement('link'); 
+    element.setAttribute('rel', 'manifest'); 
+    element.setAttribute('href', url); 
+    document.querySelector('head').appendChild(element);
+    
+    
+    
+    
 
 
   }, []);
@@ -1072,7 +1091,7 @@ function Template({preview}) {
   } w-full h-14 flex bg-${theme_color}-500 fixed bottom-0 overflow-scroll z-50`}
 >
   <a
-    href="#home"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1083,7 +1102,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#about"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1094,7 +1113,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#products"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1105,7 +1124,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#imagegallery"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1116,7 +1135,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#ytvideos"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1127,7 +1146,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#paymentinfo"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1138,7 +1157,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#bankdetails"
+    
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-xl">
@@ -1149,7 +1168,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    href="#feedbacks"
+    
     className=" nav-bottom h-full flex flex-col items-center pt-2"
   >
     <span className=" text-white text-xl">
