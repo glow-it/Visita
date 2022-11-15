@@ -64,6 +64,8 @@ function Template({preview}) {
 
 
 
+
+
 }
 
 
@@ -71,7 +73,26 @@ function Template({preview}) {
       .get("/card/" + params.comp_name)
       .then((response) => {
 
-        console.log(response);
+         // Set Manifest Dynamically
+         var myDynamicManifest = {
+          "name": response.data.company_name,
+          "short_name": response.data.company_name,
+          "description": response.data.about,
+          "start_url": `/#/${params.comp_name}`,
+          "background_color": "#000000",
+          "theme_color": "#fff",
+          "display": "standalone",
+          "scope": `/#/${params.comp_name}`,
+          "icons": [{
+            "src": response.data.logo,
+            "sizes": "256x256",
+            "type": "image/png"
+          }]
+        }
+        const stringManifest = JSON.stringify(myDynamicManifest);
+        const blob = new Blob([stringManifest], {type: 'application/json'});
+        const manifestURL = URL.createObjectURL(blob);
+        document.querySelector('#my-manifest-placeholder').setAttribute('href', manifestURL);
 
         setCardDatas(response.data);
         setProducts(response.data.products);
@@ -393,6 +414,7 @@ function Template({preview}) {
           <div className=" w-full flex flex-wrap items-center justify-center mt-8">
 
           {/* <button
+          onClick={()=> saveCardHandler()}
             className={`flex w-full justify-center mb-4 items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg`}
           >
             Save Card <span className=" ml-1 text-white text-xl"></span>
