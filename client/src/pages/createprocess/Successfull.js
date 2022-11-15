@@ -155,14 +155,14 @@ function downloadQrCodeDesign(){
           
 
             <div className={`w-full h-16 absolute top-0 rounded-2xl rounded-b bg-white text-${cardDatas && cardDatas.theme_color}-600 flex items-center justify-center`}>
-              <h1 className="font-visita-bold text-4xl capitalize" >{params.comp_name}</h1>
+              <h1 className="font-visita-bold text-4xl capitalize" >{params.comp_name.replace(/[-]/g," ")}</h1>
             </div>
 
         <div id="qr_code_wrapper" className="py-3 px-3 transition-all rounded-2xl bg-white">
         <QRCode
          id="qr-code"
          enableCORS={true}
-              value={`${base_url}/${comp_name}`}
+              value={`${base_url}${comp_name}`}
               eyeRadius={20}
               logoImage={cardDatas && cardDatas.logo}
               logoWidth={60}
