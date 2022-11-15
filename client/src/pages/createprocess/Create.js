@@ -248,30 +248,37 @@ function Create(props) {
       let company_name_input = document.querySelector('.company_name_input')
       let company_name = value
       axios.get('/card/all').then((response)=> {
-        response.data.map((data)=> {
+        response.data.filter((data)=> {
 
-        if(data.company_name == company_name){
+
+          company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
+
+          company_name_input.classList.replace('bg-red-50','bg-green-50')
+          company_name_input.classList.replace('focus:border-blue-500','focus:border-green-500')
+          company_name_input.classList.replace('focus:ring-blue-500','focus:ring-green-500')
+          company_name_input.classList.replace('focus:border-red-500','focus:border-green-500')
+          company_name_input.classList.replace('focus:ring-red-500','focus:ring-green-500')
+          company_name_input.classList.replace('text-red-900','text-green-900')
+          company_name_input.classList.replace('placeholder-red-700','placeholder-green-700')
+
+          document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
+          document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
+
+          return data.company_name == company_name
+
+        
+        }).map((data)=> {
+          console.log(data);
+          if(data){
 
             company_name_input.classList.replace('bg-green-50','bg-red-50')
-            company_name_input.classList.replace('border-green-500','border-red-500')
+            company_name_input.classList.replace('focus:border-green-500','focus:border-red-500')
+            company_name_input.classList.replace('focus:ring-green-500','focus:ring-red-500')
             company_name_input.classList.replace('text-green-900','text-red-900')
             company_name_input.classList.replace('placeholder-green-700','placeholder-red-700')
 
             document.querySelector('.error-message').classList.replace('text-green-600','text-red-600')
             document.querySelector('.error-message').innerText = 'Oh, snapp! Company name already exists'
-          }else{
-
-            company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
-
-            company_name_input.classList.replace('bg-red-50','bg-green-50')
-            company_name_input.classList.replace('border-red-500','border-green-500')
-            company_name_input.classList.replace('text-red-900','text-green-900')
-            company_name_input.classList.replace('placeholder-red-700','placeholder-green-700')
-
-            document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
-            document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
-
-
           }
         })
       })

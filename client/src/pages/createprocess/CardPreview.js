@@ -1187,7 +1187,7 @@ function CardPreview() {
           {cardDatas && cardDatas.activated ? (
             ""
           ) : (
-            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != "false" ?
+            franchiseeData && franchiseeData.length == 0 ?
             <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
               <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
                 ₹599

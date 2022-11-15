@@ -122,7 +122,7 @@ function HandleForgotPasswordClick(e){
   emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
     Toast({
       status:'success',
-      title: 'Card password has been send to your email',
+      title: `Card password has been send to ${cardDatas && cardDatas.email_id}`,
       postition: 'top',
       toast
     })

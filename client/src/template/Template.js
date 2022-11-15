@@ -385,7 +385,7 @@ function Template({preview}) {
             >
               <span className=" text-sm flex items-center font-visita-medium text-white">
                 <ion-icon name="logo-whatsapp"></ion-icon>{" "}
-                <span className=" ml-1">share to whatsapp</span>{" "}
+                <span className=" ml-1">Share To Whatsapp</span>{" "}
               </span>
             </div>
           </div>
@@ -421,7 +421,7 @@ function Template({preview}) {
               <ion-icon name="share-social"></ion-icon>
             </button>
           </div>
-          <div className=" flex justify-center bg-white px-4 h-12 my-16 items-center rounded-full">
+          <div className={`${cardDatas && cardDatas.facebook_link == "" && cardDatas && cardDatas.twitter_link == "" && cardDatas && cardDatas.instagram_link == "" && cardDatas && cardDatas.linkedin_link == "" && cardDatas && cardDatas.youtube_link == "" && cardDatas && cardDatas.pinterest_link == "" ? 'invisible' : 'visible'} flex bg-white justify-center  px-4 h-12 my-16 items-center rounded-full`}>
             {cardDatas && cardDatas.facebook_link != "" ? (
               <i
                 onClick={() =>
