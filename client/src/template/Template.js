@@ -75,11 +75,11 @@ function Template({preview}) {
 
          // Set Manifest Dynamically
          var myDynamicManifest = {
-          "name": response.data.company_name,
-          "short_name": response.data.company_name,
-          "description": response.data.about,
+          "name": capitalize(response.data.company_name),
+          "short_name": "Mini Website",
+          "description": capitalize(response.data.about),
           "start_url": `/#/${params.comp_name}`,
-          "background_color": "#000000",
+          "background_color": "#0062FF",
           "theme_color": "#fff",
           "display": "standalone",
           "scope": `/#/${params.comp_name}`,
@@ -222,7 +222,10 @@ function Template({preview}) {
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}`;
 
 
+
+
  
+
 
   return (
    <div>
@@ -232,7 +235,7 @@ function Template({preview}) {
     <div className='h-screen w-full top-0 flex flex-col items-center justify-center ' >
     <Spinner  thickness='4px'
   speed='0.5s' size='lg' color='blue.600' />
-        <h1 className='capitalize text-xl font-visita-medium mt-8' >{params.comp_name}</h1>
+        <h1 className='capitalize text-xl font-visita-medium mt-8' >{params.comp_name.replace(/[-]/g," ")}</h1>
     </div>
       </div>
 
@@ -412,15 +415,15 @@ function Template({preview}) {
           </div>
 
           <div className=" w-full flex flex-wrap items-center justify-center mt-8">
-
-          {/* <button
-          onClick={()=> saveCardHandler()}
+{/* 
+          <button
+          id="appDownloadButton"
             className={`flex w-full justify-center mb-4 items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg`}
           >
             Save Card <span className=" ml-1 text-white text-xl"></span>
             <ion-icon name="arrow-down-circle"></ion-icon>
-          </button> */}
-          
+          </button>
+           */}
            
            {
             cardDatas && cardDatas.gmap_location ?

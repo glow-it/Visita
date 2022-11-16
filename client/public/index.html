@@ -40,18 +40,6 @@
  <!-- Poppins font -->
 
 
-<script>
-  if (navigator.serviceWorker.controller) {
-    console.log("Active service worker found");
-    }else {
-        navigator.serviceWorker
-        .register("serviceWorker.js", {
-        scope: "./"
-        })
-        .then(function (reg) {console.log("Service Worker Is Registered")})
-    }
-
-</script>
 
 
   </head>
@@ -99,7 +87,11 @@
  <!-- Tidio Live Chat -->
 
 
+ <script  src="./script.js" ></script>
+
+ 
  <!-- Service Worker Register -->
+ <script  src="./sworker.js" ></script>
  
 
   </body>
