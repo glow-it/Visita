@@ -1,4 +1,4 @@
-import { Button, useDisclosure } from "@chakra-ui/react";
+import { Button, Tooltip, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import CreateHeader from "../../components/CreateHeader";
 import { useToast } from "@chakra-ui/react";
@@ -1300,8 +1300,11 @@ function Create(props) {
                     themeColors.map((color)=> {
                      return (
                       <div>
+                        <Tooltip className="font-visita-medium" label={color} placement='top' bg='#000' px='3' py='1' rounded='full' color='white'>
                         <div  id={`choose-theme-${color}`} onClick={()=> setChoosedThemeColor(color)} className={`w-8 h-8 mr-4 lg:my-1 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}></div>
                       
+                        </Tooltip>
+                       
                      
                       </div>
 
