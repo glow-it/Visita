@@ -76,7 +76,7 @@ function Template({preview}) {
          // Set Manifest Dynamically
          var myDynamicManifest = {
           "name": capitalize(response.data.company_name),
-          "short_name": "Mini Website",
+          "short_name": capitalize(response.data.company_name),
           "description": capitalize(response.data.about),
           "start_url": `/#/${params.comp_name}`,
           "background_color": "#0062FF",

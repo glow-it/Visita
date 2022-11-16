@@ -20,6 +20,7 @@ import ManageFranchisee from "./pages/ManageFranchisee";
 import AdminPage from "./pages/Admin/AdminPage";
 import CardClosedPage from "./pages/CardClosedPage";
 import ForgotPasswordFranchisee from "./pages/ForgotPasswordFranchisee";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   useEffect(() => {
@@ -61,6 +62,7 @@ function App() {
         <Route path="/admin/:type" element={<AdminPage />} />
         <Route path="/card-closed" element={<CardClosedPage />} />
         <Route path="/franchisee/forgot-password/:franchisee_email" element={<ForgotPasswordFranchisee />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
