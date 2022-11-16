@@ -60,7 +60,9 @@ function franchiseeRegisterClick(button){
                 postition: 'top',
                 toast
               })
+              
               document.getElementById('franchisee_register_form').submit()
+              
             }else{
               setLoading(false)
               Toast({
@@ -278,7 +280,6 @@ if(e.target.value.length>= 5){
               id='franchisee_upi_id'
               autoComplete="off"
               required
-              type={"tel"}
               
               className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter Upi Id"
@@ -336,7 +337,6 @@ salary' placement='right'>
               autoComplete="off"
               value={false}
               className="hidden relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
-              placeholder="Enter phone no"
             />
 
         </div>
