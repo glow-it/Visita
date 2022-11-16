@@ -60,6 +60,8 @@ function franchiseeRegisterClick(button){
                 postition: 'top',
                 toast
               })
+
+              navigate('/loading/registering-franchisee')
               
               document.getElementById('franchisee_register_form').submit()
               
