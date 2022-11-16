@@ -79,7 +79,7 @@ function Template({preview}) {
           "short_name": capitalize(response.data.company_name),
           "description": capitalize(response.data.about),
           "start_url": `/#/${params.comp_name}`,
-          "background_color": "#0062FF",
+          "background_color": "#fff",
           "theme_color": "#fff",
           "display": "standalone",
           "scope": `/#/${params.comp_name}`,
@@ -232,9 +232,9 @@ function Template({preview}) {
 
 
 <div className={`w-full bg-white absolute z-[100] ${isCardLoaded? 'hidden' : 'flex'}  justify-center`} >
-    <div className='h-screen w-full top-0 flex flex-col items-center justify-center ' >
+    <div className='h-screen w-full top-0 flex flex-col items-center mt-44 ' >
     <Spinner  thickness='4px'
-  speed='0.5s' size='lg' color='blue.600' />
+  speed='0.5s' size='lg' color='#0062FF' />
         <h1 className='capitalize text-xl font-visita-medium mt-8' >{params.comp_name.replace(/[-]/g," ")}</h1>
     </div>
       </div>

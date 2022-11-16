@@ -117,7 +117,7 @@ function ManageCard() {
     
 function HandleForgotPasswordClick(e){
 
-  e.target.innerText = 'please wait...'
+  e.target.innerText = 'Processing...'
 
   emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
     Toast({
@@ -180,17 +180,18 @@ function HandleForgotPasswordClick(e){
         <input type="text" name="message" value="Card Password Of" />
       </form>
 
-    <div id='manage_auth_wrapper' className="h-screen scale-125 w-full absolute font-visita-medium bg-white z-[100] flex items-center justify-center">
-    <div class="block p-6 rounded-3xl ow-lg bg-white border max-w-sm">
+    <div id='manage_auth_wrapper' className="h-screen  w-full absolute font-visita-medium bg-white z-[100] flex pt-36 justify-center">
+    <div class="block p-6 rounded-3xl  bg-white h-[300px] w-[1000px] lg:shadow-md  max-w-sm">
   <div>
     
     <div class="form-group mb-6">
-      <label for="card_pass_input" class="form-label inline-block mb-2 text-gray-700">Card Password</label>
+      <label for="card_pass_input" class="form-label text-3xl font-visita-bold inline-block mb-6 text-gray-700">Card Password</label>
       <input  class="form-control block
         w-full
         px-3
+        pl-6
         py-1.5
-        text-base
+        text-xl
         font-normal
         text-gray-700
         bg-white bg-clip-padding
@@ -200,7 +201,7 @@ function HandleForgotPasswordClick(e){
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="card_pass_input"
-        placeholder="Password"
+
         autoComplete='off'
         />
     </div>
@@ -216,7 +217,7 @@ function HandleForgotPasswordClick(e){
       bg-blue-600
       text-white
       font-medium
-      text-xs
+      text-xl
       leading-tight
       uppercase
       rounded-full

@@ -26,7 +26,7 @@ function Loading() {
       <div>
     <div className='h-[70vh] w-full flex flex-col items-center justify-center ' >
     <Spinner  thickness='4px'
-  speed='0.5s' size='lg' color='blue.600' />
+  speed='0.8s' size='lg' color='#0062FF'  />
         <h1 className='capitalize text-xl font-visita-medium mt-8' >{processName}</h1>
     </div>
       </div>
