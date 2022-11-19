@@ -316,24 +316,30 @@ function EditCard() {
 
 
     {/* Last Confirm Modal */}
-    <Modal bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="3px"  isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader><span className="font-visita-bold" >Are You Sure To Update?</span></ModalHeader>
-          <ModalBody>
-            <span className="font-visita-medium" >You Can Confirm You Have Entered Informations Is Correct</span>
+   
+
+      <Modal  isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="20px"  />
+        <ModalContent display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
+          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-visita-bold text-3xl text-center" >Are You Sure To Update?</span></ModalHeader>
+          <ModalBody pb='4' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+            <span className="font-visita-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
           </ModalBody>
-          <ModalFooter>
-            <Button rounded='full' color='#fff' _hover bgColor='#0062FF' mr={3} onClick={()=> {
-              setLoading(true)
-              onClose()
-              let cardForm = document.getElementById("cardForm");
-                  cardForm.submit()
-                  navigate('/loading/updating-card')
+          <ModalFooter display='flex'  justifyContent='center' alignItems='center'>
+            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
+
+
+            <Button rounded='full' color='#fff' _hover bgColor='#0062FF'  onClick={()=> {
+             setLoading(true)
+             onClose()
+             let cardForm = document.getElementById("cardForm");
+                 cardForm.submit()
+                 navigate('/loading/updating-card')
             }}>
               <span className="font-visita-bold" >Yes' Update Card</span>
             </Button>
-            <Button rounded='full'  variant='solid' onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
+
+
           </ModalFooter>
         </ModalContent>
       </Modal>

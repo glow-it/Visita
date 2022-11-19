@@ -1,11 +1,52 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Tooltip } from "@chakra-ui/react";
+import { Button, Tooltip, useDisclosure } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 
 function Hero() {
   let navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <div className="w-full hero lg:flex sm:p-10 bg-blend-multiply mt-12">
+
+
+
+{/* How to Modal */}
+<Modal  isOpen={isOpen}  onClose={onClose}>
+        <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="50px" />
+        <ModalContent rounded='3xl'>
+          <ModalCloseButton rounded='full' />
+          <ModalBody >
+            <div className="flex py-12 px-8 flex-col items-center justify-center">
+              <h1 className="text-3xl text-center font-visita-bold" >What do you want <br /> to know about?</h1>
+              <Button onClick={()=> navigate('franchisee/how-to-franchisee')} className="font-visita-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='8' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
+                Franchisee <span className="flex items-center justify-center ml-2">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </span>
+              </Button>
+              <Button onClick={()=> window.open('https://scribehow.com/shared/Visita_Create_Card_Process__xIfmyzszTXSukxUZiWzWTw')} className="font-visita-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='3' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
+                Create Card <span className="flex items-center justify-center ml-2">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </span>
+              </Button>
+            </div>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+{/* How to Modal */}
+
+
+
+
+
       <svg
         className="absolute hero-aura"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,27 +102,27 @@ function Hero() {
 
 
 
-      {/* See What Is Digital Visiting Card Video */}
+     
 
        
-       {/* <div className="lg:block hidden">
-       <a
-          href="https://flowbite.com/docs/components/popover/"
-          class="mt-8 inline-flex w-[410px] justify-between items-center py-1 px-1 pr-4 text-sm text-gray-700 bg-gray-100 rounded-full :bg-gray-800 :text-white hover:bg-gray-200"
+       <div className="lg:mt-0 mt-8">
+       <p
+        onClick={onOpen}
+          class="mt-8 cursor-pointer inline-flex  justify-between items-center py-1 px-1 pr-4 text-sm text-gray-700 bg-gray-100 rounded-full :bg-gray-800 :text-white hover:bg-gray-200"
           role="alert"
         >
-          <span class="flex text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
-            <ion-icon name="videocam"></ion-icon>{" "}
+          <span class="flex text-sm font-visita-bold bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
+           How
           </span>
-          <span class=" mr-2 text-sm font-visita-medium">
-            What is digital visiting card! Click to see video
+          <span class=" mr-2 text-sm font-visita-bold">
+
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
-            class="w-5 h-5"
+            class="w-5 h-5 show-svg"
           >
             <path
               fill-rule="evenodd"
@@ -89,15 +130,15 @@ function Hero() {
               clip-rule="evenodd"
             ></path>
           </svg>
-        </a>
-       </div> */}
+        </p>
+       </div>
 
 
 
-            {/* See What Is Digital Visiting Card Video */}
+            
 
 
-        <h1 className="capitalize font-visita-black lg:pt-18 pt-16 lg:text-6xl text-5xl">
+        <h1 className="capitalize font-visita-black lg:pt-8 pt-8 lg:text-6xl text-5xl">
           Take a boost for Your <span className="text-primary">Business</span>
         </h1>
 

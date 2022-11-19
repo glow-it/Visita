@@ -254,6 +254,9 @@ form{
   svg{
     display: none !important;
   }
+  .show-svg{
+    display: block !important;
+  }
 }
 .templates-show-wrapper{
   height: 500px;
@@ -370,7 +373,7 @@ footer {
     --tw-shadow: var(--tw-shadow-colored);
     border-bottom-width: 1px;
   transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    height: 5rem;
+    height: 5rem !important;
 }
 
 
@@ -378,7 +381,7 @@ footer {
 
 .header-inactive{
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  height: 4rem; 
+  height: 4rem !important; 
 }
 .support input{
   border-radius: 0.75rem
@@ -668,9 +671,9 @@ footer {
 }
 
 .header-logo-bg-active{
-  margin-top: 0;
-  visibility: visible;
-  opacity: 1;
+  margin-top: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #header_logo_bg:hover{

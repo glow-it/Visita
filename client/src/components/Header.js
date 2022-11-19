@@ -76,7 +76,7 @@ let navigate = useNavigate()
     
     <div>
 
-      <header className="  w-full h-16 flex py-8 pl-8  bg-white fixed z-50 transition-shadow">
+      <header className="  w-full h-16 flex py-8 pl-8  bg-white fixed z-50 ">
         <div className="w-3/4 h-full flex items-center">
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"

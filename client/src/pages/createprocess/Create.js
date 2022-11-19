@@ -305,14 +305,17 @@ function Create(props) {
 
     {/* Last Confirm Modal */}
     <Modal  isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="3px"  />
-        <ModalContent>
-          <ModalHeader><span className="font-visita-bold" >Are You Sure To Create?</span></ModalHeader>
-          <ModalBody pb='4' >
-            <span className="font-visita-medium" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
+        <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="20px"  />
+        <ModalContent display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
+          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-visita-bold text-3xl text-center" >Are You Sure To Create?</span></ModalHeader>
+          <ModalBody pb='4' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+            <span className="font-visita-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
           </ModalBody>
-          <ModalFooter>
-            <Button rounded='full' color='#fff' _hover bgColor='#0062FF' mr={3} onClick={()=> {
+          <ModalFooter display='flex'  justifyContent='center' alignItems='center'>
+            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
+
+
+            <Button rounded='full' color='#fff' _hover bgColor='#0062FF'  onClick={()=> {
               setLoading(true)
               onClose()
               let cardForm = document.getElementById("cardForm");
@@ -321,7 +324,8 @@ function Create(props) {
             }}>
               <span className="font-visita-bold" >Yes' Create Card</span>
             </Button>
-            <Button rounded='full' variant='solid' onClick={onClose}><span className="font-visita-bold" >Cancel</span></Button>
+
+
           </ModalFooter>
         </ModalContent>
       </Modal>
