@@ -112,7 +112,7 @@ function Hero() {
           role="alert"
         >
           <span class="flex text-sm font-visita-bold bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
-           How
+           How to ?
           </span>
           <span class=" mr-2 text-sm font-visita-bold">
 
@@ -138,11 +138,11 @@ function Hero() {
             
 
 
-        <h1 className="capitalize font-visita-black lg:pt-8 pt-8 lg:text-6xl text-5xl">
-          Take a boost for Your <span className="text-primary">Business</span>
+        <h1  className="capitalize font-visita-black lg:pt-8 pt-8 lg:text-6xl text-5xl">
+          Grow Your <br /> Business <span className="text-primary">Online</span>
         </h1>
 
-        <p className="font-visita-medium text-xl mt-6 sm:ml-3 text-slate-600 lg:pr-16">
+        <p className="font-visita-medium text-xl mt-6  text-slate-600 lg:pr-16">
           Visita is the smartest way to grow your business by creating Digital
           Visiting Card - Mini Website
         </p>
@@ -152,7 +152,7 @@ function Hero() {
             <Link
               to="/create"
               type="button"
-              class="text-blue-500 hover:shadow-md transition-shadow border-2 border-blue-500 bg-white ml-1 focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+              class="text-blue-500 hover:shadow-md transition-shadow border-2 border-blue-500 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
             >
               Create now
             </Link>
@@ -161,7 +161,7 @@ function Hero() {
           <a
             onClick={() => navigate("/visita")}
             type="button"
-            class="text-white bg-blue-600 bg-primary ml-1 shadow-md shadow-blue-600 hover:shadow-blue-500 cursor-pointer transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+            class="text-white bg-blue-600 bg-primary shadow-md shadow-blue-600 hover:shadow-blue-500 cursor-pointer transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
           >
             See Demo
           </a>
@@ -183,14 +183,15 @@ function Hero() {
         </div>
       </div>
       <div
-        className="lg:w-1/2 w-full -mt-6
-        lg:pr-24 pr-0 lg:block hidden"
+        className="h-[800px] -mt-32
+        lg:block hidden pr-12"
       >
         <lottie-player
-          src="https://assets10.lottiefiles.com/packages/lf20_vo1qtepr.json"
+          src="https://assets3.lottiefiles.com/packages/lf20_zyqfid68.json"
           background="transparent"
           speed="1"
           autoplay
+          loop
         ></lottie-player>
       </div>
     </div>

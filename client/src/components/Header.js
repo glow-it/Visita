@@ -82,7 +82,7 @@ let navigate = useNavigate()
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
             className="h-12 hover:h-10 z-20 mr-4 cursor-pointer"
             id="header_logo"
-            onClick={()=> navigate('/')}
+            onClick={()=> window.location.href='/'}
             onMouseEnter={()=> document.getElementById('header_logo_bg').classList.add('header-logo-bg-active')}
             onMouseLeave={()=> document.getElementById('header_logo_bg').classList.remove('header-logo-bg-active')}
           />
@@ -90,7 +90,7 @@ let navigate = useNavigate()
 
           <div
 
-onClick={()=> navigate('/')}
+onClick={()=> window.location.href='/'}
           
           onMouseEnter={()=> document.getElementById('header_logo').classList.add('h-10')}
           onMouseLeave={()=> document.getElementById('header_logo').classList.remove('h-10')}

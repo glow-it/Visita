@@ -22,6 +22,7 @@ import CardClosedPage from "./pages/CardClosedPage";
 import ForgotPasswordFranchisee from "./pages/ForgotPasswordFranchisee";
 import PageNotFound from "./pages/PageNotFound";
 import HowToFranchisee from "./pages/HowToFranchisee";
+import Aos from "aos";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,13 @@ function App() {
       document.getElementsByTagName("head")[0].appendChild(link);
     }
     link.href = "https://i.postimg.cc/ZKnK7rC2/visitalogo.png";
+    
+
+
+    Aos.init();
+
+
+
   }, []);
 
   return (
