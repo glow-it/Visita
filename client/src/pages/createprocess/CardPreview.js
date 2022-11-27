@@ -243,7 +243,6 @@ function CardPreview() {
           status:'success',
           title: 'Card is cancelled',
           postition: 'top',
-          description: 'Try again!',
           toast
         })
         navigate("/create");
@@ -259,6 +258,15 @@ function CardPreview() {
     });
     navigate("/loading/cancelling");
   }
+
+      // Function To Capitalize Strings
+ function capitalize(string) {
+  return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+    letter.toUpperCase()
+  );
+
+
+}
 
 
   console.log(cardDatas && cardDatas);
@@ -276,14 +284,13 @@ function CardPreview() {
         <input
           type="text"
           name="company_name"
-          value={cardDatas && cardDatas.company_name}
+          value={capitalize(capitalize(cardDatas && cardDatas.company_name))}
         />
         <input
           type="text"
           name="card_pass"
           value={name + new Date().getTime()}
         />
-        <input type="text" name="message" value="ThankYou For Creating Card" />
       </form>
 
       <div className="overlays z-10">
@@ -1138,7 +1145,7 @@ function CardPreview() {
 
       <CreateHeader
         hideIndicators={true}
-        live_preview_url={`http://localhost:3005/#/${name}`}
+        live_preview_url={`https://visitasmart.com/#/${name}`}
       />
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">

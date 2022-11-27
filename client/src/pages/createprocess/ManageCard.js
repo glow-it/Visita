@@ -140,6 +140,15 @@ function HandleForgotPasswordClick(e){
 })
 }
 
+      // Function To Capitalize Strings
+      function capitalize(string) {
+        return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+          letter.toUpperCase()
+        );
+      
+      
+      }
+
 
 
   return (
@@ -175,9 +184,8 @@ function HandleForgotPasswordClick(e){
     {/* Send Card Password Form */}
     <form id="send_pass_form_2" className="hidden" >
         <input type="text" name="to_mail" value={cardDatas && cardDatas.email_id} />
-        <input type="text" name="company_name" value={cardDatas && cardDatas.company_name} />
+        <input type="text" name="company_name" value={capitalize(cardDatas && cardDatas.company_name)} />
         <input type="text" name="card_pass" value={cardDatas.activated && cardDatas.activated.access_password} />
-        <input type="text" name="message" value="Card Password Of" />
       </form>
 
     <div id='manage_auth_wrapper' className="h-screen  w-full absolute font-visita-medium bg-white z-[100] flex pt-36 justify-center">
