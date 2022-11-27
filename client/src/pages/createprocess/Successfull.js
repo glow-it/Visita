@@ -115,7 +115,7 @@ function downloadQrCodeDesign(){
 
       <div id="qrcode_div" className="overflow-y-scroll pb-32 h-screen z-50 w-full flex flex-col items-center lg:px-64 px-4 pt-16 ">
         <h1 className="text-4xl font-visita-bold mb-6 capitalize">
-          Send Card
+          Send Website
         </h1>
         <div className={`lg:px-10 px-1 mb-8 z-50 h-12 bg-${cardDatas && cardDatas.theme_color}-50 flex items-center justify-center border border-${cardDatas && cardDatas.theme_color}-600 text-${cardDatas && cardDatas.theme_color}-600 rounded-full`}>
           <h1 className="font-visita-medium lg:text-xl text-center">
@@ -189,7 +189,7 @@ function downloadQrCodeDesign(){
 
 
 
-          <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Card</button>
+          <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Website</button>
 
 
 <button onMouseEnter={()=> {
@@ -247,14 +247,14 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
           <div className="flex z-50 flex-col items-center mt-20 ">
           <h1 className="lg:text-3xl text-xl font-visita-bold mb-6 mt-10 capitalize">
-          Manage or Edit Your Card
+          Manage or Edit Your Website
         </h1>
 
 
 
         <div className="lg:px-10 lg:h-12 h-24 relative lg:w-full w-[60%] mt-20 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
           <div className="lg:w-full w-[70%] absolute text-blue-600 font-visita-bold lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-blue-200">
-            <h1>Card Manage Link</h1>
+            <h1>Website Manage Link</h1>
           </div>
           <h1 className="font-visita-medium lg:w-auto w-[70%]  lg:text-xl text-center">
           {manage_card_url}
@@ -295,10 +295,10 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
         <div className="px-10 lg:h-12 h-24 lg:w-full w-[60%]  relative mt-16 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
           <div className="lg:w-full w-[70%] absolute  font-visita-bold text-blue-600 text-xl rounded-t-xl -top-10 h-10 flex items-center justify-center bg-blue-200">
-            <h1>Card Password</h1>
+            <h1>Website Password</h1>
           </div>
           <h1 className="font-visita-medium lg:text-xl text-center">
-             Card Password Has Been Send To Your Email
+          Website Password Has Been Send To Your Email
           </h1>
           <div
             id="tooltip-light"
@@ -315,7 +315,7 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
       <div className="flex flex-col items-start">
        <span className="lg:text-xl text-sm font-visita-medium" >1. Go To <br /> <a href={manage_card_url} className="text-blue-600 " >{manage_card_url}</a></span>
         <span className="lg:text-xl text-sm font-visita-medium mt-4" >2. You'll be asked to enter a password</span>
-        <span className="lg:text-xl text-sm font-visita-medium mt-4" >3. Then enter the card password you have send to your email</span>
+        <span className="lg:text-xl text-sm font-visita-medium mt-4" >3. Then enter the Website password you have send to your email</span>
        </div>
 
        <div className="flex z-50 flex-col items-center  ">
@@ -326,9 +326,9 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
         <div className="flex flex-col items-start">
        <span className="lg:text-xl text-sm font-visita-medium mt-6" >1. Go To <a href={base_url} className="text-blue-600 " >{base_url}</a></span>
-        <span className="lg:text-xl text-sm font-visita-medium mt-4" >2. And Click On Manage Card Button In The Header</span>
+        <span className="lg:text-xl text-sm font-visita-medium mt-4" >2. And Click On Manage Website Button In The Header</span>
         <span className="lg:text-xl text-sm font-visita-medium mt-4" >3. You'll be asked to enter a password</span>
-        <span className="lg:text-xl text-sm font-visita-medium mt-4" >4. Then enter the card password you have send to your email</span>
+        <span className="lg:text-xl text-sm font-visita-medium mt-4" >4. Then enter the Website password you have send to your email</span>
        </div>
       </div>
 

@@ -125,7 +125,7 @@ function Pricing() {
 <div   className="flex flex-col items-start">
 <h1 className=' font-visita-medium lg:text-xl text-lg mt-12 flex' > <span className='text-2xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span> We will automatically withdraw ₹599 per year from your bank</h1>
 
-<h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>You can close the card at any time</h1>
+<h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>You can close the Website at any time</h1>
 
 <h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>All Payment Methods Are Available</h1>
 </div>

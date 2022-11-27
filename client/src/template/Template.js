@@ -617,7 +617,7 @@ function Template({preview}) {
     <h1
       className={`text-lg  text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
     >
-      Scan QR Code to go to Visiting Card
+      Scan QR Code to go to Website
     </h1>
     <div className="mt-10">
       <QRCode

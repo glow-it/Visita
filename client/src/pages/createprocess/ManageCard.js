@@ -92,7 +92,7 @@ function ManageCard() {
         if(response.status){
           Toast({
             status:'success',
-            title: 'Card was closed',
+            title: 'Website was closed',
             postition: 'top',
             toast
           })
@@ -102,7 +102,7 @@ function ManageCard() {
 
           Toast({
             status:'error',
-            title: 'Card closing failed',
+            title: 'Website closing failed',
             description: 'Try again!',
             postition: 'top',
             toast
@@ -110,7 +110,7 @@ function ManageCard() {
 
         }
       })
-      navigate('/loading/closing-card')
+      navigate('/loading/closing-website')
     }
 
     let send_pass_form_2 = document.getElementById('send_pass_form_2');
@@ -122,7 +122,7 @@ function HandleForgotPasswordClick(e){
   emailjs.sendForm(apiKeys.emailjs_serviceId, apiKeys.emailjs_templateId2, send_pass_form_2, apiKeys.emailjs_publicKey).then((result) => {
     Toast({
       status:'success',
-      title: `Card password has been send to ${cardDatas && cardDatas.email_id}`,
+      title: `Website password has been send to ${cardDatas && cardDatas.email_id}`,
       postition: 'top',
       toast
     })
@@ -131,7 +131,7 @@ function HandleForgotPasswordClick(e){
   console.log(error);
   Toast({
     status:'error',
-    title: 'Card password send failed',
+    title: 'Website password send failed',
     description: 'Try again!',
     postition: 'top',
     toast
@@ -185,7 +185,7 @@ function HandleForgotPasswordClick(e){
   <div>
     
     <div class="form-group mb-6">
-      <label for="card_pass_input" class="form-label text-3xl font-visita-bold inline-block mb-6 text-gray-700">Card Password</label>
+      <label for="card_pass_input" class="form-label text-3xl font-visita-bold inline-block mb-6 text-gray-700">Website Password</label>
       <input  class="form-control block
         w-full
         px-3
@@ -1091,9 +1091,9 @@ function HandleForgotPasswordClick(e){
 
      <div className="h-16 w-full flex items-center justify-center  z-50">
 
-         <button onClick={onOpen} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Card</button>
+         <button onClick={onOpen} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Website</button>
 
-        <button onClick={()=> navigate('/manage/card/' + company_name + '/edit')} className="px-6 py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit Card</button>
+        <button onClick={()=> navigate('/manage/card/' + company_name + '/edit')} className="px-6 py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit Website</button>
     </div>
 
     <div className="w-full  mt-10 flex flex-wrap items-center justify-center z-50">

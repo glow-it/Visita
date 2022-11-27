@@ -233,15 +233,15 @@ function HowToFranchisee() {
         <h1 className='lg:text-3xl mt-16 text-2xl font-visita-bold text-center' >How Much <span className='text-blue-600' >My Profit</span> ?</h1>
 
         <p className='bg-slate-50 shadow-md shadow-black/5 text-lg text-slate-600 py-8 px-8 rounded-3xl font-visita-medium lg:w-[700px] w-[300px] mt-6 text-center' >
-        In this your profit when you make a card to your customer you will get ₹300 without any cost
+        In this your profit when you make a Website to your customer you will get ₹300 without any cost
         </p>
 
         <p className='bg-slate-50 shadow-md shadow-black/5 text-lg text-slate-600 py-8 px-8 rounded-3xl font-visita-medium lg:w-[700px] w-[300px] mt-6 text-center' >
-        It only takes a little time to create a card.
+        It only takes a little time to create a Website.
         </p>
 
         <p className='bg-blue-50 shadow-md shadow-black/5 text-lg text-blue-600 py-8 px-8 rounded-3xl font-visita-medium lg:w-[700px] w-[300px] mt-6 text-center' >
-        You can create at least 10 cards per day. If so your daily income is ₹3000
+        You can create at least 10 Websites per day. If so your daily income is ₹3000
         </p>
 
         <h1 className='lg:text-3xl mt-16 text-2xl font-visita-bold text-center' >What Is <span className='text-blue-600' >Pricing</span> For Creating Franchisee ?</h1>

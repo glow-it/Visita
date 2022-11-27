@@ -158,7 +158,7 @@ window.tidioChatApi.open();
         <Popover autoFocus={false} placement="bottom" >
   <PopoverTrigger>
   <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
-                <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage Card</span>
+                <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage Website</span>
            </h1>
   </PopoverTrigger>
   <PopoverContent>
@@ -210,7 +210,7 @@ window.tidioChatApi.open();
            
            if (doc != null) {
                navigate('/manage/card/' + doc)
-           };onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="create"></ion-icon> <span className="ml-2 text-slate-600" >Manage Card</span></span> </p>
+           };onClose()}} className="font-visita-bold cursor-pointer mt-3" ><span className=" text-md flex items-center text-primary" > <ion-icon name="create"></ion-icon> <span className="ml-2 text-slate-600" >Manage Website</span></span> </p>
 
             <DrawerHeader borderBottomWidth='0.5px'>
            <div className=" w-full flex items-center relative mt-6" >

@@ -160,7 +160,7 @@ function ManageFranchisee() {
             franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != "true" ?
             <div id='franchisee_top_information' className="h-10 w-full bg-green-500 flex items-center justify-center relative">
             <h1 className='flex font-visita-bold text-white' ><span className="mr-2 lg:flex hidden items-center justify-center">
-            <ion-icon name="checkmark"></ion-icon></span> Creating The First Card Is Absolutely Free !</h1>
+            <ion-icon name="checkmark"></ion-icon></span> Creating The First Website Is Absolutely Free !</h1>
             <div className="text-white absolute justify-center h-full flex items-center right-8">
             <span className='cursor-pointer lg:block hidden' onClick={()=> {
                 
@@ -185,7 +185,7 @@ function ManageFranchisee() {
         <h1 className='lg:block hidden font-visita-bold absolute left-28 text-2xl' >Franchisee</h1>
         <h1 className='font-visita-bold text-3xl text-[#6635E3] capitalize' >{franchiseeData && franchiseeData.franchisee_name}</h1>
 
-        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-visita-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-[#6635E3] px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create Card</h1>
+        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-visita-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-[#6635E3] px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create Website</h1>
 
        </div>
       
@@ -206,7 +206,7 @@ function ManageFranchisee() {
                     <h1  className=' text-5xl mt-3 text-[#6635E3]' >₹{earnings_this_month}</h1>
                 </div>
                 <div className="w-[320px] h-56 border flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
-                <h2 className='-mt-6' >Cards Created</h2>
+                <h2 className='-mt-6' >Websites Created</h2>
                     <h1  className=' text-5xl mt-3 text-[#6635E3]' >{cards_created_this_month}</h1>
                 </div>
             </div>
@@ -252,7 +252,7 @@ function ManageFranchisee() {
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >₹{earnings_this_today}</h1>
                 </div>
                 <div className="w-[320px] h-56 border flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
-                <h2 className='-mt-6' >Cards Created</h2>
+                <h2 className='-mt-6' >Websites Created</h2>
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >{cards_created_today}</h1>
                 </div>
             </div>
@@ -260,7 +260,7 @@ function ManageFranchisee() {
 
             {
                     createdCardsToday && createdCardsToday.length == 0 ?
-                    <h1 className='text-2xl mt-16 text-slate-600' >No Cards Created This Today!</h1>
+                    <h1 className='text-2xl mt-16 text-slate-600' >No Website Created This Today!</h1>
                     : ''
                 }
 
@@ -298,7 +298,7 @@ function ManageFranchisee() {
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >₹{total_earnings}</h1>
                 </div>
                 <div className="w-[320px] h-56 border flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
-                <h2 className='-mt-6' >Cards Created</h2>
+                <h2 className='-mt-6' >Websites Created</h2>
                     <h1 className='text-5xl mt-3 text-[#6635E3]' >{cards_created}</h1>
                 </div>
             </div>

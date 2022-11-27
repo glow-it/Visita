@@ -74,7 +74,7 @@ function EditCard() {
   useEffect(() => {
 
 
-    document.title = "Visita | Update Card";
+    document.title = "Visita | Update Website";
 
     axios.get('/card/' + company_name).then((response)=> {
         setCardDatas(response.data);
@@ -334,9 +334,9 @@ function EditCard() {
              onClose()
              let cardForm = document.getElementById("cardForm");
                  cardForm.submit()
-                 navigate('/loading/updating-card')
+                 navigate('/loading/updating-website')
             }}>
-              <span className="font-visita-bold" >Yes' Update Card</span>
+              <span className="font-visita-bold" >Yes' Update Website</span>
             </Button>
 
 
@@ -2158,13 +2158,13 @@ function EditCard() {
               _hover
               rounded={"3xl"}
               isLoading={loading}
-              loadingText="Creating Card"
+              loadingText="Creating website"
               onClick={() => handleNextClick()}
               backgroundColor="rgb(37 99 235 / 1)"
               className="w-[200px] font-visita-bold lg:mr-6 mr-2"
               size="md"
             >
-             {processIndex == maximumProcesses ? 'Update Card' : 'Next'}
+             {processIndex == maximumProcesses ? 'Update Website' : 'Next'}
             </Button>
 
             <Button

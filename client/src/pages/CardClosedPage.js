@@ -13,7 +13,7 @@ function CardClosedPage() {
 
   return (
     <div className='flex flex-col h-screen w-full items-center pt-56' >
-        <h1 className='text-green-600 font-visita-bold text-4xl' >Successfully Your Card Was Closed!</h1>
+        <h1 className='text-green-600 font-visita-bold text-4xl' >Successfully Your Website Was Closed!</h1>
         <h1 className=' font-visita-bold text-xl mt-4' >And Your <span  className='text-red-600' > Subscription Is Cancelled</span></h1>
 
         <h1 className=' font-visita-medium text-xl mt-4' >any help?</h1>

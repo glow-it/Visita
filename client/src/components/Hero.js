@@ -19,6 +19,7 @@ function Hero() {
 
 
 
+
 {/* How to Modal */}
 <Modal  isOpen={isOpen}  onClose={onClose}>
         <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="50px" />
@@ -33,7 +34,7 @@ function Hero() {
                 </span>
               </Button>
               <Button onClick={()=> window.open('https://scribehow.com/shared/Visita_Create_Card_Process__xIfmyzszTXSukxUZiWzWTw')} className="font-visita-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='3' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
-                Create Card <span className="flex items-center justify-center ml-2">
+                Create Website <span className="flex items-center justify-center ml-2">
                   <ion-icon name="arrow-forward"></ion-icon>
                 </span>
               </Button>
@@ -178,7 +179,7 @@ function Hero() {
           </h1>
           <h1 className="font-visita-bold text-2xl sm:text-4xl ">
             600+ <br />{" "}
-            <span className="sm:text-2xl text-xl">Cards Created</span>{" "}
+            <span className="sm:text-2xl text-xl">Websites Created</span>{" "}
           </h1>
         </div>
       </div>

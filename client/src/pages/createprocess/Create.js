@@ -320,9 +320,9 @@ function Create(props) {
               onClose()
               let cardForm = document.getElementById("cardForm");
                   cardForm.submit()
-                  navigate('/loading/creating-card')
+                  navigate('/loading/creating-website')
             }}>
-              <span className="font-visita-bold" >Yes' Create Card</span>
+              <span className="font-visita-bold" >Yes' Create Website</span>
             </Button>
 
 
@@ -2117,13 +2117,13 @@ function Create(props) {
               _hover
               rounded={"3xl"}
               isLoading={loading}
-              loadingText="Creating Card"
+              loadingText="Creating Website"
               onClick={() => handleNextClick()}
               backgroundColor="rgb(37 99 235 / 1)"
               className="w-[200px] font-visita-bold lg:mr-6 mr-2"
               size="md"
             >
-             {processIndex == maximumProcesses ? 'Create Card' : 'Next'}
+             {processIndex == maximumProcesses ? 'Create Website' : 'Next'}
             </Button>
 
             <Button
