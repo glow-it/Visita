@@ -44,7 +44,7 @@ module.exports = {
         {
           product_image: data.product_image_1,
           product_name: data.product_1_name,
-          product_description: data.product_1_description,
+          product_description: data.product_11_description,
           product_offerprice: data.product_1_offerprice,
           product_orgprice: data.product_1_orgprice,
           product_link: data.product_1_link,
@@ -122,12 +122,372 @@ module.exports = {
         },
 
         {
-          pproduct_image: data.pproduct_image_10,
+          product_image: data.product_image_10,
           product_name: data.product_10_name,
           product_description: data.product_10_description,
           product_offerprice: data.product_10_offerprice,
           product_orgprice: data.product_10_orgprice,
           product_link: data.product_10_link,
+        },
+
+        {
+          product_image: data.product_image_11,
+          product_name: data.product_11_name,
+          product_description: data.product_11_description,
+          product_offerprice: data.product_11_offerprice,
+          product_orgprice: data.product_11_orgprice,
+          product_link: data.product_11_link,
+        },
+
+        {
+          product_image: data.product_image_12,
+          product_name: data.product_12_name,
+          product_description: data.product_12_description,
+          product_offerprice: data.product_12_offerprice,
+          product_orgprice: data.product_12_orgprice,
+          product_link: data.product_12_link,
+        },
+
+        {
+          product_image: data.product_image_13,
+          product_name: data.product_13_name,
+          product_description: data.product_13_description,
+          product_offerprice: data.product_13_offerprice,
+          product_orgprice: data.product_13_orgprice,
+          product_link: data.product_13_link,
+        },
+
+        {
+          product_image: data.product_image_14,
+          product_name: data.product_14_name,
+          product_description: data.product_14_description,
+          product_offerprice: data.product_14_offerprice,
+          product_orgprice: data.product_14_orgprice,
+          product_link: data.product_14_link,
+        },
+
+        {
+          product_image: data.product_image_15,
+          product_name: data.product_15_name,
+          product_description: data.product_15_description,
+          product_offerprice: data.product_15_offerprice,
+          product_orgprice: data.product_15_orgprice,
+          product_link: data.product_15_link,
+        },
+
+        {
+          product_image: data.product_image_16,
+          product_name: data.product_16_name,
+          product_description: data.product_16_description,
+          product_offerprice: data.product_16_offerprice,
+          product_orgprice: data.product_16_orgprice,
+          product_link: data.product_16_link,
+        },
+
+        {
+          product_image: data.product_image_17,
+          product_name: data.product_17_name,
+          product_description: data.product_17_description,
+          product_offerprice: data.product_17_offerprice,
+          product_orgprice: data.product_17_orgprice,
+          product_link: data.product_17_link,
+        },
+
+        {
+          product_image: data.product_image_18,
+          product_name: data.product_18_name,
+          product_description: data.product_18_description,
+          product_offerprice: data.product_18_offerprice,
+          product_orgprice: data.product_18_orgprice,
+          product_link: data.product_18_link,
+        },
+
+        {
+          product_image: data.product_image_19,
+          product_name: data.product_19_name,
+          product_description: data.product_19_description,
+          product_offerprice: data.product_19_offerprice,
+          product_orgprice: data.product_19_orgprice,
+          product_link: data.product_19_link,
+        },
+
+        {
+          product_image: data.product_image_20,
+          product_name: data.product_20_name,
+          product_description: data.product_20_description,
+          product_offerprice: data.product_20_offerprice,
+          product_orgprice: data.product_20_orgprice,
+          product_link: data.product_20_link,
+        },
+
+        {
+          product_image: data.product_image_21,
+          product_name: data.product_21_name,
+          product_description: data.product_21_description,
+          product_offerprice: data.product_21_offerprice,
+          product_orgprice: data.product_21_orgprice,
+          product_link: data.product_21_link,
+        },
+
+        {
+          product_image: data.product_image_22,
+          product_name: data.product_22_name,
+          product_description: data.product_22_description,
+          product_offerprice: data.product_22_offerprice,
+          product_orgprice: data.product_22_orgprice,
+          product_link: data.product_22_link,
+        },
+
+        {
+          product_image: data.product_image_23,
+          product_name: data.product_23_name,
+          product_description: data.product_23_description,
+          product_offerprice: data.product_23_offerprice,
+          product_orgprice: data.product_23_orgprice,
+          product_link: data.product_23_link,
+        },
+
+        {
+          product_image: data.product_image_24,
+          product_name: data.product_24_name,
+          product_description: data.product_24_description,
+          product_offerprice: data.product_24_offerprice,
+          product_orgprice: data.product_24_orgprice,
+          product_link: data.product_24_link,
+        },
+
+        {
+          product_image: data.product_image_25,
+          product_name: data.product_25_name,
+          product_description: data.product_25_description,
+          product_offerprice: data.product_25_offerprice,
+          product_orgprice: data.product_25_orgprice,
+          product_link: data.product_25_link,
+        },
+
+        {
+          product_image: data.product_image_26,
+          product_name: data.product_26_name,
+          product_description: data.product_26_description,
+          product_offerprice: data.product_26_offerprice,
+          product_orgprice: data.product_26_orgprice,
+          product_link: data.product_26_link,
+        },
+
+        {
+          product_image: data.product_image_27,
+          product_name: data.product_27_name,
+          product_description: data.product_27_description,
+          product_offerprice: data.product_27_offerprice,
+          product_orgprice: data.product_27_orgprice,
+          product_link: data.product_27_link,
+        },
+
+        {
+          product_image: data.product_image_28,
+          product_name: data.product_28_name,
+          product_description: data.product_28_description,
+          product_offerprice: data.product_28_offerprice,
+          product_orgprice: data.product_28_orgprice,
+          product_link: data.product_28_link,
+        },
+
+        {
+          product_image: data.product_image_29,
+          product_name: data.product_29_name,
+          product_description: data.product_29_description,
+          product_offerprice: data.product_29_offerprice,
+          product_orgprice: data.product_29_orgprice,
+          product_link: data.product_29_link,
+        },
+
+        {
+          product_image: data.product_image_30,
+          product_name: data.product_30_name,
+          product_description: data.product_30_description,
+          product_offerprice: data.product_30_offerprice,
+          product_orgprice: data.product_30_orgprice,
+          product_link: data.product_30_link,
+        },
+
+        {
+          product_image: data.product_image_31,
+          product_name: data.product_31_name,
+          product_description: data.product_31_description,
+          product_offerprice: data.product_31_offerprice,
+          product_orgprice: data.product_31_orgprice,
+          product_link: data.product_31_link,
+        },
+
+        {
+          product_image: data.product_image_32,
+          product_name: data.product_32_name,
+          product_description: data.product_32_description,
+          product_offerprice: data.product_32_offerprice,
+          product_orgprice: data.product_32_orgprice,
+          product_link: data.product_32_link,
+        },
+
+        {
+          product_image: data.product_image_33,
+          product_name: data.product_33_name,
+          product_description: data.product_33_description,
+          product_offerprice: data.product_33_offerprice,
+          product_orgprice: data.product_33_orgprice,
+          product_link: data.product_33_link,
+        },
+
+        {
+          product_image: data.product_image_34,
+          product_name: data.product_34_name,
+          product_description: data.product_34_description,
+          product_offerprice: data.product_34_offerprice,
+          product_orgprice: data.product_34_orgprice,
+          product_link: data.product_34_link,
+        },
+
+        {
+          product_image: data.product_image_35,
+          product_name: data.product_35_name,
+          product_description: data.product_35_description,
+          product_offerprice: data.product_35_offerprice,
+          product_orgprice: data.product_35_orgprice,
+          product_link: data.product_35_link,
+        },
+
+        {
+          product_image: data.product_image_36,
+          product_name: data.product_36_name,
+          product_description: data.product_36_description,
+          product_offerprice: data.product_36_offerprice,
+          product_orgprice: data.product_36_orgprice,
+          product_link: data.product_36_link,
+        },
+
+        {
+          product_image: data.product_image_37,
+          product_name: data.product_37_name,
+          product_description: data.product_37_description,
+          product_offerprice: data.product_37_offerprice,
+          product_orgprice: data.product_37_orgprice,
+          product_link: data.product_37_link,
+        },
+
+        {
+          product_image: data.product_image_38,
+          product_name: data.product_38_name,
+          product_description: data.product_38_description,
+          product_offerprice: data.product_38_offerprice,
+          product_orgprice: data.product_38_orgprice,
+          product_link: data.product_38_link,
+        },
+
+        {
+          product_image: data.product_image_39,
+          product_name: data.product_39_name,
+          product_description: data.product_39_description,
+          product_offerprice: data.product_39_offerprice,
+          product_orgprice: data.product_39_orgprice,
+          product_link: data.product_39_link,
+        },
+
+        {
+          product_image: data.product_image_40,
+          product_name: data.product_40_name,
+          product_description: data.product_40_description,
+          product_offerprice: data.product_40_offerprice,
+          product_orgprice: data.product_40_orgprice,
+          product_link: data.product_40_link,
+        },
+
+        {
+          product_image: data.product_image_41,
+          product_name: data.product_41_name,
+          product_description: data.product_41_description,
+          product_offerprice: data.product_41_offerprice,
+          product_orgprice: data.product_41_orgprice,
+          product_link: data.product_41_link,
+        },
+
+        {
+          product_image: data.product_image_42,
+          product_name: data.product_42_name,
+          product_description: data.product_42_description,
+          product_offerprice: data.product_42_offerprice,
+          product_orgprice: data.product_42_orgprice,
+          product_link: data.product_42_link,
+        },
+
+        {
+          product_image: data.product_image_43,
+          product_name: data.product_43_name,
+          product_description: data.product_43_description,
+          product_offerprice: data.product_43_offerprice,
+          product_orgprice: data.product_43_orgprice,
+          product_link: data.product_43_link,
+        },
+
+        {
+          product_image: data.product_image_44,
+          product_name: data.product_44_name,
+          product_description: data.product_44_description,
+          product_offerprice: data.product_44_offerprice,
+          product_orgprice: data.product_44_orgprice,
+          product_link: data.product_44_link,
+        },
+
+        {
+          product_image: data.product_image_45,
+          product_name: data.product_45_name,
+          product_description: data.product_45_description,
+          product_offerprice: data.product_45_offerprice,
+          product_orgprice: data.product_45_orgprice,
+          product_link: data.product_45_link,
+        },
+
+        {
+          product_image: data.product_image_46,
+          product_name: data.product_46_name,
+          product_description: data.product_46_description,
+          product_offerprice: data.product_46_offerprice,
+          product_orgprice: data.product_46_orgprice,
+          product_link: data.product_46_link,
+        },
+
+        {
+          product_image: data.product_image_47,
+          product_name: data.product_47_name,
+          product_description: data.product_47_description,
+          product_offerprice: data.product_47_offerprice,
+          product_orgprice: data.product_47_orgprice,
+          product_link: data.product_47_link,
+        },
+
+        {
+          product_image: data.product_image_48,
+          product_name: data.product_48_name,
+          product_description: data.product_48_description,
+          product_offerprice: data.product_48_offerprice,
+          product_orgprice: data.product_48_orgprice,
+          product_link: data.product_48_link,
+        },
+
+        {
+          product_image: data.product_image_49,
+          product_name: data.product_49_name,
+          product_description: data.product_49_description,
+          product_offerprice: data.product_49_offerprice,
+          product_orgprice: data.product_49_orgprice,
+          product_link: data.product_49_link,
+        },
+
+        {
+          product_image: data.product_image_50,
+          product_name: data.product_50_name,
+          product_description: data.product_50_description,
+          product_offerprice: data.product_50_offerprice,
+          product_orgprice: data.product_50_orgprice,
+          product_link: data.product_50_link,
         },
       ]
 
@@ -253,7 +613,7 @@ module.exports = {
           {
             product_image: data.product_image_2,
             product_name: data.product_2_name,
-            product_description: data.product_1_description,
+            product_description: data.product_2_description,
             product_offerprice: data.product_2_offerprice,
             product_orgprice: data.product_2_orgprice,
             product_link: data.product_2_link,
@@ -262,7 +622,7 @@ module.exports = {
           {
             product_image: data.product_image_3,
             product_name: data.product_3_name,
-            product_description: data.product_1_description,
+            product_description: data.product_3_description,
             product_offerprice: data.product_3_offerprice,
             product_orgprice: data.product_3_orgprice,
             product_link: data.product_3_link,
@@ -271,7 +631,7 @@ module.exports = {
           {
             product_image: data.product_image_4,
             product_name: data.product_4_name,
-            product_description: data.product_1_description,
+            product_description: data.product_4_description,
             product_offerprice: data.product_4_offerprice,
             product_orgprice: data.product_4_orgprice,
             product_link: data.product_4_link,
@@ -280,7 +640,7 @@ module.exports = {
           {
             product_image: data.product_image_5,
             product_name: data.product_5_name,
-            product_description: data.product_1_description,
+            product_description: data.product_5_description,
             product_offerprice: data.product_5_offerprice,
             product_orgprice: data.product_5_orgprice,
             product_link: data.product_5_link,
@@ -289,7 +649,7 @@ module.exports = {
           {
             product_image: data.product_image_6,
             product_name: data.product_6_name,
-            product_description: data.product_1_description,
+            product_description: data.product_6_description,
             product_offerprice: data.product_6_offerprice,
             product_orgprice: data.product_6_orgprice,
           },
@@ -297,7 +657,7 @@ module.exports = {
           {
             product_image: data.product_image_7,
             product_name: data.product_7_name,
-            product_description: data.product_1_description,
+            product_description: data.product_7_description,
             product_offerprice: data.product_7_offerprice,
             product_orgprice: data.product_7_orgprice,
             product_link: data.product_7_link,
@@ -306,7 +666,7 @@ module.exports = {
           {
             product_image: data.product_image_8,
             product_name: data.product_8_name,
-            product_description: data.product_1_description,
+            product_description: data.product_8_description,
             product_offerprice: data.product_8_offerprice,
             product_orgprice: data.product_8_orgprice,
             product_link: data.product_8_link,
@@ -315,20 +675,382 @@ module.exports = {
           {
             product_image: data.product_image_9,
             product_name: data.product_9_name,
-            product_description: data.product_1_description,
+            product_description: data.product_9_description,
             product_offerprice: data.product_9_offerprice,
             product_orgprice: data.product_9_orgprice,
             product_link: data.product_9_link,
           },
 
           {
-            pproduct_image: data.pproduct_image_10,
+            product_image: data.product_image_10,
             product_name: data.product_10_name,
-            product_description: data.product_1_description,
+            product_description: data.product_10_description,
             product_offerprice: data.product_10_offerprice,
             product_orgprice: data.product_10_orgprice,
             product_link: data.product_10_link,
           },
+
+          {
+            product_image: data.product_image_11,
+            product_name: data.product_11_name,
+            product_description: data.product_11_description,
+            product_offerprice: data.product_11_offerprice,
+            product_orgprice: data.product_11_orgprice,
+            product_link: data.product_11_link,
+          },
+
+          {
+            product_image: data.product_image_12,
+            product_name: data.product_12_name,
+            product_description: data.product_12_description,
+            product_offerprice: data.product_12_offerprice,
+            product_orgprice: data.product_12_orgprice,
+            product_link: data.product_12_link,
+          },
+
+          {
+            product_image: data.product_image_13,
+            product_name: data.product_13_name,
+            product_description: data.product_13_description,
+            product_offerprice: data.product_13_offerprice,
+            product_orgprice: data.product_13_orgprice,
+            product_link: data.product_13_link,
+          },
+
+          {
+            product_image: data.product_image_14,
+            product_name: data.product_14_name,
+            product_description: data.product_14_description,
+            product_offerprice: data.product_14_offerprice,
+            product_orgprice: data.product_14_orgprice,
+            product_link: data.product_14_link,
+          },
+
+          {
+            product_image: data.product_image_15,
+            product_name: data.product_15_name,
+            product_description: data.product_15_description,
+            product_offerprice: data.product_15_offerprice,
+            product_orgprice: data.product_15_orgprice,
+            product_link: data.product_15_link,
+          },
+
+          {
+            product_image: data.product_image_16,
+            product_name: data.product_16_name,
+            product_description: data.product_16_description,
+            product_offerprice: data.product_16_offerprice,
+            product_orgprice: data.product_16_orgprice,
+            product_link: data.product_16_link,
+          },
+
+          {
+            product_image: data.product_image_17,
+            product_name: data.product_17_name,
+            product_description: data.product_17_description,
+            product_offerprice: data.product_17_offerprice,
+            product_orgprice: data.product_17_orgprice,
+            product_link: data.product_17_link,
+          },
+
+          {
+            product_image: data.product_image_18,
+            product_name: data.product_18_name,
+            product_description: data.product_18_description,
+            product_offerprice: data.product_18_offerprice,
+            product_orgprice: data.product_18_orgprice,
+            product_link: data.product_18_link,
+          },
+
+          {
+            product_image: data.product_image_19,
+            product_name: data.product_19_name,
+            product_description: data.product_19_description,
+            product_offerprice: data.product_19_offerprice,
+            product_orgprice: data.product_19_orgprice,
+            product_link: data.product_19_link,
+          },
+
+          {
+            product_image: data.product_image_20,
+            product_name: data.product_20_name,
+            product_description: data.product_20_description,
+            product_offerprice: data.product_20_offerprice,
+            product_orgprice: data.product_20_orgprice,
+            product_link: data.product_20_link,
+          },
+
+          {
+            product_image: data.product_image_21,
+            product_name: data.product_21_name,
+            product_description: data.product_21_description,
+            product_offerprice: data.product_21_offerprice,
+            product_orgprice: data.product_21_orgprice,
+            product_link: data.product_21_link,
+          },
+
+          {
+            product_image: data.product_image_22,
+            product_name: data.product_22_name,
+            product_description: data.product_22_description,
+            product_offerprice: data.product_22_offerprice,
+            product_orgprice: data.product_22_orgprice,
+            product_link: data.product_22_link,
+          },
+
+          {
+            product_image: data.product_image_23,
+            product_name: data.product_23_name,
+            product_description: data.product_23_description,
+            product_offerprice: data.product_23_offerprice,
+            product_orgprice: data.product_23_orgprice,
+            product_link: data.product_23_link,
+          },
+
+          {
+            product_image: data.product_image_24,
+            product_name: data.product_24_name,
+            product_description: data.product_24_description,
+            product_offerprice: data.product_24_offerprice,
+            product_orgprice: data.product_24_orgprice,
+            product_link: data.product_24_link,
+          },
+
+          {
+            product_image: data.product_image_25,
+            product_name: data.product_25_name,
+            product_description: data.product_25_description,
+            product_offerprice: data.product_25_offerprice,
+            product_orgprice: data.product_25_orgprice,
+            product_link: data.product_25_link,
+          },
+
+          {
+            product_image: data.product_image_26,
+            product_name: data.product_26_name,
+            product_description: data.product_26_description,
+            product_offerprice: data.product_26_offerprice,
+            product_orgprice: data.product_26_orgprice,
+            product_link: data.product_26_link,
+          },
+
+          {
+            product_image: data.product_image_27,
+            product_name: data.product_27_name,
+            product_description: data.product_27_description,
+            product_offerprice: data.product_27_offerprice,
+            product_orgprice: data.product_27_orgprice,
+            product_link: data.product_27_link,
+          },
+
+          {
+            product_image: data.product_image_28,
+            product_name: data.product_28_name,
+            product_description: data.product_28_description,
+            product_offerprice: data.product_28_offerprice,
+            product_orgprice: data.product_28_orgprice,
+            product_link: data.product_28_link,
+          },
+
+          {
+            product_image: data.product_image_29,
+            product_name: data.product_29_name,
+            product_description: data.product_29_description,
+            product_offerprice: data.product_29_offerprice,
+            product_orgprice: data.product_29_orgprice,
+            product_link: data.product_29_link,
+          },
+
+          {
+            product_image: data.product_image_30,
+            product_name: data.product_30_name,
+            product_description: data.product_30_description,
+            product_offerprice: data.product_30_offerprice,
+            product_orgprice: data.product_30_orgprice,
+            product_link: data.product_30_link,
+          },
+
+          {
+            product_image: data.product_image_31,
+            product_name: data.product_31_name,
+            product_description: data.product_31_description,
+            product_offerprice: data.product_31_offerprice,
+            product_orgprice: data.product_31_orgprice,
+            product_link: data.product_31_link,
+          },
+
+          {
+            product_image: data.product_image_32,
+            product_name: data.product_32_name,
+            product_description: data.product_32_description,
+            product_offerprice: data.product_32_offerprice,
+            product_orgprice: data.product_32_orgprice,
+            product_link: data.product_32_link,
+          },
+
+          {
+            product_image: data.product_image_33,
+            product_name: data.product_33_name,
+            product_description: data.product_33_description,
+            product_offerprice: data.product_33_offerprice,
+            product_orgprice: data.product_33_orgprice,
+            product_link: data.product_33_link,
+          },
+
+          {
+            product_image: data.product_image_34,
+            product_name: data.product_34_name,
+            product_description: data.product_34_description,
+            product_offerprice: data.product_34_offerprice,
+            product_orgprice: data.product_34_orgprice,
+            product_link: data.product_34_link,
+          },
+
+          {
+            product_image: data.product_image_35,
+            product_name: data.product_35_name,
+            product_description: data.product_35_description,
+            product_offerprice: data.product_35_offerprice,
+            product_orgprice: data.product_35_orgprice,
+            product_link: data.product_35_link,
+          },
+
+          {
+            product_image: data.product_image_36,
+            product_name: data.product_36_name,
+            product_description: data.product_36_description,
+            product_offerprice: data.product_36_offerprice,
+            product_orgprice: data.product_36_orgprice,
+            product_link: data.product_36_link,
+          },
+
+          {
+            product_image: data.product_image_37,
+            product_name: data.product_37_name,
+            product_description: data.product_37_description,
+            product_offerprice: data.product_37_offerprice,
+            product_orgprice: data.product_37_orgprice,
+            product_link: data.product_37_link,
+          },
+
+          {
+            product_image: data.product_image_38,
+            product_name: data.product_38_name,
+            product_description: data.product_38_description,
+            product_offerprice: data.product_38_offerprice,
+            product_orgprice: data.product_38_orgprice,
+            product_link: data.product_38_link,
+          },
+
+          {
+            product_image: data.product_image_39,
+            product_name: data.product_39_name,
+            product_description: data.product_39_description,
+            product_offerprice: data.product_39_offerprice,
+            product_orgprice: data.product_39_orgprice,
+            product_link: data.product_39_link,
+          },
+
+          {
+            product_image: data.product_image_40,
+            product_name: data.product_40_name,
+            product_description: data.product_40_description,
+            product_offerprice: data.product_40_offerprice,
+            product_orgprice: data.product_40_orgprice,
+            product_link: data.product_40_link,
+          },
+
+          {
+            product_image: data.product_image_41,
+            product_name: data.product_41_name,
+            product_description: data.product_41_description,
+            product_offerprice: data.product_41_offerprice,
+            product_orgprice: data.product_41_orgprice,
+            product_link: data.product_41_link,
+          },
+
+          {
+            product_image: data.product_image_42,
+            product_name: data.product_42_name,
+            product_description: data.product_42_description,
+            product_offerprice: data.product_42_offerprice,
+            product_orgprice: data.product_42_orgprice,
+            product_link: data.product_42_link,
+          },
+
+          {
+            product_image: data.product_image_43,
+            product_name: data.product_43_name,
+            product_description: data.product_43_description,
+            product_offerprice: data.product_43_offerprice,
+            product_orgprice: data.product_43_orgprice,
+            product_link: data.product_43_link,
+          },
+
+          {
+            product_image: data.product_image_44,
+            product_name: data.product_44_name,
+            product_description: data.product_44_description,
+            product_offerprice: data.product_44_offerprice,
+            product_orgprice: data.product_44_orgprice,
+            product_link: data.product_44_link,
+          },
+
+          {
+            product_image: data.product_image_45,
+            product_name: data.product_45_name,
+            product_description: data.product_45_description,
+            product_offerprice: data.product_45_offerprice,
+            product_orgprice: data.product_45_orgprice,
+            product_link: data.product_45_link,
+          },
+
+          {
+            product_image: data.product_image_46,
+            product_name: data.product_46_name,
+            product_description: data.product_46_description,
+            product_offerprice: data.product_46_offerprice,
+            product_orgprice: data.product_46_orgprice,
+            product_link: data.product_46_link,
+          },
+
+          {
+            product_image: data.product_image_47,
+            product_name: data.product_47_name,
+            product_description: data.product_47_description,
+            product_offerprice: data.product_47_offerprice,
+            product_orgprice: data.product_47_orgprice,
+            product_link: data.product_47_link,
+          },
+
+          {
+            product_image: data.product_image_48,
+            product_name: data.product_48_name,
+            product_description: data.product_48_description,
+            product_offerprice: data.product_48_offerprice,
+            product_orgprice: data.product_48_orgprice,
+            product_link: data.product_48_link,
+          },
+
+          {
+            product_image: data.product_image_49,
+            product_name: data.product_49_name,
+            product_description: data.product_49_description,
+            product_offerprice: data.product_49_offerprice,
+            product_orgprice: data.product_49_orgprice,
+            product_link: data.product_49_link,
+          },
+
+          {
+            product_image: data.product_image_50,
+            product_name: data.product_50_name,
+            product_description: data.product_50_description,
+            product_offerprice: data.product_50_offerprice,
+            product_orgprice: data.product_50_orgprice,
+            product_link: data.product_50_link,
+          },
+
+          
         ],
 
         since: data.since,

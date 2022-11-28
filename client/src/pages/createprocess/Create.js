@@ -41,6 +41,58 @@ function Create(props) {
     "9",
     "10",
   ]);
+  let [productsQuantity, setProductsQuantity] = useState([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+  ]);
 
 
   let [loading,setLoading] = useState(false)
@@ -58,7 +110,7 @@ function Create(props) {
      }
     },[choosedThemeColor])
 
-  let maximumProcesses = 6;
+  let maximumProcesses = 7;
 
   // Last Confirm Modal Disclosure
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -1195,7 +1247,9 @@ function Create(props) {
               ? "Payment Options"
               : processIndex == 5
               ? "Products Or Services"
-              : "Image Gallery"}
+              : processIndex == 6
+              ? "Image Gallery"
+              : "Additional Features"}
           </span>
         </h1>
       </div>
@@ -1971,7 +2025,7 @@ function Create(props) {
             processIndex != 5 ? "hidden" : ""
           }  my-3 process5_wrapper pb-40 overflow-scroll w-full`}
         >
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].map((data) => {
+          {productsQuantity.map((data) => {
             return (
               <div className="flex flex-col lg:items-start items-center">
                 <label
@@ -2049,26 +2103,26 @@ function Create(props) {
           id="process6"
           class={`${
             processIndex != 6 ? "hidden" : ""
-          }  my-3 process6_wrapper pb-40 overflow-scroll w-full`}
+          }  my-3 process6_wrapper  pb-40 overflow-scroll w-full`}
         >
         
         {
           imageGalleryQuantity.map((data)=> {
             return(
-             <div >
+             <div  >
                <label
               for="large-input"
-              class="block mb-2 lg:text-lg  text-md font-visita-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
+              class="block mb-2 lg:text-lg   text-md font-visita-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
             >
               Image {data}
               <span className="text-slate-400 ml-1 text-sm">
                 (Optional)
               </span>
             </label>
-              <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
+              <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   border">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    pr-[150px] pl-[20px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="  font-visita-medium block py-3.5    pr-[150px] pl-[20px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30  hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`image_${data}`)}}
@@ -2085,6 +2139,23 @@ function Create(props) {
 
 
 
+        </div>
+
+        <div
+          id="process7"
+          class={`${
+            processIndex != 7 ? "hidden" : ""
+          }  my-3 process7_wrapper  pb-40 overflow-scroll`}
+        >
+          <div className="w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
+
+                  <div class="flex flex-col justify-center min-w-[100%] lg:py-0 pb-8 items-center">
+                  
+                    
+
+                  </div>
+
+                  </div>
         </div>
 
         {/* Form Buttons */}

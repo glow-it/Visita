@@ -23,6 +23,7 @@ import ForgotPasswordFranchisee from "./pages/ForgotPasswordFranchisee";
 import PageNotFound from "./pages/PageNotFound";
 import HowToFranchisee from "./pages/HowToFranchisee";
 import Aos from "aos";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   useEffect(() => {
@@ -55,6 +56,7 @@ function App() {
         <Route path="create/preview/:name" element={<CardPreview />} />
         <Route path="loading/:type" element={<Loading />} />
         <Route path="/:comp_name" element={<Template />} />
+        <Route path="/:comp_name/products" element={<ProductsPage />} />
         <Route
           path="/activate-warning/:comp_name"
           element={<ActivateWarning />}

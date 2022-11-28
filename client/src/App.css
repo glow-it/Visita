@@ -611,6 +611,11 @@ footer {
   transform: translateY(50vh);
   animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
 }
+.process7_wrapper{
+  opacity: 0;
+  transform: translateY(50vh);
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+}
 
 @keyframes animate_process{
   0%{

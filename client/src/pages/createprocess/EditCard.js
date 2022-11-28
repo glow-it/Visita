@@ -2017,11 +2017,12 @@ function EditCard() {
                     (Optional)
                   </span>
                 </label>
-                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
-                    <img src={data.product_image} className="h-32 rounded-xl" />
+                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   border">
+                   <div className="flex flex-col">
+                   <img src={data.product_image} className="h-32 w-[250px] rounded-xl" />
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    pr-[50px] pl-[20px]  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="  font-visita-medium block py-3.5    text-gray-900 transition-all  sm:text-sm text-sm"
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`product_image_${index + 1}`)}}
@@ -2029,6 +2030,7 @@ function EditCard() {
           <input defaultValue={data.product_image} type="text" name={`product_image_${index + 1}`} id={`product_image_${index + 1}`} className="hidden" />
           
                   </div>
+                   </div>
 
                   <div className="w-full flex flex-col justify-center px-2">
                     <input

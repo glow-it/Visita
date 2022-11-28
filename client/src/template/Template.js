@@ -700,18 +700,18 @@ function Template({preview}) {
     {products &&
       products
         .filter((data, index) => {
-          return data.product_name != "";
+          return data.product_name != "" && index < 3;
         })
-        .map((data) => {
+        .map((data,index) => {
           return (
             <div
               z
               div
-              className={`w-full pb-12 mb-8 px-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative mt-20`}
+              className={`w-full pb-12 mb-8 px-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative ${index == 0 ? 'mt-20' : 'mt-2'}`}
             >
               <img
                 src={data.product_image}
-                className=" h-full  w-full py-6 rounded-3xl offer-image"
+                className=" h-[300px]  w-[300px] py-6 rounded-3xl offer-image"
               />
               <h1 className=" pt-6 text-center text-xl font-visita-bold">
                 {data.product_name}
@@ -728,7 +728,7 @@ function Template({preview}) {
                 {`₹${data.product_offerprice}`}
               </h1>
               <a
-                href={`https://api.whatsapp.com/send/?phone=${data.phone_no}&text=👋Hey,Enquiry For ${data.product_name}`}
+                href={`https://api.whatsapp.com/send/?phone=+91${cardDatas && cardDatas.phone_no}&text=👋Hey,Enquiry For ${data.product_name}`}
                 className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mt-6`}
               >
                 Enquiry Now
@@ -749,6 +749,20 @@ function Template({preview}) {
             </div>
           );
         })}
+
+
+        <div className="w-full h-32  flex items-center justify-center">
+        <button
+                onClick={()=> {navigate('/'+cardDatas.company_name+'/products')}}
+                className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-visita-bold text-sm -mt-6`}
+              >
+                View more products
+                <span className=" ml-1 text-white text-xl"></span>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+        </div>
+
+
   </div>
 
   {/* Image Gallery */}

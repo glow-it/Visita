@@ -80,6 +80,11 @@ function CreateHeader({
             processIndex == 6 ? "w-10" : loading ? "hidden " : "w-4"
           } bg-blue-600 rounded-full mr-2 process_indicator-6`}
         ></div>
+        <div
+          className={`h-4 ${
+            processIndex == 7 ? "w-10" : loading ? "hidden " : "w-4"
+          } bg-blue-600 rounded-full mr-2 process_indicator-6`}
+        ></div>
       </div>
 
       <div
@@ -99,7 +104,10 @@ function CreateHeader({
               ? "Payment Options"
               : processIndex == 5
               ? "Products Or Services"
-              : "Image Gallery"}
+              : processIndex == 6
+              ? "Image Gallery"
+              :
+              "Additional Features"}
           </span>
         </h1>
       </div>
