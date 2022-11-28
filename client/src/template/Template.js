@@ -41,6 +41,8 @@ function Template({preview}) {
   let location = useLocation()
   let [bgImage, setBgImage] = useState();  
   let [isCardLoaded, setIsCardLoaded] = useState(false);  
+  let [specialities, setSpecialities] = useState([]);  
+  let [features, setFeatures] = useState([]);  
 
 
   axios.get('/bg-images').then((response)=>{
@@ -99,6 +101,8 @@ function Template({preview}) {
         setGalleryImages(response.data.image_gallery);
         setYtVideos(response.data.yt_videos);
         setFeedbacks(response.data.feedbacks);
+        setSpecialities(response.data.specials.split(','))
+        setFeatures(response.data.features.split(','))
 
         setIsCardLoaded(true)
 
@@ -662,9 +666,16 @@ function Template({preview}) {
         <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
           Our Specialities <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-down-circle"></ion-icon></span>
         </span>
-        <h1 className=" text-xl font-visita-medium list-item mb-4">
-          {cardDatas && cardDatas.specials}
-        </h1>
+        {
+          specialities.map((data)=> {
+            return(
+<h1 className=" text-lg font-visita-medium list-item mb-4">
+          {data}
+          </h1>
+            )
+          })
+        }
+        
       </div>
     ) : (
       ""
@@ -675,9 +686,16 @@ function Template({preview}) {
         <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
           Our Features <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-down-circle"></ion-icon></span>
         </span>
-        <h1 className=" text-xl font-visita-medium list-item mb-4">
-          {cardDatas && cardDatas.features}
-        </h1>
+        {
+          features.map((data)=> {
+            return(
+<h1 className=" text-lg font-visita-medium list-item mb-4">
+          {data}
+          </h1>
+            )
+          })
+        }
+        
       </div>
     ) : (
       ""

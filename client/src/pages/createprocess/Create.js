@@ -1623,7 +1623,7 @@ function Create(props) {
                 Specialities <span className="text-slate-400">(Optional)</span>
               </label>
               <input
-                placeholder="Specialities Of Your Company"
+                placeholder="Seperate with comma ( , )"
                 autoComplete="off"
                 id="large-input"
                 name="specials"
@@ -1637,7 +1637,7 @@ function Create(props) {
                 Features <span className="text-slate-400">(Optional)</span>
               </label>
               <input
-                placeholder="Features Of Your Company"
+                placeholder="Seperate with comma ( , )"
                 autoComplete="off"
                 id="large-input"
                 name="features"
