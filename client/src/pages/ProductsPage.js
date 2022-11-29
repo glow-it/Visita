@@ -47,7 +47,7 @@ function ProductsPage() {
   return (
     <div className='pt-24'>
         <div className="h-16 w-full border-b bg-white fixed top-0 z-50 flex items-center justify-center">
-            <img className='h-12 w-12 rounded-full mr-1' src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"  />
+            <img className='h-12 w-12 rounded-full mr-1' src={cardDatas && cardDatas.logo}  />
             <h1 className={`text-2xl text-${theme_color}-600 font-visita-bold`} >Products</h1>
         </div>
         <div class="z-10 bg-white w-full h-screen flex flex-col overflow-scroll px-8">

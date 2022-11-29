@@ -746,3 +746,7 @@ input{
 	.text-shadow {
 		text-shadow: -8px 0 0 rgb(102 123 242);
 	}
+  .add_features_wrapper{
+    min-width: 900px !important;
+    margin-top: 10px;
+  }

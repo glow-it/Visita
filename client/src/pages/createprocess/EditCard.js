@@ -1,4 +1,4 @@
-import { Button, useDisclosure } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Switch, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import CreateHeader from "../../components/CreateHeader";
 import { useToast } from "@chakra-ui/react";
@@ -42,6 +42,17 @@ function EditCard() {
 
 
   useEffect(()=> {
+
+
+    // If Check Is Show Customer Details Popup Enabled
+    let show_popup_feature_1_toggle = document.getElementById('show_popup_feature_1_toggle');
+
+    if(cardDatas && cardDatas.show_customer_details_popop == 'true'){
+      show_popup_feature_1_toggle.checked = true
+    }
+
+
+
     if(cardDatas.activated){
       var doc = prompt("Enter Card Password");
            
@@ -66,7 +77,7 @@ function EditCard() {
      }
     },[choosedThemeColor])
 
-  let maximumProcesses = 6;
+  let maximumProcesses = 7;
 
   // Last Confirm Modal Disclosure
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -2128,6 +2139,40 @@ function EditCard() {
 
 
 
+        </div>
+
+        <div
+          id="process7"
+          class={`${
+            processIndex != 7 ? "hidden" : ""
+          }  my-3 process7_wrapper  pb-40 overflow-scroll`}
+        >
+          <div className=" add_features_wrapper  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center border py-8 px-4 ">
+
+                  <div class="flex flex-col w-full justify-center  py-2 lg:px-8 px-2 items-center">
+                  
+                  <FormControl display='flex' alignItems='center'>
+  <FormLabel htmlFor='email-alerts' mb='0'>
+    
+    <h1 className="flex flex-col" >
+   
+<div className="flex lg:flex-row flex-col-reverse"> 
+<span className="font-visita-bold text-lg mr-4" >Get your customers details</span>
+    <Switch value={cardDatas && cardDatas.show_customer_details_popop} onChange={(e)=> {e.target.value = e.target.checked}} size='md' id='show_popup_feature_1_toggle' name="show_customer_details_popop" mt='1' mb='1' />
+    </div>
+
+    <span className="font-visita-medium mt-4 lg:w-[600px] w-[300px] text-slate-400" >
+    This will help you to get all your customer details like name,phone number etc.when your customer enters to your website it will be show a popup for enter name and phone number.if the customer enter his details and submit you will get the details on your card manage page
+    </span>
+    </h1>
+
+  </FormLabel>
+  
+</FormControl>
+
+                  </div>
+
+                  </div>
         </div>
 
         {/* Form Buttons */}

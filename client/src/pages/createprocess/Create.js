@@ -1,4 +1,4 @@
-import { Button, Tooltip, useDisclosure } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Tooltip, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import CreateHeader from "../../components/CreateHeader";
 import { useToast } from "@chakra-ui/react";
@@ -14,6 +14,7 @@ import {
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
+import { Switch } from '@chakra-ui/react'
 
 function Create(props) {
 
@@ -2037,7 +2038,7 @@ function Create(props) {
                     (Optional)
                   </span>
                 </label>
-                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
+                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center border py-8 px-4 ">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
             className=" ml-6 font-visita-medium block py-3.5     pr-[50px] pl-[20px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
@@ -2147,11 +2148,28 @@ function Create(props) {
             processIndex != 7 ? "hidden" : ""
           }  my-3 process7_wrapper  pb-40 overflow-scroll`}
         >
-          <div className="w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
+          <div className=" add_features_wrapper  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center border py-8 px-4 ">
 
-                  <div class="flex flex-col justify-center min-w-[100%] lg:py-0 pb-8 items-center">
+                  <div class="flex flex-col w-full justify-center  py-2 lg:px-8 px-2 items-center">
                   
-                    
+                  <FormControl display='flex' alignItems='center'>
+  <FormLabel htmlFor='email-alerts' mb='0'>
+    
+    <h1 className="flex flex-col" >
+   
+<div className="flex lg:flex-row flex-col-reverse"> 
+<span className="font-visita-bold text-lg mr-4" >Get your customers details</span>
+    <Switch value={false} onChange={(e)=> {e.target.value = e.target.checked}} size='md' id='show_popup_feature_1_toggle' name="show_customer_details_popop" mt='1' mb='1' />
+    </div>
+
+    <span className="font-visita-medium mt-4 lg:w-[600px] w-[300px] text-slate-400" >
+    This will help you to get all your customer details like name,phone number etc.when your customer enters to your website it will be show a popup for enter name and phone number.if the customer enter his details and submit you will get the details on your card manage page
+    </span>
+    </h1>
+
+  </FormLabel>
+  
+</FormControl>
 
                   </div>
 

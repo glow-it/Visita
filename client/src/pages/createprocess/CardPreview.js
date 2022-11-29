@@ -289,7 +289,7 @@ function CardPreview() {
         <input
           type="text"
           name="card_pass"
-          value={name + new Date().getTime()}
+          value={name.substring(0,4) + Math.floor(1000 + Math.random() * 9000)}
         />
       </form>
 
