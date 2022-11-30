@@ -282,7 +282,7 @@ if(e.target.value.length>= 5){
               id='franchisee_upi_id'
               autoComplete="off"
               required
-              
+              type={'text'}
               className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter Upi Id"
             />
@@ -347,7 +347,7 @@ salary' placement='right'>
         <Button
         onClick={(e)=> {franchiseeRegisterClick(e)}}
         disabled={is_register_button_disabled}
-        isLoading={loading} loadingText={loadingText} className='font-visita-bold' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='blue'>Pay ₹999</Button>
+        isLoading={loading} loadingText={loadingText} className='font-visita-medium' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='blue'>Pay ₹999</Button>
          
         </div>
         <div className="w-full flex justify-center items-center">

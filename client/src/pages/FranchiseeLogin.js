@@ -158,7 +158,7 @@ function FranchiseeLogin() {
         </div>
 
         <div >
-        <Button isLoading={loading} loadingText='Logging In' onClick={()=> onFranchiseeeLoginClick()} className='font-visita-bold' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='indigo'>Login</Button>
+        <Button isLoading={loading} loadingText='Logging In' onClick={()=> onFranchiseeeLoginClick()} className='font-visita-medium' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='indigo'>Login</Button>
         </div>
         <div className="w-full flex justify-center items-center">
         <p onClick={()=> navigate('/franchisee/register')} className='font-visita-medium' >not yet a franchisee? <span className='ml-1 text-indigo-500 cursor-pointer hover:underline' >Register now</span></p>

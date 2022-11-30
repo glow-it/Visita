@@ -5,7 +5,6 @@ import Cta from '../components/Cta'
 import Features from '../components/Features'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
-import WhatIsDigitalCard from '../components/WhatIsDigitalCard'
 
 function LandingPage() {
 
@@ -26,7 +25,6 @@ function LandingPage() {
   return (
     <div className='landing-page flex flex-col items-center' >
         <Hero />
-        <WhatIsDigitalCard />
         <Features />
         <Benefits />
         <Cta />

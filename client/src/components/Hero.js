@@ -15,7 +15,8 @@ function Hero() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <div className="w-full hero lg:flex sm:p-10 bg-blend-multiply mt-12">
+  <div>
+      <div className="w-full hero lg:flex sm:p-10 bg-blend-multiply mt-12">
 
 
 
@@ -48,65 +49,15 @@ function Hero() {
 
 
 
-      <svg
-        className="absolute hero-aura"
-        xmlns="http://www.w3.org/2000/svg"
-        opacity="0.27"
-        viewBox="0 0 800 800"
-      >
-        <defs>
-          <filter
-            id="bbblurry-filter"
-            width="400%"
-            height="400%"
-            x="-100%"
-            y="-100%"
-            colorInterpolationFilters="sRGB"
-            filterUnits="objectBoundingBox"
-            primitiveUnits="userSpaceOnUse"
-          >
-            <feGaussianBlur
-              x="0%"
-              y="0%"
-              in="SourceGraphic"
-              result="blur"
-              stdDeviation="36"
-            ></feGaussianBlur>
-          </filter>
-        </defs>
-        <g filter="url(#bbblurry-filter)">
-          <ellipse
-            cx="288.874"
-            cy="374.719"
-            fill="hsla(212, 91%, 78%, 1)"
-            rx="27.5"
-            ry="277.5"
-          ></ellipse>
-          <ellipse
-            cx="258.132"
-            cy="285.161"
-            fill="hsla(272, 99%, 54%, 0.46)"
-            rx="27.5"
-            ry="277.5"
-          ></ellipse>
-          <ellipse
-            cx="331.338"
-            cy="463.21"
-            fill="hsla(167, 83%, 81%, 1)"
-            rx="27.5"
-            ry="277.5"
-          ></ellipse>
-        </g>
-      </svg>
 
-      <div className="lg:w-1/2  w-full  flex flex-col sm:pl-14 pl-6">
+      <div className="  w-full  flex flex-col items-center justify-center ">
 
 
 
      
 
        
-       <div className="lg:mt-0 mt-8">
+       {/* <div className="lg:mt-0 mt-8">
        <p
         onClick={onOpen}
           class="mt-8 cursor-pointer inline-flex  justify-between items-center py-1 px-1 pr-4 text-sm text-gray-700 bg-gray-100 rounded-full :bg-gray-800 :text-white hover:bg-gray-200"
@@ -132,70 +83,61 @@ function Hero() {
             ></path>
           </svg>
         </p>
-       </div>
+       </div> */}
 
 
 
             
 
 
-        <h1  className="capitalize font-visita-black lg:pt-8 pt-8 lg:text-6xl text-5xl">
-          Grow Your <br /> Business <span className="text-primary">Online</span>
+        <h1  className="capitalize font-visita-black text-center lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
+        Easily create a website <br /> for your business
         </h1>
 
-        <p className="font-visita-medium text-xl mt-6  text-slate-600 lg:pr-16">
-          Visita is the smartest way to grow your business by creating Digital
-          Visiting Card - Mini Website
+        <p className="font-visita-medium text-lg mt-6 text-center  text-slate-600 ">
+          Visita is the smartest way to grow your business by creating your own website
         </p>
 
-        <div className="w-full mt-12 py-2">
+        <div className="w-full mt-12 py-2 flex lg:flex-row flex-col items-center justify-center">
          
             <Link
               to="/create"
               type="button"
-              class="text-blue-500 hover:shadow-md transition-shadow border-2 border-blue-500 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+              class="text-blue-600 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-xl  text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
             >
               Create now
             </Link>
         
 
-          <a
+          <p
             onClick={() => navigate("/visita")}
             type="button"
-            class="text-white bg-blue-600 bg-primary shadow-md shadow-blue-600 hover:shadow-blue-500 cursor-pointer transition-shadow focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+            class="text-white bg-blue-600 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2"
           >
             See Demo
-          </a>
+          </p>
         </div>
 
-        <div className="w-full mt-12 py-2 flex">
-          <h1 className="font-visita-bold text-2xl sm:text-4xl ">
-            1000+ <br />{" "}
-            <span className="sm:text-2xl text-xl">Site Visitors</span>{" "}
-          </h1>
-          <h1 className="lg:text-4xl text-7xl lg:mt-4 -mt-3 lg:text-slate-600 text-slate-300 lg:ml-6 lg:mr-6 ml-3 mr-3">
-            {" "}
-            |{" "}
-          </h1>
-          <h1 className="font-visita-bold text-2xl sm:text-4xl ">
-            600+ <br />{" "}
-            <span className="sm:text-2xl text-xl">Websites Created</span>{" "}
-          </h1>
-        </div>
-      </div>
-      <div
+        <div
         className="h-[800px] -mt-32
         lg:block hidden pr-12"
       >
-        <lottie-player
-          src="https://assets3.lottiefiles.com/packages/lf20_zyqfid68.json"
-          background="transparent"
-          speed="1"
-          autoplay
-          loop
-        ></lottie-player>
+        <img className="h-16 absolute right-[200px] top-[400px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
+
+        <img className="h-20 absolute left-[50px] top-[220px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
       </div>
+
+      
+      
+
+      </div>
+
+      
     </div>
+      <div className="lg:h-[500px] h-[300px] flex  justify-center overflow-hidden -mt-[200px] rounded-[4rem]   w-full">
+      <img src="https://cdn.dribbble.com/userupload/3252126/file/original-dd196dd158aef93921f059e04eddf6b9.png?compress=1&resize=2048x1536" className=" lg:h-[680px] h-[210px] lg:mt-0 mt-24 rounded-3xl" />
+      </div>
+  </div>
   );
 }
 

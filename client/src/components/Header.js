@@ -76,11 +76,11 @@ let navigate = useNavigate()
     
     <div>
 
-      <header className="  w-full h-16 flex py-8 pl-8  bg-white fixed z-50 ">
-        <div className="w-3/4 h-full flex items-center">
+      <header className=" border w-full h-16 flex py-8  bg-white fixed z-50 ">
+        <div className="w-full h-full  flex items-center justify-center">
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
-            className="h-12 hover:h-10 z-20 mr-4 cursor-pointer"
+            className="h-12  z-20 mr-4 cursor-pointer absolute left-10"
             id="header_logo"
             onClick={()=> window.location.href='/'}
             onMouseEnter={()=> document.getElementById('header_logo_bg').classList.add('header-logo-bg-active')}
@@ -88,77 +88,27 @@ let navigate = useNavigate()
           />
 
 
-          <div
 
-onClick={()=> window.location.href='/'}
-          
-          onMouseEnter={()=> document.getElementById('header_logo').classList.add('h-10')}
-          onMouseLeave={()=> document.getElementById('header_logo').classList.remove('h-10')}
-          
-          id="header_logo_bg" className=" invisible opacity-0 w-44  h-12 absolute -ml-4 -mt-44 z-10 bg-white border rounded-full flex items-center">
-            <h1 className="text-2xl text-purple-600 absolute right-10 font-visita-bold">Visita</h1>
-          </div>
-
-
-          <nav className="w-full h-full flex items-center lg:block hidden">
-            <ul className="w-full h-full flex items-center">
-              <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
-                See Demo
+          <nav className="w-full h-full   flex items-center justify-center  lg:block hidden">
+            <ul className="w-full h-full flex items-center justify-center">
+              <p onClick={()=> navigate('/visita')} className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
+                See demo
               </p>
-              <Link to='/pricing' className=" font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+              <Link to='/pricing' className=" font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
                 Pricing
               </Link>
-              <a href="#features" className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+              <a href="#features" className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
                 Features
               </a>
-              <a href="#benefits" className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+              <a href="#benefits" className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
                 Benefits
               </a>
-            
-              <Menu>
-                <MenuButton rightIcon={<ChevronDownIcon />}>
-                  <span className="font-visita-medium  cursor-pointer text-third hover:text-blue-600 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center" >Support <ion-icon name="chevron-down-outline"></ion-icon> </span>
-                </MenuButton>
-                <MenuList>
-                  <MenuItem className="hover:text-blue-600 hover:bg-blue-50"  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help Center</a></MenuItem>
-                  <MenuItem onClick={()=> {
 
-window.tidioChatApi.show();
-window.tidioChatApi.open();
-
-
-                  }} className="hover:text-blue-600 hover:bg-blue-50" ><p className="font-visita-medium  cursor-pointer text-third  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="chatbubble-ellipses"></ion-icon></span>Chat with us</p></MenuItem>
-                </MenuList>
-              </Menu>
-
-             { 
-             
-             Cookies.get("isFranchiseeLogined") != "true" ?
-             <Link to='/franchisee/login'  className="font-visita-medium  cursor-pointer text-blue-600 transition-colors flex items-center">
-              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
-              </Link>
-              :
-              <Link to='/manage/franchisee'  className="font-visita-medium  cursor-pointer text-blue-600 transition-colors flex items-center">
-                Go To Franchisee
-              <span className="flex items-center justify-center ml-2" ><ion-icon name="arrow-forward-circle"></ion-icon></span> 
-              </Link>
-              
-              }
-
-            </ul>
-          </nav>
-          <div className="lg:hidden block  w-full flex justify-end -mr-32 items-center h-full" >
-          <span onClick={onOpen} className="text-3xl sm:-mr-24 cursor-pointer" ><ion-icon name="menu"></ion-icon></span>
-          </div>
-        
-        </div>
-        <div className="h-full w-1/4 flex  items-center lg:visible invisible">
-
-
-        <Popover autoFocus={false} placement="bottom" >
+              <p>
+              <Popover autoFocus={false} placement="bottom" >
   <PopoverTrigger>
-  <h1 className="font-visita-medium mx-4 cursor-pointer text-third  transition-colors flex items-center">
-                <span className="hover:text-blue-600 hover:bg-blue-50 px-3 -ml-3 rounded-full transition-all ">Manage Website</span>
+  <h1 className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  transition-colors flex items-center">
+                <span className="text-slate-500 px-3  rounded-full transition-all hover:text-black">Manage website</span>
            </h1>
   </PopoverTrigger>
   <PopoverContent>
@@ -177,13 +127,71 @@ window.tidioChatApi.open();
       </PopoverBody>
   </PopoverContent>
 </Popover>
+              </p>
+
+         
+
+             { 
+             
+             Cookies.get("isFranchiseeLogined") != "true" ?
+             <Link to='/franchisee/login'  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer transition-colors flex px-3 items-center">
+               Franchisee login
+              </Link>
+              :
+              <Link to='/manage/franchisee'  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center">
+                Go to franchisee
+             
+              </Link>
+              
+              }
+
+                 
+<Menu>
+                <MenuButton className="text-slate-500 hover:text-black" rightIcon={<ChevronDownIcon />}>
+                  <span className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center" >Support <ion-icon name="chevron-down-outline"></ion-icon> </span>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem className=""  onClick={()=> navigate('/support')} ><a className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="help-buoy-outline"></ion-icon></span>  Help center</a></MenuItem>
+                  <MenuItem onClick={()=> {
+
+window.tidioChatApi.show();
+window.tidioChatApi.open();
+
+
+                  }} className="" ><p className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center"><span className="mr-2 flex items-center"><ion-icon name="chatbubble-ellipses"></ion-icon></span>Chat with us</p></MenuItem>
+                </MenuList>
+              </Menu>
+
+
+
+            </ul>
+          </nav>
+
+        
+        
+       
+
+
+
 
         
 
 
-        <p id="header_create_button" onClick={()=> navigate('/create')} class="py-1.5 px-8 text-md  text-blue-600 focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-bold">Create now</p>
+        <p id="header_create_button" onClick={()=> navigate('/create')} class=" absolute right-10 py-1.5 px-8 text-md  text-blue-600 lg:block hidden focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium">Create now</p>
+
         </div>
+
+
+          
+       <div className="lg:hidden block mr-8" >
+       <div className="  w-full flex justify-end  items-center h-full" >
+          <span onClick={onOpen} className="text-3xl sm:-mr-24 cursor-pointer" ><ion-icon name="menu"></ion-icon></span>
+          </div>
+       </div>
+    
       </header>
+
+      
 
      <div>
        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>

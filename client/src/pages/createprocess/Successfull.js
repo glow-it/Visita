@@ -99,7 +99,7 @@ function downloadQrCodeDesign(){
       {
         cardDatas && cardDatas.franchisee != "no franchisee" ?
         <h1 onClick={()=> navigate('/manage/franchisee')} className="cursor-pointer hover:scale-105 transition-transform py-3 px-6 bg-blue-600 font-visita-bold rounded-full text-white absolute right-12 top-6">
-        Go To Franchisee
+        Go to franchisee
       </h1>
     :''  
     }
@@ -116,7 +116,7 @@ function downloadQrCodeDesign(){
 
       <div id="qrcode_div" className="overflow-y-scroll pb-32 h-screen z-50 w-full flex flex-col items-center lg:px-64 px-4 pt-16 ">
         <h1 className="text-4xl font-visita-bold mb-6 capitalize">
-          Send Website
+          Send website
         </h1>
         <div className={`lg:px-10 px-1 mb-8 z-50 h-12 bg-${cardDatas && cardDatas.theme_color}-50 flex items-center justify-center border border-${cardDatas && cardDatas.theme_color}-600 text-${cardDatas && cardDatas.theme_color}-600 rounded-full`}>
           <h1 className="font-visita-medium lg:text-xl text-center">
@@ -146,7 +146,7 @@ function downloadQrCodeDesign(){
             class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
           >
             <span className="font-visita-medium" id="copy-tooltip">
-              Copy Link
+              Copy link
             </span>
           </div>
         </div>
@@ -180,7 +180,7 @@ function downloadQrCodeDesign(){
         </div>
 
         <h1 className="font-visita-bold text-xl text-center mt-6 text-white ">
-          Scan This QR Code To <br /> Go to Our Website
+          Scan this QR code to <br /> go to our website
         </h1>
         
          </div>
@@ -190,7 +190,7 @@ function downloadQrCodeDesign(){
 
 
 
-          <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open Your Website</button>
+          <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-visita-bold">Open your website</button>
 
 
 <button onMouseEnter={()=> {
@@ -229,7 +229,7 @@ onMouseEnter={()=> {
 
 
 
-onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center justify-center w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold"><span className=" absolute left-6  flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span>Download QRCODE Design</button>
+onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center justify-center w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-visita-bold"><span className=" absolute left-6  flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span>Download QRCODE design</button>
 
           </div>
 
@@ -248,14 +248,14 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
           <div className="flex z-50 flex-col items-center mt-20 ">
           <h1 className="lg:text-3xl text-xl font-visita-bold mb-6 mt-10 capitalize">
-          Manage or Edit Your Website
+          Manage or edit your website
         </h1>
 
 
 
         <div className="lg:px-10 lg:h-12 h-24 relative lg:w-full w-[60%] mt-20 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
           <div className="lg:w-full w-[70%] absolute text-blue-600 font-visita-bold lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-blue-200">
-            <h1>Website Manage Link</h1>
+            <h1>Website manage link</h1>
           </div>
           <h1 className="font-visita-medium lg:w-auto w-[70%]  lg:text-xl text-center">
           {manage_card_url}
@@ -289,17 +289,17 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
             class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
           >
             <span className="font-visita-medium" id="copy-tooltip">
-              Copy Manage Link
+              Copy manage link
             </span>
           </div>
         </div>
 
         <div className="px-10 lg:h-12 h-24 lg:w-full w-[60%]  relative mt-16 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
           <div className="lg:w-full w-[70%] absolute  font-visita-bold text-blue-600 text-xl rounded-t-xl -top-10 h-10 flex items-center justify-center bg-blue-200">
-            <h1>Website Password</h1>
+            <h1>Website password</h1>
           </div>
           <h1 className="font-visita-medium lg:text-xl text-center">
-          Website Password Has Been Send To Your Email
+          Website password has been send to your email
           </h1>
           <div
             id="tooltip-light"
@@ -307,7 +307,7 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
             class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
           >
             <span className="font-visita-medium" id="copy-tooltip">
-              Copy Manage Link
+              Copy manage link
             </span>
           </div>
         </div>

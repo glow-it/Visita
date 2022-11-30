@@ -29,59 +29,6 @@ function Support() {
 <section class="bg-white py-20 lg:py-[120px] overflow-hidden relative z-10 lg:px-20 px-8  support">
 
 
-
-<svg className='absolute h-[500px] left-[400px] rotate-45 opacity-10'
-      xmlns="http://www.w3.org/2000/svg"
-      opacity="0.18"
-      viewBox="0 0 800 800"
-    >
-      <defs>
-        <filter
-          id="bbblurry-filter"
-          width="400%"
-          height="400%"
-          x="-100%"
-          y="-100%"
-          colorInterpolationFilters="sRGB"
-          filterUnits="objectBoundingBox"
-          primitiveUnits="userSpaceOnUse"
-        >
-          <feGaussianBlur
-            x="0%"
-            y="0%"
-            in="SourceGraphic"
-            result="blur"
-            stdDeviation="34"
-          ></feGaussianBlur>
-        </filter>
-      </defs>
-      <g filter="url(#bbblurry-filter)">
-        <ellipse
-          cx="470.989"
-          cy="329.755"
-          fill="hsla(212, 85%, 57%, 1)"
-          rx="27.5"
-          ry="277.5"
-        ></ellipse>
-        <ellipse
-          cx="244.044"
-          cy="193.135"
-          fill="hsla(167, 72%, 60%, 1)"
-          rx="27.5"
-          ry="277.5"
-        ></ellipse>
-        <ellipse
-          cx="365.551"
-          cy="481.349"
-          fill="hsla(272, 99%, 54%, 1)"
-          rx="27.5"
-          ry="277.5"
-        ></ellipse>
-      </g>
-    </svg>
-
-
-
    <div class="container">
       <div class="flex flex-wrap lg:justify-between -mx-4">
          <div class="w-full lg:w-1/2 xl:w-6/12 px-4">

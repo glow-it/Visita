@@ -7,19 +7,16 @@
 
 
 @font-face{
-  src: url('../public/assets/fonts/ClashDisplay-Variable.ttf');
+  src: url('../public/assets/fonts/Gilroy-ExtraBold.ttf');
   font-family: 'clash-display-extrabold';
-  font-weight: 900;
 }
 @font-face{
-  src: url('../public/assets/fonts/ClashDisplay-Variable.ttf');
+  src: url('../public/assets/fonts/Gilroy-Bold.ttf');
   font-family: 'clash-display-bold';
-  font-weight: 600;
 }
 @font-face{
-  src: url('../public/assets/fonts/ClashDisplay-Variable.ttf');
+  src: url('../public/assets/fonts/Gilroy-SemiBold.ttf');
   font-family: 'clash-display-medium';
-  font-weight: 500;
 }
 
 *::-webkit-scrollbar{
@@ -321,7 +318,7 @@ form{
 }
 .benefits-wrapper{
   height: 70vh;
-  width: 90%;
+  width: 100%;
 }
 .cta-wrapper{
   width: 90%;
@@ -366,12 +363,6 @@ footer {
   left: 550px;
 }
 .header-active{
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  --tw-shadow-color: rgba(15, 23, 42, 0.063);
-    --tw-shadow: var(--tw-shadow-colored);
-    border-bottom-width: 1px;
   transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
     height: 5rem !important;
 }

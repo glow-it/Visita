@@ -3,102 +3,10 @@ import apiKeys from '../Api/apiKeys'
 
 function Footer() {
   return (
-    <div>
+    <div className='lg:h-[110vh] z-10 w-full bg-black flex justify-center items-center lg:-mt-[200px]' >
 
-<svg className='absolute features-aura rotate-45'
-      xmlns="http://www.w3.org/2000/svg"
-      opacity="0.27"
-      viewBox="0 0 800 800"
-    >
-      <defs>
-        <filter
-          id="bbblurry-filter"
-          width="400%"
-          height="400%"
-          x="-100%"
-          y="-100%"
-          colorInterpolationFilters="sRGB"
-          filterUnits="objectBoundingBox"
-          primitiveUnits="userSpaceOnUse"
-        >
-          <feGaussianBlur
-            x="0%"
-            y="0%"
-            in="SourceGraphic"
-            result="blur"
-            stdDeviation="23"
-          ></feGaussianBlur>
-        </filter>
-      </defs>
-      <g filter="url(#bbblurry-filter)">
-        <ellipse
-          cx="288.874"
-          cy="374.719"
-          fill="hsla(212, 91%, 78%, 1)"
-          rx="27.5"
-          ry="277.5"
-        ></ellipse>
-        <ellipse
-          cx="258.132"
-          cy="285.161"
-          fill="hsla(272, 99%, 54%, 0.46)"
-          rx="27.5"
-          ry="277.5"
-        ></ellipse>
-        <ellipse
-          cx="331.338"
-          cy="463.21"
-          fill="hsla(167, 83%, 81%, 1)"
-          rx="27.5"
-          ry="277.5"
-        ></ellipse>
-      </g>
-    </svg>
 
-    <svg className='absolute features-aura-2'
-      xmlns="http://www.w3.org/2000/svg"
-      opacity="0.58"
-      viewBox="0 0 800 800"
-    >
-      <defs>
-        <filter
-          id="bbblurry-filter"
-          width="400%"
-          height="400%"
-          x="-100%"
-          y="-100%"
-          colorInterpolationFilters="sRGB"
-          filterUnits="objectBoundingBox"
-          primitiveUnits="userSpaceOnUse"
-        >
-          <feGaussianBlur
-            x="0%"
-            y="0%"
-            in="SourceGraphic"
-            result="blur"
-            stdDeviation="40"
-          ></feGaussianBlur>
-        </filter>
-      </defs>
-      <g filter="url(#bbblurry-filter)">
-        <ellipse
-          cx="320.288"
-          cy="456.394"
-          fill="hsla(212, 91%, 78%, 1)"
-          rx="62.5"
-          ry="277.5"
-        ></ellipse>
-        <ellipse
-          cx="237.19"
-          cy="290.396"
-          fill="hsla(272, 99%, 54%, 1)"
-          rx="62.5"
-          ry="277.5"
-        ></ellipse>
-      </g>
-    </svg>
-
-<footer class="bg-white pt-20 lg:pt-[120px] pb-10 lg:pb-20 px-8 relative z-10 font-visita-bold">
+<footer class="pt-20 lg:pt-[120px] z-10 pb-10 lg:pb-20 px-8 relative  font-visita-bold">
    <div class="container">
       <div class="flex flex-wrap -mx-4">
          <div class="w-full sm:w-2/3 lg:w-3/12 px-4">
@@ -109,24 +17,24 @@ function Footer() {
                   font-visita-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                   >
                <img
-                  src="../assets/images/glowitlogos/glowitlabs_text.png"
+                  src="../assets/images/glowitlogos/glowitlabs_text_white.png"
                   alt="logo"
                   class="comp-logo-footer rounded-full"
                   />
                </a>
-               <p class="flex items-center text-sm text-dark font-visita-medium">
+               <p class="flex items-center text-sm text-white font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="call"></ion-icon>
                   </span>
                   <span>{apiKeys.call_phone_no}</span>
                </p>
-               <p class="flex mt-6 items-center text-sm text-dark font-visita-medium">
+               <p class="flex mt-6 items-center text-sm text-white font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="logo-whatsapp"></ion-icon>
                   </span>
                   <span>{apiKeys.visita_phone_no}</span>
                </p>
-               <a href={`mailto:${apiKeys.visita_email}`} class="flex mt-6 items-center text-sm text-dark font-visita-medium">
+               <a href={`mailto:${apiKeys.visita_email}`} class="flex mt-6 items-center text-sm text-white font-visita-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="mail"></ion-icon>
                   </span>
@@ -136,7 +44,7 @@ function Footer() {
          </div>
          <div class="w-full sm:w-1/2 lg:w-2/12 px-4">
             <div class="w-full mb-10">
-               <h4 class="text-dark text-lg font-semibold mb-9">Resources</h4>
+               <h4 class="text-slate-600 text-lg font-semibold mb-9">Resources</h4>
                <ul>
                   <li>
                      <a
@@ -145,7 +53,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -162,7 +70,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -179,7 +87,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -194,7 +102,7 @@ function Footer() {
          </div>
          <div class="w-full sm:w-1/2 lg:w-2/12 px-4">
             <div class="w-full mb-10">
-               <h4 class="text-dark text-lg font-semibold mb-9">Company</h4>
+               <h4 class="text-slate-600 text-lg font-semibold mb-9">Company</h4>
                <ul>
                   <li>
                      <a
@@ -203,7 +111,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -220,7 +128,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -237,7 +145,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -252,7 +160,7 @@ function Footer() {
          </div>
          <div class="w-full sm:w-1/2 lg:w-2/12 px-4">
             <div class="w-full mb-10">
-               <h4 class="text-dark text-lg font-semibold mb-9">Quick Links</h4>
+               <h4 class="text-slate-600 text-lg font-semibold mb-9">Quick Links</h4>
                <ul>
                   <li>
                      <a
@@ -261,7 +169,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -278,7 +186,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -295,7 +203,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -312,7 +220,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -329,7 +237,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -346,7 +254,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -363,7 +271,7 @@ function Footer() {
                         inline-block
                         font-visita-medium
                         hover:text-blue-600
-                        hover:underline
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -378,7 +286,7 @@ function Footer() {
          </div>
          <div class="w-full sm:w-1/2 lg:w-3/12 px-4">
             <div class="w-full mb-10">
-               <h4 class="text-dark text-lg font-semibold mb-9">Follow Us On</h4>
+               <h4 class="text-slate-600 text-lg font-semibold mb-9">Follow Us On</h4>
                <div class="flex items-center mb-6">
                   <a
                      href="https://www.instagram.com/visita.smart/"
@@ -390,8 +298,8 @@ function Footer() {
                      items-center
                      justify-center
                      rounded-full
-                     border border-[#E5E5E5]
-                     text-dark
+                     border border-white
+                     text-white
                      hover:text-blue-500 hover:bg-primary hover:border-primary
                      mr-2
                      sm:mr-4
@@ -414,8 +322,8 @@ function Footer() {
                      items-center
                      justify-center
                      rounded-full
-                     border border-[#E5E5E5]
-                     text-dark
+                     border border-white
+                     text-white
                      hover:text-blue-500 hover:bg-primary hover:border-primary
                      mr-2
                      sm:mr-4
@@ -438,8 +346,8 @@ function Footer() {
                      items-center
                      justify-center
                      rounded-full
-                     border border-[#E5E5E5]
-                     text-dark
+                     border border-white
+                     text-white
                      hover:text-blue-500 hover:bg-primary hover:border-primary
                      mr-2
                      sm:mr-4
@@ -454,8 +362,8 @@ function Footer() {
 
 
                </div>
-               <p class="text-base text-body-color">&copy; 2022 Visita</p>
-               <p class="text-black mt-3 font-visita-medium">Powered By GlowiIt Labs</p>
+               <p class="text-base text-white">&copy; 2022 Visita</p>
+               <p class="text-white mt-3 font-visita-medium">Powered By GlowiIt Labs</p>
             </div>
          </div>
       </div>
