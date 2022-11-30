@@ -253,6 +253,13 @@ function Template({preview}) {
 
 
 <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
+
+<div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex items-center justify-center cursor-pointer">
+  <h1 className="font-visita-bold ">Manage website</h1>
+  <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-forward"></ion-icon></span>
+</div>
+
+
   <div
     id="home"
     style={{
@@ -261,7 +268,7 @@ function Template({preview}) {
     className=" template-1 flex justify-center bg-no-repeat bg-cover "
   >
     <div className="card">
-      <span className="z-50 absolute top-4 right-4 text-white text-xs font-visita-medium border border-white py-1 px-2 rounded-full">
+      <span className={`z-50 absolute ${localStorage.getItem('isAdmin') != "true" ? 'top-4' : 'top-16'}  right-4 text-white text-xs font-visita-medium border border-white py-1 px-2 rounded-full`}>
         Views: {cardDatas && cardDatas.views}
       </span>
 
@@ -616,6 +623,79 @@ function Template({preview}) {
     </div>
   </div>
 
+  {/* Enter Customer Details Form */}
+
+{
+  cardDatas && cardDatas.show_customer_details_popop == 'true' ?
+  <div className=" w-full h-[450px] flex flex-col items-center justify-center relative">
+  <h1
+    className={`text-lg  text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
+  >Add Your Details</h1>
+
+
+
+<div class="w-full px-4 flex flex-col items-center mt-10">
+  <form
+    action={`/submit/customer-details/${cardDatas && cardDatas.company_name}`}
+    method="POST"
+    class="bg-white shadow-md rounded-3xl w-full px-6  pt-8 pb-8 mb-4"
+    id="customer-details-form"
+  >
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-sm font-visita-bold mb-2"
+        for="username"
+      >
+        Name
+      </label>
+      <input
+        class="shadow-sm appearance-none border rounded-full font-visita-medium w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Name"
+        name="name"
+      />
+    </div>
+    <div class="mb-6">
+      <label
+        class="block text-gray-700 text-sm font-visita-bold mb-2"
+        for="password"
+      >
+        Phone Number
+      </label>
+      <input
+        class="rounded-full shadow-sm font-visita-medium appearance-none border w-full py-3  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter your phoneno"
+        name="phone_no"
+      />
+    </div>
+    <div class="flex items-center justify-start">
+      <button
+        onClick={() =>
+          {
+            document.getElementById("customer-details-form").submit();
+            setTimeout(()=> {
+              Toast({
+                status:'success',
+                title: 'Added your details',
+                postition: 'top',
+                toast
+              })
+            },1000)
+          }
+        }
+        class={`font-visita-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
+      >
+        Submit Details
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+  </div>
+  : ''
+}
+
   {/* Scan qr Code */}
   <div className=" w-full h-72 flex flex-col items-center justify-center relative">
     <h1
@@ -635,6 +715,10 @@ function Template({preview}) {
       />
     </div>
   </div>
+
+  
+
+
 
   {/* About Us */}
   <div

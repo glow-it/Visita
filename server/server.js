@@ -114,6 +114,25 @@ async function run() {
         res.end()
       })
 
+    }) 
+
+    app.post('/submit/customer-details/:name',(req,res,next)=> {
+
+      let obj = {
+        name : req.body.name,
+        phone_no: req.body.phone_no,
+        date: new Date().getTime()
+      }
+
+      clientHelpers.updateCustomerDetails(obj,client_db,req.params.name).then((response)=> {
+        let redirect_url = req.params.name.replace(/[ ]/g,'-')
+        res.redirect(`/#/${redirect_url}`)
+        res.end()
+      }).catch((err)=> {
+        console.log(err);
+        res.end()
+      })
+
     })
 
     app.post('/update/view/:comp_name',(req,res,next)=> {
@@ -233,7 +252,7 @@ async function run() {
       paymentHelpers.cancelSubscription(req.body).then(()=> {
         clientHelpers.deleteCard(req.body,client_db).then(()=> {
           res.json({status: true})
-        }).catch((err)=> {
+        }).catch((err)=> { 
           res.json({status: false})
         })
       }).catch((err)=> {

@@ -25,6 +25,7 @@ function Successfull() {
   let base_url = 'https://visitasmart.com/#/'
   let manage_card_url = base_url + 'manage/card/' + comp_name
   let toast = useToast()
+  let clean_compname = params.comp_name.replace(/[-]/g," ")
   
 
 
@@ -155,7 +156,7 @@ function downloadQrCodeDesign(){
           
 
             <div className={`w-full h-16 absolute top-0 rounded-2xl rounded-b bg-white text-${cardDatas && cardDatas.theme_color}-600 flex items-center justify-center`}>
-              <h1 className="font-visita-bold text-4xl capitalize" >{params.comp_name.replace(/[-]/g," ")}</h1>
+              <h1 className="font-visita-bold text-4xl capitalize" >{clean_compname}</h1>
             </div>
 
         <div id="qr_code_wrapper" className="py-3 px-3 transition-all rounded-2xl bg-white">

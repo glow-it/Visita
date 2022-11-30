@@ -18,6 +18,7 @@ function ManageCard() {
 
     let params = useParams()
     let company_name = params.comp_name
+    let clean_company_name = params.comp_name && params.comp_name.replace(/[-]/g,' ')
     let navigate = useNavigate()
     let toast = useToast()
     let [cardDatas,setCardDatas] = useState([])
@@ -27,7 +28,10 @@ function ManageCard() {
   const cancelRef = React.useRef()
 
 
+
     useEffect(()=> {
+
+      
 
 
         document.querySelectorAll('header').forEach((elem)=> {
@@ -64,6 +68,7 @@ function ManageCard() {
         if(cardDatas.activated) {
             if(cardDatas.activated.access_password == password){
                 document.getElementById('manage_auth_wrapper').style.display = 'none'
+                localStorage.setItem('isAdmin',true)
             }else{
               Toast({
                 status:'error',
@@ -81,11 +86,12 @@ function ManageCard() {
 
     // Handle Close Card Click
     function HandleCloseCard(){
+      console.log('On Close Card');
       axios({
         method: 'post',
         url: '/manage/card/close-card',
         data: {
-          sub_id: cardDatas.activated.razorpay.subscription_id,
+          sub_id: cardDatas.activated && cardDatas.activated.razorpay.subscription_id,
           company_name
         }
       }).then((response)=> {
@@ -98,7 +104,7 @@ function ManageCard() {
           })
           navigate('/card-closed')
         }else{
-         
+          
 
           Toast({
             status:'error',
@@ -140,14 +146,6 @@ function HandleForgotPasswordClick(e){
 })
 }
 
-      // Function To Capitalize Strings
-      function capitalize(string) {
-        return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-          letter.toUpperCase()
-        );
-      
-      
-      }
 
 
 
@@ -162,7 +160,7 @@ function HandleForgotPasswordClick(e){
         <AlertDialogOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="3px" >
           <AlertDialogContent>
             <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-              <span className='font-visita-bold' >Close Card</span>
+              <span className='font-visita-bold' >Close Website</span>
             </AlertDialogHeader>
 
             <AlertDialogBody>
@@ -174,7 +172,7 @@ function HandleForgotPasswordClick(e){
                 <span className='font-visita-bold' >Cancel</span>
               </Button>
               <Button rounded='full' colorScheme='red' onClick={()=> HandleCloseCard()} ml={3}>
-                <span className='font-visita-bold' >Yes' Close Card</span>
+                <span className='font-visita-bold' >Yes' Close Website</span>
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -184,66 +182,74 @@ function HandleForgotPasswordClick(e){
     {/* Send Card Password Form */}
     <form id="send_pass_form_2" className="hidden" >
         <input type="text" name="to_mail" value={cardDatas && cardDatas.email_id} />
-        <input type="text" name="company_name" value={capitalize(cardDatas && cardDatas.company_name)} />
+        <input type="text" name="company_name" value={cardDatas && cardDatas.company_name} />
         <input type="text" name="card_pass" value={cardDatas.activated && cardDatas.activated.access_password} />
       </form>
 
-    <div id='manage_auth_wrapper' className="h-screen  w-full absolute font-visita-medium bg-white z-[100] flex pt-36 justify-center">
-    <div class="block p-6 rounded-3xl  bg-white h-[300px] w-[1000px] lg:shadow-md  max-w-sm">
-  <div>
+      {
+        localStorage.getItem('isAdmin') != "true" ?
+
+        <div id='manage_auth_wrapper' className="h-screen  w-full absolute font-visita-medium bg-white z-[100] flex pt-36 justify-center">
+        <div class="block p-6 rounded-3xl  bg-white h-[300px] w-[1000px] lg:shadow-md  max-w-sm">
+      <div>
+        
+        <div class="form-group mb-6">
+          <label for="card_pass_input" class="form-label text-3xl font-visita-bold inline-block mb-6 text-gray-700">Website Password</label>
+          <input  class="form-control block
+            w-full
+            px-3
+            pl-6
+            py-1.5
+            text-xl
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded-full
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="card_pass_input"
     
-    <div class="form-group mb-6">
-      <label for="card_pass_input" class="form-label text-3xl font-visita-bold inline-block mb-6 text-gray-700">Website Password</label>
-      <input  class="form-control block
-        w-full
-        px-3
-        pl-6
-        py-1.5
-        text-xl
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded-full
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="card_pass_input"
-
-        autoComplete='off'
-        />
-    </div>
-    <div class="flex justify-between items-center mb-6">
-      <p onClick={(e)=> HandleForgotPasswordClick(e)}
-        class="text-blue-600 cursor-pointer hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
-        password?</p>
-    </div>
-    <button  class="
-      w-full
-      px-6
-      py-2.5
-      bg-blue-600
-      text-white
-      font-medium
-      text-xl
-      leading-tight
-      uppercase
-      rounded-full
-      shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out"
-
-      onClick={()=> handleClickManage(document.getElementById('card_pass_input').value)}
+            autoComplete='off'
+            />
+        </div>
+        <div class="flex justify-between items-center mb-6">
+          <p onClick={(e)=> HandleForgotPasswordClick(e)}
+            class="text-blue-600 cursor-pointer hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
+            password?</p>
+        </div>
+        <button  class="
+          w-full
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xl
+          leading-tight
+          uppercase
+          rounded-full
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg
+          transition
+          duration-150
+          ease-in-out"
+    
+          onClick={()=> handleClickManage(document.getElementById('card_pass_input').value)}
+          
+          >Manage</button>
       
-      >Manage</button>
-  
-  </div>
-</div>
+      </div>
     </div>
+        </div>
+        : ''
+
+      }
+
+   
 
 <div className="overlays z-10">
         <svg
@@ -1097,21 +1103,24 @@ function HandleForgotPasswordClick(e){
 
 <h1 className='text-4xl font-visita-bold mb-10 mt-16 capitalize' >{company_name.replace(/[-]/g," ")}</h1>
 
-     <div className="h-16 w-full flex items-center justify-center  z-50">
+     <div className="py-6 w-full flex lg:flex-row flex-col items-center justify-center  z-50">
 
-         <button onClick={onOpen} className="px-6 py-2 mr-3 hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Website</button>
+         <button onClick={onOpen} className="px-6 py-2 mr-3 lg:mt-0   hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close Website</button>
 
-        <button onClick={()=> navigate('/manage/card/' + company_name + '/edit')} className="px-6 py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit Website</button>
+        <button onClick={()=> navigate('/manage/card/'+company_name + '/edit')} className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl mr-3  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit Website</button>
+
+        <button onClick={()=> navigate('/manage/card/'+company_name + '/customer-details')} className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><ion-icon name="newspaper-outline"></ion-icon> Customer Details</button>
+
     </div>
 
     <div className="w-full  mt-10 flex flex-wrap items-center justify-center z-50">
 
-        <div className="h-44 w-72 bg-white rounded-3xl mr-6 border flex flex-col items-center justify-center">
+        <div className="h-44 w-72 bg-white rounded-3xl lg:mr-6 border flex flex-col items-center justify-center">
             <h6 className='text-xl font-visita-medium' >Total Views</h6>
             <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas && cardDatas.views}</h1>
         </div>
 
-        <div className="h-44 w-72 bg-white rounded-3xl mr-6 lg:mt-0 mt-4 border flex flex-col items-center justify-center">
+        <div className="h-44 w-72 bg-white rounded-3xl lg:mr-6 lg:mt-0 mt-4 border flex flex-col items-center justify-center">
             <h6 className='text-xl font-visita-medium' >Total Feedbaks</h6>
             <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas.feedbacks && cardDatas.feedbacks.length}</h1>
         </div>

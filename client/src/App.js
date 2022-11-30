@@ -24,6 +24,7 @@ import PageNotFound from "./pages/PageNotFound";
 import HowToFranchisee from "./pages/HowToFranchisee";
 import Aos from "aos";
 import ProductsPage from "./pages/ProductsPage";
+import CustomerDetails from "./pages/CustomerDetails";
 
 function App() {
   useEffect(() => {
@@ -65,8 +66,9 @@ function App() {
           path="/create/successfull/:comp_name"
           element={<Successfull />}
         />
-        <Route path="/manage/card/:comp_name" element={<ManageCard />} />
-        <Route path="/manage/card/:comp_name/edit" element={<EditCard />} />
+        <Route path="manage/card/:comp_name" element={<ManageCard />} />
+        <Route path="manage/card/:comp_name/edit" element={<EditCard />} />
+        <Route path="/manage/card/:comp_name/customer-details" element={<CustomerDetails />} />
         <Route path="/franchisee/register" element={<FranchiseeRegister />} />
         <Route path="/franchisee/login" element={<FranchiseeLogin />} />
         <Route path="/manage/franchisee" element={<ManageFranchisee />} />

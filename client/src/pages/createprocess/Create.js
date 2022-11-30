@@ -22,14 +22,13 @@ function Create(props) {
   let location = useLocation()
 
 
-
-
   const toast = useToast();
   const toastIdRef = React.useRef()
 
   let [previuos, setPrevious] = useState(false);
   let [skip, setSkip] = useState(false);
   let [processIndex, setProcessIndex] = useState(1);
+  let [feature1, setFeature1] = useState(false);
   let [imageGalleryQuantity, setImageGalleryQuantity] = useState([
     "1",
     "2",
@@ -2159,8 +2158,18 @@ function Create(props) {
    
 <div className="flex lg:flex-row flex-col-reverse"> 
 <span className="font-visita-bold text-lg mr-4" >Get your customers details</span>
-    <Switch value={false} onChange={(e)=> {e.target.value = e.target.checked}} size='md' id='show_popup_feature_1_toggle' name="show_customer_details_popop" mt='1' mb='1' />
+    <Switch value={false} onChange={(e)=> {
+
+      if(feature1 == true){
+        setFeature1(false)
+      }else{
+        setFeature1(true)
+      }
+
+    }} size='md' id='show_popup_feature_1_toggle'  mt='1' mb='1' />
     </div>
+
+    <input type="text" value={feature1} name="show_customer_details_popop" className="hidden"  />
 
     <span className="font-visita-medium mt-4 lg:w-[600px] w-[300px] text-slate-400" >
     This will help you to get all your customer details like name,phone number etc.when your customer enters to your website it will be show a popup for enter name and phone number.if the customer enter his details and submit you will get the details on your card manage page

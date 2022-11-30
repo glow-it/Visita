@@ -548,6 +548,7 @@ module.exports = {
         website: data.website,
         whatsapp_no: data.whatsapp_no,
         youtube_link: data.youtube_link,
+        show_customer_details_popop: data.show_customer_details_popop
       };
 
       resolve({obj,yt_videos,products,image_gallery});
@@ -1070,6 +1071,8 @@ module.exports = {
         isActivated: false,
         views: 1,
         feedbacks: [],
+        customer_details : [],
+        show_customer_details_popop: data.show_customer_details_popop,
         specials: data.specials,
         features: data.features,
         created_at: new Date().getTime(),
@@ -1085,6 +1088,20 @@ module.exports = {
       client_db
         .collection(client_collections.visiting_card_datas)
         .updateOne({ company_name: card_name }, { $push: { feedbacks: data } })
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+
+  updateCustomerDetails: (data, client_db, card_name) => {
+    return new Promise((resolve, reject) => {
+      client_db
+        .collection(client_collections.visiting_card_datas)
+        .updateOne({ company_name: card_name }, { $push: { customer_details: data } })
         .then((response) => {
           resolve(response);
         })

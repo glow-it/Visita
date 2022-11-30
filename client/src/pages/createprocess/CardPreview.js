@@ -259,14 +259,7 @@ function CardPreview() {
     navigate("/loading/cancelling");
   }
 
-      // Function To Capitalize Strings
- function capitalize(string) {
-  return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-    letter.toUpperCase()
-  );
 
-
-}
 
 
   console.log(cardDatas && cardDatas);
@@ -284,12 +277,12 @@ function CardPreview() {
         <input
           type="text"
           name="company_name"
-          value={capitalize(capitalize(cardDatas && cardDatas.company_name))}
+          value={cardDatas && cardDatas.company_name}
         />
         <input
           type="text"
           name="card_pass"
-          value={name.substring(0,4) + Math.floor(1000 + Math.random() * 9000)}
+          value={`${name.substring(0,3)}${Math.floor(1000 + Math.random() * 9000)}`}
         />
       </form>
 
