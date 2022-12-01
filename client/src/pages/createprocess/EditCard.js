@@ -355,7 +355,8 @@ function EditCard() {
    
 
 
-      <div className="visita-text-animation lg:block hidden w-full flex flex-col items-center justify-center lg:pt-16 pt-24  ">
+    <div className="lg:block hidden">
+    <div className="visita-text-animation  w-full flex flex-col items-center justify-center lg:pt-16 pt-24  ">
         <h1 className="text-center lg:text-5xl text-xl text-black font-visita-black mt-14">
           <span>
             {processIndex == 1
@@ -375,6 +376,7 @@ function EditCard() {
         </h1>
       </div>
 
+    </div>
       <div
         className={`create-inputs-wrapper ${
          processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
@@ -1180,7 +1182,7 @@ function EditCard() {
                 </label>
                 <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   border">
                    <div className="flex flex-col">
-                   <img src={data.product_image} className="h-32 w-[250px] rounded-xl" />
+                   <img src={data.product_image != "" ? data.product_image : ''} className="h-32 ml-10 w-[250px] rounded-xl border" />
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
             className="  font-visita-medium block py-3.5    text-gray-900 transition-all  sm:text-sm text-sm"
@@ -1272,7 +1274,7 @@ function EditCard() {
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                     <img src={data} className='h-32 rounded-xl' />
                   <input
-            className=" ml-6 font-visita-medium block py-3.5    pr-[50px] pl-[20px]  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`image_${index + 1}`)}}

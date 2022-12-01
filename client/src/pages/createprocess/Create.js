@@ -286,8 +286,9 @@ function Create(props) {
     formData.append("file",files[0]);
     formData.append("upload_preset","xav0wsx1")
 
+
     let response = await axios.post("https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",formData)
-    document.getElementById(id).value = response.data.url
+    document.getElementById(id).value = response.data.ur
 
     if (toastIdRef.current) {
       toast.close(toastIdRef.current)

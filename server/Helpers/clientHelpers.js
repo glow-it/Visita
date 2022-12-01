@@ -44,7 +44,7 @@ module.exports = {
         {
           product_image: data.product_image_1,
           product_name: data.product_1_name,
-          product_description: data.product_11_description,
+          product_description: data.product_1_description,
           product_offerprice: data.product_1_offerprice,
           product_orgprice: data.product_1_orgprice,
           product_link: data.product_1_link,

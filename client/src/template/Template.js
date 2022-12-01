@@ -86,7 +86,7 @@ function Template({preview}) {
           "display": "standalone",
           "scope": `/#/${params.comp_name}`,
           "icons": [{
-            "src": response.data.logo,
+            "src": response.data.logo.replace(/^http:\/\//i, 'https://'),
             "sizes": "256x256",
             "type": "image/png"
           }]
@@ -118,7 +118,7 @@ function Template({preview}) {
           link.rel = "icon";
           document.getElementsByTagName("head")[0].appendChild(link);
         }
-        link.href = response.data.logo;
+        link.href = response.data.logo.replace(/^http:\/\//i, 'https://');
         }
 
 
@@ -155,7 +155,7 @@ function Template({preview}) {
             link.rel = "icon";
             document.getElementsByTagName("head")[0].appendChild(link);
           }
-          link.href = response.data.logo;
+          link.href = response.data.logo.replace(/^http:\/\//i, 'https://');
         }
       
 
@@ -173,7 +173,7 @@ function Template({preview}) {
 
 
           // Set Manifest Icon and Name Dynamically
-    let iconUrl = cardDatas && cardDatas.logo; 
+    let iconUrl = cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, 'https://'); 
     let manifest = { 
       name: cardDatas && cardDatas.company_name, 
       icons: [{ src: iconUrl, sizes: "512x512", type:"image/png" }] 
@@ -254,16 +254,20 @@ function Template({preview}) {
 
 <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
 
-<div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex items-center justify-center cursor-pointer">
+{
+  localStorage.getItem('isAdmin') == "true" ?
+  <div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex items-center justify-center cursor-pointer">
   <h1 className="font-visita-bold ">Manage website</h1>
   <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-forward"></ion-icon></span>
 </div>
+: ''
+}
 
 
   <div
     id="home"
     style={{
-      backgroundImage: `url(${bgImage && bgImage})`,
+      backgroundImage: `url(${bgImage && bgImage.replace(/^http:\/\//i, 'https://')})`,
     }}
     className=" template-1 flex justify-center bg-no-repeat bg-cover "
   >
@@ -276,7 +280,7 @@ function Template({preview}) {
         <div className=" w-full mt-8 flex">
           <img
             id="logo"
-            src={cardDatas && cardDatas.logo}
+            src={cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, 'https://')}
             alt="Dp-Template-1"
             className={`logo ml-8 rounded-full ring-4 ring-offset-4 ring-${theme_color}-500`}
           />
@@ -707,7 +711,7 @@ function Template({preview}) {
       <QRCode
         value={window.location.href}
         eyeRadius={10}
-        logoImage={cardDatas && cardDatas.logo}
+        logoImage={cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, 'https://')}
         logoWidth={30}
         logoHeight={30}
         qrStyle="dots"
@@ -812,7 +816,7 @@ function Template({preview}) {
               className={`w-full pb-12 mb-8 px-8 shadow-xl border-2 border-${theme_color}-500  rounded-3xl flex flex-col items-center relative ${index == 0 ? 'mt-20' : 'mt-2'}`}
             >
               <img
-                src={data.product_image}
+                src={data.product_image.replace(/^http:\/\//i, 'https://')}
                 className=" h-[300px]  w-[300px] py-6 rounded-3xl offer-image"
               />
               <h1 className=" pt-6 text-center text-xl font-visita-bold">
@@ -898,7 +902,7 @@ function Template({preview}) {
         .map((data) => {
           return (
             <SwiperSlide>
-              <img src={data} />
+              <img src={data.replace(/^http:\/\//i, 'https://')} />
             </SwiperSlide>
           );
         })}
@@ -986,7 +990,7 @@ function Template({preview}) {
         </span>{" "}
         <br />
         <img
-          src={cardDatas && cardDatas.googlepay_qrcode}
+          src={cardDatas.googlepay_qrcode && cardDatas.googlepay_qrcode.replace(/^http:\/\//i, 'https://')}
           className=" h-44"
         />
       </span>
@@ -1001,7 +1005,7 @@ function Template({preview}) {
         </span>{" "}
         <br />
         <img
-          src={cardDatas && cardDatas.paytm_qrcode}
+          src={cardDatas.paytm_qrcode && cardDatas.paytm_qrcode.replace(/^http:\/\//i, 'https://')}
           className=" h-44"
         />
       </span>
@@ -1016,7 +1020,7 @@ function Template({preview}) {
         </span>{" "}
         <br />
         <img
-          src={cardDatas && cardDatas.phonepe_qrcode}
+          src={cardDatas.phonepe_qrcode && cardDatas.phonepe_qrcode.replace(/^http:\/\//i, 'https://')}
           className=" h-44"
         />
       </span>
