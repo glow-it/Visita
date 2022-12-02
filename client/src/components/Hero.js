@@ -114,7 +114,7 @@ function Hero() {
             type="button"
             class="text-white bg-blue-600 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2"
           >
-            See Demo
+            See demo
           </p>
         </div>
 

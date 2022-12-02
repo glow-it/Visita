@@ -198,15 +198,20 @@ if(e.target.value.length>= 5){
 
 
   return (
-<div>
+<div className=' min-h-screen absolute top-0 min-w-full' >
+
+<img className='z-10 h-[800px] right-0 bottom-0 absolute' src="https://i.postimg.cc/rmJkQYQ2/4413403.jpg" alt="" />
+
+<img className='z-10 h-[600px] -left-[500px] -top-[100px] absolute' src="https://i.postimg.cc/rmJkQYQ2/4413403.jpg" alt="" />
 
 
-    <div className="flex min-h-full items-center  justify-center lg:mt-24 mt-16 px-4 sm:px-6 lg:px-8">
+
+    <div className="flex min-h-full  items-center  justify-center lg:mt-12 mt-16 px-4 sm:px-6 lg:px-8">
 
 
 
 
-    <div className="w-full max-w-md space-y-8 z-50">
+    <div className=" bg-white border border-slate-800 rounded-3xl shadow-md px-8 py-16 w-full max-w-md space-y-8 z-50">
       <div>
         <img
           className="mx-auto h-12 w-auto" 

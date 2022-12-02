@@ -26,7 +26,7 @@ import "swiper/css/navigation";
 
 import { Autoplay, Navigation, Pagination } from "swiper";
 import axios from "axios";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../miniComponents/Toast";
 
 function Template({preview}) {
@@ -272,9 +272,13 @@ function Template({preview}) {
     className=" template-1 flex justify-center bg-no-repeat bg-cover "
   >
     <div className="card">
-      <span className={`z-50 absolute ${localStorage.getItem('isAdmin') != "true" ? 'top-4' : 'top-16'}  right-4 text-white text-xs font-visita-medium border border-white py-1 px-2 rounded-full`}>
+      <span className={`z-50 absolute ${localStorage.getItem('isAdmin') != "true" ? 'top-4' : 'top-16'}  right-4 text-white text-xs font-visita-medium py-1 px-2 border border-white  rounded-full`}>
         Views: {cardDatas && cardDatas.views}
       </span>
+
+      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute ${localStorage.getItem('isAdmin') != "true" ? 'top-4' : 'top-16'}  left-4 text-${theme_color}-600 text-2xl font-visita-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
+      <ion-icon name="cart"></ion-icon>
+      </Link>
 
       <div className=" container  w-full">
         <div className=" w-full mt-8 flex">

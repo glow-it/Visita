@@ -134,8 +134,8 @@ let navigate = useNavigate()
              { 
              
              Cookies.get("isFranchiseeLogined") != "true" ?
-             <Link to='/franchisee/login'  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer transition-colors flex px-3 items-center">
-               Franchisee login
+             <Link to='/franchisee/register'  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer transition-colors flex px-3 items-center">
+               Register franchisee
               </Link>
               :
               <Link to='/manage/franchisee'  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center">
@@ -248,8 +248,8 @@ window.tidioChatApi.open();
           { 
              
              Cookies.get("isFranchiseeLogined") != "true" ?
-             <Link to='/franchisee/login'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
-              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Franchisee Login
+             <Link to='/franchisee/register'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
+              <span className="flex items-center justify-center mr-2" ><ion-icon name="log-in" ></ion-icon></span> Register franchisee
               </Link>
               :
               <Link to='/manage/franchisee'  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center">
