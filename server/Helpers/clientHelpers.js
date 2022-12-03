@@ -38,6 +38,7 @@ module.exports = {
   },
 
   updateCleanCardDatas: (data) => {
+    console.log('2'+data);
     return new Promise((resolve, reject) => {
 
       let products = [
@@ -514,6 +515,8 @@ module.exports = {
 
       let obj = {
         about: data.about,
+        specials: data.specials,
+        features: data.features,
         account_holder_name: data.account_holder_name,
         address: data.address,
         alt_phone_no: data.alt_phone_no,
@@ -549,8 +552,6 @@ module.exports = {
         whatsapp_no: data.whatsapp_no,
         youtube_link: data.youtube_link,
         show_customer_details_popop: data.show_customer_details_popop,
-        specials: data.specials,
-        features: data.features,
       };
 
       resolve({obj,yt_videos,products,image_gallery});
@@ -1179,7 +1180,8 @@ module.exports = {
       {
         $set: {
           
-
+          specials: all_data.specials,
+          features: all_data.features,
           about: all_data.about,
         account_holder_name: all_data.account_holder_name,
         address: all_data.address,
