@@ -907,11 +907,16 @@ function Create(props) {
             class=" font-visita-medium block py-4    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 border-slate-800 transition-all rounded-lg border  shadow-sm  sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
-          <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
+          <h1 className="text-xl mt-12 font-visita-bold mb-6 flex justify-center">
             <span className="flex mr-2 items-center justify-center">
               <ion-icon name="arrow-down-outline"></ion-icon>
             </span>{" "}
             Youtube Video Links
+          </h1>
+
+          <h1 className="text-sm bg-slate-100 py-3 border-slate-900 text-blue-900 rounded-lg border font-visita-bold mb-12 flex justify-center px-6">
+          <span className="text-slate-900 mr-2">Example youtube video link</span>  https://www.youtube.com/watch?v=zgmlJ-gdi7M
+            
           </h1>
 
           <label

@@ -548,7 +548,9 @@ module.exports = {
         website: data.website,
         whatsapp_no: data.whatsapp_no,
         youtube_link: data.youtube_link,
-        show_customer_details_popop: data.show_customer_details_popop
+        show_customer_details_popop: data.show_customer_details_popop,
+        specials: data.specials,
+        features: data.features,
       };
 
       resolve({obj,yt_videos,products,image_gallery});

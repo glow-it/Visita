@@ -738,7 +738,7 @@ function Template({preview}) {
     >
       About Us
     </h1>
-    <h1 className=" text-xl font-visita-medium">
+    <h1 className=" text-xl font-visita-medium w-[300px]">
       {cardDatas && cardDatas.since != "" ? (
         <span className="  text-lg font-visita-bold">
           Est {cardDatas && cardDatas.since}
@@ -821,17 +821,17 @@ function Template({preview}) {
             >
               <img
                 src={data.product_image.replace(/^http:\/\//i, 'https://')}
-                className=" h-[300px]  w-[300px] py-6 rounded-3xl offer-image"
+                className="  w-full rounded-3xl py-6  offer-image"
               />
-              <h1 className=" pt-6 text-center text-xl font-visita-bold">
+              <h1 className=" pt-6 capitalize text-center text-xl font-visita-bold">
                 {data.product_name}
               </h1>
 
-              <h1 className=" mt-4 text-center  text-md font-visita-medium text-slate-400">
+              <h1 className=" mt-4 capitalize text-center  text-md font-visita-medium text-slate-400">
                 {data.product_description}
               </h1>
 
-              <h1 className=" pt-4 font-visita-medium text-green-500 text-xl">
+              <h1 className=" pt-4 capitalize font-visita-medium text-green-500 text-xl">
                 <span className=" mr-2 text-slate-600 line-through">
                   {`₹${data.product_orgprice}`}
                 </span>
