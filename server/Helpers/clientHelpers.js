@@ -38,7 +38,6 @@ module.exports = {
   },
 
   updateCleanCardDatas: (data) => {
-    console.log('2'+data);
     return new Promise((resolve, reject) => {
 
       let products = [

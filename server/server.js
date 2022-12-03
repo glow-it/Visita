@@ -237,7 +237,6 @@ async function run() {
     })
 
     app.post('/updatecard/:comp_name',(req,res,next)=> {
-      console.log(req.body);
       clientHelpers.updateCleanCardDatas(req.body).then((response)=> {
        
         clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
