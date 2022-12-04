@@ -833,9 +833,9 @@ function Template({preview}) {
 
               <h1 className=" pt-4 capitalize font-visita-medium text-green-500 text-xl">
                 <span className=" mr-2 text-slate-600 line-through">
-                  {`₹${data.product_orgprice}`}
+                  {`${data.product_orgprice != "" ? "₹" + data.product_orgprice : '' }`}
                 </span>
-                {`₹${data.product_offerprice}`}
+                {`${data.product_offerprice != "" ? "₹" + data.product_orgprice : '' }`}
               </h1>
               <a
                 href={`https://api.whatsapp.com/send/?phone=+91${cardDatas && cardDatas.phone_no}&text=👋Hey,Enquiry For ${data.product_name}`}
@@ -858,19 +858,27 @@ function Template({preview}) {
               )}
             </div>
           );
-        })}
+        })
+        
+        }
+
+        {
+          products && products.length != 0 ?
+          <div className="w-full h-32  flex items-center justify-center">
+          <button
+                  onClick={()=> {navigate('/'+cardDatas.company_name+'/products')}}
+                  className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-visita-bold text-sm -mt-6`}
+                >
+                  View more products
+                  <span className=" ml-1 text-white text-xl"></span>
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+          </div>
+          : ''
+        }
 
 
-        <div className="w-full h-32  flex items-center justify-center">
-        <button
-                onClick={()=> {navigate('/'+cardDatas.company_name+'/products')}}
-                className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-visita-bold text-sm -mt-6`}
-              >
-                View more products
-                <span className=" ml-1 text-white text-xl"></span>
-                <ion-icon name="arrow-forward"></ion-icon>
-              </button>
-        </div>
+      
 
 
   </div>

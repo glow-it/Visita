@@ -1201,7 +1201,7 @@ function Create(props) {
                     (Optional)
                   </span>
                 </label>
-                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center border py-8 px-4 ">
+                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8 px-4 ">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
             className=" ml-6 font-visita-medium block py-4     pr-[50px] pl-[20px] text-gray-900 border-slate-800 transition-all rounded-full border focus:shadowlge-600/3-20 shadow-sm  sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "

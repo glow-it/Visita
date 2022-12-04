@@ -69,7 +69,7 @@ function CardPreview() {
               company_name: name,
               razorpay: null,
               franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
-              access_password: name + new Date().getTime(),
+              access_password: `${name.substring(0,2)}${Math.floor(Math.random() * 99)}`,
               activated_at: new Date().getTime(),
               phone_no: cardDatas.phone_no,
               franchisee_email: cardDatas.franchisee,
@@ -138,9 +138,6 @@ function CardPreview() {
       name: "Visita | Digital Visiting Card",
       description: "Payment For Purchase Digital Visiting Card",
       image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
-      theme: {
-        color: "#6733E4",
-      },
       prefill: {
         name: cardDatas.first_name,
         email: cardDatas.email_id,
@@ -167,7 +164,7 @@ function CardPreview() {
                 company_name: name,
                 razorpay: res_obj,
                 franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
-                access_password: name + new Date().getTime(),
+                access_password: `${name.substring(0,2)}${Math.floor(Math.random() * 99)}`,
                 activated_at: new Date().getTime(),
                 phone_no: cardDatas.phone_no,
                 franchisee_email: cardDatas.franchisee,
@@ -282,7 +279,7 @@ function CardPreview() {
         <input
           type="text"
           name="card_pass"
-          value={`${name.substring(0,3)}${Math.floor(1000 + Math.random() * 9000)}`}
+          value={`${name.substring(0,2)}${Math.floor(Math.random() * 99)}`}
         />
       </form>
 

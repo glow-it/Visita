@@ -76,9 +76,6 @@ function franchiseeRegisterClick(button){
             }
           })
       },
-        theme: {
-          color: "#6733E4",
-        },
         prefill: {
             name: document.getElementById('franchisee_name').value,
             email: document.getElementById('franchisee_email').value,

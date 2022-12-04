@@ -40,7 +40,9 @@ function CustomerDetails() {
         </Thead>
 
         <Tbody className="font-visita-medium">
-          {cardDatas.customer_details && cardDatas.customer_details.map((data) => {
+          {cardDatas.customer_details && cardDatas.customer_details.filter((data,index)=> {
+            return index != 0
+          }).map((data) => {
               var date1, date2;
               //define two date object variables with dates inside it
               date1 = data.date;

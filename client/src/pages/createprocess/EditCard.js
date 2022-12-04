@@ -1180,9 +1180,9 @@ function EditCard() {
                     (Optional)
                   </span>
                 </label>
-                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   border">
+                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   ">
                    <div className="flex flex-col">
-                   <img src={data.product_image != "" ? data.product_image : ''} className="h-32 ml-10 w-[250px] rounded-xl border" />
+                   <img src={data.product_image != "" ? data.product_image : ''} className="h-32 lg:ml-10 w-[250px] rounded-xl border" />
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
             className="  font-visita-medium block py-3.5    text-gray-900 transition-all  sm:text-sm text-sm"
