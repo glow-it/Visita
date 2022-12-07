@@ -448,38 +448,25 @@ footer {
   border-radius: 50px;
 }
 
-.active-choose-theme{
-  animation: slide_up 1s cubic-bezier(0.075, 0.82, 0.165, 1) .3s forwards;
-}
-
-@keyframes slide_up {
-  0%{
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100%{
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
 .create-inputs-wrapper{
-  bottom: -200vh;
-  animation: animate_create_inputs_wrapper 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .8s;
+  bottom: 0;
+  /* opacity: 0;
+  visibility: hidden; */
+  animation: animate_create_inputs_wrapper 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards ;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .create-next-buttons-wrapper{
   margin-bottom: -200vh;
-  animation: animate_create_next_buttons_wrapper 1.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1.2s;
+  animation: animate_create_next_buttons_wrapper .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 @keyframes animate_create_inputs_wrapper{
   0%{
-    bottom: -200vh;
+   
   }
   100%{
-    bottom: 0;
+    
   }
 }
 @keyframes animate_create_next_buttons_wrapper{
@@ -495,37 +482,37 @@ footer {
   transform: translateX(-20px);
   opacity: 0;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2s;
+  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .2s;
 }
 .process_indicator-2{
   transform: translateX(-20px);
   opacity: 0;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.1s;
+  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .3s;
 }
 .process_indicator-3{
   transform: translateX(-20px);
   opacity: 0;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.2s;
+  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .4s;
 }
 .process_indicator-4{
   transform: translateX(-20px);
   opacity: 0;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.3s;
+  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .5s;
 }
 .process_indicator-5{
   transform: translateX(-20px);
   opacity: 0;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.4s;
+  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .6s;
 }
 .process_indicator-6{
   transform: translateX(-20px);
   opacity: 0;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 2.5s;
+  animation: process_indicator_animate 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards .7s;
 }
 
 
@@ -574,48 +561,50 @@ footer {
 
 .process1_wrapper{
   opacity: 0;
-  transform: translateY(100vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 .process2_wrapper{
   opacity: 0;
-  transform: translateY(50vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 .process3_wrapper{
   opacity: 0;
-  transform: translateY(50vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 .process4_wrapper{
   opacity: 0;
-  transform: translateY(50vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 .process5_wrapper{
   opacity: 0;
-  transform: translateY(50vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 .process6_wrapper{
   opacity: 0;
-  transform: translateY(50vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 .process7_wrapper{
   opacity: 0;
-  transform: translateY(50vh);
-  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards .2s;
+  animation: animate_process cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards ;
+  visibility: hidden;
 }
 
 @keyframes animate_process{
   0%{
     opacity: 0;
-    transform: translateY(100vh);
+    visibility: hidden;
+    transform: translateX(40px);
   }
   100%{
     opacity: 1;
-    transform: translateY(0vh);
+    visibility: visible;
+    transform: translateX(0px);
   }
 }
 

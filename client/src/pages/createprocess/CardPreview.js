@@ -299,20 +299,20 @@ function CardPreview() {
         <div
           className={`${
             cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[75%]"
-          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white lg:border-2  items-center justify-center rounded-3xl`}
+          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white  items-center justify-center lg:rounded-3xl lg:border border-t `}
         >
 
 
-<div className="w-[100px] lg:block hidden -mt-12 mb-6">
+<div className="w-[100px] lg:block hidden z-50 -mt-12 mb-6">
         <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_pqnfmone.json"  background="transparent"  speed="1" autoplay></lottie-player>
         </div>
 
 
-          <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 -mt-44">
+          <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 -mt-16">
             
             {cardDatas && cardDatas.activated
-              ? "Successfully Your Card Is "
-              : "Successfully Your Card Was "}
+              ? "Successfully your card is "
+              : "Successfully your website was "}
 
             <span className="text-green-600">
               {cardDatas && cardDatas.activated ? "Activated!" : "Created!"}
@@ -329,8 +329,8 @@ function CardPreview() {
             } rounded-full`}
           >
             {cardDatas && cardDatas.activated
-              ? "Payment Was Successfull"
-              : "Complete Purchase To Activate Your Card"}
+              ? "Payment was successfull"
+              : "Complete purchase to activate your website"}
           </h1>
 
           {cardDatas && cardDatas.activated ? (
@@ -375,7 +375,7 @@ function CardPreview() {
           ) : (
             <button
               onClick={() => cancelPurchase()}
-              className="text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border-2 lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
+              className="text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
             >
               Cancel purchase
             </button>

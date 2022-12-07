@@ -13,7 +13,7 @@ function FranchiseeRegister() {
 
   let navigate = useNavigate()
   let [loading,setLoading] = useState(false)
-  let [loadingText,setLoadingText] = useState('Processing Payment')
+  let [loadingText,setLoadingText] = useState('Processing payment')
   let [is_register_button_disabled,set_is_register_button_disabled] = useState(true)
 
 useEffect(()=> {
@@ -40,7 +40,7 @@ function franchiseeRegisterClick(button){
         image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
         order_id: response.data.payment_data.id,
         handler: function (response){
-          setLoadingText('Registering Franchisee')
+          setLoadingText('Registering franchisee')
           setLoading(true)
           let res_obj = {
             payment_id: response.razorpay_payment_id,
@@ -197,10 +197,14 @@ if(e.target.value.length>= 5){
   return (
 <div className=' min-h-screen absolute top-0 min-w-full' >
 
-<img className='z-10 h-[800px] right-0 bottom-0 absolute' src="https://i.postimg.cc/rmJkQYQ2/4413403.jpg" alt="" />
 
-<img className='z-10 h-[600px] -left-[500px] -top-[100px] absolute' src="https://i.postimg.cc/rmJkQYQ2/4413403.jpg" alt="" />
-
+<div className="h-12 py-12 w-full absolute top-0 flex items-center justify-center">
+<img
+          className="mx-auto h-10 w-auto" 
+          src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
+          alt="Your Company"
+        />
+</div>
 
 
     <div className="flex min-h-full  items-center  justify-center lg:mt-12 mt-16 px-4 sm:px-6 lg:px-8">
@@ -208,13 +212,9 @@ if(e.target.value.length>= 5){
 
 
 
-    <div className=" bg-white border border-slate-800 rounded-3xl shadow-md px-8 py-16 w-full max-w-md space-y-8 z-50">
+    <div className="   rounded-3xl  px-8 py-16 w-full max-w-md space-y-8 z-50">
       <div>
-        <img
-          className="mx-auto h-12 w-auto" 
-          src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
-          alt="Your Company"
-        />
+       
         <h2 className="mt-6 text-center lg:text-4xl text-3xl font-visita-bold tracking-tight text-gray-900">
         Franchisee Register
         </h2>
@@ -353,7 +353,7 @@ salary' placement='right'>
          
         </div>
         <div className="w-full flex justify-center items-center">
-        <p onClick={()=> navigate('/franchisee/login')} className='font-visita-medium' >already have a franchisee? <span className='ml-1 text-blue-500 cursor-pointer hover:underline' >Login now</span></p>
+        <p onClick={()=> navigate('/franchisee/login')} className='font-visita-medium' >already have a franchisee? <span className='ml-1 text-indigo-500 cursor-pointer hover:underline' >Login now</span></p>
         </div>
       </form>
     </div>

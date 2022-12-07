@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.702bf60d.css",
-    "main.js": "/static/js/main.d167be4c.js",
+    "main.css": "/static/css/main.e2442835.css",
+    "main.js": "/static/js/main.6e234fca.js",
     "static/js/787.4bd1f8a8.chunk.js": "/static/js/787.4bd1f8a8.chunk.js",
     "static/media/Gilroy-SemiBold.ttf": "/static/media/Gilroy-SemiBold.07b9100a72fe7d46d20a.ttf",
     "static/media/Gilroy-Bold.ttf": "/static/media/Gilroy-Bold.ca49f7658c4eaac78b6d.ttf",
     "static/media/Gilroy-ExtraBold.ttf": "/static/media/Gilroy-ExtraBold.59a66eb8c577778daaa5.ttf",
     "index.html": "/index.html",
-    "main.702bf60d.css.map": "/static/css/main.702bf60d.css.map",
-    "main.d167be4c.js.map": "/static/js/main.d167be4c.js.map",
+    "main.e2442835.css.map": "/static/css/main.e2442835.css.map",
+    "main.6e234fca.js.map": "/static/js/main.6e234fca.js.map",
     "787.4bd1f8a8.chunk.js.map": "/static/js/787.4bd1f8a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.702bf60d.css",
-    "static/js/main.d167be4c.js"
+    "static/css/main.e2442835.css",
+    "static/js/main.6e234fca.js"
   ]
 }

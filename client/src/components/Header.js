@@ -111,14 +111,11 @@ let navigate = useNavigate()
                 <span className="text-slate-500 px-3  rounded-full transition-all hover:text-black">Manage website</span>
            </h1>
   </PopoverTrigger>
-  <PopoverContent>
-   
-    
-    <PopoverHeader><span className="font-visita-bold">Enter Company Name</span></PopoverHeader>
+  <PopoverContent border='1px' rounded='3xl' py='6' px='6' shadow='lg' >
     <PopoverBody>
       
       <div className="flex flex-col">
-      <input id="manage_card_comp_name" className="border py-2 w-full pl-4 rounded-full font-visita-medium"  />
+      <input autoComplete='off' id="manage_card_comp_name" placeholder="Enter company name" className="border focus:border focus:border-blue-600 py-2 w-full pl-4 rounded-full font-visita-medium"  />
       <div className="w-full h-12 my-4 flex items-center">
         <button onClick={()=> navigate('/manage/card/' + document.getElementById('manage_card_comp_name').value)} className="px-6 py-1 bg-blue-600 rounded-full text-xl font-visita-bold text-white" >Continue</button>
       </div>
