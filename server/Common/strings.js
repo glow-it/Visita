@@ -9,5 +9,4 @@ module.exports = {
     key_secret: 'rgkQhiXFVeFeUZ48BdCz9jjf',
     plan_id: 'plan_KbBg0DdeiklA9s'
   },
-  OPENAI_API_KEY: "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"
 };
