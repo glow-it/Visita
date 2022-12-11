@@ -5,6 +5,7 @@
     "http-proxy-middleware": "^2.0.6",
     "jquery": "^3.6.1",
     "js-cookie": "^3.0.1",
+    "openai": "^3.1.0",
     "razorpay": "^2.8.3",
     "react-cookie": "^4.1.1"
   }

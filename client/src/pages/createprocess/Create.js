@@ -311,7 +311,7 @@ function Create(props) {
           company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
 
           company_name_input.classList.replace('bg-red-50','bg-green-50')
-          company_name_input.classList.replace('focus:border-blue-500','focus:border-green-500')
+          company_name_input.classList.replace('focus:border-indigo-500','focus:border-green-500')
           company_name_input.classList.replace('focus:ring-blue-500','focus:ring-green-500')
           company_name_input.classList.replace('focus:border-red-500','focus:border-green-500')
           company_name_input.classList.replace('focus:ring-red-500','focus:ring-green-500')
@@ -339,6 +339,40 @@ function Create(props) {
           }
         })
       })
+  }
+
+  function generateCompletion(elem,prompt,temperature,event){
+
+    event.target.innerText = 'Generating...'
+
+   axios({
+    method: 'POST',
+    url: '/generate-completion',
+    data: {
+      prompt,
+      temperature
+    }
+   }).then((res)=> {
+    if(res.data.status){
+
+const dirtyString = res.data.response;
+let cleanString = dirtyString.trim();
+let fullyCleanString = cleanString.replace(/[\n"]/g, " ");
+
+elem.value = fullyCleanString
+event.target.innerText = 'Regenerate'
+
+
+    }else{
+      Toast({
+        status:'error',
+        title: 'AI not working properly',
+        postition: 'top-right',
+        description: 'try again!!!',
+        toast
+      })
+    }
+   })
   }
 
 
@@ -372,7 +406,7 @@ function Create(props) {
             <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-visita-medium" >Cancel</span></Button>
 
 
-            <Button rounded='full' color='#fff' _hover bgColor='#0062FF'  onClick={()=> {
+            <Button rounded='full' color='#fff' _hover bgColor='#5046E4'  onClick={()=> {
               setLoading(true)
               onClose()
               let cardForm = document.getElementById("cardForm");
@@ -419,7 +453,7 @@ function Create(props) {
                 onChange={(e)=> checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
-                class="company_name_input  focus:border-blue-500 font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class="company_name_input  focus:border-indigo-500 font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
 <p class="error-message mt-2 text-sm text-green-600 font-visita-medium"></p>
@@ -528,20 +562,62 @@ function Create(props) {
                 processIndex != 2 ? "hidden" : ""
               }  my-3 process3_wrapper pb-40 overflow-scroll`}
             >
-              <label
+
+
+<label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
                 Company Category <span className="text-blue-600">*</span>
               </label>
+              
+
+
               <input
-                placeholder="Keywords (use , to seperate)"
+                placeholder="Enter your company category"
                 autoComplete="off"
                 required
-                id="large-input"
+                id="category_input"
                 name="company_category"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                className=" font-visita-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
+
+
+
+              <label
+                for="large-input"
+                class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+              >
+                Tagline 
+                <span className="text-blue-600">*</span>
+              </label>
+              
+
+              <div className="relative flex items-center ">
+              <input
+                placeholder="Enter tagline for your company"
+                autoComplete="off"
+                required
+                id="tagline_input"
+                name="tagline"
+                className=" font-visita-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+              />
+
+
+<p onClick={(e)=> {
+  
+  generateCompletion(document.getElementById('tagline_input'),
+  `write a tagline for a ${document.getElementById('category_input').value}`,
+  1,
+  e
+  
+  
+  )
+  
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate tagline</p>
+
+
+              </div>
 
               <label
                 for="large-input"
@@ -555,7 +631,7 @@ function Create(props) {
                 required
                 id="large-input"
                 name="first_name"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -570,7 +646,7 @@ function Create(props) {
                 autoComplete="off"
                 id="large-input"
                 name="last_name"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -585,7 +661,7 @@ function Create(props) {
                 id="large-input"
                 required
                 name="position"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -600,7 +676,7 @@ function Create(props) {
                 id="large-input"
                 required
                 name="phone_no"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -615,7 +691,7 @@ function Create(props) {
                 autoComplete="off"
                 id="large-input"
                 name="alt_phone_no"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -630,7 +706,7 @@ function Create(props) {
                 required
                 id="large-input"
                 name="whatsapp_no"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -645,7 +721,7 @@ function Create(props) {
                 required
                 id="large-input"
                 name="address"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -660,7 +736,7 @@ function Create(props) {
                 required
                 id="large-input"
                 name="email_id"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -675,7 +751,7 @@ function Create(props) {
                 autoComplete="off"
                 id="large-input"
                 name="website"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -690,7 +766,7 @@ function Create(props) {
                 autoComplete="off"
                 id="large-input"
                 name="location"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
 <label
@@ -705,7 +781,7 @@ function Create(props) {
                 autoComplete="off"
                 id="large-input"
                 name="gmap_location"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm   focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm   focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -720,7 +796,7 @@ function Create(props) {
                 id="large-input"
                 required
                 name="city"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
@@ -735,37 +811,79 @@ function Create(props) {
                 id="large-input"
                 required
                 name="since"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
-                About Us <span className="text-blue-600">*</span>
+                About Company <span className="text-blue-600">*</span>
               </label>
+
+
+              <div className="relative flex items-center ">
+              
               <input
-                placeholder="About Your Comp"
+                placeholder="About your company"
                 autoComplete="off"
-                id="large-input"
+                id="about_input"
                 required
                 name="about"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
+              <p onClick={(e)=> {
+  
+  generateCompletion(document.getElementById('about_input'),
+  `write a bio for a ${document.getElementById('category_input').value}`,
+  1,
+  e
+  
+  
+  )
+  
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate random bio</p>
+              
+              
+                            </div>
+
+
+              
               <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Specialities <span className="text-slate-400">(Optional)</span>
+              
               </label>
+
+              <div className="relative flex items-center ">
+              
               <input
                 placeholder="Seperate with comma ( , )"
                 autoComplete="off"
-                id="large-input"
+                id="specials_input"
                 name="specials"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
+             
+              <p onClick={(e)=> {
+  
+  generateCompletion(document.getElementById('specials_input'),
+  `write specialities for ${document.getElementById('category_input').value} separate with commas without numbers`,
+  1,
+  e
+  
+  
+  )
+  
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate specialities</p>
+              
+              
+                            </div>
+
+
 
               <label
                 for="large-input"
@@ -773,13 +891,35 @@ function Create(props) {
               >
                 Features <span className="text-slate-400">(Optional)</span>
               </label>
+
+
+              <div className="relative flex items-center ">
+              
               <input
                 placeholder="Seperate with comma ( , )"
                 autoComplete="off"
-                id="large-input"
+                id="features_input"
                 name="features"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
+             
+              <p onClick={(e)=> {
+  
+  generateCompletion(document.getElementById('features_input'),
+  `write features for a ${document.getElementById('category_input').value} separate with commas without numbers`,
+  1,
+  e
+  
+  
+  )
+  
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate features</p>
+              
+              
+                            </div>
+
+
+
 
 
 
@@ -807,7 +947,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="facebook_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -822,7 +962,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="instagram_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -837,7 +977,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="twitter_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -852,7 +992,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="linkedin_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -867,7 +1007,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="youtube_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -882,17 +1022,15 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="pinterest_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-6 flex justify-center">
-            <span className="flex mr-2 items-center justify-center">
-              <ion-icon name="arrow-down-outline"></ion-icon>
-            </span>{" "}
             Youtube Video Links
+           
           </h1>
 
-          <h1 className="text-sm bg-slate-100 py-3 border-slate-900 text-blue-900 rounded-md border font-visita-bold mb-12 flex justify-center px-6">
+          <h1 className="text-sm  py-3 border-slate-900 text-blue-900 rounded-md border font-visita-bold mb-12 flex justify-center px-6">
           <span className="text-slate-900 mr-2">Example youtube video link</span>  https://www.youtube.com/watch?v=zgmlJ-gdi7M
             
           </h1>
@@ -909,7 +1047,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="ytvideo_1_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -924,7 +1062,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -939,7 +1077,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="ytvideo_3_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -954,7 +1092,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="ytvideo_4_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -969,7 +1107,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="ytvideo_5_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
         </div>
 
@@ -992,7 +1130,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="paytm_number"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -1007,7 +1145,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="googlepay_number"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -1022,13 +1160,11 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="phonepe"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
-            <span className="flex mr-2 items-center justify-center">
-              <ion-icon name="arrow-down-outline"></ion-icon>
-            </span>{" "}
+           
             Payment QR Codes
           </h1>
 
@@ -1040,7 +1176,7 @@ function Create(props) {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"paytm_qrcode")}}
@@ -1055,7 +1191,7 @@ function Create(props) {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"googlepay_qrcode")}}
@@ -1070,7 +1206,7 @@ function Create(props) {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"phonepe_qrcode")}}
@@ -1078,9 +1214,7 @@ function Create(props) {
           <input type="text" name="phonepe_qrcode" id="phonepe_qrcode" className="hidden" />
 
           <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
-            <span className="flex mr-2 items-center justify-center">
-              <ion-icon name="arrow-down-outline"></ion-icon>
-            </span>{" "}
+          
             Bank Account Details
           </h1>
 
@@ -1096,7 +1230,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="bank_name"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -1111,7 +1245,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="account_holder_name"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -1126,7 +1260,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="bank_account_number"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -1141,7 +1275,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="bank_ifsc_code"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
@@ -1156,7 +1290,7 @@ function Create(props) {
             autoComplete="off"
             id="large-input"
             name="gst"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
         </div>
 
@@ -1180,9 +1314,9 @@ function Create(props) {
                   </span>
                 </label>
                 <div className="lg:w-full  lg:pb-8 pb-24   lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8  ">
-                  <div class="flex lg:border border-slate-800 py-[145px] justify-center  lg:w-[400px] w-[250px]   rounded-md  items-center">
+                  <div class="flex lg:border border-slate-800 py-[130px] justify-center  lg:w-[400px] w-[250px]   rounded-md  items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-4     pr-[50px] pl-[20px] text-gray-900 border-slate-800 transition-all rounded-full border focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className=" ml-6 font-visita-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`product_image_${data}`)}}
@@ -1197,7 +1331,7 @@ function Create(props) {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_name`}
-                      class=" font-visita-medium block py-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium block py-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1205,7 +1339,7 @@ function Create(props) {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_description`}
-                      class=" font-visita-medium block py-4 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium block py-4 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1213,7 +1347,7 @@ function Create(props) {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_orgprice`}
-                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1221,7 +1355,7 @@ function Create(props) {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_offerprice`}
-                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1229,7 +1363,7 @@ function Create(props) {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_link`}
-                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                   </div>
@@ -1261,10 +1395,10 @@ function Create(props) {
                 (Optional)
               </span>
             </label>
-              <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0  rounded-md flex lg:flex-row flex-col items-center  py-8   border">
+              <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0   flex lg:flex-row flex-col items-center  py-8   border-b border-b-slate-800">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className="  font-visita-medium block py-4    pr-[150px] pl-[20px] text-gray-900 border-slate-800 transition-all rounded-full border focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+            className="  font-visita-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`image_${data}`)}}
@@ -1289,7 +1423,7 @@ function Create(props) {
             processIndex != 7 ? "hidden" : ""
           }  my-3 process7_wrapper  pb-40 overflow-scroll`}
         >
-          <div className=" add_features_wrapper  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center border py-8 px-4 ">
+          <div className=" add_features_wrapper  lg:pb-8 pb-24   lg:mt-0  rounded-lg flex lg:flex-row flex-col items-center border border-slate-800 py-8 px-4 ">
 
                   <div class="flex flex-col w-full justify-center  py-2 lg:px-8 px-2 items-center">
                   
@@ -1338,7 +1472,7 @@ function Create(props) {
               id="previous_button"
               rounded={"full"}
               _hover
-              backgroundColor="#0062FF"
+              backgroundColor="#5046E4"
               onClick={() =>
                 setProcessIndex(
                   processIndex != 1 ? processIndex - 1 : processIndex
@@ -1359,8 +1493,8 @@ function Create(props) {
               isLoading={loading}
               loadingText="Creating Website"
               onClick={() => handleNextClick()}
-              backgroundColor="#0062FF"
-              className="w-[200px] font-visita-medium lg:mr-6 mr-2"
+              backgroundColor="#5046E4"
+              className="w-[200px] font-visita-medium lg:mr-6"
               size="md"
               color='white'
             >
@@ -1372,7 +1506,7 @@ function Create(props) {
               display='none'
               
               rounded={"full"}
-              backgroundColor="#0062FF"
+              backgroundColor="#5046E4"
               _hover
               className="w-[100px]  font-visita-medium  lg:mr-6 mr-2"
               size="md"

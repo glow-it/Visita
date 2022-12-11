@@ -17,6 +17,7 @@ const session = require('express-session');
 const FranchiseeHelpers = require("./Helpers/FranchiseeHelpers");
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const aiHelpers = require("./Helpers/aiHelpers");
 
 const corsOptions = {
   origin: "*",
@@ -348,6 +349,19 @@ async function run() {
 
       })
     })
+
+
+    app.post('/generate-completion',(req,res,next)=> {
+      aiHelpers.generateCompletion(req.body.prompt,req.body.temperature).then((response)=> {
+        res.json({status:true,response:response.data.choices[0].text})
+      }).catch((err)=> {
+        console.log(err);
+        res.json({status:false})
+
+      })
+    })
+
+  
 
     
 

@@ -486,6 +486,37 @@ function EditCard() {
                 processIndex != 2 ? "hidden" : ""
               }  my-3 process3_wrapper pb-40 overflow-scroll`}
             >
+
+
+
+<label
+                for="large-input"
+                class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+              >
+                Tagline 
+                <span className="text-blue-600">*</span>
+              </label>
+              
+
+              <div className="relative flex items-center ">
+              <input
+                placeholder="Enter tagline for your company"
+                autoComplete="off"
+                id="large-input"
+                required
+                name="tagline"
+                defaultValue={cardDatas && cardDatas.tagline}
+                className=" font-visita-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+              />
+
+
+<p  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium rounded-full transition-colors right-6 text-xs px-5 py-1.5  ">Generate tagline</p>
+
+
+              </div>
+
+
+
               <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 :text-gray-300 mt-6"
@@ -493,7 +524,7 @@ function EditCard() {
                 Company Category <span className="text-blue-600">*</span>
               </label>
               <input
-                placeholder="Keywords (use , to seperate)"
+                placeholder="Enter your company category"
                 autoComplete="off"
                 required
                 defaultValue={cardDatas && cardDatas.company_category}
@@ -714,10 +745,10 @@ function EditCard() {
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 :text-gray-300"
               >
-                About Us <span className="text-blue-600">*</span>
+                About Company <span className="text-blue-600">*</span>
               </label>
               <input
-                placeholder="About Your Comp"
+                placeholder="About Your Company"
                 autoComplete="off"
                 id="large-input"
                 required

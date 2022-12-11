@@ -8,5 +8,6 @@ module.exports = {
     key_id: 'rzp_live_5bsv690sbS0AHj',
     key_secret: 'rgkQhiXFVeFeUZ48BdCz9jjf',
     plan_id: 'plan_KbBg0DdeiklA9s'
-  }
+  },
+  openai_secret_key: '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'
 };

@@ -256,12 +256,21 @@ function Template({preview}) {
 
 {
   localStorage.getItem('isAdmin') == "true" ?
-  <div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex items-center justify-center cursor-pointer">
+  <div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex z-50 items-center justify-center cursor-pointer">
   <h1 className="font-visita-bold ">Manage website</h1>
   <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-forward"></ion-icon></span>
 </div>
 : ''
 }
+
+{
+   cardDatas && cardDatas.tagline ?
+  <div  className={`w-full py-3 bg-white text-center border-2 px-4 border-${theme_color}-600 text-${theme_color}-600  text-white flex z-50 items-center justify-center cursor-pointer text-sm`}>
+  <h1 className="font-visita-bold ">{cardDatas && cardDatas.tagline}</h1>
+</div>
+: ''
+}
+
 
 
   <div
@@ -271,31 +280,36 @@ function Template({preview}) {
     }}
     className=" template-1 flex justify-center bg-no-repeat bg-cover "
   >
+
+
+
     <div className="card">
-      <span className={`z-50 absolute ${localStorage.getItem('isAdmin') != "true" ? 'top-4' : 'top-16'}  right-4 text-white text-xs font-visita-medium py-1 px-2 border border-white  rounded-full`}>
+      <span className={`z-50 absolute top-20  right-4 text-white text-xs font-visita-medium py-1 px-2 border border-white  rounded-full`}>
         Views: {cardDatas && cardDatas.views}
       </span>
 
-      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute ${localStorage.getItem('isAdmin') != "true" ? 'top-4' : 'top-16'}  left-4 text-${theme_color}-600 text-2xl font-visita-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
+      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute top-20  left-4 text-${theme_color}-600 text-2xl font-visita-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
       <ion-icon name="cart"></ion-icon>
       </Link>
 
       <div className=" container  w-full">
-        <div className=" w-full mt-8 flex">
+        <div className=" w-full mt-12 px-8 flex flex-col items-center justify-center">
           <img
             id="logo"
             src={cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, 'https://')}
             alt="Dp-Template-1"
-            className={`logo ml-8 rounded-full ring-4 ring-offset-4 ring-${theme_color}-500`}
+            className={`logo  rounded-full ring-4 ring-offset-4 ring-${theme_color}-500`}
           />
 
-          <div className=" w-full h-full flex flex-col">
+          <div className=" w-full h-full flex flex-col items-center">
             <h1 className="capitalize text-white text-3xl font-visita-bold ml-4 mt-6">
               {cardDatas && cardDatas.company_name}
             </h1>
             <h1 className="capitalize text-white text-xl font-visita-medium ml-4 mt-1">
               {cardDatas && cardDatas.company_category}
             </h1>
+            
+            
           </div>
         </div>
 
