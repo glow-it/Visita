@@ -16,6 +16,7 @@ generateCompletion : (prompt,temperature)=> {
             model: "text-davinci-003",
             prompt,
             temperature,
+            
           }).then((response)=> {
             resolve(response)
           }).catch((err)=> {

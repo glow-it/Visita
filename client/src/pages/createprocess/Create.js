@@ -428,7 +428,7 @@ event.target.innerText = 'Regenerate'
       <div
         className={`create-inputs-wrapper ${
          processIndex == 5 ? "lg:w-[75%] w-full" : processIndex > 2 ? "lg:w-[55%] w-full" : "lg:w-[45%] w-full"
-        }    lg:rounded-t-3xl lg:h-[90%] h-[80%] absolute px-8   flex  flex-row justify-center min-w-100vh bg-white  `}
+        }    lg:rounded-t-3xl lg:h-[90%] h-[87%] absolute lg:px-8 px-7   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
         <div className=" flex  h-full  ">
           <div className=" flex flex-col items-center  ">
@@ -595,7 +595,7 @@ event.target.innerText = 'Regenerate'
 
               <div className="relative flex items-center ">
               <input
-                placeholder="Enter tagline for your company"
+                placeholder="Enter tagline"
                 autoComplete="off"
                 required
                 id="tagline_input"
@@ -843,7 +843,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate random bio</p>
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate bio</p>
               
               
                             </div>
@@ -878,7 +878,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate specialities</p>
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
               
               
                             </div>
@@ -913,7 +913,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate features</p>
+  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
               
               
                             </div>
@@ -1030,7 +1030,7 @@ event.target.innerText = 'Regenerate'
            
           </h1>
 
-          <h1 className="text-sm  py-3 border-slate-900 text-blue-900 rounded-md border font-visita-bold mb-12 flex justify-center px-6">
+          <h1 className="text-sm  py-3 border-slate-900 text-blue-900 rounded-md border font-visita-bold mb-12 flex justify-center lg:items-start items-center lg:flex-row flex-col px-6 text-center">
           <span className="text-slate-900 mr-2">Example youtube video link</span>  https://www.youtube.com/watch?v=zgmlJ-gdi7M
             
           </h1>
@@ -1314,7 +1314,7 @@ event.target.innerText = 'Regenerate'
                   </span>
                 </label>
                 <div className="lg:w-full  lg:pb-8 pb-24   lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8  ">
-                  <div class="flex lg:border border-slate-800 py-[130px] justify-center  lg:w-[400px] w-[250px]   rounded-md  items-center">
+                  <div class="flex border border-slate-800 py-[130px] lg:px-0 px-8 lg:mb-0 mb-6 justify-center  lg:w-[400px] w-[280px]   rounded-md  items-center">
                   <input
             className=" ml-6 font-visita-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
@@ -1423,7 +1423,7 @@ event.target.innerText = 'Regenerate'
             processIndex != 7 ? "hidden" : ""
           }  my-3 process7_wrapper  pb-40 overflow-scroll`}
         >
-          <div className=" add_features_wrapper  lg:pb-8 pb-24   lg:mt-0  rounded-lg flex lg:flex-row flex-col items-center border border-slate-800 py-8 px-4 ">
+          <div className=" add_features_wrapper  lg:pb-8 pb-24   lg:mt-0  rounded-lg flex lg:flex-row flex-col items-center border  py-8 px-4 ">
 
                   <div class="flex flex-col w-full justify-center  py-2 lg:px-8 px-2 items-center">
                   
@@ -1447,7 +1447,7 @@ event.target.innerText = 'Regenerate'
 
     <input type="text" value={feature1} name="show_customer_details_popop" className="hidden"  />
 
-    <span className="font-visita-medium mt-4 lg:w-[600px] w-[300px] text-slate-400" >
+    <span className="font-visita-medium mt-4 lg:w-[600px]  w-[300px] text-slate-400" >
     This will help you to get all your customer details like name,phone number etc.when your customer enters to your website it will be show a popup for enter name and phone number.if the customer enter his details and submit you will get the details on your website manage page
     </span>
     </h1>
