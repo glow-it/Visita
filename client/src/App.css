@@ -240,9 +240,6 @@ form{
   .benefits-wrapper{
     height: 135vh !important;
   }
-  .comp-logo-footer{
-    transform: scale(2.5) !important;
-  }
 
  
   .cta-wrapper{
@@ -324,10 +321,7 @@ form{
   width: 90%;
   height: 50vh;
 }
-.comp-logo-footer{
-  transform: scale(3);
-  margin-top: -38px;
-}
+
 .cta-aura{
   height: 700px;
 }

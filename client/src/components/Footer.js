@@ -17,7 +17,7 @@ function Footer() {
                   font-visita-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                   >
                <img
-                  src="../assets/images/glowitlogos/glowitlabs_text_white.png"
+                  src="../assets/images/glowitlogos/logo.jpg"
                   alt="logo"
                   class="comp-logo-footer rounded-full"
                   />
@@ -313,7 +313,7 @@ function Footer() {
 
 
                   <a
-                     href="https://www.twitter.com/TeamVisita"
+                     href="https://www.twitter.com/TeamGlowit"
                      target='_blank'
                      class="
                      w-8
