@@ -15,16 +15,19 @@ function ActivateWarning() {
     let complete_purchase_url = `/create/preview/${params.comp_name.replace(/[ ]/g,"-")}`
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center px-8">
+    <div className="w-full h-screen flex flex-col items-center pt-24 px-8">
 
-        <div className='my-6 -mt-32' >
+        
+
+        <h1 className="font-visita-bold text-indigo-600 lg:text-xl text-xl text-center  rounded-full px-8 py-3">
+        Complete purchase to activate your website
+        </h1>
+
+        <div className='my-6 ' >
         <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_0akluyjw.json"  background="transparent"  speed="1"   loop  autoplay></lottie-player>
         </div>
 
-        <h1 className="font-visita-bold text-blue-600 lg:text-3xl text-xl text-center bg-blue-50 border-blue-100 border rounded-full px-8 py-3">
-        Complete Purchase To Activate Your Website
-        </h1>
-        <button onClick={()=> navigate(complete_purchase_url)} className='font-visita-bold mt-8 bg-blue-600 hover:bg-white hover:text-blue-600 transition-colors lg:text-xl text-lg text-center text-white border-blue-100 border rounded-full px-8 py-3' > Complete Purchase </button>
+        <button onClick={()=> navigate(complete_purchase_url)} className='font-visita-bold mt-8 bg-indigo-600 hover:bg-white hover:text-indigo-600 transition-colors lg:text-lg text-lg text-center text-white border-indigo-100 border rounded-full px-8 py-3' > Complete purchase </button>
     </div>
   )
 }

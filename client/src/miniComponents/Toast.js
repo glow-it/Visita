@@ -22,7 +22,7 @@ export function Toast(props) {
       ? "red"
       : "blue";
   let title = props.title;
-  let position = isMobile ? "top" : props.postition;
+  let position = "top"
 
   toast({
     position: position,
@@ -32,7 +32,7 @@ export function Toast(props) {
       <div
         className={`p-1 px1 ${
           position == "top-right" ? "mt-24" : "mt-4"
-        }  rounded-full bg-white shadow-md flex relative items-center`}
+        }  rounded-full bg-white shadow-md flex relative items-center pr-8`}
       >
        
        {

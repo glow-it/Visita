@@ -8,7 +8,7 @@ import Pricing from "./pages/Pricing";
 import Create from "./pages/createprocess/Create";
 import Loading from "./components/Loading";
 import CardPreview from "./pages/createprocess/CardPreview";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Template from "./template/Template";
 import ActivateWarning from "./pages/createprocess/ActivateWarning";
 import Successfull from "./pages/createprocess/Successfull";
@@ -27,25 +27,8 @@ import ProductsPage from "./pages/ProductsPage";
 import CustomerDetails from "./pages/CustomerDetails";
 
 function App() {
-  useEffect(() => {
-    // Favicon Set Dynamically
 
-    var link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "icon";
-      document.getElementsByTagName("head")[0].appendChild(link);
-    }
-    link.href = "https://i.postimg.cc/ZKnK7rC2/visitalogo.png";
     
-
-
-    Aos.init();
-
-
-
-  }, []);
-
   return (
     <div className="App">
       <Header />
@@ -56,7 +39,7 @@ function App() {
         <Route path="create" element={<Create />} />
         <Route path="create/preview/:name" element={<CardPreview />} />
         <Route path="loading/:type" element={<Loading />} />
-        <Route path="/:comp_name" element={<Template />} />
+        <Route exact path="/:comp_name" element={<Template />} />
         <Route path="/:comp_name/products" element={<ProductsPage />} />
         <Route
           path="/activate-warning/:comp_name"
@@ -76,7 +59,7 @@ function App() {
         <Route path="/card-closed" element={<CardClosedPage />} />
         <Route path="/franchisee/forgot-password/:franchisee_email" element={<ForgotPasswordFranchisee />} />
         <Route path="/franchisee/how-to-franchisee" element={<HowToFranchisee />} />
-        <Route path="/#/*" element={<PageNotFound />} />
+        <Route path="*"  element={<PageNotFound />} />
       </Routes>
     </div>
   );

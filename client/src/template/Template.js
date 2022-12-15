@@ -163,12 +163,14 @@ function Template({preview}) {
 
       })
       .catch((err) => {
+
         Toast({
           status:'error',
-          title: err.message,
+          title: "This website is not in our server",
           postition: 'top',
           toast
         })
+        navigate('/')
       });
 
 
@@ -265,7 +267,7 @@ function Template({preview}) {
 
 {
    cardDatas && cardDatas.tagline ?
-  <div  className={`w-full py-3 bg-white text-center border-2 px-4 border-${theme_color}-600 text-${theme_color}-600  text-white flex z-50 items-center justify-center cursor-pointer text-sm`}>
+  <div  className={`w-full py-3 bg-white text-center border-b-2 px-4 border-b-${theme_color}-600 text-${theme_color}-600  text-white flex z-50 items-center justify-center cursor-pointer text-sm`}>
   <h1 className="font-visita-bold ">{cardDatas && cardDatas.tagline}</h1>
 </div>
 : ''
@@ -284,11 +286,11 @@ function Template({preview}) {
 
 
     <div className="card">
-      <span className={`z-50 absolute top-20  right-4 text-white text-xs font-visita-medium py-1 px-2 border border-white  rounded-full`}>
+      <span className={`z-50 absolute top-32  right-4 text-white text-xs font-visita-medium py-1 px-2 border border-white  rounded-full`}>
         Views: {cardDatas && cardDatas.views}
       </span>
 
-      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute top-20  left-4 text-${theme_color}-600 text-2xl font-visita-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
+      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute top-32  left-4 text-${theme_color}-600 text-2xl font-visita-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
       <ion-icon name="cart"></ion-icon>
       </Link>
 

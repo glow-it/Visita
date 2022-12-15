@@ -292,19 +292,19 @@ function CardPreview() {
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
 
-      <div className="w-[100px] lg:hidden block -mt-12 absolute top-32">
-        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_pqnfmone.json"  background="transparent"  speed="1" autoplay></lottie-player>
+      <div className=" lg:hidden block -mt-12 absolute top-44">
+      <span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
         </div>
 
         <div
           className={`${
             cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[75%]"
-          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col bg-white  items-center justify-center lg:rounded-3xl lg:border border-t `}
+          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col  items-center justify-center lg:rounded-3xl  lg:border border-indigo-200`}
         >
 
 
-<div className="w-[100px] lg:block hidden z-50 -mt-12 mb-6">
-        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_pqnfmone.json"  background="transparent"  speed="1" autoplay></lottie-player>
+<div className=" lg:block hidden z-50 -mt-12 mb-6">
+<span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
         </div>
 
 
@@ -314,18 +314,18 @@ function CardPreview() {
               ? "Successfully your card is "
               : "Successfully your website was "}
 
-            <span className="text-green-600">
+            <span className="text-indigo-600">
               {cardDatas && cardDatas.activated ? "Activated!" : "Created!"}
             </span>
           </h1>
 
           <h1
-            className={`lg:text-xl text-sm font-visita-medium ${
+            className={`lg:text-xl text-sm lg:block hidden font-visita-medium ${
               cardDatas && cardDatas.activated
                 ? "text-green-600"
-                : "text-blue-600"
+                : "text-indigo-600"
             } lg:mt-4 mt-8 text-center px-6 py-1 ${
-              cardDatas && cardDatas.activated ? "bg-green-50" : "bg-blue-50"
+              cardDatas && cardDatas.activated ? "bg-green-50" : "bg-indigo-50"
             } rounded-full`}
           >
             {cardDatas && cardDatas.activated
@@ -338,22 +338,23 @@ function CardPreview() {
           ) : (
             franchiseeData && franchiseeData.length == 0 ?
             <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
-              <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
-                ₹599
+              <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
+                599rs
               </h1>
-              <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-50 text-center">
-                ₹799
+              <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center line-through">
+                999rs
               </h1>
+              
             </div>
             
           : cardDatas && cardDatas.franchisee == "no franchisee" ?
 
           <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
-          <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-blue-50 py-12 px-12 rounded-3xl lg:mr-6 text-blue-600 text-center">
-            ₹599
+          <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
+            599rs
           </h1>
-          <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through border-2 text-blue-600 border-blue-50 text-center">
-            ₹799
+          <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through text-indigo-600 bg-indigo-50 text-center">
+            999rs
           </h1>
         </div>
 
@@ -388,22 +389,21 @@ function CardPreview() {
             <button
               onClick={() => navigate("/create/successfull/" + name)}
               id="complete-purchase-button"
-              className=" text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-blue-600 text-white rounded-full shadow-md shadow-blue-600"
+              className=" text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-indigo-600 text-white rounded-full shadow-md shadow-indigo-600"
             >
               Open preview
             </button>
           ) : (
             <Button
               className="font-visita-medium"
-              fontSize="lg"
-              loadingText="Processing payment"
+              fontSize="md"
               isLoading={isProcessingPayment}
               rounded="full"
-              py="7"
-              px="7"
+              py="6"
+              px="12"
               color="#fff"
               _hover
-              bgColor="#0062FF"
+              bgColor="#4F45E4"
               disabled={false}
               onClick={() => {
                 setIsProcessingPayment(true);

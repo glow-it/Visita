@@ -19,7 +19,7 @@ function Footer() {
                <img
                   src="../assets/images/glowitlogos/logo.jpg"
                   alt="logo"
-                  class="comp-logo-footer rounded-full"
+                  class="comp-logo-footer rounded-full scale-[0.8]"
                   />
                </a>
                <p class="flex items-center text-sm text-white font-visita-medium">
