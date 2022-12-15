@@ -742,7 +742,6 @@ input{
 	 color: black;
 	 font-size: 5em;
 	 letter-spacing: 0.2em;
-   font-family: 'Gilroy-ExtraBold';
 	/* Animation provies a slight random skew. Check bottom of doc for more information on how to random skew. */
 	 animation: glitch-skew 4s infinite linear alternate-reverse;
 }

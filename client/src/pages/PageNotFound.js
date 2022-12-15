@@ -15,7 +15,7 @@ function PageNotFound() {
 	<div id="app">
 	<div id="wrapper" className='lg:scale-[3] scale-[1.5]'>
 		
-		<h1 class="glitch" data-text="
+		<h1 class="glitch font-visita-black" data-text="
 404">404</h1>
 	</div>
 		<span class="sub text-slate-800 lg:tracking-[1rem] tracking-[0.5rem] font-visita-medium  text-center lg:text-2xl text-xl lg:mt-16 ">PAGE NOT FOUND</span>
