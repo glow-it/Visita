@@ -5,7 +5,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Tooltip, useToast } from '@chakra-ui/react'
 import { Toast } from "../../miniComponents/Toast";
 import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+
 
 
 function Successfull() {

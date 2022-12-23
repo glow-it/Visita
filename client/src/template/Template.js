@@ -772,7 +772,7 @@ function Template({preview}) {
     {cardDatas && cardDatas.specials != "" ? (
       <div className=" flex flex-col items-start">
         <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
-          Our Specialities <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-down-circle"></ion-icon></span>
+          Our Specialities 
         </span>
         {
           specialities.map((data)=> {
@@ -792,7 +792,7 @@ function Template({preview}) {
     {cardDatas && cardDatas.features != "" ? (
       <div className=" flex flex-col items-start">
         <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
-          Our Features <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-down-circle"></ion-icon></span>
+          Our Features 
         </span>
         {
           features.map((data)=> {
@@ -851,10 +851,10 @@ function Template({preview}) {
                 <span className=" mr-2 text-slate-600 line-through">
                   {`${data.product_orgprice != "" ? "₹" + data.product_orgprice : '' }`}
                 </span>
-                {`${data.product_offerprice != "" ? "₹" + data.product_orgprice : '' }`}
+                {`${data.product_offerprice != "" ? "₹" + data.product_offerprice : '' }`}
               </h1>
               <a
-                href={`https://api.whatsapp.com/send/?phone=+91${cardDatas && cardDatas.phone_no}&text=👋Hey,Enquiry For ${data.product_name}`}
+                href={`https://api.whatsapp.com/send/?phone=+91${cardDatas && cardDatas.phone_no}&text=👋Hey,Enquiry For ${data.product_name} - ( ${data.product_description} )`}
                 className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mt-6`}
               >
                 Enquiry Now
@@ -1247,7 +1247,7 @@ function Template({preview}) {
       </div>
     </form>
     <p class="text-center mt-8 text-gray-500 text-xs font-visita-medium pb-6">
-      &copy;2022 Visita. All rights reserved. <br />
+      &copy;2022 Glowit Labs. All rights reserved <br />
      
     </p>
     <span className="font-visita-bold -mt-4 text-center text-gray-500 text-xs pb-6">

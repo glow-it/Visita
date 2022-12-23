@@ -2,7 +2,6 @@
   "name": "visita",
   "version": "1.0.0",
   "description": "Visita is the smartest way to grow your business by creating Digital Visiting Card",
-  "main": "server.js",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server"

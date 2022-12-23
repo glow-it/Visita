@@ -8,7 +8,7 @@ function Features() {
    <section id='features' class="bg-white :bg-gray-900 font-visita-bold relative mt-24 border-t">
 
 
-  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 ">
+  <div class="py-8 px-6 mx-auto max-w-screen-xl sm:py-16 lg:px-6 ">
      
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
 

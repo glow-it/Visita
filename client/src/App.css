@@ -981,3 +981,31 @@ input{
  
 
   /* Page not found */
+
+  /* Animate Hero text */
+  .gradient-text {
+    --bg-size: 400%;
+    --color-one: #0062FF;
+    --color-two: blueviolet;
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+      )
+      0 0 / var(--bg-size) 100%;
+    color: transparent;
+    background-clip: text;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .gradient-text {
+      animation: move-bg 18s linear infinite;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: var(--bg-size) 0;
+      }
+    }
+  }
+  

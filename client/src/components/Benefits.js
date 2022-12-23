@@ -6,10 +6,10 @@ function Benefits() {
         
 
         <div className="lg:w-[60%] lg:py-0 py-6 w-full lg:text-start text-center lg:h-full  benefits-1 flex justify-center lg:items-center lg:px-24 px-8">
-            <video className='  rounded-3xl' src="https://cdn.dribbble.com/users/702789/screenshots/15083025/media/2562577f3594075c4227b14a87375cae.mp4" muted autoPlay={true} loop></video>
+            <img className='  rounded-3xl' src="https://cdn.dribbble.com/userupload/3005527/file/original-0e97a24fc5b1f648a091131b97886af2.png?compress=1&resize=2048x1536" muted autoPlay={true} loop></img>
         </div>
 
-        <div className="flex-1   h-full benefits-2 flex flex-col lg:justify-center lg:items-start items-center lg:pt-0 pt-8  pr-14 lg:pl-0 pl-8">
+        <div className="flex-1   h-full benefits-2 flex flex-col lg:justify-center lg:items-start items-center lg:pt-0 pt-8  lg:pr-14 lg:pl-0 pl-4">
             <div   className="w-full h-12 flex items-center lg:-ml-0 -ml-12 mt-4 ">
                <span className='text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8'><ion-icon name="checkmark-circle-outline"></ion-icon></span>
                 <h1 className='font-visita-medium lg:text-lg text-[15px]  -ml-4 text-black' >You can modify or update the card as many times as you want, There's no need <br /> to depend on developers.</h1>

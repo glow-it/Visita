@@ -35,7 +35,7 @@ function Hero() {
                 </span>
               </Button>
               <Button onClick={()=> window.open('https://scribehow.com/shared/Visita_Create_Card_Process__xIfmyzszTXSukxUZiWzWTw')} className="font-visita-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='3' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
-                Create Website <span className="flex items-center justify-center ml-2">
+                Create  Website <span className="flex items-center justify-center ml-2">
                   <ion-icon name="arrow-forward"></ion-icon>
                 </span>
               </Button>
@@ -64,11 +64,11 @@ function Hero() {
             
 
 
-        <h1  className="capitalize font-visita-black lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
-        Easily create a website <br /> for your business
+        <h1  className="  font-visita-black  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
+        <span className="gradient-text" >Easily Create A Website </span> <br />  For Your Business
         </h1>
 
-        <p className="font-visita-medium text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8  text-slate-600 ">
+        <p className="font-visita-medium text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 ">
           Visita is the smartest way to grow your business by creating your own website
         </p>
 
@@ -108,8 +108,8 @@ function Hero() {
 
       
     </div>
-      <div className="lg:h-[500px] h-[150px] flex  lg:justify-center overflow-hidden -mt-[200px] rounded-t-[4rem]   w-full">
-      <img src="https://cdn.dribbble.com/userupload/3252126/file/original-dd196dd158aef93921f059e04eddf6b9.png?compress=1&resize=2048x1536" className=" lg:h-[680px] h-[210px] lg:ml-0 ml-8 lg:mt-0 mt-2 rounded-3xl" />
+      <div className="lg:h-[500px] h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
+      <img src="https://cdn.dribbble.com/users/124059/screenshots/17638262/media/eb62e79b4990accb22fb421c22af1802.png?compress=1&resize=1600x1200&vertical=top" muted autoPlay loop className=" lg:h-[680px] h-[210px] lg:ml-0 ml-8 rounded-[2rem]" />
       </div>
   </div>
   );

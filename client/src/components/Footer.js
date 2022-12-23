@@ -362,7 +362,7 @@ function Footer() {
 
 
                </div>
-               <p class="text-base text-white">&copy; 2022 Visita</p>
+               <p class="text-base text-white">&copy; 2022 Glowit Labs</p>
                <p class="text-white mt-3 font-visita-medium">Powered By GlowiIt Labs</p>
             </div>
          </div>
