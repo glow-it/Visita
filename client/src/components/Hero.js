@@ -56,11 +56,6 @@ function Hero() {
 
      
 
-       
-       
-
-
-
             
 
 
@@ -108,8 +103,10 @@ function Hero() {
 
       
     </div>
-      <div className="lg:h-[500px] h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
+      <div className="lg:block hidden">
+      <div className="lg:h-[500px]  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
       <img src="https://cdn.dribbble.com/users/124059/screenshots/17638262/media/eb62e79b4990accb22fb421c22af1802.png?compress=1&resize=1600x1200&vertical=top" muted autoPlay loop className=" lg:h-[680px] h-[210px] lg:ml-0 ml-8 rounded-[2rem]" />
+      </div>
       </div>
   </div>
   );

@@ -235,7 +235,7 @@ form{
 
 @media only screen and (min-width: 350px) and (max-width: 1000px) {
   .hero{
-    height: 107vh !important;
+    height: 50vh !important;
   }
   .benefits-wrapper{
     height: 135vh !important;
@@ -250,6 +250,33 @@ form{
   }
   .show-svg{
     display: block !important;
+  }
+}
+@media only screen and (min-width: 750px) and (max-width: 1450px) {
+  .gradient-text {
+    --bg-size: 400%;
+    --color-one: #0062FF;
+    --color-two: blueviolet;
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+      )
+      0 0 / var(--bg-size) 100%;
+    color: transparent;
+    background-clip: text;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .gradient-text {
+      animation: move-bg 18s linear infinite;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: var(--bg-size) 0;
+      }
+    }
   }
 }
 .templates-show-wrapper{
@@ -983,29 +1010,19 @@ input{
   /* Page not found */
 
   /* Animate Hero text */
-  .gradient-text {
-    --bg-size: 400%;
-    --color-one: #0062FF;
-    --color-two: blueviolet;
-    background: linear-gradient(
-        90deg,
-        var(--color-one),
-        var(--color-two),
-        var(--color-one)
-      )
-      0 0 / var(--bg-size) 100%;
-    color: transparent;
-    background-clip: text;
-  }
   
-  @media (prefers-reduced-motion: no-preference) {
-    .gradient-text {
-      animation: move-bg 18s linear infinite;
-    }
-    @keyframes move-bg {
-      to {
-        background-position: var(--bg-size) 0;
-      }
-    }
-  }
+
+  /* Party Pop */
+
+#drawing_canvas {
+    position: absolute;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  transform:scale(1.1);
+}
   

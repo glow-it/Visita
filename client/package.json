@@ -18,7 +18,7 @@
     "cloudinary": "^1.32.0",
     "flowbite": "^1.5.3",
     "framer-motion": "^7.2.1",
-    "html-to-image": "^1.10.8",
+    "html-to-image": "^1.11.4",
     "html2canvas": "^1.4.1",
     "http-proxy-middleware": "^2.0.6",
     "https": "^1.0.0",
