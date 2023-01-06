@@ -234,12 +234,7 @@ form{
 }
 
 @media only screen and (min-width: 350px) and (max-width: 1000px) {
-  .hero{
-    height: 50vh !important;
-  }
-  .benefits-wrapper{
-    height: 135vh !important;
-  }
+ 
 
  
   .cta-wrapper{
@@ -339,10 +334,6 @@ form{
 
 .features-wrapper{
   height: 80vh;
-}
-.benefits-wrapper{
-  height: 70vh;
-  width: 100%;
 }
 .cta-wrapper{
   width: 90%;
@@ -1026,3 +1017,48 @@ input{
   transform:scale(1.1);
 }
   
+/* Loading Animation */
+
+.loading-wrapper {
+  position: relative;
+}
+.loading-wrapper span {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: speed 2s infinite ease-in-out;
+}
+.loading-wrapper .one {
+  background: #4285f4;
+  animation-delay: 1.5s;
+}
+.loading-wrapper .two {
+  background: #ea4335;
+  animation-delay: 1s;
+}
+.loading-wrapper .three {
+  background: #fbbc05;
+  animation-delay: 0.5s;
+}
+.loading-wrapper .four {
+  background: #34a853;
+}
+@keyframes speed {
+  0% {
+    transform: translate(0%);
+    border-radius: 50%;
+  }
+  25% {
+    transform: translate(150%) scale(0.5);
+    border-radius: 0%;
+  }
+  50% {
+    transform: translate(150%, 150%);
+    border-radius: 50%;
+  }
+  75% {
+    transform: translate(0, 150%) scale(0.5);
+    border-radius: 0%;
+  }
+}

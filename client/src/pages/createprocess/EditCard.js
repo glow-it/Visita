@@ -85,7 +85,7 @@ function EditCard() {
 
     document.title = "Visita | Update Website";
 
-    axios.get('/card/' + company_name).then((response)=> {
+    axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
         setCardDatas(response.data);
         setChoosedThemeColor(response.data.theme_color)
     }).catch((err)=> {
@@ -273,7 +273,7 @@ function EditCard() {
   function checkCompanyNameExists(value){
     // Check The Company Name Already Exists
       let company_name_input = document.querySelector('.company_name_input')
-      axios.get('/card/all').then((response)=> {
+      axios.get('http://localhost:3005/card/all').then((response)=> {
         response.data.map((data)=> {
 
         if(data.company_name == value){
@@ -308,9 +308,7 @@ function EditCard() {
 
   return (
     <form
-      action={`/updatecard/${company_name}`}
-      method="POST"
-      id="cardForm"
+      id="updateCardForm"
       className="h-screen w-full flex flex-col items-center"
     >
 
@@ -339,9 +337,25 @@ function EditCard() {
             <Button rounded='full' color='#fff' _hover bgColor='#0062FF'  onClick={()=> {
              setLoading(true)
              onClose()
-             let cardForm = document.getElementById("cardForm");
-                 cardForm.submit()
-                 navigate('/loading/updating-website')
+             let updateCardForm = document.getElementById("updateCardForm");
+              const myFormData = new FormData(updateCardForm);
+          
+              const formDataObj = {};
+              myFormData.forEach((value, key) => (formDataObj[key] = value));
+
+              axios.post(`http://localhost:3005/updatecard/${company_name}`,formDataObj).then((response)=> {
+                if(response.status == 200){
+                  navigate(response.data.redirect_url)
+                }else{
+                  Toast({
+                    status:'error',
+        title: 'We are troubling to create website',
+        postition: 'top',
+        description: 'Contact visita team',
+        toast
+                  })
+                }
+              })
             }}>
               <span className="font-visita-bold" >Yes' Update Website</span>
             </Button>

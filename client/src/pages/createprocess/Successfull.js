@@ -22,7 +22,7 @@ function Successfull() {
   let [cardDatas,setCardDatas] = useState([])
   let [tooltipIsOpen,setTooltipIsOpen] = useState(false)
   let navigate = useNavigate()
-  let base_url = 'https://visitasmart.com/#/'
+  let base_url = 'https://visitasmart.com/'
   let manage_card_url = base_url + 'manage/card/' + comp_name
   let toast = useToast()
   let clean_compname = params.comp_name.replace(/[-]/g," ")
@@ -44,7 +44,7 @@ function Successfull() {
       elem.style.display = "none";  
     });
 
-  axios.get('card/' + comp_name).then((response)=> {
+  axios.get('http://localhost:3005/card/' + comp_name).then((response)=> {
     setCardDatas(response.data)
     if(!response.data.activated){
       navigate('/create/preview/' + comp_name)

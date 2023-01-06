@@ -20,14 +20,14 @@ function CardPreview() {
   useEffect(() => {
     document.title = "Complete Purchase";
 
-    axios.get("/card/" + name).then((response) => {
+    axios.get("http://localhost:3005/card/" + name).then((response) => {
       setCardDatas(response.data);
 
 
 
       if (response.data.franchisee != "no franchisee") {
         axios
-          .get("/get-franchisee-datas" + response.data.franchisee)
+          .get("http://localhost:3005/get-franchisee-datas" + response.data.franchisee)
           .then((res) => {
             if (res.status) {
               setFranchiseeData(res.data.franchisee_data);
@@ -51,7 +51,7 @@ function CardPreview() {
 
     axios({
       method: "post",
-      url: "/complete-purchase",
+      url: "http://localhost:3005/complete-purchase",
       data: franchiseeData,
     })
       .then((response) => {
@@ -64,7 +64,7 @@ function CardPreview() {
 
           axios({
             method: "post",
-            url: "/payment-successfull/" + name,
+            url: "http://localhost:3005/payment-successfull/" + name,
             data: {
               company_name: name,
               razorpay: null,
@@ -151,7 +151,7 @@ function CardPreview() {
         };
         axios({
           method: "post",
-          url: "/verify-payment",
+          url: "http://localhost:3005/verify-payment",
           data: res_obj,
         }).then((response) => {
           if (response) {
@@ -159,7 +159,7 @@ function CardPreview() {
 
             axios({
               method: "post",
-              url: "/payment-successfull/" + name,
+              url: "http://localhost:3005/payment-successfull/" + name,
               data: {
                 company_name: name,
                 razorpay: res_obj,
@@ -233,7 +233,7 @@ function CardPreview() {
 
   // When Cancel Purchase Button Click
   function cancelPurchase() {
-    axios.post("/create/cancel-purchase/" + name).then((res) => {
+    axios.post("http://localhost:3005/create/cancel-purchase/" + name).then((res) => {
 
       if (res.data.status) {
         Toast({
@@ -287,7 +287,7 @@ function CardPreview() {
 
       <CreateHeader
         hideIndicators={true}
-        live_preview_url={`https://visitasmart.com/#/${name}`}
+        live_preview_url={`https://visitasmart.com/${name}`}
       />
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">

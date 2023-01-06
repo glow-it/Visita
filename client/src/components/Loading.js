@@ -6,7 +6,7 @@ function Loading() {
 
   let params = useParams()
   let type = params.type
-  let [processName,setProcessName] = useState(type.replace('-',' '))
+  let [processName,setProcessName] = useState(`${type.replace('-',' ')}...`)
 
   useEffect(()=> {
     document.title = processName
@@ -15,19 +15,23 @@ function Loading() {
     })
     setTimeout(()=> {
       setProcessName('Working on it')
-    },8000)
+    },12000)
   
     setTimeout(()=> {
       setProcessName('Almost there!')
-    },16000)
+    },24000)
   },[])
 
   return (
       <div>
-    <div className='h-[70vh] w-full flex flex-col items-center justify-center ' >
-    <Spinner  thickness='4px'
-  speed='0.8s' size='lg' color='#0062FF'  />
-        <h1 className='capitalize text-xl font-visita-medium mt-8' >{processName}</h1>
+        <div className="w-full h-screen flex items-center justify-center">
+      <div className="loading-wrapper w-full h-screen flex items-center justify-center">
+    <span className="one -mt-64 -ml-20"></span>
+    <span className="two -mt-64 -ml-20"></span>
+    <span className="three -mt-64 -ml-20"></span>
+    <span className="four -mt-64 -ml-20"></span>
+    <h1 className='capitalize text-xl font-visita-medium mt-8 absolute' >{processName}</h1>
+  </div>
     </div>
       </div>
   )

@@ -292,7 +292,7 @@ function Create(props) {
 
 
     let response = await axios.post("https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",formData)
-    document.getElementById(id).value = response.data.ur
+    document.getElementById(id).value = response.data.url
 
     if (toastIdRef.current) {
       toast.close(toastIdRef.current)
@@ -304,7 +304,7 @@ function Create(props) {
     // Check The Company Name Already Exists
       let company_name_input = document.querySelector('.company_name_input')
       let company_name = value
-      axios.get('/card/all').then((response)=> {
+      axios.get('http://localhost:3005/card/all').then((response)=> {
         response.data.filter((data)=> {
 
 
@@ -347,7 +347,7 @@ function Create(props) {
 
    axios({
     method: 'POST',
-    url: '/generate-completion',
+    url: 'http://localhost:3005/generate-completion',
     data: {
       prompt,
       temperature
@@ -379,8 +379,6 @@ event.target.innerText = 'Regenerate'
 
   return (
     <form
-      action="/createcard"
-      method="POST"
       id="cardForm"
       className="h-screen w-full flex flex-col items-center"
     >
@@ -410,8 +408,25 @@ event.target.innerText = 'Regenerate'
               setLoading(true)
               onClose()
               let cardForm = document.getElementById("cardForm");
-                  cardForm.submit()
-                  navigate('/loading/creating-website')
+              const myFormData = new FormData(cardForm);
+          
+              const formDataObj = {};
+              myFormData.forEach((value, key) => (formDataObj[key] = value));
+
+              axios.post('http://localhost:3005/createcard',formDataObj).then((response)=> {
+                if(response.status == 200){
+                  navigate(response.data.redirect_url)
+                }else{
+                  Toast({
+                    status:'error',
+        title: 'We are troubling to create website',
+        postition: 'top',
+        description: 'Contact visita team',
+        toast
+                  })
+                }
+              })
+              
             }}>
               <span className="font-visita-medium" >Yes' Create Website</span>
             </Button>
@@ -1028,11 +1043,6 @@ event.target.innerText = 'Regenerate'
           <h1 className="text-xl mt-12 font-visita-bold mb-6 flex justify-center">
             Youtube Video Links
            
-          </h1>
-
-          <h1 className="text-sm  py-3 border-slate-900 text-blue-900 rounded-md border font-visita-bold mb-12 flex justify-center lg:items-start items-center lg:flex-row flex-col px-6 text-center">
-          <span className="text-slate-900 mr-2">Example youtube video link</span>  https://www.youtube.com/watch?v=zgmlJ-gdi7M
-            
           </h1>
 
           <label

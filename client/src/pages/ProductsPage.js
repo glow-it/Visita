@@ -22,7 +22,7 @@ function ProductsPage() {
 
 
     axios
-      .get("/card/" + params.comp_name)
+      .get("http://localhost:3005/card/" + params.comp_name)
       .then((response) => {
 
 

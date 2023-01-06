@@ -23,7 +23,7 @@ function CustomerDetails() {
       elem.style.display = "none";
     });
 
-    axios.get("/card/" + company_name).then((response) => {
+    axios.get("http://localhost:3005/card/" + company_name).then((response) => {
       setCardDatas(response.data);
     });
   });

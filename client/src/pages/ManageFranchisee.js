@@ -38,15 +38,17 @@ function ManageFranchisee() {
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
-        axios.get('/get-franchisee-datas').then((res)=> {
+        let franchisee_email = localStorage.getItem("franchisee_email")
+        axios.get(`http://localhost:3005/get-franchisee-datas/${franchisee_email}`).then((res)=> {
+            
             if(res.status){
-                if(res.data.isFranchiseeLogined == "true"){
+                if(franchisee_email){
                     
                     setFranchiseeData(res.data.franchisee_data);
 
 
 
-                    axios.get('/get-all-created-cards').then((response)=> {
+                    axios.get('http://localhost:3005/get-all-created-cards').then((response)=> {
                         let cards = response.data
                         
                         let array = []

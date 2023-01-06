@@ -26,12 +26,12 @@ useEffect(()=> {
     })
 
 
-    axios.get('/get-all-created-cards').then((response)=> {
+    axios.get('http://localhost:3005/get-all-created-cards').then((response)=> {
         setCreatedCards(response.data);
         
     })
     
-    axios.get('/get-all-franchisees').then((response)=> {
+    axios.get('http://localhost:3005/get-all-franchisees').then((response)=> {
         setFranchisees(response.data);
     })
 
@@ -86,9 +86,9 @@ let earnings_from_franchisee_creation = total_franchisees * price_for_create_fra
 let toast = useToast()
 
 function handleSalaryPayedClick(franchisee_email){
-    axios.post('/salary-payed/' + franchisee_email).then((response)=> {
+    axios.post('http://localhost:3005/salary-payed/' + franchisee_email).then((response)=> {
         if(response.status){
-            window.location.href = '/#/admin/pay-salary'
+            window.location.href = '/admin/pay-salary'
         }else{
             Toast({
                 status:'error',
@@ -200,7 +200,7 @@ return(
     <h1 className='text-lg' >{index + 1}. <span className='ml-4 text-[#6635E3] capitalize' >{data.comp_name}</span></h1>
     <div className="flex-1  h-full  flex justify-end items-center pr-12">
     
-    <h1 onClick={()=> window.open('/#/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
+    <h1 onClick={()=> window.open('/' + data.comp_name)} className=' flex items-center justify-center text-2xl mr-4 cursor-pointer -rotate-45 text-[#6635E3]' ><ion-icon name="arrow-forward-circle"></ion-icon></h1>
     
         <h1 className='mr-4' >+91{data.phone_no}</h1>
 

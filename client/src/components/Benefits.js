@@ -2,7 +2,7 @@ import React from 'react'
 
 function Benefits() {
   return (
-    <div id='benefits' className='benefits-wrapper w-full  mb-10 flex flex-col lg:flex-row bg-blue-50/50' >
+    <div id='benefits' className='benefits-wrapper py-16 w-full  mb-10 flex flex-col lg:flex-row bg-blue-50/50' >
         
 
         <div className="lg:w-[50%] lg:py-0 py-6 w-full lg:text-start text-center lg:h-full  benefits-1 flex justify-center lg:items-center lg:px-24 px-8">

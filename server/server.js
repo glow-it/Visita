@@ -26,7 +26,7 @@ const corsOptions = {
 };
     
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+
 app.use(cors(corsOptions));
 
 
@@ -51,7 +51,7 @@ app.use(session({
 app.use(cookieParser());
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  res.status(200).send({text:"Hello from visita server"})
 });
 
 // Replace the uri string with your connection string.
@@ -68,18 +68,19 @@ async function run() {
     // Database Codes
 
     app.post("/createcard", (req, res, next) => {
+      console.log('In Server');
       clientHelpers.cleanCardDatas(req.body).then((data) => {
         clientHelpers
           .createCard(data, client_db)
           .then((response, card_data) => {
-            res.redirect(
-              `/#/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`
-            );
+            console.log('Ok');
+            res.status(200).send({redirect_url:`/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`})
             res.end();
           })
           .catch((err) => {
             console.log(err);
             res.end();
+            res.status(404).send({redirect_url:`/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`})
           });
       });
     });
@@ -99,6 +100,8 @@ async function run() {
 
     app.post('/update/feedback/:name',(req,res,next)=> {
 
+
+
       let obj = {
         name : req.body.name,
         feedback: req.body.feedback,
@@ -106,9 +109,6 @@ async function run() {
       }
 
       clientHelpers.updateFeedback(obj,client_db,req.params.name).then((response)=> {
-        let redirect_url = req.params.name.replace(/[ ]/g,'-')
-        res.redirect(`/#/${redirect_url}`)
-        window.location.reload()
         res.end()
       }).catch((err)=> {
         console.log(err);
@@ -127,7 +127,6 @@ async function run() {
 
       clientHelpers.updateCustomerDetails(obj,client_db,req.params.name).then((response)=> {
         let redirect_url = req.params.name.replace(/[ ]/g,'-')
-        res.redirect(`/#/${redirect_url}`)
         res.end()
       }).catch((err)=> {
         console.log(err);
@@ -146,7 +145,7 @@ async function run() {
 
     app.post('/complete-purchase',(req,res,next)=> {
 
-
+ 
 
 
       // Check Is This First Card
@@ -242,9 +241,12 @@ async function run() {
        
         clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
           let new_comp_name = req.body.company_name.replace(/[ ]/g,'-')
-          res.redirect('/#/create/successfull/' + new_comp_name)
+          res.status(200).send({redirect_url:'/create/successfull/' + new_comp_name})
+          res.end()
         }).catch((err)=> { 
+          res.status(404).send({redirect_url:'/create/successfull/' + new_comp_name})
           console.log(err.message);
+          res.end()
         })
       })
     })
@@ -269,16 +271,18 @@ async function run() {
       }).catch((err)=> {
         res.json({status: false})
       })
-    })
+    }) 
 
 
     app.post('/franchisee/register',(req,res,next)=> {
      createFranchisee(franchisee_db,req.body).then(()=> {
         res.cookie('isFranchiseeLogined',true)
         res.cookie('franchiseeEmail',req.body.email)
-        res.redirect('/#/manage/franchisee')
+        res.status(200).send({redirect_url:'/manage/franchisee'})
+        res.end()
      }).catch((err)=> {
       res.cookie('isFranchiseeLogined',false)
+      res.status(404).send({redirect_url:'/manage/franchisee'})
       res.end()
      })
     })
@@ -299,11 +303,13 @@ async function run() {
 
     app.get('/get-franchisee-datas',(req,res,next)=> {
 
-        FranchiseeHelpers.getFranchisee(req.cookies.franchiseeEmail,franchisee_db).then((response)=> {
-          res.json({franchisee_data:response,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+      console.log(req.body);
+
+        FranchiseeHelpers.getFranchisee(req.body,franchisee_db).then((response)=> {
+          res.json({franchisee_data:response})
         }).catch((err)=> {
           console.log(err.message);
-          res.json({status: false,err:err.message,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+          res.json({status: false,err:err.message})
         })
       
       
@@ -315,10 +321,10 @@ async function run() {
 
 
         FranchiseeHelpers.getFranchisee(req.params.franchisee_email,franchisee_db).then((response)=> {
-          res.json({franchisee_data:response,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+          res.json({franchisee_data:response})
         }).catch((err)=> {
           console.log(err);
-          res.json({status: false,err:err.message,isFranchiseeLogined:req.cookies.isFranchiseeLogined})
+          res.json({status: false,err:err.message})
         })
       
       
@@ -360,8 +366,6 @@ async function run() {
 
       })
     })
-
-  
 
     
 

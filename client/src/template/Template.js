@@ -45,7 +45,7 @@ function Template({preview}) {
   let [features, setFeatures] = useState([]);  
 
 
-  axios.get('/bg-images').then((response)=>{
+  axios.get('http://localhost:3005/bg-images').then((response)=>{
     console.log(response.data);
     response.data.map((data)=> {
       if(data.name == cardDatas.theme_color){
@@ -72,7 +72,7 @@ function Template({preview}) {
 
 
     axios
-      .get("/card/" + params.comp_name)
+      .get("http://localhost:3005/card/" + params.comp_name)
       .then((response) => {
 
          // Set Manifest Dynamically
@@ -80,11 +80,11 @@ function Template({preview}) {
           "name": capitalize(response.data.company_name),
           "short_name": capitalize(response.data.company_name),
           "description": capitalize(response.data.about),
-          "start_url": `/#/${params.comp_name}`,
+          "start_url": `/${params.comp_name}`,
           "background_color": "#fff",
           "theme_color": "#fff",
           "display": "standalone",
-          "scope": `/#/${params.comp_name}`,
+          "scope": `/${params.comp_name}`,
           "icons": [{
             "src": response.data.logo.replace(/^http:\/\//i, 'https://'),
             "sizes": "256x256",
@@ -123,7 +123,7 @@ function Template({preview}) {
 
 
         // Update View Count
-        axios.post(`/update/view/${response.data.company_name}`)
+        axios.post(`http://localhost:3005/update/view/${response.data.company_name}`)
 
         // Calculate How Much Days Ago Created This Card
         var date1, date2;
@@ -228,6 +228,61 @@ function Template({preview}) {
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}`;
 
 
+
+
+  function addFeedbackCard({name,feedback}) {
+    let feedback_card_wrapper = document.getElementById('feedback_card_wrapper');
+    
+    const div = document.createElement('div');
+div.className = 'flex flex-wrap -m-3';
+
+const innerDiv = document.createElement('div');
+innerDiv.className = 'w-full p-3';
+
+const innerInnerDiv = document.createElement('div');
+innerInnerDiv.className = 'p-6 h-full bg-white bg-opacity-60 border rounded-3xl';
+
+const innerInnerInnerDiv = document.createElement('div');
+innerInnerInnerDiv.className = 'flex flex-col justify-between h-full';
+
+const nameDiv = document.createElement('div');
+nameDiv.className = 'mb-5 block';
+
+const nameInnerDiv = document.createElement('div');
+nameInnerDiv.className = 'flex flex-wrap mb-4 -m-2';
+
+const nameInnerInnerDiv = document.createElement('div');
+nameInnerInnerDiv.className = 'w-auto p-2';
+
+const h3 = document.createElement('h3');
+h3.className = 'font-visita-bold leading-normal';
+h3.textContent = name;
+
+const p = document.createElement('p');
+p.className = 'text-lg font-visita-medium';
+p.textContent = feedback;
+
+const todayDiv = document.createElement('div');
+todayDiv.className = 'block';
+
+const todayP = document.createElement('p');
+todayP.className = 'text-sm text-gray-500 font-visita-medium';
+todayP.textContent = 'today';
+
+nameInnerInnerDiv.appendChild(h3);
+nameInnerDiv.appendChild(nameInnerInnerDiv);
+nameDiv.appendChild(nameInnerDiv);
+innerInnerInnerDiv.appendChild(nameDiv);
+innerInnerInnerDiv.appendChild(p);
+innerInnerInnerDiv.appendChild(todayDiv);
+innerInnerDiv.appendChild(innerInnerInnerDiv);
+innerDiv.appendChild(innerInnerDiv);
+div.appendChild(innerDiv);
+
+feedback_card_wrapper.appendChild(div);
+
+
+  }
 
 
  
@@ -660,8 +715,36 @@ function Template({preview}) {
 
 <div class="w-full px-4 flex flex-col items-center mt-10">
   <form
-    action={`/submit/customer-details/${cardDatas && cardDatas.company_name}`}
-    method="POST"
+  onSubmit={(event) => {
+    event.preventDefault();
+
+    const myFormData = new FormData(event.target);
+
+    const formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+
+    axios
+      .post(`http://localhost:3005/submit/customer-details/${cardDatas && cardDatas.company_name}`, formDataObj)
+      .then((response) => {
+        if (response.status == 200) {
+          Toast({
+            status: "success",
+            title: "Your data submitted",
+            postition: "top",
+            description: "Thanks!!!",
+            toast,
+          });
+        } else {
+          Toast({
+            status: "error",
+            title: "We are troubling to submit your data",
+            postition: "top",
+            description: "Contact visita team",
+            toast,
+          });
+        }
+      });
+  }}
     class="bg-white shadow-md rounded-3xl w-full px-6  pt-8 pb-8 mb-4"
     id="customer-details-form"
   >
@@ -983,40 +1066,40 @@ function Template({preview}) {
     </h1>
 
     {cardDatas && cardDatas.paytm_number != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Paytm Number
         </span>{" "}
         <br /> {cardDatas && cardDatas.paytm_number}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.googlepay_number != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Google Pay Number
         </span>{" "}
         <br /> {cardDatas && cardDatas.googlepay_number}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.phonepe != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           PhonePe Number
         </span>{" "}
         <br /> {cardDatas && cardDatas.phonepe}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.googlepay_qrcode != "" ? (
-      <span className=" font-visita-bold ml-6 mt-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mt-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           GooglePay QrCode
         </span>{" "}
@@ -1025,13 +1108,13 @@ function Template({preview}) {
           src={cardDatas.googlepay_qrcode && cardDatas.googlepay_qrcode.replace(/^http:\/\//i, 'https://')}
           className=" h-44"
         />
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.paytm_qrcode != "" ? (
-      <span className=" font-visita-bold ml-6 mt-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mt-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Paytm QrCode
         </span>{" "}
@@ -1040,13 +1123,13 @@ function Template({preview}) {
           src={cardDatas.paytm_qrcode && cardDatas.paytm_qrcode.replace(/^http:\/\//i, 'https://')}
           className=" h-44"
         />
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.phonepe_qrcode != "" ? (
-      <span className=" font-visita-bold ml-6 mt-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mt-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           PhonePe QrCode
         </span>{" "}
@@ -1055,7 +1138,7 @@ function Template({preview}) {
           src={cardDatas.phonepe_qrcode && cardDatas.phonepe_qrcode.replace(/^http:\/\//i, 'https://')}
           className=" h-44"
         />
-      </span>
+      </a>
     ) : (
       ""
     )}
@@ -1071,59 +1154,59 @@ function Template({preview}) {
     </h1>
 
     {cardDatas && cardDatas.bank_name != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Bank Name
         </span>{" "}
         <br /> {cardDatas && cardDatas.bank_name}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.account_holder_name != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Accound Holder Name
         </span>{" "}
         <br /> {cardDatas && cardDatas.account_holder_name}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.bank_account_number != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Bank Accound Number
         </span>{" "}
         <br />
         {cardDatas && cardDatas.bank_account_number}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.bank_ifsc_code != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Bank IFSC Code
         </span>{" "}
         <br />
         {cardDatas && cardDatas.bank_ifsc_code}
-      </span>
+      </a>
     ) : (
       ""
     )}
 
     {cardDatas && cardDatas.gst != "" ? (
-      <span className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-visita-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           GST
         </span>{" "}
         <br />
         {cardDatas && cardDatas.gst}
-      </span>
+      </a>
     ) : (
       ""
     )}
@@ -1150,7 +1233,7 @@ function Template({preview}) {
       src="flaro-assets/images/testimonials/gradient2.svg"
       alt=""
     />
-    <div className=" relative z-10 container px-4 mx-auto">
+    <div id="feedback_card_wrapper" className=" relative z-10 container px-4 mx-auto">
       {/* Testimornial Wrapper */}
 
       {feedbacks &&
@@ -1208,8 +1291,6 @@ function Template({preview}) {
 
   <div class="w-full px-4 flex flex-col items-center mt-6">
     <form
-      action={`/update/feedback/${cardDatas && cardDatas.company_name}`}
-      method="POST"
       class="bg-white shadow-md rounded-3xl w-full px-6  pt-6 pb-8 mb-4"
       id="feedback-form"
     >
@@ -1241,8 +1322,28 @@ function Template({preview}) {
       </div>
       <div class="flex items-center justify-start">
         <button
-          onClick={() =>
-            document.getElementById("feedback-form").submit()
+          onClick={(event) =>
+            {
+              event.preventDefault();
+            // Submit Feedback Form
+let form = document.getElementById('feedback-form')
+
+
+
+let obj = {
+    name : form.name.value,
+    feedback: form.feedback.value,
+    date: new Date().getTime()
+  }
+  addFeedbackCard({name:obj.name,feedback:obj.feedback})
+
+  form.name.value = ''
+form.feedback.value = ''
+
+  axios.post(`http://localhost:3005/update/feedback/${cardDatas && cardDatas.company_name}`, obj)
+
+
+          }
           }
           class={`font-visita-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
         >
@@ -1268,7 +1369,7 @@ function Template({preview}) {
   } w-full h-14 flex bg-${theme_color}-500 fixed bottom-0 overflow-scroll z-50`}
 >
   <a
-    
+    href="#home"
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1279,7 +1380,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    
+    href="#about"
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1290,7 +1391,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    
+    href="#products"
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1301,7 +1402,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    
+    href="#imagegallery"
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1312,7 +1413,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    
+    href="#ytvideos"
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1323,7 +1424,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    
+    href="#paymentinfo"
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
     <span className=" text-white text-2xl">
@@ -1334,6 +1435,7 @@ function Template({preview}) {
     </span>
   </a>
   <a
+  href="#bankdetails"
     
     className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
   >
@@ -1345,13 +1447,13 @@ function Template({preview}) {
     </span>
   </a>
   <a
-    
+    href="#feedbacks"
     className=" nav-bottom h-full flex flex-col items-center pt-2"
   >
     <span className=" text-white text-xl">
       <i class="fa-solid fa-comment"></i>
     </span>
-    <span className=" font-visita-bold -mt- text-xs text-white">
+    <span  className=" font-visita-bold -mt- text-xs text-white">
       Feedbacks
     </span>
   </a>
