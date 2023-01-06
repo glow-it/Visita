@@ -427,7 +427,7 @@ event.target.innerText = 'Regenerate'
 
       <div
         className={`create-inputs-wrapper ${
-         processIndex == 5 ? "lg:w-[75%] w-full" : processIndex > 2 ? "lg:w-[55%] w-full" : "lg:w-[45%] w-full"
+         processIndex == 5 ? "lg:w-[75%] w-full" : processIndex > 2 ? "lg:w-[55%] w-full" : "lg:w-[45%] w-[70%]"
         }    lg:rounded-t-3xl lg:h-[90%] h-[87%] absolute lg:px-8 px-7   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
         <div className=" flex  h-full  ">

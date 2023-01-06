@@ -1,5 +1,6 @@
 import { Box, useToast } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Benefits from '../components/Benefits'
 import Cta from '../components/Cta'
 import Features from '../components/Features'
@@ -9,9 +10,10 @@ import Hero from '../components/Hero'
 function LandingPage() {
 
   let toast = useToast()
+  let location = useLocation()
 
   useEffect(()=> {
-    document.title = 'Visita | Create Digital Visiting Card - Mini Website'
+    document.title = 'Visita - Create your own business website easily'
     document.querySelectorAll('header').forEach((elem)=> {
       elem.style.display = 'flex'
     })
@@ -19,7 +21,7 @@ function LandingPage() {
    
 
    
-  },[])
+  },[location])
 
 
   return (
