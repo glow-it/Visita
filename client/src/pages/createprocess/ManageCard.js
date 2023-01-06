@@ -208,6 +208,7 @@ function HandleForgotPasswordClick(e){
             rounded-full
             transition
             ease-in-out
+            lowercase
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="card_pass_input"
     

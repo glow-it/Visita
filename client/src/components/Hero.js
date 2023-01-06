@@ -60,7 +60,7 @@ function Hero() {
 
 
         <h1  className="  font-visita-black  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
-        <span className="gradient-text" >Easily Create A Website </span> <br />  For Your Business
+        <span  >Easily Create A Website </span> <br />  For Your Business
         </h1>
 
         <p className="font-visita-medium text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 ">
@@ -105,7 +105,7 @@ function Hero() {
     </div>
       <div className="lg:block hidden">
       <div className="lg:h-[500px]  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
-      <img src="https://cdn.dribbble.com/users/124059/screenshots/17638262/media/eb62e79b4990accb22fb421c22af1802.png?compress=1&resize=1600x1200&vertical=top" muted autoPlay loop className=" lg:h-[680px] h-[210px] lg:ml-0 ml-8 rounded-[2rem]" />
+      <img src="https://cdn.dribbble.com/userupload/4254311/file/original-3e55e344e93279b74a363e2b87e74b72.png?compress=1&resize=2048x1536" muted autoPlay loop className=" lg:h-[680px] h-[210px] lg:ml-0 ml-8 rounded-[2rem]" />
       </div>
       </div>
   </div>

@@ -109,7 +109,7 @@ function Template({preview}) {
         
 
         if(response.data.isActivated) {
-          document.title = capitalize(response.data.company_name) + ' | Mini Website';
+          document.title = capitalize(response.data.company_name) + ' - ' + response.data.tagline;
 
         // Set Favicon
         var link = document.querySelector("link[rel~='icon']");
@@ -146,7 +146,7 @@ function Template({preview}) {
         }
 
         if(days < 1) {
-          document.title = capitalize(response.data.company_name) + ' || Mini Website';
+          document.title = capitalize(response.data.company_name) + ' - '+  response.data.tagline;
 
           // Set Favicon
           var link = document.querySelector("link[rel~='icon']");
@@ -951,16 +951,20 @@ function Template({preview}) {
         })
         .map((data) => {
 
-          var video_id = data.split("v=")[1];
-          var ampersandPosition = video_id.indexOf("&");
-          if (ampersandPosition != -1) {
-            video_id = video_id.substring(0, ampersandPosition);
-          }
+          
+
+
+          const videoUrl = data;
+          const videoId = videoUrl.split('be/')[1];
+          const embedUrl = 'https://www.youtube.com/embed/' + videoId;
+
+
+         
 
           return (
             <iframe
               className=" rounded-xl my-4"
-              src={`https://www.youtube.com/embed/${video_id}`}
+              src={embedUrl}
               title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
