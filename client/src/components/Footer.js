@@ -14,7 +14,7 @@ function Footer() {
                <a
                   href="javascript:void(0)"
                   class="inline-block
-                  font-visita-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
+                  font-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                   >
                <img
                   src="../assets/images/glowitlogos/logo.jpg"
@@ -22,19 +22,19 @@ function Footer() {
                   class="comp-logo-footer rounded-full scale-[0.8]"
                   />
                </a>
-               <p class="flex items-center text-sm text-white font-visita-medium">
+               <p class="flex items-center text-sm text-white font-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="call"></ion-icon>
                   </span>
                   <span>{apiKeys.call_phone_no}</span>
                </p>
-               <p class="flex mt-6 items-center text-sm text-white font-visita-medium">
+               <p class="flex mt-6 items-center text-sm text-white font-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="logo-whatsapp"></ion-icon>
                   </span>
                   <span>{apiKeys.visita_phone_no}</span>
                </p>
-               <a href={`mailto:${apiKeys.visita_email}`} class="flex mt-6 items-center text-sm text-white font-visita-medium">
+               <a href={`mailto:${apiKeys.visita_email}`} class="flex mt-6 items-center text-sm text-white font-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                   <ion-icon name="mail"></ion-icon>
                   </span>
@@ -51,7 +51,7 @@ function Footer() {
                         href="javascript:void(0)"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -68,7 +68,7 @@ function Footer() {
                         href="javascript:void(0)"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -85,7 +85,7 @@ function Footer() {
                         href="javascript:void(0)"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -109,7 +109,7 @@ function Footer() {
                         href="javascript:void(0)"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -126,7 +126,7 @@ function Footer() {
                         href="/support"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -143,7 +143,7 @@ function Footer() {
                         href="javascript:void(0)"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -167,7 +167,7 @@ function Footer() {
                         href="/pricing"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -184,7 +184,7 @@ function Footer() {
                         href="javascript:void(0)"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -201,7 +201,7 @@ function Footer() {
                         href="#features"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -218,7 +218,7 @@ function Footer() {
                         href="#benefits"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -235,7 +235,7 @@ function Footer() {
                         href="/template"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -252,7 +252,7 @@ function Footer() {
                         href="/support"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -269,7 +269,7 @@ function Footer() {
                         href="/franchisee/login"
                         class="
                         inline-block
-                        font-visita-medium
+                        font-medium
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -362,8 +362,8 @@ function Footer() {
 
 
                </div>
-               <p class="text-base text-white">&copy; 2023 Glowit Labs</p>
-               <p class="text-white mt-3 font-visita-medium">Powered By GlowiIt Labs</p>
+               <p class="text-base text-white font-medium">© 2023 Glowit Labs</p>
+               
             </div>
          </div>
       </div>

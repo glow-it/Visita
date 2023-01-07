@@ -112,7 +112,7 @@ function handleSalaryPayedClick(franchisee_email){
 
 
 
-        <Tabs index={index} className='mt-6 font-visita-bold' isFitted variant='solid-rounded' colorScheme='purple'>
+        <Tabs index={index} className='mt-6 font-bold' isFitted variant='solid-rounded' colorScheme='purple'>
   <TabList>
     <Tab onClick={()=> setIndex(0)} >Overview</Tab>
     <Tab onClick={()=> setIndex(1)} >Created Cards</Tab>
@@ -207,7 +207,7 @@ return(
 
         {
             data.franchisee_email != "no franchisee" ?
-<Tooltip bg='white' rounded='full' className='text-white font-visita-medium' label={franchisees && franchisees.map((franchisee_data)=> {
+<Tooltip bg='white' rounded='full' className='text-white font-medium' label={franchisees && franchisees.map((franchisee_data)=> {
     let franchisee_id;
     if(franchisee_data.email == data.franchisee_email){
         franchisee_id = franchisee_data.franchisee_id

@@ -29,6 +29,7 @@ import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../miniComponents/Toast";
 import apiKeys from "../Api/apiKeys";
+import Loading from "../miniComponents/Loading";
 
 function Template({preview}) {
   const toast = useToast();
@@ -41,7 +42,7 @@ function Template({preview}) {
   let navigate = useNavigate()
   let location = useLocation()
   let [bgImage, setBgImage] = useState();  
-  let [isCardLoaded, setIsCardLoaded] = useState(false);  
+  let [isCardLoading, setIsCardLoading] = useState(true);  
   let [specialities, setSpecialities] = useState([]);  
   let [features, setFeatures] = useState([]);  
 
@@ -104,7 +105,7 @@ function Template({preview}) {
         setSpecialities(response.data.specials.split(','))
         setFeatures(response.data.features.split(','))
 
-        setIsCardLoaded(true)
+        setIsCardLoading(false)
 
         
 
@@ -255,7 +256,7 @@ const nameInnerInnerDiv = document.createElement('div');
 nameInnerInnerDiv.className = 'w-auto p-2';
 
 const h3 = document.createElement('h3');
-h3.className = 'font-visita-bold leading-normal';
+h3.className = 'font-bold leading-normal';
 h3.textContent = name;
 
 const p = document.createElement('p');
@@ -291,14 +292,8 @@ feedback_card_wrapper.appendChild(div);
   return (
    <div>
 
+<Loading isLoading={isCardLoading} />
 
-<div className={`w-full bg-white absolute z-[100] ${isCardLoaded? 'hidden' : 'flex'}  justify-center`} >
-    <div className='h-screen w-full top-0 flex flex-col items-center mt-44 ' >
-    <Spinner  thickness='4px'
-  speed='0.5s' size='lg' color='#0062FF' />
-        <h1 className='capitalize text-xl font-visita-medium mt-8' >{params.comp_name.replace(/[-]/g," ")}</h1>
-    </div>
-      </div>
 
 
 
@@ -314,7 +309,7 @@ feedback_card_wrapper.appendChild(div);
 {
   localStorage.getItem('isAdmin') == "true" ?
   <div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex z-50 items-center justify-center cursor-pointer">
-  <h1 className="font-visita-bold ">Manage website</h1>
+  <h1 className="font-bold ">Manage website</h1>
   <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-forward"></ion-icon></span>
 </div>
 : ''
@@ -323,7 +318,7 @@ feedback_card_wrapper.appendChild(div);
 {
    cardDatas && cardDatas.tagline ?
   <div  className={`w-full py-3 bg-white text-center border-b-2 px-4 border-b-${theme_color}-600 text-${theme_color}-600  text-white flex z-50 items-center justify-center cursor-pointer text-sm`}>
-  <h1 className="font-visita-bold ">{cardDatas && cardDatas.tagline}</h1>
+  <h1 className="font-bold ">{cardDatas && cardDatas.tagline}</h1>
 </div>
 : ''
 }
@@ -341,11 +336,11 @@ feedback_card_wrapper.appendChild(div);
 
 
     <div className="card">
-      <span className={`z-50 absolute top-32  right-4 text-white text-xs font-visita-medium py-1 px-2 border border-white  rounded-full`}>
+      <span className={`z-50 absolute top-32  right-4 text-white text-xs font-medium py-1 px-2 border border-white  rounded-full`}>
         Views: {cardDatas && cardDatas.views}
       </span>
 
-      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute top-32  left-4 text-${theme_color}-600 text-2xl font-visita-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
+      <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute top-32  left-4 text-${theme_color}-600 text-2xl font-medium  py-2 px-2 flex items-center justify-center rounded-full bg-white `}>
       <ion-icon name="cart"></ion-icon>
       </Link>
 
@@ -359,10 +354,10 @@ feedback_card_wrapper.appendChild(div);
           />
 
           <div className=" w-full h-full flex flex-col items-center">
-            <h1 className="capitalize text-white text-3xl font-visita-bold ml-4 mt-6">
+            <h1 className="capitalize text-white text-3xl font-bold ml-4 mt-6">
               {cardDatas && cardDatas.company_name}
             </h1>
-            <h1 className="capitalize text-white text-xl font-visita-medium ml-4 mt-1">
+            <h1 className="capitalize text-white text-xl font-medium ml-4 mt-1">
               {cardDatas && cardDatas.company_category}
             </h1>
             
@@ -483,7 +478,7 @@ feedback_card_wrapper.appendChild(div);
           <div className=" flex relative mt-12">
             <input
               id="send_whatsapp_number"
-              className={`w-full h-10 border-2 pl-4 font-visita-medium text-black bg-white border-${theme_color}-500  flex items-center rounded-full`}
+              className={`w-full h-10 border-2 pl-4 font-medium text-black bg-white border-${theme_color}-500  flex items-center rounded-full`}
               placeholder="+91"
             ></input>
             <div
@@ -497,7 +492,7 @@ feedback_card_wrapper.appendChild(div);
               }}
               className={`cursor-pointer  h-10 rounded-full bg-gradient-to-r  from-${theme_color}-700 to-${theme_color}-500 w-44 bg-red-500 absolute right-0 flex items-center justify-center`}
             >
-              <span className=" text-sm flex items-center font-visita-medium text-white">
+              <span className=" text-sm flex items-center font-medium text-white">
                 <ion-icon name="logo-whatsapp"></ion-icon>{" "}
                 <span className=" ml-1">Share To Whatsapp</span>{" "}
               </span>
@@ -508,7 +503,7 @@ feedback_card_wrapper.appendChild(div);
 {/* 
           <button
           id="appDownloadButton"
-            className={`flex w-full justify-center mb-4 items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg`}
+            className={`flex w-full justify-center mb-4 items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-bold text-lg`}
           >
             Save Card <span className=" ml-1 text-white text-xl"></span>
             <ion-icon name="arrow-down-circle"></ion-icon>
@@ -519,7 +514,7 @@ feedback_card_wrapper.appendChild(div);
             cardDatas && cardDatas.gmap_location ?
             <button
             onClick={()=> window.open(cardDatas.gmap_location)}
-            className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mr-3`}
+            className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-bold text-lg mr-3`}
           >
             Location <span className=" ml-1 text-white text-xl"></span>
             <ion-icon name="location"></ion-icon>
@@ -529,7 +524,7 @@ feedback_card_wrapper.appendChild(div);
 
             <button
               onClick={onOpen}
-              className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg`}
+              className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-bold text-lg`}
             >
               Share
               <span className=" ml-1 text-white text-xl"></span>
@@ -672,7 +667,7 @@ feedback_card_wrapper.appendChild(div);
 
 <span
                     onClick={copyCardUrl}
-                    className={`flex text-${theme_color}-600 font-visita-medium text-md w-96`}
+                    className={`flex text-${theme_color}-600 font-medium text-md w-96`}
                   >
                    
 
@@ -708,7 +703,7 @@ feedback_card_wrapper.appendChild(div);
   cardDatas && cardDatas.show_customer_details_popop == 'true' ?
   <div className=" w-full h-[450px] flex flex-col items-center justify-center relative">
   <h1
-    className={`text-lg  text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
+    className={`text-lg  text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
   >Add Your Details</h1>
 
 
@@ -750,26 +745,26 @@ feedback_card_wrapper.appendChild(div);
   >
     <div class="mb-4">
       <label
-        class="block text-gray-700 text-sm font-visita-bold mb-2"
+        class="block text-gray-700 text-sm font-bold mb-2"
         for="username"
       >
         Name
       </label>
       <input
-        class="shadow-sm appearance-none border rounded-full font-visita-medium w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow-sm appearance-none border rounded-full font-medium w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         placeholder="Name"
         name="name"
       />
     </div>
     <div class="mb-6">
       <label
-        class="block text-gray-700 text-sm font-visita-bold mb-2"
+        class="block text-gray-700 text-sm font-bold mb-2"
         for="password"
       >
         Phone Number
       </label>
       <input
-        class="rounded-full shadow-sm font-visita-medium appearance-none border w-full py-3  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        class="rounded-full shadow-sm font-medium appearance-none border w-full py-3  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         placeholder="Enter your phoneno"
         name="phone_no"
       />
@@ -789,7 +784,7 @@ feedback_card_wrapper.appendChild(div);
             },1000)
           }
         }
-        class={`font-visita-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
+        class={`font-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
       >
         Submit Details
       </button>
@@ -806,7 +801,7 @@ feedback_card_wrapper.appendChild(div);
   {/* Scan qr Code */}
   <div className=" w-full h-72 flex flex-col items-center justify-center relative">
     <h1
-      className={`text-lg  text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
+      className={`text-lg  text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
     >
       Scan QR Code to go to Website
     </h1>
@@ -833,13 +828,13 @@ feedback_card_wrapper.appendChild(div);
     className=" w-full py-24 flex flex-col items-center justify-center relative px-6"
   >
     <h1
-      className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
+      className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
     >
       About Us
     </h1>
-    <h1 className=" text-xl font-visita-medium w-[300px]">
+    <h1 className=" text-xl font-medium w-[300px]">
       {cardDatas && cardDatas.since != "" ? (
-        <span className="  text-lg font-visita-bold">
+        <span className="  text-lg font-bold">
           Est {cardDatas && cardDatas.since}
         </span>
       ) : (
@@ -854,13 +849,13 @@ feedback_card_wrapper.appendChild(div);
 
     {cardDatas && cardDatas.specials != "" ? (
       <div className=" flex flex-col items-start">
-        <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
+        <span className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}>
           Our Specialities 
         </span>
         {
           specialities.map((data)=> {
             return(
-<h1 className=" text-lg font-visita-medium list-item mb-4">
+<h1 className=" text-lg font-medium list-item mb-4">
           {data}
           </h1>
             )
@@ -874,13 +869,13 @@ feedback_card_wrapper.appendChild(div);
 
     {cardDatas && cardDatas.features != "" ? (
       <div className=" flex flex-col items-start">
-        <span className={`  text-xl text-${theme_color}-600 font-visita-bold text-lg mt-8 mb-6 flex`}>
+        <span className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}>
           Our Features 
         </span>
         {
           features.map((data)=> {
             return(
-<h1 className=" text-lg font-visita-medium list-item mb-4">
+<h1 className=" text-lg font-medium list-item mb-4">
           {data}
           </h1>
             )
@@ -899,7 +894,7 @@ feedback_card_wrapper.appendChild(div);
     className=" w-full  flex flex-col items-center justify-center relative px-6"
   >
     <h1
-      className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
+      className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500`}
     >
       Products & Services
     </h1>
@@ -922,15 +917,15 @@ feedback_card_wrapper.appendChild(div);
                 src={data.product_image.replace(/^http:\/\//i, 'https://')}
                 className="  w-full rounded-3xl py-6  offer-image"
               />
-              <h1 className=" pt-6 capitalize text-center text-xl font-visita-bold">
+              <h1 className=" pt-6 capitalize text-center text-xl font-bold">
                 {data.product_name}
               </h1>
 
-              <h1 className=" mt-4 capitalize text-center  text-md font-visita-medium text-slate-400">
+              <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
                 {data.product_description}
               </h1>
 
-              <h1 className=" pt-4 capitalize font-visita-medium text-green-500 text-xl">
+              <h1 className=" pt-4 capitalize font-medium text-green-500 text-xl">
                 <span className=" mr-2 text-slate-600 line-through">
                   {`${data.product_orgprice != "" ? "₹" + data.product_orgprice : '' }`}
                 </span>
@@ -938,7 +933,7 @@ feedback_card_wrapper.appendChild(div);
               </h1>
               <a
                 href={`https://api.whatsapp.com/send/?phone=+91${cardDatas && cardDatas.phone_no}&text=👋Hey,Enquiry For ${data.product_name} - ( ${data.product_description} )`}
-                className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-lg mt-6`}
+                className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-bold text-lg mt-6`}
               >
                 Enquiry Now
                 <span className=" ml-1 text-white text-xl"></span>
@@ -948,7 +943,7 @@ feedback_card_wrapper.appendChild(div);
               {data.product_link != "" ? (
                 <a
                   href={data.product_link}
-                  className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-visita-bold text-lg mt-2 `}
+                  className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-bold text-lg mt-2 `}
                 >
                   View Product
                 </a>
@@ -966,7 +961,7 @@ feedback_card_wrapper.appendChild(div);
           <div className="w-full h-32  flex items-center justify-center">
           <button
                   onClick={()=> {navigate('/'+cardDatas.company_name+'/products')}}
-                  className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-visita-bold text-sm -mt-6`}
+                  className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-bold text-sm -mt-6`}
                 >
                   View more products
                   <span className=" ml-1 text-white text-xl"></span>
@@ -986,7 +981,7 @@ feedback_card_wrapper.appendChild(div);
 
   <h1
     id="imagegallery"
-    className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
+    className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
   >
     Image Gallery
   </h1>
@@ -1022,7 +1017,7 @@ feedback_card_wrapper.appendChild(div);
   {/* Youtube Videos */}
   <div id="ytvideos" className=" flex flex-col items-center mt-6">
     <h1
-      className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
+      className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
     >
       Youtube Videos
     </h1>
@@ -1060,13 +1055,13 @@ feedback_card_wrapper.appendChild(div);
   {/* Payment Info */}
   <div id="paymentinfo" className=" flex flex-col mt-6">
     <h1
-      className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
+      className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
     >
       Payment Info
     </h1>
 
     {cardDatas && cardDatas.paytm_number != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Paytm Number
         </span>{" "}
@@ -1077,7 +1072,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.googlepay_number != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Google Pay Number
         </span>{" "}
@@ -1088,7 +1083,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.phonepe != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           PhonePe Number
         </span>{" "}
@@ -1099,7 +1094,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.googlepay_qrcode != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mt-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mt-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           GooglePay QrCode
         </span>{" "}
@@ -1114,7 +1109,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.paytm_qrcode != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mt-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mt-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Paytm QrCode
         </span>{" "}
@@ -1129,7 +1124,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.phonepe_qrcode != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mt-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mt-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           PhonePe QrCode
         </span>{" "}
@@ -1148,13 +1143,13 @@ feedback_card_wrapper.appendChild(div);
 
   <div id="bankdetails" className=" flex flex-col mt-6">
     <h1
-      className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
+      className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
     >
       Bank Details
     </h1>
 
     {cardDatas && cardDatas.bank_name != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Bank Name
         </span>{" "}
@@ -1165,7 +1160,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.account_holder_name != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Accound Holder Name
         </span>{" "}
@@ -1176,7 +1171,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.bank_account_number != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Bank Accound Number
         </span>{" "}
@@ -1188,7 +1183,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.bank_ifsc_code != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           Bank IFSC Code
         </span>{" "}
@@ -1200,7 +1195,7 @@ feedback_card_wrapper.appendChild(div);
     )}
 
     {cardDatas && cardDatas.gst != "" ? (
-      <a href="#" className=" font-visita-bold ml-6 mb-5">
+      <a href="#" className=" font-bold ml-6 mb-5">
         <span className=" text-slate-600 text-md font-visita-medium">
           GST
         </span>{" "}
@@ -1215,7 +1210,7 @@ feedback_card_wrapper.appendChild(div);
   {/* Feedbacks */}
   <div id="feedbacks" className=" flex flex-col mt-6">
     <h1
-      className={`text-lg text-white flex rounded-b-full justify-center items-center font-visita-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
+      className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-500 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-500 mb-6`}
     >
       Feedbacks
     </h1>
@@ -1266,7 +1261,7 @@ feedback_card_wrapper.appendChild(div);
                     <div className=" mb-5 block">
                       <div className=" flex flex-wrap mb-4 -m-2">
                         <div className=" w-auto p-2">
-                          <h3 className=" font-visita-bold leading-normal">
+                          <h3 className=" font-bold leading-normal">
                             {data.name}
                           </h3>
                         </div>
@@ -1296,26 +1291,26 @@ feedback_card_wrapper.appendChild(div);
     >
       <div class="mb-4">
         <label
-          class="block text-gray-700 text-sm font-visita-bold mb-2"
+          class="block text-gray-700 text-sm font-bold mb-2"
           for="username"
         >
           Name
         </label>
         <input
-          class="shadow-sm appearance-none border rounded-md font-visita-medium w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          class="shadow-sm appearance-none border rounded-md font-medium w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           placeholder="Name"
           name="name"
         />
       </div>
       <div class="mb-6">
         <label
-          class="block text-gray-700 text-sm font-visita-bold mb-2"
+          class="block text-gray-700 text-sm font-bold mb-2"
           for="password"
         >
           Feedback
         </label>
         <input
-          class="shadow-sm font-visita-medium appearance-none border rounded-md w-full pt-4 pb-16  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          class="shadow-sm font-medium appearance-none border rounded-md w-full pt-4 pb-16  px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           placeholder="Enter your feedback"
           name="feedback"
         />
@@ -1345,17 +1340,17 @@ form.feedback.value = ''
 
           }
           }
-          class={`font-visita-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
+          class={`font-bold py-2 px-6 rounded-full text-white bg-${cardDatas && cardDatas.theme_color}-600`}
         >
           Send Feedback
         </button>
       </div>
     </form>
-    <p class="text-center mt-8 text-gray-500 text-xs font-visita-medium pb-6">
+    <p class="text-center mt-8 text-gray-500 text-xs font-medium pb-6">
       &copy;2023 Glowit Labs. All rights reserved <br />
      
     </p>
-    <span className="font-visita-bold -mt-4 text-center text-gray-500 text-xs pb-6">
+    <span className="font-bold -mt-4 text-center text-gray-500 text-xs pb-6">
       visitasmart.com
       </span>
   </div>
@@ -1375,7 +1370,7 @@ form.feedback.value = ''
     <span className=" text-white text-2xl">
       <ion-icon name="home"></ion-icon>
     </span>
-    <span className=" font-visita-bold -mt-2 text-xs text-white">
+    <span className=" font-bold -mt-2 text-xs text-white">
       Home
     </span>
   </a>
@@ -1386,7 +1381,7 @@ form.feedback.value = ''
     <span className=" text-white text-2xl">
       <ion-icon name="person-circle"></ion-icon>
     </span>
-    <span className=" font-visita-bold -mt-2 text-xs text-white">
+    <span className=" font-bold -mt-2 text-xs text-white">
       About us
     </span>
   </a>
@@ -1397,7 +1392,7 @@ form.feedback.value = ''
     <span className=" text-white text-2xl">
       <ion-icon name="cart"></ion-icon>
     </span>
-    <span className=" font-visita-bold -mt-2 text-xs text-white">
+    <span className=" font-bold -mt-2 text-xs text-white">
       Products
     </span>
   </a>
@@ -1408,7 +1403,7 @@ form.feedback.value = ''
     <span className=" text-white text-2xl">
       <ion-icon name="images"></ion-icon>
     </span>
-    <span className=" font-visita-bold -mt-2 text-xs text-white">
+    <span className=" font-bold -mt-2 text-xs text-white">
       Image Gallery
     </span>
   </a>
@@ -1419,7 +1414,7 @@ form.feedback.value = ''
     <span className=" text-white text-2xl">
       <ion-icon name="logo-youtube"></ion-icon>
     </span>
-    <span className=" font-visita-bold -mt-2 text-xs text-white">
+    <span className=" font-bold -mt-2 text-xs text-white">
       Yt Videos
     </span>
   </a>
@@ -1430,7 +1425,7 @@ form.feedback.value = ''
     <span className=" text-white text-2xl">
       <ion-icon name="wallet"></ion-icon>
     </span>
-    <span className=" font-visita-bold -mt-2 text-xs text-white">
+    <span className=" font-bold -mt-2 text-xs text-white">
       Payment Info
     </span>
   </a>
@@ -1442,7 +1437,7 @@ form.feedback.value = ''
     <span className=" text-white text-xl">
       <i class="fa-solid fa-building-columns"></i>
     </span>
-    <span className=" font-visita-bold -mt- text-xs text-white">
+    <span className=" font-bold -mt- text-xs text-white">
       Bank Details
     </span>
   </a>
@@ -1453,7 +1448,7 @@ form.feedback.value = ''
     <span className=" text-white text-xl">
       <i class="fa-solid fa-comment"></i>
     </span>
-    <span  className=" font-visita-bold -mt- text-xs text-white">
+    <span  className=" font-bold -mt- text-xs text-white">
       Feedbacks
     </span>
   </a>

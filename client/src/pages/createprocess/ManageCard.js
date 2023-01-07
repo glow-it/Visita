@@ -159,19 +159,19 @@ function HandleForgotPasswordClick(e){
         <AlertDialogOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="3px" >
           <AlertDialogContent>
             <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-              <span className='font-visita-bold' >Close Website</span>
+              <span className='font-bold' >Close Website</span>
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              <span className='font-visita-medium' >Are you sure? You can't undo this action afterwards.</span>
+              <span className='font-medium' >Are you sure? You can't undo this action afterwards.</span>
             </AlertDialogBody>
 
             <AlertDialogFooter>
               <Button rounded='full' ref={cancelRef} onClick={onClose}>
-                <span className='font-visita-bold' >Cancel</span>
+                <span className='font-bold' >Cancel</span>
               </Button>
               <Button rounded='full' colorScheme='red' onClick={()=> HandleCloseCard()} ml={3}>
-                <span className='font-visita-bold' >Yes' Close Website</span>
+                <span className='font-bold' >Yes' Close Website</span>
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -188,12 +188,12 @@ function HandleForgotPasswordClick(e){
       {
         localStorage.getItem('isAdmin') != "true" ?
 
-        <div id='manage_auth_wrapper' className="h-screen  w-full absolute font-visita-medium bg-white z-[100] flex pt-36 justify-center">
-        <div class="block p-6 rounded-3xl  bg-white h-[300px] w-[1000px] px-8 lg:shadow-md  max-w-sm">
+        <div id='manage_auth_wrapper' className="h-screen  w-full absolute font-medium bg-slate-50 z-[100] flex pt-36 justify-center">
+        <div class="block p-6 rounded-3xl  bg-slate-50 h-[300px] w-[1000px] px-8 lg:shadow-md  max-w-sm">
       <div>
         
         <div class="form-group mb-6">
-          <label for="card_pass_input" class="form-label text-3xl font-visita-bold inline-block mb-6 text-gray-700">Website Password</label>
+          <label for="card_pass_input" class="form-label text-3xl font-bold inline-block mb-6 text-gray-700">Website Password</label>
           <input  class="form-control block
             w-full
             px-3
@@ -202,14 +202,14 @@ function HandleForgotPasswordClick(e){
             text-xl
             font-normal
             text-gray-700
-            bg-white bg-clip-padding
+            bg-slate-50 bg-clip-padding
             border border-solid border-gray-300
             rounded-full
             transition
             ease-in-out
             lowercase
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="card_pass_input"
+            focus:text-gray-700 focus:bg-slate-50 focus:border-blue-600 focus:outline-none" id="card_pass_input"
     
             autoComplete='off'
             />
@@ -251,17 +251,17 @@ function HandleForgotPasswordClick(e){
    
 
 
-<h1 className='text-4xl font-visita-bold mb-10 mt-16 capitalize' >{company_name.replace(/[-]/g," ")}</h1>
+<h1 className='text-4xl font-bold mb-10 mt-16 capitalize' >{company_name.replace(/[-]/g," ")}</h1>
 
      <div className="py-6 w-full flex lg:flex-row flex-col items-center justify-center  z-50">
 
-         <button onClick={onOpen} className="px-6 py-2 mr-3 lg:mt-0   hover:bg-red-500 hover:text-white transition-colors bg-white border-2 border-red-500 text-red-500 rounded-3xl  font-visita-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close website</button>
+         <button onClick={onOpen} className="px-6 py-2 mr-3 lg:mt-0   hover:bg-red-500 hover:text-white transition-colors bg-slate-50 border-2 border-red-500 text-red-500 rounded-3xl  font-bold"><i class="fa-solid mr-1 fa-circle-xmark"></i> Close website</button>
 
-        <button onClick={()=> navigate('/manage/card/'+company_name + '/edit')} className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl mr-3  font-visita-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit website</button>
+        <button onClick={()=> navigate('/manage/card/'+company_name + '/edit')} className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl mr-3  font-bold"><i class="fa-regular fa-pen-to-square mr-1"></i> Edit website</button>
 
         {
           cardDatas && cardDatas.show_customer_details_popop == "true" ?
-          <button onClick={()=> navigate('/manage/card/'+company_name + '/customer-details')} className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold"><ion-icon name="newspaper-outline"></ion-icon> Customer details</button>
+          <button onClick={()=> navigate('/manage/card/'+company_name + '/customer-details')} className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-bold"><ion-icon name="newspaper-outline"></ion-icon> Customer details</button>
           : ''
         }
 
@@ -271,14 +271,14 @@ function HandleForgotPasswordClick(e){
 
     <div className="w-full  mt-10 flex flex-wrap items-center justify-center z-50">
 
-        <div className="h-44 w-72 bg-white rounded-3xl lg:mr-6 border flex flex-col items-center justify-center">
-            <h6 className='text-xl font-visita-medium' >Total views</h6>
-            <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas && cardDatas.views}</h1>
+        <div className="h-44 w-72 bg-slate-50 rounded-3xl lg:mr-6 border flex flex-col items-center justify-center">
+            <h6 className='text-xl font-medium' >Total views</h6>
+            <h1 className='text-5xl font-bold mt-4 text-blue-600' >{cardDatas && cardDatas.views}</h1>
         </div>
 
-        <div className="h-44 w-72 bg-white rounded-3xl lg:mr-6 lg:mt-0 mt-4 border flex flex-col items-center justify-center">
-            <h6 className='text-xl font-visita-medium' >Total feedbaks</h6>
-            <h1 className='text-5xl font-visita-bold mt-4 text-blue-600' >{cardDatas.feedbacks && cardDatas.feedbacks.length}</h1>
+        <div className="h-44 w-72 bg-slate-50 rounded-3xl lg:mr-6 lg:mt-0 mt-4 border flex flex-col items-center justify-center">
+            <h6 className='text-xl font-medium' >Total feedbaks</h6>
+            <h1 className='text-5xl font-bold mt-4 text-blue-600' >{cardDatas.feedbacks && cardDatas.feedbacks.length}</h1>
         </div>
 
     </div>
@@ -289,14 +289,14 @@ franchiseeDatas.length != 0 ?
       
       <div className=" w-[576px]  mt-5 flex flex-col items-center justify-center z-50">
 
-    <div className="h-16 w-full bg-white rounded-3xl mt-4 border flex  items-center justify-center">
-        <h6 className='text-xl font-visita-medium' >Created via</h6>
-        <h1 className='text-xl font-visita-bold ml-2  text-blue-600' >{franchiseeDatas && franchiseeDatas.franchisee_name}</h1>
+    <div className="h-16 w-full bg-slate-50 rounded-3xl mt-4 border flex  items-center justify-center">
+        <h6 className='text-xl font-medium' >Created via</h6>
+        <h1 className='text-xl font-bold ml-2  text-blue-600' >{franchiseeDatas && franchiseeDatas.franchisee_name}</h1>
     </div>
 
-    <div className="h-16 w-full bg-white rounded-3xl mt-4 border flex  items-center justify-center">
-        <h6 className='text-xl font-visita-medium' >Contact {franchiseeDatas && franchiseeDatas.franchisee_name}</h6>
-        <h1 className='text-xl font-visita-bold ml-2  text-blue-600' >+91 {franchiseeDatas && franchiseeDatas.phone_no}</h1>
+    <div className="h-16 w-full bg-slate-50 rounded-3xl mt-4 border flex  items-center justify-center">
+        <h6 className='text-xl font-medium' >Contact {franchiseeDatas && franchiseeDatas.franchisee_name}</h6>
+        <h1 className='text-xl font-bold ml-2  text-blue-600' >+91 {franchiseeDatas && franchiseeDatas.phone_no}</h1>
     </div>
 
     </div>
@@ -304,8 +304,8 @@ franchiseeDatas.length != 0 ?
   }
 
  <div className="z-50 flex flex-col items-center">
- <h1 className='font-visita-medium mt-8' >Do you want to see QRCODE and more?</h1>
-  <button onClick={()=> window.open('/create/successfull/' + company_name)} className="px-6 mt-4 cursor-pointer py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-visita-bold">Go To Details Page</button>
+ <h1 className='font-medium mt-8' >See qrcode and more</h1>
+  <button onClick={()=> window.open('/create/successfull/' + company_name)} className="px-6 mt-4 cursor-pointer py-2 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-bold">Go To Details Page</button>
  </div>
     
    </div>

@@ -37,7 +37,7 @@ export function Toast(props) {
        
        {
         props.status_code ?
-        <span className="absolute -right-4 font-visita-bold" ><Badge bg={`${color}.100`} py='2' px='2' rounded='full' color={`${color}.700`}  >{props.status_code}</Badge></span>
+        <span className="absolute -right-4 font-bold" ><Badge bg={`${color}.100`} py='2' px='2' rounded='full' color={`${color}.700`}  >{props.status_code}</Badge></span>
         : ''
        }
 
@@ -46,7 +46,7 @@ export function Toast(props) {
         >
 
           <span
-            className={`font-visita-bold text-3xl flex items-center justify-center text-${color}-600`}
+            className={`font-bold text-3xl flex items-center justify-center text-${color}-600`}
           >
             { props.status == "success" ? (
               <ion-icon name="checkmark-circle"></ion-icon>
@@ -61,14 +61,14 @@ export function Toast(props) {
         </div>
         <div className="ml-3  flex flex-col justify-center">
           {props.description ? (
-            <span className="font-visita-bold text-sm text-slate-400">
+            <span className="font-bold text-sm text-slate-400">
               {props.description}
             </span>
           ) : (
             ""
           )}
 
-          <span className={`font-visita-bold text-md text-${color}-600`}>
+          <span className={`font-bold text-md text-${color}-600`}>
             {title}
           </span>
         </div>

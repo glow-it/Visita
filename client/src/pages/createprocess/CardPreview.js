@@ -93,7 +93,7 @@ function CardPreview() {
                   (error) => {
                     Toast({
                       status:'error',
-                      title: 'Unable to send card password to your mail',
+                      title: 'Unable to send website password to your mail',
                       postition: 'top',
                       description: 'Contact Visita',
                       toast
@@ -113,7 +113,7 @@ function CardPreview() {
             }
           });
 
-          navigate("/loading/processing-card");
+          navigate("/loading/processing-website");
 
 
         } else {
@@ -136,7 +136,7 @@ function CardPreview() {
       key: apiKeys.razorpay_key,
       subscription_id: res.id,
       name: "Visita | Digital Visiting Card",
-      description: "Payment For Purchase Digital Visiting Card",
+      description: "Payment For Create Business Website",
       image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
       prefill: {
         name: cardDatas.first_name,
@@ -188,7 +188,7 @@ function CardPreview() {
                     (error) => {
                       Toast({
                         status:'error',
-                        title: 'Unable to send card password to your mail',
+                        title: 'Unable to send website password to your mail',
                         postition: 'top',
                         description: 'Contact Visita',
                         toast
@@ -213,7 +213,7 @@ function CardPreview() {
               postition: 'top',
               toast
             })
-            navigate("/loading/processing-card");
+            navigate("/loading/processing-website");
           } else {
             Toast({
               status:'error',
@@ -238,7 +238,7 @@ function CardPreview() {
       if (res.data.status) {
         Toast({
           status:'success',
-          title: 'Card is cancelled',
+          title: 'Website is cancelled',
           postition: 'top',
           toast
         })
@@ -248,7 +248,7 @@ function CardPreview() {
           status:'error',
           title: 'Ohh snap!!',
           postition: 'top',
-          description: 'We are struggling to cancel card',
+          description: 'We are struggling to cancel website',
           toast
         })
       }
@@ -288,7 +288,7 @@ function CardPreview() {
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
 
-      <div className=" lg:hidden block -mt-12 absolute top-44">
+      <div className=" lg:hidden block  absolute top-44">
       <span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
         </div>
 
@@ -304,10 +304,10 @@ function CardPreview() {
         </div>
 
 
-          <h1 className="lg:text-3xl text-2xl font-visita-bold lg:text-start text-center lg:mt-0 -mt-16">
+          <h1 className="lg:text-3xl text-2xl font-bold lg:text-start text-center lg:mt-0 -mt-16">
             
             {cardDatas && cardDatas.activated
-              ? "Successfully your card is "
+              ? "Successfully your website is "
               : "Successfully your website was "}
 
             <span className="text-indigo-600">
@@ -316,7 +316,7 @@ function CardPreview() {
           </h1>
 
           <h1
-            className={`lg:text-xl text-sm lg:block hidden font-visita-medium ${
+            className={`lg:text-xl text-sm lg:block hidden font-medium ${
               cardDatas && cardDatas.activated
                 ? "text-green-600"
                 : "text-indigo-600"
@@ -334,10 +334,10 @@ function CardPreview() {
           ) : (
             franchiseeData && franchiseeData.length == 0 ?
             <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
-              <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
+              <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
                 599rs
               </h1>
-              <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center line-through">
+              <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center line-through">
                 999rs
               </h1>
               
@@ -346,18 +346,18 @@ function CardPreview() {
           : cardDatas && cardDatas.franchisee == "no franchisee" ?
 
           <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
-          <h1 className="text-4xl font-visita-medium lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
+          <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
             599rs
           </h1>
-          <h1 className="text-4xl font-visita-medium mt-14   py-12 px-12 rounded-3xl line-through text-indigo-600 bg-indigo-50 text-center">
+          <h1 className="text-4xl font-bold mt-14   py-12 px-12 rounded-3xl line-through text-indigo-600 bg-indigo-50 text-center">
             999rs
           </h1>
         </div>
 
             : 
             <div className="flex lg:flex-row flex-col-reverse">
-            <h1 className="text-xl font-visita-medium mb-12 lg:mt-4 mt-2 bg-green-50 py-1 px-12 rounded-3xl lg:mr-6 text-green-600 text-center">
-              This card is absolutely free
+            <h1 className="text-xl font-medium mb-12 lg:mt-4 mt-2 bg-green-50 py-1 px-12 rounded-3xl lg:mr-6 text-green-600 text-center">
+              This website is absolutely free
             </h1>
            
           </div>
@@ -372,7 +372,7 @@ function CardPreview() {
           ) : (
             <button
               onClick={() => cancelPurchase()}
-              className="text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
+              className="text-lg font-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
             >
               Cancel purchase
             </button>
@@ -385,13 +385,13 @@ function CardPreview() {
             <button
               onClick={() => navigate("/create/successfull/" + name)}
               id="complete-purchase-button"
-              className=" text-lg font-visita-medium hover:shadow-sm transition-shadow px-12 py-3 bg-indigo-600 text-white rounded-full shadow-md shadow-indigo-600"
+              className=" text-lg font-medium hover:shadow-sm transition-shadow px-12 py-3 bg-indigo-600 text-white rounded-full shadow-md shadow-indigo-600"
             >
               Open preview
             </button>
           ) : (
             <Button
-              className="font-visita-medium"
+              className="font-medium"
               fontSize="md"
               isLoading={isProcessingPayment}
               rounded="full"

@@ -84,7 +84,7 @@ function FranchiseeLogin() {
     <div className="w-full  max-w-md  rounded-3xl  px-8 py-24  z-50">
       <div>
        
-        <h2 className="mt-6 text-center lg:text-4xl text-3xl font-visita-bold tracking-tight text-gray-900">
+        <h2 className="mt-6 text-center lg:text-4xl text-3xl font-bold tracking-tight text-gray-900">
         Franchisee Login
         </h2>
        
@@ -106,7 +106,7 @@ function FranchiseeLogin() {
               required
               type={"email"}
               
-              className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+              className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter email"
             />
           </div>
@@ -121,7 +121,7 @@ function FranchiseeLogin() {
               required
               type={"password"}
               id='franchisee_password'
-              className="relative mb-4 block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500  focus:outline-none focus:ring-indigo-500 sm:text-lg"
+              className="relative mb-4 block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500  focus:outline-none focus:ring-indigo-500 sm:text-lg"
               placeholder="Enter password"
             />
           </div>
@@ -135,7 +135,7 @@ function FranchiseeLogin() {
       >
         <PopoverTrigger>
         <p
-        class="cursor-pointer font-visita-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out">Forgot
+        class="cursor-pointer font-medium text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 transition duration-200 ease-in-out">Forgot
         password?</p>
         </PopoverTrigger>
         
@@ -143,12 +143,12 @@ function FranchiseeLogin() {
 
           <PopoverCloseButton mt='3' mr='2' rounded='full' />
 
-          <h1 className='font-visita-bold text-lg' >Enter Franchisee Email</h1>
+          <h1 className='font-bold text-lg' >Enter Franchisee Email</h1>
 
-          <input id='franchisee_email_input' className='py-2 border-b border-purple-600 font-visita-medium mb-4 mt-2' placeholder='Enter franchisee email' />
+          <input id='franchisee_email_input' className='py-2 border-b border-purple-600 font-medium mb-4 mt-2' placeholder='Enter franchisee email' />
 
           <PopoverFooter>
-          <button onClick={()=> navigate('/franchisee/forgot-password/' + document.getElementById('franchisee_email_input').value)} type='button'  className='franchisee_password_forgot_button mt-4 bg-purple-600 text-white rounded-full py-1.5 px-6 font-visita-bold' >Continue</button>
+          <button onClick={()=> navigate('/franchisee/forgot-password/' + document.getElementById('franchisee_email_input').value)} type='button'  className='franchisee_password_forgot_button mt-4 bg-purple-600 text-white rounded-full py-1.5 px-6 font-bold' >Continue</button>
         </PopoverFooter>
         
         </PopoverContent>
@@ -162,10 +162,10 @@ function FranchiseeLogin() {
         </div>
 
         <div >
-        <Button isLoading={loading} loadingText='Logging in' onClick={()=> onFranchiseeeLoginClick()} className='font-visita-medium' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='indigo'>Login</Button>
+        <Button isLoading={loading} loadingText='Logging in' onClick={()=> onFranchiseeeLoginClick()} className='font-bold' rounded='full' _hover={{backgroundColor: 'rgb(66 56 157 / 1)'}} backgroundColor='rgb(88 80 236 / 1)' style={{padding: '25px 60px',width: '100%'}} colorScheme='indigo'>Login</Button>
         </div>
         <div className="w-full flex justify-center items-center">
-        <p onClick={()=> navigate('/franchisee/register')} className='font-visita-medium' >not yet a franchisee? <span className='ml-1 text-indigo-500 cursor-pointer hover:underline' >Register now</span></p>
+        <p onClick={()=> navigate('/franchisee/register')} className='font-medium' >not yet a franchisee? <span className='ml-1 text-indigo-500 cursor-pointer hover:underline' >Register now</span></p>
         </div>
       </form>
       

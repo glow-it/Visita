@@ -84,25 +84,25 @@ function Header() {
             <ul className="w-full h-full flex items-center justify-center">
               <p
                 onClick={() => navigate("/visita")}
-                className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 See demo
               </p>
               <Link
                 to="/pricing"
-                className=" font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className=" font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Pricing
               </Link>
               <a
                 href="#features"
-                className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Features
               </a>
               <a
                 href="#benefits"
-                className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Benefits
               </a>
@@ -110,7 +110,7 @@ function Header() {
               <p>
                 <Popover autoFocus={false} placement="bottom">
                   <PopoverTrigger>
-                    <h1 className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  transition-colors flex items-center">
+                    <h1 className="font-medium  cursor-pointer text-slate-500 hover:text-black  transition-colors flex items-center">
                       <span className="text-slate-500 px-3  rounded-full transition-all hover:text-black">
                         Manage website
                       </span>
@@ -129,7 +129,7 @@ function Header() {
                           autoComplete="off"
                           id="manage_card_comp_name"
                           placeholder="Enter company name"
-                          className="border focus:border focus:border-blue-600 py-2 w-full pl-4 rounded-full font-visita-medium"
+                          className="border focus:border focus:border-blue-600 py-2 w-full pl-4 rounded-full font-medium"
                         />
                         <div className="w-full h-12 my-4 flex items-center">
                           <button
@@ -141,7 +141,7 @@ function Header() {
                                   ).value
                               )
                             }
-                            className="px-6 py-1 bg-blue-600 rounded-full text-xl font-visita-bold text-white"
+                            className="px-6 py-1 bg-blue-600 rounded-full text-xl font-bold text-white"
                           >
                             Continue
                           </button>
@@ -152,17 +152,17 @@ function Header() {
                 </Popover>
               </p>
 
-              {Cookies.get("isFranchiseeLogined") != "true" ? (
+              {!localStorage.getItem("franchisee_email") ? (
                 <Link
                   to="/franchisee/register"
-                  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer transition-colors flex px-3 items-center"
+                  className="font-medium text-slate-500 hover:text-black cursor-pointer transition-colors flex px-3 items-center"
                 >
                   Register franchisee
                 </Link>
               ) : (
                 <Link
                   to="/manage/franchisee"
-                  className="font-visita-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center"
+                  className="font-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center"
                 >
                   Go to franchisee
                 </Link>
@@ -173,13 +173,13 @@ function Header() {
                   className="text-slate-500 hover:text-black"
                   rightIcon={<ChevronDownIcon />}
                 >
-                  <span className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
+                  <span className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
                     Support <ion-icon name="chevron-down-outline"></ion-icon>{" "}
                   </span>
                 </MenuButton>
                 <MenuList>
                   <MenuItem className="" onClick={() => navigate("/support")}>
-                    <a className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+                    <a className="font-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="help-buoy-outline"></ion-icon>
                       </span>{" "}
@@ -193,9 +193,9 @@ function Header() {
                     }}
                     className=""
                   >
-                    <p className="font-visita-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+                    <p className="font-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                       <span className="mr-2 flex items-center">
-                        <ion-icon name="chatbubble-ellipses"></ion-icon>
+                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                       </span>
                       Chat with us
                     </p>
@@ -207,12 +207,12 @@ function Header() {
 
           {/* Client Country On Header  */}
 
-          {/* <p  class=" absolute right-48 py-1.5 px-8 text-sm  lg:block hidden focus:outline-none text-slate-500  font-visita-medium"><span className="mr-1" >{ipdatas && ipdatas.emoji_flag}</span>{ipdatas && ipdatas.country_name}</p> */}
+          {/* <p  class=" absolute right-48 py-1.5 px-8 text-sm  lg:block hidden focus:outline-none text-slate-500  font-medium"><span className="mr-1" >{ipdatas && ipdatas.emoji_flag}</span>{ipdatas && ipdatas.country_name}</p> */}
 
           <p
             id="header_create_button"
             onClick={() => navigate("/create")}
-            class=" absolute right-10 py-1.5 px-8 text-md  text-blue-600 lg:block hidden focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-visita-medium"
+            class=" absolute right-10 py-1.5 px-8 text-md  text-blue-600 lg:block hidden focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-medium"
           >
             Create now
           </p>
@@ -241,7 +241,7 @@ function Header() {
           <DrawerContent>
             <DrawerHeader borderBottomWidth="1px">
               <div className=" w-full flex items-center relative py-3">
-                <span className="font-visita-bold cursor-pointer absolute left-0">
+                <span className="font-bold cursor-pointer absolute left-0">
                   Visita
                 </span>
                 <span
@@ -255,7 +255,7 @@ function Header() {
             <DrawerBody>
               <p
                 onClick={() => navigate("/visita")}
-                className="font-visita-bold cursor-pointer mt-4"
+                className="font-bold cursor-pointer mt-4"
               >
                 <span className=" text-md flex items-center text-primary">
                   <ion-icon name="albums"></ion-icon>{" "}
@@ -268,7 +268,7 @@ function Header() {
                   navigate("/pricing");
                   onClose();
                 }}
-                className="font-visita-bold cursor-pointer mt-3"
+                className="font-bold cursor-pointer mt-3"
               >
                 <span className=" text-md flex items-center text-primary">
                   <ion-icon name="card"></ion-icon>{" "}
@@ -279,7 +279,7 @@ function Header() {
               <p
                 onClick={() => onClose()}
                 href="#features"
-                className="font-visita-bold cursor-pointer mt-3"
+                className="font-bold cursor-pointer mt-3"
               >
                 <span className=" text-md flex items-center text-primary">
                   <ion-icon name="scan-circle"></ion-icon>{" "}
@@ -290,7 +290,7 @@ function Header() {
               <p
                 onClick={() => onClose()}
                 href="#benefits"
-                className="font-visita-bold cursor-pointer mt-3"
+                className="font-bold cursor-pointer mt-3"
               >
                 <span className=" text-md flex items-center text-primary">
                   <ion-icon name="bulb"></ion-icon>{" "}
@@ -307,7 +307,7 @@ function Header() {
                   }
                   onClose();
                 }}
-                className="font-visita-bold cursor-pointer mt-3"
+                className="font-bold cursor-pointer mt-3"
               >
                 <span className=" text-md flex items-center text-primary">
                   {" "}
@@ -318,7 +318,7 @@ function Header() {
 
               <DrawerHeader borderBottomWidth="0.5px">
                 <div className=" w-full flex items-center relative mt-6">
-                  <span className="font-visita-bold cursor-pointer  text-sm -ml-6">
+                  <span className="font-bold cursor-pointer  text-sm -ml-6">
                     Support
                   </span>
                 </div>
@@ -329,7 +329,7 @@ function Header() {
                   navigate("/support");
                   onClose();
                 }}
-                className=" font-visita-bold cursor-pointer mt-3"
+                className=" font-bold cursor-pointer mt-3"
               >
                 <span className="text-md flex items-center text-primary">
                   <ion-icon name="help-buoy"></ion-icon>{" "}
@@ -342,28 +342,28 @@ function Header() {
                   window.tidioChatApi.show();
                   window.tidioChatApi.open();
                 }}
-                className=" font-visita-bold cursor-pointer mt-3"
+                className=" font-bold cursor-pointer mt-3"
               >
                 <span className="text-md flex items-center text-primary">
-                  <ion-icon name="chatbubble-ellipses"></ion-icon>
+                  <ion-icon name="chatbubble-ellipses-outine"></ion-icon>
                   <span className="ml-2 text-slate-600">Chat with us</span>
                 </span>{" "}
               </p>
 
               <DrawerHeader borderBottomWidth="0.5px">
                 <div className=" w-full flex items-center relative mt-6">
-                  <span className="font-visita-bold cursor-pointer text-sm -ml-6">
+                  <span className="font-bold cursor-pointer text-sm -ml-6">
                     Login
                   </span>
                 </div>
               </DrawerHeader>
 
-              {/* <Link to='/franchisee/login' className=" font-visita-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
+              {/* <Link to='/franchisee/login' className=" font-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
 
-              {Cookies.get("isFranchiseeLogined") != "true" ? (
+              {!localStorage.getItem("franchisee_email") ? (
                 <Link
                   to="/franchisee/register"
-                  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
+                  className="font-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
                 >
                   <span className="flex items-center justify-center mr-2">
                     <ion-icon name="log-in"></ion-icon>
@@ -373,7 +373,7 @@ function Header() {
               ) : (
                 <Link
                   to="/manage/franchisee"
-                  className="font-visita-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
+                  className="font-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
                 >
                   Go To Franchisee
                   <span className="flex items-center justify-center ml-2">

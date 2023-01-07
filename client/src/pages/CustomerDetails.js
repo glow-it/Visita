@@ -33,14 +33,14 @@ function CustomerDetails() {
     <TableContainer>
       <Table variant="striped" colorScheme="teal">
         <Thead>
-          <Tr className="font-visita-bold">
-            <Th className="font-visita-bold">Name</Th>
-            <Th className="font-visita-bold">Phone number</Th>
-            <Th className="font-visita-bold">Date</Th>
+          <Tr className="font-bold">
+            <Th className="font-bold">Name</Th>
+            <Th className="font-bold">Phone number</Th>
+            <Th className="font-bold">Date</Th>
           </Tr>
         </Thead>
 
-        <Tbody className="font-visita-medium">
+        <Tbody className="font-medium">
           {cardDatas.customer_details && cardDatas.customer_details.filter((data,index)=> {
             return index != 0
           }).map((data) => {
@@ -65,7 +65,7 @@ function CustomerDetails() {
               }
 
               return (
-                <Tr className="font-visita-medium">
+                <Tr className="font-medium">
                   <Td>{data.name}</Td>
                   <Td>+91{data.phone_no}</Td>
                   <Td>{days}</Td>

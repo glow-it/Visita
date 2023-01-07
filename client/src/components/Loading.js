@@ -30,7 +30,7 @@ function Loading() {
     <span className="two -mt-64 -ml-20"></span>
     <span className="three -mt-64 -ml-20"></span>
     <span className="four -mt-64 -ml-20"></span>
-    <h1 className='capitalize text-xl font-visita-medium mt-8 absolute' >{processName}</h1>
+    <h1 className='capitalize text-xl font-medium mt-8 absolute' >{processName}</h1>
   </div>
     </div>
       </div>

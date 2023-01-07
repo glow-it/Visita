@@ -54,7 +54,7 @@ function ProductsPage() {
 
         <div className="h-16 w-full  bg-white z-50 flex items-center justify-center">
             <img className='h-12 w-12 rounded-full mr-1' src={cardDatas && cardDatas.logo}  />
-            <h1 className={`text-2xl text-${theme_color}-600 font-visita-bold capitalize`} >{params.comp_name} Shop</h1>
+            <h1 className={`text-2xl text-${theme_color}-600 font-bold capitalize`} >{params.comp_name} Shop</h1>
         </div>
 
 
@@ -88,11 +88,11 @@ function ProductsPage() {
             </div>
             <div className="h-[55%] w-full flex flex-col items-center  px-6">
 
-                <h1 className={`text-${theme_color}-600 text-center text-xl capitalize font-visita-bold mb-4 mt-8 `}>{data.product_name}</h1>
+                <h1 className={`text-${theme_color}-600 text-center text-xl capitalize font-bold mb-4 mt-8 `}>{data.product_name}</h1>
 
-                <h1 className="text-md capitalize text-center font-visita-medium mb-4 text-slate-400">{data.product_description}</h1>
+                <h1 className="text-md capitalize text-center font-medium mb-4 text-slate-400">{data.product_description}</h1>
 
-                <h1 className="mb-6 capitalize font-visita-medium text-green-500 text-xl">
+                <h1 className="mb-6 capitalize font-medium text-green-500 text-xl">
                 <span className=" mr-2 text-slate-600 line-through">
                   ₹{data.product_orgprice}
                 </span>
@@ -102,7 +102,7 @@ function ProductsPage() {
 
               <a
                 href={`https://api.whatsapp.com/send/?phone=+91${cardDatas && cardDatas.phone_no}&text=👋Hey,Enquiry For ${data.product_name}`}
-                className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-visita-bold text-md `}
+                className={`flex justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-500  font-bold text-md `}
               >
                 Enquiry Now
                 <span className=" ml-1 text-white text-xl"></span>
@@ -112,7 +112,7 @@ function ProductsPage() {
               {data.product_link != "" ? (
                 <a
                   href={data.product_link}
-                  className={`flex justify-center mt-4  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-visita-bold text-md  `}
+                  className={`flex justify-center mt-4  items-center py-3 px-12 border-2 border-${theme_color}-500 text-${theme_color}-500 rounded-full   font-bold text-md  `}
                 >
                   View Product
                 </a>

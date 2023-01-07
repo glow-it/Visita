@@ -6,6 +6,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import Cookies from 'js-cookie';
 import { Toast } from '../miniComponents/Toast'
 import apiKeys from '../Api/apiKeys'
+import Loading from '../miniComponents/Loading'
 
 function ManageFranchisee() {
 
@@ -14,6 +15,7 @@ function ManageFranchisee() {
     let [createdCards,setCreatedCards] = useState([])
     let [createdCardsThisMonth,setCreatedCardsThisMonth] = useState([])
     let [createdCardsToday,setCreatedCardsToday] = useState([])
+    let [isLoading,setIsLoading] = useState([])
 
     let franchisee_profit = 300 //This Is The Profit Of Franchisee For Each Cards Created
 
@@ -59,6 +61,7 @@ function ManageFranchisee() {
                            
                         }
                         setCreatedCards(array)
+                        setIsLoading(false)
                             
                         })
 
@@ -157,14 +160,16 @@ function ManageFranchisee() {
   return (
     <div >
 
+        <Loading isLoading={isLoading} />
+
          {/* Top Information */}
 
          {
             franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != "true" ?
-            <div id='franchisee_top_information' className="h-10 w-full bg-indigo-100 border border-indigo-800 text-indigo-800 flex items-center justify-center relative">
-            <h1 className='flex font-visita-bold ' ><span className="mr-2 lg:flex hidden items-center justify-center">
+            <div id='franchisee_top_information' className="h-10 w-full bg-indigo-500  text-white flex items-center justify-center relative">
+            <h1 className='flex font-bold ' ><span className="mr-2 lg:flex hidden items-center justify-center">
             <ion-icon name="checkmark"></ion-icon></span> Creating the first website is absolutely free !</h1>
-            <div className="text-indigo-800 absolute justify-center h-full flex items-center right-8">
+            <div className="text-white absolute justify-center h-full flex items-center right-8">
             <span className='cursor-pointer lg:block hidden' onClick={()=> {
                 
                 document.getElementById('franchisee_top_information').style.display = 'none'
@@ -185,14 +190,14 @@ function ManageFranchisee() {
 
        <div className="w-full lg:min-h-[100px] min-h-[130px]  flex lg:flex-row flex-col items-center justify-center ">
         <img onClick={()=> window.location.href = '/'} className='lg:block hidden cursor-pointer h-12 left-12 absolute' src=" https://i.postimg.cc/ZKnK7rC2/visitalogo.png />" />
-        <h1 className='font-visita-bold text-3xl text-indigo-600 capitalize' >{franchiseeData && franchiseeData.franchisee_name}</h1>
+        <h1 className='font-bold text-3xl text-indigo-600 capitalize' >{franchiseeData && franchiseeData.franchisee_name}</h1>
 
-        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-visita-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-indigo-600 px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create website</h1>
+        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-indigo-600 px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create website</h1>
 
        </div>
       
-       <div className="w-full font-visita-bold mt-6">
-       <Tabs isFitted variant='line' colorScheme="purple">
+       <div className="w-full font-bold mt-6">
+       <Tabs defaultIndex={1} isFitted variant='line' colorScheme="purple">
   <TabList mb='1em'>
     <Tab>This month</Tab>
     <Tab>Today</Tab>
@@ -203,11 +208,11 @@ function ManageFranchisee() {
     <TabPanel>
         <div className="w-full flex flex-col">
             <div className="w-full  flex-wrap flex items-center justify-center">
-                <div className="w-[320px] h-56  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                     <h2 className='-mt-6' >My earnings</h2>
-                    <h1  className=' text-7xl mt-3 text-indigo-800' >₹{earnings_this_month}</h1>
+                    <h1  className=' text-7xl mt-3 text-indigo-800' >{earnings_this_month}rs</h1>
                 </div>
-                <div className="w-[320px] h-56  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                 <h2 className='-mt-6' >Websites created</h2>
                     <h1  className=' text-7xl mt-3 text-indigo-800' >{cards_created_this_month}</h1>
                 </div>
@@ -216,7 +221,7 @@ function ManageFranchisee() {
 
                 {
                     createdCardsThisMonth && createdCardsThisMonth.length == 0 ?
-                    <h1 className='text-2xl mt-16 text-indigo-600' >No websites created this month</h1>
+                    <h1 className='text-2xl mt-16 text-indigo-400 font-medium' >No websites created this month</h1>
                     : ''
                 }
 
@@ -249,11 +254,11 @@ function ManageFranchisee() {
     <TabPanel>
         <div className="w-full flex flex-col">
             <div className="w-full  flex-wrap flex items-center justify-center">
-                <div className="w-[320px] h-56  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                     <h2 className='-mt-6' >My earnings</h2>
-                    <h1 className='text-7xl mt-3 text-indigo-800' >₹{earnings_this_today}</h1>
+                    <h1 className='text-7xl mt-3 text-indigo-800' >{earnings_this_today}rs</h1>
                 </div>
-                <div className="w-[320px] h-56  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                 <h2 className='-mt-6' >Websites created</h2>
                     <h1 className='text-7xl mt-3 text-indigo-800' >{cards_created_today}</h1>
                 </div>
@@ -262,7 +267,7 @@ function ManageFranchisee() {
 
             {
                     createdCardsToday && createdCardsToday.length == 0 ?
-                    <h1 className='text-2xl mt-16 text-indigo-600' >No website created today</h1>
+                    <h1 className='text-2xl mt-16 text-indigo-400 font-medium' >No website created today</h1>
                     : ''
                 }
 
@@ -295,11 +300,11 @@ function ManageFranchisee() {
     <TabPanel>
         <div className="w-full flex flex-col">
             <div className="w-full  flex-wrap flex items-center justify-center">
-                <div className="w-[320px] h-56  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                     <h2 className='-mt-6' >My earnings</h2>
-                    <h1 className='text-7xl mt-3 text-indigo-800' >₹{total_earnings}</h1>
+                    <h1 className='text-7xl mt-3 text-indigo-800' >{total_earnings}rs</h1>
                 </div>
-                <div className="w-[320px] h-56  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                 <h2 className='-mt-6' >Websites created</h2>
                     <h1 className='text-7xl mt-3 text-indigo-800' >{cards_created}</h1>
                 </div>
@@ -308,7 +313,7 @@ function ManageFranchisee() {
 
             {
                     createdCards && createdCards.length == 0 ?
-                    <h1 className='text-2xl mt-16 text-indigo-600' >No websites created</h1>
+                    <h1 className='text-2xl mt-16 text-indigo-400 font-medium' >No websites created</h1>
                     : ''
                 }
 

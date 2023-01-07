@@ -19,7 +19,7 @@ function ActivateWarning() {
 
         
 
-        <h1 className="font-visita-bold text-indigo-600 lg:text-xl text-xl text-center  rounded-full px-8 py-3">
+        <h1 className="font-bold text-indigo-600 lg:text-xl text-xl text-center  rounded-full px-8 py-3">
         Complete purchase to activate your website
         </h1>
 
@@ -27,7 +27,7 @@ function ActivateWarning() {
         <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_0akluyjw.json"  background="transparent"  speed="1"   loop  autoplay></lottie-player>
         </div>
 
-        <button onClick={()=> navigate(complete_purchase_url)} className='font-visita-bold mt-8 bg-indigo-600 hover:bg-white hover:text-indigo-600 transition-colors lg:text-lg text-lg text-center text-white border-indigo-100 border rounded-full px-8 py-3' > Complete purchase </button>
+        <button onClick={()=> navigate(complete_purchase_url)} className='font-medium mt-8 bg-indigo-600 hover:bg-white hover:text-indigo-600 transition-colors lg:text-lg text-lg text-center text-white border-indigo-100 border rounded-full px-8 py-3' > Complete purchase </button>
     </div>
   )
 }

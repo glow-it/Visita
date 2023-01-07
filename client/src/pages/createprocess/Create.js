@@ -16,6 +16,7 @@ import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
 import { Switch } from '@chakra-ui/react'
 import apiKeys from "../../Api/apiKeys";
+import Loading from "../../miniComponents/Loading";
 
 function Create(props) {
 
@@ -385,6 +386,8 @@ event.target.innerText = 'Regenerate'
 
 
 
+
+
         <input type="text" name="franchisee" value={location.state ? location.state.franchisee_email : 'no franchisee'} className='hidden' />
 
 
@@ -396,12 +399,12 @@ event.target.innerText = 'Regenerate'
     <Modal  isOpen={isOpen} onClose={onClose}>
         <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="20px"  />
         <ModalContent display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
-          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-visita-bold text-3xl text-center" >Are You Sure To Create?</span></ModalHeader>
+          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-bold text-3xl text-center" >Are You Sure To Create?</span></ModalHeader>
           <ModalBody pb='4' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-            <span className="font-visita-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
+            <span className="font-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
           </ModalBody>
           <ModalFooter display='flex'  justifyContent='center' alignItems='center'>
-            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-visita-medium" >Cancel</span></Button>
+            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-medium" >Cancel</span></Button>
 
 
             <Button rounded='full' color='#fff' _hover bgColor='#5046E4'  onClick={()=> {
@@ -428,7 +431,7 @@ event.target.innerText = 'Regenerate'
               })
               
             }}>
-              <span className="font-visita-medium" >Yes' Create Website</span>
+              <span className="font-medium" >Yes' Create Website</span>
             </Button>
 
 
@@ -457,7 +460,7 @@ event.target.innerText = 'Regenerate'
             >
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Company Name <span className="text-blue-600">*</span>
               </label>
@@ -468,14 +471,14 @@ event.target.innerText = 'Regenerate'
                 onChange={(e)=> checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
-                class="company_name_input  focus:border-indigo-500 font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class="company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
-<p class="error-message mt-2 text-sm text-green-600 font-visita-medium"></p>
+<p class="error-message mt-2 text-sm text-green-600 font-medium"></p>
 
               <label
                 for="large-input"
-                class="block mb-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-8"
+                class="block mb-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-8"
               >
                 Upload Company Logo <span className="text-blue-600">*</span>
               </label>
@@ -521,7 +524,7 @@ event.target.innerText = 'Regenerate'
                 <label
                   for="create-choose-logo"
                   id="choose_logo_button"
-                  className="lg:-ml-12 hover:bg-slate-800 hover:text-white transition-colors -ml-36 lg:text-md text:sm cursor-pointer border-slate-800 border px-4 py-2 rounded-full font-visita-bold text-slate-800"
+                  className="lg:-ml-12 hover:bg-slate-800 hover:text-white transition-colors -ml-36 lg:text-md text:sm cursor-pointer border-slate-800 border px-4 py-2 rounded-full font-bold text-slate-800"
                 >
                   Choose Logo
                 </label>
@@ -531,7 +534,7 @@ event.target.innerText = 'Regenerate'
               <div id="choose_theme_color" className="flex flex-col  ">
               <label
                 for="large-input"
-                class="block mb-2 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-4"
+                class="block mb-2 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-4"
               >
                 Choose Matching Theme Color <span className="text-blue-600">*</span>
               </label>
@@ -544,7 +547,7 @@ event.target.innerText = 'Regenerate'
                     themeColors.map((color)=> {
                      return (
                       <div>
-                        <Tooltip className="font-visita-medium" label={color} placement='top' bg='#000' px='3' py='1' rounded='full' color='white'>
+                        <Tooltip className="font-medium" label={color} placement='top' bg='#000' px='3' py='1' rounded='full' color='white'>
                         <div  id={`choose-theme-${color}`} onClick={()=> setChoosedThemeColor(color)} className={`w-8 h-8 mr-4 lg:my-2 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}></div>
                       
                         </Tooltip>
@@ -581,7 +584,7 @@ event.target.innerText = 'Regenerate'
 
 <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+                class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
                 Company Category <span className="text-blue-600">*</span>
               </label>
@@ -594,14 +597,14 @@ event.target.innerText = 'Regenerate'
                 required
                 id="category_input"
                 name="company_category"
-                className=" font-visita-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
 
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+                class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
                 Tagline 
                 <span className="text-blue-600">*</span>
@@ -615,7 +618,7 @@ event.target.innerText = 'Regenerate'
                 required
                 id="tagline_input"
                 name="tagline"
-                className=" font-visita-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
 
@@ -629,14 +632,14 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate tagline</p>
+  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate tagline</p>
 
 
               </div>
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 First Name <span className="text-blue-600">*</span>
               </label>
@@ -646,12 +649,12 @@ event.target.innerText = 'Regenerate'
                 required
                 id="large-input"
                 name="first_name"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Last Name{" "}
                 <span className="text-slate-400 text-sm ml-1">(Optional)</span>
@@ -661,12 +664,12 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="large-input"
                 name="last_name"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Position/Designation <span className="text-blue-600">*</span>
               </label>
@@ -676,12 +679,12 @@ event.target.innerText = 'Regenerate'
                 id="large-input"
                 required
                 name="position"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Phone No <span className="text-blue-600">*</span>
               </label>
@@ -691,12 +694,12 @@ event.target.innerText = 'Regenerate'
                 id="large-input"
                 required
                 name="phone_no"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Alternative Phone No{" "}
                 <span className="text-slate-400 text-sm ml-1">(Optional)</span>
@@ -706,12 +709,12 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="large-input"
                 name="alt_phone_no"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Whatsapp No <span className="text-blue-600">*</span>
               </label>
@@ -721,12 +724,12 @@ event.target.innerText = 'Regenerate'
                 required
                 id="large-input"
                 name="whatsapp_no"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Address <span className="text-blue-600">*</span>
               </label>
@@ -736,12 +739,12 @@ event.target.innerText = 'Regenerate'
                 required
                 id="large-input"
                 name="address"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Email Id <span className="text-blue-600">*</span>
               </label>
@@ -751,12 +754,12 @@ event.target.innerText = 'Regenerate'
                 required
                 id="large-input"
                 name="email_id"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Website{" "}
                 <span className="text-slate-400 text-sm ml-1">(Optional)</span>
@@ -766,12 +769,12 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="large-input"
                 name="website"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Location{" "}
                 <span className="text-slate-400 text-sm ml-1">(Optional)</span>
@@ -781,12 +784,12 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="large-input"
                 name="location"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
 <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Google Map Location Url{" "}
                 <span className="text-slate-400 text-sm ml-1">(Optional)</span>
@@ -796,12 +799,12 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="large-input"
                 name="gmap_location"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm   focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm   focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 City <span className="text-blue-600">*</span>
               </label>
@@ -811,12 +814,12 @@ event.target.innerText = 'Regenerate'
                 id="large-input"
                 required
                 name="city"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Company Est Date <span className="text-blue-600">*</span>
               </label>
@@ -826,12 +829,12 @@ event.target.innerText = 'Regenerate'
                 id="large-input"
                 required
                 name="since"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 About Company <span className="text-blue-600">*</span>
               </label>
@@ -845,7 +848,7 @@ event.target.innerText = 'Regenerate'
                 id="about_input"
                 required
                 name="about"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
               <p onClick={(e)=> {
@@ -858,7 +861,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate bio</p>
+  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate bio</p>
               
               
                             </div>
@@ -867,7 +870,7 @@ event.target.innerText = 'Regenerate'
               
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Specialities <span className="text-slate-400">(Optional)</span>
               
@@ -880,7 +883,7 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="specials_input"
                 name="specials"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
              
               <p onClick={(e)=> {
@@ -893,7 +896,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
+  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
               
               
                             </div>
@@ -902,7 +905,7 @@ event.target.innerText = 'Regenerate'
 
               <label
                 for="large-input"
-                class="block mb-2 lg:text-lg text-md font-visita-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
+                class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Features <span className="text-slate-400">(Optional)</span>
               </label>
@@ -915,7 +918,7 @@ event.target.innerText = 'Regenerate'
                 autoComplete="off"
                 id="features_input"
                 name="features"
-                class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
              
               <p onClick={(e)=> {
@@ -928,7 +931,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-visita-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
+  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
               
               
                             </div>
@@ -952,7 +955,7 @@ event.target.innerText = 'Regenerate'
         >
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             <i class="fa-brands fa-facebook mr-1"></i> Facebook Link{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -962,12 +965,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="facebook_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             <i class="fa-brands fa-instagram mr-1"></i> Instagram Link{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -977,12 +980,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="instagram_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             <i class="fa-brands fa-twitter mr-1"></i> Twitter Link{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -992,12 +995,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="twitter_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             <i class="fa-brands fa-linkedin mr-1"></i> LinkedIn Link{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1007,12 +1010,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="linkedin_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             <i class="fa-brands fa-youtube mr-1"></i> Youtube Link{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1022,12 +1025,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="youtube_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             <i class="fa-brands fa-pinterest mr-1"></i> Pinterest Link{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1037,17 +1040,17 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="pinterest_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
-          <h1 className="text-xl mt-12 font-visita-bold mb-6 flex justify-center">
+          <h1 className="text-xl mt-12 font-bold mb-6 flex justify-center">
             Youtube Video Links
            
           </h1>
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             Youtube Video Link 1{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1057,12 +1060,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="ytvideo_1_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             Youtube Video Link 2{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1072,12 +1075,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             Youtube Video Link 3{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1087,12 +1090,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="ytvideo_3_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             Youtube Video Link 4{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1102,12 +1105,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="ytvideo_4_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 mt-6 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
           >
             Youtube Video Link 5{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1117,7 +1120,7 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="ytvideo_5_link"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
         </div>
 
@@ -1130,7 +1133,7 @@ event.target.innerText = 'Regenerate'
         >
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Paytm Number{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1140,12 +1143,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="paytm_number"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Google Pay Number{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1155,12 +1158,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="googlepay_number"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             PhonePe Number{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1170,23 +1173,23 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="phonepe"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
-          <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
+          <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
            
             Payment QR Codes
           </h1>
 
           <label
             for="large-input"
-            class="block mb-4 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-4 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Paytm QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"paytm_qrcode")}}
@@ -1195,13 +1198,13 @@ event.target.innerText = 'Regenerate'
 
           <label
             for="large-input"
-            class="block mb-4 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-4 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Google Pay QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"googlepay_qrcode")}}
@@ -1210,27 +1213,27 @@ event.target.innerText = 'Regenerate'
 
           <label
             for="large-input"
-            class="block mb-4 text-lg font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-4 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             PhonePe QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,"phonepe_qrcode")}}
           />
           <input type="text" name="phonepe_qrcode" id="phonepe_qrcode" className="hidden" />
 
-          <h1 className="text-xl mt-12 font-visita-bold mb-12 flex justify-center">
+          <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
           
             Bank Account Details
           </h1>
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Bank Name
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1240,12 +1243,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="bank_name"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Account Holder Name
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1255,12 +1258,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="account_holder_name"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Bank Account Number
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1270,12 +1273,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="bank_account_number"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             Bank IFSC Code
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1285,12 +1288,12 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="bank_ifsc_code"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
 
           <label
             for="large-input"
-            class="block mb-2 lg:text-lg text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
+            class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
           >
             GST
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
@@ -1300,7 +1303,7 @@ event.target.innerText = 'Regenerate'
             autoComplete="off"
             id="large-input"
             name="gst"
-            class=" font-visita-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
         </div>
 
@@ -1316,7 +1319,7 @@ event.target.innerText = 'Regenerate'
               <div className="flex flex-col lg:items-start items-center">
                 <label
                   for="large-input"
-                  class="block mb-2 lg:text-lg  text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 lg:mt-6 mt-10 "
+                  class="block mb-2 lg:text-lg  text-md font-medium text-gray-900 border-slate-800 :text-gray-300 lg:mt-6 mt-10 "
                 >
                   Product Or Service {data}
                   <span className="text-slate-400 ml-1 text-sm">
@@ -1326,7 +1329,7 @@ event.target.innerText = 'Regenerate'
                 <div className="lg:w-full  lg:pb-8 pb-24   lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8  ">
                   <div class="flex border border-slate-800 py-[130px] lg:px-0 px-8 lg:mb-0 mb-6 justify-center  lg:w-[400px] w-[280px]   rounded-md  items-center">
                   <input
-            className=" ml-6 font-visita-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className=" ml-6 font-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`product_image_${data}`)}}
@@ -1341,7 +1344,7 @@ event.target.innerText = 'Regenerate'
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_name`}
-                      class=" font-visita-medium block py-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium block py-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1349,7 +1352,7 @@ event.target.innerText = 'Regenerate'
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_description`}
-                      class=" font-visita-medium block py-4 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium block py-4 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1357,7 +1360,7 @@ event.target.innerText = 'Regenerate'
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_orgprice`}
-                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1365,7 +1368,7 @@ event.target.innerText = 'Regenerate'
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_offerprice`}
-                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                     <input
@@ -1373,7 +1376,7 @@ event.target.innerText = 'Regenerate'
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_link`}
-                      class=" font-visita-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
 
                   </div>
@@ -1398,7 +1401,7 @@ event.target.innerText = 'Regenerate'
              <div  >
                <label
               for="large-input"
-              class="block mb-2 lg:text-lg   text-md font-visita-medium text-gray-900 border-slate-800 :text-gray-300 lg:mt-6 mt-10 "
+              class="block mb-2 lg:text-lg   text-md font-medium text-gray-900 border-slate-800 :text-gray-300 lg:mt-6 mt-10 "
             >
               Image {data}
               <span className="text-slate-400 ml-1 text-sm">
@@ -1408,7 +1411,7 @@ event.target.innerText = 'Regenerate'
               <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0   flex lg:flex-row flex-col items-center  py-8   border-b border-b-slate-800">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                   <input
-            className="  font-visita-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="  font-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e)=> {uploadImage(e.target.files,`image_${data}`)}}
@@ -1443,7 +1446,7 @@ event.target.innerText = 'Regenerate'
     <h1 className="flex flex-col" >
    
 <div className="flex lg:flex-row flex-col-reverse"> 
-<span className="font-visita-bold text-lg mr-4" >Get your customers details</span>
+<span className="font-bold text-lg mr-4" >Get your customers details</span>
     <Switch colorScheme='purple' value={false} onChange={(e)=> {
 
       if(feature1 == true){
@@ -1457,7 +1460,7 @@ event.target.innerText = 'Regenerate'
 
     <input type="text" value={feature1} name="show_customer_details_popop" className="hidden"  />
 
-    <span className="font-visita-medium mt-4 lg:w-[600px]  w-[300px] text-slate-400" >
+    <span className="font-medium mt-4 lg:w-[600px]  w-[300px] text-slate-400" >
     This will help you to get all your customer details like name,phone number etc.when your customer enters to your website it will be show a popup for enter name and phone number.if the customer enter his details and submit you will get the details on your website manage page
     </span>
     </h1>
@@ -1488,7 +1491,7 @@ event.target.innerText = 'Regenerate'
                   processIndex != 1 ? processIndex - 1 : processIndex
                 )
               }
-              className="w-[150px] lg:mr-6 mr-2 font-visita-medium"
+              className="w-[150px] lg:mr-6 mr-2 font-medium"
               size="md"
               color='white'
             >
@@ -1504,7 +1507,7 @@ event.target.innerText = 'Regenerate'
               loadingText="Creating Website"
               onClick={() => handleNextClick()}
               backgroundColor="#5046E4"
-              className="w-[200px] font-visita-medium lg:mr-6"
+              className="w-[200px] font-medium lg:mr-6"
               size="md"
               color='white'
             >
@@ -1518,7 +1521,7 @@ event.target.innerText = 'Regenerate'
               rounded={"full"}
               backgroundColor="#5046E4"
               _hover
-              className="w-[100px]  font-visita-medium  lg:mr-6 mr-2"
+              className="w-[100px]  font-medium  lg:mr-6 mr-2"
               size="md"
               color='white'
               onClick={() => setProcessIndex(processIndex + 1)}

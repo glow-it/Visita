@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Timer = (props) => {
-    const {initialMinute = 0,initialSeconds = 0} = props;
+const Timer = (initialMinute=0,initialSeconds=0) => {
     const [ minutes, setMinutes ] = useState(initialMinute);
     const [seconds, setSeconds ] =  useState(initialSeconds);
     useEffect(()=>{
@@ -28,7 +27,7 @@ const Timer = (props) => {
         <div>
         { minutes === 0 && seconds === 0
             ? null
-            : <h1 className="font-visita-medium" >OTP can be resend after <span className="text-purple-600" >{seconds}s</span></h1> 
+            : <h1 className="font-medium" >OTP can be resend after <span className="text-purple-600" >{seconds}s</span></h1> 
         }
         </div>
     )

@@ -17,7 +17,7 @@ function CreateHeader({
     >
 
 
-<h1 id="process_title" className="lg:block hidden text-center absolute left-24 lg:text-3xl text-xl text-indigo-600 font-visita-bold">
+<h1 id="process_title" className="lg:block hidden text-center absolute left-24 lg:text-3xl text-xl text-indigo-600 font-bold">
           Create
         </h1>
 
@@ -39,7 +39,7 @@ function CreateHeader({
           onClick={() => {
             window.open(live_preview_url);
           }}
-          className="text-sm hover:underline py-1 lg:absolute lg:right-24 lg:-mt-0 -mt-10 flex cursor-pointer font-visita-bold text-indigo-600  text-center px-6  bg-indigo-50 rounded-full"
+          className="text-sm hover:underline py-1 lg:absolute lg:right-24 lg:-mt-0 -mt-10 flex cursor-pointer font-bold text-indigo-600  text-center px-6  bg-indigo-50 rounded-full"
         >
           {" "}
           Live Preview{" "}

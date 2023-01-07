@@ -212,7 +212,7 @@ function FranchiseeRegister() {
       <div className="flex min-h-full  items-center  justify-center lg:mt-12 mt-16 px-4 sm:px-6 lg:px-8">
         <div className="   rounded-3xl  px-8 py-16 w-full max-w-md space-y-8 z-50">
           <div>
-            <h2 className="mt-6 text-center lg:text-4xl text-3xl font-visita-bold tracking-tight text-gray-900">
+            <h2 className="mt-6 text-center lg:text-4xl text-3xl font-bold tracking-tight text-gray-900">
               Franchisee Register
             </h2>
           </div>
@@ -225,7 +225,7 @@ function FranchiseeRegister() {
               <div className=" w-full -mt-4 flex items-center justify-center">
                 <span
                   id="pass_strength_display"
-                  class="bg-red-100 hidden text-red-800 font-visita-medium text-sm rounded-full font-medium px-4 py-1  "
+                  class="bg-red-100 hidden text-red-800 font-medium text-sm rounded-full  px-4 py-1  "
                 >
                   Weak
                 </span>
@@ -258,7 +258,7 @@ function FranchiseeRegister() {
                   required
                   type={"text"}
                   id="franchisee_name"
-                  className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
                   placeholder="Enter franchisee name"
                 />
               </div>
@@ -270,7 +270,7 @@ function FranchiseeRegister() {
                   autoComplete="off"
                   required
                   type={"tel"}
-                  className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
                   placeholder="Enter phone no"
                 />
               </div>
@@ -283,7 +283,7 @@ function FranchiseeRegister() {
                   autoComplete="off"
                   required
                   type={"text"}
-                  className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
                   placeholder="Enter Upi Id"
                 />
 
@@ -312,7 +312,7 @@ salary"
                   autoComplete="off"
                   required
                   type={"email"}
-                  className="relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
                   placeholder="Enter email"
                 />
               </div>
@@ -326,7 +326,7 @@ salary"
                   required
                   type={"password"}
                   id="franchisee_password"
-                  className=" relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className=" relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
                   placeholder="Enter password"
                 />
               </div>
@@ -335,7 +335,7 @@ salary"
                 name="isFranchiseeFirstCardCreated"
                 autoComplete="off"
                 value={false}
-                className="hidden relative block transition-all franch-register-inputs font-visita-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                className="hidden relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
               />
             </div>
 
@@ -347,20 +347,20 @@ salary"
                 disabled={is_register_button_disabled}
                 isLoading={loading}
                 loadingText={loadingText}
-                className="font-visita-medium"
+                className="font-bold"
                 rounded="full"
                 _hover={{ backgroundColor: "rgb(66 56 157 / 1)" }}
                 backgroundColor="rgb(88 80 236 / 1)"
                 style={{ padding: "25px 60px", width: "100%" }}
                 colorScheme="blue"
               >
-                Pay ₹999
+                Pay 999rs
               </Button>
             </div>
             <div className="w-full flex justify-center items-center">
               <p
                 onClick={() => navigate("/franchisee/login")}
-                className="font-visita-medium"
+                className="font-medium"
               >
                 already have a franchisee?{" "}
                 <span className="ml-1 text-indigo-500 cursor-pointer hover:underline">

@@ -16,19 +16,18 @@ function Pricing() {
 
        <div className="w-full h-full flex flex-col lg:pt-16 lg:pl-12 items-center">
 
-       <span  className='font-visita-bold text-green-500 mb-6' >100% Secure</span>
 
-            <h1  className='lg:leading-[60px] text-center font-visita-black text-black lg:text-5xl text-3xl' >Pay <span className='text-primary text-blue-600' >
-            599rs per year</span> And <br /> Use It Forever</h1>
+            <h1  className='lg:leading-[60px] text-center mt-6 font-extrabold text-black lg:text-5xl text-3xl' >Pay <span className='text-primary text-blue-600' >
+            599rs/Year</span> And <br /> Grow your business</h1>
 
-<h1  className='text-center lg:text-xl text-xs font-visita-medium mt-6' >Now just only Rs 599/year. Pay once and we'll automatically <br /> take payment from your bank annually. Payment secured by Razorpay</h1>
+<h1  className='text-center text-slate-500 lg:text-xl text-xs font-medium mt-6' >Now just only Rs 599/year. Pay once and we'll automatically <br /> take payment from your bank annually. Payment secured by Razorpay</h1>
 
 <div   className="flex flex-col items-start">
-<h1 className=' font-visita-medium lg:text-xl text-lg mt-12 flex' > <span className='text-2xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span> We will automatically withdraw ₹599 per year from your bank</h1>
+<h1 className=' font-medium lg:text-xl text-lg mt-12 flex' > ✦ We will automatically withdraw ₹599 per year from your bank</h1>
 
-<h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>You can close the Website at any time</h1>
+<h1   className='font-medium text-xl mt-2 flex' > ✦ You can close the Website at any time</h1>
 
-<h1   className='font-visita-medium text-xl mt-2 flex' > <span className='lg:text-2xl text-xl flex items-center justify-center text-green-500 mr-2' ><ion-icon name="arrow-forward-circle"></ion-icon></span>All Payment Methods Are Available</h1>
+<h1   className='font-medium text-xl mt-2 flex' > ✦ All Payment Methods Are Available</h1>
 </div>
 
 
@@ -38,7 +37,7 @@ function Pricing() {
           <Link
           to='/create'
             type="button"
-            class="text-white bg-blue-600 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-2xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2"
+            class="text-white bg-blue-600 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-lg text-md font-medium px-10 py-2.5 mr-2 mb-2"
           >
             Create now
           </Link>
@@ -48,7 +47,7 @@ function Pricing() {
           <Link
               to="/visita"
               type="button"
-              class="text-blue-600 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-visita-medium px-10 py-2 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+              class="text-blue-600 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-lg  text-md font-medium px-10 py-2 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
             >
               See demo
             </Link>
@@ -57,7 +56,7 @@ function Pricing() {
         </div>
 
 <div   className="flex lg:flex-row flex-col justify-center lg:items-start items-center">
-<h1 className='lg:text-md text-sm font-visita-medium lg:ml-24 text-slate-400 lg:mt-16 mt-12' >Payment Secured By</h1>
+<h1 className='lg:text-md text-sm font-medium lg:ml-24 text-slate-400 lg:mt-16 mt-12' >Payment Secured By</h1>
 
 <a onClick={()=> window.open('https://www.razorpay.com')} className='cursor-pointer'>
 

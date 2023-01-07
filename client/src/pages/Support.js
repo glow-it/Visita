@@ -33,7 +33,7 @@ function Support() {
       <div class="flex flex-wrap lg:justify-between -mx-4">
          <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
             <div class="max-w-[570px] mb-12 lg:mb-0">
-               <span  class="block mb-4 text-base text-primary font-visita-bold">
+               <span  class="block mb-4 text-base text-primary font-bold">
                Help Center
                </span>
                <h2
@@ -41,17 +41,16 @@ function Support() {
                   class="
                   text-dark
                   mb-6
-                  uppercase
-                  font-visita-bold
+                  font-bold
                   text-[32px]
                   sm:text-[40px]
                   lg:text-[36px]
                   xl:text-[40px]
                   "
                   >
-                  GET IN TOUCH WITH US
+                  Get In Touch With Us
                </h2>
-               <p  class="text-base font-visita-medium text-body-color leading-relaxed mb-9">
+               <p  class="text-base font-medium text-body-color leading-relaxed mb-9">
                At this time you can ask us your needs or problems. You can easily ask for bugs, issues, improvements, new features and more. We have included location, phone number and mail. So you can contact us with the given details.
                </p>
                <div class="flex mb-8 max-w-[370px] w-full">
@@ -76,8 +75,8 @@ function Support() {
                    <span className='text-white text-2xl' ><ion-icon name="location"></ion-icon></span>
                   </div>
                   <div  class="w-full">
-                     <h4 class="font-visita-bold text-dark text-xl mb-1">Our Location</h4>
-                     <p class="text-base text-body-color font-visita-medium">
+                     <h4 class="font-bold text-dark text-xl mb-1">Our Location</h4>
+                     <p class="text-base text-body-color font-medium">
                         Manjeri Kerala, India  676121
                      </p>
                   </div>
@@ -104,8 +103,8 @@ function Support() {
                      <span className='text-white text-2xl' ><ion-icon name="call"></ion-icon></span>
                   </div>
                   <div  class="w-full">
-                     <h4 class="font-visita-bold text-dark text-xl mb-1">Phone Number</h4>
-                     <p class="flex text-base text-body-color font-visita-medium">{apiKeys.call_phone_no} <a href={`tel:${apiKeys.call_phone_no}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
+                     <h4 class="font-bold text-dark text-xl mb-1">Phone Number</h4>
+                     <p class="flex text-base text-body-color font-medium">{apiKeys.call_phone_no} <a href={`tel:${apiKeys.call_phone_no}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
                   </div>
                </div>
                <div class="flex mb-8 max-w-[370px] w-full">
@@ -130,15 +129,15 @@ function Support() {
                    <span className='text-white text-2xl' ><ion-icon name="mail"></ion-icon></span>
                   </div>
                   <div  class="w-full">
-                     <h4 class="font-visita-bold text-dark text-xl mb-1">
+                     <h4 class="font-bold text-dark text-xl mb-1">
                         Email Address
                      </h4>
-                     <p class="flex text-base text-body-color font-visita-medium">{apiKeys.visita_email}<a href={`mailto:${apiKeys.visita_email}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
+                     <p class="flex text-base text-body-color font-medium">{apiKeys.visita_email}<a href={`mailto:${apiKeys.visita_email}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
                   </div>
                </div>
             </div>
          </div>
-         <h1 className='lg:block hidden font-visita-bold text-4xl absolute right-44 bottom-44' >Click On The Chat Button <br /> For Chat With Our Staff <span className='animate-pulse text-7xl absolute rotate-45 text-blue-600 top-20' ><ion-icon name="arrow-forward"></ion-icon></span></h1>
+         <h1 className='lg:block hidden font-bold text-4xl absolute right-44 bottom-44' >Click On The Chat Button <br /> For Chat With Our Staff <span className='animate-pulse text-7xl absolute rotate-45 text-blue-600 top-20' ><ion-icon name="arrow-forward"></ion-icon></span></h1>
       </div>
    </div>
 </section>

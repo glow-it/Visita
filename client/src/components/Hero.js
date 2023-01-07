@@ -28,13 +28,13 @@ function Hero() {
           <ModalCloseButton rounded='full' />
           <ModalBody >
             <div className="flex py-12 px-8 flex-col items-center justify-center">
-              <h1 className="text-3xl text-center font-visita-bold" >What do you want <br /> to know about?</h1>
-              <Button onClick={()=> navigate('franchisee/how-to-franchisee')} className="font-visita-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='8' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
+              <h1 className="text-3xl text-center font-bold" >What do you want <br /> to know about?</h1>
+              <Button onClick={()=> navigate('franchisee/how-to-franchisee')} className="font-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='8' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
                 Franchisee <span className="flex items-center justify-center ml-2">
                   <ion-icon name="arrow-forward"></ion-icon>
                 </span>
               </Button>
-              <Button onClick={()=> window.open('https://scribehow.com/shared/Visita_Create_Card_Process__xIfmyzszTXSukxUZiWzWTw')} className="font-visita-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='3' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
+              <Button onClick={()=> window.open('https://scribehow.com/shared/Visita_Create_Card_Process__xIfmyzszTXSukxUZiWzWTw')} className="font-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200" _hover  rounded='full' mt='3' fontSize='lg' px='12' py='6' bg='#0062FF' color='white' >
                 Create  Website <span className="flex items-center justify-center ml-2">
                   <ion-icon name="arrow-forward"></ion-icon>
                 </span>
@@ -59,11 +59,11 @@ function Hero() {
             
 
 
-        <h1  className="  font-visita-black  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
+        <h1  className=" lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
         <span  >Easily Create A Website </span> <br />  For Your Business
         </h1>
 
-        <p className="font-visita-medium text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 ">
+        <p className="font-medium text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 ">
           Visita is the smartest way to grow your business by creating your own website
         </p>
 
@@ -72,7 +72,7 @@ function Hero() {
             <Link
               to="/create"
               type="button"
-              class="text-blue-600 lg:ml-0 ml-8 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-xl  text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+              class="text-blue-600 lg:ml-0 ml-8 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-xl  text-xl font-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
             >
               Create now
             </Link>
@@ -81,7 +81,7 @@ function Hero() {
           <p
             onClick={() => navigate("/visita")}
             type="button"
-            class="text-white bg-blue-600 lg:ml-0 ml-8 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-xl text-xl font-visita-medium px-10 py-2.5 mr-2 mb-2"
+            class="text-white bg-blue-600 lg:ml-0 ml-8 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-xl text-xl font-medium px-10 py-2.5 mr-2 mb-2"
           >
             See demo
           </p>
@@ -93,7 +93,7 @@ function Hero() {
       >
         <img className="h-16 absolute right-[200px] top-[400px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
 
-        <img className="h-20 absolute left-[50px] top-[220px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
+        <img className="h-20 absolute left-[50px] top-[240px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
       </div>
 
       
