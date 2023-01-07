@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import Cookies from 'js-cookie';
 import { Toast } from '../miniComponents/Toast'
+import apiKeys from '../Api/apiKeys'
 
 function ManageFranchisee() {
 
@@ -39,7 +40,7 @@ function ManageFranchisee() {
             elem.style.display = 'none'
         })
         let franchisee_email = localStorage.getItem("franchisee_email")
-        axios.get(`http://localhost:3005/get-franchisee-datas/${franchisee_email}`).then((res)=> {
+        axios.get(`${apiKeys.server_url}/get-franchisee-datas/${franchisee_email}`).then((res)=> {
             
             if(res.status){
                 if(franchisee_email){
@@ -48,7 +49,7 @@ function ManageFranchisee() {
 
 
 
-                    axios.get('http://localhost:3005/get-all-created-cards').then((response)=> {
+                    axios.get(`${apiKeys.server_url}/get-all-created-cards`).then((response)=> {
                         let cards = response.data
                         
                         let array = []

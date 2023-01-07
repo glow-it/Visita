@@ -37,12 +37,12 @@ function ManageCard() {
         document.querySelectorAll('header').forEach((elem)=> {
             elem.style.display = 'none'
         })
-        axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
+        axios.get(`${apiKeys.server_url}/card/` + company_name).then((response)=> {
 
           if(response.data != null){
             setCardDatas( response.data )
             if(response.data.franchisee != "no franchisee"){
-              axios.get('http://localhost:3005/get-franchisee-datas/' + response.data.franchisee).then((res)=> {
+              axios.get(`${apiKeys.server_url}/get-franchisee-datas/` + response.data.franchisee).then((res)=> {
                 if(res.status){
                   setFranchiseeDatas(res.data.franchisee_data);
                 }
@@ -86,10 +86,9 @@ function ManageCard() {
 
     // Handle Close Card Click
     function HandleCloseCard(){
-      console.log('On Close Card');
       axios({
         method: 'post',
-        url: 'http://localhost:3005/manage/card/close-card',
+        url: `${apiKeys.server_url}/manage/card/close-card`,
         data: {
           sub_id: cardDatas.activated && cardDatas.activated.razorpay.subscription_id,
           company_name

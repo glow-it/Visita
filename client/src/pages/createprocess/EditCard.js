@@ -15,6 +15,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
+import apiKeys from "../../Api/apiKeys";
 
 function EditCard() {
 
@@ -85,7 +86,7 @@ function EditCard() {
 
     document.title = "Visita | Update Website";
 
-    axios.get('http://localhost:3005/card/' + company_name).then((response)=> {
+    axios.get(`${apiKeys.server_url}/card/` + company_name).then((response)=> {
         setCardDatas(response.data);
         setChoosedThemeColor(response.data.theme_color)
     }).catch((err)=> {
@@ -273,7 +274,7 @@ function EditCard() {
   function checkCompanyNameExists(value){
     // Check The Company Name Already Exists
       let company_name_input = document.querySelector('.company_name_input')
-      axios.get('http://localhost:3005/card/all').then((response)=> {
+      axios.get(`${apiKeys.server_url}/card/all`).then((response)=> {
         response.data.map((data)=> {
 
         if(data.company_name == value){
@@ -343,7 +344,7 @@ function EditCard() {
               const formDataObj = {};
               myFormData.forEach((value, key) => (formDataObj[key] = value));
 
-              axios.post(`http://localhost:3005/updatecard/${company_name}`,formDataObj).then((response)=> {
+              axios.post(`${apiKeys.server_url}/updatecard/${company_name}`,formDataObj).then((response)=> {
                 if(response.status == 200){
                   navigate(response.data.redirect_url)
                 }else{

@@ -28,6 +28,7 @@ import { Autoplay, Navigation, Pagination } from "swiper";
 import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../miniComponents/Toast";
+import apiKeys from "../Api/apiKeys";
 
 function Template({preview}) {
   const toast = useToast();
@@ -45,8 +46,7 @@ function Template({preview}) {
   let [features, setFeatures] = useState([]);  
 
 
-  axios.get('http://localhost:3005/bg-images').then((response)=>{
-    console.log(response.data);
+  axios.get(`${apiKeys.server_url}/bg-images`).then((response)=>{
     response.data.map((data)=> {
       if(data.name == cardDatas.theme_color){
         setBgImage(data.image_url)
@@ -72,7 +72,7 @@ function Template({preview}) {
 
 
     axios
-      .get("http://localhost:3005/card/" + params.comp_name)
+      .get(`${apiKeys.server_url}/card/` + params.comp_name)
       .then((response) => {
 
          // Set Manifest Dynamically
@@ -123,7 +123,7 @@ function Template({preview}) {
 
 
         // Update View Count
-        axios.post(`http://localhost:3005/update/view/${response.data.company_name}`)
+        axios.post(`${apiKeys.server_url}/update/view/${response.data.company_name}`)
 
         // Calculate How Much Days Ago Created This Card
         var date1, date2;
@@ -724,7 +724,7 @@ feedback_card_wrapper.appendChild(div);
     myFormData.forEach((value, key) => (formDataObj[key] = value));
 
     axios
-      .post(`http://localhost:3005/submit/customer-details/${cardDatas && cardDatas.company_name}`, formDataObj)
+      .post(`${apiKeys.server_url}/submit/customer-details/${cardDatas && cardDatas.company_name}`, formDataObj)
       .then((response) => {
         if (response.status == 200) {
           Toast({
@@ -1340,7 +1340,7 @@ let obj = {
   form.name.value = ''
 form.feedback.value = ''
 
-  axios.post(`http://localhost:3005/update/feedback/${cardDatas && cardDatas.company_name}`, obj)
+  axios.post(`${apiKeys.server_url}/update/feedback/${cardDatas && cardDatas.company_name}`, obj)
 
 
           }
@@ -1352,7 +1352,7 @@ form.feedback.value = ''
       </div>
     </form>
     <p class="text-center mt-8 text-gray-500 text-xs font-visita-medium pb-6">
-      &copy;2022 Glowit Labs. All rights reserved <br />
+      &copy;2023 Glowit Labs. All rights reserved <br />
      
     </p>
     <span className="font-visita-bold -mt-4 text-center text-gray-500 text-xs pb-6">

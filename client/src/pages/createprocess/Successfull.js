@@ -5,6 +5,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Tooltip, useToast } from '@chakra-ui/react'
 import { Toast } from "../../miniComponents/Toast";
 import * as htmlToImage from 'html-to-image';
+import apiKeys from "../../Api/apiKeys";
 
 
 
@@ -44,7 +45,7 @@ function Successfull() {
       elem.style.display = "none";  
     });
 
-  axios.get('http://localhost:3005/card/' + comp_name).then((response)=> {
+  axios.get(`${apiKeys.server_url}/card/` + comp_name).then((response)=> {
     setCardDatas(response.data)
     if(!response.data.activated){
       navigate('/create/preview/' + comp_name)

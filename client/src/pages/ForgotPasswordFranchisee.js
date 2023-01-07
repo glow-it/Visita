@@ -21,7 +21,7 @@ function ForgotPasswordFranchisee() {
         setOtp(otp)
 
 
-        axios.get('http://localhost:3005/get-franchisee-datas/' + params.franchisee_email).then((response)=> {
+        axios.get(`${apiKeys.server_url}/get-franchisee-datas/` + params.franchisee_email).then((response)=> {
             setFranchiseeDatas(response.data.franchisee_data)
         })
 

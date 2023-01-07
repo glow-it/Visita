@@ -18,6 +18,7 @@ const FranchiseeHelpers = require("./Helpers/FranchiseeHelpers");
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const aiHelpers = require("./Helpers/aiHelpers");
+const dotenv = require('dotenv')
 
 const corsOptions = {
   origin: "*",
@@ -26,8 +27,10 @@ const corsOptions = {
 };
     
 
-
+dotenv.config()
 app.use(cors(corsOptions));
+
+
 
 
 
@@ -51,29 +54,27 @@ app.use(session({
 app.use(cookieParser());
 
 app.get('/', function (req, res) {
-  res.status(200).send({text:"Hello from visita server"})
+  res.status(200).send({text:"Hello from visita server..."})
 });
 
 // Replace the uri string with your connection string.
-const uri = mongo_uri;
+const uri = process.env.mongo_uri;
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri); 
 
 async function run() {
   try {
-    const client_db = client.db(client_database_name);
-    const admin_db = client.db(admin_database_name);
-    const franchisee_db = client.db(franchisee_database_name);
+    const client_db = client.db(process.env.client_database_name);
+    const admin_db = client.db(process.env.admin_database_name);
+    const franchisee_db = client.db(process.env.franchisee_database_name);
 
     // Database Codes
 
     app.post("/createcard", (req, res, next) => {
-      console.log('In Server');
       clientHelpers.cleanCardDatas(req.body).then((data) => {
         clientHelpers
           .createCard(data, client_db)
           .then((response, card_data) => {
-            console.log('Ok');
             res.status(200).send({redirect_url:`/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`})
             res.end();
           })
@@ -303,7 +304,7 @@ async function run() {
 
     app.get('/get-franchisee-datas',(req,res,next)=> {
 
-      console.log(req.body);
+
 
         FranchiseeHelpers.getFranchisee(req.body,franchisee_db).then((response)=> {
           res.json({franchisee_data:response})

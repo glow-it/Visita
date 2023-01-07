@@ -35,7 +35,7 @@ function FranchiseeLogin() {
   function onFranchiseeeLoginClick(){ 
     setLoading(true)
     axios({
-      url: 'http://localhost:3005/franchisee/login',
+      url: `${apiKeys.server_url}/franchisee/login`,
       method: 'post',
       data: $("#franchisee_login_form").serialize()
     }).then((response)=> {

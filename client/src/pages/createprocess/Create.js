@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
 import { Switch } from '@chakra-ui/react'
+import apiKeys from "../../Api/apiKeys";
 
 function Create(props) {
 
@@ -304,7 +305,7 @@ function Create(props) {
     // Check The Company Name Already Exists
       let company_name_input = document.querySelector('.company_name_input')
       let company_name = value
-      axios.get('http://localhost:3005/card/all').then((response)=> {
+      axios.get(`${apiKeys.server_url}/card/all`).then((response)=> {
         response.data.filter((data)=> {
 
 
@@ -325,7 +326,6 @@ function Create(props) {
 
         
         }).map((data)=> {
-          console.log(data);
           if(data){
 
             company_name_input.classList.replace('bg-green-50','bg-red-50')
@@ -347,7 +347,7 @@ function Create(props) {
 
    axios({
     method: 'POST',
-    url: 'http://localhost:3005/generate-completion',
+    url: `${apiKeys.server_url}/generate-completion`,
     data: {
       prompt,
       temperature
@@ -413,7 +413,7 @@ event.target.innerText = 'Regenerate'
               const formDataObj = {};
               myFormData.forEach((value, key) => (formDataObj[key] = value));
 
-              axios.post('http://localhost:3005/createcard',formDataObj).then((response)=> {
+              axios.post(`${apiKeys.server_url}/createcard`,formDataObj).then((response)=> {
                 if(response.status == 200){
                   navigate(response.data.redirect_url)
                 }else{

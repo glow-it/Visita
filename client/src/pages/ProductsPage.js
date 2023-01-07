@@ -2,6 +2,7 @@ import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import apiKeys from '../Api/apiKeys'
 import { Toast } from '../miniComponents/Toast'
 
 function ProductsPage() {
@@ -22,7 +23,7 @@ function ProductsPage() {
 
 
     axios
-      .get("http://localhost:3005/card/" + params.comp_name)
+      .get(`${apiKeys.server_url}/card/` + params.comp_name)
       .then((response) => {
 
 

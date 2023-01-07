@@ -1,15 +1,18 @@
 const { razorpay } = require("../Common/strings")
 let Razorpay = require('razorpay');
 const crypto = require('crypto');
+const dotenv = require('dotenv')
 
-var instance = new Razorpay({ key_id: razorpay.key_id, key_secret: razorpay.key_secret })
+
+dotenv.config()
+var instance = new Razorpay({ key_id: process.env.razorpay_key_id, key_secret: process.env.razorpay_key_secret })
 
 
 module.exports = {
     createSubscription: ()=> {
         return new Promise(async(resolve,reject)=> {
             const params = {
-                plan_id: razorpay.plan_id,
+                plan_id: process.env.razorpay_plan_id,
                 customer_notify: 1,
                 quantity: 1,
                 total_count: 10,
@@ -23,7 +26,7 @@ module.exports = {
     verifyPayment: (res_datas)=> {
        
         return new Promise((resolve,reject)=> {
-            const crypt = crypto.createHmac('sha256', razorpay.key_secret)
+            const crypt = crypto.createHmac('sha256', process.env.razorpay_key_secret)
             crypt.update(res_datas.payment_id+'|'+res_datas.subscription_id)
             const digest = crypt.digest('hex');
             if(digest === res_datas.signature){

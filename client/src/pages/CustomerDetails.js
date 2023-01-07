@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import apiKeys from "../Api/apiKeys";
 
 function CustomerDetails() {
   let params = useParams();
@@ -23,7 +24,7 @@ function CustomerDetails() {
       elem.style.display = "none";
     });
 
-    axios.get("http://localhost:3005/card/" + company_name).then((response) => {
+    axios.get(`${apiKeys.server_url}/card/` + company_name).then((response) => {
       setCardDatas(response.data);
     });
   });

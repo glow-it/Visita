@@ -26,7 +26,7 @@ function FranchiseeRegister() {
   function franchiseeRegisterClick(button) {
     setLoading(true);
     axios
-      .post("http://localhost:3005/create-franchisee-payment")
+      .post(`${apiKeys.server_url}/create-franchisee-payment`)
       .then((response) => {
         if (response.data.status) {
           setLoading(false);
@@ -49,7 +49,7 @@ function FranchiseeRegister() {
               };
               axios({
                 method: "post",
-                url: "http://localhost:3005/verify-payment",
+                url: `${apiKeys.server_url}/verify-payment`,
                 data: res_obj,
               }).then((response) => {
                 if (response) {
@@ -70,7 +70,7 @@ function FranchiseeRegister() {
               myFormData.forEach((value, key) => (formDataObj[key] = value));
 
               axios
-                .post("http://localhost:3005/franchisee/register", formDataObj)
+                .post(`${apiKeys.server_url}/franchisee/register`, formDataObj)
                 .then((response) => {
                   if (response.status == 200) {
                     localStorage.setItem("franchisee_email",formDataObj.email)

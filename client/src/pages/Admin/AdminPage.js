@@ -3,6 +3,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Tooltip, useToast } from '@cha
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Toast } from '../../miniComponents/Toast'
+import apiKeys from '../../Api/apiKeys'
 
 function AdminPage() {
 
@@ -26,12 +27,12 @@ useEffect(()=> {
     })
 
 
-    axios.get('http://localhost:3005/get-all-created-cards').then((response)=> {
+    axios.get(`${apiKeys.server_url}/get-all-created-cards`).then((response)=> {
         setCreatedCards(response.data);
         
     })
     
-    axios.get('http://localhost:3005/get-all-franchisees').then((response)=> {
+    axios.get(`${apiKeys.server_url}/get-all-franchisees`).then((response)=> {
         setFranchisees(response.data);
     })
 
@@ -86,7 +87,7 @@ let earnings_from_franchisee_creation = total_franchisees * price_for_create_fra
 let toast = useToast()
 
 function handleSalaryPayedClick(franchisee_email){
-    axios.post('http://localhost:3005/salary-payed/' + franchisee_email).then((response)=> {
+    axios.post(`${apiKeys.server_url}/salary-payed/` + franchisee_email).then((response)=> {
         if(response.status){
             window.location.href = '/admin/pay-salary'
         }else{

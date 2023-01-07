@@ -20,14 +20,14 @@ function CardPreview() {
   useEffect(() => {
     document.title = "Complete Purchase";
 
-    axios.get("http://localhost:3005/card/" + name).then((response) => {
+    axios.get(`${apiKeys.server_url}/card/` + name).then((response) => {
       setCardDatas(response.data);
 
 
 
       if (response.data.franchisee != "no franchisee") {
         axios
-          .get("http://localhost:3005/get-franchisee-datas" + response.data.franchisee)
+          .get(`${apiKeys.server_url}/get-franchisee-datas` + response.data.franchisee)
           .then((res) => {
             if (res.status) {
               setFranchiseeData(res.data.franchisee_data);
@@ -51,7 +51,7 @@ function CardPreview() {
 
     axios({
       method: "post",
-      url: "http://localhost:3005/complete-purchase",
+      url: `${apiKeys.server_url}/complete-purchase`,
       data: franchiseeData,
     })
       .then((response) => {
@@ -64,7 +64,7 @@ function CardPreview() {
 
           axios({
             method: "post",
-            url: "http://localhost:3005/payment-successfull/" + name,
+            url: `${apiKeys.server_url}/payment-successfull/` + name,
             data: {
               company_name: name,
               razorpay: null,
@@ -151,7 +151,7 @@ function CardPreview() {
         };
         axios({
           method: "post",
-          url: "http://localhost:3005/verify-payment",
+          url: `${apiKeys.server_url}/verify-payment`,
           data: res_obj,
         }).then((response) => {
           if (response) {
@@ -159,7 +159,7 @@ function CardPreview() {
 
             axios({
               method: "post",
-              url: "http://localhost:3005/payment-successfull/" + name,
+              url: `${apiKeys.server_url}/payment-successfull/` + name,
               data: {
                 company_name: name,
                 razorpay: res_obj,
@@ -233,7 +233,7 @@ function CardPreview() {
 
   // When Cancel Purchase Button Click
   function cancelPurchase() {
-    axios.post("http://localhost:3005/create/cancel-purchase/" + name).then((res) => {
+    axios.post(`${apiKeys.server_url}/create/cancel-purchase/` + name).then((res) => {
 
       if (res.data.status) {
         Toast({
@@ -257,10 +257,6 @@ function CardPreview() {
   }
 
 
-
-
-  console.log(cardDatas && cardDatas);
-  console.log(franchiseeData && franchiseeData);
 
   return (
     <div className="h-screen w-full ">
