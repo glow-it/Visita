@@ -1,4 +1,4 @@
 # Visita
 https://visitasmart.com
 
-## Visita Is The Smartest Way To Grow Your Business By Creating Digital Visiting Card
+Visita is the smartest way to grow your business by creating your own website

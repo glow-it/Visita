@@ -18,12 +18,6 @@ function LandingPage() {
       elem.style.display = 'flex'
     })
 
-    // Showing Tidio Chat In This Page
-    window.tidioChatApi.show()
-
-   
-
-   
   },[location])
 
 
