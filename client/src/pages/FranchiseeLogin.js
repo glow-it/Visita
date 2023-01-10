@@ -47,7 +47,7 @@ function FranchiseeLogin() {
           toast
         })
         localStorage.setItem("franchisee_email",document.getElementById('franchisee_login_form').email.value)
-        navigate('/manage/franchisee')
+        navigate('/franchisee')
       }else{
         setLoading(false)
         Toast({

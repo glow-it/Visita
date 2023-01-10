@@ -279,11 +279,11 @@ async function run() {
      createFranchisee(franchisee_db,req.body).then(()=> {
         res.cookie('isFranchiseeLogined',true)
         res.cookie('franchiseeEmail',req.body.email)
-        res.status(200).send({redirect_url:'/manage/franchisee'})
+        res.status(200).send({redirect_url:'/franchisee'})
         res.end()
      }).catch((err)=> {
       res.cookie('isFranchiseeLogined',false)
-      res.status(404).send({redirect_url:'/manage/franchisee'})
+      res.status(404).send({redirect_url:'/franchisee'})
       res.end()
      })
     })

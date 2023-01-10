@@ -104,6 +104,7 @@ function Create(props) {
 
     // Normal Use Effect
     useEffect(()=> {
+
       const imgPreview = document.getElementById("create-logo-preview");
      if( imgPreview.querySelector('img').src == ""){
       imgPreview.querySelector('img').classList.replace('visible','invisible')
@@ -118,6 +119,9 @@ function Create(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   useEffect(() => {
+
+
+
     document.title = "Visita | Create";
 
     // Logo Preview Show

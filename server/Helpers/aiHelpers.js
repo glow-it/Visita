@@ -16,6 +16,9 @@ generateCompletion : (prompt,temperature)=> {
             model: "text-davinci-003",
             prompt,
             temperature,
+            n:1,
+            stop:false,
+            max_tokens:250
             
           }).then((response)=> {
             resolve(response)

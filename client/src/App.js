@@ -23,7 +23,7 @@ import ForgotPasswordFranchisee from "./pages/ForgotPasswordFranchisee";
 import PageNotFound from "./pages/PageNotFound";
 import HowToFranchisee from "./pages/HowToFranchisee";
 import Aos from "aos";
-import ProductsPage from "./pages/ProductsPage";
+import ProductsPage from "./template/ProductsPage";
 import CustomerDetails from "./pages/CustomerDetails";
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
         <Route path="/manage/card/:comp_name/customer-details" element={<CustomerDetails />} />
         <Route path="/franchisee/register" element={<FranchiseeRegister />} />
         <Route path="/franchisee/login" element={<FranchiseeLogin />} />
-        <Route path="/manage/franchisee" element={<ManageFranchisee />} />
+        <Route path="/franchisee" element={<ManageFranchisee />} />
         <Route path="/admin/:type" element={<AdminPage />} />
         <Route path="/card-closed" element={<CardClosedPage />} />
         <Route path="/franchisee/forgot-password/:franchisee_email" element={<ForgotPasswordFranchisee />} />

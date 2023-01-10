@@ -10,7 +10,7 @@ import { Toast } from '../miniComponents/Toast';
 function Support() {
 
    useEffect(()=> {
-      document.title = 'Visita | Help'
+      document.title = 'Visita - Support'
     },[])
 
     let toast = useToast()
@@ -72,7 +72,7 @@ function Support() {
                      rounded-full
                      "
                      >
-                   <span className='text-white text-2xl' ><ion-icon name="location"></ion-icon></span>
+                   <span className='text-white text-2xl flex items-center justify-center' ><ion-icon name="location"></ion-icon></span>
                   </div>
                   <div  class="w-full">
                      <h4 class="font-bold text-dark text-xl mb-1">Our Location</h4>
@@ -100,7 +100,7 @@ function Support() {
                      rounded-full
                      "
                      >
-                     <span className='text-white text-2xl' ><ion-icon name="call"></ion-icon></span>
+                     <span className='text-white text-2xl flex items-center justify-center' ><ion-icon name="call"></ion-icon></span>
                   </div>
                   <div  class="w-full">
                      <h4 class="font-bold text-dark text-xl mb-1">Phone Number</h4>
@@ -126,7 +126,7 @@ function Support() {
                      rounded-full
                      "
                      >
-                   <span className='text-white text-2xl' ><ion-icon name="mail"></ion-icon></span>
+                   <span className='text-white text-2xl flex items-center justify-center' ><ion-icon name="mail"></ion-icon></span>
                   </div>
                   <div  class="w-full">
                      <h4 class="font-bold text-dark text-xl mb-1">

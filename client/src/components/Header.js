@@ -61,7 +61,7 @@ function Header() {
 
   return (
     <div>
-      <header className=" border w-full h-16 flex py-8  bg-white fixed z-50 ">
+      <header className=" border w-full h-16 flex  bg-white fixed z-50 ">
         <div className="w-full h-full  flex items-center justify-center">
           <img
             src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
@@ -161,7 +161,7 @@ function Header() {
                 </Link>
               ) : (
                 <Link
-                  to="/manage/franchisee"
+                  to="/franchisee"
                   className="font-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center"
                 >
                   Go to franchisee
@@ -179,7 +179,7 @@ function Header() {
                 </MenuButton>
                 <MenuList>
                   <MenuItem className="" onClick={() => navigate("/support")}>
-                    <a className="font-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+                    <a className="font-medium  cursor-pointer text-slate-500 hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="help-buoy-outline"></ion-icon>
                       </span>{" "}
@@ -193,7 +193,7 @@ function Header() {
                     }}
                     className=""
                   >
-                    <p className="font-medium  cursor-pointer text-slate-500 hover:text-black  hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
+                    <p className="font-medium  cursor-pointer text-slate-500   hover:bg-blue-50 px-3 rounded-3xl transition-colors flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                       </span>
@@ -372,7 +372,7 @@ function Header() {
                 </Link>
               ) : (
                 <Link
-                  to="/manage/franchisee"
+                  to="/franchisee"
                   className="font-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
                 >
                   Go To Franchisee
