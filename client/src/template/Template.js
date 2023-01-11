@@ -190,8 +190,7 @@ function Template({ preview }) {
     });
 
 
-        // Hiding Tidio Chat In This Page
-        window.tidioChatApi.hide()
+
 
   }, [location]);
 

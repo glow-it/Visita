@@ -27,7 +27,7 @@ function Cta() {
       </h1>
       <h1 className="lg:text-3xl text-md font-bold text-black lg:mt-6 mt-2">
         {" "}
-        Now just only<span className="lg:ml-3 gradient-text">599rs</span>
+        Now just only <span className="lg:ml-3 gradient-text">₹699</span>
       </h1>
 
       <div className="w-full mt-12 py-2 flex lg:flex-row flex-col items-center justify-center">

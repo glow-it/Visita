@@ -18,12 +18,12 @@ function Pricing() {
 
 
             <h1  className='lg:leading-[60px] text-center mt-6 font-extrabold text-black lg:text-5xl text-3xl' >Pay <span className='text-primary text-blue-600' >
-            599rs/Year</span> And <br /> Grow your business</h1>
+            ₹699/Year</span> And <br /> Grow your business</h1>
 
-<h1  className='text-center text-slate-500 lg:text-xl text-xs font-medium mt-6' >Now just only Rs 599/year. Pay once and we'll automatically <br /> take payment from your bank annually. Payment secured by Razorpay</h1>
+<h1  className='text-center text-slate-500 lg:text-xl text-xs font-medium mt-6' >Now just only Rs 699/year. Pay once and we'll automatically <br /> take payment from your bank annually. Payment secured by Razorpay</h1>
 
 <div   className="flex flex-col items-start">
-<h1 className=' font-medium lg:text-xl text-lg mt-12 flex' > ✦ We will automatically withdraw ₹599 per year from your bank</h1>
+<h1 className=' font-medium lg:text-xl text-lg mt-12 flex' > ✦ We will automatically withdraw ₹699 per year from your bank</h1>
 
 <h1   className='font-medium text-xl mt-2 flex' > ✦ You can close the Website at any time</h1>
 

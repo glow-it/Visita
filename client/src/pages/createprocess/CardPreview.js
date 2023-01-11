@@ -135,9 +135,9 @@ function CardPreview() {
     var options = {
       key: apiKeys.razorpay_key,
       subscription_id: res.id,
-      name: "Visita | Digital Visiting Card",
+      name: "Visita",
       description: "Payment For Create Business Website",
-      image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
+      image: "https://i.postimg.cc/90547fLX/visita-fitted-logo.jpg",
       prefill: {
         name: cardDatas.first_name,
         email: cardDatas.email_id,
@@ -316,7 +316,7 @@ function CardPreview() {
           </h1>
 
           <h1
-            className={`lg:text-xl text-sm lg:block hidden font-medium ${
+            className={`lg:text-xl text-sm lg:block hidden font-semibold ${
               cardDatas && cardDatas.activated
                 ? "text-green-600"
                 : "text-indigo-600"
@@ -335,10 +335,10 @@ function CardPreview() {
             franchiseeData && franchiseeData.length == 0 ?
             <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
               <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
-                599rs
+                ₹699
               </h1>
               <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center line-through">
-                999rs
+                ₹999
               </h1>
               
             </div>
@@ -347,10 +347,10 @@ function CardPreview() {
 
           <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
           <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
-            599rs
+            ₹699
           </h1>
           <h1 className="text-4xl font-bold mt-14   py-12 px-12 rounded-3xl line-through text-indigo-600 bg-indigo-50 text-center">
-            999rs
+            ₹999
           </h1>
         </div>
 
@@ -372,7 +372,7 @@ function CardPreview() {
           ) : (
             <button
               onClick={() => cancelPurchase()}
-              className="text-lg font-medium hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
+              className="text-lg font-semibold hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
             >
               Cancel purchase
             </button>
@@ -391,7 +391,7 @@ function CardPreview() {
             </button>
           ) : (
             <Button
-              className="font-medium"
+              className="font-semibold"
               fontSize="md"
               isLoading={isProcessingPayment}
               rounded="full"

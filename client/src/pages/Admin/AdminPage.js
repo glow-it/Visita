@@ -44,7 +44,7 @@ let navigate = useNavigate()
 
 let profit_for_franchisee = 300
 let profit_for_company = 299
-let card_price = 599
+let card_price = 699
 let price_for_create_franchisee = 999
 
 let total_expence = 0;
