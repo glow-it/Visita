@@ -6,6 +6,12 @@ import CreateHeader from "../../components/CreateHeader";
 import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
 import { Toast } from "../../miniComponents/Toast";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 
 function CardPreview() {
   let [franchiseeData, setFranchiseeData] = useState([]);
@@ -288,18 +294,18 @@ function CardPreview() {
 
       <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
 
-      <div className=" lg:hidden block  absolute top-44">
+      <div className=" lg:hidden block  absolute top-28">
       <span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
         </div>
 
         <div
           className={`${
-            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[75%]"
+            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[80%]"
           }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col  items-center justify-center lg:rounded-3xl  lg:border border-indigo-200`}
         >
 
 
-<div className=" lg:block hidden z-50 -mt-12 mb-6">
+<div className=" lg:block hidden z-50  mb-6">
 <span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
         </div>
 
@@ -355,12 +361,7 @@ function CardPreview() {
         </div>
 
             : 
-            <div className="flex lg:flex-row flex-col-reverse">
-            <h1 className="text-xl font-medium mb-12 lg:mt-4 mt-2 bg-green-50 py-1 px-12 rounded-3xl lg:mr-6 text-green-600 text-center">
-              This website is absolutely free
-            </h1>
-           
-          </div>
+          ''
           )}
 
 
@@ -412,7 +413,22 @@ function CardPreview() {
           )}
 
           
+
+          
 </div>
+
+{
+  franchiseeData != null ?
+
+<Alert w='fit-content' mt='7'  status='info' rounded='full' px='6' textAlign='center' className="font-medium">
+    <AlertIcon />
+    Please provide payment details of customer. Dont provide your payment details
+  </Alert>
+
+  : ''
+
+}
+
 
 
         </div>

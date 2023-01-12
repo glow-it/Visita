@@ -7,8 +7,11 @@ import Cookies from 'js-cookie';
 import { Toast } from '../miniComponents/Toast'
 import apiKeys from '../Api/apiKeys'
 import Loading from '../miniComponents/Loading'
+import capitalize from '../Tools/capitalize'
 
 function ManageFranchisee() {
+
+
 
     let [franchiseeData,setFranchiseeData] = useState([])
 
@@ -34,6 +37,13 @@ function ManageFranchisee() {
     let navigate = useNavigate()
 
     useEffect(()=> {
+        
+        
+
+
+      },[])
+
+    useEffect(()=> {
 
         localStorage.setItem('franchisee_top_information_closed',false)
 
@@ -48,6 +58,46 @@ function ManageFranchisee() {
                 if(franchisee_email){
                     
                     setFranchiseeData(res.data.franchisee_data);
+
+                     // Setting Favicon
+         var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+         link.type = 'image/x-icon';
+         link.rel = 'shortcut icon';
+         link.href = 'https://i.postimg.cc/wvxPJzd1/dashboard.png';
+         document.getElementsByTagName('head')[0].appendChild(link);
+
+
+ 
+            document.title = capitalize(res.data.franchisee_data.franchisee_name) + ' - Franchisee'
+
+            // Set Manifest Dynamically
+        var myDynamicManifest = {
+            name: capitalize(res.data.franchisee_data.franchisee_name),
+            short_name: capitalize(res.data.franchisee_data.franchisee_name),
+            description: 'Visita Franchisee',
+            start_url: `/franchisee`,
+            background_color: "#fff",
+            theme_color: "#fff",
+            display: "standalone",
+            scope: `/franchisee`,
+            icons: [
+              {
+                src: 'https://i.postimg.cc/wvxPJzd1/dashboard.png',
+                sizes: "256x256",
+                type: "image/png",
+              },
+            ],
+          };
+          const stringManifest = JSON.stringify(myDynamicManifest);
+          const blob = new Blob([stringManifest], { type: "application/json" });
+          const manifestURL = URL.createObjectURL(blob);
+          document
+            .querySelector("#my-manifest-placeholder")
+            .setAttribute("href", manifestURL);
+            
+         
+
+         
 
 
 
@@ -162,25 +212,7 @@ function ManageFranchisee() {
 
         <Loading isLoading={isLoading} />
 
-         {/* Top Information */}
-
-         {
-            franchiseeData && franchiseeData.isFranchiseeFirstCardCreated != "true" ?
-            <div id='franchisee_top_information' className="h-10 w-full bg-indigo-500  text-white flex items-center justify-center relative">
-            <h1 className='flex font-bold ' ><span className="mr-2 lg:flex hidden items-center justify-center">
-            <ion-icon name="checkmark"></ion-icon></span> Creating the first website is absolutely free !</h1>
-            <div className="text-white absolute justify-center h-full flex items-center right-8">
-            <span className='cursor-pointer lg:block hidden' onClick={()=> {
-                
-                document.getElementById('franchisee_top_information').style.display = 'none'
-        
-        }} ><ion-icon name="close"></ion-icon></span>
-            </div>
-        </div>
-        : ''
-         }
-
-       
+   
 
 {/* Top Information */}
 
@@ -210,7 +242,7 @@ function ManageFranchisee() {
             <div className="w-full  flex-wrap flex items-center justify-center">
                 <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                     <h2 className='-mt-6' >My earnings</h2>
-                    <h1  className=' text-7xl mt-3 text-indigo-800' >{earnings_this_month}rs</h1>
+                    <h1  className=' text-7xl mt-3 text-indigo-800' >₹{earnings_this_month}</h1>
                 </div>
                 <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                 <h2 className='-mt-6' >Websites created</h2>
@@ -256,7 +288,7 @@ function ManageFranchisee() {
             <div className="w-full  flex-wrap flex items-center justify-center">
                 <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                     <h2 className='-mt-6' >My earnings</h2>
-                    <h1 className='text-7xl mt-3 text-indigo-800' >{earnings_this_today}rs</h1>
+                    <h1 className='text-7xl mt-3 text-indigo-800' >₹{earnings_this_today}</h1>
                 </div>
                 <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                 <h2 className='-mt-6' >Websites created</h2>
@@ -302,7 +334,7 @@ function ManageFranchisee() {
             <div className="w-full  flex-wrap flex items-center justify-center">
                 <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                     <h2 className='-mt-6' >My earnings</h2>
-                    <h1 className='text-7xl mt-3 text-indigo-800' >{total_earnings}rs</h1>
+                    <h1 className='text-7xl mt-3 text-indigo-800' >₹{total_earnings}</h1>
                 </div>
                 <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
                 <h2 className='-mt-6' >Websites created</h2>

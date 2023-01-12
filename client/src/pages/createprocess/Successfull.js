@@ -353,7 +353,7 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
 <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-10" >Any Help? Contact Visita <a href="/support" className="text-blue-600 hover: ml-2 cursor-pointer" >Help Center </a></h1>
 
-<h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4" >© Visita - all rights reserved</h1>
+<h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4" >© Glowit Labs - all rights reserved</h1>
 
  
     </div>

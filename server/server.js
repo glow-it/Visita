@@ -198,7 +198,7 @@ async function run() {
     app.post('/payment-successfull/:comp_name',(req,res,next)=> {
       clientHelpers.afterPaymentCompleteProcessess(req.body,client_db).then(()=> {
         adminHelpers.updateCreatedCard(admin_db,req.params.comp_name,req.body.phone_no,req.body.franchisee_email).then(()=> {
-
+ 
           if(req.body.franchisee_email != "no franchisee"){
             FranchiseeHelpers.updateCreatedCards(req.body.franchisee_email,franchisee_db).then(()=> {
               res.json({status: true,req_datas: req.body})

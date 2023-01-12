@@ -362,7 +362,7 @@ function Footer() {
 
 
                </div>
-               <p class="text-base text-white font-medium">© 2023 Visita</p>
+               <p class="text-base text-white font-medium">© 2023 Glowit Labs</p>
                
             </div>
          </div>

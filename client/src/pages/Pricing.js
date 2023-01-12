@@ -7,7 +7,7 @@ function Pricing() {
 
 
   useEffect(()=> {
-    document.title = 'Visita | Pricing'
+    document.title = 'Visita - Pricing'
   },[])
 
   return (

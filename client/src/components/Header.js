@@ -345,7 +345,7 @@ function Header() {
                 className=" font-bold cursor-pointer mt-3"
               >
                 <span className="text-md flex items-center text-primary">
-                  <ion-icon name="chatbubble-ellipses-outine"></ion-icon>
+                  <ion-icon name="chatbubble-ellipses"></ion-icon>
                   <span className="ml-2 text-slate-600">Chat with us</span>
                 </span>{" "}
               </p>
@@ -361,25 +361,31 @@ function Header() {
               {/* <Link to='/franchisee/login' className=" font-bold cursor-pointer mt-3 pb-8" ><span className="text-md flex items-center text-primary" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
 
               {!localStorage.getItem("franchisee_email") ? (
-                <Link
-                  to="/franchisee/register"
+                <p
+                onClick={()=> {
+                  navigate("/franchisee/register");
+                onClose();
+                }}
                   className="font-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
                 >
                   <span className="flex items-center justify-center mr-2">
                     <ion-icon name="log-in"></ion-icon>
                   </span>{" "}
                   Register franchisee
-                </Link>
+                </p>
               ) : (
-                <Link
-                  to="/franchisee"
+                <p
+                  onClick={()=> {
+                    navigate("/franchisee");
+                  onClose();
+                  }}
                   className="font-medium mt-4  cursor-pointer text-blue-600 transition-colors flex items-center"
                 >
                   Go To Franchisee
                   <span className="flex items-center justify-center ml-2">
                     <ion-icon name="arrow-forward-circle"></ion-icon>
                   </span>
-                </Link>
+                </p>
               )}
             </DrawerBody>
           </DrawerContent>
