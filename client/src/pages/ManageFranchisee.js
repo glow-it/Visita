@@ -58,6 +58,7 @@ function ManageFranchisee() {
                 if(franchisee_email){
                     
                     setFranchiseeData(res.data.franchisee_data);
+                    setIsLoading(false)
 
                      // Setting Favicon
          var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -111,7 +112,7 @@ function ManageFranchisee() {
                            
                         }
                         setCreatedCards(array)
-                        setIsLoading(false)
+                        
                             
                         })
 

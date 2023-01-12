@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import apiKeys from '../Api/apiKeys'
+import Loading from '../miniComponents/Loading'
 import { Toast } from '../miniComponents/Toast'
 
 function ProductsPage() {
@@ -17,6 +18,7 @@ function ProductsPage() {
     let [cardDatas,setCardDatas] = useState([])
     let [products,setProducts] = useState([])
     let [searchValue,setSeachValue] = useState([])
+    let [isLoading,setIsLoading] = useState(true)
 
     let toast = useToast()
     let params = useParams()
@@ -25,7 +27,7 @@ function ProductsPage() {
     axios
       .get(`${apiKeys.server_url}/card/` + params.comp_name)
       .then((response) => {
-
+        setIsLoading(false)
 
         setCardDatas(response.data);
         setProducts(response.data.products);
@@ -48,6 +50,8 @@ function ProductsPage() {
 
   return (
     <div className='flex flex-col items-center' >
+
+      <Loading isLoading={isLoading} />
 
 
 
