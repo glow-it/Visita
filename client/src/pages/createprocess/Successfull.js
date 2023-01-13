@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { Tooltip, useToast } from '@chakra-ui/react'
 import { Toast } from "../../miniComponents/Toast";
 import * as htmlToImage from 'html-to-image';
@@ -101,18 +101,18 @@ useEffect(()=> {
       "square"
     ],
     clock:100,
-    max:200,
+    max:300,
     size:2,
-    colors:[[177, 3, 252],[0, 255, 225]],
-    start_from_edge:true,
+    colors:[[149, 0, 255],[255, 0, 238]],
     respawn:false,
-    height:1000
+    height:1300
   };
   const confetti = new ConfettiGenerator(confettiSettings);
   confetti.render();
  
   setTimeout(()=> {
     confetti.clear()
+    document.getElementById('confetti-canvas').style.display = 'none'
   },5000)
   
 },[])
@@ -120,9 +120,36 @@ useEffect(()=> {
 
   return (
      <div>
-       <canvas id="confetti-canvas" className="fixed -top-44 z-50" ></canvas>
+       <canvas id="confetti-canvas" className="fixed -top-96 z-50" ></canvas>
    <div className="z-10">
-     <div  >
+
+    <div className="w-full h-12 flex items-center lg:px-96 px-4">
+
+      {
+        cardDatas && cardDatas.franchisee != "no franchisee" ?
+        <Link to='/franchisee' className="font-medium flex items-center justify-center hover:text-indigo-600 cursor-pointer" ><span className="flex mr-1 items-center justify-center"><ion-icon name="arrow-back-outline"></ion-icon></span>Dashboard</Link>
+        : ''
+      }
+
+     
+
+      <p onClick={()=> {
+        if (navigator.share) {
+          navigator.share({
+            title: params.comp_name.split("-"," ") + ' Business Website Details',
+            url: window.location.href
+          }).then(() => {
+            console.log('Thanks for sharing!');
+          })
+          .catch(console.error);
+        } else {
+          // fallback
+        }
+      }} className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-4 justify-center cursor-pointer" > Share this page <span className="flex ml-1 items-center justify-center"><ion-icon name="arrow-redo"></ion-icon></span></p>
+
+
+    </div>
+
 
       
      <h1 onClick={()=> navigate('/franchisee')} className={`${cardDatas && cardDatas.franchisee === "no franchisee" ? 'hidden' : 'block'} hidden cursor-pointer hover:scale-105 transition-transform py-3 px-6 bg-indigo-600 font-bold rounded-full text-white absolute right-12 top-6`}>
@@ -132,11 +159,11 @@ useEffect(()=> {
 
 
 
-<div id="qrcode_div" className="overflow-y-scroll pb-32 h-screen z-50 w-full flex flex-col items-center lg:px-64 px-4 pt-16 ">
+<div id="qrcode_div" className="overflow-y-scroll pb-32 h-screen z-10 w-full flex flex-col items-center lg:px-64 px-4 pt-16 ">
   <h1 className="text-4xl font-bold mb-6 capitalize">
     Send website
   </h1>
-  <div className={`lg:px-10 lg:py-1 py-2 px-6 mb-8 z-50 h-12 bg-${'purple'}-50 flex items-center justify-center border border-${'purple'}-600 text-${'purple'}-600 rounded-full`}>
+  <div className={`lg:px-10 lg:py-1 py-2 px-6 mb-8 z-10 h-12 bg-${'purple'}-50 flex items-center justify-center border border-${'purple'}-600 text-${'purple'}-600 rounded-full`}>
     <h1 className="font-medium lg:text-xl text-center">
     {base_url}{comp_name}
       
@@ -169,7 +196,7 @@ useEffect(()=> {
     </div>
   </div>
 
-    <div id="qr-code-design" className={`lg:w-[40%] lg:px-0 px-6 transition-all flex-col  ring-2 ring-offset-2 ring-${'purple'}-600 relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${'purple'}-600 border  lg:rounded-3xl rounded-xl z-50 flex items-center justify-center`}>
+    <div id="qr-code-design" className={`lg:w-[40%] lg:px-0 px-6 transition-all flex-col  ring-2 ring-offset-2 ring-${'purple'}-600 relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${'purple'}-600 border  lg:rounded-3xl rounded-xl z-10 flex items-center justify-center`}>
 
     
 
@@ -203,12 +230,12 @@ useEffect(()=> {
   
    </div>
 
-    <div className="lg:w-[50%] w-full mt-16 h-32 flex flex-col items-center justify-center z-50">
+    <div className="lg:w-[50%] w-full mt-16 h-32 flex flex-col items-center justify-center z-10">
 
 
 
 
-    <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-blue-600  border transition-colors hover:bg-blue-600 my-1  hover:text-white cursor-pointer rounded-full font-bold">Open your website</button>
+    <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold">Open your website</button>
 
 
 <button onMouseEnter={()=> {
@@ -226,7 +253,7 @@ document.getElementById('qr_code_wrapper').classList.remove('ring-4',`ring-${'pu
 
 }}
 
-onClick={()=> downloadQrCode()} className="relative flex items-center justify-center py-3 w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-bold"><span className=" absolute left-6 flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span> Download QRCODE</button>
+onClick={()=> downloadQrCode()} className="relative flex items-center justify-center py-3 w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"><span className=" absolute left-6 flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span> Download QRCODE</button>
 
 
 <button
@@ -247,15 +274,15 @@ document.getElementById('qr-code-design').classList.replace('ring-4','ring-2')
 
 
 
-onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center justify-center w-full bg-white text-blue-600 my-1  border transition-colors hover:bg-blue-600  hover:text-white cursor-pointer rounded-full font-bold"><span className=" absolute left-6  flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span>Download QRCODE design</button>
+onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center justify-center w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"><span className=" absolute left-6  flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span>Download QRCODE design</button>
 
     </div>
 
-    <div className="w-50 z-50 h-16 mt-16 flex items-center justify-center">
+    <div className="w-50 z-10 h-16 mt-16 flex items-center justify-center">
 
-   <a href={share_facebook_url}> <i class="fa-brands text-blue-600 hover:text-blue-900 text-4xl fa-facebook mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
+   <a href={share_facebook_url}> <i class="fa-brands text-indigo-600 hover:text-indigo-900 text-4xl fa-facebook mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
 
-   <a href={share_twitter_url}> <i class="fa-brands text-blue-500 hover:text-blue-900 text-4xl fa-twitter mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
+   <a href={share_twitter_url}> <i class="fa-brands text-indigo-500 hover:text-indigo-900 text-4xl fa-twitter mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
 
    <a href={share_linkedin_url}> <i class="fa-brands text-sky-600 hover:text-sky-900 text-4xl fa-linkedin mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
     
@@ -264,15 +291,15 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
    <a href={share_sms_url}> <i class="fa-solid text-stone-600 hover:text-stone-900 text-4xl fa-envelope cursor-pointer hover:scale-110 transition-transform"></i></a>
     </div>
 
-    <div className="flex z-50 flex-col items-center mt-20 ">
+    <div className="flex z-10 flex-col items-center mt-20 ">
     <h1 className="lg:text-3xl text-xl font-bold mb-6 mt-10 capitalize">
     Manage or edit your website
   </h1>
 
 
 
-  <div className="lg:px-10 lg:h-12 h-24 relative w-[80%] lg:w-full mt-20 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
-    <div className="lg:w-full w-[70%] absolute text-blue-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-blue-200">
+  <div className="lg:px-10 lg:h-12 h-24 relative w-[80%] lg:w-full mt-20 bg-indigo-50 flex items-center justify-center border  text-indigo-600 lg:rounded-b-xl rounded-xl">
+    <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
       <h1>Website manage link</h1>
     </div>
     <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center">
@@ -282,7 +309,7 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
     <Tooltip   px='4' bg='black' py='2' color='white' rounded='xl' label='click to copy' placement='right'>
 <i
        
-        class="fa-solid fa-copy text-blue-900 cursor-pointer ml-3"
+        class="fa-solid fa-copy text-indigo-900 cursor-pointer ml-3"
         onClick={()=> {navigator.clipboard.writeText(manage_card_url)
         
 
@@ -312,8 +339,8 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
     </div>
   </div>
 
-  <div className="px-10 lg:h-12 h-24 w-[80%] lg:w-full  relative mt-16 bg-blue-50 flex items-center justify-center border  text-blue-600 lg:rounded-b-xl rounded-xl">
-    <div className="lg:w-full w-[70%] absolute  font-semibold text-blue-600 text-xl rounded-t-xl -top-10 h-10 flex items-center justify-center bg-blue-200">
+  <div className="px-10 lg:h-12 h-24 w-[80%] lg:w-full  relative mt-16 bg-indigo-50 flex items-center justify-center border  text-indigo-600 lg:rounded-b-xl rounded-xl">
+    <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 text-xl rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
       <h1>Website password</h1>
     </div>
     <h1 className="font-medium lg:text-xl text-center">
@@ -332,26 +359,26 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
 <div className="flex flex-col rounded-3xl border px-12 py-12 mt-10 bg-white">
 <div className="flex flex-col items-start">
- <span className="lg:text-xl text-sm font-medium" >1. Go To <br /> <a href={manage_card_url} className="text-blue-600 " >{manage_card_url}</a></span>
+ <span className="lg:text-xl text-sm font-medium" >1. Go To <br /> <a href={manage_card_url} className="text-indigo-600 " >{manage_card_url}</a></span>
   <span className="lg:text-xl text-sm font-medium mt-4" >2. You'll be asked to enter a password</span>
   <span className="lg:text-xl text-sm font-medium mt-4" >3. Then enter the Website password you have send to your email</span>
  </div>
 
- <div className="flex z-50 flex-col items-center  ">
-    <h1 className="lg:text-xl text-sm text-blue-600 font-bold mb-6 mt-10 capitalize">
+ <div className="flex z-10 flex-col items-center  ">
+    <h1 className="lg:text-xl text-sm text-indigo-600 font-bold mb-6 mt-10 capitalize">
    Or
   </h1>
   </div>
 
   <div className="flex flex-col items-start">
- <span className="lg:text-xl text-sm font-medium mt-6" >1. Go To <a href={base_url} className="text-blue-600 " >{base_url}</a></span>
+ <span className="lg:text-xl text-sm font-medium mt-6" >1. Go To <a href={base_url} className="text-indigo-600 " >{base_url}</a></span>
   <span className="lg:text-xl text-sm font-medium mt-4" >2. And Click On Manage Website Button In The Header</span>
   <span className="lg:text-xl text-sm font-medium mt-4" >3. You'll be asked to enter a password</span>
   <span className="lg:text-xl text-sm font-medium mt-4" >4. Then enter the Website password you have send to your email</span>
  </div>
 </div>
 
-<h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-10" >Any Help? Contact Visita <a href="/support" className="text-blue-600 hover: ml-2 cursor-pointer" >Help Center </a></h1>
+<h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-10" >Any Help? Contact Visita <a href="/support" className="text-indigo-600 hover: ml-2 cursor-pointer" >Help Center </a></h1>
 
 <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4" >© Glowit Labs - all rights reserved</h1>
 
@@ -362,7 +389,7 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
 </div>
    </div>
-     </div>
+
   );
 }
 

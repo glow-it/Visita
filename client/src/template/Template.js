@@ -194,7 +194,7 @@ function Template({ preview }) {
 
   }, [location]);
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
 
   function copyCardUrl() {
     navigator.clipboard.writeText(window.location.href);
@@ -505,12 +505,25 @@ function Template({ preview }) {
                }
     
                 <button
-                  onClick={onOpen}
+                  onClick={()=> {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: cardDatas.company_name + " Website",
+                        url: window.location.href,
+                        
+                      }).then(() => {
+                        console.log('Thanks for sharing!');
+                      })
+                      .catch(console.error);
+                    } else {
+                      // fallback
+                    }
+                  }}
                   className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
                 >
                   Share
                   <span className=" ml-1 text-white text-xl"></span>
-                  <ion-icon name="share-social"></ion-icon>
+                  <ion-icon name="arrow-redo"></ion-icon>
                 </button>
               </div>
               <div className={`${cardDatas && cardDatas.facebook_link == "" && cardDatas && cardDatas.twitter_link == "" && cardDatas && cardDatas.instagram_link == "" && cardDatas && cardDatas.linkedin_link == "" && cardDatas && cardDatas.youtube_link == "" && cardDatas && cardDatas.pinterest_link == "" ? 'invisible' : 'visible'} flex bg-white justify-center  px-4 h-12 my-16 items-center rounded-full`}>
@@ -581,99 +594,7 @@ function Template({ preview }) {
                 )}
               </div>
     
-              <Modal
-                isCentered
-                onClose={onClose}
-                isOpen={isOpen}
-                motionPreset="slideInBottom"
-              >
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader></ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <div className=" w-full h-full flex flex-wrap justify-center">
-                      <a
-                        href={share_whatsapp_url}
-                        className={`h-16 w-16  rounded-full mx-2 my-2 ring-2 ring-offst-2 flex items-center justify-center ring-${theme_color}-600 cursor-pointer`}
-                      >
-                        <span className={`text-${theme_color}-600 text-3xl`}>
-                          <ion-icon name="logo-whatsapp"></ion-icon>
-                        </span>
-                      </a>
-    
-                      <a
-                        href={share_sms_url}
-                        className={`h-16 w-16  rounded-full mx-2 my-2 ring-2 ring-offst-2 flex items-center justify-center ring-${theme_color}-600 cursor-pointer`}
-                      >
-                        <span className={`text-${theme_color}-600 text-3xl`}>
-                          <ion-icon name="chatbubbles"></ion-icon>
-                        </span>
-                      </a>
-    
-                      <a
-                        href={share_facebook_url}
-                        className={`h-16 w-16  rounded-full mx-2 my-2 ring-2 ring-offst-2 flex items-center justify-center ring-${theme_color}-600 cursor-pointer`}
-                      >
-                        <span className={`text-${theme_color}-600 text-3xl`}>
-                          <ion-icon name="logo-facebook"></ion-icon>
-                        </span>
-                      </a>
-    
-                      <a
-                        href={share_twitter_url}
-                        className={`h-16 w-16  rounded-full mx-2 my-2 ring-2 ring-offst-2 flex items-center justify-center ring-${theme_color}-600 cursor-pointer`}
-                      >
-                        <span className={`text-${theme_color}-600 text-3xl`}>
-                          <ion-icon name="logo-twitter"></ion-icon>
-                        </span>
-                      </a>
-    
-                      <a
-                        href={share_linkedin_url}
-                        className={`h-16 w-16  rounded-full mx-2 my-2 ring-2 ring-offst-2 flex items-center justify-center ring-${theme_color}-600 cursor-pointer`}
-                      >
-                        <span className={`text-${theme_color}-600 text-3xl`}>
-                          <ion-icon name="logo-linkedin"></ion-icon>
-                        </span>
-                      </a>
-                    </div>
-                  </ModalBody>
-                  <ModalFooter>
-                    <div
-                      className={` w-full h-16 flex items-center rounded-full border-2 border-${theme_color}-600 pl-4`}
-                    >
-    
-    
-    
-    
-    <span
-                        onClick={copyCardUrl}
-                        className={`flex text-${theme_color}-600 font-medium text-md w-96`}
-                      >
-                       
-    
-                        <span
-                          className={`mr-2 cursor-pointer text-${theme_color}-900 text-xl flex items-center`}
-                        >
-                           <Tooltip hasArrow isOpen={true}   px='4' bg='black' py='4' color='white' rounded='xl' label='click to copy!' placement='top'>
-                          <ion-icon name="copy"></ion-icon>
-                          </Tooltip>
-                        </span>
-                        
-                        {window.location.href}
-                      </span>
-    
-    
-    
-    
-                      
-    
-    
-                    </div>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
+             
             </div>
           </div>
         </div>
