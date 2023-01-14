@@ -702,7 +702,7 @@ function Template({ preview }) {
     }
     
       {/* Scan qr Code */}
-      <div className=" w-full h-72 flex flex-col items-center justify-center relative">
+      <div className=" w-full h-96 flex flex-col items-center justify-center relative">
         <h1
           className={`text-lg  text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
         >
@@ -710,11 +710,12 @@ function Template({ preview }) {
         </h1>
         <div className="mt-10">
           <QRCode
+          size='240'
             value={window.location.href}
-            eyeRadius={10}
+            eyeRadius={20}
             logoImage={cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, 'https://')}
-            logoWidth={30}
-            logoHeight={30}
+            logoWidth={70}
+            logoHeight={70}
             qrStyle="dots"
             fgColor={cardDatas && cardDatas.theme_color}
           />
@@ -728,14 +729,14 @@ function Template({ preview }) {
       {/* About Us */}
       <div
         id="about"
-        className=" w-full py-24 flex flex-col items-center justify-center relative px-6"
+        className=" w-full py-24 flex flex-col items-center justify-center relative px-16"
       >
         <h1
           className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
         >
           About Us
         </h1>
-        <h1 className=" text-xl font-medium w-[300px]">
+        <h1 className=" text-xl font-medium ">
           {cardDatas && cardDatas.since != "" ? (
             <span className="  text-lg font-bold">
               Est {cardDatas && cardDatas.since}

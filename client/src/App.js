@@ -25,7 +25,6 @@ import HowToFranchisee from "./pages/HowToFranchisee";
 import Aos from "aos";
 import ProductsPage from "./template/ProductsPage";
 import CustomerDetails from "./pages/CustomerDetails";
-import PremiumTemplate from "./template/PremiumTemplate";
 
 function App() {
 
@@ -40,7 +39,7 @@ function App() {
         <Route path="create" element={<Create />} />
         <Route path="create/preview/:name" element={<CardPreview />} />
         <Route path="loading/:type" element={<Loading />} />
-        <Route exact path="/:comp_name" element={<PremiumTemplate />} />
+        <Route exact path="/:comp_name" element={<Template />} />
         <Route path="/:comp_name/products" element={<ProductsPage />} />
         <Route
           path="/activate-warning/:comp_name"
