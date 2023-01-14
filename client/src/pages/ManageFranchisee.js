@@ -64,7 +64,7 @@ function ManageFranchisee() {
          var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
          link.type = 'image/x-icon';
          link.rel = 'shortcut icon';
-         link.href = 'https://i.postimg.cc/wvxPJzd1/dashboard.png';
+         link.href = 'https://i.postimg.cc/6Q0zVtKS/visita-franchisee.png';
          document.getElementsByTagName('head')[0].appendChild(link);
 
 
@@ -83,7 +83,7 @@ function ManageFranchisee() {
             scope: `/franchisee`,
             icons: [
               {
-                src: 'https://i.postimg.cc/wvxPJzd1/dashboard.png',
+                src: 'https://i.postimg.cc/6Q0zVtKS/visita-franchisee.png',
                 sizes: "256x256",
                 type: "image/png",
               },
