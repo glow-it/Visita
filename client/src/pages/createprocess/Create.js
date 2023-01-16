@@ -376,6 +376,7 @@ event.target.innerText = 'Regenerate'
         description: 'try again!!!',
         toast
       })
+      event.target.innerText = 'Generate'
     }
    })
   }
@@ -636,7 +637,7 @@ event.target.innerText = 'Regenerate'
   
   )
   
-  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate tagline</p>
+  }}  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate tagline</p>
 
 
               </div>
@@ -858,14 +859,14 @@ event.target.innerText = 'Regenerate'
               <p onClick={(e)=> {
   
   generateCompletion(document.getElementById('about_input'),
-  `write a bio for a ${document.getElementById('category_input').value}`,
+  `write a bio for a ${document.getElementById('category_input').value} shop or business`,
   1,
   e
   
   
   )
   
-  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate bio</p>
+  }}  className="text-white absolute cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate bio</p>
               
               
                             </div>
@@ -893,14 +894,14 @@ event.target.innerText = 'Regenerate'
               <p onClick={(e)=> {
   
   generateCompletion(document.getElementById('specials_input'),
-  `write specialities for ${document.getElementById('category_input').value} separate with commas without numbers`,
+  `write specialities for ${document.getElementById('category_input').value} shop or business. separate with commas without numbers`,
   1,
   e
   
   
   )
   
-  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
+  }}  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
               
               
                             </div>
@@ -928,14 +929,14 @@ event.target.innerText = 'Regenerate'
               <p onClick={(e)=> {
   
   generateCompletion(document.getElementById('features_input'),
-  `write features for a ${document.getElementById('category_input').value} separate with commas without numbers`,
+  `write features for a ${document.getElementById('category_input').value} shop or business. separate with commas without numbers`,
   1,
   e
   
   
   )
   
-  }}  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
+  }}  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
               
               
                             </div>

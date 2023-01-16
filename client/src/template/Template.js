@@ -729,14 +729,14 @@ function Template({ preview }) {
       {/* About Us */}
       <div
         id="about"
-        className=" w-full py-24 flex flex-col items-center justify-center relative px-16"
+        className=" w-full py-24 flex flex-col  justify-center relative "
       >
         <h1
           className={`text-lg text-white flex rounded-b-full justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
         >
           About Us
         </h1>
-        <h1 className=" text-xl font-medium ">
+        <h1 className=" text-xl font-medium ml-6 ">
           {cardDatas && cardDatas.since != "" ? (
             <span className="  text-lg font-bold">
               Est {cardDatas && cardDatas.since}
@@ -752,14 +752,14 @@ function Template({ preview }) {
         {/* Specialities */}
     
         {cardDatas && cardDatas.specials != "" ? (
-          <div className=" flex flex-col items-start">
+          <div className=" flex flex-col items-start ml-6">
             <span className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}>
               Our Specialities 
             </span>
             {
               specialities.map((data)=> {
                 return(
-    <h1 className=" text-lg font-medium list-item mb-4">
+    <h1 className=" text-lg font-medium list-item list-inside mb-4">
               {data}
               </h1>
                 )
@@ -772,14 +772,14 @@ function Template({ preview }) {
         )}
     
         {cardDatas && cardDatas.features != "" ? (
-          <div className=" flex flex-col items-start">
+          <div className=" flex flex-col items-start ml-6">
             <span className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}>
               Our Features 
             </span>
             {
               features.map((data)=> {
                 return(
-    <h1 className=" text-lg font-medium list-item mb-4">
+    <h1 className=" text-lg font-medium list-item mb-4 list-inside">
               {data}
               </h1>
                 )
