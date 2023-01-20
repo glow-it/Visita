@@ -2,9 +2,9 @@ import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import apiKeys from '../Api/apiKeys'
-import Loading from '../miniComponents/Loading'
-import { Toast } from '../miniComponents/Toast'
+import apiKeys from '../../Api/apiKeys'
+import Loading from '../../miniComponents/Loading'
+import { Toast } from '../../miniComponents/Toast'
 
 function ProductsPage() {
 

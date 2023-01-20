@@ -16,7 +16,7 @@ function Hero() {
 
   return (
   <div>
-      <div className="w-full hero lg:flex sm:p-10 bg-blend-multiply mt-12">
+      <div className="w-full hero lg:h-[88vh]  lg:flex sm:p-10 bg-blend-multiply mt-12">
 
 
 

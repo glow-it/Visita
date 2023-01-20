@@ -9,7 +9,6 @@ import Create from "./pages/createprocess/Create";
 import Loading from "./components/Loading";
 import CardPreview from "./pages/createprocess/CardPreview";
 import { useEffect, useState } from "react";
-import Template from "./template/Template";
 import ActivateWarning from "./pages/createprocess/ActivateWarning";
 import Successfull from "./pages/createprocess/Successfull";
 import ManageCard from "./pages/createprocess/ManageCard";
@@ -23,8 +22,9 @@ import ForgotPasswordFranchisee from "./pages/ForgotPasswordFranchisee";
 import PageNotFound from "./pages/PageNotFound";
 import HowToFranchisee from "./pages/HowToFranchisee";
 import Aos from "aos";
-import ProductsPage from "./template/ProductsPage";
+import ProductsPage from "./template/Pages/ProductsPage";
 import CustomerDetails from "./pages/CustomerDetails";
+import Template from "./template/Template";
 
 function App() {
 

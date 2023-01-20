@@ -240,11 +240,6 @@ body {
   height: 2000px;
 }
 
-/* Hero */
-.hero {
-  height: 85vh;
-}
-
 @media only screen and (min-width: 350px) and (max-width: 1000px) {
   .cta-wrapper {
     height: 45vh !important;

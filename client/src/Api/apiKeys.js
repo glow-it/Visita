@@ -8,6 +8,6 @@ export default {
     visita_email: 'team@visitasmart.com',
     razorpay_key: 'rzp_live_5bsv690sbS0AHj',
     // razorpay_key: 'rzp_test_AWFaDWCA8HlfRh',
-    // server_url: "http://localhost:3005",
-    server_url: "https://visita-9qfx.onrender.com"
+    server_url: "http://localhost:3005",
+    // server_url: "https://visita-9qfx.onrender.com"
 } 
