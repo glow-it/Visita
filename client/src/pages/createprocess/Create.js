@@ -327,7 +327,7 @@ function Create(props) {
           document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
           document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
 
-          return data.company_name == company_name
+          return data.company_name.toLowerCase() == company_name.toLowerCase()
 
         
         }).map((data)=> {
