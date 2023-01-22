@@ -25,8 +25,14 @@ import Aos from "aos";
 import ProductsPage from "./template/Pages/ProductsPage";
 import CustomerDetails from "./pages/CustomerDetails";
 import Template from "./template/Template";
+import PremiumProductsPage from "./template/Pages/PremiumProductsPage";
+import Cart from "./template/Pages/Cart";
 
 function App() {
+
+  useEffect(()=> {
+    Aos.init()
+  },[])
 
     
   return (
@@ -41,6 +47,8 @@ function App() {
         <Route path="loading/:type" element={<Loading />} />
         <Route exact path="/:comp_name" element={<Template />} />
         <Route path="/:comp_name/products" element={<ProductsPage />} />
+        <Route path="/:comp_name/premiumproducts" element={<PremiumProductsPage />} />
+        <Route path="/cart" element={<Cart />} />
         <Route
           path="/activate-warning/:comp_name"
           element={<ActivateWarning />}

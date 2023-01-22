@@ -25,11 +25,12 @@ module.exports = {
       }else{
         client_db
         .collection(client_collections.visiting_card_datas)
-        .findOne({ company_name: { $regex: new RegExp(company_name, "i") } })
+        .findOne({ clean_name: { $regex: new RegExp(company_name, "i") } })
         .then((response) => {
           resolve(response);
         })
         .catch((err) => {
+          console.log(err);
           reject(err);
         });
       }
@@ -514,6 +515,8 @@ module.exports = {
 
       let obj = {
         about: data.about,
+        isPremium:data.isPremium,
+        clean_name:data.company_name.replace(/[ ]/g,""),
         specials: data.specials,
         features: data.features,
         account_holder_name: data.account_holder_name,
@@ -563,6 +566,7 @@ module.exports = {
 
       let obj = {
         about: data.about,
+        
         account_holder_name: data.account_holder_name,
         address: data.address,
         alt_phone_no: data.alt_phone_no,
@@ -1080,7 +1084,9 @@ module.exports = {
         specials: data.specials,
         features: data.features,
         created_at: new Date().getTime(),
-        franchisee: data.franchisee
+        franchisee: data.franchisee,
+        isPremium:data.isPremium,
+        clean_name:data.company_name.replace(/[ ]/g,"")
       };
 
       resolve(obj);
@@ -1091,7 +1097,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       client_db
         .collection(client_collections.visiting_card_datas)
-        .updateOne({ company_name: card_name }, { $push: { feedbacks: data } })
+        .updateOne({ clean_name: card_name }, { $push: { feedbacks: data } })
         .then((response) => {
           resolve(response);
         })
@@ -1105,7 +1111,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       client_db
         .collection(client_collections.visiting_card_datas)
-        .updateOne({ company_name: card_name }, { $push: { customer_details: data } })
+        .updateOne({ clean_name: card_name }, { $push: { customer_details: data } })
         .then((response) => {
           resolve(response);
         })
@@ -1119,7 +1125,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       client_db
         .collection(client_collections.visiting_card_datas)
-        .updateOne({ company_name: comp_name }, { $inc: { views: 1 } });
+        .updateOne({ clean_name: comp_name }, { $inc: { views: 1 } });
     });
   },
 
@@ -1130,7 +1136,7 @@ module.exports = {
       client_db
         .collection(client_collections.visiting_card_datas)
         .updateOne(
-          { company_name: company_name },
+          { clean_name: company_name },
           { $set: { activated } },
           false,
           true
@@ -1139,7 +1145,7 @@ module.exports = {
           client_db
             .collection(client_collections.visiting_card_datas)
             .updateOne(
-              { company_name: company_name },
+              { clean_name: company_name },
               { $set: { isActivated: true } }
             )
             .then(() => {
@@ -1156,9 +1162,9 @@ module.exports = {
   },
 
   cancelPurchase: (client_db,comp_name)=> {
-    let company_name = comp_name.replace(/[-]/g,' ')
+    let company_name = comp_name
     return new Promise((resolve,reject)=> {
-      client_db.collection(client_collections.visiting_card_datas).deleteOne( { company_name: company_name } ).then(()=> {
+      client_db.collection(client_collections.visiting_card_datas).deleteOne( { clean_name: company_name } ).then(()=> {
         resolve()
       }).catch((err)=> {
         reject()
@@ -1168,7 +1174,7 @@ module.exports = {
 
   updateCard: (update_data,client_db,comp_name,yt_videos,products,image_gallery) => {
     return new Promise((resolve,reject)=> {
-      let company_name = comp_name.replace(/[-]/g," ")
+      let company_name = comp_name
 
       let all_data = update_data.obj
       let yt_videos = update_data.yt_videos
@@ -1177,7 +1183,7 @@ module.exports = {
 
      
 
-      client_db.collection(client_collections.visiting_card_datas).updateOne( { company_name: company_name },
+      client_db.collection(client_collections.visiting_card_datas).updateOne( { clean_name: company_name },
       {
         $set: {
           
@@ -1193,6 +1199,8 @@ module.exports = {
         city: all_data.city,
         company_category: all_data.company_category,
         tagline: all_data.tagline,
+        isPremium:all_data.isPremium,
+        clean_name:all_data.company_name.replace(/[ ]/g,""),
         company_name: all_data.company_name,
         email_id: all_data.email_id,
         facebook_link: all_data.facebook_link,
@@ -1234,7 +1242,7 @@ module.exports = {
 
   deleteCard: (data,client_db)=> {
     return new Promise((resolve,reject)=> {
-      client_db.collection(client_collections.visiting_card_datas).deleteOne({company_name: data.company_name}).then(()=> {
+      client_db.collection(client_collections.visiting_card_datas).deleteOne({clean_name: data.company_name}).then(()=> {
         resolve()
       }).catch(()=> {
         reject()

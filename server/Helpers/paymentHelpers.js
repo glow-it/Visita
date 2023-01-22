@@ -9,10 +9,11 @@ var instance = new Razorpay({ key_id: process.env.razorpay_key_id, key_secret: p
 
 
 module.exports = {
-    createSubscription: ()=> {
+    createSubscription: (isPremium)=> {
         return new Promise(async(resolve,reject)=> {
+            console.log(isPremium);
             const params = {
-                plan_id: process.env.razorpay_plan_id,
+                plan_id: isPremium == "false" ? process.env.razorpay_basic_plan_id : process.env.razorpay_premium_plan_id,
                 customer_notify: 1,
                 quantity: 1,
                 total_count: 10,

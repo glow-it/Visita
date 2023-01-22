@@ -55,10 +55,12 @@ function CardPreview() {
   // Handle Complete Purchase Click
   const handleCompletePurchase = () => {
 
+    console.log(cardDatas.isPremium);
+
     axios({
       method: "post",
       url: `${apiKeys.server_url}/complete-purchase`,
-      data: franchiseeData,
+      data: {isPremium:cardDatas.isPremium},
     })
       .then((response) => {
         // Check Card Creation Is First
@@ -300,7 +302,7 @@ function CardPreview() {
 
         <div
           className={`${
-            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[80%]"
+            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[50%]"
           }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col  items-center justify-center lg:rounded-3xl  lg:border border-indigo-200`}
         >
 
@@ -337,32 +339,7 @@ function CardPreview() {
 
           {cardDatas && cardDatas.activated ? (
             ""
-          ) : (
-            franchiseeData && franchiseeData.length == 0 ?
-            <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
-              <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
-                ₹699
-              </h1>
-              <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center line-through">
-                ₹999
-              </h1>
-              
-            </div>
-            
-          : cardDatas && cardDatas.franchisee == "no franchisee" ?
-
-          <div className="lg:flex hidden  lg:flex-row flex-col-reverse">
-          <h1 className="text-4xl font-bold lg:mt-14 mt-2 bg-indigo-50 py-12 px-12 rounded-3xl lg:mr-6 text-indigo-600 text-center border border-indigo-600">
-            ₹699
-          </h1>
-          <h1 className="text-4xl font-bold mt-14   py-12 px-12 rounded-3xl line-through text-indigo-600 bg-indigo-50 text-center">
-            ₹999
-          </h1>
-        </div>
-
-            : 
-          ''
-          )}
+          ) : ""}
 
 
 <div className="w-full flex lg:justify-center mt-8 flex-col-reverse items-center lg:flex-row">

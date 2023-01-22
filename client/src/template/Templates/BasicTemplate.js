@@ -31,7 +31,7 @@ import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
 import Loading from "../../miniComponents/Loading";
 
-function BasicTemplate({ preview }) {
+function BasicTemplate({ preview,subdomain }) {
   const toast = useToast();
   let params = useParams();
   let [cardDatas, setCardDatas] = useState([]);
@@ -64,7 +64,7 @@ function BasicTemplate({ preview }) {
     }
 
     axios
-      .get(`${apiKeys.server_url}/card/` + params.comp_name)
+      .get(`${apiKeys.server_url}/card/` + params.comp_name == undefined ? subdomain : params.comp_name)
       .then((response) => {
         setIsCardLoading(false);
         // Set Manifest Dynamically

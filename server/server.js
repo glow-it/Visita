@@ -87,7 +87,7 @@ async function run() {
     });
 
     app.get(`/card/:company_name`, (req, res, next) => {
-      let comp_name = req.params.company_name.replace(/[-]/g, " ");
+      let comp_name = req.params.company_name
       clientHelpers
         .getCardData(comp_name, client_db)
         .then((response) => {
@@ -146,14 +146,16 @@ async function run() {
 
     app.post('/complete-purchase',(req,res,next)=> {
 
- 
+
 
 
       // Check Is This First Card
       if(req.body.length == 0){
 
+        
+
       
-        paymentHelpers.createSubscription().then((response)=> {
+        paymentHelpers.createSubscription(req.body.isPremium).then((response)=> {
           res.json({sub_data:response,isFirst: false})
         }).catch((err)=> {
           console.log(err);
@@ -172,7 +174,7 @@ async function run() {
           res.json({isFirst: true})
         }else{
          
-          paymentHelpers.createSubscription().then((response)=> {
+          paymentHelpers.createSubscription(req.body.isPremium).then((response)=> {
             res.json({sub_data:response,isFirst: false})
           }).catch((err)=> {
             console.log(err);

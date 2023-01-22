@@ -1,7 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import apiKeys from '../Api/apiKeys'
 
 function Footer() {
+
+   let navigate = useNavigate()
+
   return (
     <div className='lg:h-[110vh] z-10 w-full bg-black flex justify-center items-center lg:-mt-[200px]' >
 
@@ -163,11 +167,12 @@ function Footer() {
                <h4 class="text-slate-600 text-lg font-semibold mb-9">Quick Links</h4>
                <ul>
                   <li>
-                     <a
-                        href="/pricing"
+                     <p
+                        onClick={()=> navigate('/pricing',{state:{franchisee:false,franchisee_email:null}})} 
                         class="
                         inline-block
                         font-medium
+                        cursor-pointer
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -177,7 +182,7 @@ function Footer() {
                         "
                         >
                      Pricing
-                     </a>
+                     </p>
                   </li>
                   <li>
                      <a

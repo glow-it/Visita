@@ -24,8 +24,8 @@ function Successfull() {
   let [cardDatas,setCardDatas] = useState([])
   let [tooltipIsOpen,setTooltipIsOpen] = useState(false)
   let navigate = useNavigate()
-  let base_url = 'https://visitasmart.com/'
-  let manage_card_url = base_url + 'manage/card/' + comp_name
+  let base_url = 'visitasmart.com/'
+  let manage_card_url = base_url + 'manage/card/' + cardDatas.clean_name
   let toast = useToast()
   let clean_compname = params.comp_name.replace(/[-]/g," ")
   
@@ -117,6 +117,8 @@ useEffect(()=> {
   
 },[])
 
+console.log(cardDatas && cardDatas.isPremium);
+
 
   return (
      <div>
@@ -164,14 +166,14 @@ useEffect(()=> {
     Send website
   </h1>
   <div className={`lg:px-10 lg:py-1 py-2 px-6 mb-8 z-10 h-12 bg-${'purple'}-50 flex items-center justify-center border border-${'purple'}-600 text-${'purple'}-600 rounded-full`}>
-    <h1 className="font-medium lg:text-xl text-center">
-    {base_url}{comp_name}
+    <h1 id="website_url_text_successfull" className="font-medium lg:text-xl text-center">
+    {cardDatas && cardDatas.isPremium == "true" ? cardDatas.clean_name + ".visitasmart.com" : "visitasmart.com/" + cardDatas.clean_name}
       
     <Tooltip  isOpen={tooltipIsOpen} hasArrow   px='4' bg='black' py='2' color='white' rounded='lg' label='click to copy' placement='right'>
 <i
        
         class={`fa-solid fa-copy text-${'purple'}-900 cursor-pointer ml-3`}
-        onClick={()=> {navigator.clipboard.writeText(base_url + comp_name)
+        onClick={()=> {navigator.clipboard.writeText(document.getElementById('website_url_text_successfull').innerText)
       
         Toast({
           status: 'success',
@@ -221,7 +223,8 @@ useEffect(()=> {
   </div>
 
   <div className="py-3 px-6 rounded-full mt-6 bg-white">
-    <h1 className={`font-medium text-${'purple'}-600`} >{base_url + comp_name}</h1>
+    <h1 className={`font-medium text-${'purple'}-600`} >
+    {cardDatas && cardDatas.isPremium == "true" ? cardDatas.clean_name + ".visitasmart.com" : "visitasmart.com/" + cardDatas.clean_name}</h1>
   </div>
 
   <h1 className="font-bold text-xl text-center mt-6 text-white ">
@@ -359,7 +362,7 @@ onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center
 
 <div className="flex flex-col rounded-3xl border px-12 py-12 mt-10 bg-white">
 <div className="flex flex-col items-start">
- <span className="lg:text-xl text-sm font-medium" >1. Go To <br /> <a href={manage_card_url} className="text-indigo-600 " >{manage_card_url}</a></span>
+ <span className="lg:text-xl text-sm font-medium" >1. Go To <br /> <a href={"https://"+manage_card_url} target="_blank" className="text-indigo-600 " >{manage_card_url}</a></span>
   <span className="lg:text-xl text-sm font-medium mt-4" >2. You'll be asked to enter a password</span>
   <span className="lg:text-xl text-sm font-medium mt-4" >3. Then enter the Website password you have send to your email</span>
  </div>

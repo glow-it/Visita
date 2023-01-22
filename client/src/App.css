@@ -1120,3 +1120,43 @@ input {
     transform: translateX(-31px);
   }
 }
+
+
+/* premium template designs */
+
+.tagline-text{
+   /* animation properties */
+   -moz-transform: translateX(80%);
+   -webkit-transform: translateX(80%);
+   transform: translateX(80%);
+   
+   -moz-animation: tagline-text-animation 15s linear infinite;
+   -webkit-animation: tagline-text-animation 15s linear infinite;
+   animation: tagline-text-animation 15s linear infinite;
+}
+
+
+/* for Firefox */
+@-moz-keyframes tagline-text-animation {
+  from { -moz-transform: translateX(80%); }
+  to { -moz-transform: translateX(-100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes tagline-text-animation {
+  from { -webkit-transform: translateX(80%); }
+  to { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes tagline-text-animation {
+  from {
+    -moz-transform: translateX(80%);
+    -webkit-transform: translateX(80%);
+    transform: translateX(80%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}

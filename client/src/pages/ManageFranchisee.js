@@ -225,7 +225,7 @@ function ManageFranchisee() {
         <img onClick={()=> window.location.href = '/'} className='lg:block hidden cursor-pointer h-12 left-12 absolute' src=" https://i.postimg.cc/ZKnK7rC2/visitalogo.png />" />
         <h1 className='font-bold text-3xl text-indigo-600 capitalize' >{franchiseeData && franchiseeData.franchisee_name}</h1>
 
-        <h1 onClick={()=> navigate('/create',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-indigo-600 px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create website</h1>
+        <h1 onClick={()=> navigate('/pricing',{state:{franchisee:true,franchisee_email:franchiseeData.email}})} className='font-bold lg:absolute lg:mt-0 mt-4 flex right-28 text-white bg-indigo-600 px-6 py-2 rounded-full hover:bg-indigo-700 cursor-pointer' ><span className='flex items-center justify-center mr-1' ><ion-icon name="add"></ion-icon></span> Create website</h1>
 
        </div>
       

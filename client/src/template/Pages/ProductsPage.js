@@ -17,7 +17,7 @@ function ProductsPage() {
 
     let [cardDatas,setCardDatas] = useState([])
     let [products,setProducts] = useState([])
-    let [searchValue,setSeachValue] = useState([])
+    let [searchValue,setSeachValue] = useState("")
     let [isLoading,setIsLoading] = useState(true)
 
     let toast = useToast()
@@ -82,15 +82,15 @@ function ProductsPage() {
                 products &&
                 products
                   .filter((data, index) => {
-                    let prodname = data.product_name
-                    return prodname != "" && prodname.includes(searchValue);
+                    let prodname = data.product_name.toLowerCase()
+                    return prodname != "" && prodname.includes(searchValue.toLowerCase());
                   })
                   .map((data,index)=> {
                     return(
                       <div
                       z
                       div
-                      className={`w-full pb-12 mb-8 px-8 shadow-xl border-2 border-${theme_color}-600  rounded-3xl flex flex-col items-center relative ${index == 0 ? 'mt-10' : 'mt-2'}`}
+                      className={`w-full pb-12 mb-8 px-8 bg-slate-100    rounded-2xl flex flex-col items-center relative ${index == 0 ? 'mt-10' : 'mt-2'}`}
                     >
                       <img
                         src={data.product_image.replace(/^http:\/\//i, 'https://')}

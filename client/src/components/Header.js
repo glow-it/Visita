@@ -88,12 +88,12 @@ function Header() {
               >
                 See demo
               </p>
-              <Link
-                to="/pricing"
+              <p
+                onClick={()=> navigate('/pricing',{state:{franchisee:false,franchisee_email:null}})} 
                 className=" font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Pricing
-              </Link>
+              </p>
               <a
                 href="#features"
                 className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
@@ -211,7 +211,7 @@ function Header() {
 
           <p
             id="header_create_button"
-            onClick={() => navigate("/create")}
+            onClick={()=> navigate('/pricing',{state:{franchisee:false,franchisee_email:null}})} 
             class=" absolute right-10 py-1.5 px-8 text-md  text-blue-600 lg:block hidden focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-medium"
           >
             Create now
@@ -264,10 +264,7 @@ function Header() {
               </p>
 
               <p
-                onClick={() => {
-                  navigate("/pricing");
-                  onClose();
-                }}
+                 onClick={()=> {navigate('/pricing',{state:{franchisee:false,franchisee_email:null}});onClose()}} 
                 className="font-bold cursor-pointer mt-3"
               >
                 <span className=" text-md flex items-center text-primary">

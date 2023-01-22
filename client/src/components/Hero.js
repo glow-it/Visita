@@ -59,7 +59,7 @@ function Hero() {
             
 
 
-        <h1  className=" lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
+        <h1   className=" lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl">
         <span  >Easily Create A Website </span> <br />  For Your Business
         </h1>
 
@@ -69,13 +69,13 @@ function Hero() {
 
         <div className="lg:mt-12 w-[100%] mt-6  py-2 flex lg:flex-row flex-col lg:ml-0  items-start lg:items-center justify-center">
          
-            <Link
-              to="/create"
+            <button
+               onClick={()=> navigate('/pricing',{state:{franchisee:false,franchisee_email:null}})} 
               type="button"
               class="text-blue-600 lg:ml-0 ml-8 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-xl  text-xl font-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
             >
               Create now
-            </Link>
+            </button>
         
 
           <p

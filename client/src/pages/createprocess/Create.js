@@ -381,6 +381,8 @@ event.target.innerText = 'Regenerate'
    })
   }
 
+  console.log(location.state.isPremium);
+
 
 
   return (
@@ -394,6 +396,8 @@ event.target.innerText = 'Regenerate'
 
 
         <input type="text" name="franchisee" value={location.state ? location.state.franchisee_email : 'no franchisee'} className='hidden' />
+
+        <input type="text" name="isPremium" value={location.state ? location.state.isPremium : location.state.isPremium} className='hidden' />
 
 
 <CreateHeader processIndex={processIndex} loading={loading} hideIndicators={false} />
