@@ -60,11 +60,11 @@ function Successfull() {
   },[]);
 
 
-  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${base_url + comp_name}`;
-  let share_sms_url = `sms:?body=${base_url + comp_name}`;
-  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${base_url + comp_name}`;
-  let share_twitter_url = `https://twitter.com/intent/tweet?text=${base_url + comp_name}`;
-  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${base_url + comp_name}`;
+  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${cardDatas.clean_name + ".visitasmart.com"}`;
+  let share_sms_url = `sms:?body=${cardDatas.clean_name + ".visitasmart.com"}`;
+  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${cardDatas.clean_name + ".visitasmart.com"}`;
+  let share_twitter_url = `https://twitter.com/intent/tweet?text=${cardDatas.clean_name + ".visitasmart.com"}`;
+  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${cardDatas.clean_name + ".visitasmart.com"}`;
 
 
 
@@ -117,7 +117,7 @@ useEffect(()=> {
   
 },[])
 
-console.log(cardDatas && cardDatas.isPremium);
+
 
 
   return (
@@ -238,7 +238,7 @@ console.log(cardDatas && cardDatas.isPremium);
 
 
 
-    <button onClick={()=> window.open(base_url + comp_name)} className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold">Open your website</button>
+    <button onClick={()=> window.open("https://"+cardDatas.clean_name + ".visitasmart.com")} className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold">Open your website</button>
 
 
 <button onMouseEnter={()=> {

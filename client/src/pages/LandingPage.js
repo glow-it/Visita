@@ -19,6 +19,10 @@ function LandingPage() {
   let parts = full.split(".");
   let subdomain = parts[0];
 
+  if(subdomain != "www"){
+    window.location.href = "https://visitasmart.com/" + subdomain
+  }
+
   useEffect(() => {
     document.title = "Visita - Create your own business website easily";
     document.querySelectorAll("header").forEach((elem) => {
@@ -38,19 +42,11 @@ function LandingPage() {
 
   return (
     <div className="landing-page flex flex-col items-center">
-      {subdomain == "www" ? (
-        <div>
           <Hero />
           <Features />
           <Benefits />
           <Cta />
           <Footer />
-        </div>
-      ) : (
-        <div>
-          <Template company_name={subdomain} />
-        </div>
-      )}
     </div>
   );
 }

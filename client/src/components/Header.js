@@ -138,7 +138,7 @@ function Header() {
                                 "/manage/card/" +
                                   document.getElementById(
                                     "manage_card_comp_name"
-                                  ).value
+                                  ).value.replace(/[ ]/g,"")
                               )
                             }
                             className="px-6 py-1 bg-blue-600 rounded-full text-xl font-bold text-white"
@@ -300,7 +300,7 @@ function Header() {
                   var doc = prompt("Enter Company Name");
 
                   if (doc != null) {
-                    navigate("/manage/card/" + doc);
+                    navigate("/manage/card/" + doc.replace(/[ ]/g,""));
                   }
                   onClose();
                 }}

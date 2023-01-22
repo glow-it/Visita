@@ -314,6 +314,9 @@ function EditCard() {
     >
 
 
+
+<input type="text" name="isPremium" value={cardDatas.isPremium} className='hidden' />
+
       
 
 

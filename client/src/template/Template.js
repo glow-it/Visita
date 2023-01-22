@@ -1,14 +1,58 @@
-import React from 'react'
+import { useToast } from '@chakra-ui/react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useParams,useNavigate } from 'react-router-dom'
+import apiKeys from '../Api/apiKeys'
+import { Toast } from '../miniComponents/Toast'
 import BasicTemplate from './Templates/BasicTemplate'
 import PremiumTemplate from './Templates/Premium/PremiumTemplate'
 
-function Template({company_name}) {
-  return (
-    <div>
-        {/* <BasicTemplate subdomain={company_name} /> */}
-        <PremiumTemplate subdomain={company_name} />
-    </div>
-  )
+function Template() {
+
+  let params = useParams()
+  let company_name = params.comp_name
+  let [isCardLoading,setIsCardLoading] = useState(true)
+  let [cardDatas,setCardDatas] = useState()
+  let toast = useToast()
+  let navigate = useNavigate()
+
+
+
+  axios
+      .get(`${apiKeys.server_url}/card/` + company_name)
+      .then((response) => {
+        setIsCardLoading(false);
+
+        setCardDatas(response.data);
+
+      })
+      .catch((err) => {
+        Toast({
+          status: "error",
+          title: "This website is not in our server",
+          postition: "top",
+          toast,
+        });
+        navigate("/");
+      });
+
+
+
+      if(cardDatas){
+        return (
+          <div>
+            {
+              cardDatas.isPremium == "true" ?
+              <PremiumTemplate  />
+              :
+              <BasicTemplate  />
+            }
+             
+          </div>
+        )
+      }
+
+  
 }
 
 export default Template

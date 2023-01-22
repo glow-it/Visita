@@ -34,7 +34,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-function PremiumTemplate1({ preview,subdomain }) {
+function PremiumTemplate1({ preview }) {
   const toast = useToast();
   let params = useParams();
   let [cardDatas, setCardDatas] = useState([]);
@@ -49,7 +49,7 @@ function PremiumTemplate1({ preview,subdomain }) {
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
 
-  let main_company_name = params.comp_name == undefined ? subdomain : params.comp_name
+  let main_company_name = params.comp_name
 
   axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
     response.data.map((data) => {
@@ -504,7 +504,7 @@ function PremiumTemplate1({ preview,subdomain }) {
       <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
         {localStorage.getItem("isAdmin") == "true" ? (
           <div
-            onClick={() => navigate("/manage/card/" + cardDatas.company_name)}
+            onClick={() => navigate("/manage/card/" + cardDatas.clean_name)}
             className="w-full h-14 bg-blue-600  text-white flex z-50 items-center justify-center cursor-pointer"
           >
             <h1 className="font-bold ">Manage website</h1>
@@ -729,7 +729,7 @@ function PremiumTemplate1({ preview,subdomain }) {
                         navigator
                           .share({
                             title: cardDatas.company_name + " Website",
-                            url: window.location.href,
+                            url: cardDatas.clean_name + ".visitasmart.com",
                           })
                           .then(() => {
                             console.log("Thanks for sharing!");
@@ -874,7 +874,7 @@ function PremiumTemplate1({ preview,subdomain }) {
                   axios
                     .post(
                       `${apiKeys.server_url}/submit/customer-details/${
-                        cardDatas && cardDatas.company_name
+                        cardDatas && cardDatas.clean_name
                       }`,
                       formDataObj
                     )
@@ -1144,7 +1144,7 @@ function PremiumTemplate1({ preview,subdomain }) {
             <div className="w-full h-32  flex items-center justify-center">
               <button
                 onClick={() => {
-                  navigate("/" + cardDatas.company_name + "/premiumproducts");
+                  navigate("/" + cardDatas.clean_name + "/premiumproducts");
                 }}
                 className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-bold text-sm -mt-6`}
               >
@@ -1500,7 +1500,7 @@ function PremiumTemplate1({ preview,subdomain }) {
 
                   axios.post(
                     `${apiKeys.server_url}/update/feedback/${
-                      cardDatas && cardDatas.company_name
+                      cardDatas && cardDatas.clean_name
                     }`,
                     obj
                   );

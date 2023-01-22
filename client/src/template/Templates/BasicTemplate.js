@@ -31,7 +31,7 @@ import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
 import Loading from "../../miniComponents/Loading";
 
-function BasicTemplate({ preview,subdomain }) {
+function BasicTemplate({ preview }) {
   const toast = useToast();
   let params = useParams();
   let [cardDatas, setCardDatas] = useState([]);
@@ -64,7 +64,7 @@ function BasicTemplate({ preview,subdomain }) {
     }
 
     axios
-      .get(`${apiKeys.server_url}/card/` + params.comp_name == undefined ? subdomain : params.comp_name)
+      .get(`${apiKeys.server_url}/card/` + params.comp_name)
       .then((response) => {
         setIsCardLoading(false);
         // Set Manifest Dynamically
@@ -290,7 +290,7 @@ function BasicTemplate({ preview,subdomain }) {
     
     {
       localStorage.getItem('isAdmin') == "true" ?
-      <div onClick={()=> navigate('/manage/card/' + cardDatas.company_name)} className="w-full h-14 bg-blue-600  text-white flex z-50 items-center justify-center cursor-pointer">
+      <div onClick={()=> navigate('/manage/card/' + cardDatas.clean_name)} className="w-full h-14 bg-blue-600  text-white flex z-50 items-center justify-center cursor-pointer">
       <h1 className="font-bold ">Manage website</h1>
       <span className="ml-1 flex items-center justify-center" ><ion-icon name="arrow-forward"></ion-icon></span>
     </div>
@@ -322,7 +322,7 @@ function BasicTemplate({ preview,subdomain }) {
             Views: {cardDatas && cardDatas.views}
           </span>
     
-          <Link to={`/${cardDatas && cardDatas.company_name}/products`} className={`z-50 absolute top-6  left-4 text-white text-2xl font-medium  py-2 px-2 flex items-center justify-center rounded-full bg-${theme_color}-600 `}>
+          <Link to={`/${cardDatas && cardDatas.clean_name}/products`} className={`z-50 absolute top-6  left-4 text-white text-2xl font-medium  py-2 px-2 flex items-center justify-center rounded-full bg-${theme_color}-600 `}>
           <ion-icon name="cart"></ion-icon>
           </Link>
     
@@ -509,7 +509,7 @@ function BasicTemplate({ preview,subdomain }) {
                     if (navigator.share) {
                       navigator.share({
                         title: cardDatas.company_name + " Website",
-                        url: window.location.href,
+                        url: cardDatas.clean_name + ".visitasmart.com",
                         
                       }).then(() => {
                         console.log('Thanks for sharing!');
@@ -622,7 +622,7 @@ function BasicTemplate({ preview,subdomain }) {
         myFormData.forEach((value, key) => (formDataObj[key] = value));
     
         axios
-          .post(`${apiKeys.server_url}/submit/customer-details/${cardDatas && cardDatas.company_name}`, formDataObj)
+          .post(`${apiKeys.server_url}/submit/customer-details/${cardDatas && cardDatas.clean_name}`, formDataObj)
           .then((response) => {
             if (response.status == 200) {
               Toast({
@@ -864,7 +864,7 @@ function BasicTemplate({ preview,subdomain }) {
               products && products.length != 0 ?
               <div className="w-full h-32  flex items-center justify-center">
               <button
-                      onClick={()=> {navigate('/'+cardDatas.company_name+'/products')}}
+                      onClick={()=> {navigate('/'+cardDatas.clean_name+'/products')}}
                       className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-bold text-sm -mt-6`}
                     >
                       View more products
@@ -1239,7 +1239,7 @@ function BasicTemplate({ preview,subdomain }) {
       form.name.value = ''
     form.feedback.value = ''
     
-      axios.post(`${apiKeys.server_url}/update/feedback/${cardDatas && cardDatas.company_name}`, obj)
+      axios.post(`${apiKeys.server_url}/update/feedback/${cardDatas && cardDatas.clean_name}`, obj)
     
     
               }

@@ -75,13 +75,13 @@ async function run() {
         clientHelpers
           .createCard(data, client_db)
           .then((response, card_data) => {
-            res.status(200).send({redirect_url:`/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`})
+            res.status(200).send({redirect_url:`/create/preview/${data.clean_name}`})
             res.end();
           })
           .catch((err) => {
             console.log(err);
             res.end();
-            res.status(404).send({redirect_url:`/create/preview/${req.body.company_name.replace(/[ ]/g, "-")}`})
+            res.status(404).send({redirect_url:`/create/preview/${data.clean_name}`})
           });
       });
     });
@@ -127,7 +127,6 @@ async function run() {
       }
 
       clientHelpers.updateCustomerDetails(obj,client_db,req.params.name).then((response)=> {
-        let redirect_url = req.params.name.replace(/[ ]/g,'-')
         res.end()
       }).catch((err)=> {
         console.log(err);
@@ -242,12 +241,11 @@ async function run() {
     app.post('/updatecard/:comp_name',(req,res,next)=> {
       clientHelpers.updateCleanCardDatas(req.body).then((response)=> {
        
-        clientHelpers.updateCard(response,client_db,req.params.comp_name).then((response)=> {
-          let new_comp_name = req.body.company_name.replace(/[ ]/g,'-')
-          res.status(200).send({redirect_url:'/create/successfull/' + new_comp_name})
+        clientHelpers.updateCard(response,client_db,req.params.comp_name).then(()=> {
+          res.status(200).send({redirect_url:'/create/successfull/' + response.obj.clean_name})
           res.end()
         }).catch((err)=> { 
-          res.status(404).send({redirect_url:'/create/successfull/' + new_comp_name})
+          res.status(404).send({redirect_url:'/create/successfull/' + response.obj.clean_name})
           console.log(err.message);
           res.end()
         })
