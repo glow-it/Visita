@@ -14,11 +14,11 @@ function Pricing() {
   return (
 
 
-<div class="relative w-full h-full pt-14">
-<div class="absolute hidden w-full bg-gray-50 lg:block h-96" />
-<div class="relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+<div class="relative w-full bg-slate-50 h-full pt-14">
+<div class="absolute hidden w-full  lg:block h-96 " />
+<div class="relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full  lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-    <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+    <h2 data-aos="fade-down" data-aos-delay="0" class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
       <span class="relative inline-block">
         <svg
           viewBox="0 0 52 24"
@@ -42,17 +42,17 @@ function Pricing() {
             height="24"
           />
         </svg>
-        <span class="relative">Our pricing plan.</span>
+        <span  className="relative font-extrabold leading-[2.6rem]">Our pricing plan. Affordable</span>
       </span>{' '}
-      Affordable
+      
     </h2>
-    <p class="text-base text-gray-700 md:text-lg">
+    <p data-aos="fade-up" data-aos-delay="100" class="text-base text-gray-700 md:text-lg font-medium">
     Pay once and we'll automatically
 take payment from your bank annually. Payment secured by Razorpay
     </p>
   </div>
   <div class="grid max-w-screen-md gap-10 md:grid-cols-2 sm:mx-auto">
-    <div>
+    <div data-aos="fade-up" data-aos-delay="200" >
       <div class="p-8 bg-gray-900 rounded">
         <div class="mb-4 text-center">
           <p class="text-xl font-medium tracking-wide text-white">
@@ -156,7 +156,7 @@ take payment from your bank annually. Payment secured by Razorpay
       <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />
       <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
     </div>
-    <div>
+    <div data-aos="fade-up" data-aos-delay="300" >
       <div class="p-8 bg-gray-900 rounded">
         <div class="mb-4 text-center">
           <p class="text-xl font-medium tracking-wide text-white">

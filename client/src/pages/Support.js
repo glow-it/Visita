@@ -6,6 +6,7 @@ import { useToast } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useState } from 'react';
 import { Toast } from '../miniComponents/Toast';
+import Footer from '../components/Footer';
 
 function Support() {
 
@@ -21,126 +22,104 @@ function Support() {
     
 
   return (
-    <div>
+    <div className=' w-full bg-slate-50 flex flex-col items-center overflow-scroll pb-56' >
+
+      <div className="w-full h-72  flex pt-36 flex-col items-center justify-center lg:px-0 px-8">
+         <h1 data-aos="fade-up" data-aos-delay="0" className='font-extrabold lg:text-[4.25rem] text-4xl text-center' >Have questions? Reach out!</h1>
+         <p data-aos="fade-up" data-aos-delay="100" className='font-medium text-xl lg:mt-10 mt-4 lg:text-start text-center' >At this time you can ask us your needs or problems.</p>
+      </div>
 
 
 
+      <div data-aos="fade-up" data-aos-delay="200" className="lg:w-[75%] w-[95%]  z-40 rounded-2xl h-[500px] bg-white shadow-lg flex lg:flex-row flex-col mt-16">
+         <div className="lg:w-[35%] lg:pb-0 pb-12 w-full px-16 lg:rounded-l-2xl rounded-t-2xl bg-[#712FFE] flex flex-col items-center pt-16">
+            <img src="https://assets.website-files.com/632b3351e816b66faf6d72ce/6373d0a36705627b7335c66a_Group%20488082.png" className='' />
+            <h3 className='text-white mt-10 font-bold text-2xl text-center' >I Like Assistance the have Platform</h3>
+            <button onClick={()=> {
+                window.tidioChatApi.show();
+                window.tidioChatApi.open();
+            }} className='font-semibold mb-4 text-lg py-4 w-full rounded-lg mt-6 bg-white text-[#712FFE]' >Chat with us</button>
 
-<section class="bg-white py-20 lg:py-[120px] overflow-hidden relative z-10 lg:px-20 px-8  support">
+           <div className="flex flex-col">
+           <p className="flex items-center font-semibold text-xl text-white mt-4">
+               <span className="flex items-center justify-center mr-2"><ion-icon name="mail"></ion-icon></span>
+               team@visitasmart.com
+            </p>
+            <p className="flex items-center font-semibold text-xl text-white mt-4">
+               <span className="flex items-center justify-center mr-2"><ion-icon name="location"></ion-icon></span>
+               Kerala,India
+            </p>
+            <p className="flex items-center font-semibold text-xl text-white mt-4">
+               <span className="flex items-center justify-center mr-2"><ion-icon name="call"></ion-icon></span>
+               +919946365417
+            </p>
+           </div>
+
+         </div>
 
 
-   <div class="container">
-      <div class="flex flex-wrap lg:justify-between -mx-4">
-         <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
-            <div class="max-w-[570px] mb-12 lg:mb-0">
-               <span  class="block mb-4 text-base text-primary font-bold">
-               Help Center
-               </span>
-               <h2
-               
-                  class="
-                  text-dark
-                  mb-6
-                  font-bold
-                  text-[32px]
-                  sm:text-[40px]
-                  lg:text-[36px]
-                  xl:text-[40px]
-                  "
-                  >
-                  Get In Touch With Us
-               </h2>
-               <p  class="text-base font-medium text-body-color leading-relaxed mb-9">
-               At this time you can ask us your needs or problems. You can easily ask for bugs, issues, improvements, new features and more. We have included location, phone number and mail. So you can contact us with the given details.
-               </p>
-               <div class="flex mb-8 max-w-[370px] w-full">
-                  <div
-                  
-                     class="
-                     max-w-[50px]
-                     sm:max-w-[50px]
-                     w-full
-                     h-[50px]
-                     sm:h-[50px]
-                     flex
-                     items-center
-                     justify-center
-                     mr-6
-                     overflow-hidden
-                     bg-primary bg-opacity-5
-                     text-primary
-                     rounded-full
-                     "
-                     >
-                   <span className='text-white text-2xl flex items-center justify-center' ><ion-icon name="location"></ion-icon></span>
-                  </div>
-                  <div  class="w-full">
-                     <h4 class="font-bold text-dark text-xl mb-1">Our Location</h4>
-                     <p class="text-base text-body-color font-medium">
-                        Manjeri Kerala, India  676121
-                     </p>
-                  </div>
-               </div>
-               <div class="flex mb-8 max-w-[370px] w-full">
-                  <div
-                  
-                     class="
-                     max-w-[60px]
-                     sm:max-w-[50px]
-                     w-full
-                     h-[60px]
-                     sm:h-[50px]
-                     flex
-                     items-center
-                     justify-center
-                     mr-6
-                     overflow-hidden
-                     bg-primary bg-opacity-5
-                     text-primary
-                     rounded-full
-                     "
-                     >
-                     <span className='text-white text-2xl flex items-center justify-center' ><ion-icon name="call"></ion-icon></span>
-                  </div>
-                  <div  class="w-full">
-                     <h4 class="font-bold text-dark text-xl mb-1">Phone Number</h4>
-                     <p class="flex text-base text-body-color font-medium">{apiKeys.call_phone_no} <a href={`tel:${apiKeys.call_phone_no}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
-                  </div>
-               </div>
-               <div class="flex mb-8 max-w-[370px] w-full">
-                  <div
-                  
-                     class="
-                     max-w-[50px]
-                     sm:max-w-[50px]
-                     w-full
-                     h-[50px]
-                     sm:h-[50px]
-                     flex
-                     items-center
-                     justify-center
-                     mr-6
-                     overflow-hidden
-                     bg-primary bg-opacity-5
-                     text-primary
-                     rounded-full
-                     "
-                     >
-                   <span className='text-white text-2xl flex items-center justify-center' ><ion-icon name="mail"></ion-icon></span>
-                  </div>
-                  <div  class="w-full">
-                     <h4 class="font-bold text-dark text-xl mb-1">
-                        Email Address
-                     </h4>
-                     <p class="flex text-base text-body-color font-medium">{apiKeys.visita_email}<a href={`mailto:${apiKeys.visita_email}`} className='text-2xl flex ml-2 text-primary cursor-pointer' ><ion-icon name="arrow-redo-circle-outline"></ion-icon></a></p>
-                  </div>
-               </div>
+         <div className="lg:w-[65%] w-full lg:rounded-2xl bg-white flex flex-col  lg:px-12 px-4">
+            <div className="w-full pt-5 flex items-center mt-6">
+               <h1 className="text-2xl font-semibold">Get in touch</h1>
+            </div>
+            <div className="w-full   flex flex-wrap mt-2">
+
+              <input autoComplete='off' className='font-medium focus:border focus:border-[#712FFE] border py-3.5 pl-4 lg:w-[48%] w-full mr-3 mt-3 rounded-md' id="contact_first_name" placeholder='Enter your first name' />
+
+              <input autoComplete='off' className='font-medium focus:border focus:border-[#712FFE] border py-3.5 pl-4 lg:w-[48%] w-full mr-3 mt-3 rounded-md' id="contact_last_name" placeholder='Enter your last name' />
+
+              <input autoComplete='off' className='font-medium focus:border focus:border-[#712FFE] border py-3.5 pl-4 lg:w-[48%] w-full mr-3 mt-3 rounded-md' id="contact_email" placeholder='Enter your email' />
+
+              <input autoComplete='off' className='font-medium focus:border focus:border-[#712FFE] border py-3.5 pl-4 lg:w-[48%] w-full mr-3 mt-3 rounded-md' id="contact_subject" placeholder='Subject' />
+
+              <textarea autoComplete='off' className='font-medium w-full border-slate-200 focus:border-1 focus:border-[#712FFE] border py-3.5 h-32 pl-4 mr-3 mt-3 rounded-md' id="contact_message" placeholder='Message' />
+
+            </div>
+            <div className="w-full h-full flex pt-8 justify-center ">
+            <button onClick={()=> {
+
+let phoneNumber = "+919544562748"; 
+
+let message =
+  `
+   
+  QUERY FROM ${document.getElementById('contact_first_name').value}
+
+  First name : ${document.getElementById('contact_first_name').value} 
+
+  Last name : ${document.getElementById('contact_last_name').value} 
+
+  Email : ${document.getElementById('contact_email').value} 
+
+  Subject : ${document.getElementById('contact_subject').value} 
+
+  Message : ${document.getElementById('contact_message').value} 
+
+  Thankyou!!
+  We will check it and response soon
+
+  `;
+
+
+
+let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+  message
+)}`;
+
+
+window.open(url, "_blank");
+
+            }} className='font-semibold mb-4 h-16 justify-center flex items-center text-lg py-4 w-full rounded-lg  bg-black text-white' >Send message</button>
             </div>
          </div>
-         <h1 className='lg:block hidden font-bold text-4xl absolute right-44 bottom-44' >Click On The Chat Button <br /> For Chat With Our Staff <span className='animate-pulse text-7xl absolute rotate-45 text-blue-600 top-20' ><ion-icon name="arrow-forward"></ion-icon></span></h1>
+
+
       </div>
-   </div>
-</section>
+
+
+
+
+
     </div>
   )
 

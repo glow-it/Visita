@@ -98,7 +98,7 @@ function PremiumTemplate1({ preview }) {
   //   Cart Modal Open
   const [open, setOpen] = useState(false);
 
-  console.log(main_company_name);
+
 
 
 

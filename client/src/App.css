@@ -240,6 +240,8 @@ body {
   height: 2000px;
 }
 
+
+
 @media only screen and (min-width: 350px) and (max-width: 1000px) {
   .cta-wrapper {
     height: 45vh !important;
@@ -378,13 +380,13 @@ footer {
   left: 550px;
 }
 .header-active {
-  transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  height: 5rem !important;
+  transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background-color: white;
 }
 
 .header-inactive {
-  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  height: 4rem !important;
+  transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background-color: transparent;
 }
 .support input {
   border-radius: 0.75rem;

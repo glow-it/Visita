@@ -405,15 +405,15 @@ event.target.innerText = 'Regenerate'
 
 
     {/* Last Confirm Modal */}
-    <Modal  isOpen={isOpen} onClose={onClose}>
+    <Modal  isOpen={isOpen} onClose={onClose} >
         <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="20px"  />
-        <ModalContent display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
-          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-bold text-3xl text-center" >Are You Sure To Create?</span></ModalHeader>
+        <ModalContent  display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
+          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-extrabold text-3xl text-center" >Are You Sure To Create?</span></ModalHeader>
           <ModalBody pb='4' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
             <span className="font-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
           </ModalBody>
           <ModalFooter display='flex'  justifyContent='center' alignItems='center'>
-            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-medium" >Cancel</span></Button>
+            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-semibold" >Cancel</span></Button>
 
 
             <Button rounded='full' color='#fff' _hover bgColor='#5046E4'  onClick={()=> {
@@ -440,7 +440,7 @@ event.target.innerText = 'Regenerate'
               })
               
             }}>
-              <span className="font-medium" >Yes' Create Website</span>
+              <span className="font-semibold" >Yes' Create Website</span>
             </Button>
 
 
@@ -1500,7 +1500,7 @@ event.target.innerText = 'Regenerate'
                   processIndex != 1 ? processIndex - 1 : processIndex
                 )
               }
-              className="w-[150px] lg:mr-6 mr-2 font-medium"
+              className="w-[150px] lg:mr-6 mr-2 font-semibold"
               size="md"
               color='white'
             >
@@ -1516,7 +1516,7 @@ event.target.innerText = 'Regenerate'
               loadingText="Creating Website"
               onClick={() => handleNextClick()}
               backgroundColor="#5046E4"
-              className="w-[200px] font-medium lg:mr-6"
+              className="w-[200px] font-semibold lg:mr-6"
               size="md"
               color='white'
             >
@@ -1530,7 +1530,7 @@ event.target.innerText = 'Regenerate'
               rounded={"full"}
               backgroundColor="#5046E4"
               _hover
-              className="w-[100px]  font-medium  lg:mr-6 mr-2"
+              className="w-[100px]  font-semibold  lg:mr-6 mr-2"
               size="md"
               color='white'
               onClick={() => setProcessIndex(processIndex + 1)}

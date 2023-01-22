@@ -69,6 +69,7 @@ function App() {
         <Route path="/franchisee/how-to-franchisee" element={<HowToFranchisee />} />
         <Route path="*"  element={<PageNotFound />} />
       </Routes>
+      
     </div>
   );
 }
