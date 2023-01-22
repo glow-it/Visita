@@ -31,10 +31,9 @@ import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
 import Loading from "../../miniComponents/Loading";
 
-function BasicTemplate({ preview }) {
+function BasicTemplate({ preview,cardDatas }) {
   const toast = useToast();
   let params = useParams();
-  let [cardDatas, setCardDatas] = useState([]);
   let [products, setProducts] = useState([]);
   let [galleryImages, setGalleryImages] = useState([]);
   let [ytVideos, setYtVideos] = useState([]);
@@ -47,7 +46,7 @@ function BasicTemplate({ preview }) {
   let [features, setFeatures] = useState([]);
 
   axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
-    response.data.map((data) => {
+    cardDatas.map((data) => {
       if (data.name == cardDatas.theme_color) {
         setBgImage(data.image_url);
       }
@@ -63,15 +62,12 @@ function BasicTemplate({ preview }) {
       );
     }
 
-    axios
-      .get(`${apiKeys.server_url}/card/` + params.comp_name)
-      .then((response) => {
-        setIsCardLoading(false);
+   
         // Set Manifest Dynamically
         var myDynamicManifest = {
-          name: capitalize(response.data.company_name),
-          short_name: capitalize(response.data.company_name),
-          description: capitalize(response.data.about),
+          name: capitalize(cardDatas.company_name),
+          short_name: capitalize(cardDatas.company_name),
+          description: capitalize(cardDatas.about),
           start_url: `/${params.comp_name}`,
           background_color: "#fff",
           theme_color: "#fff",
@@ -79,7 +75,7 @@ function BasicTemplate({ preview }) {
           scope: `/${params.comp_name}`,
           icons: [
             {
-              src: response.data.logo.replace(/^http:\/\//i, "https://"),
+              src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
               sizes: "256x256",
               type: "image/png",
             },
@@ -92,21 +88,21 @@ function BasicTemplate({ preview }) {
           .querySelector("#my-manifest-placeholder")
           .setAttribute("href", manifestURL);
 
-        setCardDatas(response.data);
-        setProducts(response.data.products);
-        setGalleryImages(response.data.image_gallery);
-        setYtVideos(response.data.yt_videos);
-        setFeedbacks(response.data.feedbacks);
-        setSpecialities(response.data.specials.split(","));
-        setFeatures(response.data.features.split(","));
+
+        setProducts(cardDatas.products);
+        setGalleryImages(cardDatas.image_gallery);
+        setYtVideos(cardDatas.yt_videos);
+        setFeedbacks(cardDatas.feedbacks);
+        setSpecialities(cardDatas.specials.split(","));
+        setFeatures(cardDatas.features.split(","));
 
         
 
-        if (response.data.isActivated) {
+        if (cardDatas.isActivated) {
           document.title =
-            capitalize(response.data.company_name) +
+            capitalize(cardDatas.company_name) +
             " - " +
-            response.data.tagline;
+            cardDatas.tagline;
 
           // Set Favicon
           var link = document.querySelector("link[rel~='icon']");
@@ -115,18 +111,18 @@ function BasicTemplate({ preview }) {
             link.rel = "icon";
             document.getElementsByTagName("head")[0].appendChild(link);
           }
-          link.href = response.data.logo.replace(/^http:\/\//i, "https://");
+          link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
         }
 
         // Update View Count
         axios.post(
-          `${apiKeys.server_url}/update/view/${response.data.company_name}`
+          `${apiKeys.server_url}/update/view/${cardDatas.company_name}`
         );
 
         // Calculate How Much Days Ago Created This Card
         var date1, date2;
         //define two date object variables with dates inside it
-        date1 = response.data.created_at;
+        date1 = cardDatas.created_at;
         date2 = new Date();
 
         //calculate time difference
@@ -138,16 +134,16 @@ function BasicTemplate({ preview }) {
         let days = Math.trunc(days_difference);
 
         if (days > 0) {
-          if (!response.data.isActivated) {
-            navigate(`/activate-warning/${response.data.company_name}`);
+          if (!cardDatas.isActivated) {
+            navigate(`/activate-warning/${cardDatas.company_name}`);
           }
         }
 
         if (days < 1) {
           document.title =
-            capitalize(response.data.company_name) +
+            capitalize(cardDatas.company_name) +
             " - " +
-            response.data.tagline;
+            cardDatas.tagline;
 
           // Set Favicon
           var link = document.querySelector("link[rel~='icon']");
@@ -156,18 +152,9 @@ function BasicTemplate({ preview }) {
             link.rel = "icon";
             document.getElementsByTagName("head")[0].appendChild(link);
           }
-          link.href = response.data.logo.replace(/^http:\/\//i, "https://");
+          link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
         }
-      })
-      .catch((err) => {
-        Toast({
-          status: "error",
-          title: "This website is not in our server",
-          postition: "top",
-          toast,
-        });
-        navigate("/");
-      });
+      
 
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
@@ -313,7 +300,7 @@ function BasicTemplate({ preview }) {
         className=" template-1 flex justify-center bg-no-repeat bg-cover "
       >
 
-        <Loading isLoading={isCardLoading} />
+        {/* <Loading isLoading={isCardLoading} /> */}
     
     
     

@@ -19,7 +19,7 @@ function LandingPage() {
   let parts = full.split(".");
   let subdomain = parts[0];
 
-  if(subdomain != "www"){
+  if(subdomain != "localhost:3000"){
     window.location.href = "https://visitasmart.com/" + subdomain
   }
 

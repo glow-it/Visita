@@ -1,8 +1,9 @@
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import apiKeys from '../Api/apiKeys'
+import Loading from '../miniComponents/Loading'
 import { Toast } from '../miniComponents/Toast'
 import BasicTemplate from './Templates/BasicTemplate'
 import PremiumTemplate from './Templates/Premium/PremiumTemplate'
@@ -15,6 +16,12 @@ function Template() {
   let [cardDatas,setCardDatas] = useState()
   let toast = useToast()
   let navigate = useNavigate()
+
+  useEffect(()=> {
+    document.querySelectorAll('header').forEach((elem)=> {
+      elem.style.display = 'none'
+    })
+  },[])
 
 
 
@@ -43,11 +50,17 @@ function Template() {
           <div>
             {
               cardDatas.isPremium == "true" ?
-              <PremiumTemplate  />
+              <PremiumTemplate cardDatas={cardDatas}  />
               :
-              <BasicTemplate  />
+              <BasicTemplate cardDatas={cardDatas}  />
             }
              
+          </div>
+        )
+      }else{
+        return (
+          <div>
+            <Loading isLoading={true} />
           </div>
         )
       }
