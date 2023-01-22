@@ -49,6 +49,8 @@ function PremiumTemplate1({ preview,subdomain }) {
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
 
+  let main_company_name = params.comp_name == undefined ? subdomain : params.comp_name
+
   axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
     response.data.map((data) => {
       if (data.name == cardDatas.theme_color) {
@@ -96,6 +98,8 @@ function PremiumTemplate1({ preview,subdomain }) {
   //   Cart Modal Open
   const [open, setOpen] = useState(false);
 
+  console.log(main_company_name);
+
 
 
   // Get Card Datas
@@ -115,7 +119,7 @@ function PremiumTemplate1({ preview,subdomain }) {
     }
 
     axios
-      .get(`${apiKeys.server_url}/card/` + params.comp_name == undefined ? subdomain : params.comp_name)
+      .get(`${apiKeys.server_url}/card/` + main_company_name)
       .then((response) => {
         setIsCardLoading(false);
         // Set Manifest Dynamically
@@ -123,11 +127,11 @@ function PremiumTemplate1({ preview,subdomain }) {
           name: capitalize(response.data.company_name),
           short_name: capitalize(response.data.company_name),
           description: capitalize(response.data.about),
-          start_url: `/${params.comp_name}`,
+          start_url: `/${main_company_name}`,
           background_color: "#fff",
           theme_color: "#fff",
           display: "standalone",
-          scope: `/${params.comp_name}`,
+          scope: `/${main_company_name}`,
           icons: [
             {
               src: response.data.logo.replace(/^http:\/\//i, "https://"),
@@ -745,7 +749,7 @@ function PremiumTemplate1({ preview,subdomain }) {
 
 
  <button
-                  onClick={()=> navigate('/'+params.comp_name+"/premiumproducts")}
+                  onClick={()=> navigate('/'+main_company_name+"/premiumproducts")}
                     className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
                   >
                     Our Products
