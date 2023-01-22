@@ -38,7 +38,7 @@ function LandingPage() {
 
   return (
     <div className="landing-page flex flex-col items-center">
-      {subdomain == "localhost:3000" ? (
+      {subdomain == "www" ? (
         <div>
           <Hero />
           <Features />
