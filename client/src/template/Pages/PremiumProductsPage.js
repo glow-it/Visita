@@ -257,7 +257,7 @@ function PremiumProductsPage() {
             onClick={() => navigate("/" + params.comp_name)}
             className="text-2xl absolute left-8 cursor-pointer"
           >
-            <ion-icon name="chevron-back"></ion-icon>
+            <ion-icon name="chevron-back-outline"></ion-icon>
           </span>
           <img
             className="h-12 w-12 rounded-full mr-1"
@@ -268,7 +268,7 @@ function PremiumProductsPage() {
             onClick={() => setOpen(true)}
             className="text-2xl absolute right-8 cursor-pointer flex"
           >
-            <ion-icon name="cart"></ion-icon>{" "}
+            <ion-icon name="cart-outline"></ion-icon>{" "}
             <span className="text-sm flex items-center font-medium">
               Cart (<span className="cart-count">{cart_count}</span>)
             </span>

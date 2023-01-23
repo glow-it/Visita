@@ -546,7 +546,7 @@ function PremiumTemplate1({ preview }) {
               onClick={()=> setOpen(true)}
                 className={`z-50 absolute cursor-pointer  left-4 text-black text-xl font-medium  py-2 px-2 flex items-center justify-center rounded-full  `}
               >
-                <ion-icon name="cart"></ion-icon> <span className="text-sm ml-1">Cart <span>(<span className="cart-count">{cart_count}</span>)</span></span>
+                <ion-icon name="cart-outline"></ion-icon> <span className="text-sm ml-1">Cart <span>(<span className="cart-count">{cart_count}</span>)</span></span>
               </p>
             </div>
 
@@ -579,7 +579,7 @@ function PremiumTemplate1({ preview }) {
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
                     <span className=" text-2xl flex items-center justify-center text-slate-600">
-                      <ion-icon name="call"></ion-icon>
+                      <ion-icon name="call-outline"></ion-icon>
                     </span>
                   </a>
                 ) : (
@@ -605,7 +605,7 @@ function PremiumTemplate1({ preview }) {
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
                     <span className=" text-2xl flex items-center justify-center text-slate-600">
-                      <ion-icon name="mail"></ion-icon>
+                      <ion-icon name="mail-outline"></ion-icon>
                     </span>
                   </a>
                 ) : (
@@ -618,7 +618,7 @@ function PremiumTemplate1({ preview }) {
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
                     <span className=" text-2xl flex items-center justify-center text-slate-600">
-                      <ion-icon name="globe"></ion-icon>
+                      <ion-icon name="globe-outline"></ion-icon>
                     </span>
                   </a>
                 ) : (
@@ -631,7 +631,7 @@ function PremiumTemplate1({ preview }) {
                   className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                 >
                   <span className=" ml-6 text-md flex items-center font-medium">
-                    <ion-icon name="call"></ion-icon>{" "}
+                    <ion-icon name="call-outline"></ion-icon>{" "}
                     <span className=" ml-3">
                       +91 {cardDatas && cardDatas.phone_no}
                     </span>{" "}
@@ -642,7 +642,7 @@ function PremiumTemplate1({ preview }) {
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
-                      <ion-icon name="call"></ion-icon>{" "}
+                      <ion-icon name="call-outline"></ion-icon>{" "}
                       <span className=" ml-3">
                         +91 {cardDatas && cardDatas.alt_phone_no}
                       </span>{" "}
@@ -657,7 +657,7 @@ function PremiumTemplate1({ preview }) {
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
-                      <ion-icon name="mail"></ion-icon>{" "}
+                      <ion-icon name="mail-outline"></ion-icon>{" "}
                       <span className=" ml-3">{cardDatas.email_id}</span>{" "}
                     </span>
                   </div>
@@ -670,7 +670,7 @@ function PremiumTemplate1({ preview }) {
                     className={`w-full  py-3 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
-                      <ion-icon name="location"></ion-icon>{" "}
+                      <ion-icon name="location-outline"></ion-icon>{" "}
                       <span className=" ml-3">
                         {`${cardDatas && cardDatas.location} - ${
                           cardDatas && cardDatas.city
@@ -700,7 +700,7 @@ function PremiumTemplate1({ preview }) {
                     className={`cursor-pointer  h-10 rounded-full bg-gradient-to-r  from-${theme_color}-700 to-${theme_color}-600 w-44 bg-red-600 absolute right-0 flex items-center justify-center`}
                   >
                     <span className=" text-sm flex items-center font-medium text-white">
-                      <ion-icon name="logo-whatsapp"></ion-icon>{" "}
+                      <ion-icon name="logo-whatsapp-outline"></ion-icon>{" "}
                       <span className=" ml-1">Share To Whatsapp</span>{" "}
                     </span>
                   </div>
@@ -717,7 +717,7 @@ function PremiumTemplate1({ preview }) {
                     >
                       Location{" "}
                       <span className=" ml-1 text-white text-xl"></span>
-                      <ion-icon name="location"></ion-icon>
+                      <ion-icon name="location-outline"></ion-icon>
                     </button>
                   ) : (
                     ""
@@ -743,7 +743,7 @@ function PremiumTemplate1({ preview }) {
                   >
                     Share
                     <span className=" ml-1 text-white text-xl"></span>
-                    <ion-icon name="arrow-redo"></ion-icon>
+                    <ion-icon name="arrow-redo-outline"></ion-icon>
                   
                   </button>
 
@@ -754,7 +754,7 @@ function PremiumTemplate1({ preview }) {
                   >
                     Our Products
                     <span className=" ml-1 text-white text-xl"></span>
-                    <ion-icon name="bag"></ion-icon>
+                    <ion-icon name="bag-outline"></ion-icon>
                   </button>
 
 
@@ -1391,11 +1391,11 @@ function PremiumTemplate1({ preview }) {
 
        
         {/* Testimornial */}
-        <section class="bg-white dark:bg-gray-900">
+        <section class=" bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6" >
       <div class="mx-auto max-w-screen-sm">
-          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Feedbacks</h2>
-          <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Loves from clients</p>
+          <h2 class="mb-4 text-4xl tracking-tight font-extrabold  text-white">Feedbacks</h2>
+          <p class="mb-8 font-light  lg:mb-16 sm:text-xl text-gray-400">Loves from clients</p>
       </div> 
       <div class="grid mb-8 lg:mb-12 lg:grid-cols-2">
 
@@ -1423,16 +1423,16 @@ function PremiumTemplate1({ preview }) {
 
 
               return(
-                <figure class="flex flex-col justify-center items-center p-8 text-center bg-gray-50 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700">
-                <blockquote class="mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{data.feedback}</h3>
+                <figure class="flex flex-col justify-center items-center p-8 text-center  border-b  md:p-12 lg:border-r bg-gray-800 border-gray-700">
+                <blockquote class="mx-auto mb-8 max-w-2xl  text-gray-400">
+                    <h3 class="text-lg font-semibold  text-white">{data.feedback}</h3>
                    
                 </blockquote>
                 <figcaption class="flex justify-center items-center space-x-3">
                    
-                    <div class="space-y-0.5 font-medium flex flex-col items-center dark:text-white text-left">
+                    <div class="space-y-0.5 font-medium flex flex-col items-center text-white text-left">
                         <div>{data.name}</div>
-                        <div class="text-sm font-light text-gray-500 dark:text-gray-400">{days}</div>
+                        <div class="text-sm font-light  text-gray-400">{days}</div>
                     </div>
                 </figcaption>    
             </figure>
@@ -1555,7 +1555,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="cart"></ion-icon>
+            <ion-icon name="cart-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">Products</span>
         </a>
