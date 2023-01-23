@@ -21,7 +21,7 @@ function Footer() {
                   font-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                   >
                <img
-                  src="../assets/images/glowitlogos/logo.jpg"
+                  src={require("../Images/glowitlogos/logo.jpg")}
                   alt="logo"
                   class="comp-logo-footer rounded-full scale-[0.8]"
                   />

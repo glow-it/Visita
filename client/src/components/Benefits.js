@@ -6,7 +6,7 @@ function Benefits() {
         
 
         <div className="lg:w-[50%] lg:py-0 py-6 w-full lg:text-start text-center lg:h-full  benefits-1 flex justify-center lg:items-center lg:px-24 px-8">
-            <img className='  rounded-3xl' src="https://cdn.dribbble.com/userupload/4254313/file/original-c91d7ad3646cf5320543aa5e3ad9b3ee.png?compress=1&resize=1960x1470&vertical=center" muted autoPlay={true} loop></img>
+            <img className='  rounded-3xl' src={require("../Images/benefitsimage.webp")} muted autoPlay={true} loop></img>
         </div>
 
         <div className="flex-1   h-full benefits-2 flex flex-col lg:justify-center lg:items-start items-center lg:pt-0 pt-8  lg:pr-14 lg:pl-0 pl-4">

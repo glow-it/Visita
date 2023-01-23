@@ -147,6 +147,7 @@ take payment from your bank annually. Payment secured by Razorpay
           Choose this
         </button>
         <button
+        onClick={()=> navigate('/visita')}
           class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
         >
           See demo
@@ -251,6 +252,7 @@ take payment from your bank annually. Payment secured by Razorpay
           Choose this
         </button>
         <button
+        onClick={()=> navigate('/blueberrybakes')}
           class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
         >
           See demo

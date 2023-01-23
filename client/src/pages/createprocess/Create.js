@@ -120,6 +120,8 @@ function Create(props) {
 
   useEffect(() => {
 
+    document.querySelector('header').style.display = "none"
+
 
 
     document.title = "Visita | Create";

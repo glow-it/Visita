@@ -36,7 +36,7 @@ function Header() {
   window.onscroll = () => {
     let header = document.querySelector("header");
     let header_create_button = document.getElementById("header_create_button");
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 1) {
       header.classList.remove("header-inactive");
       header.classList.add("header-active");
     } else {
@@ -51,15 +51,17 @@ function Header() {
 
   //   Header Drawer Open
   let [open, setOpen] = useState(false);
+
+
   
 
 
   return (
     <div>
-      <header className="  w-full h-20 flex   fixed z-[200] ">
+      <header className={` w-full h-20 flex   fixed z-[200] `}>
         <div className="w-full h-full  flex items-center justify-center">
           <img
-            src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
+            src={require("../Images/logos/visitalogo.png")}
             className="h-12  z-20 mr-4 cursor-pointer absolute left-10"
             id="header_logo"
             onClick={() => (window.location.href = "/")}

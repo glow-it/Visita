@@ -98,12 +98,12 @@ function Hero() {
 
 </div>
 
-<img  className="absolute right-0  z-10 top-0 lg:h-[500px] h-[300px]" src="https://oodesign.github.io/mesh-gradients/web/img/medium-herobg-E3005284-68A2-4730-90FE-F4B5820A5B8C.png"  />
+<img  className="absolute right-0  z-10 top-0 lg:h-[500px] h-[300px]" src={require("../Images/herobg.png")}  />
       
     </div>
       <div className="lg:block hidden z-50">
       <div className="lg:h-[500px] z-50  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
-      <img data-aos="fade-up" data-aos-delay="500" src="https://cdn.dribbble.com/userupload/4254311/file/original-3e55e344e93279b74a363e2b87e74b72.png?compress=1&resize=2048x1536" muted autoPlay loop className=" lg:h-[680px] h-[210px] z-50 lg:ml-0 ml-8 rounded-[2rem]" />
+      <img data-aos="fade-up" data-aos-delay="500" src={require("../Images/heroimage.webp")} muted autoPlay loop className=" lg:h-[680px] h-[210px] z-50 lg:ml-0 ml-8 rounded-[2rem]" />
       </div>
       </div>
   </div>

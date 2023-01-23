@@ -27,7 +27,7 @@ function CreateHeader({
         className={` flex  items-center justify-center lg:visible invisible`}
       >
         <img
-          src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
+          src={require("../Images/logos/visitalogo.png")}
           className="h-10 cursor-pointer"
           onClick={() => navigate("/")}
         />

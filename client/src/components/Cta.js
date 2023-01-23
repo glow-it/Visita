@@ -17,18 +17,18 @@ function Cta() {
         className="w-full -mt-32
         lg:block hidden pr-12 absolute"
       >
-        <img className="h-16 absolute right-[100px] top-[100px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
+        <img className="h-16 absolute right-[100px] top-[100px]" src={require("../Images/shineoverlay.jpeg")} alt="" />
         
-        <img className="h-10 absolute right-[100px] -top-[70px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
+        <img className="h-10 absolute right-[100px] -top-[70px]" src={require("../Images/shineoverlay.jpeg")} alt="" />
 
-        <img className="h-32 absolute left-[20px] -top-[20px]" src="https://i.postimg.cc/LXSLCNT4/vecteezy-clean-and-hygiene-symbol-sparkle-shine-and-twinkle-icon-copy.jpg" alt="" />
+        <img className="h-32 absolute left-[20px] -top-[20px]" src={require("../Images/shineoverlay.jpeg")} alt="" />
       </div>
 
 
       <h1 className="lg:text-6xl gradient-text text-3xl font-bold text-primary ">
       Ready to create
       </h1>
-      <h1 className="lg:text-3xl text-md font-bold text-black lg:mt-6 mt-2">
+      <h1 className="lg:text-xl text-md font-medium text-slate-400 lg:mt-6 mt-2">
         {" "}
         Affordable price for everyone
       </h1>
