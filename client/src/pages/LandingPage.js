@@ -6,7 +6,6 @@ import Cta from "../components/Cta";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import Template from "../template/Template";
 
 function LandingPage() {
   let toast = useToast();
@@ -24,7 +23,7 @@ function LandingPage() {
   }
 
   useEffect(() => {
-    document.title = "Visita - Create your own business website easily";
+    document.title = "Visita - Effortlessly Create a Professional Business Presence: Low-Cost Website and Digital Business Card Builder";
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "flex";
     });

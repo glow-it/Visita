@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Spinner, Tooltip, useToast } from "@chakra-ui/react";
+import {  useToast } from "@chakra-ui/react";
 import { QRCode } from "react-qrcode-logo";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Button,
-} from "@chakra-ui/react";
+import {Helmet} from "react-helmet";
 // core version + navigation, pagination modules:
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,7 +19,6 @@ import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
-import Loading from "../../miniComponents/Loading";
 
 function BasicTemplate({ preview,cardDatas }) {
   const toast = useToast();
@@ -269,6 +258,13 @@ function BasicTemplate({ preview,cardDatas }) {
 
     <div className=" flex justify-center items-center pb-24">  
 
+      {/* Add Meta Title And Descreption */}
+      <Helmet>
+            <title className="capitalize" >{cardDatas && cardDatas.company_name + "Website"}</title>
+            <meta name="description" content={cardDatas && cardDatas.tagline} />
+    </Helmet>
+
+
 
 
 
@@ -496,7 +492,7 @@ function BasicTemplate({ preview,cardDatas }) {
                     if (navigator.share) {
                       navigator.share({
                         title: cardDatas.company_name + " Website",
-                        url: cardDatas.clean_name + ".visitasmart.com",
+                        url:  "https://visitasmart.com/" + cardDatas.clean_name,
                         
                       }).then(() => {
                         console.log('Thanks for sharing!');

@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Spinner, theme, Tooltip, useToast } from "@chakra-ui/react";
-import { QRCode } from "react-qrcode-logo";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Button,
-} from "@chakra-ui/react";
+import {  useToast } from "@chakra-ui/react";
+import {Helmet} from "react-helmet";
+
 // core version + navigation, pagination modules:
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -32,7 +22,6 @@ import apiKeys from "../../../Api/apiKeys";
 import Loading from "../../../miniComponents/Loading";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 
 function PremiumTemplate1({ preview }) {
   const toast = useToast();
@@ -331,7 +320,11 @@ function PremiumTemplate1({ preview }) {
     <div className=" flex justify-center items-center pb-24">
 
 
-
+    {/* Add Meta Title And Descreption */}
+    <Helmet>
+            <title className="capitalize" >{cardDatas && cardDatas.company_name + "Website"}</title>
+            <meta name="description" content={cardDatas && cardDatas.tagline} />
+    </Helmet>
 
 
 {/* Cart Modal Open */}
@@ -729,7 +722,7 @@ function PremiumTemplate1({ preview }) {
                         navigator
                           .share({
                             title: cardDatas.company_name + " Website",
-                            url: cardDatas.clean_name + ".visitasmart.com",
+                            url: "https://" + cardDatas.clean_name + ".visitasmart.com",
                           })
                           .then(() => {
                             console.log("Thanks for sharing!");

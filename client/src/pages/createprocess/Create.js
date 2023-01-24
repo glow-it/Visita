@@ -1,4 +1,10 @@
-import { Button, FormControl, FormLabel, Tooltip, useDisclosure } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Tooltip,
+  useDisclosure,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import CreateHeader from "../../components/CreateHeader";
 import { useToast } from "@chakra-ui/react";
@@ -10,22 +16,21 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
-import { Switch } from '@chakra-ui/react'
+import { Switch } from "@chakra-ui/react";
 import apiKeys from "../../Api/apiKeys";
 import Loading from "../../miniComponents/Loading";
+import { Helmet } from "react-helmet";
 
 function Create(props) {
-
-  let navigate = useNavigate()
-  let location = useLocation()
-
+  let navigate = useNavigate();
+  let location = useLocation();
 
   const toast = useToast();
-  const toastIdRef = React.useRef()
+  const toastIdRef = React.useRef();
 
   let [previuos, setPrevious] = useState(false);
   let [skip, setSkip] = useState(false);
@@ -96,33 +101,48 @@ function Create(props) {
     "50",
   ]);
 
+  let [loading, setLoading] = useState(false);
+  let [choosedThemeColor, setChoosedThemeColor] = useState("purple");
+  let [themeColors, setThemeColors] = useState([
+    "purple",
+    "slate",
+    "zinc",
+    "stone",
+    "red",
+    "orange",
+    "amber",
+    "yellow",
+    "lime",
+    "green",
+    "emerald",
+    "teal",
+    "cyan",
+    "sky",
+    "blue",
+    "indigo",
+    "violet",
+    "fuchsia",
+    "pink",
+    "rose",
+  ]);
 
-  let [loading,setLoading] = useState(false)
-  let [choosedThemeColor,setChoosedThemeColor] = useState('purple')
-  let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","fuchsia","pink","rose"])
-
-
-    // Normal Use Effect
-    useEffect(()=> {
-
-      const imgPreview = document.getElementById("create-logo-preview");
-     if( imgPreview.querySelector('img').src == ""){
-      imgPreview.querySelector('img').classList.replace('visible','invisible')
-     }else{
-      imgPreview.querySelector('img').classList.replace('invisible','visible')
-     }
-    },[choosedThemeColor])
+  // Normal Use Effect
+  useEffect(() => {
+    const imgPreview = document.getElementById("create-logo-preview");
+    if (imgPreview.querySelector("img").src == "") {
+      imgPreview.querySelector("img").classList.replace("visible", "invisible");
+    } else {
+      imgPreview.querySelector("img").classList.replace("invisible", "visible");
+    }
+  }, [choosedThemeColor]);
 
   let maximumProcesses = 7;
 
   // Last Confirm Modal Disclosure
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-
-    document.querySelector('header').style.display = "none"
-
-
+    document.querySelector("header").style.display = "none";
 
     document.title = "Visita | Create";
 
@@ -130,7 +150,7 @@ function Create(props) {
     const chooseFile = document.getElementById("create-choose-logo");
     const imgPreview = document.getElementById("create-logo-preview");
     const chooseLogoButton = document.getElementById("choose_logo_button");
-    const choose_theme_color = document.getElementById('choose_theme_color');
+    const choose_theme_color = document.getElementById("choose_theme_color");
 
     chooseFile.addEventListener("change", function () {
       getImgData();
@@ -143,13 +163,17 @@ function Create(props) {
         fileReader.readAsDataURL(files);
         fileReader.addEventListener("load", function () {
           imgPreview.style.display = "block";
-          imgPreview.querySelector('img').setAttribute('src',this.result)
-          imgPreview.querySelector('img').classList.replace('invisible','visible')
-          imgPreview.querySelector('img').classList.add('min-w-[100px]','min-h-[100px]')
-          document.getElementById('logo-upload-svg').style.display = 'none'
+          imgPreview.querySelector("img").setAttribute("src", this.result);
+          imgPreview
+            .querySelector("img")
+            .classList.replace("invisible", "visible");
+          imgPreview
+            .querySelector("img")
+            .classList.add("min-w-[100px]", "min-h-[100px]");
+          document.getElementById("logo-upload-svg").style.display = "none";
           chooseLogoButton.innerText = "Change Logo";
           chooseLogoButton.style.marginLeft = "-20px";
-          choose_theme_color.classList.add("active-choose-theme")
+          choose_theme_color.classList.add("active-choose-theme");
         });
       }
     }
@@ -182,281 +206,368 @@ function Create(props) {
     }
     if (processIndex == 4) {
       document.getElementById("skip_button").removeAttribute("disabled", "");
-    }
-    else if (processIndex == 3) {
+    } else if (processIndex == 3) {
       document.getElementById("skip_button").removeAttribute("disabled", "");
-    }
-     else if (processIndex == 5) {
+    } else if (processIndex == 5) {
       document.getElementById("skip_button").removeAttribute("disabled", "");
     } else if (processIndex == 6) {
       document.getElementById("skip_button").removeAttribute("disabled", "");
-    }else if (processIndex == 7) {
-      document.getElementById("skip_button").style.display = 'none'
+    } else if (processIndex == 7) {
+      document.getElementById("skip_button").style.display = "none";
     } else {
       document.getElementById("skip_button").setAttribute("disabled", "");
     }
 
     // Submit Form Datas
-
-    
   }, [processIndex]);
-
-
-
-
 
   // Handle Form Next Process Click
   function handleNextClick() {
-
-  
-
-
     // Check Company Name Is Exists
-    if( document.querySelector('.error-message').classList[3] != "text-red-600"){
- // Check If All Required Feilds Filled
- 
- let currentForm;
- if (processIndex == 1) {
-   currentForm = document.getElementById("process1");
- } else if (processIndex == 2) {
-   currentForm = document.getElementById("process2");
- } else if (processIndex == 3) {
-   currentForm = document.getElementById("process3");
- } else if (processIndex == 4) {
-   currentForm = document.getElementById("process4");
- } else if (processIndex == 5) {
-   currentForm = document.getElementById("process5");
- } else if (processIndex == 6) {
-   currentForm = document.getElementById("process6");
- } else if (processIndex == 7) {
-   currentForm = document.getElementById("process7");
- }
- 
- let allAreFilled = true;
- currentForm.querySelectorAll("[required]").forEach(function (i) {
-   if (!allAreFilled) return;
-   if (i.type === "radio") {
-     let radioValueCheck = false;
-     currentForm.querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
-       if (r.checked) radioValueCheck = true;
-     });
-     allAreFilled = radioValueCheck;
-     return;
-   }
-   if (!i.value) {
-     allAreFilled = false;
-     return;
-   }
- });
- if (!allAreFilled) {
-  Toast({
-    status:'error',
-    title: 'Fill all required fields',
-    postition: 'top-right',
-    description: 'Check again!',
-    toast
-  })
- } else {
-   // Submit Datas
-   if(processIndex == maximumProcesses) {
-    let process_title = document.getElementById('process_title')
+    if (
+      document.querySelector(".error-message").classList[3] != "text-red-600"
+    ) {
+      // Check If All Required Feilds Filled
 
-    process_title.style.display = 'none'
+      let currentForm;
+      if (processIndex == 1) {
+        currentForm = document.getElementById("process1");
+      } else if (processIndex == 2) {
+        currentForm = document.getElementById("process2");
+      } else if (processIndex == 3) {
+        currentForm = document.getElementById("process3");
+      } else if (processIndex == 4) {
+        currentForm = document.getElementById("process4");
+      } else if (processIndex == 5) {
+        currentForm = document.getElementById("process5");
+      } else if (processIndex == 6) {
+        currentForm = document.getElementById("process6");
+      } else if (processIndex == 7) {
+        currentForm = document.getElementById("process7");
+      }
 
-    setTimeout(()=> {
-      process_title.style.display = 'block'
-    },1500)
-     onOpen()
-   }
-   setProcessIndex(processIndex == maximumProcesses ? maximumProcesses : processIndex + 1);
- }
+      let allAreFilled = true;
+      currentForm.querySelectorAll("[required]").forEach(function (i) {
+        if (!allAreFilled) return;
+        if (i.type === "radio") {
+          let radioValueCheck = false;
+          currentForm
+            .querySelectorAll(`[name=${i.name}]`)
+            .forEach(function (r) {
+              if (r.checked) radioValueCheck = true;
+            });
+          allAreFilled = radioValueCheck;
+          return;
+        }
+        if (!i.value) {
+          allAreFilled = false;
+          return;
+        }
+      });
+      if (!allAreFilled) {
+        Toast({
+          status: "error",
+          title: "Fill all required fields",
+          postition: "top-right",
+          description: "Check again!",
+          toast,
+        });
+      } else {
+        // Submit Datas
+        if (processIndex == maximumProcesses) {
+          let process_title = document.getElementById("process_title");
+
+          process_title.style.display = "none";
+
+          setTimeout(() => {
+            process_title.style.display = "block";
+          }, 1500);
+          onOpen();
+        }
+        setProcessIndex(
+          processIndex == maximumProcesses ? maximumProcesses : processIndex + 1
+        );
+      }
     }
-
-   
-
-    
   }
 
-   // Iterate When Choose Theme Use Effect
-   useEffect(()=> {
-    document.querySelectorAll('.theme_color').forEach((elem)=> {
-      elem.classList.remove("ring-4")
+  // Iterate When Choose Theme Use Effect
+  useEffect(() => {
+    document.querySelectorAll(".theme_color").forEach((elem) => {
+      elem.classList.remove("ring-4");
     });
-    document.getElementById(`choose-theme-${choosedThemeColor}`).classList.add("ring-4",`ring-${choosedThemeColor}-600`)
-  },[choosedThemeColor])
+    document
+      .getElementById(`choose-theme-${choosedThemeColor}`)
+      .classList.add("ring-4", `ring-${choosedThemeColor}-600`);
+  }, [choosedThemeColor]);
 
   // Upload Files To Cloud
-  async function uploadImage(files,id){
-    toastIdRef.current =  Toast({
-      status:'loading',
-      title: 'Uploading image...',
-      postition: 'top-right',
-      toast
-    })
+  async function uploadImage(files, id) {
+    toastIdRef.current = Toast({
+      status: "loading",
+      title: "Uploading image...",
+      postition: "top-right",
+      toast,
+    });
 
     const formData = new FormData();
-    formData.append("file",files[0]);
-    formData.append("upload_preset","xav0wsx1")
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "xav0wsx1");
 
-
-    let response = await axios.post("https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",formData)
-    document.getElementById(id).value = response.data.url
+    let response = await axios.post(
+      "https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",
+      formData
+    );
+    document.getElementById(id).value = response.data.url;
 
     if (toastIdRef.current) {
-      toast.close(toastIdRef.current)
+      toast.close(toastIdRef.current);
     }
-
   }
 
-  function checkCompanyNameExists(value){
+  function checkCompanyNameExists(value) {
     // Check The Company Name Already Exists
-      let company_name_input = document.querySelector('.company_name_input')
-      let company_name = value
-      axios.get(`${apiKeys.server_url}/card/all`).then((response)=> {
-        response.data.filter((data)=> {
+    let company_name_input = document.querySelector(".company_name_input");
+    let company_name = value;
+    axios.get(`${apiKeys.server_url}/card/all`).then((response) => {
+      response.data
+        .filter((data) => {
+          company_name_input.classList.add(
+            "bg-green-50",
+            "border-green-500",
+            "text-green-900",
+            "placeholder-green-700"
+          );
 
+          company_name_input.classList.replace("bg-red-50", "bg-green-50");
+          company_name_input.classList.replace(
+            "focus:border-indigo-500",
+            "focus:border-green-500"
+          );
+          company_name_input.classList.replace(
+            "focus:ring-blue-500",
+            "focus:ring-green-500"
+          );
+          company_name_input.classList.replace(
+            "focus:border-red-500",
+            "focus:border-green-500"
+          );
+          company_name_input.classList.replace(
+            "focus:ring-red-500",
+            "focus:ring-green-500"
+          );
+          company_name_input.classList.replace(
+            "text-red-900",
+            "text-green-900"
+          );
+          company_name_input.classList.replace(
+            "placeholder-red-700",
+            "placeholder-green-700"
+          );
 
-          company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
+          document
+            .querySelector(".error-message")
+            .classList.replace("text-red-600", "text-green-600");
+          document.querySelector(".error-message").innerText =
+            "Well Done! Company name is available";
 
-          company_name_input.classList.replace('bg-red-50','bg-green-50')
-          company_name_input.classList.replace('focus:border-indigo-500','focus:border-green-500')
-          company_name_input.classList.replace('focus:ring-blue-500','focus:ring-green-500')
-          company_name_input.classList.replace('focus:border-red-500','focus:border-green-500')
-          company_name_input.classList.replace('focus:ring-red-500','focus:ring-green-500')
-          company_name_input.classList.replace('text-red-900','text-green-900')
-          company_name_input.classList.replace('placeholder-red-700','placeholder-green-700')
-
-          document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
-          document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
-
-          return data.company_name.toLowerCase() == company_name.toLowerCase()
-
-        
-        }).map((data)=> {
-          if(data){
-
-            company_name_input.classList.replace('bg-green-50','bg-red-50')
-            company_name_input.classList.replace('focus:border-green-500','focus:border-red-500')
-            company_name_input.classList.replace('focus:ring-green-500','focus:ring-red-500')
-            company_name_input.classList.replace('text-green-900','text-red-900')
-            company_name_input.classList.replace('placeholder-green-700','placeholder-red-700')
-
-            document.querySelector('.error-message').classList.replace('text-green-600','text-red-600')
-            document.querySelector('.error-message').innerText = 'Oh, snapp! Company name already exists'
-          }
+          return data.company_name.toLowerCase() == company_name.toLowerCase();
         })
-      })
+        .map((data) => {
+          if (data) {
+            company_name_input.classList.replace("bg-green-50", "bg-red-50");
+            company_name_input.classList.replace(
+              "focus:border-green-500",
+              "focus:border-red-500"
+            );
+            company_name_input.classList.replace(
+              "focus:ring-green-500",
+              "focus:ring-red-500"
+            );
+            company_name_input.classList.replace(
+              "text-green-900",
+              "text-red-900"
+            );
+            company_name_input.classList.replace(
+              "placeholder-green-700",
+              "placeholder-red-700"
+            );
+
+            document
+              .querySelector(".error-message")
+              .classList.replace("text-green-600", "text-red-600");
+            document.querySelector(".error-message").innerText =
+              "Oh, snapp! Company name already exists";
+          }
+        });
+    });
   }
 
-  function generateCompletion(elem,prompt,temperature,event){
+  function generateCompletion(elem, prompt, temperature, event) {
+    event.target.innerText = "Generating...";
 
-    event.target.innerText = 'Generating...'
+    axios({
+      method: "POST",
+      url: `${apiKeys.server_url}/generate-completion`,
+      data: {
+        prompt,
+        temperature,
+      },
+    }).then((res) => {
+      if (res.data.status) {
+        const dirtyString = res.data.response;
+        let cleanString = dirtyString.trim();
+        let fullyCleanString = cleanString.replace(/[\n"]/g, " ");
 
-   axios({
-    method: 'POST',
-    url: `${apiKeys.server_url}/generate-completion`,
-    data: {
-      prompt,
-      temperature
-    }
-   }).then((res)=> {
-    if(res.data.status){
-
-const dirtyString = res.data.response;
-let cleanString = dirtyString.trim();
-let fullyCleanString = cleanString.replace(/[\n"]/g, " ");
-
-elem.value = fullyCleanString
-event.target.innerText = 'Regenerate'
-
-
-    }else{
-      Toast({
-        status:'error',
-        title: 'AI not working properly',
-        postition: 'top-right',
-        description: 'try again!!!',
-        toast
-      })
-      event.target.innerText = 'Generate'
-    }
-   })
+        elem.value = fullyCleanString;
+        event.target.innerText = "Regenerate";
+      } else {
+        Toast({
+          status: "error",
+          title: "AI not working properly",
+          postition: "top-right",
+          description: "try again!!!",
+          toast,
+        });
+        event.target.innerText = "Generate";
+      }
+    });
   }
 
   console.log(location.state.isPremium);
 
-
-
   return (
-    <form
-      id="cardForm"
-      className="h-screen w-full flex flex-col items-center"
-    >
-
-
-
-
-
-        <input type="text" name="franchisee" value={location.state ? location.state.franchisee_email : 'no franchisee'} className='hidden' />
-
-        <input type="text" name="isPremium" value={location.state ? location.state.isPremium : location.state.isPremium} className='hidden' />
-
-
-<CreateHeader processIndex={processIndex} loading={loading} hideIndicators={false} />
-
-
-
-    {/* Last Confirm Modal */}
-    <Modal  isOpen={isOpen} onClose={onClose} >
-        <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="20px"  />
-        <ModalContent  display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
-          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-extrabold text-3xl text-center" >Are You Sure To Create?</span></ModalHeader>
-          <ModalBody pb='4' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-            <span className="font-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
-          </ModalBody>
-          <ModalFooter display='flex'  justifyContent='center' alignItems='center'>
-            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-semibold" >Cancel</span></Button>
-
-
-            <Button rounded='full' color='#fff' _hover bgColor='#5046E4'  onClick={()=> {
-              setLoading(true)
-              onClose()
-              let cardForm = document.getElementById("cardForm");
-              const myFormData = new FormData(cardForm);
+    <form id="cardForm" className="h-screen w-full flex flex-col items-center">
+      <Helmet>
+        <title>Visita - Create</title>
+        <meta
+          name="description"
+          content="
           
-              const formDataObj = {};
-              myFormData.forEach((value, key) => (formDataObj[key] = value));
+          Create a professional business website in minutes with our user-friendly website builder. Choose from customizable templates, add your own content and go live in no time. Start building your online presence now!
 
-              axios.post(`${apiKeys.server_url}/createcard`,formDataObj).then((response)=> {
-                if(response.status == 200){
-                  navigate(response.data.redirect_url)
-                }else{
-                  Toast({
-                    status:'error',
-        title: 'We are troubling to create website',
-        postition: 'top',
-        description: 'Contact visita team',
-        toast
-                  })
-                }
-              })
-              
-            }}>
-              <span className="font-semibold" >Yes' Create Website</span>
+
+          "
+        />
+      </Helmet>
+
+      <input
+        type="text"
+        name="franchisee"
+        value={
+          location.state ? location.state.franchisee_email : "no franchisee"
+        }
+        className="hidden"
+      />
+
+      <input
+        type="text"
+        name="isPremium"
+        value={
+          location.state ? location.state.isPremium : location.state.isPremium
+        }
+        className="hidden"
+      />
+
+      <CreateHeader
+        processIndex={processIndex}
+        loading={loading}
+        hideIndicators={false}
+      />
+
+      {/* Last Confirm Modal */}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay
+          bg="whiteAlpha.1000"
+          backdropFilter="auto"
+          backdropBlur="20px"
+        />
+        <ModalContent
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          py="8"
+          px="8"
+          rounded="3xl"
+        >
+          <ModalHeader
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <span className="font-extrabold text-3xl text-center">
+              Are You Sure To Create?
+            </span>
+          </ModalHeader>
+          <ModalBody
+            pb="4"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <span className="font-medium text-center">
+              You can make sure that the information you provided is correct.{" "}
+              <span className="text-blue-600 ml-1">
+                However, you can edit it later
+              </span>
+            </span>
+          </ModalBody>
+          <ModalFooter
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Button rounded="full" mr={3} variant="solid" onClick={onClose}>
+              <span className="font-semibold">Cancel</span>
             </Button>
 
+            <Button
+              rounded="full"
+              color="#fff"
+              _hover
+              bgColor="#5046E4"
+              onClick={() => {
+                setLoading(true);
+                onClose();
+                let cardForm = document.getElementById("cardForm");
+                const myFormData = new FormData(cardForm);
 
+                const formDataObj = {};
+                myFormData.forEach((value, key) => (formDataObj[key] = value));
+
+                axios
+                  .post(`${apiKeys.server_url}/createcard`, formDataObj)
+                  .then((response) => {
+                    if (response.status == 200) {
+                      navigate(response.data.redirect_url);
+                    } else {
+                      Toast({
+                        status: "error",
+                        title: "We are troubling to create website",
+                        postition: "top",
+                        description: "Contact visita team",
+                        toast,
+                      });
+                    }
+                  });
+              }}
+            >
+              <span className="font-semibold">Yes' Create Website</span>
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
 
-
-     
-
-
       <div
         className={`create-inputs-wrapper ${
-         processIndex == 5 ? "lg:w-[75%] w-full" : processIndex > 2 ? "lg:w-[55%] w-full" : "lg:w-[45%] w-[70%]"
+          processIndex == 5
+            ? "lg:w-[75%] w-full"
+            : processIndex > 2
+            ? "lg:w-[55%] w-full"
+            : "lg:w-[45%] w-[70%]"
         }    lg:rounded-t-3xl lg:h-[90%] h-[87%] absolute lg:px-8 px-7   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
         <div className=" flex  h-full  ">
@@ -479,13 +590,13 @@ event.target.innerText = 'Regenerate'
                 placeholder="Enter company name"
                 autoComplete="off"
                 required
-                onChange={(e)=> checkCompanyNameExists(e.target.value)}
+                onChange={(e) => checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
                 class="company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
-<p class="error-message mt-2 text-sm text-green-600 font-medium"></p>
+              <p class="error-message mt-2 text-sm text-green-600 font-medium"></p>
 
               <label
                 for="large-input"
@@ -496,9 +607,11 @@ event.target.innerText = 'Regenerate'
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
-                <img className={`ring-4 invisible transition-all  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
+                  <img
+                    className={`ring-4 invisible transition-all  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`}
+                  />
                   <svg
-                  id="logo-upload-svg"
+                    id="logo-upload-svg"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsSvgjs="http://svgjs.com/svgjs"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -526,7 +639,9 @@ event.target.innerText = 'Regenerate'
                 </div>
                 <input
                   type="file"
-                  onChange={(e)=> {uploadImage(e.target.files,"logo")}}
+                  onChange={(e) => {
+                    uploadImage(e.target.files, "logo");
+                  }}
                   id="create-choose-logo"
                   accept="image/*"
                   required
@@ -541,48 +656,48 @@ event.target.innerText = 'Regenerate'
                 </label>
               </div>
 
-
               <div id="choose_theme_color" className="flex flex-col  ">
-              <label
-                for="large-input"
-                class="block mb-2 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-4"
-              >
-                Choose Matching Theme Color <span className="text-blue-600">*</span>
-              </label>
-                
+                <label
+                  for="large-input"
+                  class="block mb-2 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-4"
+                >
+                  Choose Matching Theme Color{" "}
+                  <span className="text-blue-600">*</span>
+                </label>
 
                 <div className="flex w-full flex-wrap lg:pr-6  py-2">
-                  <input name="theme_color" type="text" className="hidden" value={choosedThemeColor} />
+                  <input
+                    name="theme_color"
+                    type="text"
+                    className="hidden"
+                    value={choosedThemeColor}
+                  />
 
-                  {
-                    themeColors.map((color)=> {
-                     return (
+                  {themeColors.map((color) => {
+                    return (
                       <div>
-                        <Tooltip className="font-medium" label={color} placement='top' bg='#000' px='3' py='1' rounded='full' color='white'>
-                        <div  id={`choose-theme-${color}`} onClick={()=> setChoosedThemeColor(color)} className={`w-8 h-8 mr-4 lg:my-2 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}></div>
-                      
+                        <Tooltip
+                          className="font-medium"
+                          label={color}
+                          placement="top"
+                          bg="#000"
+                          px="3"
+                          py="1"
+                          rounded="full"
+                          color="white"
+                        >
+                          <div
+                            id={`choose-theme-${color}`}
+                            onClick={() => setChoosedThemeColor(color)}
+                            className={`w-8 h-8 mr-4 lg:my-2 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}
+                          ></div>
                         </Tooltip>
-                       
-                     
                       </div>
-
-
-                     )
-                    })
-                  }
-
-
-
+                    );
+                  })}
                 </div>
-
               </div>
-
-
             </div>
-
-            
-
-        
 
             {/* Company Details */}
             <div
@@ -591,16 +706,12 @@ event.target.innerText = 'Regenerate'
                 processIndex != 2 ? "hidden" : ""
               }  my-3 process3_wrapper pb-40 overflow-scroll`}
             >
-
-
-<label
+              <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
                 Company Category <span className="text-blue-600">*</span>
               </label>
-              
-
 
               <input
                 placeholder="Enter your company category"
@@ -611,41 +722,39 @@ event.target.innerText = 'Regenerate'
                 className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
-
-
               <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
-                Tagline 
+                Tagline
                 <span className="text-blue-600">*</span>
               </label>
-              
 
               <div className="relative flex items-center ">
-              <input
-                placeholder="Enter tagline"
-                autoComplete="off"
-                required
-                id="tagline_input"
-                name="tagline"
-                className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
-              />
+                <input
+                  placeholder="Enter tagline"
+                  autoComplete="off"
+                  required
+                  id="tagline_input"
+                  name="tagline"
+                  className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                />
 
-
-<p onClick={(e)=> {
-  
-  generateCompletion(document.getElementById('tagline_input'),
-  `write a tagline for a ${document.getElementById('category_input').value}`,
-  1,
-  e
-  
-  
-  )
-  
-  }}  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate tagline</p>
-
-
+                <p
+                  onClick={(e) => {
+                    generateCompletion(
+                      document.getElementById("tagline_input"),
+                      `write a tagline for a ${
+                        document.getElementById("category_input").value
+                      }`,
+                      1,
+                      e
+                    );
+                  }}
+                  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  "
+                >
+                  Generate tagline
+                </p>
               </div>
 
               <label
@@ -798,7 +907,7 @@ event.target.innerText = 'Regenerate'
                 class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
 
-<label
+              <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
@@ -850,69 +959,65 @@ event.target.innerText = 'Regenerate'
                 About Company <span className="text-blue-600">*</span>
               </label>
 
-
               <div className="relative flex items-center ">
-              
-              <input
-                placeholder="About your company"
-                autoComplete="off"
-                id="about_input"
-                required
-                name="about"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
-              />
+                <input
+                  placeholder="About your company"
+                  autoComplete="off"
+                  id="about_input"
+                  required
+                  name="about"
+                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                />
 
-              <p onClick={(e)=> {
-  
-  generateCompletion(document.getElementById('about_input'),
-  `write a bio for a ${document.getElementById('category_input').value} shop or business`,
-  1,
-  e
-  
-  
-  )
-  
-  }}  className="text-white absolute cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate bio</p>
-              
-              
-                            </div>
+                <p
+                  onClick={(e) => {
+                    generateCompletion(
+                      document.getElementById("about_input"),
+                      `write a bio for a ${
+                        document.getElementById("category_input").value
+                      } shop or business`,
+                      1,
+                      e
+                    );
+                  }}
+                  className="text-white absolute cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  "
+                >
+                  Generate bio
+                </p>
+              </div>
 
-
-              
               <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
                 Specialities <span className="text-slate-400">(Optional)</span>
-              
               </label>
 
               <div className="relative flex items-center ">
-              
-              <input
-                placeholder="Seperate with comma ( , )"
-                autoComplete="off"
-                id="specials_input"
-                name="specials"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
-              />
-             
-              <p onClick={(e)=> {
-  
-  generateCompletion(document.getElementById('specials_input'),
-  `write specialities for ${document.getElementById('category_input').value} shop or business. separate with commas without numbers`,
-  1,
-  e
-  
-  
-  )
-  
-  }}  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
-              
-              
-                            </div>
+                <input
+                  placeholder="Seperate with comma ( , )"
+                  autoComplete="off"
+                  id="specials_input"
+                  name="specials"
+                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                />
 
-
+                <p
+                  onClick={(e) => {
+                    generateCompletion(
+                      document.getElementById("specials_input"),
+                      `write specialities for ${
+                        document.getElementById("category_input").value
+                      } shop or business. separate with commas without numbers`,
+                      1,
+                      e
+                    );
+                  }}
+                  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  "
+                >
+                  Generate
+                </p>
+              </div>
 
               <label
                 for="large-input"
@@ -921,38 +1026,31 @@ event.target.innerText = 'Regenerate'
                 Features <span className="text-slate-400">(Optional)</span>
               </label>
 
-
               <div className="relative flex items-center ">
-              
-              <input
-                placeholder="Seperate with comma ( , )"
-                autoComplete="off"
-                id="features_input"
-                name="features"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
-              />
-             
-              <p onClick={(e)=> {
-  
-  generateCompletion(document.getElementById('features_input'),
-  `write features for a ${document.getElementById('category_input').value} shop or business. separate with commas without numbers`,
-  1,
-  e
-  
-  
-  )
-  
-  }}  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  ">Generate</p>
-              
-              
-                            </div>
+                <input
+                  placeholder="Seperate with comma ( , )"
+                  autoComplete="off"
+                  id="features_input"
+                  name="features"
+                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                />
 
-
-
-
-
-
-
+                <p
+                  onClick={(e) => {
+                    generateCompletion(
+                      document.getElementById("features_input"),
+                      `write features for a ${
+                        document.getElementById("category_input").value
+                      } shop or business. separate with commas without numbers`,
+                      1,
+                      e
+                    );
+                  }}
+                  className="text-white absolute  cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium h-full right-0 flex items-center justify-center rounded-r-lg transition-colors  text-xs px-5 py-1.5  "
+                >
+                  Generate
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1056,7 +1154,6 @@ event.target.innerText = 'Regenerate'
 
           <h1 className="text-xl mt-12 font-bold mb-6 flex justify-center">
             Youtube Video Links
-           
           </h1>
 
           <label
@@ -1188,7 +1285,6 @@ event.target.innerText = 'Regenerate'
           />
 
           <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
-           
             Payment QR Codes
           </h1>
 
@@ -1203,9 +1299,16 @@ event.target.innerText = 'Regenerate'
             className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
-            onChange={(e)=> {uploadImage(e.target.files,"paytm_qrcode")}}
+            onChange={(e) => {
+              uploadImage(e.target.files, "paytm_qrcode");
+            }}
           />
-          <input type="text" name="paytm_qrcode" id="paytm_qrcode" className="hidden" />
+          <input
+            type="text"
+            name="paytm_qrcode"
+            id="paytm_qrcode"
+            className="hidden"
+          />
 
           <label
             for="large-input"
@@ -1218,9 +1321,16 @@ event.target.innerText = 'Regenerate'
             className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
-            onChange={(e)=> {uploadImage(e.target.files,"googlepay_qrcode")}}
+            onChange={(e) => {
+              uploadImage(e.target.files, "googlepay_qrcode");
+            }}
           />
-          <input type="text" name="googlepay_qrcode" id="googlepay_qrcode" className="hidden" />
+          <input
+            type="text"
+            name="googlepay_qrcode"
+            id="googlepay_qrcode"
+            className="hidden"
+          />
 
           <label
             for="large-input"
@@ -1233,12 +1343,18 @@ event.target.innerText = 'Regenerate'
             className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
             id="large_size"
             type="file"
-            onChange={(e)=> {uploadImage(e.target.files,"phonepe_qrcode")}}
+            onChange={(e) => {
+              uploadImage(e.target.files, "phonepe_qrcode");
+            }}
           />
-          <input type="text" name="phonepe_qrcode" id="phonepe_qrcode" className="hidden" />
+          <input
+            type="text"
+            name="phonepe_qrcode"
+            id="phonepe_qrcode"
+            className="hidden"
+          />
 
           <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
-          
             Bank Account Details
           </h1>
 
@@ -1339,14 +1455,20 @@ event.target.innerText = 'Regenerate'
                 </label>
                 <div className="lg:w-full  lg:pb-8 pb-24   lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8  ">
                   <div class="flex border border-slate-800 py-[130px] lg:px-0 px-8 lg:mb-0 mb-6 justify-center  lg:w-[400px] w-[280px]   rounded-md  items-center">
-                  <input
-            className=" ml-6 font-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
-            id="large_size"
-            type="file"
-            onChange={(e)=> {uploadImage(e.target.files,`product_image_${data}`)}}
-          />
-          <input type="text" name={`product_image_${data}`} id={`product_image_${data}`} className="hidden" />
-          
+                    <input
+                      className=" ml-6 font-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+                      id="large_size"
+                      type="file"
+                      onChange={(e) => {
+                        uploadImage(e.target.files, `product_image_${data}`);
+                      }}
+                    />
+                    <input
+                      type="text"
+                      name={`product_image_${data}`}
+                      id={`product_image_${data}`}
+                      className="hidden"
+                    />
                   </div>
 
                   <div className="w-full flex flex-col justify-center px-2">
@@ -1389,7 +1511,6 @@ event.target.innerText = 'Regenerate'
                       name={`product_${data}_link`}
                       class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
                     />
-
                   </div>
                 </div>
               </div>
@@ -1405,40 +1526,40 @@ event.target.innerText = 'Regenerate'
             processIndex != 6 ? "hidden" : ""
           }  my-3 process6_wrapper  pb-40 overflow-scroll w-full`}
         >
-        
-        {
-          imageGalleryQuantity.map((data)=> {
-            return(
-             <div  >
-               <label
-              for="large-input"
-              class="block mb-2 lg:text-lg   text-md font-medium text-gray-900 border-slate-800 :text-gray-300 lg:mt-6 mt-10 "
-            >
-              Image {data}
-              <span className="text-slate-400 ml-1 text-sm">
-                (Optional)
-              </span>
-            </label>
-              <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0   flex lg:flex-row flex-col items-center  py-8   border-b border-b-slate-800">
+          {imageGalleryQuantity.map((data) => {
+            return (
+              <div>
+                <label
+                  for="large-input"
+                  class="block mb-2 lg:text-lg   text-md font-medium text-gray-900 border-slate-800 :text-gray-300 lg:mt-6 mt-10 "
+                >
+                  Image {data}
+                  <span className="text-slate-400 ml-1 text-sm">
+                    (Optional)
+                  </span>
+                </label>
+                <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0   flex lg:flex-row flex-col items-center  py-8   border-b border-b-slate-800">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
-                  <input
-            className="  font-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
-            id="large_size"
-            type="file"
-            onChange={(e)=> {uploadImage(e.target.files,`image_${data}`)}}
-          />
+                    <input
+                      className="  font-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+                      id="large_size"
+                      type="file"
+                      onChange={(e) => {
+                        uploadImage(e.target.files, `image_${data}`);
+                      }}
+                    />
 
-<input type="text" name={`image_${data}`} id={`image_${data}`} className="hidden" />
-
+                    <input
+                      type="text"
+                      name={`image_${data}`}
+                      id={`image_${data}`}
+                      className="hidden"
+                    />
                   </div>
-                  </div>
-             </div>
-            )
-          })
-        }
-
-
-
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div
@@ -1448,41 +1569,50 @@ event.target.innerText = 'Regenerate'
           }  my-3 process7_wrapper  pb-40 overflow-scroll`}
         >
           <div className=" add_features_wrapper  lg:pb-8 pb-24   lg:mt-0  rounded-lg flex lg:flex-row flex-col items-center border  py-8 px-4 ">
+            <div class="flex flex-col w-full justify-center  py-2 lg:px-8 px-2 items-center">
+              <FormControl display="flex" alignItems="center">
+                <FormLabel htmlFor="email-alerts" mb="0">
+                  <h1 className="flex flex-col">
+                    <div className="flex lg:flex-row flex-col-reverse">
+                      <span className="font-bold text-lg mr-4">
+                        Get your customers details
+                      </span>
+                      <Switch
+                        colorScheme="purple"
+                        value={false}
+                        onChange={(e) => {
+                          if (feature1 == true) {
+                            setFeature1(false);
+                          } else {
+                            setFeature1(true);
+                          }
+                        }}
+                        size="md"
+                        id="show_popup_feature_1_toggle"
+                        mt="1"
+                        mb="1"
+                      />
+                    </div>
 
-                  <div class="flex flex-col w-full justify-center  py-2 lg:px-8 px-2 items-center">
-                  
-                  <FormControl display='flex' alignItems='center'>
-  <FormLabel htmlFor='email-alerts' mb='0'>
-    
-    <h1 className="flex flex-col" >
-   
-<div className="flex lg:flex-row flex-col-reverse"> 
-<span className="font-bold text-lg mr-4" >Get your customers details</span>
-    <Switch colorScheme='purple' value={false} onChange={(e)=> {
+                    <input
+                      type="text"
+                      value={feature1}
+                      name="show_customer_details_popop"
+                      className="hidden"
+                    />
 
-      if(feature1 == true){
-        setFeature1(false)
-      }else{
-        setFeature1(true)
-      }
-
-    }} size='md' id='show_popup_feature_1_toggle'  mt='1' mb='1' />
-    </div>
-
-    <input type="text" value={feature1} name="show_customer_details_popop" className="hidden"  />
-
-    <span className="font-medium mt-4 lg:w-[600px]  w-[300px] text-slate-400" >
-    This will help you to get all your customer details like name,phone number etc.when your customer enters to your website it will be show a popup for enter name and phone number.if the customer enter his details and submit you will get the details on your website manage page
-    </span>
-    </h1>
-
-  </FormLabel>
-  
-</FormControl>
-
-                  </div>
-
-                  </div>
+                    <span className="font-medium mt-4 lg:w-[600px]  w-[300px] text-slate-400">
+                      This will help you to get all your customer details like
+                      name,phone number etc.when your customer enters to your
+                      website it will be show a popup for enter name and phone
+                      number.if the customer enter his details and submit you
+                      will get the details on your website manage page
+                    </span>
+                  </h1>
+                </FormLabel>
+              </FormControl>
+            </div>
+          </div>
         </div>
 
         {/* Form Buttons */}
@@ -1504,14 +1634,12 @@ event.target.innerText = 'Regenerate'
               }
               className="w-[150px] lg:mr-6 mr-2 font-semibold"
               size="md"
-              color='white'
+              color="white"
             >
-              
               Previous
             </Button>
 
             <Button
-             
               _hover
               rounded={"full"}
               isLoading={loading}
@@ -1520,21 +1648,22 @@ event.target.innerText = 'Regenerate'
               backgroundColor="#5046E4"
               className="w-[200px] font-semibold lg:mr-6"
               size="md"
-              color='white'
+              color="white"
             >
-             {processIndex == maximumProcesses ? 'Create Website' : 'Save & continue'}
+              {processIndex == maximumProcesses
+                ? "Create Website"
+                : "Save & continue"}
             </Button>
 
             <Button
               id="skip_button"
-              display='none'
-              
+              display="none"
               rounded={"full"}
               backgroundColor="#5046E4"
               _hover
               className="w-[100px]  font-semibold  lg:mr-6 mr-2"
               size="md"
-              color='white'
+              color="white"
               onClick={() => setProcessIndex(processIndex + 1)}
             >
               Skip

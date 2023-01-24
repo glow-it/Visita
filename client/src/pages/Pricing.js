@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import {Helmet} from "react-helmet";
 
 function Pricing() {
 
@@ -14,7 +15,22 @@ function Pricing() {
   return (
 
 
-<div class="relative w-full bg-slate-50 h-full pt-14">
+<div class="relative w-full bg-white h-full pt-14">
+
+
+<Helmet>
+          <title >
+          Visita - Pricing
+          </title>
+          <meta name="description" content="
+          
+          Our website builder offers flexible pricing options to fit the needs of any business. Our basic plan includes essential features such as customizable template and hosting for a low annually fee. Upgrade to our premium plan for added features such as e-commerce integration and premium design.
+
+
+          " />
+        </Helmet>
+
+
 <div class="absolute hidden w-full  lg:block h-96 " />
 <div class="relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full  lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -147,7 +163,7 @@ take payment from your bank annually. Payment secured by Razorpay
           Choose this
         </button>
         <button
-        onClick={()=> navigate('/visita')}
+        onClick={()=> navigate('/blueberrybakes')}
           class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
         >
           See demo
@@ -158,6 +174,8 @@ take payment from your bank annually. Payment secured by Razorpay
       <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
     </div>
     <div data-aos="fade-up" data-aos-delay="300" >
+
+
       <div class="p-8 bg-gray-900 rounded">
         <div class="mb-4 text-center">
           <p class="text-xl font-medium tracking-wide text-white">
@@ -252,7 +270,7 @@ take payment from your bank annually. Payment secured by Razorpay
           Choose this
         </button>
         <button
-        onClick={()=> navigate('/blueberrybakes')}
+        onClick={()=> navigate('/visita')}
           class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
         >
           See demo
@@ -262,7 +280,24 @@ take payment from your bank annually. Payment secured by Razorpay
       <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />
       <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
     </div>
+
+
+    
+
+
+
+
+
+
+
   </div>
+
+
+
+
+
+
+
 </div>
 </div>
 

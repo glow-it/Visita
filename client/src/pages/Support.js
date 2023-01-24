@@ -7,6 +7,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useState } from 'react';
 import { Toast } from '../miniComponents/Toast';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet';
 
 function Support() {
 
@@ -14,15 +15,28 @@ function Support() {
       document.title = 'Visita - Support'
     },[])
 
-    let toast = useToast()
 
-    let [isLoading,setIsLoading] = useState(false)
 
 
     
 
   return (
-    <div className=' w-full bg-slate-50 flex flex-col items-center overflow-scroll pb-56' >
+    <div className=' w-full bg-white flex flex-col items-center overflow-scroll pb-56' >
+
+
+
+<Helmet>
+          <title >
+          Visita - Support
+          </title>
+          <meta name="description" content="
+          
+          Get the support you need to make the most of your business website with our dedicated customer support team. From technical assistance to design advice, we're here to help you succeed online.
+
+
+          " />
+        </Helmet>
+
 
       <div className="w-full h-72  flex pt-36 flex-col items-center justify-center lg:px-0 px-8">
          <h1 data-aos="fade-up" data-aos-delay="0" className='font-extrabold lg:text-[4.25rem] text-4xl text-center' >Have questions? Reach out!</h1>
