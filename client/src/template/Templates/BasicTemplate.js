@@ -19,7 +19,6 @@ import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
-import installPwaApp from "../../Tools/InstallPwaApp";
 
 function BasicTemplate({ preview,cardDatas }) {
   const toast = useToast();
@@ -249,12 +248,6 @@ function BasicTemplate({ preview,cardDatas }) {
     feedback_card_wrapper.appendChild(div);
   }
 
-  
-    // Configure Install PWA App
-  let installButton = document.getElementById("app-install-button");
-  let deferredPrompt;
-  installPwaApp(installButton,deferredPrompt)
-  
 
 
 
@@ -516,14 +509,7 @@ function BasicTemplate({ preview,cardDatas }) {
                 </button>
 
 
-                <button
-                 id="app-install-button"
-                  className={`flex justify-center items-center mt-3 py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
-                >
-                  Save app
-                  <span className=" ml-1 text-white text-xl"></span>
-                  <ion-icon name="arrow-down-outline"></ion-icon>
-                </button>
+             
 
 
               </div>

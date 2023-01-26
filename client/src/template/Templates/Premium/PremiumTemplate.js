@@ -22,7 +22,6 @@ import apiKeys from "../../../Api/apiKeys";
 import Loading from "../../../miniComponents/Loading";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import installPwaApp from "../../../Tools/InstallPwaApp";
 
 function PremiumTemplate1({ preview }) {
   const toast = useToast();
@@ -327,10 +326,6 @@ function PremiumTemplate1({ preview }) {
   }
 
 
-      // Configure Install PWA App
-      let installButton = document.getElementById("app-install-button-premium");
-      let deferredPrompt;
-      installPwaApp(installButton,deferredPrompt)
 
   return (
     <div className=" flex justify-center items-center pb-24">
@@ -551,14 +546,7 @@ function PremiumTemplate1({ preview }) {
                 Views: {cardDatas && cardDatas.views}
               </span>
 
-              <span
-              id="app-install-button-premium"
-                className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
-              >
-                <span className="flex items-center justify-center">
-                <ion-icon name="download-outline"></ion-icon>
-                </span>
-              </span>
+            
 
               <p
               onClick={()=> setOpen(true)}
