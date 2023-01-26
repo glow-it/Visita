@@ -34,13 +34,7 @@ function BasicTemplate({ preview,cardDatas }) {
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
 
-  axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
-    cardDatas.map((data) => {
-      if (data.name == cardDatas.theme_color) {
-        setBgImage(data.image_url);
-      }
-    });
-  });
+
 
   // Get Card Datas
   useEffect(() => {
@@ -51,32 +45,33 @@ function BasicTemplate({ preview,cardDatas }) {
       );
     }
 
-   
-        // Set Manifest Dynamically
-        var myDynamicManifest = {
-          name: capitalize(cardDatas.company_name),
-          short_name: capitalize(cardDatas.company_name),
-          description: capitalize(cardDatas.about),
-          start_url: `/${params.comp_name}`,
-          background_color: "#fff",
-          theme_color: "#fff",
-          display: "standalone",
-          scope: `/${params.comp_name}`,
-          icons: [
-            {
-              src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
-              sizes: "256x256",
-              type: "image/png",
-            },
-          ],
-        };
-        const stringManifest = JSON.stringify(myDynamicManifest);
-        const blob = new Blob([stringManifest], { type: "application/json" });
-        const manifestURL = URL.createObjectURL(blob);
-        document
-          .querySelector("#my-manifest-placeholder")
-          .setAttribute("href", manifestURL);
 
+     // Set Manifest Dynamically
+     var myDynamicManifest = {
+      name: capitalize(cardDatas.company_name),
+      short_name: capitalize(cardDatas.company_name),
+      description: capitalize(cardDatas.about),
+      start_url: `/`,
+      background_color: "#fff",
+      theme_color: "#fff",
+      display: "standalone",
+      scope: `/${params.comp_name}`,
+      icons: [
+        {
+          src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
+          sizes: "256x256",
+          type: "image/png",
+        },
+      ],
+    };
+    const stringManifest = JSON.stringify(myDynamicManifest);
+    const blob = new Blob([stringManifest], { type: "application/json" });
+    const manifestURL = URL.createObjectURL(blob);
+    document
+      .querySelector("#my-manifest-placeholder")
+      .setAttribute("href", manifestURL);
+
+   
 
         setProducts(cardDatas.products);
         setGalleryImages(cardDatas.image_gallery);
@@ -252,6 +247,12 @@ function BasicTemplate({ preview,cardDatas }) {
     feedback_card_wrapper.appendChild(div);
   }
 
+  let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    deferredPrompt = e;
+});
+
   return (
     
 
@@ -301,7 +302,15 @@ function BasicTemplate({ preview,cardDatas }) {
     
     
         <div className="card relative">
-          <span className={`z-50 absolute top-6  right-4 text-purple-600 text-xs font-medium py-1 px-2 border border-purple-600  rounded-full`}>
+          <span onClick={()=>  async () => {
+    if (deferredPrompt !== null) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            deferredPrompt = null;
+        }
+    }
+}} className={`z-50 absolute top-6  right-4 text-purple-600 text-xs font-medium py-1 px-2 border border-purple-600  rounded-full`}>
             Views: {cardDatas && cardDatas.views}
           </span>
     

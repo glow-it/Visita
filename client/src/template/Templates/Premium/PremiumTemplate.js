@@ -111,31 +111,37 @@ function PremiumTemplate1({ preview }) {
       .get(`${apiKeys.server_url}/card/` + main_company_name)
       .then((response) => {
         setIsCardLoading(false);
-        // Set Manifest Dynamically
-        var myDynamicManifest = {
-          name: capitalize(response.data.company_name),
-          short_name: capitalize(response.data.company_name),
-          description: capitalize(response.data.about),
-          start_url: `/${main_company_name}`,
-          background_color: "#fff",
-          theme_color: "#fff",
-          display: "standalone",
-          scope: `/${main_company_name}`,
-          icons: [
-            {
-              src: response.data.logo.replace(/^http:\/\//i, "https://"),
-              sizes: "256x256",
-              type: "image/png",
-            },
-          ],
-        };
-        const stringManifest = JSON.stringify(myDynamicManifest);
-        const blob = new Blob([stringManifest], { type: "application/json" });
-        const manifestURL = URL.createObjectURL(blob);
-        document
-          .querySelector("#my-manifest-placeholder")
-          .setAttribute("href", manifestURL);
 
+
+
+          // Set Manifest Dynamically
+          var myDynamicManifest = {
+            name: capitalize(response.data.company_name),
+            short_name: capitalize(response.data.company_name),
+            description: capitalize(response.data.about),
+            start_url: `/`,
+            background_color: "#fff",
+            theme_color: "#fff",
+            display: "standalone",
+            scope: `/${main_company_name}`,
+            icons: [
+              {
+                src: response.data.logo.replace(/^http:\/\//i, "https://"),
+                sizes: "256x256",
+                type: "image/png",
+              },
+            ],
+          };
+          const stringManifest = JSON.stringify(myDynamicManifest);
+          const blob = new Blob([stringManifest], { type: "application/json" });
+          const manifestURL = URL.createObjectURL(blob);
+          document
+            .querySelector("#my-manifest-placeholder")
+            .setAttribute("href", manifestURL);
+  
+
+
+       
         setCardDatas(response.data);
         setProducts(response.data.products);
         setGalleryImages(response.data.image_gallery);
@@ -322,7 +328,7 @@ function PremiumTemplate1({ preview }) {
 
     {/* Add Meta Title And Descreption */}
     <Helmet>
-            <title className="capitalize" >{cardDatas && cardDatas.company_name + " Website"}</title>
+            <title className="capitalize" >{cardDatas && cardDatas.company_name + " website"}</title>
             <meta name="description" content={cardDatas && cardDatas.tagline} />
     </Helmet>
 
