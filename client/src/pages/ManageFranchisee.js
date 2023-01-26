@@ -8,6 +8,7 @@ import { Toast } from '../miniComponents/Toast'
 import apiKeys from '../Api/apiKeys'
 import Loading from '../miniComponents/Loading'
 import capitalize from '../Tools/capitalize'
+import installPwaApp from '../Tools/InstallPwaApp'
 
 function ManageFranchisee() {
 
@@ -64,7 +65,7 @@ function ManageFranchisee() {
          var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
          link.type = 'image/x-icon';
          link.rel = 'shortcut icon';
-         link.href = 'https://i.postimg.cc/6Q0zVtKS/visita-franchisee.png';
+         link.href = 'https://i.postimg.cc/1zGKb58x/franchiseelogo.png';
          document.getElementsByTagName('head')[0].appendChild(link);
 
 
@@ -76,14 +77,13 @@ function ManageFranchisee() {
             name: capitalize(res.data.franchisee_data.franchisee_name),
             short_name: capitalize(res.data.franchisee_data.franchisee_name),
             description: 'Visita Franchisee',
-            start_url: `/franchisee`,
+            start_url: `https://www.visitasmart.com/franchisee`,
             background_color: "#fff",
             theme_color: "#fff",
             display: "standalone",
-            scope: `/franchisee`,
             icons: [
               {
-                src: 'https://i.postimg.cc/6Q0zVtKS/visita-franchisee.png',
+                src: 'https://i.postimg.cc/1zGKb58x/franchiseelogo.png',
                 sizes: "256x256",
                 type: "image/png",
               },
@@ -202,7 +202,14 @@ function ManageFranchisee() {
 
 
 
-
+ // Configure Install PWA App
+ let installButton = document.getElementById("app-install-button-franchisee");
+ let deferredPrompt;
+ installPwaApp(installButton,deferredPrompt,(response)=> {
+    if(response){
+        localStorage.setItem("isInstalledFranchiseeApp",true)
+    }
+ })
 
    
 
@@ -382,6 +389,31 @@ function ManageFranchisee() {
        </div>
 
     </div>
+
+ {/* Dashboard Install Prompt */}
+
+ {
+    localStorage.getItem("isInstalledFranchiseeApp") != "true" ?
+<div className="add-dashboard-prompt-franchisee-overlay fixed opacity-0 h-full top-0 w-full bg-black/50">
+ <div
+ className="add-dashboard-prompt-franchisee px-12  w-full absolute  flex flex-col items-center bg-white  h-[300px]">
+ <h1 className="font-bold text-3xl text-black text-center mt-8">
+                Add <span className="text-indigo-500">dashboard</span> <br /> to homescreen
+            </h1>
+            <button onClick={()=> {
+                document.querySelector('.add-dashboard-prompt-franchisee-overlay').classList.replace("add-dashboard-prompt-franchisee-overlay","add-dashboard-prompt-franchisee-overlay-inactive")
+                document.querySelector('.add-dashboard-prompt-franchisee').classList.replace("add-dashboard-prompt-franchisee","add-dashboard-prompt-franchisee-inactive")
+            }} id='app-install-button-franchisee' className="text-lg text-white bg-indigo-500 rounded-full mt-8 w-full font-semibold py-2">
+                Add now
+            </button>
+ </div>
+ </div>
+ : ''
+ }
+
+ 
+
+           
     </div>
   )
 }

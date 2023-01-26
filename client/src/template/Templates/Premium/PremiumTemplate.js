@@ -22,6 +22,7 @@ import apiKeys from "../../../Api/apiKeys";
 import Loading from "../../../miniComponents/Loading";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import installPwaApp from "../../../Tools/InstallPwaApp";
 
 function PremiumTemplate1({ preview }) {
   const toast = useToast();
@@ -115,30 +116,33 @@ function PremiumTemplate1({ preview }) {
 
 
           // Set Manifest Dynamically
-          var myDynamicManifest = {
-            name: capitalize(response.data.company_name),
-            short_name: capitalize(response.data.company_name),
-            description: capitalize(response.data.about),
-            start_url: `/`,
-            background_color: "#fff",
-            theme_color: "#fff",
-            display: "standalone",
-            scope: `/${main_company_name}`,
-            icons: [
-              {
-                src: response.data.logo.replace(/^http:\/\//i, "https://"),
-                sizes: "256x256",
-                type: "image/png",
-              },
-            ],
-          };
-          const stringManifest = JSON.stringify(myDynamicManifest);
-          const blob = new Blob([stringManifest], { type: "application/json" });
-          const manifestURL = URL.createObjectURL(blob);
-          document
-            .querySelector("#my-manifest-placeholder")
-            .setAttribute("href", manifestURL);
-  
+    
+     var myDynamicManifest = {
+      name: capitalize(response.data.company_name),
+      short_name: capitalize(response.data.company_name),
+      description: capitalize(response.data.about),
+      start_url: "https://www.visitasmart.com/" + response.data.clean_name,
+      background_color: "#fff",
+      theme_color: "#fff",
+      display: "standalone",
+      icons: [
+        {
+          src: response.data.logo.replace(/^http:\/\//i, "https://"),
+          sizes: "256x256",
+          type: "image/png",
+        },
+      ],
+    };
+
+    const stringManifest = JSON.stringify(myDynamicManifest);
+    const blob = new Blob([stringManifest], { type: "application/json" });
+    const manifestURL = URL.createObjectURL(blob);
+    document
+      .querySelector("#my-manifest-placeholder")
+      .setAttribute("href", manifestURL);
+
+
+
 
 
        
@@ -321,6 +325,12 @@ function PremiumTemplate1({ preview }) {
 
     feedback_card_wrapper.appendChild(div);
   }
+
+
+      // Configure Install PWA App
+      let installButton = document.getElementById("app-install-button-premium");
+      let deferredPrompt;
+      installPwaApp(installButton,deferredPrompt)
 
   return (
     <div className=" flex justify-center items-center pb-24">
@@ -541,6 +551,15 @@ function PremiumTemplate1({ preview }) {
                 Views: {cardDatas && cardDatas.views}
               </span>
 
+              <span
+              id="app-install-button-premium"
+                className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
+              >
+                <span className="flex items-center justify-center">
+                <ion-icon name="download-outline"></ion-icon>
+                </span>
+              </span>
+
               <p
               onClick={()=> setOpen(true)}
                 className={`z-50 absolute cursor-pointer  left-4 text-black text-xl font-medium  py-2 px-2 flex items-center justify-center rounded-full  `}
@@ -749,12 +768,14 @@ function PremiumTemplate1({ preview }) {
 
  <button
                   onClick={()=> navigate('/'+main_company_name+"/premiumproducts")}
-                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
+                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-3 mr-3`}
                   >
                     Our Products
                     <span className=" ml-1 text-white text-xl"></span>
                     <ion-icon name="bag-outline"></ion-icon>
                   </button>
+
+
 
 
 
@@ -1610,6 +1631,13 @@ function PremiumTemplate1({ preview }) {
           <span className=" font-bold -mt- text-xs text-white">Feedbacks</span>
         </a>
       </div>
+
+
+
+     
+
+
+
     </div>
   );
 }

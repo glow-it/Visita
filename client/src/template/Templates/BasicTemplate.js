@@ -19,6 +19,7 @@ import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
+import installPwaApp from "../../Tools/InstallPwaApp";
 
 function BasicTemplate({ preview,cardDatas }) {
   const toast = useToast();
@@ -47,15 +48,15 @@ function BasicTemplate({ preview,cardDatas }) {
 
 
      // Set Manifest Dynamically
+    
      var myDynamicManifest = {
       name: capitalize(cardDatas.company_name),
       short_name: capitalize(cardDatas.company_name),
       description: capitalize(cardDatas.about),
-      start_url: `/`,
+      start_url: "https://www.visitasmart.com/" + cardDatas.clean_name,
       background_color: "#fff",
       theme_color: "#fff",
       display: "standalone",
-      scope: `/${params.comp_name}`,
       icons: [
         {
           src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
@@ -64,6 +65,7 @@ function BasicTemplate({ preview,cardDatas }) {
         },
       ],
     };
+
     const stringManifest = JSON.stringify(myDynamicManifest);
     const blob = new Blob([stringManifest], { type: "application/json" });
     const manifestURL = URL.createObjectURL(blob);
@@ -247,11 +249,14 @@ function BasicTemplate({ preview,cardDatas }) {
     feedback_card_wrapper.appendChild(div);
   }
 
+  
+    // Configure Install PWA App
+  let installButton = document.getElementById("app-install-button");
   let deferredPrompt;
+  installPwaApp(installButton,deferredPrompt)
+  
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    deferredPrompt = e;
-});
+
 
   return (
     
@@ -302,15 +307,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     
     
         <div className="card relative">
-          <span onClick={()=>  async () => {
-    if (deferredPrompt !== null) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-            deferredPrompt = null;
-        }
-    }
-}} className={`z-50 absolute top-6  right-4 text-purple-600 text-xs font-medium py-1 px-2 border border-purple-600  rounded-full`}>
+          <span  className={`z-50 absolute top-6  right-4 text-purple-600 text-xs font-medium py-1 px-2 border border-purple-600  rounded-full`}>
             Views: {cardDatas && cardDatas.views}
           </span>
     
@@ -511,12 +508,24 @@ window.addEventListener('beforeinstallprompt', (e) => {
                       // fallback
                     }
                   }}
-                  className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
+                  className={`flex justify-center items-center py-3 mr-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
                 >
                   Share
                   <span className=" ml-1 text-white text-xl"></span>
                   <ion-icon name="arrow-redo"></ion-icon>
                 </button>
+
+
+                <button
+                 id="app-install-button"
+                  className={`flex justify-center items-center mt-3 py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
+                >
+                  Save app
+                  <span className=" ml-1 text-white text-xl"></span>
+                  <ion-icon name="arrow-down-outline"></ion-icon>
+                </button>
+
+
               </div>
               <div className={`${cardDatas && cardDatas.facebook_link == "" && cardDatas && cardDatas.twitter_link == "" && cardDatas && cardDatas.instagram_link == "" && cardDatas && cardDatas.linkedin_link == "" && cardDatas && cardDatas.youtube_link == "" && cardDatas && cardDatas.pinterest_link == "" ? 'invisible' : 'visible'} flex bg-white justify-center  px-4 h-12 my-16 items-center rounded-full`}>
                 {cardDatas && cardDatas.facebook_link != "" ? (
