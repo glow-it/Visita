@@ -21,7 +21,22 @@ function Template() {
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
+
+   
+
   }, []);
+
+
+  function capitalize(string) {
+    return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+      letter.toUpperCase()
+    );
+  }
+
+
+
+
+
 
   axios
     .get(`${apiKeys.server_url}/card/` + company_name)
@@ -46,7 +61,7 @@ function Template() {
         {/* Add Meta Title And Descreption */}
         <Helmet>
           <title className="capitalize">
-            {cardDatas && cardDatas.company_name + "Website"}
+            {cardDatas && capitalize(cardDatas.company_name) + " Website"}
           </title>
           <meta name="description" content={cardDatas && cardDatas.tagline} />
         </Helmet>
@@ -61,13 +76,6 @@ function Template() {
   } else {
     return (
       <div>
-        {/* Add Meta Title And Descreption */}
-        <Helmet>
-          <title className="capitalize">
-            {cardDatas && cardDatas.company_name + "Website"}
-          </title>
-          <meta name="description" content={cardDatas && cardDatas.tagline} />
-        </Helmet>
 
         <Loading isLoading={true} />
       </div>

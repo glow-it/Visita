@@ -322,7 +322,7 @@ function PremiumTemplate1({ preview }) {
 
     {/* Add Meta Title And Descreption */}
     <Helmet>
-            <title className="capitalize" >{cardDatas && cardDatas.company_name + "Website"}</title>
+            <title className="capitalize" >{cardDatas && cardDatas.company_name + " Website"}</title>
             <meta name="description" content={cardDatas && cardDatas.tagline} />
     </Helmet>
 
