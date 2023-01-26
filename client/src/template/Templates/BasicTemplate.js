@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {  useToast } from "@chakra-ui/react";
 import { QRCode } from "react-qrcode-logo";
 import {Helmet} from "react-helmet";
+import reactManifest from "react-manifest";
 // core version + navigation, pagination modules:
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -48,13 +49,13 @@ function BasicTemplate({ preview,cardDatas }) {
 
 
      // Set Manifest Dynamically
-    
-     var myDynamicManifest = {
+
+     reactManifest.update({
       name: capitalize(cardDatas.company_name),
       short_name: capitalize(cardDatas.company_name),
       description: capitalize(cardDatas.about),
-      start_url: "https://www.visitasmart.com/" + cardDatas.clean_name,
-      scope: "https://www.visitasmart.com/" + cardDatas.clean_name,
+      start_url: "https://visitasmart.com/" + cardDatas.clean_name,
+      scope: "https://visitasmart.com/" + cardDatas.clean_name,
       background_color: "#fff",
       theme_color: "#fff",
       display: "standalone",
@@ -65,15 +66,9 @@ function BasicTemplate({ preview,cardDatas }) {
           type: "image/png",
         },
       ],
-    };
-
-    const stringManifest = JSON.stringify(myDynamicManifest);
-    const blob = new Blob([stringManifest], { type: "application/json" });
-    const manifestURL = URL.createObjectURL(blob);
-    document
-      .querySelector("#my-manifest-placeholder")
-      .setAttribute("href", manifestURL);
-
+    },"#my-manifest-placeholder")
+    
+     
    
 
         setProducts(cardDatas.products);

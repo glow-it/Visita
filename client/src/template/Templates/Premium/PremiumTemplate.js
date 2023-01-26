@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {  useToast } from "@chakra-ui/react";
-import {Helmet} from "react-helmet";
+import { useToast } from "@chakra-ui/react";
+import { Helmet } from "react-helmet";
+import reactManifest from "react-manifest";
 
 // core version + navigation, pagination modules:
 
@@ -39,7 +40,7 @@ function PremiumTemplate1({ preview }) {
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
 
-  let main_company_name = params.comp_name
+  let main_company_name = params.comp_name;
 
   axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
     response.data.map((data) => {
@@ -48,7 +49,6 @@ function PremiumTemplate1({ preview }) {
       }
     });
   });
-
 
   let cart_products;
   let cart_count;
@@ -83,24 +83,13 @@ function PremiumTemplate1({ preview }) {
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     
     `;
-});
+  });
 
   //   Cart Modal Open
   const [open, setOpen] = useState(false);
 
-
-
-
-
   // Get Card Datas
   useEffect(() => {
-
- 
-
-      
-
-
-
     // Function To Capitalize Strings
     function capitalize(string) {
       return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
@@ -113,40 +102,27 @@ function PremiumTemplate1({ preview }) {
       .then((response) => {
         setIsCardLoading(false);
 
+        reactManifest.update(
+          {
+            name: capitalize(response.data.company_name),
+            short_name: capitalize(response.data.company_name),
+            description: capitalize(response.data.about),
+            start_url: "https://visitasmart.com/" + response.data.clean_name,
+            scope: "https://visitasmart.com/" + response.data.clean_name,
+            background_color: "#fff",
+            theme_color: "#fff",
+            display: "standalone",
+            icons: [
+              {
+                src: response.data.logo.replace(/^http:\/\//i, "https://"),
+                sizes: "256x256",
+                type: "image/png",
+              },
+            ],
+          },
+          "#my-manifest-placeholder"
+        );
 
-
-          // Set Manifest Dynamically
-    
-     var myDynamicManifest = {
-      name: capitalize(response.data.company_name),
-      short_name: capitalize(response.data.company_name),
-      description: capitalize(response.data.about),
-      start_url: "https://www.visitasmart.com/" + response.data.clean_name,
-      scope: "https://www.visitasmart.com/" + response.data.clean_name,
-      background_color: "#fff",
-      theme_color: "#fff",
-      display: "standalone",
-      icons: [
-        {
-          src: response.data.logo.replace(/^http:\/\//i, "https://"),
-          sizes: "256x256",
-          type: "image/png",
-        },
-      ],
-    };
-
-    const stringManifest = JSON.stringify(myDynamicManifest);
-    const blob = new Blob([stringManifest], { type: "application/json" });
-    const manifestURL = URL.createObjectURL(blob);
-    document
-      .querySelector("#my-manifest-placeholder")
-      .setAttribute("href", manifestURL);
-
-
-
-
-
-       
         setCardDatas(response.data);
         setProducts(response.data.products);
         setGalleryImages(response.data.image_gallery);
@@ -235,10 +211,6 @@ function PremiumTemplate1({ preview }) {
     element.setAttribute("rel", "manifest");
     element.setAttribute("href", url);
     document.querySelector("head").appendChild(element);
-
-  
-
-
   }, []);
 
   useEffect(() => {
@@ -327,25 +299,23 @@ function PremiumTemplate1({ preview }) {
     feedback_card_wrapper.appendChild(div);
   }
 
-
-      // Configure Install PWA App
-      let installButton = document.getElementById("app-install-button-premium");
-      let deferredPrompt;
-      installPwaApp(installButton,deferredPrompt)
+  // Configure Install PWA App
+  let installButton = document.getElementById("app-install-button-premium");
+  let deferredPrompt;
+  installPwaApp(installButton, deferredPrompt);
 
   return (
     <div className=" flex justify-center items-center pb-24">
+      {/* Add Meta Title And Descreption */}
+      <Helmet>
+        <title className="capitalize">
+          {cardDatas && cardDatas.company_name + " website"}
+        </title>
+        <meta name="description" content={cardDatas && cardDatas.tagline} />
+      </Helmet>
 
-
-    {/* Add Meta Title And Descreption */}
-    <Helmet>
-            <title className="capitalize" >{cardDatas && cardDatas.company_name + " website"}</title>
-            <meta name="description" content={cardDatas && cardDatas.tagline} />
-    </Helmet>
-
-
-{/* Cart Modal Open */}
-<Transition.Root show={open} as={Fragment}>
+      {/* Cart Modal Open */}
+      <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
@@ -456,10 +426,9 @@ function PremiumTemplate1({ preview }) {
                         <div className="mt-6">
                           <p
                             onClick={() => {
-                              let phoneNumber = "+91"+cardDatas.phone_no; 
+                              let phoneNumber = "+91" + cardDatas.phone_no;
 
-                              let message =
-                                `
+                              let message = `
                                 New Order
                                 
                                 ${productsList}
@@ -468,13 +437,12 @@ function PremiumTemplate1({ preview }) {
 
                                 `;
 
-                                console.log(message);
+                              console.log(message);
 
                               let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
                                 message
                               )}`;
 
-     
                               window.open(url, "_blank");
                             }}
                             className={`flex items-center justify-center rounded-md border border-transparent bg-${theme_color}-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-${theme_color}-700`}
@@ -504,12 +472,6 @@ function PremiumTemplate1({ preview }) {
           </div>
         </Dialog>
       </Transition.Root>
-
-
-
-
-
-
 
       <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
         {localStorage.getItem("isAdmin") == "true" ? (
@@ -553,19 +515,25 @@ function PremiumTemplate1({ preview }) {
               </span>
 
               <span
-              id="app-install-button-premium"
+                id="app-install-button-premium"
                 className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
               >
                 <span className="flex items-center justify-center">
-                <ion-icon name="download-outline"></ion-icon>
+                  <ion-icon name="download-outline"></ion-icon>
                 </span>
               </span>
 
               <p
-              onClick={()=> setOpen(true)}
+                onClick={() => setOpen(true)}
                 className={`z-50 absolute cursor-pointer  left-4 text-black text-xl font-medium  py-2 px-2 flex items-center justify-center rounded-full  `}
               >
-                <ion-icon name="cart-outline"></ion-icon> <span className="text-sm ml-1">Cart <span>(<span className="cart-count">{cart_count}</span>)</span></span>
+                <ion-icon name="cart-outline"></ion-icon>{" "}
+                <span className="text-sm ml-1">
+                  Cart{" "}
+                  <span>
+                    (<span className="cart-count">{cart_count}</span>)
+                  </span>
+                </span>
               </p>
             </div>
 
@@ -726,9 +694,6 @@ function PremiumTemplate1({ preview }) {
                 </div>
 
                 <div className=" w-full flex flex-wrap items-center justify-center mt-8">
-             
-              
-
                   {cardDatas && cardDatas.gmap_location ? (
                     <button
                       onClick={() => window.open(cardDatas.gmap_location)}
@@ -748,7 +713,10 @@ function PremiumTemplate1({ preview }) {
                         navigator
                           .share({
                             title: cardDatas.company_name + " Website",
-                            url: "https://" + cardDatas.clean_name + ".visitasmart.com",
+                            url:
+                              "https://" +
+                              cardDatas.clean_name +
+                              ".visitasmart.com",
                           })
                           .then(() => {
                             console.log("Thanks for sharing!");
@@ -763,23 +731,18 @@ function PremiumTemplate1({ preview }) {
                     Share
                     <span className=" ml-1 text-white text-xl"></span>
                     <ion-icon name="arrow-redo-outline"></ion-icon>
-                  
                   </button>
 
-
- <button
-                  onClick={()=> navigate('/'+main_company_name+"/premiumproducts")}
+                  <button
+                    onClick={() =>
+                      navigate("/" + main_company_name + "/premiumproducts")
+                    }
                     className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-3 mr-3`}
                   >
                     Our Products
                     <span className=" ml-1 text-white text-xl"></span>
                     <ion-icon name="bag-outline"></ion-icon>
                   </button>
-
-
-
-
-
                 </div>
                 <div
                   className={`${
@@ -973,8 +936,6 @@ function PremiumTemplate1({ preview }) {
           ""
         )}
 
-       
-
         {/* About Us */}
         <div
           id="about"
@@ -1052,114 +1013,106 @@ function PremiumTemplate1({ preview }) {
 
           {/* Products */}
 
-         <div className="px-6">
-         {products &&
-            products
-              .filter((data, index) => {
-                return data.product_name != "" && index < 3;
-              })
-              .map((data, index) => {
-                return (
-                  <div
-                    z
-                    div
-                    className={`w-full pb-12 mb-8 px-8 bg-slate-100  rounded-2xl flex flex-col items-center relative ${
-                      index == 0 ? "mt-20" : "mt-2"
-                    }`}
-                  >
-                    <img
-                      src={data.product_image.replace(
-                        /^http:\/\//i,
-                        "https://"
-                      )}
-                      className="  w-full rounded-2xl py-6  offer-image"
-                    />
-                    <h1 className=" pt-6 capitalize text-center text-xl font-bold">
-                      {data.product_name}
-                    </h1>
+          <div className="px-6">
+            {products &&
+              products
+                .filter((data, index) => {
+                  return data.product_name != "" && index < 3;
+                })
+                .map((data, index) => {
+                  return (
+                    <div
+                      z
+                      div
+                      className={`w-full pb-12 mb-8 px-8 bg-slate-100  rounded-2xl flex flex-col items-center relative ${
+                        index == 0 ? "mt-20" : "mt-2"
+                      }`}
+                    >
+                      <img
+                        src={data.product_image.replace(
+                          /^http:\/\//i,
+                          "https://"
+                        )}
+                        className="  w-full rounded-2xl py-6  offer-image"
+                      />
+                      <h1 className=" pt-6 capitalize text-center text-xl font-bold">
+                        {data.product_name}
+                      </h1>
 
-                    <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
-                      {data.product_description}
-                    </h1>
+                      <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
+                        {data.product_description}
+                      </h1>
 
-                    <h1 className=" pt-4 capitalize font-medium text-green-600 text-xl">
-                      <span className=" mr-2 text-slate-600 line-through">
+                      <h1 className=" pt-4 capitalize font-medium text-green-600 text-xl">
+                        <span className=" mr-2 text-slate-600 line-through">
+                          {`${
+                            data.product_orgprice != ""
+                              ? "₹" + data.product_orgprice
+                              : ""
+                          }`}
+                        </span>
                         {`${
-                          data.product_orgprice != ""
-                            ? "₹" + data.product_orgprice
+                          data.product_offerprice != ""
+                            ? "₹" + data.product_offerprice
                             : ""
                         }`}
-                      </span>
-                      {`${
-                        data.product_offerprice != ""
-                          ? "₹" + data.product_offerprice
-                          : ""
-                      }`}
-                    </h1>
-                    <p
-                      onClick={(e)=> {
+                      </h1>
+                      <p
+                        onClick={(e) => {
+                          document
+                            .querySelectorAll(".cart-count")
+                            .forEach((elem) => {
+                              elem.innerText = parseInt(elem.innerText) + 1;
+                            });
 
-                        document.querySelectorAll('.cart-count').forEach((elem)=> {
-                          elem.innerText = parseInt(elem.innerText) + 1
-                        })
-                       
+                          e.target.innerText = "Added to cart";
 
+                          let product_arr = [
+                            {
+                              image: data.product_image,
+                              name: data.product_name,
+                              description: data.product_description,
+                              price: data.product_offerprice,
+                            },
+                          ];
 
+                          if (localStorage.getItem("cart_products")) {
+                            let existing_arr = JSON.parse(
+                              localStorage.getItem("cart_products")
+                            );
 
-                        e.target.innerText = "Added to cart"
+                            existing_arr.push(...product_arr);
 
-
-
-                        let product_arr = [
-                          {
-                            image: data.product_image,
-                            name: data.product_name,
-                            description: data.product_description,
-                            price: data.product_offerprice
-                          },
-                        ];
-  
-                        if (localStorage.getItem("cart_products")) {
-                          let existing_arr = JSON.parse(
-                            localStorage.getItem("cart_products")
-                          );
-  
-                          existing_arr.push(...product_arr);
-  
-                          localStorage.setItem(
-                            "cart_products",
-                            JSON.stringify(existing_arr)
-                          );
-                        } else {
-                          localStorage.setItem(
-                            "cart_products",
-                            JSON.stringify(product_arr)
-                          );
-                        }
-
-
-
-                      }}
-                      className={`flex justify-center cursor-pointer items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
-                    >
-                      Add to cart
-                      
-                    </p>
-
-                    {data.product_link != "" ? (
-                      <a
-                        href={data.product_link}
-                        className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-600 text-${theme_color}-600 rounded-full   font-bold text-lg mt-2 `}
+                            localStorage.setItem(
+                              "cart_products",
+                              JSON.stringify(existing_arr)
+                            );
+                          } else {
+                            localStorage.setItem(
+                              "cart_products",
+                              JSON.stringify(product_arr)
+                            );
+                          }
+                        }}
+                        className={`flex justify-center cursor-pointer items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
                       >
-                        View Product
-                      </a>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                );
-              })}
-         </div>
+                        Add to cart
+                      </p>
+
+                      {data.product_link != "" ? (
+                        <a
+                          href={data.product_link}
+                          className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-600 text-${theme_color}-600 rounded-full   font-bold text-lg mt-2 `}
+                        >
+                          View Product
+                        </a>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  );
+                })}
+          </div>
 
           {products && products.length != 0 ? (
             <div className="w-full h-32  flex items-center justify-center">
@@ -1217,7 +1170,10 @@ function PremiumTemplate1({ preview }) {
         </Swiper>
 
         {/* Youtube Videos */}
-        <div id="ytvideos" className=" flex flex-col items-center mt-6 pb-16 bg-slate-900">
+        <div
+          id="ytvideos"
+          className=" flex flex-col items-center mt-6 pb-16 bg-slate-900"
+        >
           <h1
             className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-12`}
           >
@@ -1409,69 +1365,61 @@ function PremiumTemplate1({ preview }) {
           )}
         </div>
 
-
-       
         {/* Testimornial */}
         <section class=" bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6" >
-      <div class="mx-auto max-w-screen-sm">
-          <h2 class="mb-4 text-4xl tracking-tight font-extrabold  text-white">Feedbacks</h2>
-          <p class="mb-8 font-light  lg:mb-16 sm:text-xl text-gray-400">Loves from clients</p>
-      </div> 
-      <div class="grid mb-8 lg:mb-12 lg:grid-cols-2">
+          <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+            <div class="mx-auto max-w-screen-sm">
+              <h2 class="mb-4 text-4xl tracking-tight font-extrabold  text-white">
+                Feedbacks
+              </h2>
+              <p class="mb-8 font-light  lg:mb-16 sm:text-xl text-gray-400">
+                Loves from clients
+              </p>
+            </div>
+            <div class="grid mb-8 lg:mb-12 lg:grid-cols-2">
+              {feedbacks &&
+                feedbacks.map((data) => {
+                  var date1, date2;
+                  //define two date object variables with dates inside it
+                  date1 = data.date;
+                  date2 = new Date();
 
-      {feedbacks &&
-            feedbacks.map((data) => {
-              var date1, date2;
-              //define two date object variables with dates inside it
-              date1 = data.date;
-              date2 = new Date();
-    
-              //calculate time difference
-              var time_difference = date2.getTime() - parseInt(date1);
-    
-              //calculate days difference by dividing total milliseconds in a day
-              var days_difference = time_difference / (1000 * 60 * 60 * 24);
-              let days;
-    
-              if (Math.trunc(days_difference) == 0) {
-                days = "today";
-              } else if(Math.trunc(days_difference) == 1) {
-                days = '1 day ago'
-              }else {
-                days = Math.trunc(days_difference) + " days ago";
-              }
+                  //calculate time difference
+                  var time_difference = date2.getTime() - parseInt(date1);
 
+                  //calculate days difference by dividing total milliseconds in a day
+                  var days_difference = time_difference / (1000 * 60 * 60 * 24);
+                  let days;
 
-              return(
-                <figure class="flex flex-col justify-center items-center p-8 text-center  border-b  md:p-12 lg:border-r bg-gray-800 border-gray-700">
-                <blockquote class="mx-auto mb-8 max-w-2xl  text-gray-400">
-                    <h3 class="text-lg font-semibold  text-white">{data.feedback}</h3>
-                   
-                </blockquote>
-                <figcaption class="flex justify-center items-center space-x-3">
-                   
-                    <div class="space-y-0.5 font-medium flex flex-col items-center text-white text-left">
-                        <div>{data.name}</div>
-                        <div class="text-sm font-light  text-gray-400">{days}</div>
-                    </div>
-                </figcaption>    
-            </figure>
-  
-  
-              )
+                  if (Math.trunc(days_difference) == 0) {
+                    days = "today";
+                  } else if (Math.trunc(days_difference) == 1) {
+                    days = "1 day ago";
+                  } else {
+                    days = Math.trunc(days_difference) + " days ago";
+                  }
 
-
-
-
-            })}
-
-         
-         
-      </div>
-  
-      </div>
-</section>
+                  return (
+                    <figure class="flex flex-col justify-center items-center p-8 text-center  border-b  md:p-12 lg:border-r bg-gray-800 border-gray-700">
+                      <blockquote class="mx-auto mb-8 max-w-2xl  text-gray-400">
+                        <h3 class="text-lg font-semibold  text-white">
+                          {data.feedback}
+                        </h3>
+                      </blockquote>
+                      <figcaption class="flex justify-center items-center space-x-3">
+                        <div class="space-y-0.5 font-medium flex flex-col items-center text-white text-left">
+                          <div>{data.name}</div>
+                          <div class="text-sm font-light  text-gray-400">
+                            {days}
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  );
+                })}
+            </div>
+          </div>
+        </section>
 
         <div class="w-full px-4 flex flex-col items-center mt-6">
           <form
@@ -1632,13 +1580,6 @@ function PremiumTemplate1({ preview }) {
           <span className=" font-bold -mt- text-xs text-white">Feedbacks</span>
         </a>
       </div>
-
-
-
-     
-
-
-
     </div>
   );
 }

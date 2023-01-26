@@ -9,6 +9,7 @@ import apiKeys from '../Api/apiKeys'
 import Loading from '../miniComponents/Loading'
 import capitalize from '../Tools/capitalize'
 import installPwaApp from '../Tools/InstallPwaApp'
+import reactManifest from "react-manifest";
 
 function ManageFranchisee() {
 
@@ -73,31 +74,25 @@ function ManageFranchisee() {
             document.title = capitalize(res.data.franchisee_data.franchisee_name) + ' - Franchisee'
 
             // Set Manifest Dynamically
-        var myDynamicManifest = {
-            name: capitalize(res.data.franchisee_data.franchisee_name),
-            short_name: capitalize(res.data.franchisee_data.franchisee_name),
-            description: 'Visita Franchisee',
-            start_url: `https://www.visitasmart.com/franchisee`,
-            scope: `https://www.visitasmart.com/franchisee`,
-            background_color: "#fff",
-            theme_color: "#fff",
-            display: "standalone",
-            icons: [
-              {
-                src: 'https://i.postimg.cc/1zGKb58x/franchiseelogo.png',
-                sizes: "256x256",
-                type: "image/png",
-              },
-            ],
-          };
-          const stringManifest = JSON.stringify(myDynamicManifest);
-          const blob = new Blob([stringManifest], { type: "application/json" });
-          const manifestURL = URL.createObjectURL(blob);
-          document
-            .querySelector("#my-manifest-placeholder")
-            .setAttribute("href", manifestURL);
-            
-         
+
+            reactManifest.update({
+                name: capitalize(res.data.franchisee_data.franchisee_name),
+                short_name: capitalize(res.data.franchisee_data.franchisee_name),
+                description: 'Visita Franchisee',
+                start_url: `https://visitasmart.com/franchisee`,
+                scope: `https://visitasmart.com/franchisee`,
+                background_color: "#fff",
+                theme_color: "#fff",
+                display: "standalone",
+                icons: [
+                  {
+                    src: 'https://i.postimg.cc/1zGKb58x/franchiseelogo.png',
+                    sizes: "256x256",
+                    type: "image/png",
+                  },
+                ],
+              },"#my-manifest-placeholder")
+
 
          
 
