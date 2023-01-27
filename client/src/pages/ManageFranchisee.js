@@ -9,7 +9,7 @@ import apiKeys from '../Api/apiKeys'
 import Loading from '../miniComponents/Loading'
 import capitalize from '../Tools/capitalize'
 import reactManifest from "react-manifest";
-import { useReactPWAInstall } from "react-pwa-install";
+import InstallPwa from '../Tools/InstallPwaApp'
 
 function ManageFranchisee() {
 
@@ -21,7 +21,6 @@ function ManageFranchisee() {
     let [createdCardsThisMonth,setCreatedCardsThisMonth] = useState([])
     let [createdCardsToday,setCreatedCardsToday] = useState([])
     let [isLoading,setIsLoading] = useState([])
-    const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
     let franchisee_profit = 300 //This Is The Profit Of Franchisee For Each Cards Created
 
@@ -64,8 +63,8 @@ function ManageFranchisee() {
                 name: capitalize(res.data.franchisee_data.franchisee_name),
                 short_name: capitalize(res.data.franchisee_data.franchisee_name),
                 description: 'Visita Franchisee',
-                start_url: `https://www.visitasmart.com/franchisee`,
-                scope: `https://www.visitasmart.com/franchisee`,
+                start_url: `http://localhost:3000/franchisee`,
+                scope: `http://localhost:3000/franchisee`,
                 background_color: "#fff",
                 theme_color: "#fff",
                 display: "standalone",
@@ -383,20 +382,16 @@ function ManageFranchisee() {
  <h1 className="font-bold text-3xl text-black text-center mt-8">
                 Add <span className="text-indigo-500">dashboard</span> <br /> to homescreen
             </h1>
-            <button onClick={()=> {
+           <InstallPwa>
+           <button onClick={()=> {
                 document.querySelector('.add-dashboard-prompt-franchisee-overlay').classList.replace("add-dashboard-prompt-franchisee-overlay","add-dashboard-prompt-franchisee-overlay-inactive")
                 document.querySelector('.add-dashboard-prompt-franchisee').classList.replace("add-dashboard-prompt-franchisee","add-dashboard-prompt-franchisee-inactive")
 
-                pwaInstall({
-                    title: franchiseeData.franchisee_name,
-                    logo:"https://i.postimg.cc/1zGKb58x/franchiseelogo.png"
-                  }).then(()=> {
-                    localStorage.setItem("isInstalledFranchiseeApp",true)
-                  })
-
-            }}  className="text-lg text-white bg-indigo-500 rounded-full mt-8 w-full font-semibold py-2">
+            }}  className="text-lg text-white bg-indigo-500 rounded-full mt-8 px-16 font-semibold py-2">
                 Add now
             </button>
+           </InstallPwa>
+           
  </div>
  </div>
  : ''

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import reactManifest from "react-manifest";
-import { useReactPWAInstall } from "react-pwa-install";
 
 // core version + navigation, pagination modules:
 
@@ -24,6 +23,7 @@ import apiKeys from "../../../Api/apiKeys";
 import Loading from "../../../miniComponents/Loading";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import InstallPwa from "../../../Tools/InstallPwaApp";
 
 function PremiumTemplate1({ preview }) {
   const toast = useToast();
@@ -39,7 +39,6 @@ function PremiumTemplate1({ preview }) {
   let [isCardLoading, setIsCardLoading] = useState(true);
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
-  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
   let main_company_name = params.comp_name;
 
@@ -108,8 +107,8 @@ function PremiumTemplate1({ preview }) {
             name: capitalize(response.data.company_name),
             short_name: capitalize(response.data.company_name),
             description: capitalize(response.data.about),
-            start_url: "https://www.visitasmart.com/" + response.data.clean_name,
-            scope: "https://www.visitasmart.com/" + response.data.clean_name,
+            start_url: "http://localhost:3000/" + response.data.clean_name,
+            scope: "http://localhost:3000/" + response.data.clean_name,
             background_color: "#fff",
             theme_color: "#fff",
             display: "standalone",
@@ -509,21 +508,17 @@ function PremiumTemplate1({ preview }) {
               >
                 Views: {cardDatas && cardDatas.views}
               </span>
-
               <span
-                onClick={()=> {
-                  pwaInstall({
-                    title: cardDatas.company_name,
-                    logo: cardDatas.logo,
-                  })
-                }}
                 className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
               >
+             <InstallPwa >
+            
                 <span className="flex items-center justify-center">
                   <ion-icon name="download-outline"></ion-icon>
                 </span>
-              </span>
-
+              
+             </InstallPwa>
+             </span>
               <p
                 onClick={() => setOpen(true)}
                 className={`z-50 absolute cursor-pointer  left-4 text-black text-xl font-medium  py-2 px-2 flex items-center justify-center rounded-full  `}

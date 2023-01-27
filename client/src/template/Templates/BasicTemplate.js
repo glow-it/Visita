@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import {  useToast } from "@chakra-ui/react";
 import { QRCode } from "react-qrcode-logo";
 import {Helmet} from "react-helmet";
-import reactManifest from "react-manifest";
-import { useReactPWAInstall } from "react-pwa-install";
+import reactManifest from "react-manifest"
 // core version + navigation, pagination modules:
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,6 +20,7 @@ import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
+import InstallPwa from "../../Tools/InstallPwaApp";
 
 
 function BasicTemplate({ preview,cardDatas }) {
@@ -36,7 +36,6 @@ function BasicTemplate({ preview,cardDatas }) {
   let [isCardLoading, setIsCardLoading] = useState(true);
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
-  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
 
 
@@ -56,8 +55,8 @@ function BasicTemplate({ preview,cardDatas }) {
       name: capitalize(cardDatas.company_name),
       short_name: capitalize(cardDatas.company_name),
       description: capitalize(cardDatas.about),
-      start_url: "https://www.visitasmart.com/" + cardDatas.clean_name,
-      scope: "https://www.visitasmart.com/" + cardDatas.clean_name,
+      start_url: "http://localhost:3000/" + cardDatas.clean_name,
+      scope: "http://localhost:3000/" + cardDatas.clean_name,
       background_color: "#fff",
       theme_color: "#fff",
       display: "standalone",
@@ -507,22 +506,20 @@ function BasicTemplate({ preview,cardDatas }) {
                   <ion-icon name="arrow-redo"></ion-icon>
                 </button>
 
+                <InstallPwa >
 
                 <button
-                 onClick={()=> {
-
-                  pwaInstall({
-                    title: cardDatas.company_name,
-                    logo: cardDatas.logo,
-                  })
-
-                 }}
                   className={`flex justify-center items-center mt-3 py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
                 >
                   Save app
                   <span className=" ml-1 text-white text-xl"></span>
                   <ion-icon name="arrow-down-outline"></ion-icon>
                 </button>
+
+                </InstallPwa>
+
+
+                
 
 
               </div>
