@@ -8,8 +8,8 @@ import { Toast } from '../miniComponents/Toast'
 import apiKeys from '../Api/apiKeys'
 import Loading from '../miniComponents/Loading'
 import capitalize from '../Tools/capitalize'
-import installPwaApp from '../Tools/InstallPwaApp'
 import reactManifest from "react-manifest";
+import { useReactPWAInstall } from "react-pwa-install";
 
 function ManageFranchisee() {
 
@@ -21,6 +21,7 @@ function ManageFranchisee() {
     let [createdCardsThisMonth,setCreatedCardsThisMonth] = useState([])
     let [createdCardsToday,setCreatedCardsToday] = useState([])
     let [isLoading,setIsLoading] = useState([])
+    const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
     let franchisee_profit = 300 //This Is The Profit Of Franchisee For Each Cards Created
 
@@ -38,12 +39,6 @@ function ManageFranchisee() {
     let toast = useToast()
     let navigate = useNavigate()
 
-    useEffect(()=> {
-        
-        
-
-
-      },[])
 
     useEffect(()=> {
 
@@ -62,18 +57,8 @@ function ManageFranchisee() {
                     setFranchiseeData(res.data.franchisee_data);
                     setIsLoading(false)
 
-                     // Setting Favicon
-         var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-         link.type = 'image/x-icon';
-         link.rel = 'shortcut icon';
-         link.href = 'https://i.postimg.cc/1zGKb58x/franchiseelogo.png';
-         document.getElementsByTagName('head')[0].appendChild(link);
 
-
- 
-            document.title = capitalize(res.data.franchisee_data.franchisee_name) + ' - Franchisee'
-
-            // Set Manifest Dynamically
+                     // Set Manifest Dynamically
 
             reactManifest.update({
                 name: capitalize(res.data.franchisee_data.franchisee_name),
@@ -94,7 +79,19 @@ function ManageFranchisee() {
               },"#my-manifest-placeholder")
 
 
-         
+
+                     // Setting Favicon
+         var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+         link.type = 'image/x-icon';
+         link.rel = 'shortcut icon';
+         link.href = 'https://i.postimg.cc/1zGKb58x/franchiseelogo.png';
+         document.getElementsByTagName('head')[0].appendChild(link);
+
+
+ 
+            document.title = capitalize(res.data.franchisee_data.franchisee_name) + ' - Franchisee'
+
+           
 
 
 
@@ -198,16 +195,6 @@ function ManageFranchisee() {
 
 
 
- // Configure Install PWA App
- let installButton = document.getElementById("app-install-button-franchisee");
- let deferredPrompt;
- installPwaApp(installButton,deferredPrompt,(response)=> {
-    if(response){
-        localStorage.setItem("isInstalledFranchiseeApp",true)
-    }
- })
-
-   
 
 
 
@@ -399,7 +386,15 @@ function ManageFranchisee() {
             <button onClick={()=> {
                 document.querySelector('.add-dashboard-prompt-franchisee-overlay').classList.replace("add-dashboard-prompt-franchisee-overlay","add-dashboard-prompt-franchisee-overlay-inactive")
                 document.querySelector('.add-dashboard-prompt-franchisee').classList.replace("add-dashboard-prompt-franchisee","add-dashboard-prompt-franchisee-inactive")
-            }} id='app-install-button-franchisee' className="text-lg text-white bg-indigo-500 rounded-full mt-8 w-full font-semibold py-2">
+
+                pwaInstall({
+                    title: franchiseeData.franchisee_name,
+                    logo:"https://i.postimg.cc/1zGKb58x/franchiseelogo.png"
+                  }).then(()=> {
+                    localStorage.setItem("isInstalledFranchiseeApp",true)
+                  })
+
+            }}  className="text-lg text-white bg-indigo-500 rounded-full mt-8 w-full font-semibold py-2">
                 Add now
             </button>
  </div>

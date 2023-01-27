@@ -3,6 +3,7 @@ import {  useToast } from "@chakra-ui/react";
 import { QRCode } from "react-qrcode-logo";
 import {Helmet} from "react-helmet";
 import reactManifest from "react-manifest";
+import { useReactPWAInstall } from "react-pwa-install";
 // core version + navigation, pagination modules:
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,7 +21,7 @@ import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
-import installPwaApp from "../../Tools/InstallPwaApp";
+
 
 function BasicTemplate({ preview,cardDatas }) {
   const toast = useToast();
@@ -35,6 +36,7 @@ function BasicTemplate({ preview,cardDatas }) {
   let [isCardLoading, setIsCardLoading] = useState(true);
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
+  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
 
 
@@ -245,12 +247,6 @@ function BasicTemplate({ preview,cardDatas }) {
     feedback_card_wrapper.appendChild(div);
   }
 
-  
-    // Configure Install PWA App
-  let installButton = document.getElementById("app-install-button");
-  let deferredPrompt;
-  installPwaApp(installButton,deferredPrompt)
-  
 
 
 
@@ -513,7 +509,14 @@ function BasicTemplate({ preview,cardDatas }) {
 
 
                 <button
-                 id="app-install-button"
+                 onClick={()=> {
+
+                  pwaInstall({
+                    title: cardDatas.company_name,
+                    logo: cardDatas.logo,
+                  })
+
+                 }}
                   className={`flex justify-center items-center mt-3 py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
                 >
                   Save app

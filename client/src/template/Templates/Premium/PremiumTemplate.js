@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import reactManifest from "react-manifest";
+import { useReactPWAInstall } from "react-pwa-install";
 
 // core version + navigation, pagination modules:
 
@@ -23,7 +24,6 @@ import apiKeys from "../../../Api/apiKeys";
 import Loading from "../../../miniComponents/Loading";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import installPwaApp from "../../../Tools/InstallPwaApp";
 
 function PremiumTemplate1({ preview }) {
   const toast = useToast();
@@ -39,6 +39,7 @@ function PremiumTemplate1({ preview }) {
   let [isCardLoading, setIsCardLoading] = useState(true);
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
+  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
   let main_company_name = params.comp_name;
 
@@ -299,11 +300,6 @@ function PremiumTemplate1({ preview }) {
     feedback_card_wrapper.appendChild(div);
   }
 
-  // Configure Install PWA App
-  let installButton = document.getElementById("app-install-button-premium");
-  let deferredPrompt;
-  installPwaApp(installButton, deferredPrompt);
-
   return (
     <div className=" flex justify-center items-center pb-24">
       {/* Add Meta Title And Descreption */}
@@ -515,7 +511,12 @@ function PremiumTemplate1({ preview }) {
               </span>
 
               <span
-                id="app-install-button-premium"
+                onClick={()=> {
+                  pwaInstall({
+                    title: cardDatas.company_name,
+                    logo: cardDatas.logo,
+                  })
+                }}
                 className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
               >
                 <span className="flex items-center justify-center">
