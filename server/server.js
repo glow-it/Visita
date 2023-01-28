@@ -12,6 +12,32 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const aiHelpers = require("./Helpers/aiHelpers");
 const dotenv = require("dotenv");
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
+
+Sentry.init({
+  dsn: "https://e824924890794db9b3156f486fd6b090@o4504582273630208.ingest.sentry.io/4504582315507712",
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
+
+const transaction = Sentry.startTransaction({
+  op: "test",
+  name: "My First Test Transaction",
+});
+
+setTimeout(() => {
+  try {
+    foo();
+  } catch (e) {
+    Sentry.captureException(e);
+  } finally {
+    transaction.finish();
+  }
+}, 99);
 
 const corsOptions = {
   origin: "*",
