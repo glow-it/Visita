@@ -18,7 +18,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-// Injecting Vercel Analytics
+// Injecting Vercel Analytics...
 inject();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
