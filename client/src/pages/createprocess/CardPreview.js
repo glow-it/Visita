@@ -245,7 +245,7 @@ function CardPreview() {
             postition: "top",
             toast,
           });
-          navigate("/create");
+          navigate("/");
         } else {
           Toast({
             status: "error",

@@ -433,7 +433,7 @@ function Create() {
     });
   }
 
-  console.log(location.state.isPremium);
+
 
   return (
     <form id="cardForm" className="h-screen w-full flex flex-col items-center">
