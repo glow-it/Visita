@@ -331,7 +331,7 @@ function CardPreview() {
                 onClick={() => cancelPurchase()}
                 className="text-lg font-semibold hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
               >
-                Cancel purchase
+                Cancel
               </button>
             )}
 
