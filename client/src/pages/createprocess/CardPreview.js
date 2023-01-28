@@ -365,8 +365,14 @@ function CardPreview() {
             )}
           </div>
 
-          <p className="font-medium text-center mt-10" >Please provide payment details of customer. Dont provide your
-              payment details</p>
+          {
+  franchiseeData != null ?
+  <p className="font-medium text-center mt-10" >Please provide payment details of customer. Dont provide your
+  payment details</p>
+  : ''
+          }
+
+         
         </div>
       </div>
     </div>
