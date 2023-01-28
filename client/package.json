@@ -31,6 +31,7 @@
     "http-proxy-middleware": "^2.0.6",
     "https": "^1.0.0",
     "ipdata": "^2.2.0",
+    "jquery": "^3.6.3",
     "js-cookie": "^3.0.1",
     "path": "^0.12.7",
     "qrcode": "^1.5.1",
