@@ -7,7 +7,7 @@ import Loading from "../miniComponents/Loading";
 import { Toast } from "../miniComponents/Toast";
 import BasicTemplate from "./Templates/BasicTemplate";
 import PremiumTemplate from "./Templates/Premium/PremiumTemplate";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 function Template() {
   let params = useParams();
@@ -21,22 +21,13 @@ function Template() {
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
-
-   
-
   }, []);
-
 
   function capitalize(string) {
     return string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
       letter.toUpperCase()
     );
   }
-
-
-
-
-
 
   axios
     .get(`${apiKeys.server_url}/card/` + company_name)
@@ -76,7 +67,6 @@ function Template() {
   } else {
     return (
       <div>
-
         <Loading isLoading={true} />
       </div>
     );

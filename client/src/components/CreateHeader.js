@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CreateHeader({
   processIndex,
@@ -13,15 +13,14 @@ function CreateHeader({
       id="create-header"
       className={` w-full lg:h-16  ${
         hideIndicators == true ? "h-16 lg:-ml-6" : "h-24"
-      } lg:flex-row flex-col flex  items-center bg-white justify-center fixed z-50 transition-shadow `}
+      } lg:flex-row flex-col flex  items-center bg-white justify-center fixed z-[300] transition-shadow `}
     >
-
-
-<h1 id="process_title" className="lg:block hidden text-center absolute left-24 lg:text-3xl text-xl text-indigo-600 font-bold">
-          Create
-        </h1>
-
-
+      <h1
+        id="process_title"
+        className="lg:block hidden text-center absolute left-24 lg:text-3xl text-xl text-indigo-600 font-bold"
+      >
+        Create
+      </h1>
 
       <div
         className={` flex  items-center justify-center lg:visible invisible`}
@@ -31,7 +30,6 @@ function CreateHeader({
           className="h-10 cursor-pointer"
           onClick={() => navigate("/")}
         />
-      
       </div>
 
       {hideIndicators ? (
@@ -92,8 +90,6 @@ function CreateHeader({
           } bg-indigo-600 rounded-full mr-2 process_indicator-6`}
         ></div>
       </div>
-
-     
     </header>
   );
 }

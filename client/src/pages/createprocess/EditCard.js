@@ -1,8 +1,14 @@
-import { Button, FormControl, FormLabel, Switch, useDisclosure } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Switch,
+  useDisclosure,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import CreateHeader from "../../components/CreateHeader";
 import { useToast } from "@chakra-ui/react";
-import $ from 'jquery'
+import $ from "jquery";
 import {
   Modal,
   ModalOverlay,
@@ -11,102 +17,110 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
 
 function EditCard() {
-
-  let navigate = useNavigate()
-  let params = useParams()
-  let company_name = params.comp_name
-
-  
-
+  let navigate = useNavigate();
+  let params = useParams();
+  let company_name = params.comp_name;
 
   const toast = useToast();
-  const toastIdRef = React.useRef()
+  const toastIdRef = React.useRef();
 
   let [previuos, setPrevious] = useState(false);
   let [skip, setSkip] = useState(false);
   let [processIndex, setProcessIndex] = useState(1);
 
+  let [cardDatas, setCardDatas] = useState([]);
+  let [loading, setLoading] = useState(false);
+  let [choosedThemeColor, setChoosedThemeColor] = useState("purple");
+  let [themeColors, setThemeColors] = useState([
+    "purple",
+    "slate",
+    "zinc",
+    "stone",
+    "red",
+    "orange",
+    "amber",
+    "yellow",
+    "lime",
+    "green",
+    "emerald",
+    "teal",
+    "cyan",
+    "sky",
+    "blue",
+    "indigo",
+    "violet",
+    "fuchsia",
+    "pink",
+    "rose",
+  ]);
+  let products = cardDatas && cardDatas.products;
+  let image_gallery = cardDatas && cardDatas.image_gallery;
 
-  let [cardDatas,setCardDatas] = useState([])
-  let [loading,setLoading] = useState(false)
-  let [choosedThemeColor,setChoosedThemeColor] = useState('purple')
-  let [themeColors,setThemeColors] = useState(["purple","slate","zinc","stone","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","fuchsia","pink","rose"])
-  let products = cardDatas && cardDatas.products
-  let image_gallery = cardDatas && cardDatas.image_gallery
-
-
-
-  useEffect(()=> {
-
-
-
-
-
-
-
-
-    if(cardDatas.activated){
+  useEffect(() => {
+    if (cardDatas.activated) {
       var doc = prompt("Enter Card Password");
-           
-            if (doc != null) {
-                if(doc != cardDatas.activated.access_password){
-                  navigate('/')
-                }
-            }else{
-              navigate('/')
-            }
+
+      if (doc != null) {
+        if (doc != cardDatas.activated.access_password) {
+          navigate("/");
+        }
+      } else {
+        navigate("/");
+      }
     }
-  },[cardDatas])
+  }, [cardDatas]);
 
-
-    // Normal Use Effect
-    useEffect(()=> {
-      const imgPreview = document.getElementById("create-logo-preview");
-     if( imgPreview.querySelector('img').src == ""){
-      imgPreview.querySelector('img').classList.replace('visible','invisible')
-     }else{
-      imgPreview.querySelector('img').classList.replace('invisible','visible')
-     }
-    },[choosedThemeColor])
+  // Normal Use Effect
+  useEffect(() => {
+    const imgPreview = document.getElementById("create-logo-preview");
+    if (imgPreview.querySelector("img").src == "") {
+      imgPreview.querySelector("img").classList.replace("visible", "invisible");
+    } else {
+      imgPreview.querySelector("img").classList.replace("invisible", "visible");
+    }
+  }, [choosedThemeColor]);
 
   let maximumProcesses = 6;
 
   // Last Confirm Modal Disclosure
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-
-
     document.title = "Visita | Update Website";
 
-    axios.get(`${apiKeys.server_url}/card/` + company_name).then((response)=> {
+    axios
+      .get(`${apiKeys.server_url}/card/` + company_name)
+      .then((response) => {
         setCardDatas(response.data);
-        setChoosedThemeColor(response.data.theme_color)
-    }).catch((err)=> {
-      toast({
-        position: 'top',
-        duration: 1500,
-        render: () => (
-          <div className='py-2 px-3 mt-14 rounded-full bg-red-50 border border-red-300 text-red-600 flex items-center justify-center' >
-            <span className='mr-1 flex items-center justify-center' ><ion-icon name="close-circle-outline"></ion-icon></span>
-            <span className="font-medium text-sm">{err.message}</span>
-          </div>
-        ),
+        setChoosedThemeColor(response.data.theme_color);
       })
-    })
+      .catch((err) => {
+        toast({
+          position: "top",
+          duration: 1500,
+          render: () => (
+            <div className="py-2 px-3 mt-14 rounded-full bg-red-50 border border-red-300 text-red-600 flex items-center justify-center">
+              <span className="mr-1 flex items-center justify-center">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </span>
+              <span className="font-medium text-sm">{err.message}</span>
+            </div>
+          ),
+        });
+      });
 
     // Logo Preview Show
     const chooseFile = document.getElementById("create-choose-logo");
     const imgPreview = document.getElementById("create-logo-preview");
     const chooseLogoButton = document.getElementById("choose_logo_button");
-    const choose_theme_color = document.getElementById('choose_theme_color');
+    const choose_theme_color = document.getElementById("choose_theme_color");
 
     chooseFile.addEventListener("change", function () {
       getImgData();
@@ -119,12 +133,16 @@ function EditCard() {
         fileReader.readAsDataURL(files);
         fileReader.addEventListener("load", function () {
           imgPreview.style.display = "block";
-          imgPreview.querySelector('img').setAttribute('src',this.result)
-          imgPreview.querySelector('img').classList.replace('invisible','visible')
-          imgPreview.querySelector('img').classList.add('min-w-[100px]', 'min-h-[100px]')
+          imgPreview.querySelector("img").setAttribute("src", this.result);
+          imgPreview
+            .querySelector("img")
+            .classList.replace("invisible", "visible");
+          imgPreview
+            .querySelector("img")
+            .classList.add("min-w-[100px]", "min-h-[100px]");
           chooseLogoButton.innerText = "Change Logo";
           chooseLogoButton.style.marginLeft = "-20px";
-          choose_theme_color.classList.add("active-choose-theme")
+          choose_theme_color.classList.add("active-choose-theme");
         });
       }
     }
@@ -166,238 +184,294 @@ function EditCard() {
     }
 
     // Submit Form Datas
-
-    
   }, [processIndex]);
-
-
-
-
-
-
-
-
 
   // Handle Form Next Process Click
   function handleNextClick() {
-
     // Check Company Name Is Exists
-    if( document.querySelector('.error-message').classList[3] != "text-red-600"){
- // Check If All Required Feilds Filled
+    if (
+      document.querySelector(".error-message").classList[3] != "text-red-600"
+    ) {
+      // Check If All Required Feilds Filled
 
- let currentForm;
- if (processIndex == 1) {
-   currentForm = document.getElementById("process1");
- } else if (processIndex == 2) {
-   currentForm = document.getElementById("process2");
- } else if (processIndex == 3) {
-   currentForm = document.getElementById("process3");
- } else if (processIndex == 4) {
-   currentForm = document.getElementById("process4");
- } else if (processIndex == 5) {
-   currentForm = document.getElementById("process5");
- } else if (processIndex == 6) {
-   currentForm = document.getElementById("process6");
- } else if (processIndex == 7) {
-   currentForm = document.getElementById("process7");
- }
- 
- let allAreFilled = true;
- currentForm.querySelectorAll("[required]").forEach(function (i) {
-   if (!allAreFilled) return;
-   if (i.type === "radio") {
-     let radioValueCheck = false;
-     currentForm.querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
-       if (r.checked) radioValueCheck = true;
-     });
-     allAreFilled = radioValueCheck;
-     return;
-   }
-   if (!i.value) {
-     allAreFilled = false;
-     return;
-   }
- });
- if (!allAreFilled) {
-  Toast({
-    status:'error',
-    title: 'Fill all required fields',
-    postition: 'top-right',
-    description: 'Check again!',
-    toast
-  })
- } else {
-   // Submit Datas
-   if(processIndex == maximumProcesses) {
-     onOpen()
-   }
-   setProcessIndex(processIndex == maximumProcesses ? maximumProcesses : processIndex + 1);
- }
+      let currentForm;
+      if (processIndex == 1) {
+        currentForm = document.getElementById("process1");
+      } else if (processIndex == 2) {
+        currentForm = document.getElementById("process2");
+      } else if (processIndex == 3) {
+        currentForm = document.getElementById("process3");
+      } else if (processIndex == 4) {
+        currentForm = document.getElementById("process4");
+      } else if (processIndex == 5) {
+        currentForm = document.getElementById("process5");
+      } else if (processIndex == 6) {
+        currentForm = document.getElementById("process6");
+      } else if (processIndex == 7) {
+        currentForm = document.getElementById("process7");
+      }
+
+      let allAreFilled = true;
+      currentForm.querySelectorAll("[required]").forEach(function (i) {
+        if (!allAreFilled) return;
+        if (i.type === "radio") {
+          let radioValueCheck = false;
+          currentForm
+            .querySelectorAll(`[name=${i.name}]`)
+            .forEach(function (r) {
+              if (r.checked) radioValueCheck = true;
+            });
+          allAreFilled = radioValueCheck;
+          return;
+        }
+        if (!i.value) {
+          allAreFilled = false;
+          return;
+        }
+      });
+      if (!allAreFilled) {
+        Toast({
+          status: "error",
+          title: "Fill all required fields",
+          postition: "top-right",
+          description: "Check again!",
+          toast,
+        });
+      } else {
+        // Submit Datas
+        if (processIndex == maximumProcesses) {
+          onOpen();
+        }
+        setProcessIndex(
+          processIndex == maximumProcesses ? maximumProcesses : processIndex + 1
+        );
+      }
     }
-
-   
-
-    
   }
 
-   // Iterate When Choose Theme Use Effect
-   useEffect(()=> {
-    document.querySelectorAll('.theme_color').forEach((elem)=> {
-      elem.classList.remove("ring-4")
+  // Iterate When Choose Theme Use Effect
+  useEffect(() => {
+    document.querySelectorAll(".theme_color").forEach((elem) => {
+      elem.classList.remove("ring-4");
     });
-    document.getElementById(`choose-theme-${choosedThemeColor}`).classList.add("ring-4")
-  },[choosedThemeColor])
+    document
+      .getElementById(`choose-theme-${choosedThemeColor}`)
+      .classList.add("ring-4");
+  }, [choosedThemeColor]);
 
   // Upload Files To Cloud
-  async function uploadImage(files,id){
+  async function uploadImage(files, id) {
     toastIdRef.current = Toast({
-      status:'loading',
-      title: 'Uploading image...',
-      postition: 'top-right',
-      toast
-    })
+      status: "loading",
+      title: "Uploading image...",
+      postition: "top-right",
+      toast,
+    });
 
     const formData = new FormData();
-    formData.append("file",files[0]);
-    formData.append("upload_preset","xav0wsx1")
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "xav0wsx1");
 
-    let response = await axios.post("https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",formData)
-    document.getElementById(id).value = response.data.url
+    let response = await axios.post(
+      "https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",
+      formData
+    );
+    document.getElementById(id).value = response.data.url;
 
     if (toastIdRef.current) {
-      toast.close(toastIdRef.current)
+      toast.close(toastIdRef.current);
     }
-
   }
 
-
-  function checkCompanyNameExists(value){
+  function checkCompanyNameExists(value) {
     // Check The Company Name Already Exists
-      let company_name_input = document.querySelector('.company_name_input')
-      axios.get(`${apiKeys.server_url}/card/all`).then((response)=> {
-        response.data.map((data)=> {
+    let company_name_input = document.querySelector(".company_name_input");
+    axios.get(`${apiKeys.server_url}/card/all`).then((response) => {
+      response.data.map((data) => {
+        if (data.company_name == value) {
+          company_name_input.classList.replace("bg-green-50", "bg-red-50");
+          company_name_input.classList.replace(
+            "border-green-500",
+            "border-red-500"
+          );
+          company_name_input.classList.replace(
+            "text-green-900",
+            "text-red-900"
+          );
+          company_name_input.classList.replace(
+            "placeholder-green-700",
+            "placeholder-red-700"
+          );
 
-        if(data.company_name == value){
+          document
+            .querySelector(".error-message")
+            .classList.replace("text-green-600", "text-red-600");
+          document.querySelector(".error-message").innerText =
+            "Oh, snapp! Company name already exists";
+        } else {
+          company_name_input.classList.add(
+            "bg-green-50",
+            "border-green-500",
+            "text-green-900",
+            "placeholder-green-700"
+          );
 
-            company_name_input.classList.replace('bg-green-50','bg-red-50')
-            company_name_input.classList.replace('border-green-500','border-red-500')
-            company_name_input.classList.replace('text-green-900','text-red-900')
-            company_name_input.classList.replace('placeholder-green-700','placeholder-red-700')
+          company_name_input.classList.replace("bg-red-50", "bg-green-50");
+          company_name_input.classList.replace(
+            "border-red-500",
+            "border-green-500"
+          );
+          company_name_input.classList.replace(
+            "text-red-900",
+            "text-green-900"
+          );
+          company_name_input.classList.replace(
+            "placeholder-red-700",
+            "placeholder-green-700"
+          );
 
-            document.querySelector('.error-message').classList.replace('text-green-600','text-red-600')
-            document.querySelector('.error-message').innerText = 'Oh, snapp! Company name already exists'
-          }else{
-
-            company_name_input.classList.add('bg-green-50','border-green-500','text-green-900','placeholder-green-700')
-
-            company_name_input.classList.replace('bg-red-50','bg-green-50')
-            company_name_input.classList.replace('border-red-500','border-green-500')
-            company_name_input.classList.replace('text-red-900','text-green-900')
-            company_name_input.classList.replace('placeholder-red-700','placeholder-green-700')
-
-            document.querySelector('.error-message').classList.replace('text-red-600','text-green-600')
-            document.querySelector('.error-message').innerText = 'Well Done! Company name is available'
-
-
-          }
-        })
-      })
+          document
+            .querySelector(".error-message")
+            .classList.replace("text-red-600", "text-green-600");
+          document.querySelector(".error-message").innerText =
+            "Well Done! Company name is available";
+        }
+      });
+    });
   }
-
-
-
 
   return (
     <form
       id="updateCardForm"
       className="h-screen w-full flex flex-col items-center"
     >
+      <input
+        type="text"
+        name="isPremium"
+        value={cardDatas.isPremium}
+        className="hidden"
+      />
 
+      <CreateHeader
+        processIndex={processIndex}
+        loading={loading}
+        hideIndicators={false}
+      />
 
+      {/* Last Confirm Modal */}
 
-<input type="text" name="isPremium" value={cardDatas.isPremium} className='hidden' />
-
-      
-
-
-<CreateHeader processIndex={processIndex} loading={loading} hideIndicators={false} />
-
-
-
-    {/* Last Confirm Modal */}
-   
-
-      <Modal  isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay bg="whiteAlpha.1000" backdropFilter="auto" backdropBlur="20px"  />
-        <ModalContent display='flex' flexDirection='column' justifyContent='center' alignItems='center'  py='8' px='8' rounded='3xl'>
-          <ModalHeader display='flex' flexDirection='column' justifyContent='center' alignItems='center' ><span className="font-bold text-3xl text-center" >Are You Sure To Update?</span></ModalHeader>
-          <ModalBody pb='4' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-            <span className="font-medium text-center" >You can make sure that the information you provided is correct. <span className="text-blue-600 ml-1" >However, you can edit it later</span></span>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay
+          bg="whiteAlpha.1000"
+          backdropFilter="auto"
+          backdropBlur="20px"
+        />
+        <ModalContent
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          py="8"
+          px="8"
+          rounded="3xl"
+        >
+          <ModalHeader
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <span className="font-bold text-3xl text-center">
+              Are You Sure To Update?
+            </span>
+          </ModalHeader>
+          <ModalBody
+            pb="4"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <span className="font-medium text-center">
+              You can make sure that the information you provided is correct.{" "}
+              <span className="text-blue-600 ml-1">
+                However, you can edit it later
+              </span>
+            </span>
           </ModalBody>
-          <ModalFooter display='flex'  justifyContent='center' alignItems='center'>
-            <Button rounded='full' mr={3} variant='solid'  onClick={onClose}><span className="font-bold" >Cancel</span></Button>
-
-
-            <Button rounded='full' color='#fff' _hover bgColor='#0062FF'  onClick={()=> {
-             setLoading(true)
-             onClose()
-             let updateCardForm = document.getElementById("updateCardForm");
-              const myFormData = new FormData(updateCardForm);
-          
-              const formDataObj = {};
-              myFormData.forEach((value, key) => (formDataObj[key] = value));
-
-              axios.post(`${apiKeys.server_url}/updatecard/${company_name}`,formDataObj).then((response)=> {
-                if(response.status == 200){
-                  navigate(response.data.redirect_url)
-                }else{
-                  Toast({
-                    status:'error',
-        title: 'We are troubling to create website',
-        postition: 'top',
-        description: 'Contact visita team',
-        toast
-                  })
-                }
-              })
-            }}>
-              <span className="font-bold" >Yes' Update Website</span>
+          <ModalFooter
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Button rounded="full" mr={3} variant="solid" onClick={onClose}>
+              <span className="font-bold">Cancel</span>
             </Button>
 
+            <Button
+              rounded="full"
+              color="#fff"
+              _hover
+              bgColor="#0062FF"
+              onClick={() => {
+                setLoading(true);
+                onClose();
+                let updateCardForm = document.getElementById("updateCardForm");
+                const myFormData = new FormData(updateCardForm);
 
+                const formDataObj = {};
+                myFormData.forEach((value, key) => (formDataObj[key] = value));
+
+                axios
+                  .post(
+                    `${apiKeys.server_url}/updatecard/${company_name}`,
+                    formDataObj
+                  )
+                  .then((response) => {
+                    if (response.status == 200) {
+                      navigate(response.data.redirect_url);
+                    } else {
+                      Toast({
+                        status: "error",
+                        title: "We are troubling to create website",
+                        postition: "top",
+                        description: "Contact visita team",
+                        toast,
+                      });
+                    }
+                  });
+              }}
+            >
+              <span className="font-bold">Yes' Update Website</span>
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
 
-
-   
-
-
-    <div className="lg:block hidden">
-    <div className="visita-text-animation  w-full flex flex-col items-center justify-center lg:pt-16 pt-24  ">
-        <h1 className="text-center lg:text-5xl text-xl text-black font-extrabold mt-14">
-          <span>
-            {processIndex == 1
-              ? "Business Or Company Name"
-              : processIndex == 2
-              ? "Company Details"
-              : processIndex == 3
-              ? "Social Media Links"
-              : processIndex == 4
-              ? "Payment Options"
-              : processIndex == 5
-              ? "Products Or Services"
-              : processIndex == 6
-              ? "Image Gallery"
-              : "Additional Features"}
-          </span>
-        </h1>
+      <div className="lg:block hidden">
+        <div className="visita-text-animation  w-full flex flex-col items-center justify-center lg:pt-16 pt-24  ">
+          <h1 className="text-center lg:text-5xl text-xl text-black font-extrabold mt-14">
+            <span>
+              {processIndex == 1
+                ? "Business Or Company Name"
+                : processIndex == 2
+                ? "Company Details"
+                : processIndex == 3
+                ? "Social Media Links"
+                : processIndex == 4
+                ? "Payment Options"
+                : processIndex == 5
+                ? "Products Or Services"
+                : processIndex == 6
+                ? "Image Gallery"
+                : "Additional Features"}
+            </span>
+          </h1>
+        </div>
       </div>
-
-    </div>
       <div
         className={`create-inputs-wrapper ${
-         processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
+          processIndex == 1 ? "lg:w-[80%] w-full lg:pt-8" : "lg:w-[70%] w-full"
         }  lg:border  lg:rounded-t-3xl lg:h-[75%]  h-[80%] absolute px-8   flex  flex-row justify-center min-w-100vh bg-white  `}
       >
         <div className=" flex  h-full  ">
@@ -421,13 +495,13 @@ function EditCard() {
                 autoComplete="off"
                 required
                 id="large-input"
-                onChange={(e)=> checkCompanyNameExists(e.target.value)}
+                onChange={(e) => checkCompanyNameExists(e.target.value)}
                 defaultValue={cardDatas && cardDatas.company_name}
                 name="company_name"
                 class="company_name_input focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
-<p class="error-message mt-2 text-sm text-green-600 font-medium"></p>
+              <p class="error-message mt-2 text-sm text-green-600 font-medium"></p>
 
               <label
                 for="large-input"
@@ -438,16 +512,26 @@ function EditCard() {
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
-                <img src={cardDatas && cardDatas.logo} className={`ring-4 min-w-[100px] min-h-[100px]  transition-all ring-offset-8 rounded-full ring-${choosedThemeColor}-600`} />
-                  
+                  <img
+                    src={cardDatas && cardDatas.logo}
+                    className={`ring-4 min-w-[100px] min-h-[100px]  transition-all ring-offset-8 rounded-full ring-${choosedThemeColor}-600`}
+                  />
                 </div>
                 <input
                   type="file"
-                  onChange={(e)=> {uploadImage(e.target.files,"logo")}}
+                  onChange={(e) => {
+                    uploadImage(e.target.files, "logo");
+                  }}
                   id="create-choose-logo"
                   accept="image/*"
                 />
-                <input type="text" defaultValue={cardDatas && cardDatas.logo} name="logo" id="logo" className="hidden" />
+                <input
+                  type="text"
+                  defaultValue={cardDatas && cardDatas.logo}
+                  name="logo"
+                  id="logo"
+                  className="hidden"
+                />
                 <label
                   for="create-choose-logo"
                   id="choose_logo_button"
@@ -457,45 +541,40 @@ function EditCard() {
                 </label>
               </div>
 
-
-              <div id="choose_theme_color" className="flex active-choose-theme flex-col opacity-0 transition-all">
-              <label
-                for="large-input"
-                class="block mb-2 text-lg font-medium text-gray-900 :text-gray-300 mt-4"
+              <div
+                id="choose_theme_color"
+                className="flex active-choose-theme flex-col opacity-0 transition-all"
               >
-                Choose Matching Theme Color <span className="text-blue-600">*</span>
-              </label>
-                
+                <label
+                  for="large-input"
+                  class="block mb-2 text-lg font-medium text-gray-900 :text-gray-300 mt-4"
+                >
+                  Choose Matching Theme Color{" "}
+                  <span className="text-blue-600">*</span>
+                </label>
 
                 <div className="flex w-full flex-wrap lg:pr-6  py-2">
-                  <input name="theme_color" type="text" className="hidden" value={choosedThemeColor} />
+                  <input
+                    name="theme_color"
+                    type="text"
+                    className="hidden"
+                    value={choosedThemeColor}
+                  />
 
-                  {
-                    themeColors.map((color)=> {
-                     return (
+                  {themeColors.map((color) => {
+                    return (
                       <div>
-                        <div  id={`choose-theme-${color}`} onClick={()=> setChoosedThemeColor(color)} className={`w-8 h-8 mr-4 lg:my-1 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}></div>
-                      
-                     
+                        <div
+                          id={`choose-theme-${color}`}
+                          onClick={() => setChoosedThemeColor(color)}
+                          className={`w-8 h-8 mr-4 lg:my-1 my-2 bg-${color}-600 theme_color hover:scale-105 transition-all rounded-full ring-offset-4 ring-blue-400 cursor-pointer`}
+                        ></div>
                       </div>
-
-
-                     )
-                    })
-                  }
-
-
-
+                    );
+                  })}
                 </div>
-
               </div>
-
-
             </div>
-
-            
-
-        
 
             {/* Company Details */}
             <div
@@ -504,36 +583,29 @@ function EditCard() {
                 processIndex != 2 ? "hidden" : ""
               }  my-3 process3_wrapper pb-40 overflow-scroll`}
             >
-
-
-
-<label
+              <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
-                Tagline 
+                Tagline
                 <span className="text-blue-600">*</span>
               </label>
-              
 
               <div className="relative flex items-center ">
-              <input
-                placeholder="Enter tagline for your company"
-                autoComplete="off"
-                id="large-input"
-                required
-                name="tagline"
-                defaultValue={cardDatas && cardDatas.tagline}
-                className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-              />
+                <input
+                  placeholder="Enter tagline for your company"
+                  autoComplete="off"
+                  id="large-input"
+                  required
+                  name="tagline"
+                  defaultValue={cardDatas && cardDatas.tagline}
+                  className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                />
 
-
-<p  className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium rounded-full transition-colors right-6 text-xs px-5 py-1.5  ">Generate tagline</p>
-
-
+                <p className="text-white absolute font-medium cursor-pointer  bg-indigo-600 hover:bg-indigo-700 focus:outline-none  font-medium rounded-full transition-colors right-6 text-xs px-5 py-1.5  ">
+                  Generate tagline
+                </p>
               </div>
-
-
 
               <label
                 for="large-input"
@@ -711,7 +783,7 @@ function EditCard() {
                 class=" font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
 
-<label
+              <label
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 :text-gray-300"
               >
@@ -804,10 +876,6 @@ function EditCard() {
                 defaultValue={cardDatas && cardDatas.features}
                 class=" font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
               />
-
-
-
-
             </div>
           </div>
         </div>
@@ -950,7 +1018,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[1]} 
+            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[1]}
             class=" font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
 
@@ -1072,17 +1140,29 @@ function EditCard() {
             Paytm QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
-          {cardDatas && cardDatas.paytm_qrcode ?
-            <img src={cardDatas && cardDatas.paytm_qrcode} className='h-32 mb-4'  />
-          :''
-          }
+          {cardDatas && cardDatas.paytm_qrcode ? (
+            <img
+              src={cardDatas && cardDatas.paytm_qrcode}
+              className="h-32 mb-4"
+            />
+          ) : (
+            ""
+          )}
           <input
             className="font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
-            onChange={(e)=> {uploadImage(e.target.files,"paytm_qrcode")}}
+            onChange={(e) => {
+              uploadImage(e.target.files, "paytm_qrcode");
+            }}
           />
-          <input defaultValue={cardDatas && cardDatas.paytm_qrcode} type="text" name="paytm_qrcode" id="paytm_qrcode" className="hidden" />
+          <input
+            defaultValue={cardDatas && cardDatas.paytm_qrcode}
+            type="text"
+            name="paytm_qrcode"
+            id="paytm_qrcode"
+            className="hidden"
+          />
 
           <label
             for="large-input"
@@ -1091,17 +1171,29 @@ function EditCard() {
             Google Pay QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
-          {cardDatas && cardDatas.googlepay_qrcode ?
-            <img src={cardDatas && cardDatas.googlepay_qrcode} className='h-32 mb-4'  />
-          :''
-          }
+          {cardDatas && cardDatas.googlepay_qrcode ? (
+            <img
+              src={cardDatas && cardDatas.googlepay_qrcode}
+              className="h-32 mb-4"
+            />
+          ) : (
+            ""
+          )}
           <input
             className="font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
-            onChange={(e)=> {uploadImage(e.target.files,"googlepay_qrcode")}}
+            onChange={(e) => {
+              uploadImage(e.target.files, "googlepay_qrcode");
+            }}
           />
-          <input defaultValue={cardDatas && cardDatas.googlepay_qrcode} type="text" name="googlepay_qrcode" id="googlepay_qrcode" className="hidden" />
+          <input
+            defaultValue={cardDatas && cardDatas.googlepay_qrcode}
+            type="text"
+            name="googlepay_qrcode"
+            id="googlepay_qrcode"
+            className="hidden"
+          />
 
           <label
             for="large-input"
@@ -1110,17 +1202,29 @@ function EditCard() {
             PhonePe QR Code{" "}
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
-          {cardDatas && cardDatas.phonepe_qrcode ?
-            <img src={cardDatas && cardDatas.phonepe_qrcode} className='h-32 mb-4'  />
-          :''
-          }
+          {cardDatas && cardDatas.phonepe_qrcode ? (
+            <img
+              src={cardDatas && cardDatas.phonepe_qrcode}
+              className="h-32 mb-4"
+            />
+          ) : (
+            ""
+          )}
           <input
             className="font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
             id="large_size"
             type="file"
-            onChange={(e)=> {uploadImage(e.target.files,"phonepe_qrcode")}}
+            onChange={(e) => {
+              uploadImage(e.target.files, "phonepe_qrcode");
+            }}
           />
-          <input type="text" defaultValue={cardDatas && cardDatas.phonepe_qrcode} name="phonepe_qrcode" id="phonepe_qrcode" className="hidden" />
+          <input
+            type="text"
+            defaultValue={cardDatas && cardDatas.phonepe_qrcode}
+            name="phonepe_qrcode"
+            id="phonepe_qrcode"
+            className="hidden"
+          />
 
           <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
             <span className="flex mr-2 items-center justify-center">
@@ -1217,84 +1321,97 @@ function EditCard() {
             processIndex != 5 ? "hidden" : ""
           }  my-3 process5_wrapper pb-40 overflow-scroll w-full`}
         >
-          {products && products.map((data,index) => {
-            return (
-              <div className="flex flex-col lg:items-start items-center">
-                <label
-                  for="large-input"
-                  class="block mb-2 lg:text-lg  text-md font-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
-                >
-                  Product Or Service {index + 1}
-                  <span className="text-slate-400 ml-1 text-sm">
-                    (Optional)
-                  </span>
-                </label>
-                <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   ">
-                   <div className="flex flex-col">
-                   <img src={data.product_image != "" ? data.product_image : ''} className="h-32 lg:ml-10 w-[250px] rounded-xl border" />
-                  <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
-                  <input
-            className="  font-medium block py-3.5    text-gray-900 transition-all  sm:text-sm text-sm"
-            id="large_size"
-            type="file"
-            onChange={(e)=> {uploadImage(e.target.files,`product_image_${index + 1}`)}}
-          />
-          <input defaultValue={data.product_image} type="text" name={`product_image_${index + 1}`} id={`product_image_${index + 1}`} className="hidden" />
-          
-                  </div>
-                   </div>
+          {products &&
+            products.map((data, index) => {
+              return (
+                <div className="flex flex-col lg:items-start items-center">
+                  <label
+                    for="large-input"
+                    class="block mb-2 lg:text-lg  text-md font-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
+                  >
+                    Product Or Service {index + 1}
+                    <span className="text-slate-400 ml-1 text-sm">
+                      (Optional)
+                    </span>
+                  </label>
+                  <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8   ">
+                    <div className="flex flex-col">
+                      <img
+                        src={data.product_image != "" ? data.product_image : ""}
+                        className="h-32 lg:ml-10 w-[250px] rounded-xl border"
+                      />
+                      <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
+                        <input
+                          className="  font-medium block py-3.5    text-gray-900 transition-all  sm:text-sm text-sm"
+                          id="large_size"
+                          type="file"
+                          onChange={(e) => {
+                            uploadImage(
+                              e.target.files,
+                              `product_image_${index + 1}`
+                            );
+                          }}
+                        />
+                        <input
+                          defaultValue={data.product_image}
+                          type="text"
+                          name={`product_image_${index + 1}`}
+                          id={`product_image_${index + 1}`}
+                          className="hidden"
+                        />
+                      </div>
+                    </div>
 
-                  <div className="w-full flex flex-col justify-center px-2">
-                    <input
-                      placeholder="Enter Product Name"
-                      autoComplete="off"
-                      id="large-input"
-                      name={`product_${index + 1}_name`}
-                      defaultValue={data.product_name}
-                      class=" font-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px]  pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                    />
+                    <div className="w-full flex flex-col justify-center px-2">
+                      <input
+                        placeholder="Enter Product Name"
+                        autoComplete="off"
+                        id="large-input"
+                        name={`product_${index + 1}_name`}
+                        defaultValue={data.product_name}
+                        class=" font-medium block py-3.5    lg: pl-[20px] lg:ml-6 lg:pr-[200px]  pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      />
 
-<input
-                      placeholder="Enter Product Description (Optional)"
-                      autoComplete="off"
-                      id="large-input"
-                      name={`product_${index + 1}_description`}
-                      defaultValue={data.product_description}
-                      class=" font-medium block py-3.5 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                    />
+                      <input
+                        placeholder="Enter Product Description (Optional)"
+                        autoComplete="off"
+                        id="large-input"
+                        name={`product_${index + 1}_description`}
+                        defaultValue={data.product_description}
+                        class=" font-medium block py-3.5 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border focus:shadow-blue-600/30 shadow-sm hover:border-blue-200 sm:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      />
 
-                    <input
-                      placeholder="₹ Enter Product Original Price"
-                      autoComplete="off"
-                      id="large-input"
-                      name={`product_${index + 1}_orgprice`}
-                      defaultValue={data.product_orgprice}
-                      class=" font-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                    />
+                      <input
+                        placeholder="₹ Enter Product Original Price"
+                        autoComplete="off"
+                        id="large-input"
+                        name={`product_${index + 1}_orgprice`}
+                        defaultValue={data.product_orgprice}
+                        class=" font-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      />
 
-                    <input
-                      placeholder="₹ Enter Product Offer Price"
-                      autoComplete="off"
-                      id="large-input"
-                      name={`product_${index + 1}_offerprice`}
-                      defaultValue={data.product_offerprice}
-                      class=" font-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                    />
+                      <input
+                        placeholder="₹ Enter Product Offer Price"
+                        autoComplete="off"
+                        id="large-input"
+                        name={`product_${index + 1}_offerprice`}
+                        defaultValue={data.product_offerprice}
+                        class=" font-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      />
 
-                    <input
-                      placeholder="Enter Product Link (Optional)"
-                      autoComplete="off"
-                      id="large-input"
-                      name={`product_${index + 1}_link`}
-                      defaultValue={data.product_link}
-                      class=" font-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                    />
-
+                      <input
+                        placeholder="Enter Product Link (Optional)"
+                        autoComplete="off"
+                        id="large-input"
+                        name={`product_${index + 1}_link`}
+                        defaultValue={data.product_link}
+                        class=" font-medium  mt-4 block py-3  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         {/* Image Gallery */}
@@ -1305,44 +1422,44 @@ function EditCard() {
             processIndex != 6 ? "hidden" : ""
           }  my-3 process6_wrapper pb-40 overflow-scroll w-full`}
         >
-        
-        {
-          image_gallery && image_gallery.map((data,index)=> {
-            return(
-             <div >
-               <label
-              for="large-input"
-              class="block mb-2 lg:text-lg  text-md font-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
-            >
-              Image {index + 1}
-              <span className="text-slate-400 ml-1 text-sm">
-                (Optional)
-              </span>
-            </label>
-              <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
-                  <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
-                    <img src={data} className='h-32 rounded-xl' />
-                  <input
-            className=" ml-6 font-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
-            id="large_size"
-            type="file"
-            onChange={(e)=> {uploadImage(e.target.files,`image_${index + 1}`)}}
-          />
+          {image_gallery &&
+            image_gallery.map((data, index) => {
+              return (
+                <div>
+                  <label
+                    for="large-input"
+                    class="block mb-2 lg:text-lg  text-md font-medium text-gray-900 :text-gray-300 lg:mt-6 mt-10 "
+                  >
+                    Image {index + 1}
+                    <span className="text-slate-400 ml-1 text-sm">
+                      (Optional)
+                    </span>
+                  </label>
+                  <div className="lg:w-full  lg:pb-8 pb-24  lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center lg:border py-8 px-4  border-b">
+                    <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
+                      <img src={data} className="h-32 rounded-xl" />
+                      <input
+                        className=" ml-6 font-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+                        id="large_size"
+                        type="file"
+                        onChange={(e) => {
+                          uploadImage(e.target.files, `image_${index + 1}`);
+                        }}
+                      />
 
-<input defaultValue={data} type="text" name={`image_${index + 1}`} id={`image_${index + 1}`} className="hidden" />
-
+                      <input
+                        defaultValue={data}
+                        type="text"
+                        name={`image_${index + 1}`}
+                        id={`image_${index + 1}`}
+                        className="hidden"
+                      />
+                    </div>
                   </div>
-                  </div>
-             </div>
-            )
-          })
-        }
-
-
-
+                </div>
+              );
+            })}
         </div>
-
-      
 
         {/* Form Buttons */}
         <div className="flex items-center justify-center fixed bg-white  w-full bottom-0  ">
@@ -1365,7 +1482,6 @@ function EditCard() {
               className="w-[150px] lg:mr-6 mr-2 font-bold"
               size="md"
             >
-              
               Previous
             </Button>
 
@@ -1380,7 +1496,7 @@ function EditCard() {
               className="w-[200px] font-bold lg:mr-6 mr-2"
               size="md"
             >
-             {processIndex == maximumProcesses ? 'Update Website' : 'Next'}
+              {processIndex == maximumProcesses ? "Update Website" : "Next"}
             </Button>
 
             <Button

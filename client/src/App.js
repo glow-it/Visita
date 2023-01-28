@@ -2,13 +2,13 @@ import "./App.css";
 import Header from "./components/Header";
 import LandingPage from "./pages/LandingPage";
 import Support from "./pages/Support";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "aos/dist/aos.css";
 import Pricing from "./pages/Pricing";
 import Create from "./pages/createprocess/Create";
 import Loading from "./components/Loading";
 import CardPreview from "./pages/createprocess/CardPreview";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ActivateWarning from "./pages/createprocess/ActivateWarning";
 import Successfull from "./pages/createprocess/Successfull";
 import ManageCard from "./pages/createprocess/ManageCard";
@@ -29,12 +29,10 @@ import PremiumProductsPage from "./template/Pages/PremiumProductsPage";
 import Cart from "./template/Pages/Cart";
 
 function App() {
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
-  useEffect(()=> {
-    Aos.init()
-  },[])
-
-    
   return (
     <div className="App">
       <Header />
@@ -47,7 +45,10 @@ function App() {
         <Route path="loading/:type" element={<Loading />} />
         <Route exact path="/:comp_name" element={<Template />} />
         <Route path="/:comp_name/products" element={<ProductsPage />} />
-        <Route path="/:comp_name/premiumproducts" element={<PremiumProductsPage />} />
+        <Route
+          path="/:comp_name/premiumproducts"
+          element={<PremiumProductsPage />}
+        />
         <Route path="/cart" element={<Cart />} />
         <Route
           path="/activate-warning/:comp_name"
@@ -59,17 +60,25 @@ function App() {
         />
         <Route path="manage/card/:comp_name" element={<ManageCard />} />
         <Route path="manage/card/:comp_name/edit" element={<EditCard />} />
-        <Route path="/manage/card/:comp_name/customer-details" element={<CustomerDetails />} />
+        <Route
+          path="/manage/card/:comp_name/customer-details"
+          element={<CustomerDetails />}
+        />
         <Route path="/franchisee/register" element={<FranchiseeRegister />} />
         <Route path="/franchisee/login" element={<FranchiseeLogin />} />
         <Route path="/franchisee" element={<ManageFranchisee />} />
         <Route path="/admin/:type" element={<AdminPage />} />
         <Route path="/card-closed" element={<CardClosedPage />} />
-        <Route path="/franchisee/forgot-password/:franchisee_email" element={<ForgotPasswordFranchisee />} />
-        <Route path="/franchisee/how-to-franchisee" element={<HowToFranchisee />} />
-        <Route path="*"  element={<PageNotFound />} />
+        <Route
+          path="/franchisee/forgot-password/:franchisee_email"
+          element={<ForgotPasswordFranchisee />}
+        />
+        <Route
+          path="/franchisee/how-to-franchisee"
+          element={<HowToFranchisee />}
+        />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
-      
     </div>
   );
 }

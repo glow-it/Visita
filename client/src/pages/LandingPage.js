@@ -11,19 +11,19 @@ function LandingPage() {
   let toast = useToast();
   let location = useLocation();
 
-
   // Get Sub Domain
   let full = window.location.host;
   //window.location.host is subdomain.domain.com
   let parts = full.split(".");
   let subdomain = parts[0];
 
-  if(subdomain != "www"){
-    window.location.href = "https://visitasmart.com/" + subdomain
+  if (subdomain != "localhost:3000") {
+    window.location.href = "https://visitasmart.com/" + subdomain;
   }
 
   useEffect(() => {
-    document.title = "Visita - Effortlessly Create a Professional Business Presence: Low-Cost Website and Digital Business Card Builder";
+    document.title =
+      "Visita - Effortlessly Create a Professional Business Presence: Low-Cost Website and Digital Business Card Builder";
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "flex";
     });
@@ -37,15 +37,13 @@ function LandingPage() {
     document.getElementsByTagName("head")[0].appendChild(link);
   }, [location]);
 
-
-
   return (
     <div className="landing-page flex flex-col items-center">
-          <Hero />
-          <Features />
-          <Benefits />
-          <Cta />
-          <Footer />
+      <Hero />
+      <Features />
+      <Benefits />
+      <Cta />
+      <Footer />
     </div>
   );
 }

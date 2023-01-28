@@ -15,7 +15,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
 } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -25,7 +24,7 @@ import apiKeys from "../../Api/apiKeys";
 import Loading from "../../miniComponents/Loading";
 import { Helmet } from "react-helmet";
 
-function Create(props) {
+function Create() {
   let navigate = useNavigate();
   let location = useLocation();
 

@@ -54,39 +54,46 @@ function FranchiseeRegister() {
               }).then((response) => {
                 if (response) {
                   Toast({
-                    status: "success", 
+                    status: "success",
                     title: "Successfully registered",
-                    description: "Lets start!", 
+                    description: "Lets start!",
                     postition: "top",
                     toast,
                   });
 
                   navigate("/loading/registering-franchisee");
 
-                  
-                  const myFormData = new FormData(document.getElementById('franchisee_register_form'));
+                  const myFormData = new FormData(
+                    document.getElementById("franchisee_register_form")
+                  );
 
-              const formDataObj = {};
-              myFormData.forEach((value, key) => (formDataObj[key] = value));
+                  const formDataObj = {};
+                  myFormData.forEach(
+                    (value, key) => (formDataObj[key] = value)
+                  );
 
-              axios
-                .post(`${apiKeys.server_url}/franchisee/register`, formDataObj)
-                .then((response) => {
-                  if (response.status == 200) {
-                    localStorage.setItem("franchisee_email",formDataObj.email)
-                    navigate(response.data.redirect_url);
-                  } else {
-                    Toast({
-                      status: "error",
-                      title: "We are troubling to create franchisee",
-                      postition: "top",
-                      description: "Contact visita team",
-                      toast,
+                  axios
+                    .post(
+                      `${apiKeys.server_url}/franchisee/register`,
+                      formDataObj
+                    )
+                    .then((response) => {
+                      if (response.status == 200) {
+                        localStorage.setItem(
+                          "franchisee_email",
+                          formDataObj.email
+                        );
+                        navigate(response.data.redirect_url);
+                      } else {
+                        Toast({
+                          status: "error",
+                          title: "We are troubling to create franchisee",
+                          postition: "top",
+                          description: "Contact visita team",
+                          toast,
+                        });
+                      }
                     });
-                  }
-                });
-
-
                 } else {
                   setLoading(false);
                   Toast({
@@ -216,10 +223,7 @@ function FranchiseeRegister() {
               Franchisee Register
             </h2>
           </div>
-          <form
-            id="franchisee_register_form"
-            className="mt-8 space-y-6"
-          >
+          <form id="franchisee_register_form" className="mt-8 space-y-6">
             <div className="-space-y-px relative rounded-md shadow-sm">
               {/* Password Strength Display */}
               <div className=" w-full -mt-4 flex items-center justify-center">

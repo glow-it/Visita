@@ -41,37 +41,40 @@ function CustomerDetails() {
         </Thead>
 
         <Tbody className="font-medium">
-          {cardDatas.customer_details && cardDatas.customer_details.filter((data,index)=> {
-            return index != 0
-          }).map((data) => {
-              var date1, date2;
-              //define two date object variables with dates inside it
-              date1 = data.date;
-              date2 = new Date();
+          {cardDatas.customer_details &&
+            cardDatas.customer_details
+              .filter((data, index) => {
+                return index != 0;
+              })
+              .map((data) => {
+                var date1, date2;
+                //define two date object variables with dates inside it
+                date1 = data.date;
+                date2 = new Date();
 
-              //calculate time difference
-              var time_difference = date2.getTime() - parseInt(date1);
+                //calculate time difference
+                var time_difference = date2.getTime() - parseInt(date1);
 
-              //calculate days difference by dividing total milliseconds in a day
-              var days_difference = time_difference / (1000 * 60 * 60 * 24);
-              let days;
+                //calculate days difference by dividing total milliseconds in a day
+                var days_difference = time_difference / (1000 * 60 * 60 * 24);
+                let days;
 
-              if (Math.trunc(days_difference) == 0) {
-                days = "today";
-              } else if (Math.trunc(days_difference) == 1) {
-                days = "1 day ago";
-              } else {
-                days = Math.trunc(days_difference) + " days ago";
-              }
+                if (Math.trunc(days_difference) == 0) {
+                  days = "today";
+                } else if (Math.trunc(days_difference) == 1) {
+                  days = "1 day ago";
+                } else {
+                  days = Math.trunc(days_difference) + " days ago";
+                }
 
-              return (
-                <Tr className="font-medium">
-                  <Td>{data.name}</Td>
-                  <Td>+91{data.phone_no}</Td>
-                  <Td>{days}</Td>
-                </Tr>
-              );
-            })}
+                return (
+                  <Tr className="font-medium">
+                    <Td>{data.name}</Td>
+                    <Td>+91{data.phone_no}</Td>
+                    <Td>{days}</Td>
+                  </Tr>
+                );
+              })}
         </Tbody>
       </Table>
     </TableContainer>

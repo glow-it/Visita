@@ -107,7 +107,8 @@ function PremiumTemplate1({ preview }) {
             name: capitalize(response.data.company_name),
             short_name: capitalize(response.data.company_name),
             description: capitalize(response.data.about),
-            start_url: "https://www.visitasmart.com/" + response.data.clean_name,
+            start_url:
+              "https://www.visitasmart.com/" + response.data.clean_name,
             scope: "https://www.visitasmart.com/" + response.data.clean_name,
             background_color: "#fff",
             theme_color: "#fff",
@@ -511,14 +512,12 @@ function PremiumTemplate1({ preview }) {
               <span
                 className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
               >
-             <InstallPwa >
-            
-                <span className="flex items-center justify-center">
-                  <ion-icon name="download-outline"></ion-icon>
-                </span>
-              
-             </InstallPwa>
-             </span>
+                <InstallPwa>
+                  <span className="flex items-center justify-center">
+                    <ion-icon name="download-outline"></ion-icon>
+                  </span>
+                </InstallPwa>
+              </span>
               <p
                 onClick={() => setOpen(true)}
                 className={`z-50 absolute cursor-pointer  left-4 text-black text-xl font-medium  py-2 px-2 flex items-center justify-center rounded-full  `}
@@ -878,7 +877,7 @@ function PremiumTemplate1({ preview }) {
                       }
                     });
                 }}
-                class=" rounded-2xl border w-full px-6  pt-8 pb-8 mb-4"
+                class=" rounded-2xl w-full px-6  pt-8 pb-8 mb-4"
                 id="customer-details-form"
               >
                 <div class="mb-4">

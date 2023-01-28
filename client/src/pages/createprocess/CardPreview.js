@@ -9,9 +9,7 @@ import { Toast } from "../../miniComponents/Toast";
 import {
   Alert,
   AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 function CardPreview() {
   let [franchiseeData, setFranchiseeData] = useState([]);
@@ -29,21 +27,22 @@ function CardPreview() {
     axios.get(`${apiKeys.server_url}/card/` + name).then((response) => {
       setCardDatas(response.data);
 
-
-
       if (response.data.franchisee != "no franchisee") {
         axios
-          .get(`${apiKeys.server_url}/get-franchisee-datas` + response.data.franchisee)
+          .get(
+            `${apiKeys.server_url}/get-franchisee-datas` +
+              response.data.franchisee
+          )
           .then((res) => {
             if (res.status) {
               setFranchiseeData(res.data.franchisee_data);
             } else {
               Toast({
-                status:'error',
+                status: "error",
                 title: res.data.err,
-                postition: 'top',
-                toast
-              })
+                postition: "top",
+                toast,
+              });
             }
           });
       } else {
@@ -54,22 +53,17 @@ function CardPreview() {
 
   // Handle Complete Purchase Click
   const handleCompletePurchase = () => {
-
     console.log(cardDatas.isPremium);
 
     axios({
       method: "post",
       url: `${apiKeys.server_url}/complete-purchase`,
-      data: {isPremium:cardDatas.isPremium},
+      data: { isPremium: cardDatas.isPremium },
     })
       .then((response) => {
         // Check Card Creation Is First
 
-
-
         if (response.data.isFirst == true) {
-
-
           axios({
             method: "post",
             url: `${apiKeys.server_url}/payment-successfull/` + name,
@@ -77,7 +71,9 @@ function CardPreview() {
               company_name: name,
               razorpay: null,
               franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
-              access_password: `${name.substring(0,2)}${Math.floor(Math.random() * 99)}`,
+              access_password: `${name.substring(0, 2)}${Math.floor(
+                Math.random() * 99
+              )}`,
               activated_at: new Date().getTime(),
               phone_no: cardDatas.phone_no,
               franchisee_email: cardDatas.franchisee,
@@ -100,41 +96,39 @@ function CardPreview() {
                   },
                   (error) => {
                     Toast({
-                      status:'error',
-                      title: 'Unable to send website password to your mail',
-                      postition: 'top',
-                      description: 'Contact Visita',
-                      toast
-                    })
+                      status: "error",
+                      title: "Unable to send website password to your mail",
+                      postition: "top",
+                      description: "Contact Visita",
+                      toast,
+                    });
                     navigate("/create/successfull/" + name);
                     console.log(error);
                   }
                 );
             } else {
               Toast({
-                status:'error',
-                title: 'An error occured',
-                postition: 'top',
-                description: 'Try again!',
-                toast
-              })
+                status: "error",
+                title: "An error occured",
+                postition: "top",
+                description: "Try again!",
+                toast,
+              });
             }
           });
 
           navigate("/loading/processing-website");
-
-
         } else {
           openPayment(response.data.sub_data);
         }
       })
       .catch((err) => {
         Toast({
-          status:'error',
+          status: "error",
           title: err.message,
-          postition: 'top',
-          toast
-        })
+          postition: "top",
+          toast,
+        });
       });
   };
 
@@ -163,8 +157,6 @@ function CardPreview() {
           data: res_obj,
         }).then((response) => {
           if (response) {
-
-
             axios({
               method: "post",
               url: `${apiKeys.server_url}/payment-successfull/` + name,
@@ -172,7 +164,9 @@ function CardPreview() {
                 company_name: name,
                 razorpay: res_obj,
                 franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
-                access_password: `${name.substring(0,2)}${Math.floor(Math.random() * 99)}`,
+                access_password: `${name.substring(0, 2)}${Math.floor(
+                  Math.random() * 99
+                )}`,
                 activated_at: new Date().getTime(),
                 phone_no: cardDatas.phone_no,
                 franchisee_email: cardDatas.franchisee,
@@ -195,44 +189,44 @@ function CardPreview() {
                     },
                     (error) => {
                       Toast({
-                        status:'error',
-                        title: 'Unable to send website password to your mail',
-                        postition: 'top',
-                        description: 'Contact Visita',
-                        toast
-                      })
+                        status: "error",
+                        title: "Unable to send website password to your mail",
+                        postition: "top",
+                        description: "Contact Visita",
+                        toast,
+                      });
                       navigate("/create/successfull/" + name);
                     }
                   );
               } else {
                 Toast({
-                  status:'error',
-                  title: 'An error occured',
-                  postition: 'top',
-                  description: 'Try again!',
-                  toast
-                })
+                  status: "error",
+                  title: "An error occured",
+                  postition: "top",
+                  description: "Try again!",
+                  toast,
+                });
               }
             });
 
             Toast({
-              status:'success',
-              title: 'Payment was successfull',
-              postition: 'top',
-              toast
-            })
+              status: "success",
+              title: "Payment was successfull",
+              postition: "top",
+              toast,
+            });
             navigate("/loading/processing-website");
           } else {
             Toast({
-              status:'error',
-              title: 'Payment was failed',
-              postition: 'top',
-              description: 'Try again!',
-              toast
-            })
+              status: "error",
+              title: "Payment was failed",
+              postition: "top",
+              description: "Try again!",
+              toast,
+            });
           }
         });
-      }
+      },
     };
     setIsProcessingPayment(false);
     const rzp1 = new window.Razorpay(options); //instead of new Razorpay(options)
@@ -241,30 +235,29 @@ function CardPreview() {
 
   // When Cancel Purchase Button Click
   function cancelPurchase() {
-    axios.post(`${apiKeys.server_url}/create/cancel-purchase/` + name).then((res) => {
-
-      if (res.data.status) {
-        Toast({
-          status:'success',
-          title: 'Website is cancelled',
-          postition: 'top',
-          toast
-        })
-        navigate("/create");
-      } else {
-        Toast({
-          status:'error',
-          title: 'Ohh snap!!',
-          postition: 'top',
-          description: 'We are struggling to cancel website',
-          toast
-        })
-      }
-    });
+    axios
+      .post(`${apiKeys.server_url}/create/cancel-purchase/` + name)
+      .then((res) => {
+        if (res.data.status) {
+          Toast({
+            status: "success",
+            title: "Website is cancelled",
+            postition: "top",
+            toast,
+          });
+          navigate("/create");
+        } else {
+          Toast({
+            status: "error",
+            title: "Ohh snap!!",
+            postition: "top",
+            description: "We are struggling to cancel website",
+            toast,
+          });
+        }
+      });
     navigate("/loading/cancelling");
   }
-
-
 
   return (
     <div className="h-screen w-full ">
@@ -283,42 +276,33 @@ function CardPreview() {
         <input
           type="text"
           name="card_pass"
-          value={`${name.substring(0,2)}${Math.floor(Math.random() * 99)}`}
+          value={`${name.substring(0, 2)}${Math.floor(Math.random() * 99)}`}
         />
       </form>
-
-      
 
       <CreateHeader
         hideIndicators={true}
         live_preview_url={`https://visitasmart.com/${name}`}
       />
 
-      <div className=" h-full w-full flex lg:flex-row flex-col items-center justify-center z-50">
-
-      <div className=" lg:hidden block  absolute top-28">
-      <span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
-        </div>
+      <div className=" h-full w-full flex lg:flex-row flex-col lg:items-start lg:pt-32  items-center justify-center z-50">
+    
 
         <div
           className={`${
             cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[50%]"
-          }  z-40 lg:mt-0 mt-24 lg:px-0 px-6 lg:w-[60%] w-full lg:py-0 py-32  flex flex-col  items-center justify-center lg:rounded-3xl  lg:border border-indigo-200`}
+          }  z-40 lg:mt-0   px-16 lg:w-[60%] w-full lg:py-12 py-32 -mt-10 flex flex-col  items-center justify-center lg:rounded-3xl `}
         >
 
+          <img className="min-h-[200px] lg:min-w-0 min-w-[300px]" src={require("../../Images/tickanimation.gif")} />
+      
 
-<div className=" lg:block hidden z-50  mb-6">
-<span className="text-7xl text-indigo-600" ><ion-icon name="checkmark-circle"></ion-icon></span>
-        </div>
-
-
-          <h1 className="lg:text-3xl text-2xl font-bold lg:text-start text-center lg:mt-0 -mt-16">
-            
+          <h1 className="lg:text-3xl text-2xl font-bold lg:text-start -mt-8 text-center mb-3">
             {cardDatas && cardDatas.activated
               ? "Successfully your website is "
               : "Successfully your website was "}
 
-            <span className="text-indigo-600">
+            <span >
               {cardDatas && cardDatas.activated ? "Activated!" : "Created!"}
             </span>
           </h1>
@@ -337,77 +321,52 @@ function CardPreview() {
               : "Complete purchase to activate your website"}
           </h1>
 
-          {cardDatas && cardDatas.activated ? (
-            ""
-          ) : ""}
+          {cardDatas && cardDatas.activated ? "" : ""}
 
+          <div className="w-full flex lg:justify-center mt-8 flex-col-reverse items-center lg:flex-row">
+            {cardDatas && cardDatas.activated ? (
+              ""
+            ) : (
+              <button
+                onClick={() => cancelPurchase()}
+                className="text-lg font-semibold hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
+              >
+                Cancel purchase
+              </button>
+            )}
 
-<div className="w-full flex lg:justify-center mt-8 flex-col-reverse items-center lg:flex-row">
+            {cardDatas && cardDatas.activated ? (
+              <button
+                onClick={() => navigate("/create/successfull/" + name)}
+                id="complete-purchase-button"
+                className=" text-lg font-medium hover:shadow-sm transition-shadow px-12 py-3 bg-indigo-600 text-white rounded-full shadow-md shadow-indigo-600"
+              >
+                Open preview
+              </button>
+            ) : (
+              <Button
+                className="font-semibold"
+                fontSize="md"
+                isLoading={isProcessingPayment}
+                rounded="full"
+                py="6"
+                px="12"
+                color="#fff"
+                _hover
+                bgColor="#4F45E4"
+                disabled={false}
+                onClick={() => {
+                  setIsProcessingPayment(true);
+                  handleCompletePurchase();
+                }}
+              >
+                Complete purchase
+              </Button>
+            )}
+          </div>
 
-
-{cardDatas && cardDatas.activated ? (
-            ""
-          ) : (
-            <button
-              onClick={() => cancelPurchase()}
-              className="text-lg font-semibold hover:shadow-sm transition-shadow px-12 py-3 border-black-600 border lg:mr-3 lg:mt-0 mt-3 text-black-600 rounded-full"
-            >
-              Cancel purchase
-            </button>
-          )}
-
-{cardDatas && cardDatas.activated ? (
-
-
-
-            <button
-              onClick={() => navigate("/create/successfull/" + name)}
-              id="complete-purchase-button"
-              className=" text-lg font-medium hover:shadow-sm transition-shadow px-12 py-3 bg-indigo-600 text-white rounded-full shadow-md shadow-indigo-600"
-            >
-              Open preview
-            </button>
-          ) : (
-            <Button
-              className="font-semibold"
-              fontSize="md"
-              isLoading={isProcessingPayment}
-              rounded="full"
-              py="6"
-              px="12"
-              color="#fff"
-              _hover
-              bgColor="#4F45E4"
-              disabled={false}
-              onClick={() => {
-                setIsProcessingPayment(true);
-                handleCompletePurchase();
-              }}
-            >
-             
-            Complete purchase
-            </Button>
-          )}
-
-          
-
-          
-</div>
-
-{
-  franchiseeData != null ?
-
-<Alert w='fit-content' mt='7'  status='info' rounded='full' px='6' textAlign='center' className="font-medium">
-    <AlertIcon />
-    Please provide payment details of customer. Dont provide your payment details
-  </Alert>
-
-  : ''
-
-}
-
-
-
+          <p className="font-medium text-center mt-10" >Please provide payment details of customer. Dont provide your
+              payment details</p>
         </div>
       </div>
     </div>

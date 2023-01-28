@@ -2,13 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { Tooltip, useToast } from '@chakra-ui/react'
+import { Tooltip, useToast } from "@chakra-ui/react";
 import { Toast } from "../../miniComponents/Toast";
-import * as htmlToImage from 'html-to-image';
+import * as htmlToImage from "html-to-image";
 import apiKeys from "../../Api/apiKeys";
 import ConfettiGenerator from "confetti-js";
-
-
 
 function Successfull() {
   // Function To Capitalize Strings
@@ -21,378 +19,480 @@ function Successfull() {
   let params = useParams();
   let comp_name = params.comp_name;
   let comp_name_clean = comp_name.replace(/[-]/g, " ");
-  let [cardDatas,setCardDatas] = useState([])
-  let [tooltipIsOpen,setTooltipIsOpen] = useState(false)
-  let navigate = useNavigate()
-  let base_url = 'visitasmart.com/'
-  let manage_card_url = base_url + 'manage/card/' + cardDatas.clean_name
-  let toast = useToast()
-  let clean_compname = params.comp_name.replace(/[-]/g," ")
-  
-
+  let [cardDatas, setCardDatas] = useState([]);
+  let [tooltipIsOpen, setTooltipIsOpen] = useState(false);
+  let navigate = useNavigate();
+  let base_url = "visitasmart.com/";
+  let manage_card_url = base_url + "manage/card/" + cardDatas.clean_name;
+  let toast = useToast();
+  let clean_compname = params.comp_name.replace(/[-]/g, " ");
 
   useEffect(() => {
+    setTimeout(() => {
+      setTooltipIsOpen(true);
+    }, 2500);
 
-    setTimeout(()=> {
-      setTooltipIsOpen(true)
-    },2500)
-
-    setTimeout(()=> {
-      setTooltipIsOpen(false)
-    },6000)
+    setTimeout(() => {
+      setTooltipIsOpen(false);
+    }, 6000);
 
     document.title = "Successfull | " + capitalize(comp_name_clean);
     document.querySelectorAll("header").forEach((elem) => {
-      elem.style.display = "none";  
+      elem.style.display = "none";
     });
 
-  axios.get(`${apiKeys.server_url}/card/` + comp_name).then((response)=> {
-    setCardDatas(response.data)
-    if(!response.data.activated){
-      navigate('/create/preview/' + comp_name)
-    }else{
+    axios
+      .get(`${apiKeys.server_url}/card/` + comp_name)
+      .then((response) => {
+        setCardDatas(response.data);
+        if (!response.data.activated) {
+          navigate("/create/preview/" + comp_name);
+        } else {
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    }
-  }).catch((err)=> {
-    console.log(err);
-  })
-
-  },[]);
-
-
-  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${cardDatas.clean_name + ".visitasmart.com"}`;
+  let share_whatsapp_url = `https://api.whatsapp.com/send?text=${
+    cardDatas.clean_name + ".visitasmart.com"
+  }`;
   let share_sms_url = `sms:?body=${cardDatas.clean_name + ".visitasmart.com"}`;
-  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${cardDatas.clean_name + ".visitasmart.com"}`;
-  let share_twitter_url = `https://twitter.com/intent/tweet?text=${cardDatas.clean_name + ".visitasmart.com"}`;
-  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${cardDatas.clean_name + ".visitasmart.com"}`;
-
-
+  let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${
+    cardDatas.clean_name + ".visitasmart.com"
+  }`;
+  let share_twitter_url = `https://twitter.com/intent/tweet?text=${
+    cardDatas.clean_name + ".visitasmart.com"
+  }`;
+  let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${
+    cardDatas.clean_name + ".visitasmart.com"
+  }`;
 
   // Download QR Code
-  function downloadQrCode()
-{
+  function downloadQrCode() {
+    let company_name =
+      cardDatas && cardDatas.company_name.replace(/[ ]/g, "-").toLowerCase();
+    let download_name = company_name + "-qrcode.jpg";
 
-  let company_name = cardDatas && cardDatas.company_name.replace(/[ ]/g,'-').toLowerCase()
-  let download_name = company_name + '-qrcode.jpg'
+    let downloadLink = document.createElement("a");
+    downloadLink.setAttribute("download", download_name);
+    var canvas = document.getElementById("qr-code");
+    var dataURL = canvas.toDataURL("image/jpg");
+    downloadLink.setAttribute("href", dataURL);
+    downloadLink.click();
+  }
 
-  let downloadLink = document.createElement('a');
-  downloadLink.setAttribute('download', download_name);
-  var canvas = document.getElementById("qr-code");
-  var dataURL = canvas.toDataURL("image/jpg");
-  downloadLink.setAttribute('href', dataURL);
-  downloadLink.click();
-}
+  function downloadQrCodeDesign() {
+    htmlToImage
+      .toJpeg(document.getElementById("qr-code-design"), { quality: 1.0 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = `${params.comp_name}-qrcode-design.jpeg`;
+        link.href = dataUrl;
+        link.click();
+      });
+  }
 
-function downloadQrCodeDesign(){
-  htmlToImage.toJpeg(document.getElementById('qr-code-design'), { quality: 1.0 })
-  .then(function (dataUrl) {
-    var link = document.createElement('a');
-    link.download = `${params.comp_name}-qrcode-design.jpeg`;
-    link.href = dataUrl;
-    link.click();
-  });
+  useEffect(() => {
+    const confettiSettings = {
+      target: "confetti-canvas",
+      props: ["square"],
+      clock: 100,
+      max: 300,
+      size: 2,
+      colors: [
+        [0, 255, 17],
+        [255, 0, 21],
+        [0, 157, 255],
+        [255, 255, 0],
+      ],
+      respawn: false,
+      height: 1300,
+    };
+    const confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
 
-}
-
-useEffect(()=> {
-  const confettiSettings = { 
-    target: 'confetti-canvas', 
-    "props": [
-      "square"
-    ],
-    clock:100,
-    max:300,
-    size:2,
-    colors:[[149, 0, 255],[255, 0, 238]],
-    respawn:false,
-    height:1300
-  };
-  const confetti = new ConfettiGenerator(confettiSettings);
-  confetti.render();
- 
-  setTimeout(()=> {
-    confetti.clear()
-    document.getElementById('confetti-canvas').style.display = 'none'
-  },5000)
-  
-},[])
-
-
-
+    setTimeout(() => {
+      confetti.clear();
+      document.getElementById("confetti-canvas").style.display = "none";
+    }, 5000);
+  }, []);
 
   return (
-     <div>
-       <canvas id="confetti-canvas" className="fixed -top-96 z-50" ></canvas>
-   <div className="z-10">
+    <div>
+      <canvas id="confetti-canvas" className="fixed -top-96 z-50"></canvas>
+      <div className="z-10">
+        <div className="w-full h-12 flex items-center lg:px-96 px-4">
+          {cardDatas && cardDatas.franchisee != "no franchisee" ? (
+            <Link
+              to="/franchisee"
+              className="font-medium flex items-center justify-center hover:text-indigo-600 cursor-pointer"
+            >
+              <span className="flex mr-1 items-center justify-center">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+              </span>
+              Dashboard
+            </Link>
+          ) : (
+            ""
+          )}
 
-    <div className="w-full h-12 flex items-center lg:px-96 px-4">
+          <p
+            onClick={() => {
+              if (navigator.share) {
+                navigator
+                  .share({
+                    title:
+                      params.comp_name.split("-", " ") +
+                      " Business Website Details",
+                    url: window.location.href,
+                  })
+                  .then(() => {
+                    console.log("Thanks for sharing!");
+                  })
+                  .catch(console.error);
+              } else {
+                // fallback
+              }
+            }}
+            className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-4 justify-center cursor-pointer"
+          >
+            {" "}
+            <span className="flex ml-1 items-center justify-center">
+              <ion-icon name="arrow-redo"></ion-icon>
+            </span>
+          </p>
+        </div>
 
-      {
-        cardDatas && cardDatas.franchisee != "no franchisee" ?
-        <Link to='/franchisee' className="font-medium flex items-center justify-center hover:text-indigo-600 cursor-pointer" ><span className="flex mr-1 items-center justify-center"><ion-icon name="arrow-back-outline"></ion-icon></span>Dashboard</Link>
-        : ''
-      }
+        <h1
+          onClick={() => navigate("/franchisee")}
+          className={`${
+            cardDatas && cardDatas.franchisee === "no franchisee"
+              ? "hidden"
+              : "block"
+          } hidden cursor-pointer hover:scale-105 transition-transform py-3 px-6 bg-indigo-600 font-bold rounded-full text-white absolute right-12 top-6`}
+        >
+          Go to franchisee
+        </h1>
 
-     
+        <div
+          id="qrcode_div"
+          className="overflow-y-scroll pb-32 h-screen z-10 w-full flex flex-col items-center lg:px-64 px-4 pt-16 "
+        >
+          <h1 className="text-4xl font-bold mb-6 ">Send website</h1>
+          <div
+            className={`lg:px-10 lg:py-1 py-2 px-6 mb-8 z-10 h-12 bg-${"purple"}-50 flex items-center justify-center border border-${"purple"}-600 text-${"purple"}-600 rounded-full`}
+          >
+            <h1
+              id="website_url_text_successfull"
+              className="font-medium lg:text-xl text-center"
+            >
+              {cardDatas && cardDatas.isPremium == "true"
+                ? cardDatas.clean_name + ".visitasmart.com"
+                : "visitasmart.com/" + cardDatas.clean_name}
 
-      <p onClick={()=> {
-        if (navigator.share) {
-          navigator.share({
-            title: params.comp_name.split("-"," ") + ' Business Website Details',
-            url: window.location.href
-          }).then(() => {
-            console.log('Thanks for sharing!');
-          })
-          .catch(console.error);
-        } else {
-          // fallback
-        }
-      }} className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-4 justify-center cursor-pointer" > Share this page <span className="flex ml-1 items-center justify-center"><ion-icon name="arrow-redo"></ion-icon></span></p>
+              <Tooltip
+                isOpen={tooltipIsOpen}
+                hasArrow
+                px="4"
+                bg="black"
+                py="2"
+                color="white"
+                rounded="lg"
+                label="click to copy"
+                placement="right"
+              >
+                <i
+                  class={`fa-solid fa-copy text-${"purple"}-900 cursor-pointer ml-3`}
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      document.getElementById("website_url_text_successfull")
+                        .innerText
+                    );
 
+                    Toast({
+                      status: "success",
+                      title: "Copied!",
+                      postition: "top",
+                      toast,
+                    });
+                  }}
+                ></i>
+              </Tooltip>
+            </h1>
+            <div
+              id="tooltip-light"
+              role="tooltip"
+              class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
+            >
+              <span className="font-medium" id="copy-tooltip">
+                Copy link
+              </span>
+            </div>
+          </div>
 
-    </div>
+          <div
+            id="qr-code-design"
+            className={`lg:w-[40%] lg:px-0 px-6 transition-all flex-col  relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${"purple"}-600   z-10 flex items-center justify-center`}
+          >
+            <div
+              className={`w-full h-28 absolute top-0 lg:rounded-t-2xl rounded-t-xl lg:rounded-b bg-${
+                cardDatas && cardDatas.theme_color
+              }-600 text-white  flex items-center justify-center`}
+            >
+              <h1 className="font-bold text-4xl capitalize">
+                {clean_compname}
+              </h1>
+            </div>
 
+            <div
+              id="qr_code_wrapper"
+              className="py-3 px-3 z-50 transition-all rounded-2xl bg-white"
+            >
+              <QRCode
+                id="qr-code"
+                enableCORS={true}
+                value={`${base_url}${comp_name}`}
+                eyeRadius={20}
+                logoImage={cardDatas && cardDatas.logo}
+                logoWidth={60}
+                logoHeight={60}
+                size={220}
+                qrStyle="dots"
+                fgColor={"purple"}
+                bgColor="white"
+              />
+            </div>
 
-      
-     <h1 onClick={()=> navigate('/franchisee')} className={`${cardDatas && cardDatas.franchisee === "no franchisee" ? 'hidden' : 'block'} hidden cursor-pointer hover:scale-105 transition-transform py-3 px-6 bg-indigo-600 font-bold rounded-full text-white absolute right-12 top-6`}>
-  Go to franchisee
-</h1>
+            <div className="py-3 px-6 rounded-full mt-6 bg-white">
+              <h1 className={`font-medium text-${"purple"}-600`}>
+                {cardDatas && cardDatas.isPremium == "true"
+                  ? cardDatas.clean_name + ".visitasmart.com"
+                  : "visitasmart.com/" + cardDatas.clean_name}
+              </h1>
+            </div>
 
+            <h1 className="font-bold text-xl text-center mt-6 text-white ">
+              Scan this qrcode to <br /> go to our website
+            </h1>
+          </div>
 
+          <div className="lg:w-[50%] w-full mt-16 h-32 flex flex-col items-center justify-center z-10">
+            <button
+              onClick={() =>
+                window.open(
+                  "https://" + cardDatas.clean_name + ".visitasmart.com"
+                )
+              }
+              className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold"
+            >
+              Open your website
+            </button>
 
+            <button
+              onMouseEnter={() => {
+                document
+                  .getElementById("qr_code_wrapper")
+                  .classList.add(
+                    "ring-4",
+                    `ring-${"purple"}-800`,
+                    "ring-offset-2"
+                  );
+              }}
+              onMouseLeave={() => {
+                document
+                  .getElementById("qr_code_wrapper")
+                  .classList.remove(
+                    "ring-4",
+                    `ring-${"purple"}-800`,
+                    "ring-offset-2"
+                  );
+              }}
+              onClick={() => downloadQrCode()}
+              className="relative flex items-center justify-center py-3 w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"
+            >
+              <span className=" absolute left-6 flex items-center justify-center">
+                <ion-icon name="arrow-down-outline"></ion-icon>
+              </span>{" "}
+              Download QRCODE
+            </button>
 
-<div id="qrcode_div" className="overflow-y-scroll pb-32 h-screen z-10 w-full flex flex-col items-center lg:px-64 px-4 pt-16 ">
-  <h1 className="text-4xl font-bold mb-6 capitalize">
-    Send website
-  </h1>
-  <div className={`lg:px-10 lg:py-1 py-2 px-6 mb-8 z-10 h-12 bg-${'purple'}-50 flex items-center justify-center border border-${'purple'}-600 text-${'purple'}-600 rounded-full`}>
-    <h1 id="website_url_text_successfull" className="font-medium lg:text-xl text-center">
-    {cardDatas && cardDatas.isPremium == "true" ? cardDatas.clean_name + ".visitasmart.com" : "visitasmart.com/" + cardDatas.clean_name}
-      
-    <Tooltip  isOpen={tooltipIsOpen} hasArrow   px='4' bg='black' py='2' color='white' rounded='lg' label='click to copy' placement='right'>
-<i
-       
-        class={`fa-solid fa-copy text-${'purple'}-900 cursor-pointer ml-3`}
-        onClick={()=> {navigator.clipboard.writeText(document.getElementById('website_url_text_successfull').innerText)
-      
-        Toast({
-          status: 'success',
-          title: 'Copied!',
-          postition: 'top',
-          toast
-        })
-        
-      
-      }}
-      ></i>
-</Tooltip>
-    </h1>
-    <div
-      id="tooltip-light"
-      role="tooltip"
-      class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
-    >
-      <span className="font-medium" id="copy-tooltip">
-        Copy link
-      </span>
-    </div>
-  </div>
+            <button
+              onMouseEnter={() => {
+                document
+                  .getElementById("qr-code-design")
+                  .classList.replace("ring-2", "ring-4");
+              }}
+              onMouseLeave={() => {
+                document
+                  .getElementById("qr-code-design")
+                  .classList.replace("ring-4", "ring-2");
+              }}
+              onClick={() => downloadQrCodeDesign()}
+              className="relative py-3 flex items-center justify-center w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"
+            >
+              <span className=" absolute left-6  flex items-center justify-center">
+                <ion-icon name="arrow-down-outline"></ion-icon>
+              </span>
+              Download QRCODE design
+            </button>
+          </div>
 
-    <div id="qr-code-design" className={`lg:w-[40%] lg:px-0 px-6 transition-all flex-col  ring-2 ring-offset-2 ring-${'purple'}-600 relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${'purple'}-600 border  lg:rounded-3xl rounded-xl z-10 flex items-center justify-center`}>
+          <div className="w-50 z-10 h-16 mt-16 flex items-center justify-center">
+            <a href={share_facebook_url}>
+              {" "}
+              <i class="fa-brands text-indigo-600 hover:text-indigo-900 text-4xl fa-facebook mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+            </a>
 
-    
+            <a href={share_twitter_url}>
+              {" "}
+              <i class="fa-brands text-blue-500 hover:text-blue-900 text-4xl fa-twitter mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+            </a>
 
-      <div className={`w-full h-16 absolute top-0 lg:rounded-t-2xl rounded-t-xl lg:rounded-b bg-white text-${'purple'}-600 flex items-center justify-center`}>
-        <h1 className="font-bold text-4xl capitalize" >{clean_compname}</h1>
+            <a href={share_linkedin_url}>
+              {" "}
+              <i class="fa-brands text-sky-600 hover:text-sky-900 text-4xl fa-linkedin mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+            </a>
+
+            <a href={share_whatsapp_url}>
+              {" "}
+              <i class="fa-brands text-green-600 hover:text-green-900 text-4xl fa-whatsapp mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+            </a>
+
+            <a href={share_sms_url}>
+              {" "}
+              <i class="fa-solid text-stone-600 hover:text-stone-900 text-4xl fa-envelope cursor-pointer hover:scale-110 transition-transform"></i>
+            </a>
+          </div>
+
+          <div className="flex z-10 flex-col items-center mt-20 pb-20 bg-slate-900 text-white">
+            <h1 className="lg:text-3xl text-xl font-bold mb-6 mt-10 ">
+              Manage or edit your website
+            </h1>
+
+            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%] lg:w-full mt-20 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
+              <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-slate-200">
+                <h1>Website manage link</h1>
+              </div>
+              <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center">
+                {manage_card_url}
+
+                <Tooltip
+                  px="4"
+                  bg="black"
+                  py="2"
+                  color="white"
+                  rounded="xl"
+                  label="click to copy"
+                  placement="right"
+                >
+                  <i
+                    class="fa-solid fa-copy text-indigo-900 cursor-pointer ml-3"
+                    onClick={() => {
+                      navigator.clipboard.writeText(manage_card_url);
+
+                      Toast({
+                        status: "success",
+                        title: "Copied!",
+                        postition: "top",
+                        toast,
+                      });
+                    }}
+                  ></i>
+                </Tooltip>
+              </h1>
+              <div
+                id="tooltip-light"
+                role="tooltip"
+                class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
+              >
+                <span className="font-medium" id="copy-tooltip">
+                  Copy manage link
+                </span>
+              </div>
+            </div>
+
+            <div className="px-10 lg:h-12 h-24 w-[80%] lg:w-full  relative mt-16 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
+              <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
+                <h1>Website password</h1>
+              </div>
+              <h1 className="font-medium lg:text-xl text-center">
+                Website password has been send to your email
+              </h1>
+              <div
+                id="tooltip-light"
+                role="tooltip"
+                class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
+              >
+                <span className="font-medium" id="copy-tooltip">
+                  Copy manage link
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col rounded-3xl lg:border px-12 py-12 mt-10 bg-slate-900">
+              <div className="flex flex-col items-start">
+                <span className="lg:text-xl text-sm font-medium">
+                  1. Go To <br />{" "}
+                  <a
+                    href={"https://" + manage_card_url}
+                    target="_blank"
+                    className="text-indigo-600 "
+                  >
+                    {manage_card_url}
+                  </a>
+                </span>
+                <span className="lg:text-xl text-sm font-medium mt-4">
+                  2. You'll be asked to enter a password
+                </span>
+                <span className="lg:text-xl text-sm font-medium mt-4">
+                  3. Then enter the Website password you have send to your email
+                </span>
+              </div>
+
+              <div className="flex z-10 flex-col items-center  ">
+                <h1 className="lg:text-xl text-sm text-indigo-600 font-bold mb-6 mt-10 capitalize">
+                  Or
+                </h1>
+              </div>
+
+              <div className="flex flex-col items-start">
+                <span className="lg:text-xl text-sm font-medium mt-6">
+                  1. Go To{" "}
+                  <a href={base_url} className="text-indigo-600 ">
+                    {base_url}
+                  </a>
+                </span>
+                <span className="lg:text-xl text-sm font-medium mt-4">
+                  2. And Click On Manage Website Button In The Header
+                </span>
+                <span className="lg:text-xl text-sm font-medium mt-4">
+                  3. You'll be asked to enter a password
+                </span>
+                <span className="lg:text-xl text-sm font-medium mt-4">
+                  4. Then enter the Website password you have send to your email
+                </span>
+              </div>
+            </div>
+
+            <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-10 ">
+              Any Help? Contact Visita{" "}
+              <a
+                href="/support"
+                className="text-indigo-600 hover: ml-2 cursor-pointer"
+              >
+                Help Center{" "}
+              </a>
+            </h1>
+
+            <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4">
+              © Glowit Labs - all rights reserved
+            </h1>
+          </div>
+        </div>
       </div>
-
-  <div id="qr_code_wrapper" className="py-3 px-3 transition-all rounded-2xl bg-white">
-  <QRCode
-   id="qr-code"
-   enableCORS={true}
-        value={`${base_url}${comp_name}`}
-        eyeRadius={20}
-        logoImage={cardDatas && cardDatas.logo}
-        logoWidth={60}
-        logoHeight={60}
-        size={220}
-        qrStyle="dots"
-        fgColor={'purple'}
-        bgColor='white'
-      />
-  </div>
-
-  <div className="py-3 px-6 rounded-full mt-6 bg-white">
-    <h1 className={`font-medium text-${'purple'}-600`} >
-    {cardDatas && cardDatas.isPremium == "true" ? cardDatas.clean_name + ".visitasmart.com" : "visitasmart.com/" + cardDatas.clean_name}</h1>
-  </div>
-
-  <h1 className="font-bold text-xl text-center mt-6 text-white ">
-    Scan this QR code to <br /> go to our website
-  </h1>
-  
-   </div>
-
-    <div className="lg:w-[50%] w-full mt-16 h-32 flex flex-col items-center justify-center z-10">
-
-
-
-
-    <button onClick={()=> window.open("https://"+cardDatas.clean_name + ".visitasmart.com")} className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold">Open your website</button>
-
-
-<button onMouseEnter={()=> {
-
-
-document.getElementById('qr_code_wrapper').classList.add('ring-4',`ring-${'purple'}-800`,'ring-offset-2')
-
-
-}}
-
-onMouseLeave={()=> {
-
-document.getElementById('qr_code_wrapper').classList.remove('ring-4',`ring-${'purple'}-800`,'ring-offset-2')
-
-
-}}
-
-onClick={()=> downloadQrCode()} className="relative flex items-center justify-center py-3 w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"><span className=" absolute left-6 flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span> Download QRCODE</button>
-
-
-<button
-
-onMouseEnter={()=> {
-
-document.getElementById('qr-code-design').classList.replace('ring-2','ring-4')
-
-
-}}
-
-onMouseLeave={()=> {
-
-document.getElementById('qr-code-design').classList.replace('ring-4','ring-2')
-
-
-}}
-
-
-
-onClick={()=> downloadQrCodeDesign()} className="relative py-3 flex items-center justify-center w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"><span className=" absolute left-6  flex items-center justify-center"><ion-icon name="arrow-down-outline"></ion-icon></span>Download QRCODE design</button>
-
     </div>
-
-    <div className="w-50 z-10 h-16 mt-16 flex items-center justify-center">
-
-   <a href={share_facebook_url}> <i class="fa-brands text-indigo-600 hover:text-indigo-900 text-4xl fa-facebook mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
-
-   <a href={share_twitter_url}> <i class="fa-brands text-indigo-500 hover:text-indigo-900 text-4xl fa-twitter mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
-
-   <a href={share_linkedin_url}> <i class="fa-brands text-sky-600 hover:text-sky-900 text-4xl fa-linkedin mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
-    
-   <a href={share_whatsapp_url}> <i class="fa-brands text-green-600 hover:text-green-900 text-4xl fa-whatsapp mr-6 cursor-pointer hover:scale-110 transition-transform"></i></a>
-
-   <a href={share_sms_url}> <i class="fa-solid text-stone-600 hover:text-stone-900 text-4xl fa-envelope cursor-pointer hover:scale-110 transition-transform"></i></a>
-    </div>
-
-    <div className="flex z-10 flex-col items-center mt-20 ">
-    <h1 className="lg:text-3xl text-xl font-bold mb-6 mt-10 capitalize">
-    Manage or edit your website
-  </h1>
-
-
-
-  <div className="lg:px-10 lg:h-12 h-24 relative w-[80%] lg:w-full mt-20 bg-indigo-50 flex items-center justify-center border  text-indigo-600 lg:rounded-b-xl rounded-xl">
-    <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
-      <h1>Website manage link</h1>
-    </div>
-    <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center">
-    {manage_card_url}
-
-
-    <Tooltip   px='4' bg='black' py='2' color='white' rounded='xl' label='click to copy' placement='right'>
-<i
-       
-        class="fa-solid fa-copy text-indigo-900 cursor-pointer ml-3"
-        onClick={()=> {navigator.clipboard.writeText(manage_card_url)
-        
-
-          Toast({
-            status: 'success',
-            title: 'Copied!',
-            postition: 'top',
-            toast
-          })
-        
-        
-        }}
-      ></i>
-</Tooltip>
-
-
-     
-    </h1>
-    <div
-      id="tooltip-light"
-      role="tooltip"
-      class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
-    >
-      <span className="font-medium" id="copy-tooltip">
-        Copy manage link
-      </span>
-    </div>
-  </div>
-
-  <div className="px-10 lg:h-12 h-24 w-[80%] lg:w-full  relative mt-16 bg-indigo-50 flex items-center justify-center border  text-indigo-600 lg:rounded-b-xl rounded-xl">
-    <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 text-xl rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
-      <h1>Website password</h1>
-    </div>
-    <h1 className="font-medium lg:text-xl text-center">
-    Website password has been send to your email
-    </h1>
-    <div
-      id="tooltip-light"
-      role="tooltip"
-      class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
-    >
-      <span className="font-medium" id="copy-tooltip">
-        Copy manage link
-      </span>
-    </div>
-  </div>
-
-<div className="flex flex-col rounded-3xl border px-12 py-12 mt-10 bg-white">
-<div className="flex flex-col items-start">
- <span className="lg:text-xl text-sm font-medium" >1. Go To <br /> <a href={"https://"+manage_card_url} target="_blank" className="text-indigo-600 " >{manage_card_url}</a></span>
-  <span className="lg:text-xl text-sm font-medium mt-4" >2. You'll be asked to enter a password</span>
-  <span className="lg:text-xl text-sm font-medium mt-4" >3. Then enter the Website password you have send to your email</span>
- </div>
-
- <div className="flex z-10 flex-col items-center  ">
-    <h1 className="lg:text-xl text-sm text-indigo-600 font-bold mb-6 mt-10 capitalize">
-   Or
-  </h1>
-  </div>
-
-  <div className="flex flex-col items-start">
- <span className="lg:text-xl text-sm font-medium mt-6" >1. Go To <a href={base_url} className="text-indigo-600 " >{base_url}</a></span>
-  <span className="lg:text-xl text-sm font-medium mt-4" >2. And Click On Manage Website Button In The Header</span>
-  <span className="lg:text-xl text-sm font-medium mt-4" >3. You'll be asked to enter a password</span>
-  <span className="lg:text-xl text-sm font-medium mt-4" >4. Then enter the Website password you have send to your email</span>
- </div>
-</div>
-
-<h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-10" >Any Help? Contact Visita <a href="/support" className="text-indigo-600 hover: ml-2 cursor-pointer" >Help Center </a></h1>
-
-<h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4" >© Glowit Labs - all rights reserved</h1>
-
- 
-    </div>
-
-</div>
-
-</div>
-   </div>
-
   );
 }
 

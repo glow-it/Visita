@@ -17,30 +17,30 @@ module.exports = {
   },
 
   getCardData: (company_name, client_db) => {
-    return new Promise(async(resolve, reject) => {
-      if(company_name == 'all') {
+    return new Promise(async (resolve, reject) => {
+      if (company_name == "all") {
         let response = await client_db
-        .collection(client_collections.visiting_card_datas).find().toArray()
-        resolve(response)
-      }else{
+          .collection(client_collections.visiting_card_datas)
+          .find()
+          .toArray();
+        resolve(response);
+      } else {
         client_db
-        .collection(client_collections.visiting_card_datas)
-        .findOne({ clean_name: { $regex: new RegExp(company_name, "i") } })
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject(err);
-        });
+          .collection(client_collections.visiting_card_datas)
+          .findOne({ clean_name: { $regex: new RegExp(company_name, "i") } })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
+          });
       }
-     
     });
   },
 
   updateCleanCardDatas: (data) => {
     return new Promise((resolve, reject) => {
-
       let products = [
         {
           product_image: data.product_image_1,
@@ -490,7 +490,7 @@ module.exports = {
           product_orgprice: data.product_50_orgprice,
           product_link: data.product_50_link,
         },
-      ]
+      ];
 
       let image_gallery = [
         data.image_1,
@@ -503,7 +503,7 @@ module.exports = {
         data.image_8,
         data.image_9,
         data.image_10,
-      ]
+      ];
 
       let yt_videos = [
         data.ytvideo_1_link,
@@ -511,12 +511,12 @@ module.exports = {
         data.ytvideo_3_link,
         data.ytvideo_4_link,
         data.ytvideo_5_link,
-      ]
+      ];
 
       let obj = {
         about: data.about,
-        isPremium:data.isPremium,
-        clean_name:data.company_name.replace(/[ ]/g,""),
+        isPremium: data.isPremium,
+        clean_name: data.company_name.replace(/[ ]/g, ""),
         specials: data.specials,
         features: data.features,
         account_holder_name: data.account_holder_name,
@@ -557,16 +557,14 @@ module.exports = {
         show_customer_details_popop: data.show_customer_details_popop,
       };
 
-      resolve({obj,yt_videos,products,image_gallery});
+      resolve({ obj, yt_videos, products, image_gallery });
     });
   },
   cleanCardDatas: (data) => {
     return new Promise((resolve, reject) => {
-
-
       let obj = {
         about: data.about,
-        
+
         account_holder_name: data.account_holder_name,
         address: data.address,
         alt_phone_no: data.alt_phone_no,
@@ -1058,8 +1056,6 @@ module.exports = {
             product_orgprice: data.product_50_orgprice,
             product_link: data.product_50_link,
           },
-
-          
         ],
 
         since: data.since,
@@ -1079,14 +1075,14 @@ module.exports = {
         isActivated: false,
         views: 1,
         feedbacks: [],
-        customer_details : [],
+        customer_details: [],
         show_customer_details_popop: data.show_customer_details_popop,
         specials: data.specials,
         features: data.features,
         created_at: new Date().getTime(),
         franchisee: data.franchisee,
-        isPremium:data.isPremium,
-        clean_name:data.company_name.replace(/[ ]/g,"")
+        isPremium: data.isPremium,
+        clean_name: data.company_name.replace(/[ ]/g, ""),
       };
 
       resolve(obj);
@@ -1111,7 +1107,10 @@ module.exports = {
     return new Promise((resolve, reject) => {
       client_db
         .collection(client_collections.visiting_card_datas)
-        .updateOne({ clean_name: card_name }, { $push: { customer_details: data } })
+        .updateOne(
+          { clean_name: card_name },
+          { $push: { customer_details: data } }
+        )
         .then((response) => {
           resolve(response);
         })
@@ -1161,93 +1160,109 @@ module.exports = {
     });
   },
 
-  cancelPurchase: (client_db,comp_name)=> {
-    let company_name = comp_name
-    return new Promise((resolve,reject)=> {
-      client_db.collection(client_collections.visiting_card_datas).deleteOne( { clean_name: company_name } ).then(()=> {
-        resolve()
-      }).catch((err)=> {
-        reject()
-      })
-    })
+  cancelPurchase: (client_db, comp_name) => {
+    let company_name = comp_name;
+    return new Promise((resolve, reject) => {
+      client_db
+        .collection(client_collections.visiting_card_datas)
+        .deleteOne({ clean_name: company_name })
+        .then(() => {
+          resolve();
+        })
+        .catch((err) => {
+          reject();
+        });
+    });
   },
 
-  updateCard: (update_data,client_db,comp_name,yt_videos,products,image_gallery) => {
-    return new Promise((resolve,reject)=> {
-      let company_name = comp_name
+  updateCard: (
+    update_data,
+    client_db,
+    comp_name,
+    yt_videos,
+    products,
+    image_gallery
+  ) => {
+    return new Promise((resolve, reject) => {
+      let company_name = comp_name;
 
-      let all_data = update_data.obj
-      let yt_videos = update_data.yt_videos
-      let products = update_data.products
-      let image_gallery = update_data.image_gallery
+      let all_data = update_data.obj;
+      let yt_videos = update_data.yt_videos;
+      let products = update_data.products;
+      let image_gallery = update_data.image_gallery;
 
-     
-
-      client_db.collection(client_collections.visiting_card_datas).updateOne( { clean_name: company_name },
-      {
-        $set: {
-          
-          specials: all_data.specials,
-          features: all_data.features,
-          about: all_data.about,
-        account_holder_name: all_data.account_holder_name,
-        address: all_data.address,
-        alt_phone_no: all_data.alt_phone_no,
-        bank_account_number: all_data.bank_account_number,
-        bank_ifsc_code: all_data.bank_ifsc_code,
-        bank_name: all_data.bank_name,
-        city: all_data.city,
-        company_category: all_data.company_category,
-        tagline: all_data.tagline,
-        isPremium:all_data.isPremium,
-        clean_name:all_data.company_name.replace(/[ ]/g,""),
-        company_name: all_data.company_name,
-        email_id: all_data.email_id,
-        facebook_link: all_data.facebook_link,
-        first_name: all_data.first_name,
-        googlepay_number: all_data.googlepay_number,
-        googlepay_qrcode: all_data.googlepay_qrcode,
-        paytm_qrcode: all_data.paytm_qrcode,
-        phonepe_qrcode: all_data.phonepe_qrcode,
-        gst: all_data.gst,
-        instagram_link: all_data.instagram_link,
-        last_name: all_data.last_name,
-        linkedin_link: all_data.linkedin_link,
-        location: all_data.location,
-        gmap_location: all_data.gmap_location,
-        logo: all_data.logo,
-        paytm_number: all_data.paytm_number,
-        phone_no: all_data.phone_no,
-        phonepe: all_data.phonepe,
-        pinterest_link: all_data.pinterest_link,
-        position: all_data.position,
-        since: all_data.since,
-        theme_color: all_data.theme_color,
-        twitter_link: all_data.twitter_link,
-        website: all_data.website,
-        whatsapp_no: all_data.whatsapp_no,
-        youtube_link: all_data.youtube_link,
-          yt_videos,
-          products,
-          image_gallery
-        }
-      }).then(()=> {
-        resolve()
-      }).catch((err)=> {
-        reject(err)
-      })
-
-    })
+      client_db
+        .collection(client_collections.visiting_card_datas)
+        .updateOne(
+          { clean_name: company_name },
+          {
+            $set: {
+              specials: all_data.specials,
+              features: all_data.features,
+              about: all_data.about,
+              account_holder_name: all_data.account_holder_name,
+              address: all_data.address,
+              alt_phone_no: all_data.alt_phone_no,
+              bank_account_number: all_data.bank_account_number,
+              bank_ifsc_code: all_data.bank_ifsc_code,
+              bank_name: all_data.bank_name,
+              city: all_data.city,
+              company_category: all_data.company_category,
+              tagline: all_data.tagline,
+              isPremium: all_data.isPremium,
+              clean_name: all_data.company_name.replace(/[ ]/g, ""),
+              company_name: all_data.company_name,
+              email_id: all_data.email_id,
+              facebook_link: all_data.facebook_link,
+              first_name: all_data.first_name,
+              googlepay_number: all_data.googlepay_number,
+              googlepay_qrcode: all_data.googlepay_qrcode,
+              paytm_qrcode: all_data.paytm_qrcode,
+              phonepe_qrcode: all_data.phonepe_qrcode,
+              gst: all_data.gst,
+              instagram_link: all_data.instagram_link,
+              last_name: all_data.last_name,
+              linkedin_link: all_data.linkedin_link,
+              location: all_data.location,
+              gmap_location: all_data.gmap_location,
+              logo: all_data.logo,
+              paytm_number: all_data.paytm_number,
+              phone_no: all_data.phone_no,
+              phonepe: all_data.phonepe,
+              pinterest_link: all_data.pinterest_link,
+              position: all_data.position,
+              since: all_data.since,
+              theme_color: all_data.theme_color,
+              twitter_link: all_data.twitter_link,
+              website: all_data.website,
+              whatsapp_no: all_data.whatsapp_no,
+              youtube_link: all_data.youtube_link,
+              yt_videos,
+              products,
+              image_gallery,
+            },
+          }
+        )
+        .then(() => {
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   },
 
-  deleteCard: (data,client_db)=> {
-    return new Promise((resolve,reject)=> {
-      client_db.collection(client_collections.visiting_card_datas).deleteOne({clean_name: data.company_name}).then(()=> {
-        resolve()
-      }).catch(()=> {
-        reject()
-      })
-    })
-  }
-
+  deleteCard: (data, client_db) => {
+    return new Promise((resolve, reject) => {
+      client_db
+        .collection(client_collections.visiting_card_datas)
+        .deleteOne({ clean_name: data.company_name })
+        .then(() => {
+          resolve();
+        })
+        .catch(() => {
+          reject();
+        });
+    });
+  },
 };

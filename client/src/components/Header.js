@@ -7,17 +7,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import Cookies from "js-cookie";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-
-import {
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-} from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
 import {
@@ -28,11 +19,6 @@ import {
 } from "@chakra-ui/react";
 
 function Header() {
-
-
-  
-
-
   window.onscroll = () => {
     let header = document.querySelector("header");
     let header_create_button = document.getElementById("header_create_button");
@@ -43,8 +29,6 @@ function Header() {
       header.classList.remove("header-active");
       header.classList.add("header-inactive");
     }
-
-  
   };
 
   let navigate = useNavigate();
@@ -52,13 +36,9 @@ function Header() {
   //   Header Drawer Open
   let [open, setOpen] = useState(false);
 
-
-  
-
-
   return (
     <div>
-      <header className={` w-full h-20 flex   fixed z-[200] `}>
+      <header className={` w-full h-20 flex  fixed z-[200] `}>
         <div className="w-full h-full  flex items-center justify-center">
           <img
             src={require("../Images/logos/visitalogo.png")}
@@ -86,7 +66,11 @@ function Header() {
                 See demo
               </p>
               <p
-                onClick={()=> navigate('/pricing',{state:{franchisee:false,franchisee_email:null}})} 
+                onClick={() =>
+                  navigate("/pricing", {
+                    state: { franchisee: false, franchisee_email: null },
+                  })
+                }
                 className=" font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Pricing
@@ -133,9 +117,9 @@ function Header() {
                             onClick={() =>
                               navigate(
                                 "/manage/card/" +
-                                  document.getElementById(
-                                    "manage_card_comp_name"
-                                  ).value.replace(/[ ]/g,"")
+                                  document
+                                    .getElementById("manage_card_comp_name")
+                                    .value.replace(/[ ]/g, "")
                               )
                             }
                             className="px-6 py-1 bg-blue-600 rounded-full text-xl font-bold text-white"
@@ -208,7 +192,11 @@ function Header() {
 
           <p
             id="header_create_button"
-            onClick={()=> navigate('/pricing',{state:{franchisee:false,franchisee_email:null}})} 
+            onClick={() =>
+              navigate("/pricing", {
+                state: { franchisee: false, franchisee_email: null },
+              })
+            }
             class=" absolute right-10 py-1.5 px-8 text-md  text-blue-600 lg:block hidden focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-medium"
           >
             Create now
@@ -217,219 +205,215 @@ function Header() {
 
         <div className="lg:hidden block mr-8">
           <div className="  w-full flex justify-end  items-center h-full">
-            <span
-              className="text-3xl sm:-mr-24 cursor-pointer"
-            >
-              <ion-icon onClick={()=> setOpen(true)} name="menu"></ion-icon>
+            <span className="text-3xl sm:-mr-24 cursor-pointer">
+              <ion-icon onClick={() => setOpen(true)} name="menu"></ion-icon>
             </span>
           </div>
         </div>
       </header>
 
       <div>
+        {/* Header Drawer Open */}
+        <Transition.Root show={open} as={Fragment}>
+          <Dialog as="div" className="relative z-[300]" onClose={setOpen}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-in-out duration-500"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in-out duration-500"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            </Transition.Child>
 
-
-
-
-
-{/* Header Drawer Open */}
-<Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-[300]" onClose={setOpen}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-in-out duration-500"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in-out duration-500"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-hidden ">
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                <Transition.Child
-                  as={Fragment}
-                  enter="transform transition ease-in-out duration-500 sm:duration-700"
-                  enterFrom="translate-x-full"
-                  enterTo="translate-x-0"
-                  leave="transform transition ease-in-out duration-500 sm:duration-700"
-                  leaveFrom="translate-x-0"
-                  leaveTo="translate-x-full"
-                >
-                  <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                    <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                      <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
-                        <div className="flex items-start justify-between">
-                          <Dialog.Title className="text-lg font-medium text-gray-900">
-                            <img src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png" className="h-7" />
-                          </Dialog.Title>
-                          <div className="ml-3 flex h-7 items-center">
-                            <button
-                              type="button"
-                              className="-m-2 p-2 text-gray-400 text-2xl hover:text-gray-500"
-                              onClick={() => setOpen(false)}
-                            >
-                              <span className="sr-only ">Close panel</span>
-                              <ion-icon name="close-outline"></ion-icon>
-                            </button>
+            <div className="fixed inset-0 overflow-hidden ">
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                  <Transition.Child
+                    as={Fragment}
+                    enter="transform transition ease-in-out duration-500 sm:duration-700"
+                    enterFrom="translate-x-full"
+                    enterTo="translate-x-0"
+                    leave="transform transition ease-in-out duration-500 sm:duration-700"
+                    leaveFrom="translate-x-0"
+                    leaveTo="translate-x-full"
+                  >
+                    <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                      <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                        <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+                          <div className="flex items-start justify-between">
+                            <Dialog.Title className="text-lg font-medium text-gray-900">
+                              <img
+                                src="https://i.postimg.cc/ZKnK7rC2/visitalogo.png"
+                                className="h-7"
+                              />
+                            </Dialog.Title>
+                            <div className="ml-3 flex h-7 items-center">
+                              <button
+                                type="button"
+                                className="-m-2 p-2 text-gray-400 text-2xl hover:text-gray-500"
+                                onClick={() => setOpen(false)}
+                              >
+                                <span className="sr-only ">Close panel</span>
+                                <ion-icon name="close-outline"></ion-icon>
+                              </button>
+                            </div>
                           </div>
-                        </div>
 
-                        <div className="mt-8">
-                          <div className="flow-root">
-                        
+                          <div className="mt-8">
+                            <div className="flow-root">
+                              <p
+                                onClick={() => navigate("/visita")}
+                                className="font-bold cursor-pointer mt-4 border py-2 rounded-full"
+                              >
+                                <span className=" text-md flex items-center text-primary ml-4">
+                                  <ion-icon name="albums-outline"></ion-icon>{" "}
+                                  <span className="ml-2 text-slate-600">
+                                    See Demo
+                                  </span>
+                                </span>{" "}
+                              </p>
 
+                              <p
+                                onClick={() => {
+                                  navigate("/pricing", {
+                                    state: {
+                                      franchisee: false,
+                                      franchisee_email: null,
+                                    },
+                                  });
+                                  setOpen(false);
+                                }}
+                                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
+                              >
+                                <span className=" text-md flex items-center text-primary ml-4">
+                                  <ion-icon name="card-outline"></ion-icon>{" "}
+                                  <span className="ml-2 text-slate-600">
+                                    Pricing
+                                  </span>
+                                </span>{" "}
+                              </p>
 
-                          <p
-                onClick={() => navigate("/visita")}
-                className="font-bold cursor-pointer mt-4 border py-2 rounded-full"
-              >
-                <span className=" text-md flex items-center text-primary ml-4">
-                  <ion-icon name="albums-outline"></ion-icon>{" "}
-                  <span className="ml-2 text-slate-600">See Demo</span>
-                </span>{" "}
-              </p>
+                              <p
+                                onClick={() => setOpen(false)}
+                                href="#features"
+                                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
+                              >
+                                <span className=" text-md flex items-center text-primary ml-4">
+                                  <ion-icon name="scan-circle-outline"></ion-icon>{" "}
+                                  <span className="ml-2 text-slate-600">
+                                    Features
+                                  </span>
+                                </span>{" "}
+                              </p>
 
-              <p
-                 onClick={()=> {navigate('/pricing',{state:{franchisee:false,franchisee_email:null}});setOpen(false)}} 
-                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
-              >
-                <span className=" text-md flex items-center text-primary ml-4">
-                  <ion-icon name="card-outline"></ion-icon>{" "}
-                  <span className="ml-2 text-slate-600">Pricing</span>
-                </span>{" "}
-              </p>
+                              <p
+                                onClick={() => setOpen(false)}
+                                href="#benefits"
+                                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
+                              >
+                                <span className=" text-md flex items-center text-primary ml-4">
+                                  <ion-icon name="bulb-outline"></ion-icon>{" "}
+                                  <span className="ml-2 text-slate-600">
+                                    Benefits
+                                  </span>
+                                </span>{" "}
+                              </p>
 
-              <p
-                onClick={() => setOpen(false)}
-                href="#features"
-                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
-              >
-                <span className=" text-md flex items-center text-primary ml-4">
-                  <ion-icon name="scan-circle-outline"></ion-icon>{" "}
-                  <span className="ml-2 text-slate-600">Features</span>
-                </span>{" "}
-              </p>
+                              <p
+                                onClick={() => {
+                                  var doc = prompt("Enter Company Name");
 
-              <p
-                onClick={() => setOpen(false)}
-                href="#benefits"
-                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
-              >
-                <span className=" text-md flex items-center text-primary ml-4">
-                  <ion-icon name="bulb-outline"></ion-icon>{" "}
-                  <span className="ml-2 text-slate-600">Benefits</span>
-                </span>{" "}
-              </p>
+                                  if (doc != null) {
+                                    navigate(
+                                      "/manage/card/" + doc.replace(/[ ]/g, "")
+                                    );
+                                  }
+                                  setOpen(false);
+                                }}
+                                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
+                              >
+                                <span className=" text-md flex items-center text-primary ml-4">
+                                  {" "}
+                                  <ion-icon name="create-outline"></ion-icon>{" "}
+                                  <span className="ml-2 text-slate-600">
+                                    Manage Website
+                                  </span>
+                                </span>{" "}
+                              </p>
 
-              <p
-                onClick={() => {
-                  var doc = prompt("Enter Company Name");
+                              <p
+                                onClick={() => {
+                                  window.tidioChatApi.show();
+                                  window.tidioChatApi.open();
+                                }}
+                                className=" font-bold cursor-pointer mt-2 border py-2 rounded-full"
+                              >
+                                <span className="text-md flex items-center text-primary ml-4">
+                                  <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                                  <span className="ml-2 text-slate-600">
+                                    Chat with us
+                                  </span>
+                                </span>{" "}
+                              </p>
 
-                  if (doc != null) {
-                    navigate("/manage/card/" + doc.replace(/[ ]/g,""));
-                  }
-                  setOpen(false);
-                }}
-                className="font-bold cursor-pointer mt-2 border py-2 rounded-full"
-              >
-                <span className=" text-md flex items-center text-primary ml-4">
-                  {" "}
-                  <ion-icon name="create-outline"></ion-icon>{" "}
-                  <span className="ml-2 text-slate-600">Manage Website</span>
-                </span>{" "}
-              </p>
+                              <p
+                                onClick={() => {
+                                  navigate("/support");
+                                  setOpen(false);
+                                }}
+                                className=" font-bold cursor-pointer mt-2 border py-2 rounded-full"
+                              >
+                                <span className="text-md flex items-center text-primary ml-4">
+                                  <ion-icon name="help-buoy-outline"></ion-icon>{" "}
+                                  <span className="ml-2 text-slate-600">
+                                    Help Center
+                                  </span>
+                                </span>{" "}
+                              </p>
 
-            
+                              {/* <Link to='/franchisee/login' className=" font-bold cursor-pointer mt-2 border py-2 rounded-full pb-8" ><span className="text-md flex items-center text-primary ml-4" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
 
-             
-
-            
-
-              <p
-                onClick={() => {
-                  window.tidioChatApi.show();
-                  window.tidioChatApi.open();
-                }}
-                className=" font-bold cursor-pointer mt-2 border py-2 rounded-full"
-              >
-                <span className="text-md flex items-center text-primary ml-4">
-                  <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                  <span className="ml-2 text-slate-600">Chat with us</span>
-                </span>{" "}
-              </p>
-
-              <p
-                onClick={() => {
-                  navigate("/support");
-                  setOpen(false);
-                }}
-                className=" font-bold cursor-pointer mt-2 border py-2 rounded-full"
-              >
-                <span className="text-md flex items-center text-primary ml-4">
-                  <ion-icon name="help-buoy-outline"></ion-icon>{" "}
-                  <span className="ml-2 text-slate-600">Help Center</span>
-                </span>{" "}
-              </p>
-
-         
-       
-
-              {/* <Link to='/franchisee/login' className=" font-bold cursor-pointer mt-2 border py-2 rounded-full pb-8" ><span className="text-md flex items-center text-primary ml-4" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
-
-              {!localStorage.getItem("franchisee_email") ? (
-                <p
-                onClick={()=> {
-                  navigate("/franchisee/register");
-                setOpen(false);
-                }}
-                  className="font-medium mt-2 pl-4 bg-blue-600 rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
-                >
-                  <span className="flex items-center justify-center mr-1">
-                    <ion-icon name="log-in-outline"></ion-icon>
-                  </span>{" "}
-                  Register franchisee
-                </p>
-              ) : (
-                <p
-                  onClick={()=> {
-                    navigate("/franchisee");
-                  setOpen(false);
-                  }}
-                  className="font-medium mt-2 pl-4 bg-blue-600 rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
-                >
-                  Go to franchisee
-                  <span className="flex items-center justify-center ml-1">
-                    <ion-icon name="arrow-forward"></ion-icon>
-                  </span>
-                </p>
-              )}
-
-
-
-
+                              {!localStorage.getItem("franchisee_email") ? (
+                                <p
+                                  onClick={() => {
+                                    navigate("/franchisee/register");
+                                    setOpen(false);
+                                  }}
+                                  className="font-medium mt-2 pl-4 bg-blue-600 rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
+                                >
+                                  <span className="flex items-center justify-center mr-1">
+                                    <ion-icon name="log-in-outline"></ion-icon>
+                                  </span>{" "}
+                                  Register franchisee
+                                </p>
+                              ) : (
+                                <p
+                                  onClick={() => {
+                                    navigate("/franchisee");
+                                    setOpen(false);
+                                  }}
+                                  className="font-medium mt-2 pl-4 bg-blue-600 rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
+                                >
+                                  Go to franchisee
+                                  <span className="flex items-center justify-center ml-1">
+                                    <ion-icon name="arrow-forward"></ion-icon>
+                                  </span>
+                                </p>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
-
-                     
-                    </div>
-                  </Dialog.Panel>
-                </Transition.Child>
+                    </Dialog.Panel>
+                  </Transition.Child>
+                </div>
               </div>
             </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
-
-
-
-
-
-       
+          </Dialog>
+        </Transition.Root>
       </div>
     </div>
   );

@@ -43,9 +43,7 @@ function PremiumProductsPage() {
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     
     `;
-});
-
-
+  });
 
   useEffect(() => {
     document.querySelectorAll("header").forEach((elem) => {
@@ -202,10 +200,9 @@ function PremiumProductsPage() {
                         <div className="mt-6">
                           <p
                             onClick={() => {
-                              let phoneNumber = "+91"+cardDatas.phone_no; 
+                              let phoneNumber = "+91" + cardDatas.phone_no;
 
-                              let message =
-                                `
+                              let message = `
                                 New Order
                                 
                                 ${productsList}
@@ -214,13 +211,12 @@ function PremiumProductsPage() {
 
                                 `;
 
-                                console.log(message);
+                              console.log(message);
 
                               let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
                                 message
                               )}`;
 
-     
                               window.open(url, "_blank");
                             }}
                             className={`flex items-center justify-center rounded-md border border-transparent bg-${theme_color}-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-${theme_color}-700`}
