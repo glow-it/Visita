@@ -23,7 +23,7 @@ function Successfull() {
   let [tooltipIsOpen, setTooltipIsOpen] = useState(false);
   let navigate = useNavigate();
   let base_url = "visitasmart.com/";
-  let manage_card_url = base_url + "manage/card/" + cardDatas && cardDatas.clean_name;
+  let manage_card_url = base_url + "manage/card/" + cardDatas.clean_name;
   let toast = useToast();
   let clean_compname = params.comp_name.replace(/[-]/g, " ");
 
@@ -56,17 +56,17 @@ function Successfull() {
   }, []);
 
   let share_whatsapp_url = `https://api.whatsapp.com/send?text=${
-    cardDatas && cardDatas.clean_name + ".visitasmart.com"
+    cardDatas.clean_name + ".visitasmart.com"
   }`;
   let share_sms_url = `sms:?body=${cardDatas.clean_name + ".visitasmart.com"}`;
   let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${
-    cardDatas && cardDatas.clean_name + ".visitasmart.com"
+    cardDatas.clean_name + ".visitasmart.com"
   }`;
   let share_twitter_url = `https://twitter.com/intent/tweet?text=${
-    cardDatas && cardDatas.clean_name + ".visitasmart.com"
+    cardDatas.clean_name + ".visitasmart.com"
   }`;
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${
-    cardDatas && cardDatas.clean_name + ".visitasmart.com"
+    cardDatas.clean_name + ".visitasmart.com"
   }`;
 
   // Download QR Code
@@ -189,8 +189,8 @@ function Successfull() {
               className="font-medium lg:text-xl text-center"
             >
               {cardDatas && cardDatas.isPremium == "true"
-                ? cardDatas && cardDatas.clean_name + ".visitasmart.com"
-                : "visitasmart.com/" + cardDatas && cardDatas.clean_name}
+                ? cardDatas.clean_name + ".visitasmart.com"
+                : "visitasmart.com/" + cardDatas.clean_name}
 
               <Tooltip
                 isOpen={tooltipIsOpen}
@@ -268,8 +268,8 @@ function Successfull() {
             <div className="py-3 px-6 rounded-full mt-6 bg-white">
               <h1 className={`font-medium text-${"purple"}-600`}>
                 {cardDatas && cardDatas.isPremium == "true"
-                  ? cardDatas && cardDatas.clean_name + ".visitasmart.com"
-                  : "visitasmart.com/" + cardDatas && cardDatas.clean_name}
+                  ? cardDatas.clean_name + ".visitasmart.com"
+                  : "visitasmart.com/" + cardDatas.clean_name}
               </h1>
             </div>
 
@@ -282,7 +282,7 @@ function Successfull() {
             <button
               onClick={() =>
                 window.open(
-                  "https://" + cardDatas && cardDatas.clean_name + ".visitasmart.com"
+                  "https://" + cardDatas.clean_name + ".visitasmart.com"
                 )
               }
               className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold"
