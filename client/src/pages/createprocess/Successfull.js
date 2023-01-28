@@ -253,7 +253,7 @@ function Successfull() {
               <QRCode
                 id="qr-code"
                 enableCORS={true}
-                value={`${base_url}${comp_name}`}
+                value={`https://www.visitasmart.com/${comp_name}`}
                 eyeRadius={20}
                 logoImage={cardDatas && cardDatas.logo}
                 logoWidth={60}
