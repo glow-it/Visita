@@ -1,13 +1,6 @@
 let express = require("express");
 let app = express();
 const cors = require("cors");
-const {
-  client_database_name,
-  admin_database_name,
-  mongo_uri,
-  franchisee_database_name,
-} = require("./Common/strings");
-const { client_collections } = require("./Common/collections");
 const clientHelpers = require("./Helpers/clientHelpers");
 const adminHelpers = require("./Helpers//adminHelpers");
 const paymentHelpers = require("./Helpers/paymentHelpers");
