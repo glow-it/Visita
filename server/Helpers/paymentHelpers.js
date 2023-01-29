@@ -16,8 +16,8 @@ module.exports = {
       const params = {
         plan_id:
           isPremium == "false"
-            ? process.env.razorpay_basic_plan_id
-            : process.env.razorpay_premium_plan_id,
+            ? process.env.razorpay_basic_plan_id_INR
+            : process.env.razorpay_premium_plan_id_INR,
         customer_notify: 1,
         quantity: 1,
         total_count: 10,
