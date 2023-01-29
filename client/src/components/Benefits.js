@@ -4,7 +4,7 @@ function Benefits() {
   return (
     <div
       id="benefits"
-      className="benefits-wrapper py-16 w-full  mb-10 flex flex-col lg:flex-row bg-blue-50/50"
+      className="benefits-wrapper py-16 w-full  flex flex-col lg:flex-row bg-black "
     >
       <div className="lg:w-[50%] lg:py-0 py-6 w-full lg:text-start text-center lg:h-full  benefits-1 flex justify-center lg:items-center lg:px-24 px-8">
         <img
@@ -21,7 +21,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4 text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4 text-white">
             You can modify or update the card as many times as you want, There's
             no need to depend on developers.
           </h1>
@@ -30,7 +30,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             There is no need for printing or stock maintenance.
           </h1>
         </div>
@@ -38,7 +38,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             You can cut your printing costs by using a Digital vCard.
           </h1>
         </div>
@@ -46,7 +46,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             Customers can easily save your card to their mobile device.
           </h1>
         </div>
@@ -54,7 +54,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             A great business card makes an impression and can convert sales.
           </h1>
         </div>
@@ -62,7 +62,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             Having your contact information on your customer's mobile phone is a
             business opportunity.
           </h1>
@@ -71,7 +71,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             With a digital business cards, you can express yourself in ways you
             couldn't before.
           </h1>
@@ -80,7 +80,7 @@ function Benefits() {
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
-          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-black">
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
             It can do many features that cannot be done in normal vCard
           </h1>
         </div>

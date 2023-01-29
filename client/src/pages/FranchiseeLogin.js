@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import $ from "jquery";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import apiKeys from "../Api/apiKeys";
@@ -161,7 +161,7 @@ function FranchiseeLogin() {
                 Login
               </Button>
             </div>
-            <div className="w-full flex justify-center items-center">
+            <div className="w-full flex flex-col justify-center items-center">
               <p
                 onClick={() => navigate("/franchisee/register")}
                 className="font-medium"
@@ -171,6 +171,10 @@ function FranchiseeLogin() {
                   Register now
                 </span>
               </p>
+              <div className="flex mt-6" >
+          <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
+          <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
+          </div>
             </div>
           </form>
         </div>

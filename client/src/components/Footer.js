@@ -7,13 +7,12 @@ function Footer() {
 
   return (
     <div className="lg:h-[110vh] z-10 w-full bg-black flex justify-center items-center lg:-mt-[200px]">
-      <footer class="pt-20 lg:pt-[120px] z-10 pb-10 lg:pb-20 px-8 relative  font-visita-bold">
+      <footer class="pt-20 lg:pt-[120px] z-10 pb-10 lg:pb-20 px-8 relative  font-bold">
         <div class="container">
           <div class="flex flex-wrap -mx-4">
             <div class="w-full sm:w-2/3 lg:w-3/12 px-4">
               <div class="w-full mb-10">
-                <a
-                  href="javascript:void(0)"
+                <p
                   class="inline-block
                   font-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                 >
@@ -22,7 +21,7 @@ function Footer() {
                     alt="logo"
                     class="comp-logo-footer rounded-full scale-[0.8]"
                   />
-                </a>
+                </p>
                 <p class="flex items-center text-sm text-white font-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                     <ion-icon name="call"></ion-icon>
@@ -52,9 +51,32 @@ function Footer() {
                   Resources
                 </h4>
                 <ul>
-                  <li>
+                 
+                <li>
+                    <p
+                     onClick={() =>
+                      navigate("/pricing", {
+                        state: { franchisee: false, franchisee_email: null },
+                      })
+                    }
+                      class="
+                        inline-block
+                        font-medium
+                        cursor-pointer
+                        hover:text-blue-600
+                        text-white
+                        text-base text-body-color
+                        hover:text-primary
+                        leading-loose
+                        mb-2
+                        "
+                    >
+                      Create
+                    </p>
+                  </li>
+                <li>
                     <a
-                      href="javascript:void(0)"
+                      href="#features"
                       class="
                         inline-block
                         font-medium
@@ -66,12 +88,12 @@ function Footer() {
                         mb-2
                         "
                     >
-                      Template Model
+                      Features
                     </a>
                   </li>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="#benefits"
                       class="
                         inline-block
                         font-medium
@@ -83,26 +105,11 @@ function Footer() {
                         mb-2
                         "
                     >
-                      New Features
+                      Benefits
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      class="
-                        inline-block
-                        font-medium
-                        hover:text-blue-600
-                        text-white
-                        text-base text-body-color
-                        hover:text-primary
-                        leading-loose
-                        mb-2
-                        "
-                    >
-                      Update
-                    </a>
-                  </li>
+                 
+                 
                 </ul>
               </div>
             </div>
@@ -112,23 +119,7 @@ function Footer() {
                   Company
                 </h4>
                 <ul>
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      class="
-                        inline-block
-                        font-medium
-                        hover:text-blue-600
-                        text-white
-                        text-base text-body-color
-                        hover:text-primary
-                        leading-loose
-                        mb-2
-                        "
-                    >
-                      About Visita
-                    </a>
-                  </li>
+                 
                   <li>
                     <a
                       href="/support"
@@ -146,12 +137,12 @@ function Footer() {
                       Contact & Support
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="javascript:void(0)"
+                  <li onClick={()=> navigate("/privacy")} >
+                    <p
                       class="
                         inline-block
                         font-medium
+                        cursor-pointer
                         hover:text-blue-600
                         text-white
                         text-base text-body-color
@@ -161,7 +152,25 @@ function Footer() {
                         "
                     >
                       Privacy & Policy
-                    </a>
+                    </p>
+                  </li>
+                  <li onClick={()=> navigate("/terms")} >
+                    <p
+                     
+                      class="
+                        inline-block
+                        font-medium
+                        cursor-pointer
+                        hover:text-blue-600
+                        text-white
+                        text-base text-body-color
+                        hover:text-primary
+                        leading-loose
+                        mb-2
+                        "
+                    >
+                      Terms of Service
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -196,7 +205,7 @@ function Footer() {
                   </li>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="/visita"
                       class="
                         inline-block
                         font-medium
@@ -208,12 +217,12 @@ function Footer() {
                         mb-2
                         "
                     >
-                      See Demos
+                      Premium demo
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#features"
+                      href="/blueberrybakes"
                       class="
                         inline-block
                         font-medium
@@ -225,43 +234,11 @@ function Footer() {
                         mb-2
                         "
                     >
-                      Features
+                      Basic demo
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="#benefits"
-                      class="
-                        inline-block
-                        font-medium
-                        hover:text-blue-600
-                        text-white
-                        text-base text-body-color
-                        hover:text-primary
-                        leading-loose
-                        mb-2
-                        "
-                    >
-                      Benefits
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/template"
-                      class="
-                        inline-block
-                        font-medium
-                        hover:text-blue-600
-                        text-white
-                        text-base text-body-color
-                        hover:text-primary
-                        leading-loose
-                        mb-2
-                        "
-                    >
-                      Template Model
-                    </a>
-                  </li>
+                
+                 
                   <li>
                     <a
                       href="/support"

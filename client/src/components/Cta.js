@@ -5,9 +5,9 @@ function Cta() {
   let navigate = useNavigate();
 
   return (
-    <div
+    <div     
       id="cta"
-      class=" z-40 bg-white lg:my-20 my-4 rounded-[2rem] shadow-xl border  cta-wrapper relative flex flex-col items-center justify-center overflow-hidden"
+      class=" z-40 bg-white lg:my-20 my-4 rounded-[2rem] lg:shadow-xl lg:border  cta-wrapper relative flex flex-col lg:items-center items-start justify-center overflow-hidden lg:px-0 px-6"
     >
       <div
         className="w-full -mt-32
@@ -32,7 +32,7 @@ function Cta() {
         />
       </div>
 
-      <h1 className="lg:text-6xl gradient-text text-3xl font-bold text-primary ">
+      <h1 className="lg:text-6xl  text-3xl font-bold text-primary ">
         Ready to create
       </h1>
       <h1 className="lg:text-xl text-md font-medium text-slate-400 lg:mt-6 mt-2">
@@ -40,7 +40,7 @@ function Cta() {
         Affordable price for everyone
       </h1>
 
-      <div className="w-full mt-12 py-2 flex lg:flex-row flex-col items-center justify-center">
+      <div className="w-full lg:mt-12 mt-4 py-2 flex lg:flex-row flex-col lg:items-center items-start justify-center">
         <p
           onClick={() =>
             navigate("/pricing", {
@@ -60,7 +60,7 @@ function Cta() {
             })
           }
           type="button"
-          class="text-blue-600 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-medium px-10 py-2 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+          class="text-blue-600 hover:-translate-y-[2px] hover:bg-blue-600 cursor-pointer hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-2xl  text-xl font-medium px-10 py-2 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
         >
           Pricing
         </p>

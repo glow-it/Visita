@@ -27,6 +27,8 @@ import CustomerDetails from "./pages/CustomerDetails";
 import Template from "./template/Template";
 import PremiumProductsPage from "./template/Pages/PremiumProductsPage";
 import Cart from "./template/Pages/Cart";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 function App() {
   useEffect(() => {
@@ -78,6 +80,8 @@ function App() {
           element={<HowToFranchisee />}
         />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </div>
   );

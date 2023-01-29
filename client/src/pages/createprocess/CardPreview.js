@@ -1,7 +1,7 @@
 import { Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CreateHeader from "../../components/CreateHeader";
 import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
@@ -368,6 +368,10 @@ function CardPreview() {
           ) : (
             ""
           )}
+          <div className="flex mt-6" >
+          <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
+          <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
+          </div>
         </div>
       </div>
     </div>

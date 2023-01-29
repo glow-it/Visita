@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Toast } from "../miniComponents/Toast";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 function Support() {
   useEffect(() => {
@@ -40,9 +41,9 @@ function Support() {
         <p
           data-aos="fade-up"
           data-aos-delay="100"
-          className="font-medium text-xl lg:mt-10 mt-4 lg:text-start text-center"
+          className="font-medium  text-xl lg:mt-10 mt-4 lg:text-start text-center"
         >
-          At this time you can ask us your needs or problems.
+          At this time you can ask us your needs or problems. <Link to="/terms" className="underline cursor-pointer ml-1" > Terms of service</Link>
         </p>
       </div>
 
@@ -74,7 +75,7 @@ function Support() {
               <span className="flex items-center justify-center mr-2">
                 <ion-icon name="mail"></ion-icon>
               </span>
-              team@visitasmart.com
+              support@visitasmart.com
             </p>
             <p className="flex items-center font-semibold text-xl text-white mt-4">
               <span className="flex items-center justify-center mr-2">
@@ -168,6 +169,7 @@ function Support() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
