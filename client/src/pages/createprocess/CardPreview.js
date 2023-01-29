@@ -6,10 +6,7 @@ import CreateHeader from "../../components/CreateHeader";
 import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
 import { Toast } from "../../miniComponents/Toast";
-import {
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 
 function CardPreview() {
   let [franchiseeData, setFranchiseeData] = useState([]);
@@ -52,16 +49,17 @@ function CardPreview() {
   }, []);
 
   // Handle Complete Purchase Click
-  const handleCompletePurchase = () => {
-    console.log(cardDatas.isPremium);
+  const handleCompletePurchase = async() => {
+
+ 
 
     axios({
       method: "post",
       url: `${apiKeys.server_url}/complete-purchase`,
-      data: { isPremium: cardDatas.isPremium },
+      data: { isPremium: cardDatas.isPremium},
     })
       .then((response) => {
-        // Check Card Creation Is First
+        // Check Website Creation Is First
 
         if (response.data.isFirst == true) {
           axios({
@@ -285,30 +283,27 @@ function CardPreview() {
         live_preview_url={`https://visitasmart.com/${name}`}
       />
 
-      <div className=" h-full w-full flex lg:flex-row flex-col lg:items-start lg:pt-32  items-center justify-center z-50">
-    
-
+      <div className=" h-full w-full  flex lg:flex-row flex-col lg:items-start lg:pt-40 pt-28  items-center justify-center z-50">
         <div
-          className={`${
-            cardDatas && cardDatas.activated ? "h-[50%]" : "lg:h-[50%]"
-          }  z-40 lg:mt-0   px-16 lg:w-[60%] w-full lg:py-12 py-32 -mt-10 flex flex-col  items-center justify-center lg:rounded-3xl `}
+          className={`  z-40 lg:mt-0 lg:border   px-16 lg:w-[60%] w-full lg:pb-24 pb-32 flex flex-col  items-center justify-center lg:rounded-3xl `}
         >
+          <img
+            className="h-[200px] lg:flex hidden lg:w-auto w-[300px] -mt-24 lg:min-w-0"
+            src={require("../../Images/tickanimation.gif")}
+          />
 
-          <img className="min-h-[200px] lg:min-w-0 min-w-[300px]" src={require("../../Images/tickanimation.gif")} />
-      
-
-          <h1 className="lg:text-3xl text-2xl font-bold lg:text-start -mt-8 text-center mb-3">
+          <h1 className="lg:text-3xl text-2xl font-bold lg:text-start  text-center mb-3">
             {cardDatas && cardDatas.activated
               ? "Successfully your website is "
               : "Successfully your website was "}
 
-            <span >
-              {cardDatas && cardDatas.activated ? "Activated!" : "Created!"}
+            <span>
+              {cardDatas && cardDatas.activated ? "activated!" : "created"}
             </span>
           </h1>
 
           <h1
-            className={`lg:text-xl text-sm lg:block hidden font-semibold ${
+            className={`lg:text-xl text-sm lg:block hidden font-medium ${
               cardDatas && cardDatas.activated
                 ? "text-green-600"
                 : "text-indigo-600"
@@ -365,14 +360,14 @@ function CardPreview() {
             )}
           </div>
 
-          {
-  franchiseeData != null ?
-  <p className="font-medium text-center mt-10" >Please provide payment details of customer. Dont provide your
-  payment details</p>
-  : ''
-          }
-
-         
+          {franchiseeData != null ? (
+            <p className="font-medium text-center mt-10">
+              Please provide payment details of customer. Dont <br /> provide
+              your payment details
+            </p>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

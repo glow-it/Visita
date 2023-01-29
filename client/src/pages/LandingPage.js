@@ -21,6 +21,7 @@ function LandingPage() {
     window.location.href = "https://visitasmart.com/" + subdomain;
   }
 
+
   useEffect(() => {
     document.title =
       "Visita - Effortlessly Create a Professional Business Presence: Low-Cost Website and Digital Business Card Builder";

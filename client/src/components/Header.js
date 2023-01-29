@@ -4,12 +4,12 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 import {
   Popover,
@@ -21,7 +21,6 @@ import {
 function Header() {
   window.onscroll = () => {
     let header = document.querySelector("header");
-    let header_create_button = document.getElementById("header_create_button");
     if (window.scrollY >= 1) {
       header.classList.remove("header-inactive");
       header.classList.add("header-active");
@@ -33,8 +32,14 @@ function Header() {
 
   let navigate = useNavigate();
 
+
   //   Header Drawer Open
   let [open, setOpen] = useState(false);
+
+
+
+
+
 
   return (
     <div>
@@ -186,9 +191,21 @@ function Header() {
             </ul>
           </nav>
 
-          {/* Client Country On Header  */}
 
-          {/* <p  class=" absolute right-48 py-1.5 px-8 text-sm  lg:block hidden focus:outline-none text-slate-500  font-medium"><span className="mr-1" >{ipdatas && ipdatas.emoji_flag}</span>{ipdatas && ipdatas.country_name}</p> */}
+
+          {/* Client Currency On Header  */}
+
+{/*         
+<select onChange={(e)=> {localStorage.setItem("user_currency",e.target.value);window.location.reload()}} id="user_currency" className=" absolute lg:right-52 right-20 text-blue-600 font-medium border-2 w-[100px] cursor-pointer border-blue-600  text-sm rounded-full block  pl-4 py-2 ">
+  <option selected value={localStorage.getItem("user_currency") || "₹INR" }>{localStorage.getItem("user_currency") || "₹INR" }</option>
+  {
+  localStorage.getItem("user_currency") == "₹INR"?
+  <option value="$USD">$USD</option>
+  :
+  <option value="₹INR">₹INR</option>
+  }
+
+</select> */}
 
           <p
             id="header_create_button"

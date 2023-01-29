@@ -27,7 +27,7 @@ function CreateHeader({
       >
         <img
           src={require("../Images/logos/visitalogo.png")}
-          className="h-10 cursor-pointer"
+          className="h-10  cursor-pointer"
           onClick={() => navigate("/")}
         />
       </div>

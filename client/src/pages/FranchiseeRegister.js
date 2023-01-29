@@ -127,84 +127,7 @@ function FranchiseeRegister() {
       });
   }
 
-  // Password Strength Checker
-
-  // timeout before a callback is called
-
-  let timeout;
-
-  // traversing the DOM and getting the input and span using their IDs
-
-  let password = document.getElementById("franchisee_password");
-
-  // The strong and weak password Regex pattern checker
-
-  let strongPassword = new RegExp(
-    "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
-  );
-  let mediumPassword = new RegExp(
-    "((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))"
-  );
-
-  function StrengthChecker(PasswordParameter) {
-    let strengthBadge = document.querySelector("#pass_strength_display");
-    let whatis_strong_pass = document.querySelector("#whatis_strong_pass");
-    // We then change the badge's color and text based on the password strength
-
-    if (strongPassword.test(PasswordParameter)) {
-      strengthBadge.classList.remove("text-red-800");
-      strengthBadge.classList.remove("bg-red-100");
-      strengthBadge.classList.remove("text-blue-800");
-      strengthBadge.classList.remove("bg-blue-100");
-      strengthBadge.classList.add("text-green-800");
-      strengthBadge.classList.add("bg-green-100");
-      strengthBadge.innerText = "Password Is Strong";
-      whatis_strong_pass.classList.replace("block", "hidden");
-      set_is_register_button_disabled(false);
-    } else if (mediumPassword.test(PasswordParameter)) {
-      strengthBadge.classList.remove("text-red-800");
-      strengthBadge.classList.remove("bg-red-100");
-      strengthBadge.classList.add("text-blue-800");
-      strengthBadge.classList.add("bg-blue-100");
-      strengthBadge.classList.remove("text-green-800");
-      strengthBadge.classList.remove("bg-green-100");
-      strengthBadge.innerText = "Password Is Medium";
-      whatis_strong_pass.classList.replace("block", "hidden");
-      set_is_register_button_disabled(false);
-    } else {
-      strengthBadge.classList.add("text-red-800");
-      strengthBadge.classList.add("bg-red-100");
-      strengthBadge.classList.remove("text-blue-800");
-      strengthBadge.classList.remove("bg-blue-100");
-      strengthBadge.classList.remove("text-green-800");
-      strengthBadge.classList.remove("bg-green-100");
-      strengthBadge.innerText = "Password Is Weak";
-      whatis_strong_pass.classList.replace("hidden", "block");
-      set_is_register_button_disabled(true);
-    }
-  }
-
-  // Adding an input event listener when a user types to the  password input
-
-  function typingPassword(e) {
-    if (e.target.value.length >= 5) {
-      let strengthBadge = document.querySelector("#pass_strength_display");
-      StrengthChecker(e.target.value);
-
-      //The badge is hidden by default, so we show it
-
-      strengthBadge.classList.replace("hidden", "flex");
-      clearTimeout(timeout);
-
-      //We then call the StrengChecker function as a callback then pass the typed password to it
-    } else {
-      let strengthBadge = document.querySelector("#pass_strength_display");
-      let whatis_strong_pass = document.querySelector("#whatis_strong_pass");
-      strengthBadge.classList.replace("flex", "hidden");
-      whatis_strong_pass.classList.replace("block", "hidden");
-      set_is_register_button_disabled(true);
-    }
-  }
+ 
 
   return (
     <div className=" min-h-screen absolute top-0 min-w-full">
@@ -225,34 +148,7 @@ function FranchiseeRegister() {
           </div>
           <form id="franchisee_register_form" className="mt-8 space-y-6">
             <div className="-space-y-px relative rounded-md shadow-sm">
-              {/* Password Strength Display */}
-              <div className=" w-full -mt-4 flex items-center justify-center">
-                <span
-                  id="pass_strength_display"
-                  class="bg-red-100 hidden text-red-800 font-medium text-sm rounded-full  px-4 py-1  "
-                >
-                  Weak
-                </span>
-
-                <Tooltip
-                  px="4"
-                  bg="black"
-                  py="4"
-                  color="white"
-                  rounded="xl"
-                  label="strong password need at least one lowercase letter, one uppercase letter, one digit, one special character, and is at least 8 characters."
-                  placement="right-start"
-                >
-                  <span
-                    id="whatis_strong_pass"
-                    className="hidden cursor-pointer ml-1 flex items-center justify-center"
-                  >
-                    {" "}
-                    <ion-icon name="help-circle"></ion-icon>
-                  </span>
-                </Tooltip>
-              </div>
-              {/* Password Strength Display */}
+     
 
               <div>
                 <label className="sr-only">Franchisee Name</label>
@@ -288,7 +184,7 @@ function FranchiseeRegister() {
                   required
                   type={"text"}
                   className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
-                  placeholder="Enter Upi Id"
+                  placeholder="Enter UPI ID"
                 />
 
                 <Tooltip
@@ -301,7 +197,7 @@ function FranchiseeRegister() {
 salary"
                   placement="right"
                 >
-                  <span className="absolute right-4 mt-3 cursor-pointer flex items-center justify-center">
+                  <span className="absolute lg:flex hidden right-4 mt-3 cursor-pointer  items-center justify-center">
                     {" "}
                     <ion-icon title="s" name="help-circle"></ion-icon>
                   </span>
@@ -325,7 +221,6 @@ salary"
                 <label className="sr-only">Password</label>
                 <input
                   name="password"
-                  onChange={(e) => typingPassword(e)}
                   autoComplete="off"
                   required
                   type={"password"}
@@ -358,7 +253,7 @@ salary"
                 style={{ padding: "25px 60px", width: "100%" }}
                 colorScheme="blue"
               >
-                Pay 999rs
+                Pay ₹999
               </Button>
             </div>
             <div className="w-full flex justify-center items-center">
