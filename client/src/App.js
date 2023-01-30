@@ -29,6 +29,7 @@ import PremiumProductsPage from "./template/Pages/PremiumProductsPage";
 import Cart from "./template/Pages/Cart";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import ReturnPolicy from "./pages/ReturnPolicy";
 
 function App() {
   useEffect(() => {
@@ -82,6 +83,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/return-policy" element={<ReturnPolicy />} />
       </Routes>
     </div>
   );

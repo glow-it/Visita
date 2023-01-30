@@ -172,6 +172,24 @@ function Footer() {
                       Terms of Service
                     </p>
                   </li>
+                  <li onClick={()=> navigate("/return-policy")} >
+                    <p
+                     
+                      class="
+                        inline-block
+                        font-medium
+                        cursor-pointer
+                        hover:text-blue-600
+                        text-white
+                        text-base text-body-color
+                        hover:text-primary
+                        leading-loose
+                        mb-2
+                        "
+                    >
+                      Return Policy
+                    </p>
+                  </li>
                 </ul>
               </div>
             </div>

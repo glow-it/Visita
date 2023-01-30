@@ -316,6 +316,9 @@ function CardPreview() {
               : "Complete purchase to activate your website"}
           </h1>
 
+          
+
+
           {cardDatas && cardDatas.activated ? "" : ""}
 
           <div className="w-full flex lg:justify-center mt-8 flex-col-reverse items-center lg:flex-row">
