@@ -36,7 +36,7 @@ function Successfull() {
       setTooltipIsOpen(false);
     }, 6000);
 
-    document.title = "Successfull | " + capitalize(comp_name_clean);
+    document.title = "Website - " + capitalize(comp_name_clean);
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
@@ -487,7 +487,7 @@ function Successfull() {
             </h1>
 
             <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4">
-              © Glowit Labs - all rights reserved
+              © Visita - all rights reserved
             </h1>
           </div>
         </div>

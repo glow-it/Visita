@@ -19,7 +19,7 @@ function CardPreview() {
   let [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   useEffect(() => {
-    document.title = "Complete Purchase";
+    document.title = "Preview - Visita";
 
     axios.get(`${apiKeys.server_url}/card/` + name).then((response) => {
       setCardDatas(response.data);
@@ -368,7 +368,7 @@ function CardPreview() {
           ) : (
             ""
           )}
-          <div className="flex mt-6" >
+          <div className="flex mt-6 text-sm text-indigo-500" >
           <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
           <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
           </div>

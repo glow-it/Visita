@@ -93,7 +93,7 @@ function EditCard() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    document.title = "Visita | Update Website";
+    document.title = "Update - Visita";
 
     axios
       .get(`${apiKeys.server_url}/card/` + company_name)

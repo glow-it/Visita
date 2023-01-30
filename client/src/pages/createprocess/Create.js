@@ -143,7 +143,7 @@ function Create() {
   useEffect(() => {
     document.querySelector("header").style.display = "none";
 
-    document.title = "Visita | Create";
+    document.title = "Create - Visita";
 
     // Logo Preview Show
     const chooseFile = document.getElementById("create-choose-logo");
@@ -438,7 +438,6 @@ function Create() {
   return (
     <form id="cardForm" className="h-screen w-full flex flex-col items-center">
       <Helmet>
-        <title>Visita - Create</title>
         <meta
           name="description"
           content="

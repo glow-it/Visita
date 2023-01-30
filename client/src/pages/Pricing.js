@@ -7,13 +7,12 @@ function Pricing() {
   let location = useLocation();
 
   useEffect(() => {
-    document.title = "Visita - Pricing";
+    document.title = "Pricing - Visita";
   }, []);
 
   return (
     <div class="relative w-full bg-white h-full pt-14">
       <Helmet>
-        <title>Visita - Pricing</title>
         <meta
           name="description"
           content="

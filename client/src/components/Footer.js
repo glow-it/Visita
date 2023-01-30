@@ -349,7 +349,7 @@ function Footer() {
                   </a>
                 </div>
                 <p class="text-base text-white font-medium">
-                  © 2023 Glowit Labs
+                  © 2023 Visita. All rights reserved
                 </p>
               </div>
             </div>

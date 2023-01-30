@@ -6,6 +6,7 @@ function PageNotFound() {
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
+    document.title = "404 - Page not found"
   }, []);
 
   return (

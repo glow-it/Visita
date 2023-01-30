@@ -1478,7 +1478,7 @@ function PremiumTemplate1({ preview }) {
             </div>
           </form>
           <p class="text-center mt-8 text-gray-600 text-xs font-medium pb-6">
-            &copy;2023 Glowit Labs. All rights reserved <br />
+            &copy;2023 Visita. All rights reserved <br />
           </p>
           <a
             href="https://www.visitasmart.com"

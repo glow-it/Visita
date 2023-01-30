@@ -1,20 +1,26 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 function Privacy() {
 
     useEffect(() => {
     window.scrollTo(0,0)
+    document.title = "Privacy Policy - Visita"
     }, [])
     
 
   return (
-    <div className="pt-44 pb-44 flex flex-col px-44 items-center font-medium bg-slate-50" >
+    <div className=" pt-44  pb-44 flex flex-col px-44 items-center font-medium " >
 
-      <div data-custom-class="body">
+      <Helmet >
+        <meta name="description" content="Our Privacy Policy outlines how we collect, use, and protect your personal information. We respect your privacy and are committed to maintaining the confidentiality of your data. We only collect information that is necessary for providing you with our services and improving your user experience. This information includes, but is not limited to, your name, email address, and any other information you voluntarily provide. We use this information to communicate with you, provide customer support, and improve our services. We do not sell or share your information with third parties. We implement appropriate security measures to protect your information from unauthorized access or theft. By using our website, you consent to our Privacy Policy. If you have any questions or concerns, please contact us."  />
+      </Helmet>
+
+      <div data-custom-class="body" className="lg:w-auto w-[100vw] lg:px-0 px-6" >
         <div className="w-full flex justify-center" >
           <strong>
             <span style={{ fontSize: "26px" }}>
-              <span data-custom-class="title" className="lg:text-7xl text-4xl font-bold text-blue-500">Privacy Policy</span>
+              <span data-custom-class="title" className="lg:text-7xl text-5xl  font-bold text-blue-600">Privacy Policy</span>
             </span>
           </strong>
         </div>
@@ -47,7 +53,7 @@ function Privacy() {
               <span data-custom-class="body_text">
                 This privacy notice for{" "}
                 <bdt className="question">
-                  Visita pvt ltd
+                  Visita
                   <bdt className="block-component" />
                 </bdt>{" "}
                 (<bdt className="block-component" />"
@@ -240,7 +246,7 @@ function Privacy() {
                 you visit, use, or navigate our Services, we may process
                 personal information depending on how you interact with{" "}
                 <bdt className="block-component" />
-                <bdt className="question">Visita pvt ltd</bdt>
+                <bdt className="question">Visita </bdt>
                 <bdt className="statement-end-if-in-editor" /> and the Services,
                 the choices you make, and the products and features you use.
                 Click&nbsp;
@@ -424,7 +430,7 @@ function Privacy() {
               <span data-custom-class="body_text">
                 Want to learn more about what{" "}
                 <bdt className="block-component" />
-                <bdt className="question">Visita pvt ltd</bdt>
+                <bdt className="question">Visita </bdt>
                 <bdt className="statement-end-if-in-editor" /> does with any
                 information we collect? Click&nbsp;
               </span>

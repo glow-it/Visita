@@ -266,7 +266,7 @@ salary"
                   Login now
                 </span>
               </p>
-              <div className="flex mt-6" >
+              <div className="flex mt-6 text-sm text-indigo-500" >
           <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
           <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
           </div>

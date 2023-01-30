@@ -1,15 +1,37 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 function Terms() {
 
     useEffect(()=> {
         window.scrollTo(0,0)
+        document.title = "Terms of service - Visita"
     },[])
 
   return (
-    <div className="bg-slate-50 font-medium py-44 px-44 " >
+    <div className="bg-white font-medium py-44 lg:px-44 " >
+
+<Helmet >
+        <meta name="description" content={`Our Terms of Service govern your use of our website and the services we provide. By using our site, you agree to be bound by these terms and any additional terms that may apply.
+
+You are responsible for ensuring that your use of our site complies with all applicable laws and regulations. You may not use our site for any illegal or unauthorized purposes.
+
+We reserve the right to modify or discontinue our services at any time without notice. We also reserve the right to terminate your use of our site if you violate these Terms of Service.
+
+Our site may contain links to third-party websites. We are not responsible for the content or accuracy of these third-party sites, and the inclusion of such links does not imply endorsement.
+
+We make no warranty that our site will meet your needs or be available on an uninterrupted, secure, or error-free basis.
+
+Our site and its contents are provided on an "as is" basis. We disclaim all warranties, express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+
+By using our site, you agree to indemnify and hold us harmless from any claims, damages, or expenses arising from your use of our site.
+
+These Terms of Service constitute the entire agreement between you and us regarding your use of our site. If any part of these terms is found to be invalid or unenforceable, the remaining provisions will remain in full force and effect.
+
+We may update these Terms of Service at any time, so please check back regularly for any changes. Your continued use of our site following any changes constitutes your acceptance of the new terms.`}  />
+      </Helmet>
     
-      <div data-custom-class="body" className="font-medium">
+      <div data-custom-class="body" className="lg:w-auto w-[100vw] lg:px-0 px-6 font-medium">
         <div align="center" style={{ textAlign: "left", lineHeight: 1 }}>
           <div
             align="center"
@@ -42,7 +64,7 @@ function Terms() {
                     <strong>
                       <span style={{ lineHeight: "22.5px", fontSize: "26px" }}>
                         <bdt className="block-component" />
-                        <bdt className="question font-bold text-6xl flex w-full justify-center text-blue-500">Terms of Service</bdt>
+                        <bdt className="question font-bold lg:text-6xl text-4xl flex w-full justify-center text-blue-600">Terms of Service</bdt>
                         <bdt className="statement-end-if-in-editor" />
                       </span>
                     </strong>
@@ -651,7 +673,7 @@ function Terms() {
                   data-id="4ab94aa9-19d1-61e0-711e-42c7d186232b"
                   data-type="question"
                 >
-                  Visita pvt ltd
+                  Visita
                 </bdt>
                 <bdt className="block-component" /> ("
                 <bdt className="block-component" />
@@ -4924,7 +4946,7 @@ function Terms() {
                   </span>
                 </span>
               </span>
-              . <bdt className="question">Visita pvt ltd</bdt> and yourself
+              . <bdt className="question">Visita </bdt> and yourself
               irrevocably consent that the courts of{" "}
               <span
                 style={{
@@ -5082,7 +5104,7 @@ function Terms() {
                 <bdt className="question">India</bdt>
                 <bdt className="statement-end-if-in-editor" />
               </span>{" "}
-              courts. <bdt className="question">Visita pvt ltd</bdt> shall also
+              courts. <bdt className="question">Visita </bdt> shall also
               maintain the right to bring proceedings as to the substance of the
               matter in the courts of the country where you reside or, if these
               Terms are entered into in the course of your trade or profession,
@@ -6073,7 +6095,7 @@ function Terms() {
                     data-id="8a6919c4-2010-e7d6-2305-d74dfb08909d"
                     data-type="question"
                   >
-                    <strong>Visita pvt ltd</strong>
+                    <strong>Visita</strong>
                   </bdt>
                 </span>
               </div>
