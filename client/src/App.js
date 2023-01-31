@@ -61,10 +61,10 @@ function App() {
           path="/create/successfull/:comp_name"
           element={<Successfull />}
         />
-        <Route path="manage/card/:comp_name" element={<ManageCard />} />
-        <Route path="manage/card/:comp_name/edit" element={<EditCard />} />
+        <Route path="manage/:comp_name" element={<ManageCard />} />
+        <Route path="manage/:comp_name/edit" element={<EditCard />} />
         <Route
-          path="/manage/card/:comp_name/customer-details"
+          path="/manage/:comp_name/customer-details"
           element={<CustomerDetails />}
         />
         <Route path="/franchisee/register" element={<FranchiseeRegister />} />

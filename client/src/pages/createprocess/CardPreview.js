@@ -80,30 +80,31 @@ function CardPreview() {
             if (response.data.status) {
               let card_pass = send_pass_form.childNodes[2];
               card_pass.value = response.data.req_datas.access_password;
+              navigate("/create/successfull/" + name);
 
-              emailjs
-                .sendForm(
-                  apiKeys.emailjs_serviceId,
-                  apiKeys.emailjs_templateId2,
-                  send_pass_form,
-                  apiKeys.emailjs_publicKey
-                )
-                .then(
-                  (result) => {
-                    navigate("/create/successfull/" + name);
-                  },
-                  (error) => {
-                    Toast({
-                      status: "error",
-                      title: "Unable to send website password to your mail",
-                      postition: "top",
-                      description: "Contact Visita",
-                      toast,
-                    });
-                    navigate("/create/successfull/" + name);
-                    console.log(error);
-                  }
-                );
+              // emailjs
+              //   .sendForm(
+              //     apiKeys.emailjs_serviceId,
+              //     apiKeys.emailjs_templateId2,
+              //     send_pass_form,
+              //     apiKeys.emailjs_publicKey
+              //   )
+              //   .then(
+              //     (result) => {
+              //       navigate("/create/successfull/" + name);
+              //     },
+              //     (error) => {
+              //       Toast({
+              //         status: "error",
+              //         title: "Unable to send website password to your mail",
+              //         postition: "top",
+              //         description: "Contact Visita",
+              //         toast,
+              //       });
+              //       navigate("/create/successfull/" + name);
+              //       console.log(error);
+              //     }
+              //   );
             } else {
               Toast({
                 status: "error",

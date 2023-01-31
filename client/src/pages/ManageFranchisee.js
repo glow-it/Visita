@@ -221,13 +221,13 @@ function ManageFranchisee() {
               <TabPanel>
                 <div className="w-full flex flex-col">
                   <div className="w-full  flex-wrap flex items-center justify-center">
-                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-xl lg:mr-12 lg:mb-0 mb-6">
                       <h2 className="-mt-6">My earnings</h2>
                       <h1 className=" text-7xl mt-3 text-indigo-800">
                         ₹{earnings_this_month}
                       </h1>
                     </div>
-                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-xl lg:mr-12 lg:mb-0 mb-6">
                       <h2 className="-mt-6">Websites created</h2>
                       <h1 className=" text-7xl mt-3 text-indigo-800">
                         {cards_created_this_month}
@@ -278,13 +278,13 @@ function ManageFranchisee() {
               <TabPanel>
                 <div className="w-full flex flex-col">
                   <div className="w-full  flex-wrap flex items-center justify-center">
-                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-xl lg:mr-12 lg:mb-0 mb-6">
                       <h2 className="-mt-6">My earnings</h2>
                       <h1 className="text-7xl mt-3 text-indigo-800">
                         ₹{earnings_this_today}
                       </h1>
                     </div>
-                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-xl lg:mr-12 lg:mb-0 mb-6">
                       <h2 className="-mt-6">Websites created</h2>
                       <h1 className="text-7xl mt-3 text-indigo-800">
                         {cards_created_today}
@@ -334,13 +334,13 @@ function ManageFranchisee() {
               <TabPanel>
                 <div className="w-full flex flex-col">
                   <div className="w-full  flex-wrap flex items-center justify-center">
-                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-xl lg:mr-12 lg:mb-0 mb-6">
                       <h2 className="-mt-6">My earnings</h2>
                       <h1 className="text-7xl mt-3 text-indigo-800">
                         ₹{total_earnings}
                       </h1>
                     </div>
-                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-3xl lg:mr-12 lg:mb-0 mb-6">
+                    <div className="w-[320px] h-56 bg-indigo-50  text-indigo-800 flex flex-col items-center justify-center rounded-xl lg:mr-12 lg:mb-0 mb-6">
                       <h2 className="-mt-6">Websites created</h2>
                       <h1 className="text-7xl mt-3 text-indigo-800">
                         {cards_created}

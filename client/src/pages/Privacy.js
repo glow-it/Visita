@@ -409,11 +409,11 @@ function Privacy() {
                 here:{" "}
                 <bdt className="question">
                   <a
-                    href="https://www.visitasmart.com/manage/card/company_name"
+                    href="https://www.visitasmart.com/manage/company_name"
                     target="_blank"
                     data-custom-class="link"
                   >
-                    https://www.visitasmart.com/manage/card/company_name
+                    https://www.visitasmart.com/manage/company_name
                   </a>
                 </bdt>
                 <bdt className="else-block" />, or by contacting us. We will
@@ -14572,11 +14572,11 @@ function Privacy() {
                                                                                                     visiting{" "}
                                                                                                     <bdt className="question">
                                                                                                       <a
-                                                                                                        href="https://www.visitasmart.com/manage/card/company_name"
+                                                                                                        href="https://www.visitasmart.com/manage/company_name"
                                                                                                         target="_blank"
                                                                                                         data-custom-class="link"
                                                                                                       >
-                                                                                                        https://www.visitasmart.com/manage/card/company_name
+                                                                                                        https://www.visitasmart.com/manage/company_name
                                                                                                       </a>
                                                                                                     </bdt>
                                                                                                     <bdt className="else-block" />
@@ -15938,11 +15938,11 @@ function Privacy() {
                                                                                                       visit:{" "}
                                                                                                       <bdt className="question">
                                                                                                         <a
-                                                                                                          href="https://www.visitasmart.com/manage/card/company_name"
+                                                                                                          href="https://www.visitasmart.com/manage/company_name"
                                                                                                           target="_blank"
                                                                                                           data-custom-class="link"
                                                                                                         >
-                                                                                                          https://www.visitasmart.com/manage/card/company_name
+                                                                                                          https://www.visitasmart.com/manage/company_name
                                                                                                         </a>
                                                                                                       </bdt>
                                                                                                       <bdt className="else-block" />

@@ -240,7 +240,7 @@ function BasicTemplate({ preview, cardDatas }) {
       <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
         {localStorage.getItem("isAdmin") == "true" ? (
           <div
-            onClick={() => navigate("/manage/card/" + cardDatas.clean_name)}
+            onClick={() => navigate("/manage/" + cardDatas.clean_name)}
             className="w-full h-14 bg-blue-600  text-white flex z-50 items-center justify-center cursor-pointer"
           >
             <h1 className="font-bold ">Manage website</h1>

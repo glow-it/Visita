@@ -10,7 +10,6 @@ import { Toast } from "../miniComponents/Toast";
 function FranchiseeRegister() {
   let navigate = useNavigate();
   let [loading, setLoading] = useState(false);
-  let [loadingText, setLoadingText] = useState("Processing payment");
   let [is_register_button_disabled, set_is_register_button_disabled] =
     useState(true);
 
@@ -40,7 +39,7 @@ function FranchiseeRegister() {
             image: "https://i.postimg.cc/ZKnK7rC2/visitalogo.png",
             order_id: response.data.payment_data.id,
             handler: function (response) {
-              setLoadingText("Registering franchisee");
+             
               setLoading(true);
               let res_obj = {
                 payment_id: response.razorpay_payment_id,
@@ -245,7 +244,6 @@ salary"
                 }}
                 disabled={is_register_button_disabled}
                 isLoading={loading}
-                loadingText={loadingText}
                 className="font-bold"
                 rounded="full"
                 _hover={{ backgroundColor: "rgb(66 56 157 / 1)" }}
@@ -263,7 +261,7 @@ salary"
               >
                 already have a franchisee?{" "}
                 <span className="ml-1 text-indigo-500 cursor-pointer hover:underline">
-                  Login now
+                  Login
                 </span>
               </p>
               <div className="flex mt-6 text-sm text-indigo-500" >

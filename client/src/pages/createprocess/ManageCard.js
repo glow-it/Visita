@@ -82,7 +82,7 @@ function ManageCard() {
   function HandleCloseCard() {
     axios({
       method: "post",
-      url: `${apiKeys.server_url}/manage/card/close-card`,
+      url: `${apiKeys.server_url}/manage/close-card`,
       data: {
         sub_id:
           cardDatas.activated && cardDatas.activated.razorpay.subscription_id,
@@ -296,7 +296,7 @@ function ManageCard() {
         </button>
 
         <button
-          onClick={() => navigate("/manage/card/" + company_name + "/edit")}
+          onClick={() => navigate("/manage/" + company_name + "/edit")}
           className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl mr-3  font-bold"
         >
           <i class="fa-regular fa-pen-to-square mr-1"></i> Edit website
@@ -305,7 +305,7 @@ function ManageCard() {
         {cardDatas && cardDatas.show_customer_details_popop == "true" ? (
           <button
             onClick={() =>
-              navigate("/manage/card/" + company_name + "/customer-details")
+              navigate("/manage/" + company_name + "/customer-details")
             }
             className="px-6 py-2 lg:mt-0 mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-3xl  font-bold"
           >

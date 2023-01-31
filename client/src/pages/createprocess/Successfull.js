@@ -23,7 +23,7 @@ function Successfull() {
   let [tooltipIsOpen, setTooltipIsOpen] = useState(false);
   let navigate = useNavigate();
   let base_url = "visitasmart.com/";
-  let manage_card_url = base_url + "manage/card/" + cardDatas.clean_name;
+  let manage_card_url = base_url + "manage/" + cardDatas.clean_name;
   let toast = useToast();
   let clean_compname = params.comp_name.replace(/[-]/g, " ");
 
@@ -371,8 +371,8 @@ function Successfull() {
               Manage or edit your website
             </h1>
 
-            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%] lg:w-full mt-20 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
-              <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-slate-200">
+            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
+              <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
                 <h1>Website manage link</h1>
               </div>
               <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center">
@@ -413,12 +413,13 @@ function Successfull() {
               </div>
             </div>
 
-            <div className="px-10 lg:h-12 h-24 w-[80%] lg:w-full  relative mt-16 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
+            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
               <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
                 <h1>Website password</h1>
               </div>
-              <h1 className="font-medium lg:text-xl text-center">
-                Website password has been send to your email
+              <h1 className="font-medium lg:text-xl text-2xl text-center">
+                {/* Website password has been send to your email */}
+                {cardDatas.activated && cardDatas.activated.access_password}
               </h1>
               <div
                 id="tooltip-light"
@@ -431,7 +432,7 @@ function Successfull() {
               </div>
             </div>
 
-            <div className="flex flex-col rounded-3xl lg:border px-12 py-12 mt-10 bg-slate-900">
+            <div className="flex flex-col rounded-3xl  px-12 py-12 mt-10 bg-slate-900">
               <div className="flex flex-col items-start">
                 <span className="lg:text-xl text-sm font-medium">
                   1. Go To <br />{" "}

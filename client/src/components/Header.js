@@ -121,7 +121,7 @@ function Header() {
                           <button
                             onClick={() =>
                               navigate(
-                                "/manage/card/" +
+                                "/manage/" +
                                   document
                                     .getElementById("manage_card_comp_name")
                                     .value.replace(/[ ]/g, "")
@@ -345,7 +345,7 @@ function Header() {
 
                                   if (doc != null) {
                                     navigate(
-                                      "/manage/card/" + doc.replace(/[ ]/g, "")
+                                      "/manage/" + doc.replace(/[ ]/g, "")
                                     );
                                   }
                                   setOpen(false);
