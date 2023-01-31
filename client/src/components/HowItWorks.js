@@ -6,8 +6,8 @@ function HowItWorks() {
       id="features"
       class="bg-black  pt-10 pb-20 text-white w-full font-semibold relative mt-24 lg:px-20 px-10  flex flex-col items-center "
     >
-      <div className="w-full lg:py-10 flex lg:justify-center">
-        <h1 className="lg:text-5xl text-3xl">How it works?</h1>
+      <div data-aos="fade-up" className="w-full lg:py-10 flex lg:justify-center">
+        <h1  className="lg:text-5xl text-3xl">How it works?</h1>
       </div>
       <div className="flex lg:flex-row flex-col items-center w-full h-full mt-8">
         <div className="w-full h-full  flex lg:mt-auto  flex-col lg:items-center items-start">

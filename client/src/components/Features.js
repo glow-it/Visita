@@ -4,8 +4,13 @@ function Features() {
   return (
     <section
       id="features"
-      class="bg-white :bg-gray-900 w-full px-10 font-semibold relative  border-t"
+      class="bg-white :bg-gray-900 w-full px-10  pb-10 font-semibold relative  border-t"
     >
+
+<div className="w-full pt-20 flex items-center lg:justify-center">
+  <h1 className="text-4xl" >Features</h1>
+</div>
+
       <div class="py-8  mx-auto w-full  sm:py-16 lg:px-20 ">
         <div class="space-y-8 md:grid md:grid-cols-1 lg:grid-cols-5 md:gap-12 md:space-y-0">
           <div>
