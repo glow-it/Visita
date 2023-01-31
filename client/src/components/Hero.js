@@ -85,10 +85,9 @@ function Hero() {
           <p
             data-aos="fade-up"
             data-aos-delay="200"
-            className="font-medium z-50 text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 "
+            className="font-medium z-50  text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 "
           >
-            Visita is the smartest way to grow your business by creating your
-            own website
+          Build your business website in minutes with visita - No coding required.
           </p>
 
           <div className="lg:mt-12 z-50 w-[100%] mt-6  py-2 flex lg:flex-row flex-col lg:ml-0  items-start lg:items-center justify-center">
