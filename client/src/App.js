@@ -32,6 +32,8 @@ import Terms from "./pages/Terms";
 import ReturnPolicy from "./pages/ReturnPolicy";
 
 function App() {
+
+  
   useEffect(() => {
     Aos.init();
   }, []);

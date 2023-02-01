@@ -13,7 +13,7 @@ function Features() {
 
       <div class="py-8  mx-auto w-full  sm:py-16 lg:px-20 ">
         <div class="space-y-8 md:grid md:grid-cols-1 lg:grid-cols-5 md:gap-12 md:space-y-0">
-          <div>
+          <div data-aos="fade" data-aos-delay="0" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="call-outline"></ion-icon>
@@ -24,7 +24,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="50" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="arrow-down-circle-outline"></ion-icon>
@@ -35,7 +35,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="100" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="document-outline"></ion-icon>
@@ -46,7 +46,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="150" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="logo-whatsapp"></ion-icon>
@@ -57,7 +57,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="200" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="mail-outline"></ion-icon>
@@ -68,7 +68,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="0" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="star-outline"></ion-icon>
@@ -79,7 +79,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="50" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="navigate-circle-outline"></ion-icon>
@@ -90,7 +90,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="100" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="link-outline"></ion-icon>
@@ -101,7 +101,7 @@ function Features() {
             </h3>
           </div>
 
-          <div>
+          <div data-aos="fade" data-aos-delay="150" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="arrow-redo-outline"></ion-icon>
@@ -111,7 +111,7 @@ function Features() {
               Share unlimited
             </h3>
           </div>
-          <div>
+          <div data-aos="fade" data-aos-delay="200" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="cart-outline"></ion-icon>
@@ -121,7 +121,7 @@ function Features() {
               Online store
             </h3>
           </div>
-          <div>
+          <div data-aos="fade" data-aos-delay="0" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="create-outline"></ion-icon>
@@ -131,7 +131,7 @@ function Features() {
               Easy to update
             </h3>
           </div>
-          <div>
+          <div data-aos="fade" data-aos-delay="50" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="images-outline"></ion-icon>
@@ -141,7 +141,7 @@ function Features() {
               Image gallery
             </h3>
           </div>
-          <div>
+          <div data-aos="fade" data-aos-delay="100" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="videocam-outline"></ion-icon>
@@ -151,7 +151,7 @@ function Features() {
               Youtube video gallery
             </h3>
           </div>
-          <div>
+          <div data-aos="fade" data-aos-delay="150" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="wallet-outline"></ion-icon>
@@ -161,7 +161,7 @@ function Features() {
               Payment section
             </h3>
           </div>
-          <div>
+          <div data-aos="fade" data-aos-delay="200" >
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
               <ion-icon name="chatbubble-outline"></ion-icon>

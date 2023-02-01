@@ -71,7 +71,7 @@ function Pricing() {
         </div>
         <div class="grid max-w-screen-md gap-10 md:grid-cols-2 sm:mx-auto">
           <div data-aos="fade-up" data-aos-delay="200">
-            <div class="p-8 bg-gray-900 rounded">
+            <div class="p-8 bg-gray-900 rounded-2xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-white">
                   Basic plan
@@ -169,23 +169,23 @@ function Pricing() {
                     },
                   })
                 }
-                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
               >
                 Choose this
               </button>
               <button
                 onClick={() => navigate("/blueberrybakes")}
-                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
               >
                 See demo
               </button>
             </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
+            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-75" />
+            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-50" />
+            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-25" />
           </div>
-          <div data-aos="fade-up" data-aos-delay="300">
-            <div class="p-8 bg-gray-900 rounded">
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div class="p-8 bg-gray-900 rounded-2xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-white">
                   Premium plan
@@ -282,20 +282,20 @@ function Pricing() {
                     },
                   })
                 }
-                class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded shadow-md bg-teal-400 hover:bg-teal-700 hover:text-white focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded-full shadow-md bg-teal-400 hover:bg-teal-700 hover:text-white focus:shadow-outline focus:outline-none"
               >
                 Choose this
               </button>
               <button
                 onClick={() => navigate("/visita")}
-                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
               >
                 See demo
               </button>
             </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
+            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-75" />
+            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-50" />
+            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-25" />
           </div>
         </div>
       </div>
