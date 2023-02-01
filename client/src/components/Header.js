@@ -47,7 +47,7 @@ function Header() {
         <div className="w-full h-full  flex items-center justify-center">
           <img
             src={require("../Images/logos/visitalogo.png")}
-            className="h-12  z-20 mr-4 cursor-pointer absolute left-10"
+            className="h-12  z-20 mr-4 cursor-pointer absolute lg:left-10 left-8"
             id="header_logo"
             onClick={() => (window.location.href = "/")}
             onMouseEnter={() =>

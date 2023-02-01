@@ -169,13 +169,13 @@ function Pricing() {
                     },
                   })
                 }
-                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
               >
                 Choose this
               </button>
               <button
                 onClick={() => navigate("/blueberrybakes")}
-                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
               >
                 See demo
               </button>
@@ -282,13 +282,13 @@ function Pricing() {
                     },
                   })
                 }
-                class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded-full shadow-md bg-teal-400 hover:bg-teal-700 hover:text-white focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded-lg shadow-md bg-teal-400 hover:bg-teal-700 hover:text-white focus:shadow-outline focus:outline-none"
               >
                 Choose this
               </button>
               <button
                 onClick={() => navigate("/visita")}
-                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
               >
                 See demo
               </button>
