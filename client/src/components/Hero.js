@@ -76,15 +76,15 @@ function Hero() {
         <div className="  w-full   flex flex-col  items-center justify-center ">
           <h1
             data-aos="fade-down"
-            data-aos-delay="0"
+            
             className="z-50 lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl"
           >
             Easily Create A Website <br /> For Your Business
           </h1>
 
           <p
-            data-aos="fade-up"
-            data-aos-delay="200"
+            
+            
             className="font-medium z-50  text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 "
           >
           Build your business website in minutes with visita - No coding required.
@@ -92,8 +92,8 @@ function Hero() {
 
           <div className="lg:mt-12 z-50 w-[100%] mt-6  py-2 flex lg:flex-row flex-col lg:ml-0  items-start lg:items-center justify-center">
             <button
-              data-aos="fade-up"
-              data-aos-delay="300"
+              
+              
               onClick={() =>
                 navigate("/pricing", {
                   state: { franchisee: false, franchisee_email: null },
@@ -106,8 +106,8 @@ function Hero() {
             </button>
 
             <p
-              data-aos="fade-up"
-              data-aos-delay="400"
+              
+              
               onClick={() => navigate("/visita")}
               type="button"
               class="text-white bg-blue-600 lg:ml-0 ml-8 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-xl text-xl font-medium px-10 py-2.5 mr-2 mb-2"
@@ -125,8 +125,8 @@ function Hero() {
       <div className="lg:block hidden z-50">
         <div className="lg:h-[500px] z-50  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
           <img
-            data-aos="fade-up"
-            data-aos-delay="500"
+            
+            
             src={require("../Images/heroimage.webp")}
             muted
             autoPlay

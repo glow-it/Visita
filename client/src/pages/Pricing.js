@@ -26,7 +26,7 @@ function Pricing() {
 
       <div class="absolute hidden w-full  lg:block h-96 " />
       <div class="relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full  lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-xl md:mb-12">
           <h2
             data-aos="fade-down"
             data-aos-delay="0"
@@ -61,7 +61,7 @@ function Pricing() {
             </span>{" "}
           </h2>
           <p
-            data-aos="fade-up"
+            
             data-aos-delay="100"
             class="text-base text-gray-700 md:text-lg font-medium"
           >
@@ -70,8 +70,8 @@ function Pricing() {
           </p>
         </div>
         <div class="grid max-w-screen-md gap-10 md:grid-cols-2 sm:mx-auto">
-          <div data-aos="fade-up" data-aos-delay="200">
-            <div class="p-8 bg-gray-900 rounded-2xl">
+          <div  data-aos-delay="200">
+            <div class="p-8 bg-gray-900 rounded-xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-white">
                   Basic plan
@@ -180,12 +180,12 @@ function Pricing() {
                 See demo
               </button>
             </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-25" />
+            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-75" />
+            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-50" />
+            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-25" />
           </div>
-          <div data-aos="fade-up" data-aos-delay="200">
-            <div class="p-8 bg-gray-900 rounded-2xl">
+          <div  data-aos-delay="200">
+            <div class="p-8 bg-gray-900 rounded-xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-white">
                   Premium plan
@@ -293,9 +293,9 @@ function Pricing() {
                 See demo
               </button>
             </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-2xl opacity-25" />
+            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-75" />
+            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-50" />
+            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-25" />
           </div>
         </div>
       </div>

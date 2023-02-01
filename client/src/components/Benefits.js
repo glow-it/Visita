@@ -18,7 +18,7 @@ function Benefits() {
 
       <div className="flex-1   h-full benefits-2 flex flex-col lg:justify-center lg:items-start items-center lg:pt-0 pt-8  lg:pr-14 lg:pl-0 pl-4">
 
-      <div  data-aos="fade-up" data-aos-delay="0" className="w-full  m my-2 flex  lg:-ml-0 -ml-12">
+      <div   data-aos-delay="0" className="w-full  m my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -26,7 +26,7 @@ function Benefits() {
           You can modify or update the card as many times as you want, There's no need to depend on developers.
           </h1>
         </div>
-        <div  data-aos="fade-up" data-aos-delay="50" className="w-full  m my-2 flex  lg:-ml-0 -ml-12">
+        <div   data-aos-delay="50" className="w-full  m my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -34,7 +34,7 @@ function Benefits() {
           Customers can easily save your card to their mobile device.
           </h1>
         </div>
-        <div  data-aos="fade-up" data-aos-delay="100" className="w-full  m my-2 flex  lg:-ml-0 -ml-12">
+        <div   data-aos-delay="100" className="w-full  m my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -43,7 +43,7 @@ function Benefits() {
           </h1>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="150" className="w-full  flex  lg:-ml-0 -ml-12 ">
+        <div  data-aos-delay="150" className="w-full  flex  lg:-ml-0 -ml-12 ">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -51,7 +51,7 @@ function Benefits() {
           Share cards with anyone, Unlimited times
           </h1>
         </div>
-        <div data-aos="fade-up" data-aos-delay="200" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
+        <div  data-aos-delay="200" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -59,7 +59,7 @@ function Benefits() {
           A great business website makes an impression and can convert sales.
           </h1>
         </div>
-        <div data-aos="fade-up" data-aos-delay="0" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
+        <div  data-aos-delay="0" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -67,7 +67,7 @@ function Benefits() {
           Contact Form Included
           </h1>
         </div>
-        <div data-aos="fade-up" data-aos-delay="50" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
+        <div  data-aos-delay="50" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>
@@ -75,7 +75,7 @@ function Benefits() {
           No Visible Ads (Ads Free)
           </h1>
         </div>
-        <div data-aos="fade-up" data-aos-delay="100" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
+        <div  data-aos-delay="100" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
           <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </span>

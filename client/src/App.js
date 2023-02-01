@@ -3,12 +3,10 @@ import Header from "./components/Header";
 import LandingPage from "./pages/LandingPage";
 import Support from "./pages/Support";
 import { Routes, Route } from "react-router-dom";
-import "aos/dist/aos.css";
 import Pricing from "./pages/Pricing";
 import Create from "./pages/createprocess/Create";
 import Loading from "./components/Loading";
 import CardPreview from "./pages/createprocess/CardPreview";
-import { useEffect } from "react";
 import ActivateWarning from "./pages/createprocess/ActivateWarning";
 import Successfull from "./pages/createprocess/Successfull";
 import ManageCard from "./pages/createprocess/ManageCard";
@@ -21,7 +19,6 @@ import CardClosedPage from "./pages/CardClosedPage";
 import ForgotPasswordFranchisee from "./pages/ForgotPasswordFranchisee";
 import PageNotFound from "./pages/PageNotFound";
 import HowToFranchisee from "./pages/HowToFranchisee";
-import Aos from "aos";
 import ProductsPage from "./template/Pages/ProductsPage";
 import CustomerDetails from "./pages/CustomerDetails";
 import Template from "./template/Template";
@@ -33,10 +30,6 @@ import ReturnPolicy from "./pages/ReturnPolicy";
 
 function App() {
 
-  
-  useEffect(() => {
-    Aos.init();
-  }, []);
 
   return (
     <div className="App">
