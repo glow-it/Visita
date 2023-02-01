@@ -145,9 +145,9 @@ async function run() {
           res.end();
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err); 
         });
-    });
+    }); 
 
     app.post("/complete-purchase", (req, res, next) => {
       // Check Is This First Card
@@ -253,11 +253,11 @@ async function run() {
               .send({
                 redirect_url: "/create/successfull/" + response.obj.clean_name,
               });
-            res.end();
+            res.end();  
           })
           .catch((err) => {
             res
-              .status(404)
+              .status(404) 
               .send({
                 redirect_url: "/create/successfull/" + response.obj.clean_name,
               });

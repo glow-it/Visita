@@ -118,7 +118,7 @@ function Hero() {
         </div>
 
         <img
-          className="absolute right-0  z-10 top-0 lg:h-[500px] h-[300px]"
+          className="absolute lg:block hidden right-0  z-10 top-0 lg:h-[500px] h-[300px]"
           src={require("../Images/herobg.png")}
         />
       </div>

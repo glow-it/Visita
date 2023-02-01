@@ -137,6 +137,8 @@ function Create() {
 
   let maximumProcesses = 7;
 
+
+
   // Last Confirm Modal Disclosure
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -300,7 +302,7 @@ function Create() {
       .classList.add("ring-4", `ring-${choosedThemeColor}-600`);
   }, [choosedThemeColor]);
 
-  // Upload Files To Cloud
+  // Upload Image Files To Cloud
   async function uploadImage(files, id) {
     toastIdRef.current = Toast({
       status: "loading",
@@ -315,6 +317,30 @@ function Create() {
 
     let response = await axios.post(
       "https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",
+      formData
+    );
+    document.getElementById(id).value = response.data.url;
+
+    if (toastIdRef.current) {
+      toast.close(toastIdRef.current);
+    }
+  }
+
+  // Upload Video Files To Cloud
+  async function uploadVideo(files, id) {
+    toastIdRef.current = Toast({
+      status: "loading",
+      title: "Uploading video...",
+      postition: "top-right",
+      toast,
+    });
+
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "ztotzgfw");
+
+    let response = await axios.post(
+      "https://api.cloudinary.com/v1_1/dmi3cfl2v/video/upload",
       formData
     );
     document.getElementById(id).value = response.data.url;
@@ -432,8 +458,6 @@ function Create() {
       }
     });
   }
-
-
 
   return (
     <form id="cardForm" className="h-screen w-full flex flex-col items-center">
@@ -600,7 +624,8 @@ function Create() {
                 for="large-input"
                 class="block mb-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300 mt-8"
               >
-                Upload Company Logo <span className="text-blue-600">*</span>
+                Upload Company Logo{" "}
+                <span className="text-sm text-slate-400">(Optional)</span>
               </label>
 
               <div className="create-logo-upload flex items-center">
@@ -642,7 +667,6 @@ function Create() {
                   }}
                   id="create-choose-logo"
                   accept="image/*"
-                  required
                 />
                 <input type="text" name="logo" id="logo" className="hidden" />
                 <label
@@ -725,14 +749,26 @@ function Create() {
                 class="block mb-2 lg:text-lg text-md font-medium text-gray-900 border-slate-800 :text-gray-300 mt-6"
               >
                 Tagline
-                <span className="text-blue-600">*</span>
+                <span
+                  className={`${
+                    location.state.isPremium != true
+                        ? "text-slate-400 text-sm"
+                      : "text-blue-600"
+                  }`}
+                >
+                  {location.state.isPremium != true
+                      ? " (Optional)"
+                    : " *"}
+                </span>
               </label>
 
               <div className="relative flex items-center ">
                 <input
                   placeholder="Enter tagline"
                   autoComplete="off"
-                  required
+                  required={location.state.isPremium != true
+                    ? false
+                  : true}
                   id="tagline_input"
                   name="tagline"
                   className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
@@ -939,13 +975,13 @@ function Create() {
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
-                Company Est Date <span className="text-blue-600">*</span>
+                Company Est Date <span className="text-slate-400 text-sm"> (Optional)</span>
               </label>
               <input
                 placeholder="When Your Comp Was Started?"
                 autoComplete="off"
                 id="large-input"
-                required
+        
                 name="since"
                 class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
               />
@@ -1149,8 +1185,7 @@ function Create() {
             name="pinterest_link"
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
-
-          <h1 className="text-xl mt-12 font-bold mb-6 flex justify-center">
+  <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
             Youtube Video Links
           </h1>
 
@@ -1228,6 +1263,117 @@ function Create() {
             name="ytvideo_5_link"
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
           />
+
+          {/* File Video Links */}
+
+          {
+            location.state.isPremium == true ?
+            <div>
+ <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
+            Videos from gallery
+          </h1>
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Video 1{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Video 1"
+            onChange={(e)=> {
+              uploadVideo(e.target.files,"video_1_input")
+            }}
+            accept="video/*"
+            type='file'
+            autoComplete="off"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Video 2{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Video 2"
+            onChange={(e)=> {
+              uploadVideo(e.target.files,"video_2_input")
+            }}
+            accept="video/*"
+            type='file'
+            autoComplete="off"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Video 3{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Video 3"
+            onChange={(e)=> {
+              uploadVideo(e.target.files,"video_3_input")
+            }}
+            accept="video/*"
+            type='file'
+            autoComplete="off"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Video 4{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Video 4"
+            onChange={(e)=> {
+              uploadVideo(e.target.files,"video_4_input")
+            }}
+            accept="video/*"
+            type='file'
+            autoComplete="off"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Video 5{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Video 5"
+            onChange={(e)=> {
+              uploadVideo(e.target.files,"video_5_input")
+            }}
+            accept="video/*"
+            type='file'
+            autoComplete="off"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+          />
+
+          <input className="hidden" type="text" name="video_1" id="video_1_input" />
+          <input className="hidden" type="text" name="video_2" id="video_2_input" />
+          <input className="hidden" type="text" name="video_3" id="video_3_input" />
+          <input className="hidden" type="text" name="video_4" id="video_4_input" />
+          <input className="hidden" type="text" name="video_5" id="video_5_input" />
+          
+            </div>
+            : ""
+          }
+
+         
         </div>
 
         {/* Payment Options */}

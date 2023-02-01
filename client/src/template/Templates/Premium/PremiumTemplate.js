@@ -32,6 +32,7 @@ function PremiumTemplate1({ preview }) {
   let [products, setProducts] = useState([]);
   let [galleryImages, setGalleryImages] = useState([]);
   let [ytVideos, setYtVideos] = useState([]);
+  let [videoGallery, setVideoGallery] = useState([]);
   let [feedbacks, setFeedbacks] = useState([]);
   let navigate = useNavigate();
   let location = useLocation();
@@ -49,6 +50,8 @@ function PremiumTemplate1({ preview }) {
       }
     });
   });
+
+
 
   let cart_products;
   let cart_count;
@@ -127,6 +130,7 @@ function PremiumTemplate1({ preview }) {
         setCardDatas(response.data);
         setProducts(response.data.products);
         setGalleryImages(response.data.image_gallery);
+        setVideoGallery(response.data.video_gallery);
         setYtVideos(response.data.yt_videos);
         setFeedbacks(response.data.feedbacks);
         setSpecialities(response.data.specials.split(","));
@@ -533,22 +537,26 @@ function PremiumTemplate1({ preview }) {
             </div>
 
             <div className=" container  w-full">
-              <div className=" w-full mt-6 px-8 flex  items-center justify-center">
-                <img
-                  id="logo"
-                  src={
-                    cardDatas.logo &&
-                    cardDatas.logo.replace(/^http:\/\//i, "https://")
-                  }
-                  alt="Dp-Template-1"
-                  className={`logo  rounded-full ring-2 ring-offset-4 ring-${theme_color}-600`}
-                />
+              <div className=" w-full mt-6 px-8  flex  items-center justify-center">
+                {cardDatas && cardDatas.logo != "" ? (
+                  <img
+                    id="logo"
+                    src={
+                      cardDatas.logo &&
+                      cardDatas.logo.replace(/^http:\/\//i, "https://")
+                    }
+                    alt="Dp-Template-1"
+                    className={`logo  rounded-full ring-2 mr-4 ring-offset-4 ring-${theme_color}-600`}
+                  />
+                ) : (
+                  ""
+                )}
 
                 <div className=" w-full h-full flex flex-col pl-2">
-                  <h1 className="capitalize text-black text-3xl font-bold ml-4 mt-6">
+                  <h1 className="capitalize text-black text-3xl font-bold  mt-6">
                     {cardDatas && cardDatas.company_name}
                   </h1>
-                  <h1 className="capitalize text-black text-lg font-medium ml-4 mt-1">
+                  <h1 className="capitalize text-black text-lg font-medium  mt-1">
                     {cardDatas && cardDatas.company_category}
                   </h1>
                 </div>
@@ -1164,10 +1172,33 @@ function PremiumTemplate1({ preview }) {
               })}
         </Swiper>
 
-        {/* Youtube Videos */}
+        {/* Gallery Videos */}
         <div
           id="ytvideos"
           className=" flex flex-col items-center mt-6 pb-16 bg-slate-900"
+        >
+          <h1
+            className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-12`}
+          >
+            Videos Gallery
+          </h1>
+
+          {videoGallery &&
+            videoGallery
+              .filter((data) => {
+                return data != "";
+              })
+              .map((data) => {
+                return (
+                  <video className="mb-8 rounded-lg" width="90%" controls src={data}></video>
+                );
+              })}
+        </div>
+
+        {/* Youtube Videos */}
+        <div
+          id="ytvideos"
+          className=" flex flex-col items-center pb-16 bg-slate-900"
         >
           <h1
             className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-12`}

@@ -252,7 +252,7 @@ function BasicTemplate({ preview, cardDatas }) {
           ""
         )}
 
-        {cardDatas && cardDatas.tagline ? (
+        {cardDatas && cardDatas.tagline != "" ? (
           <div
             className={`w-full py-3 bg-${theme_color}-600 text-center px-4   text-white flex z-50 items-center justify-center cursor-pointer text-sm`}
           >
@@ -283,8 +283,10 @@ function BasicTemplate({ preview, cardDatas }) {
             </Link>
 
             <div className=" container  w-full">
-              <div className=" w-full mt-12 px-8 flex flex-col items-center justify-center">
-                <img
+              <div className=" w-full mt-12 pt-12 px-8 flex flex-col items-center justify-center">
+                {
+                  cardDatas && cardDatas.logo != ""?
+                  <img
                   id="logo"
                   src={
                     cardDatas.logo &&
@@ -293,6 +295,8 @@ function BasicTemplate({ preview, cardDatas }) {
                   alt="Dp-Template-1"
                   className={`logo  rounded-full ring-4 ring-offset-4 ring-${theme_color}-600`}
                 />
+                : ''
+                }
 
                 <div className=" w-full h-full flex flex-col items-center">
                   <h1 className="capitalize text-black text-3xl font-bold ml-4 mt-6">

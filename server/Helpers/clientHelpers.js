@@ -505,6 +505,14 @@ module.exports = {
         data.image_10,
       ];
 
+      let video_gallery = [
+        data.video_1,
+        data.video_2,
+        data.video_3,
+        data.video_4,
+        data.video_5,
+      ];
+
       let yt_videos = [
         data.ytvideo_1_link,
         data.ytvideo_2_link,
@@ -557,7 +565,7 @@ module.exports = {
         show_customer_details_popop: data.show_customer_details_popop,
       };
 
-      resolve({ obj, yt_videos, products, image_gallery });
+      resolve({ obj, yt_videos, products, image_gallery, video_gallery });
     });
   },
   cleanCardDatas: (data) => {
@@ -594,6 +602,13 @@ module.exports = {
           data.image_8,
           data.image_9,
           data.image_10,
+        ],
+        video_gallery : [
+          data.video_1,
+          data.video_2,
+          data.video_3,
+          data.video_4,
+          data.video_5,
         ],
         instagram_link: data.instagram_link,
         last_name: data.last_name,
@@ -1190,6 +1205,7 @@ module.exports = {
       let yt_videos = update_data.yt_videos;
       let products = update_data.products;
       let image_gallery = update_data.image_gallery;
+      let video_gallery = update_data.video_gallery;
 
       client_db
         .collection(client_collections.visiting_card_datas)
@@ -1240,6 +1256,7 @@ module.exports = {
               yt_videos,
               products,
               image_gallery,
+              video_gallery
             },
           }
         )

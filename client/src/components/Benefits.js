@@ -83,6 +83,14 @@ function Benefits() {
           Show Location on Map <span className="px-4 py-1 text-sm rounded-full ml-2 bg-white text-black" >New</span>
           </h1>
         </div>
+        <div  data-aos-delay="100" className="w-full   my-2 flex  lg:-ml-0 -ml-12">
+          <span className="text-blue-500 lg:text-3xl text-2xl lg:mr-8 mr-6  ml-8 lg:-ml-8">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </span>
+          <h1 className="font-medium lg:text-lg text-[15px]  -ml-4  text-white">
+          Show Shop Menu <span className="px-4 py-1 text-sm rounded-full ml-2 bg-white text-black" >New</span>
+          </h1>
+        </div>
         
       </div>
     </div>

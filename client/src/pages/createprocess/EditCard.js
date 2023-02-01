@@ -62,6 +62,7 @@ function EditCard() {
   ]);
   let products = cardDatas && cardDatas.products;
   let image_gallery = cardDatas && cardDatas.image_gallery;
+  let video_gallery = cardDatas && cardDatas.video_gallery;
 
   useEffect(() => {
     if (cardDatas.activated) {
@@ -274,6 +275,31 @@ function EditCard() {
 
     let response = await axios.post(
       "https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",
+      formData
+    );
+    document.getElementById(id).value = response.data.url;
+
+    if (toastIdRef.current) {
+      toast.close(toastIdRef.current);
+    }
+  }
+
+
+  // Upload Video Files To Cloud
+  async function uploadVideo(files, id) {
+    toastIdRef.current = Toast({
+      status: "loading",
+      title: "Uploading video...",
+      postition: "top-right",
+      toast,
+    });
+
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "ztotzgfw");
+
+    let response = await axios.post(
+      "https://api.cloudinary.com/v1_1/dmi3cfl2v/video/upload",
       formData
     );
     document.getElementById(id).value = response.data.url;
@@ -1069,6 +1095,62 @@ function EditCard() {
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[4]}
             class=" font-medium block py-3.5    lg:pr-[650px] pr-[100px] pl-[20px] w-full text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
           />
+
+
+
+ {/* File Video Links */}
+
+{
+  cardDatas && cardDatas.isPremium == "true" ?
+  <div>
+
+<h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
+Videos from gallery
+</h1>
+
+
+{video_gallery &&
+video_gallery.map((data, index) => {
+  return (
+    <div>
+      <label
+for="large-input"
+class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+>
+Video {index + 1}
+<span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+</label>
+<video controls src={data} className="my-5 rounded-lg"></video>
+<input
+placeholder={"Video " + index + 1}
+onChange={(e)=> {
+  uploadVideo(e.target.files,`edit_video_${index + 1}_input`)
+}}
+accept="video/*"
+type='file'
+autoComplete="off"
+class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+/>
+<input className="hidden" defaultValue={data} type="text" name={`video_${index + 1}`} id={`edit_video_${index + 1}_input`} />
+    </div>
+  );
+})}
+  </div>
+  : ""
+}
+
+
+
+
+
+
+
+       
+
+         
+         
+
+
         </div>
 
         {/* Payment Options */}
