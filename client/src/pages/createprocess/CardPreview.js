@@ -136,9 +136,9 @@ function CardPreview() {
     var options = {
       key: apiKeys.razorpay_key,
       subscription_id: res.id,
-      name: "Visita",
+      name: "Visita - Website Builder",
       description: "Payment For Create Business Website",
-      image: "https://i.postimg.cc/90547fLX/visita-fitted-logo.jpg",
+      image: "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
       prefill: {
         name: cardDatas.first_name,
         email: cardDatas.email_id,
