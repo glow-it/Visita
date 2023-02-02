@@ -1280,7 +1280,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="home"></ion-icon>
+            <ion-icon name="home-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">Home</span>
         </a>
@@ -1289,7 +1289,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="person-circle"></ion-icon>
+            <ion-icon name="person-circle-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">About us</span>
         </a>
@@ -1298,7 +1298,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="cart"></ion-icon>
+            <ion-icon name="cart-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">Products</span>
         </a>
@@ -1307,27 +1307,29 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="images"></ion-icon>
+            <ion-icon name="images-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">
             Image Gallery
           </span>
         </a>
         <a
-          href="#ytvideos"
+          href="#videogallery"
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="logo-youtube"></ion-icon>
+            <ion-icon name="videocam-outline"></ion-icon>
           </span>
-          <span className=" font-bold -mt-2 text-xs text-white">Yt Videos</span>
+          <span className=" font-bold -mt-2 text-xs text-white">
+            Viedo Gallery
+          </span>
         </a>
         <a
           href="#paymentinfo"
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="wallet"></ion-icon>
+            <ion-icon name="wallet-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">
             Payment Info
@@ -1338,7 +1340,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-            <i class="fa-solid fa-building-columns"></i>
+          <ion-icon name="card-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">
             Bank Details
@@ -1349,7 +1351,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-            <i class="fa-solid fa-comment"></i>
+          <ion-icon name="chatbubbles-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">Feedbacks</span>
         </a>

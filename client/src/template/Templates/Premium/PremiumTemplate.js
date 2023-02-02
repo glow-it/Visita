@@ -1190,7 +1190,7 @@ function PremiumTemplate1({ preview }) {
               })
               .map((data) => {
                 return (
-                  <video className="mb-8 rounded-lg" width="90%" controls src={data}></video>
+                  <video className="mb-8 rounded-lg" width="90%" controls src={data.replace(/^http:\/\//i, "https://")}></video>
                 );
               })}
         </div>
@@ -1527,12 +1527,12 @@ function PremiumTemplate1({ preview }) {
             : "lg:w-[32.2%]"
         } w-full h-14 flex bg-${theme_color}-600 fixed bottom-0 overflow-scroll z-50`}
       >
-        <a
+      <a
           href="#home"
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="home"></ion-icon>
+            <ion-icon name="home-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">Home</span>
         </a>
@@ -1541,7 +1541,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="person-circle"></ion-icon>
+            <ion-icon name="person-circle-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">About us</span>
         </a>
@@ -1559,10 +1559,21 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="images"></ion-icon>
+            <ion-icon name="images-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">
             Image Gallery
+          </span>
+        </a>
+        <a
+          href="#videogallery"
+          className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
+        >
+          <span className=" text-white text-2xl">
+            <ion-icon name="videocam-outline"></ion-icon>
+          </span>
+          <span className=" font-bold -mt-2 text-xs text-white">
+            Viedo Gallery
           </span>
         </a>
         <a
@@ -1579,7 +1590,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-2xl">
-            <ion-icon name="wallet"></ion-icon>
+            <ion-icon name="wallet-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">
             Payment Info
@@ -1590,7 +1601,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-            <i class="fa-solid fa-building-columns"></i>
+          <ion-icon name="card-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">
             Bank Details
@@ -1601,7 +1612,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-            <i class="fa-solid fa-comment"></i>
+          <ion-icon name="chatbubbles-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">Feedbacks</span>
         </a>

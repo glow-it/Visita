@@ -26,7 +26,7 @@ function LandingPage() {
 
   useEffect(() => {
     document.title =
-      "Visita - Effortlessly Create a Professional Business Presence: Low-Cost Website and Digital Business Card Builder";
+      "Visita - Build Business Website In Minutes - No Coding Required.";
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "flex";
     });
