@@ -6,8 +6,12 @@ function Pricing() {
   let navigate = useNavigate();
   let location = useLocation();
 
+  let franchisee = location.state ? location.state.franchisee : false
+  let franchisee_email = location.state ? location.state.franchisee_email : "no franchisee"
+
   useEffect(() => {
     document.title = "Pricing - Visita";
+    document.querySelector("header").style.display = "flex";
   }, []);
 
   return (
@@ -163,8 +167,8 @@ function Pricing() {
                 onClick={() =>
                   navigate("/create", {
                     state: {
-                      franchisee: location.state.franchisee,
-                      franchisee_email: location.state.franchisee_email,
+                      franchisee,
+                      franchisee_email,
                       isPremium: false,
                     },
                   })
@@ -276,8 +280,8 @@ function Pricing() {
                 onClick={() =>
                   navigate("/create", {
                     state: {
-                      franchisee: location.state.franchisee,
-                      franchisee_email: location.state.franchisee_email,
+                      franchisee,
+                      franchisee_email,
                       isPremium: true,
                     },
                   })

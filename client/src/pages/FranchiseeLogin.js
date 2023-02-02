@@ -17,6 +17,7 @@ import {
   PopoverCloseButton,
   PopoverAnchor,
 } from "@chakra-ui/react";
+import Spinner from "../miniComponents/Spinner";
 
 function FranchiseeLogin() {
   let toast = useToast();
@@ -149,7 +150,8 @@ function FranchiseeLogin() {
             <div>
               <Button
                 isLoading={loading}
-                loadingText="Logging in"
+                spinner={<Spinner />}
+                _loading={{opacity:"1"}}
                 onClick={() => onFranchiseeeLoginClick()}
                 className="font-bold"
                 rounded="full"

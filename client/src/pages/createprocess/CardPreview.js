@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
 import { Toast } from "../../miniComponents/Toast";
 import { Alert, AlertIcon } from "@chakra-ui/react";
+import Spinner from "../../miniComponents/Spinner";
 
 function CardPreview() {
   let [franchiseeData, setFranchiseeData] = useState([]);
@@ -354,6 +355,8 @@ function CardPreview() {
                 _hover
                 bgColor="#4F45E4"
                 disabled={false}
+                spinner={<Spinner />}
+                _loading={{opacity:"1"}}
                 onClick={() => {
                   setIsProcessingPayment(true);
                   handleCompletePurchase();

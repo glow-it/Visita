@@ -1174,11 +1174,11 @@ function PremiumTemplate1({ preview }) {
 
         {/* Gallery Videos */}
         <div
-          id="ytvideos"
-          className=" flex flex-col items-center mt-6 pb-16 bg-slate-900"
+          id="videogallery"
+          className=" flex flex-col items-center mt-6  bg-slate-900"
         >
           <h1
-            className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-12`}
+            className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-8`}
           >
             Videos Gallery
           </h1>
@@ -1573,7 +1573,7 @@ function PremiumTemplate1({ preview }) {
             <ion-icon name="videocam-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt-2 text-xs text-white">
-            Viedo Gallery
+            Video Gallery
           </span>
         </a>
         <a

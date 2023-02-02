@@ -1,4 +1,4 @@
-import { useToast } from "@chakra-ui/react";
+import {  useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "@chakra-ui/react";
 import apiKeys from "../Api/apiKeys";
 import { Toast } from "../miniComponents/Toast";
+import Spinner from "../miniComponents/Spinner";
 
 function FranchiseeRegister() {
   let navigate = useNavigate();
@@ -244,6 +245,8 @@ salary"
                 }}
                 disabled={is_register_button_disabled}
                 isLoading={loading}
+                spinner={<Spinner />}
+                _loading={{opacity:"1"}}
                 className="font-bold"
                 rounded="full"
                 _hover={{ backgroundColor: "rgb(66 56 157 / 1)" }}

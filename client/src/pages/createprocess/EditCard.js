@@ -22,6 +22,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
+import Spinner from "../../miniComponents/Spinner";
 
 function EditCard() {
   let navigate = useNavigate();
@@ -1572,7 +1573,8 @@ class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text
               _hover
               rounded={"3xl"}
               isLoading={loading}
-              loadingText="Creating website"
+              spinner={<Spinner />}
+                _loading={{opacity:"1"}}
               onClick={() => handleNextClick()}
               backgroundColor="rgb(37 99 235 / 1)"
               className="w-[200px] font-bold lg:mr-6 mr-2"
