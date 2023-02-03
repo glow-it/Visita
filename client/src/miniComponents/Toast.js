@@ -22,7 +22,7 @@ export function Toast(props) {
       ? "red"
       : "blue";
   let title = props.title;
-  let position = "top"
+  let position = "top";
 
   toast({
     position: position,
@@ -34,21 +34,29 @@ export function Toast(props) {
           position == "top-right" ? "mt-24" : "mt-4"
         }  rounded-full bg-white shadow-md flex relative items-center pr-8`}
       >
-       
-       {
-        props.status_code ?
-        <span className="absolute -right-4 font-bold" ><Badge bg={`${color}.100`} py='2' px='2' rounded='full' color={`${color}.700`}  >{props.status_code}</Badge></span>
-        : ''
-       }
+        {props.status_code ? (
+          <span className="absolute -right-4 font-bold">
+            <Badge
+              bg={`${color}.100`}
+              py="2"
+              px="2"
+              rounded="full"
+              color={`${color}.700`}
+            >
+              {props.status_code}
+            </Badge>
+          </span>
+        ) : (
+          ""
+        )}
 
         <div
           className={` h-12 w-12  flex items-center justify-center rounded-full bg-${color}-50`}
         >
-
           <span
             className={`font-bold text-3xl flex items-center justify-center text-${color}-600`}
           >
-            { props.status == "success" ? (
+            {props.status == "success" ? (
               <ion-icon name="checkmark-circle"></ion-icon>
             ) : props.status == "error" ? (
               <ion-icon name="alert-circle"></ion-icon>
@@ -68,9 +76,7 @@ export function Toast(props) {
             ""
           )}
 
-          <span className={`font-bold text-md text-${color}-600`}>
-            {title}
-          </span>
+          <span className={`font-bold text-md text-${color}-600`}>{title}</span>
         </div>
       </div>
     ),

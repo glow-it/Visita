@@ -29,8 +29,6 @@ import Terms from "./pages/Terms";
 import ReturnPolicy from "./pages/ReturnPolicy";
 
 function App() {
-
-
   return (
     <div className="App">
       <Header />

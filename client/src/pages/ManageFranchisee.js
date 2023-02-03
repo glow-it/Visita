@@ -390,7 +390,6 @@ function ManageFranchisee() {
           </Tabs>
         </div>
       </div>
-
     </div>
   );
 }

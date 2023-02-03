@@ -6,6 +6,7 @@ function CreateHeader({
   loading,
   hideIndicators,
   live_preview_url,
+  isUpdate = false,
 }) {
   let navigate = useNavigate();
   return (
@@ -17,9 +18,9 @@ function CreateHeader({
     >
       <h1
         id="process_title"
-        className="lg:block hidden text-center absolute left-24 lg:text-3xl text-xl text-indigo-600 font-bold"
+        className="lg:visible invisible text-center absolute left-24 text-3xl text-indigo-600 font-bold"
       >
-        Create
+        {isUpdate ? "Update" : "Create"}
       </h1>
 
       <div

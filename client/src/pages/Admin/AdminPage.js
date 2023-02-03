@@ -42,8 +42,6 @@ function AdminPage() {
     });
   }, []);
 
-
-
   let profit_for_franchisee = 300;
   let profit_for_company = 299;
   let card_price = 699;

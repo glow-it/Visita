@@ -31,7 +31,7 @@ function Hero() {
                 </h1>
                 <Button
                   onClick={() => navigate("franchisee/how-to-franchisee")}
-                  className="font-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200"
+                  className="font-bold hover:scale-105 hover:shadow-md hover:shadow-[#5241FE]"
                   _hover
                   rounded="full"
                   mt="8"
@@ -52,7 +52,7 @@ function Hero() {
                       "https://scribehow.com/shared/Visita_Create_Card_Process__xIfmyzszTXSukxUZiWzWTw"
                     )
                   }
-                  className="font-bold hover:scale-105 hover:shadow-md hover:shadow-blue-200"
+                  className="font-bold hover:scale-105 hover:shadow-md hover:shadow-[#5241FE]"
                   _hover
                   rounded="full"
                   mt="3"
@@ -76,41 +76,31 @@ function Hero() {
         <div className="  w-full   flex flex-col  items-center justify-center ">
           <h1
             data-aos="fade-down"
-            
             className="z-50 lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl"
           >
             Easily Create A Website <br /> For Your Business
           </h1>
 
-          <p
-            
-            
-            className="font-medium z-50  text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 "
-          >
-          Build your business website in minutes with visita - No coding required.
+          <p className="font-medium z-50  text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 ">
+            Build your business website in minutes with visita - No coding
+            required.
           </p>
 
           <div className="lg:mt-12 z-50 w-[100%] mt-6  py-2 flex lg:flex-row flex-col lg:ml-0  items-start lg:items-center justify-center">
             <button
-              
-              
               onClick={() =>
                 navigate("/pricing", {
                   state: { franchisee: false, franchisee_email: null },
                 })
               }
-              type="button"
-              class="text-blue-600 lg:ml-0 ml-8 hover:-translate-y-[2px] hover:bg-blue-600 hover:text-white  transition-all border-2 border-blue-600 bg-white focus:ring-4 focus:ring-blue-300  rounded-full sm:text-xl  text-xl font-medium px-10 py-2.5 mr-2 mb-2 :bg-blue-600 :hover:bg-blue-700 focus:outline-none :focus:ring-blue-800"
+              class="text-[#5241FE] lg:ml-0 ml-8 hover:-translate-y-[2px] hover:bg-[#5241FE] hover:text-white  transition-all border-2 border-[#5241FE] bg-white focus:ring-4 focus:ring-[#5241FE]  rounded-full sm:text-xl  text-xl font-medium px-10 py-2.5 mr-2 mb-2 :bg-[#5241FE] :hover:bg-[#5241FE] focus:outline-none :focus:ring-[#5241FE]"
             >
               Create now
             </button>
 
             <p
-              
-              
               onClick={() => navigate("/visita")}
-              type="button"
-              class="text-white bg-blue-600 lg:ml-0 ml-8 bg-primary transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-blue-400  rounded-full sm:text-xl text-xl font-medium px-10 py-2.5 mr-2 mb-2"
+              class="text-white bg-[#5241FE] lg:ml-0 ml-8  transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-[#5241FE]  rounded-full sm:text-xl text-xl font-medium px-10 py-2.5 mr-2 mb-2"
             >
               See demo
             </p>
@@ -125,8 +115,6 @@ function Hero() {
       <div className="lg:block hidden z-50">
         <div className="lg:h-[500px] z-50  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
           <img
-            
-            
             src={require("../Images/heroimage.webp")}
             muted
             autoPlay

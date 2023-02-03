@@ -50,14 +50,11 @@ function CardPreview() {
   }, []);
 
   // Handle Complete Purchase Click
-  const handleCompletePurchase = async() => {
-
- 
-
+  const handleCompletePurchase = async () => {
     axios({
       method: "post",
       url: `${apiKeys.server_url}/complete-purchase`,
-      data: { isPremium: cardDatas.isPremium},
+      data: { isPremium: cardDatas.isPremium },
     })
       .then((response) => {
         // Check Website Creation Is First
@@ -139,7 +136,8 @@ function CardPreview() {
       subscription_id: res.id,
       name: "Visita - Website Builder",
       description: "Payment For Create Business Website",
-      image: "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
+      image:
+        "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
       prefill: {
         name: cardDatas.first_name,
         email: cardDatas.email_id,
@@ -318,9 +316,6 @@ function CardPreview() {
               : "Complete purchase to activate your website"}
           </h1>
 
-          
-
-
           {cardDatas && cardDatas.activated ? "" : ""}
 
           <div className="w-full flex lg:justify-center mt-8 flex-col-reverse items-center lg:flex-row">
@@ -356,7 +351,7 @@ function CardPreview() {
                 bgColor="#4F45E4"
                 disabled={false}
                 spinner={<Spinner />}
-                _loading={{opacity:"1"}}
+                _loading={{ opacity: "1" }}
                 onClick={() => {
                   setIsProcessingPayment(true);
                   handleCompletePurchase();
@@ -375,9 +370,22 @@ function CardPreview() {
           ) : (
             ""
           )}
-          <div className="flex mt-6 text-sm text-indigo-500" >
-          <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
-          <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
+          <div className="flex mt-6 text-sm text-indigo-500">
+            <Link
+              to="/terms"
+              className="underline cursor-pointer ml-1 mr-1 font-medium "
+            >
+              {" "}
+              Terms of service
+            </Link>{" "}
+            -
+            <Link
+              to="/privacy"
+              className="underline cursor-pointer ml-1 font-medium "
+            >
+              {" "}
+              Privacy policy
+            </Link>
           </div>
         </div>
       </div>

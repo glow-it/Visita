@@ -6,8 +6,15 @@ function Pricing() {
   let navigate = useNavigate();
   let location = useLocation();
 
-  let franchisee = location.state ? location.state.franchisee : false
-  let franchisee_email = location.state ? location.state.franchisee_email : "no franchisee"
+  let franchisee = location.state ? location.state.franchisee : false;
+  let franchisee_email = location.state
+    ? location.state.franchisee_email
+    : "no franchisee";
+  let state_company_name = location.state
+    ? location.state.company_name
+      ? location.state.company_name
+      : ""
+    : null;
 
   useEffect(() => {
     document.title = "Pricing - Visita";
@@ -17,6 +24,7 @@ function Pricing() {
   return (
     <div class="relative w-full bg-white h-full pt-14">
       <Helmet>
+        <title>Pricing - Visita</title>
         <meta
           name="description"
           content="
@@ -65,7 +73,6 @@ function Pricing() {
             </span>{" "}
           </h2>
           <p
-            
             data-aos-delay="100"
             class="text-base text-gray-700 md:text-lg font-medium"
           >
@@ -74,7 +81,7 @@ function Pricing() {
           </p>
         </div>
         <div class="grid max-w-screen-md gap-10 md:grid-cols-2 sm:mx-auto">
-          <div  data-aos-delay="200">
+          <div data-aos-delay="200">
             <div class="p-8 bg-gray-900 rounded-xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-white">
@@ -82,7 +89,6 @@ function Pricing() {
                 </p>
                 <div class="flex items-center justify-center">
                   <p class="mr-2 text-5xl font-semibold text-white lg:text-6xl">
-                    
                     ₹699
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
@@ -170,6 +176,7 @@ function Pricing() {
                       franchisee,
                       franchisee_email,
                       isPremium: false,
+                      state_company_name,
                     },
                   })
                 }
@@ -188,7 +195,7 @@ function Pricing() {
             <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-50" />
             <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-25" />
           </div>
-          <div  data-aos-delay="200">
+          <div data-aos-delay="200">
             <div class="p-8 bg-gray-900 rounded-xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-white">
@@ -196,7 +203,7 @@ function Pricing() {
                 </p>
                 <div class="flex items-center justify-center">
                   <p class="mr-2 text-5xl font-semibold text-white lg:text-6xl">
-                  ₹999
+                    ₹999
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
                 </div>
@@ -283,6 +290,7 @@ function Pricing() {
                       franchisee,
                       franchisee_email,
                       isPremium: true,
+                      state_company_name,
                     },
                   })
                 }

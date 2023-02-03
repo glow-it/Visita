@@ -1,4 +1,4 @@
-import {  useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
@@ -23,7 +23,8 @@ function FranchiseeRegister() {
   let toast = useToast();
 
   // When Click On Franchisee Register Button
-  function franchiseeRegisterClick(button) {
+  function franchiseeRegisterClick(event) {
+    event.preventDefault();
     setLoading(true);
     axios
       .post(`${apiKeys.server_url}/create-franchisee-payment`)
@@ -37,10 +38,10 @@ function FranchiseeRegister() {
             currency: "INR",
             name: "Visita - Website Builder",
             description: "Payment For Register Franchisee",
-            image: "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
+            image:
+              "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
             order_id: response.data.payment_data.id,
             handler: function (response) {
-             
               setLoading(true);
               let res_obj = {
                 payment_id: response.razorpay_payment_id,
@@ -127,29 +128,29 @@ function FranchiseeRegister() {
       });
   }
 
- 
-
   return (
-    <div className=" min-h-screen absolute top-0 min-w-full">
-      <div className="h-12 py-12 w-full absolute top-0 flex items-center justify-center">
-        <img
-          className="mx-auto h-10 w-auto"
-          src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
-          alt="Your Company"
-        />
-      </div>
+    <div className=" min-h-screen absolute top-0 min-w-full flex justify-center lg:bg-blue-50/50">
+      <div className="flex rounded-2xl lg:w-[500px] min-h-full  items-center  justify-center lg:mt-12 mt-16 px-4 sm:px-6 lg:px-8 lg:bg-white">
+        <div className="h-12 py-12 w-full absolute top-16  flex items-center justify-center">
+          <img
+            className="mx-auto h-10 w-auto"
+            src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
+            alt="Your Company"
+          />
+        </div>
 
-      <div className="flex min-h-full  items-center  justify-center lg:mt-12 mt-16 px-4 sm:px-6 lg:px-8">
         <div className="   rounded-3xl  px-8 py-16 w-full max-w-md space-y-8 z-50">
           <div>
             <h2 className="mt-6 text-center lg:text-4xl text-3xl font-bold tracking-tight text-gray-900">
               Franchisee Register
             </h2>
           </div>
-          <form id="franchisee_register_form" className="mt-8 space-y-6">
-            <div className="-space-y-px relative rounded-md shadow-sm">
-     
-
+          <form
+            onSubmit={(e) => franchiseeRegisterClick(e)}
+            id="franchisee_register_form"
+            className="mt-8 space-y-6"
+          >
+            <div className="relative rounded-md shadow-sm">
               <div>
                 <label className="sr-only">Franchisee Name</label>
                 <input
@@ -240,13 +241,11 @@ salary"
 
             <div>
               <Button
-                onClick={(e) => {
-                  franchiseeRegisterClick(e);
-                }}
+                type="submit"
                 disabled={is_register_button_disabled}
                 isLoading={loading}
                 spinner={<Spinner />}
-                _loading={{opacity:"1"}}
+                _loading={{ opacity: "1" }}
                 className="font-bold"
                 rounded="full"
                 _hover={{ backgroundColor: "rgb(66 56 157 / 1)" }}
@@ -267,10 +266,23 @@ salary"
                   Login
                 </span>
               </p>
-              <div className="flex mt-6 text-sm text-indigo-500" >
-          <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
-          <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
-          </div>
+              <div className="flex mt-6 text-sm text-indigo-500">
+                <Link
+                  to="/terms"
+                  className="underline cursor-pointer ml-1 mr-1 font-medium "
+                >
+                  {" "}
+                  Terms of service
+                </Link>{" "}
+                -
+                <Link
+                  to="/privacy"
+                  className="underline cursor-pointer ml-1 font-medium "
+                >
+                  {" "}
+                  Privacy policy
+                </Link>
+              </div>
             </div>
           </form>
         </div>

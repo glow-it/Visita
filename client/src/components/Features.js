@@ -6,17 +6,16 @@ function Features() {
       id="features"
       class="bg-white :bg-gray-900 w-full px-10  pb-10 font-semibold relative  border-t"
     >
-
-<div className="w-full pt-20 flex items-center lg:justify-center">
-  <h1 className="text-4xl" >Features</h1>
-</div>
+      <div className="w-full pt-20 flex items-center lg:justify-center">
+        <h1 className="text-4xl">Features</h1>
+      </div>
 
       <div class="py-8  mx-auto w-full  sm:py-16 lg:px-20 ">
         <div class="space-y-8 md:grid md:grid-cols-1 lg:grid-cols-5 md:gap-12 md:space-y-0">
-          <div  data-aos-delay="0" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="call-outline"></ion-icon>
+          <div data-aos-delay="0">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="call-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -24,10 +23,10 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="50" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="arrow-down-circle-outline"></ion-icon>
+          <div data-aos-delay="50">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="arrow-down-circle-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -35,10 +34,10 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="100" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="document-outline"></ion-icon>
+          <div data-aos-delay="100">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="document-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -46,21 +45,21 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="150" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="logo-whatsapp"></ion-icon>
+          <div data-aos-delay="150">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="logo-whatsapp"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
-             One click whatsapp
+              One click whatsapp
             </h3>
           </div>
 
-          <div  data-aos-delay="200" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="mail-outline"></ion-icon>
+          <div data-aos-delay="200">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="mail-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -68,10 +67,10 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="0" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="star-outline"></ion-icon>
+          <div data-aos-delay="0">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="star-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -79,10 +78,10 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="50" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="navigate-circle-outline"></ion-icon>
+          <div data-aos-delay="50">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="navigate-circle-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -90,10 +89,10 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="100" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="link-outline"></ion-icon>
+          <div data-aos-delay="100">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="link-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
@@ -101,70 +100,70 @@ function Features() {
             </h3>
           </div>
 
-          <div  data-aos-delay="150" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="arrow-redo-outline"></ion-icon>
+          <div data-aos-delay="150">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="arrow-redo-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
               Share unlimited
             </h3>
           </div>
-          <div  data-aos-delay="200" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="cart-outline"></ion-icon>
+          <div data-aos-delay="200">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="cart-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
               Online store
             </h3>
           </div>
-          <div  data-aos-delay="0" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="create-outline"></ion-icon>
+          <div data-aos-delay="0">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="create-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
               Easy to update
             </h3>
           </div>
-          <div  data-aos-delay="50" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="images-outline"></ion-icon>
+          <div data-aos-delay="50">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="images-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
               Image gallery
             </h3>
           </div>
-          <div  data-aos-delay="100" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="videocam-outline"></ion-icon>
+          <div data-aos-delay="100">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="videocam-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
               Youtube video gallery
             </h3>
           </div>
-          <div  data-aos-delay="150" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="wallet-outline"></ion-icon>
+          <div data-aos-delay="150">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="wallet-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
               Payment section
             </h3>
           </div>
-          <div  data-aos-delay="200" >
-            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 ">
-              <span className="w-5 h-5 text-primary text-3xl lg:w-6 lg:h-6 ">
-              <ion-icon name="chatbubble-outline"></ion-icon>
+          <div data-aos-delay="200">
+            <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
+              <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
+                <ion-icon name="chatbubble-outline"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">

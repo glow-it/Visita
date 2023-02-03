@@ -25,10 +25,10 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import InstallPwa from "../../../Tools/InstallPwaApp";
 
-function PremiumTemplate1({ preview }) {
+function PremiumTemplate1({ preview, cardDatas }) {
   const toast = useToast();
   let params = useParams();
-  let [cardDatas, setCardDatas] = useState([]);
+
   let [products, setProducts] = useState([]);
   let [galleryImages, setGalleryImages] = useState([]);
   let [ytVideos, setYtVideos] = useState([]);
@@ -37,21 +37,19 @@ function PremiumTemplate1({ preview }) {
   let navigate = useNavigate();
   let location = useLocation();
   let [bgImage, setBgImage] = useState();
-  let [isCardLoading, setIsCardLoading] = useState(true);
+
   let [specialities, setSpecialities] = useState([]);
   let [features, setFeatures] = useState([]);
 
   let main_company_name = params.comp_name;
 
   axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
-    response.data.map((data) => {
+    cardDatas.map((data) => {
       if (data.name == cardDatas.theme_color) {
         setBgImage(data.image_url);
       }
     });
   });
-
-
 
   let cart_products;
   let cart_count;
@@ -100,114 +98,121 @@ function PremiumTemplate1({ preview }) {
       );
     }
 
-    axios
-      .get(`${apiKeys.server_url}/card/` + main_company_name)
-      .then((response) => {
-        setIsCardLoading(false);
+    const head = document.head;
 
-        reactManifest.update(
+    const metaTitle = document.createElement("meta");
+    metaTitle.setAttribute("property", "og:title");
+    metaTitle.setAttribute("content", cardDatas.company_name);
+    head.appendChild(metaTitle);
+
+    const metaDescription = document.createElement("meta");
+    metaDescription.setAttribute("property", "og:description");
+    metaDescription.setAttribute(
+      "content",
+      cardDatas.tagline != "" ? cardDatas.tagline : "Website"
+    );
+    head.appendChild(metaDescription);
+
+    const metaImage = document.createElement("meta");
+    metaImage.setAttribute("property", "og:image");
+    metaImage.setAttribute("content", cardDatas.logo);
+    head.appendChild(metaImage);
+
+    const metaUrl = document.createElement("meta");
+    metaUrl.setAttribute("property", "og:url");
+    metaUrl.setAttribute(
+      "content",
+      cardDatas.isPremium == "true"
+        ? cardDatas.clean_name + ".visitasmart.com"
+        : "visitasmart.com/" + cardDatas.clean_name
+    );
+    head.appendChild(metaUrl);
+
+    reactManifest.update(
+      {
+        name: capitalize(cardDatas.company_name),
+        short_name: capitalize(cardDatas.company_name),
+        description: capitalize(cardDatas.about),
+        start_url: "https://www.visitasmart.com/" + cardDatas.clean_name,
+        scope: "https://www.visitasmart.com/" + cardDatas.clean_name,
+        background_color: "#fff",
+        theme_color: "#fff",
+        display: "standalone",
+        icons: [
           {
-            name: capitalize(response.data.company_name),
-            short_name: capitalize(response.data.company_name),
-            description: capitalize(response.data.about),
-            start_url:
-              "https://www.visitasmart.com/" + response.data.clean_name,
-            scope: "https://www.visitasmart.com/" + response.data.clean_name,
-            background_color: "#fff",
-            theme_color: "#fff",
-            display: "standalone",
-            icons: [
-              {
-                src: response.data.logo.replace(/^http:\/\//i, "https://"),
-                sizes: "256x256",
-                type: "image/png",
-              },
-            ],
+            src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
+            sizes: "256x256",
+            type: "image/png",
           },
-          "#my-manifest-placeholder"
-        );
+        ],
+      },
+      "#my-manifest-placeholder"
+    );
 
-        setCardDatas(response.data);
-        setProducts(response.data.products);
-        setGalleryImages(response.data.image_gallery);
-        setVideoGallery(response.data.video_gallery);
-        setYtVideos(response.data.yt_videos);
-        setFeedbacks(response.data.feedbacks);
-        setSpecialities(response.data.specials.split(","));
-        setFeatures(response.data.features.split(","));
+    setProducts(cardDatas.products);
+    setGalleryImages(cardDatas.image_gallery);
+    setVideoGallery(cardDatas.video_gallery);
+    setYtVideos(cardDatas.yt_videos);
+    setFeedbacks(cardDatas.feedbacks);
+    setSpecialities(cardDatas.specials.split(","));
+    setFeatures(cardDatas.features.split(","));
 
-        if (response.data.isActivated) {
-          document.title =
-            capitalize(response.data.company_name) +
-            " - " +
-            response.data.tagline;
+    if (cardDatas.isActivated) {
+      document.title =
+        capitalize(cardDatas.company_name) + " - " + cardDatas.tagline;
 
-          // Set Favicon
-          var link = document.querySelector("link[rel~='icon']");
-          if (!link) {
-            link = document.createElement("link");
-            link.rel = "icon";
-            document.getElementsByTagName("head")[0].appendChild(link);
-          }
-          link.href = response.data.logo.replace(/^http:\/\//i, "https://");
-        }
+      // Set Favicon
+      var link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+      link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
+    }
 
-        // Update View Count
-        axios.post(
-          `${apiKeys.server_url}/update/view/${response.data.company_name}`
-        );
+    // Update View Count
+    axios.post(`${apiKeys.server_url}/update/view/${cardDatas.company_name}`);
 
-        // Calculate How Much Days Ago Created This Card
-        var date1, date2;
-        //define two date object variables with dates inside it
-        date1 = response.data.created_at;
-        date2 = new Date();
+    // Calculate How Much Days Ago Created This Card
+    var date1, date2;
+    //define two date object variables with dates inside it
+    date1 = cardDatas.created_at;
+    date2 = new Date();
 
-        //calculate time difference
-        var time_difference = date2.getTime() - parseInt(date1);
+    //calculate time difference
+    var time_difference = date2.getTime() - parseInt(date1);
 
-        //calculate days difference by dividing total milliseconds in a day
-        var days_difference = time_difference / (1000 * 60 * 60 * 24);
+    //calculate days difference by dividing total milliseconds in a day
+    var days_difference = time_difference / (1000 * 60 * 60 * 24);
 
-        let days = Math.trunc(days_difference);
+    let days = Math.trunc(days_difference);
 
-        if (days > 0) {
-          if (!response.data.isActivated) {
-            navigate(`/activate-warning/${response.data.company_name}`);
-          }
-        }
+    if (days > 0) {
+      if (!cardDatas.isActivated) {
+        navigate(`/activate-warning/${cardDatas.company_name}`);
+      }
+    }
 
-        if (days < 1) {
-          document.title =
-            capitalize(response.data.company_name) +
-            " - " +
-            response.data.tagline;
+    if (days < 1) {
+      document.title =
+        capitalize(cardDatas.company_name) + " - " + cardDatas.tagline;
 
-          // Set Favicon
-          var link = document.querySelector("link[rel~='icon']");
-          if (!link) {
-            link = document.createElement("link");
-            link.rel = "icon";
-            document.getElementsByTagName("head")[0].appendChild(link);
-          }
-          link.href = response.data.logo.replace(/^http:\/\//i, "https://");
-        }
-      })
-      .catch((err) => {
-        Toast({
-          status: "error",
-          title: "This website is not in our server",
-          postition: "top",
-          toast,
-        });
-        navigate("/");
-      });
+      // Set Favicon
+      var link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+      link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
+    }
 
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
       cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, "https://");
     let manifest = {
-      name: cardDatas && cardDatas.company_name,
+      name: cardDatas.company_name,
       icons: [{ src: iconUrl, sizes: "512x512", type: "image/png" }],
     };
     let content = encodeURIComponent(JSON.stringify(manifest));
@@ -234,15 +239,13 @@ function PremiumTemplate1({ preview }) {
     });
   }
 
-  let theme_color = cardDatas && cardDatas.theme_color;
+  let theme_color = cardDatas.theme_color;
 
   // URLS
-  let message_whatsapp_url = `https://api.whatsapp.com/send/?phone=+91${
-    cardDatas && cardDatas.phone_no
-  }&text=%F0%9F%91%8BHey,${cardDatas && cardDatas.company_name}`;
-  let mail_url = `mailto:${cardDatas && cardDatas.email_id}`;
-  let call_url = `tel:+91${cardDatas && cardDatas.phone_no}`;
-  let website_url = cardDatas && cardDatas.website;
+  let message_whatsapp_url = `https://api.whatsapp.com/send/?phone=+91${cardDatas.phone_no}&text=%F0%9F%91%8BHey,${cardDatas.company_name}`;
+  let mail_url = `mailto:${cardDatas.email_id}`;
+  let call_url = `tel:+91${cardDatas.phone_no}`;
+  let website_url = cardDatas.website;
   let share_whatsapp_url = `https://api.whatsapp.com/send?text=${window.location.href}`;
   let share_sms_url = `sms:?body=${window.location.href}`;
   let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
@@ -309,9 +312,9 @@ function PremiumTemplate1({ preview }) {
       {/* Add Meta Title And Descreption */}
       <Helmet>
         <title className="capitalize">
-          {cardDatas && cardDatas.company_name + " website"}
+          {cardDatas.company_name + " website"}
         </title>
-        <meta name="description" content={cardDatas && cardDatas.tagline} />
+        <meta name="description" content={cardDatas.tagline} />
       </Helmet>
 
       {/* Cart Modal Open */}
@@ -488,13 +491,11 @@ function PremiumTemplate1({ preview }) {
           ""
         )}
 
-        {cardDatas && cardDatas.tagline ? (
+        {cardDatas.tagline ? (
           <div
             className={`w-full py-3   bg-${theme_color}-600 text-center px-4   text-white flex z-50 items-center justify-center  cursor-pointer  text-sm`}
           >
-            <h1 className=" font-bold min-w-max">
-              {cardDatas && cardDatas.tagline}
-            </h1>
+            <h1 className=" font-bold min-w-max">{cardDatas.tagline}</h1>
           </div>
         ) : (
           ""
@@ -504,14 +505,12 @@ function PremiumTemplate1({ preview }) {
           id="home"
           className=" template-1 flex justify-center bg-no-repeat bg-cover "
         >
-          <Loading isLoading={isCardLoading} />
-
           <div className="card relative">
             <div className="w-full h-20 flex items-center bg-slate-100  z-50">
               <span
                 className={`z-50 absolute   right-4 text-black text-xs font-medium py-1 px-2 border border-black  rounded-full`}
               >
-                Views: {cardDatas && cardDatas.views}
+                Views: {cardDatas.views}
               </span>
               <span
                 className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}
@@ -538,7 +537,7 @@ function PremiumTemplate1({ preview }) {
 
             <div className=" container  w-full">
               <div className=" w-full mt-6 px-8  flex  items-center justify-center">
-                {cardDatas && cardDatas.logo != "" ? (
+                {cardDatas.logo != "" ? (
                   <img
                     id="logo"
                     src={
@@ -554,16 +553,16 @@ function PremiumTemplate1({ preview }) {
 
                 <div className=" w-full h-full flex flex-col pl-2">
                   <h1 className="capitalize text-black text-3xl font-bold  mt-6">
-                    {cardDatas && cardDatas.company_name}
+                    {cardDatas.company_name}
                   </h1>
                   <h1 className="capitalize text-black text-lg font-medium  mt-1">
-                    {cardDatas && cardDatas.company_category}
+                    {cardDatas.company_category}
                   </h1>
                 </div>
               </div>
 
               <div className=" w-full h-24 mt-8 flex justify-evenly items-center">
-                {cardDatas && cardDatas.phone_no != "" ? (
+                {cardDatas.phone_no != "" ? (
                   <a
                     href={call_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
@@ -576,7 +575,7 @@ function PremiumTemplate1({ preview }) {
                   ""
                 )}
 
-                {cardDatas && cardDatas.whatsapp_no != "" ? (
+                {cardDatas.whatsapp_no != "" ? (
                   <a
                     href={message_whatsapp_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
@@ -589,7 +588,7 @@ function PremiumTemplate1({ preview }) {
                   ""
                 )}
 
-                {cardDatas && cardDatas.email_id != "" ? (
+                {cardDatas.email_id != "" ? (
                   <a
                     href={mail_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
@@ -602,7 +601,7 @@ function PremiumTemplate1({ preview }) {
                   ""
                 )}
 
-                {cardDatas && cardDatas.website != "" ? (
+                {cardDatas.website != "" ? (
                   <a
                     href={website_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
@@ -622,19 +621,17 @@ function PremiumTemplate1({ preview }) {
                 >
                   <span className=" ml-6 text-md flex items-center font-medium">
                     <ion-icon name="call-outline"></ion-icon>{" "}
-                    <span className=" ml-3">
-                      +91 {cardDatas && cardDatas.phone_no}
-                    </span>{" "}
+                    <span className=" ml-3">+91 {cardDatas.phone_no}</span>{" "}
                   </span>
                 </div>
-                {cardDatas && cardDatas.alt_phone_no != "" ? (
+                {cardDatas.alt_phone_no != "" ? (
                   <div
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
                       <ion-icon name="call-outline"></ion-icon>{" "}
                       <span className=" ml-3">
-                        +91 {cardDatas && cardDatas.alt_phone_no}
+                        +91 {cardDatas.alt_phone_no}
                       </span>{" "}
                     </span>
                   </div>
@@ -642,7 +639,7 @@ function PremiumTemplate1({ preview }) {
                   ""
                 )}
 
-                {cardDatas && cardDatas.email_id != "" ? (
+                {cardDatas.email_id != "" ? (
                   <div
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
@@ -655,16 +652,14 @@ function PremiumTemplate1({ preview }) {
                   ""
                 )}
 
-                {cardDatas && cardDatas.location != "" ? (
+                {cardDatas.location != "" ? (
                   <div
                     className={`w-full  py-3 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
                       <ion-icon name="location-outline"></ion-icon>{" "}
                       <span className=" ml-3">
-                        {`${cardDatas && cardDatas.location} - ${
-                          cardDatas && cardDatas.city
-                        }`}
+                        {`${cardDatas.location} - ${cardDatas.city}`}
                       </span>{" "}
                     </span>
                   </div>
@@ -697,7 +692,7 @@ function PremiumTemplate1({ preview }) {
                 </div>
 
                 <div className=" w-full flex flex-wrap items-center justify-center mt-8">
-                  {cardDatas && cardDatas.gmap_location ? (
+                  {cardDatas.gmap_location ? (
                     <button
                       onClick={() => window.open(cardDatas.gmap_location)}
                       className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mr-3`}
@@ -749,82 +744,64 @@ function PremiumTemplate1({ preview }) {
                 </div>
                 <div
                   className={`${
-                    cardDatas &&
                     cardDatas.facebook_link == "" &&
-                    cardDatas &&
                     cardDatas.twitter_link == "" &&
-                    cardDatas &&
                     cardDatas.instagram_link == "" &&
-                    cardDatas &&
                     cardDatas.linkedin_link == "" &&
-                    cardDatas &&
                     cardDatas.youtube_link == "" &&
-                    cardDatas &&
                     cardDatas.pinterest_link == ""
                       ? "invisible"
                       : "visible"
                   } flex bg-white justify-center  px-4 h-12 my-16 items-center rounded-full`}
                 >
-                  {cardDatas && cardDatas.facebook_link != "" ? (
+                  {cardDatas.facebook_link != "" ? (
                     <i
-                      onClick={() =>
-                        window.open(cardDatas && cardDatas.facebook_link)
-                      }
+                      onClick={() => window.open(cardDatas.facebook_link)}
                       className="  cursor-pointer fa-brands fa-facebook text-4xl my-12 rounded-full mr-4 text-blue-600 "
                     ></i>
                   ) : (
                     ""
                   )}
 
-                  {cardDatas && cardDatas.twitter_link != "" ? (
+                  {cardDatas.twitter_link != "" ? (
                     <i
-                      onClick={() =>
-                        window.open(cardDatas && cardDatas.twitter_link)
-                      }
+                      onClick={() => window.open(cardDatas.twitter_link)}
                       className=" cursor-pointer fa-brands fa-twitter text-3xl my-12 rounded-full mr-4 text-cyan-600 "
                     ></i>
                   ) : (
                     ""
                   )}
 
-                  {cardDatas && cardDatas.instagram_link != "" ? (
+                  {cardDatas.instagram_link != "" ? (
                     <i
-                      onClick={() =>
-                        window.open(cardDatas && cardDatas.instagram_link)
-                      }
+                      onClick={() => window.open(cardDatas.instagram_link)}
                       className=" cursor-pointer fa-brands fa-instagram text-3xl my-12 rounded-full mr-4 text-purple-600 "
                     ></i>
                   ) : (
                     ""
                   )}
 
-                  {cardDatas && cardDatas.linkedin_link != "" ? (
+                  {cardDatas.linkedin_link != "" ? (
                     <i
-                      onClick={() =>
-                        window.open(cardDatas && cardDatas.linkedin_link)
-                      }
+                      onClick={() => window.open(cardDatas.linkedin_link)}
                       className=" cursor-pointer fa-brands fa-linkedin text-3xl my-12 rounded-full mr-4 text-blue-600 "
                     ></i>
                   ) : (
                     ""
                   )}
 
-                  {cardDatas && cardDatas.youtube_link != "" ? (
+                  {cardDatas.youtube_link != "" ? (
                     <i
-                      onClick={() =>
-                        window.open(cardDatas && cardDatas.youtube_link)
-                      }
+                      onClick={() => window.open(cardDatas.youtube_link)}
                       className=" cursor-pointer fa-brands fa-youtube text-3xl my-12 rounded-full mr-4 text-red-600 "
                     ></i>
                   ) : (
                     ""
                   )}
 
-                  {cardDatas && cardDatas.pinterest_link != "" ? (
+                  {cardDatas.pinterest_link != "" ? (
                     <i
-                      onClick={() =>
-                        window.open(cardDatas && cardDatas.pinterest_link)
-                      }
+                      onClick={() => window.open(cardDatas.pinterest_link)}
                       className=" cursor-pointer fa-brands fa-pinterest text-3xl my-12 rounded-full mr-4 text-red-600 "
                     ></i>
                   ) : (
@@ -838,7 +815,7 @@ function PremiumTemplate1({ preview }) {
 
         {/* Enter Customer Details Form */}
 
-        {cardDatas && cardDatas.show_customer_details_popop == "true" ? (
+        {cardDatas.show_customer_details_popop == "true" ? (
           <div className=" w-full h-[450px] flex flex-col items-center justify-center relative">
             <h1
               className={`text-lg  text-white sticky top-0 flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute  bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
@@ -860,9 +837,7 @@ function PremiumTemplate1({ preview }) {
 
                   axios
                     .post(
-                      `${apiKeys.server_url}/submit/customer-details/${
-                        cardDatas && cardDatas.clean_name
-                      }`,
+                      `${apiKeys.server_url}/submit/customer-details/${cardDatas.clean_name}`,
                       formDataObj
                     )
                     .then((response) => {
@@ -925,9 +900,7 @@ function PremiumTemplate1({ preview }) {
                         });
                       }, 1000);
                     }}
-                    class={`font-bold py-2 px-6 rounded-full text-white bg-${
-                      cardDatas && cardDatas.theme_color
-                    }-600`}
+                    class={`font-bold py-2 px-6 rounded-full text-white bg-${cardDatas.theme_color}-600`}
                   >
                     Submit Details
                   </button>
@@ -950,21 +923,19 @@ function PremiumTemplate1({ preview }) {
             About Us
           </h1>
           <h1 className=" text-xl font-medium ml-6 pr-12">
-            {cardDatas && cardDatas.since != "" ? (
-              <span className="  text-lg font-bold">
-                Est {cardDatas && cardDatas.since}
-              </span>
+            {cardDatas.since != "" ? (
+              <span className="  text-lg font-bold">Est {cardDatas.since}</span>
             ) : (
               ""
             )}
 
             <br />
-            {cardDatas && cardDatas.about}
+            {cardDatas.about}
           </h1>
 
           {/* Specialities */}
 
-          {cardDatas && cardDatas.specials != "" ? (
+          {cardDatas.specials != "" ? (
             <div className=" flex flex-col items-start ml-6 pr-12">
               <span
                 className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}
@@ -983,7 +954,7 @@ function PremiumTemplate1({ preview }) {
             ""
           )}
 
-          {cardDatas && cardDatas.features != "" ? (
+          {cardDatas.features != "" ? (
             <div className=" flex flex-col items-start ml-6 pr-12">
               <span
                 className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}
@@ -1190,7 +1161,12 @@ function PremiumTemplate1({ preview }) {
               })
               .map((data) => {
                 return (
-                  <video className="mb-8 rounded-lg" width="90%" controls src={data.replace(/^http:\/\//i, "https://")}></video>
+                  <video
+                    className="mb-8 rounded-lg"
+                    width="90%"
+                    controls
+                    src={data.replace(/^http:\/\//i, "https://")}
+                  ></video>
                 );
               })}
         </div>
@@ -1237,40 +1213,40 @@ function PremiumTemplate1({ preview }) {
             Payment Info
           </h1>
 
-          {cardDatas && cardDatas.paytm_number != "" ? (
+          {cardDatas.paytm_number != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Paytm Number
               </span>{" "}
-              <br /> {cardDatas && cardDatas.paytm_number}
+              <br /> {cardDatas.paytm_number}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.googlepay_number != "" ? (
+          {cardDatas.googlepay_number != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Google Pay Number
               </span>{" "}
-              <br /> {cardDatas && cardDatas.googlepay_number}
+              <br /> {cardDatas.googlepay_number}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.phonepe != "" ? (
+          {cardDatas.phonepe != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 PhonePe Number
               </span>{" "}
-              <br /> {cardDatas && cardDatas.phonepe}
+              <br /> {cardDatas.phonepe}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.googlepay_qrcode != "" ? (
+          {cardDatas.googlepay_qrcode != "" ? (
             <a href="#" className=" font-bold ml-6 mt-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 GooglePay QrCode
@@ -1288,7 +1264,7 @@ function PremiumTemplate1({ preview }) {
             ""
           )}
 
-          {cardDatas && cardDatas.paytm_qrcode != "" ? (
+          {cardDatas.paytm_qrcode != "" ? (
             <a href="#" className=" font-bold ml-6 mt-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Paytm QrCode
@@ -1306,7 +1282,7 @@ function PremiumTemplate1({ preview }) {
             ""
           )}
 
-          {cardDatas && cardDatas.phonepe_qrcode != "" ? (
+          {cardDatas.phonepe_qrcode != "" ? (
             <a href="#" className=" font-bold ml-6 mt-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 PhonePe QrCode
@@ -1334,57 +1310,57 @@ function PremiumTemplate1({ preview }) {
             Bank Details
           </h1>
 
-          {cardDatas && cardDatas.bank_name != "" ? (
+          {cardDatas.bank_name != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Bank Name
               </span>{" "}
-              <br /> {cardDatas && cardDatas.bank_name}
+              <br /> {cardDatas.bank_name}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.account_holder_name != "" ? (
+          {cardDatas.account_holder_name != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Accound Holder Name
               </span>{" "}
-              <br /> {cardDatas && cardDatas.account_holder_name}
+              <br /> {cardDatas.account_holder_name}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.bank_account_number != "" ? (
+          {cardDatas.bank_account_number != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Bank Accound Number
               </span>{" "}
               <br />
-              {cardDatas && cardDatas.bank_account_number}
+              {cardDatas.bank_account_number}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.bank_ifsc_code != "" ? (
+          {cardDatas.bank_ifsc_code != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">
                 Bank IFSC Code
               </span>{" "}
               <br />
-              {cardDatas && cardDatas.bank_ifsc_code}
+              {cardDatas.bank_ifsc_code}
             </a>
           ) : (
             ""
           )}
 
-          {cardDatas && cardDatas.gst != "" ? (
+          {cardDatas.gst != "" ? (
             <a href="#" className=" font-bold ml-6 mb-5">
               <span className=" text-slate-600 text-md font-medium">GST</span>{" "}
               <br />
-              {cardDatas && cardDatas.gst}
+              {cardDatas.gst}
             </a>
           ) : (
             ""
@@ -1494,15 +1470,11 @@ function PremiumTemplate1({ preview }) {
                   form.feedback.value = "";
 
                   axios.post(
-                    `${apiKeys.server_url}/update/feedback/${
-                      cardDatas && cardDatas.clean_name
-                    }`,
+                    `${apiKeys.server_url}/update/feedback/${cardDatas.clean_name}`,
                     obj
                   );
                 }}
-                class={`font-bold py-2 px-6 rounded-full text-white bg-${
-                  cardDatas && cardDatas.theme_color
-                }-600`}
+                class={`font-bold py-2 px-6 rounded-full text-white bg-${cardDatas.theme_color}-600`}
               >
                 Send Feedback
               </button>
@@ -1527,7 +1499,7 @@ function PremiumTemplate1({ preview }) {
             : "lg:w-[32.2%]"
         } w-full h-14 flex bg-${theme_color}-600 fixed bottom-0 overflow-scroll z-50`}
       >
-      <a
+        <a
           href="#home"
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
@@ -1601,7 +1573,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-          <ion-icon name="card-outline"></ion-icon>
+            <ion-icon name="card-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">
             Bank Details
@@ -1612,7 +1584,7 @@ function PremiumTemplate1({ preview }) {
           className=" nav-bottom h-full flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-          <ion-icon name="chatbubbles-outline"></ion-icon>
+            <ion-icon name="chatbubbles-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">Feedbacks</span>
         </a>

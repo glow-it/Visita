@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 function Terms() {
-
-    useEffect(()=> {
-        window.scrollTo(0,0)
-        document.title = "Terms of service - Visita"
-    },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Terms of service - Visita";
+  }, []);
 
   return (
-    <div className="bg-white font-medium py-44 lg:px-44 " >
-
-<Helmet >
-        <meta name="description" content={`Our Terms of Service govern your use of our website and the services we provide. By using our site, you agree to be bound by these terms and any additional terms that may apply.
+    <div className="bg-white font-medium py-44 lg:px-44 ">
+      <Helmet>
+        <title>Terms of service - Visita</title>
+        <meta
+          name="description"
+          content={`Our Terms of Service govern your use of our website and the services we provide. By using our site, you agree to be bound by these terms and any additional terms that may apply.
 
 You are responsible for ensuring that your use of our site complies with all applicable laws and regulations. You may not use our site for any illegal or unauthorized purposes.
 
@@ -28,10 +29,14 @@ By using our site, you agree to indemnify and hold us harmless from any claims, 
 
 These Terms of Service constitute the entire agreement between you and us regarding your use of our site. If any part of these terms is found to be invalid or unenforceable, the remaining provisions will remain in full force and effect.
 
-We may update these Terms of Service at any time, so please check back regularly for any changes. Your continued use of our site following any changes constitutes your acceptance of the new terms.`}  />
+We may update these Terms of Service at any time, so please check back regularly for any changes. Your continued use of our site following any changes constitutes your acceptance of the new terms.`}
+        />
       </Helmet>
-    
-      <div data-custom-class="body" className="lg:w-auto w-[100vw] lg:px-0 px-6 font-medium">
+
+      <div
+        data-custom-class="body"
+        className="lg:w-auto w-[100vw] lg:px-0 px-6 font-medium"
+      >
         <div align="center" style={{ textAlign: "left", lineHeight: 1 }}>
           <div
             align="center"
@@ -64,7 +69,9 @@ We may update these Terms of Service at any time, so please check back regularly
                     <strong>
                       <span style={{ lineHeight: "22.5px", fontSize: "26px" }}>
                         <bdt className="block-component" />
-                        <bdt className="question font-bold lg:text-6xl text-4xl flex w-full justify-center text-blue-600">Terms of Service</bdt>
+                        <bdt className="question font-bold lg:text-6xl text-4xl flex w-full justify-center text-blue-600">
+                          Terms of Service
+                        </bdt>
                         <bdt className="statement-end-if-in-editor" />
                       </span>
                     </strong>
@@ -4946,8 +4953,8 @@ We may update these Terms of Service at any time, so please check back regularly
                   </span>
                 </span>
               </span>
-              . <bdt className="question">Visita </bdt> and yourself
-              irrevocably consent that the courts of{" "}
+              . <bdt className="question">Visita </bdt> and yourself irrevocably
+              consent that the courts of{" "}
               <span
                 style={{
                   fontSize: "11pt",

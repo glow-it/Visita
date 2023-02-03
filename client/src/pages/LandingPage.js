@@ -23,7 +23,6 @@ function LandingPage() {
     window.location.href = "https://visitasmart.com/" + subdomain;
   }
 
-
   useEffect(() => {
     document.title =
       "Visita - Build Business Website In Minutes - No Coding Required.";

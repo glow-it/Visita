@@ -45,6 +45,38 @@ function BasicTemplate({ preview, cardDatas }) {
       );
     }
 
+    const head = document.head;
+
+    const metaTitle = document.createElement("meta");
+    metaTitle.setAttribute("property", "og:title");
+    metaTitle.setAttribute("content", cardDatas && cardDatas.company_name);
+    head.appendChild(metaTitle);
+
+    const metaDescription = document.createElement("meta");
+    metaDescription.setAttribute("property", "og:description");
+    metaDescription.setAttribute(
+      "content",
+      cardDatas && cardDatas.tagline != ""
+        ? cardDatas && cardDatas.tagline
+        : "Website"
+    );
+    head.appendChild(metaDescription);
+
+    const metaImage = document.createElement("meta");
+    metaImage.setAttribute("property", "og:image");
+    metaImage.setAttribute("content", cardDatas && cardDatas.logo);
+    head.appendChild(metaImage);
+
+    const metaUrl = document.createElement("meta");
+    metaUrl.setAttribute("property", "og:url");
+    metaUrl.setAttribute(
+      "content",
+      cardDatas && cardDatas.isPremium == "true"
+        ? cardDatas && cardDatas.clean_name + ".visitasmart.com"
+        : "visitasmart.com/" + cardDatas && cardDatas.clean_name
+    );
+    head.appendChild(metaUrl);
+
     // Set Manifest Dynamically
 
     reactManifest.update(
@@ -284,19 +316,19 @@ function BasicTemplate({ preview, cardDatas }) {
 
             <div className=" container  w-full">
               <div className=" w-full mt-12 pt-12 px-8 flex flex-col items-center justify-center">
-                {
-                  cardDatas && cardDatas.logo != ""?
+                {cardDatas && cardDatas.logo != "" ? (
                   <img
-                  id="logo"
-                  src={
-                    cardDatas.logo &&
-                    cardDatas.logo.replace(/^http:\/\//i, "https://")
-                  }
-                  alt="Dp-Template-1"
-                  className={`logo  rounded-full ring-4 ring-offset-4 ring-${theme_color}-600`}
-                />
-                : ''
-                }
+                    id="logo"
+                    src={
+                      cardDatas.logo &&
+                      cardDatas.logo.replace(/^http:\/\//i, "https://")
+                    }
+                    alt="Dp-Template-1"
+                    className={`logo  rounded-full ring-4 ring-offset-4 ring-${theme_color}-600`}
+                  />
+                ) : (
+                  ""
+                )}
 
                 <div className=" w-full h-full flex flex-col items-center">
                   <h1 className="capitalize text-black text-3xl font-bold ml-4 mt-6">
@@ -1340,7 +1372,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full border-r cursor-pointer flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-          <ion-icon name="card-outline"></ion-icon>
+            <ion-icon name="card-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">
             Bank Details
@@ -1351,7 +1383,7 @@ function BasicTemplate({ preview, cardDatas }) {
           className=" nav-bottom h-full flex flex-col items-center pt-2"
         >
           <span className=" text-white text-xl">
-          <ion-icon name="chatbubbles-outline"></ion-icon>
+            <ion-icon name="chatbubbles-outline"></ion-icon>
           </span>
           <span className=" font-bold -mt- text-xs text-white">Feedbacks</span>
         </a>

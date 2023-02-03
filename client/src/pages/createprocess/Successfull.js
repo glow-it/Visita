@@ -7,6 +7,7 @@ import { Toast } from "../../miniComponents/Toast";
 import * as htmlToImage from "html-to-image";
 import apiKeys from "../../Api/apiKeys";
 import ConfettiGenerator from "confetti-js";
+import Loading from "../../miniComponents/Loading";
 
 function Successfull() {
   // Function To Capitalize Strings
@@ -21,6 +22,7 @@ function Successfull() {
   let comp_name_clean = comp_name.replace(/[-]/g, " ");
   let [cardDatas, setCardDatas] = useState([]);
   let [tooltipIsOpen, setTooltipIsOpen] = useState(false);
+  let [isLoading, setIsLoading] = useState(true);
   let navigate = useNavigate();
   let base_url = "visitasmart.com/";
   let manage_card_url = base_url + "manage/" + cardDatas.clean_name;
@@ -45,9 +47,11 @@ function Successfull() {
       .get(`${apiKeys.server_url}/card/` + comp_name)
       .then((response) => {
         setCardDatas(response.data);
+
         if (!response.data.activated) {
           navigate("/create/preview/" + comp_name);
         } else {
+          setIsLoading(false);
         }
       })
       .catch((err) => {
@@ -56,17 +60,25 @@ function Successfull() {
   }, []);
 
   let share_whatsapp_url = `https://api.whatsapp.com/send?text=${
-    cardDatas.clean_name + ".visitasmart.com"
+    cardDatas && cardDatas.isPremium == "true"
+      ? cardDatas.clean_name + ".visitasmart.com"
+      : "visitasmart.com/" + cardDatas.clean_name
   }`;
   let share_sms_url = `sms:?body=${cardDatas.clean_name + ".visitasmart.com"}`;
   let share_facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${
-    cardDatas.clean_name + ".visitasmart.com"
+    cardDatas && cardDatas.isPremium == "true"
+      ? cardDatas.clean_name + ".visitasmart.com"
+      : "visitasmart.com/" + cardDatas.clean_name
   }`;
   let share_twitter_url = `https://twitter.com/intent/tweet?text=${
-    cardDatas.clean_name + ".visitasmart.com"
+    cardDatas && cardDatas.isPremium == "true"
+      ? cardDatas.clean_name + ".visitasmart.com"
+      : "visitasmart.com/" + cardDatas.clean_name
   }`;
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${
-    cardDatas.clean_name + ".visitasmart.com"
+    cardDatas && cardDatas.isPremium == "true"
+      ? cardDatas.clean_name + ".visitasmart.com"
+      : "visitasmart.com/" + cardDatas.clean_name
   }`;
 
   // Download QR Code
@@ -120,10 +132,15 @@ function Successfull() {
   }, []);
 
   return (
-    <div>
-      <canvas id="confetti-canvas" className="fixed -top-96 z-50"></canvas>
-      <div className="z-10">
-        <div className="w-full h-12 flex items-center lg:px-96 px-4">
+    <div className=" w-screen">
+      <Loading isLoading={isLoading} />
+
+      <canvas
+        id="confetti-canvas"
+        className="fixed -top-96 z-50 flex justify-center"
+      ></canvas>
+      <div className="z-10 bg-blue-50/50 w-full flex flex-col items-center">
+        <div className="w-full h-12 flex items-center lg:px-96 px-4 ">
           {cardDatas && cardDatas.franchisee != "no franchisee" ? (
             <Link
               to="/franchisee"
@@ -178,21 +195,25 @@ function Successfull() {
 
         <div
           id="qrcode_div"
-          className="overflow-y-scroll pb-32 h-screen z-10 w-full flex flex-col items-center lg:px-64 px-4 pt-16 "
+          className="overflow-y-scroll lg:w-[500px] bg-white pb-32 h-screen z-10 w-full flex flex-col items-center  px-4 pt-16 "
         >
-          <h1 className="text-4xl font-bold mb-6 ">Send website</h1>
+          <h1 className="text-7xl font-bold mb-2 text-green-500">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </h1>
+          <h1 className="text-3xl font-bold mb-6 ">Share website</h1>
           <div
-            className={`lg:px-10 lg:py-1 py-2 px-6 mb-8 z-10 h-12 bg-${"purple"}-50 flex items-center justify-center border border-${"purple"}-600 text-${"purple"}-600 rounded-full`}
+            className={` lg:py-4 py-4 w-full mb-8 z-10 h-12 bg-${"purple"}-50 flex items-center justify-center  text-${"purple"}-600 `}
           >
             <h1
               id="website_url_text_successfull"
-              className="font-medium lg:text-xl text-center"
+              className="font-medium lg:text-xl text-center flex"
             >
               {cardDatas && cardDatas.isPremium == "true"
                 ? cardDatas.clean_name + ".visitasmart.com"
                 : "visitasmart.com/" + cardDatas.clean_name}
 
               <Tooltip
+                className="font-medium"
                 isOpen={tooltipIsOpen}
                 hasArrow
                 px="4"
@@ -203,8 +224,7 @@ function Successfull() {
                 label="click to copy"
                 placement="right"
               >
-                <i
-                  class={`fa-solid fa-copy text-${"purple"}-900 cursor-pointer ml-3`}
+                <span
                   onClick={() => {
                     navigator.clipboard.writeText(
                       document.getElementById("website_url_text_successfull")
@@ -213,12 +233,15 @@ function Successfull() {
 
                     Toast({
                       status: "success",
-                      title: "Copied!",
+                      title: "Copied",
                       postition: "top",
                       toast,
                     });
                   }}
-                ></i>
+                  className="flex items-center justify-center ml-2 cursor-pointer"
+                >
+                  <ion-icon name="copy-outline"></ion-icon>
+                </span>
               </Tooltip>
             </h1>
             <div
@@ -234,15 +257,15 @@ function Successfull() {
 
           <div
             id="qr-code-design"
-            className={`lg:w-[40%] lg:px-0 px-6 transition-all flex-col  relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${"purple"}-600   z-10 flex items-center justify-center`}
+            className={` lg:px-0 px-6 transition-all flex-col  relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${"purple"}-50   z-10 flex items-center  justify-center`}
           >
             <div
-              className={`w-full h-28 absolute top-0 lg:rounded-t-2xl rounded-t-xl lg:rounded-b bg-${
+              className={`w-full h-28 absolute top-0  bg-${
                 cardDatas && cardDatas.theme_color
               }-600 text-white  flex items-center justify-center`}
             >
               <h1 className="font-bold text-4xl capitalize">
-                {clean_compname}
+                {cardDatas && cardDatas.company_name}
               </h1>
             </div>
 
@@ -254,7 +277,7 @@ function Successfull() {
                 id="qr-code"
                 enableCORS={true}
                 value={`https://www.visitasmart.com/${comp_name}`}
-                eyeRadius={20}
+                eyeRadius={15}
                 logoImage={cardDatas && cardDatas.logo}
                 logoWidth={60}
                 logoHeight={60}
@@ -272,13 +295,9 @@ function Successfull() {
                   : "visitasmart.com/" + cardDatas.clean_name}
               </h1>
             </div>
-
-            <h1 className="font-bold text-xl text-center mt-6 text-white ">
-              Scan this qrcode to <br /> go to our website
-            </h1>
           </div>
 
-          <div className="lg:w-[50%] w-full mt-16 h-32 flex flex-col items-center justify-center z-10">
+          <div className="lg:w-[70%] w-full mt-16 h-32 flex flex-col items-center justify-center z-10">
             <button
               onClick={() =>
                 window.open(
@@ -291,116 +310,79 @@ function Successfull() {
             </button>
 
             <button
-              onMouseEnter={() => {
-                document
-                  .getElementById("qr_code_wrapper")
-                  .classList.add(
-                    "ring-4",
-                    `ring-${"purple"}-800`,
-                    "ring-offset-2"
-                  );
-              }}
-              onMouseLeave={() => {
-                document
-                  .getElementById("qr_code_wrapper")
-                  .classList.remove(
-                    "ring-4",
-                    `ring-${"purple"}-800`,
-                    "ring-offset-2"
-                  );
-              }}
               onClick={() => downloadQrCode()}
               className="relative flex items-center justify-center py-3 w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"
             >
               <span className=" absolute left-6 flex items-center justify-center">
                 <ion-icon name="arrow-down-outline"></ion-icon>
               </span>{" "}
-              Download QRCODE
+              Download Qrcode
             </button>
 
             <button
-              onMouseEnter={() => {
-                document
-                  .getElementById("qr-code-design")
-                  .classList.replace("ring-2", "ring-4");
-              }}
-              onMouseLeave={() => {
-                document
-                  .getElementById("qr-code-design")
-                  .classList.replace("ring-4", "ring-2");
-              }}
               onClick={() => downloadQrCodeDesign()}
               className="relative py-3 flex items-center justify-center w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"
             >
               <span className=" absolute left-6  flex items-center justify-center">
                 <ion-icon name="arrow-down-outline"></ion-icon>
               </span>
-              Download QRCODE design
+              Download Qrcode Design
             </button>
           </div>
 
           <div className="w-50 z-10 h-16 mt-16 flex items-center justify-center">
-            <a href={share_facebook_url}>
+            <a
+              className="bg-indigo-600 hover:bg-indigo-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              href={share_facebook_url}
+            >
               {" "}
-              <i class="fa-brands text-indigo-600 hover:text-indigo-900 text-4xl fa-facebook mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+              <i class="fa-brands fa-facebook  cursor-pointer  "></i>
             </a>
 
-            <a href={share_twitter_url}>
+            <a
+              className="bg-blue-600 hover:bg-blue-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              href={share_twitter_url}
+            >
               {" "}
-              <i class="fa-brands text-blue-500 hover:text-blue-900 text-4xl fa-twitter mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+              <i class="fa-brands  fa-twitter  cursor-pointer "></i>
             </a>
 
-            <a href={share_linkedin_url}>
+            <a
+              className="bg-sky-600 hover:bg-sky-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              href={share_linkedin_url}
+            >
               {" "}
-              <i class="fa-brands text-sky-600 hover:text-sky-900 text-4xl fa-linkedin mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+              <i class="fa-brands  fa-linkedin  cursor-pointer "></i>
             </a>
 
-            <a href={share_whatsapp_url}>
+            <a
+              className="bg-green-600 hover:bg-green-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              href={share_whatsapp_url}
+            >
               {" "}
-              <i class="fa-brands text-green-600 hover:text-green-900 text-4xl fa-whatsapp mr-6 cursor-pointer hover:scale-110 transition-transform"></i>
+              <i class="fa-brands  fa-whatsapp  cursor-pointer "></i>
             </a>
 
-            <a href={share_sms_url}>
+            <a
+              className="bg-slate-900 hover:bg-slate-700 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              href={share_sms_url}
+            >
               {" "}
-              <i class="fa-solid text-stone-600 hover:text-stone-900 text-4xl fa-envelope cursor-pointer hover:scale-110 transition-transform"></i>
+              <i class="fa-solid fa-envelope cursor-pointer "></i>
             </a>
           </div>
 
           <div className="flex z-10 flex-col items-center mt-20 pb-20 bg-slate-900 text-white">
-            <h1 className="lg:text-3xl text-xl font-bold mb-6 mt-10 ">
+            <h1 className="lg:text-xl text-xl font-bold mb-6 mt-10 ">
               Manage or edit your website
             </h1>
 
-            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
+            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-800 flex items-center justify-center   text-white ">
               <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
                 <h1>Website manage link</h1>
               </div>
               <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center">
                 {manage_card_url}
-
-                <Tooltip
-                  px="4"
-                  bg="black"
-                  py="2"
-                  color="white"
-                  rounded="xl"
-                  label="click to copy"
-                  placement="right"
-                >
-                  <i
-                    class="fa-solid fa-copy text-indigo-900 cursor-pointer ml-3"
-                    onClick={() => {
-                      navigator.clipboard.writeText(manage_card_url);
-
-                      Toast({
-                        status: "success",
-                        title: "Copied!",
-                        postition: "top",
-                        toast,
-                      });
-                    }}
-                  ></i>
-                </Tooltip>
               </h1>
               <div
                 id="tooltip-light"
@@ -413,7 +395,7 @@ function Successfull() {
               </div>
             </div>
 
-            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-800 flex items-center justify-center   text-white lg:rounded-b-xl rounded-xl">
+            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-800 flex items-center justify-center   text-white ">
               <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
                 <h1>Website password</h1>
               </div>

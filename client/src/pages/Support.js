@@ -18,6 +18,7 @@ function Support() {
   return (
     <div className=" w-full bg-white flex flex-col items-center overflow-scroll pb-56">
       <Helmet>
+        <title>Support - Visita</title>
         <meta
           name="description"
           content="
@@ -42,7 +43,14 @@ function Support() {
           data-aos-delay="100"
           className="font-medium  text-xl lg:mt-10 mt-4 lg:text-start text-center"
         >
-          At this time you can ask us your needs or problems. <Link to="/terms" className="underline text-indigo-500 cursor-pointer ml-1" > Terms of service</Link>
+          At this time you can ask us your needs or problems.{" "}
+          <Link
+            to="/terms"
+            className="underline text-indigo-500 cursor-pointer ml-1"
+          >
+            {" "}
+            Terms of service
+          </Link>
         </p>
       </div>
 
@@ -168,7 +176,6 @@ function Support() {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }

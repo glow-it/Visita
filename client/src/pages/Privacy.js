@@ -2,32 +2,41 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 function Privacy() {
-
-    useEffect(() => {
-    window.scrollTo(0,0)
-    document.title = "Privacy Policy - Visita"
-    }, [])
-    
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Privacy Policy - Visita";
+  }, []);
 
   return (
-    <div className=" pt-44  pb-44 flex flex-col px-44 items-center font-medium " >
-
-      <Helmet >
-        <meta name="description" content="Our Privacy Policy outlines how we collect, use, and protect your personal information. We respect your privacy and are committed to maintaining the confidentiality of your data. We only collect information that is necessary for providing you with our services and improving your user experience. This information includes, but is not limited to, your name, email address, and any other information you voluntarily provide. We use this information to communicate with you, provide customer support, and improve our services. We do not sell or share your information with third parties. We implement appropriate security measures to protect your information from unauthorized access or theft. By using our website, you consent to our Privacy Policy. If you have any questions or concerns, please contact us."  />
+    <div className=" pt-44  pb-44 flex flex-col px-44 items-center font-medium ">
+      <Helmet>
+        <title>Privacy Policy - Visita</title>
+        <meta
+          name="description"
+          content="Our Privacy Policy outlines how we collect, use, and protect your personal information. We respect your privacy and are committed to maintaining the confidentiality of your data. We only collect information that is necessary for providing you with our services and improving your user experience. This information includes, but is not limited to, your name, email address, and any other information you voluntarily provide. We use this information to communicate with you, provide customer support, and improve our services. We do not sell or share your information with third parties. We implement appropriate security measures to protect your information from unauthorized access or theft. By using our website, you consent to our Privacy Policy. If you have any questions or concerns, please contact us."
+        />
       </Helmet>
 
-      <div data-custom-class="body" className="lg:w-auto w-[100vw] lg:px-0 px-6" >
-        <div className="w-full flex justify-center" >
+      <div
+        data-custom-class="body"
+        className="lg:w-auto w-[100vw] lg:px-0 px-6"
+      >
+        <div className="w-full flex justify-center">
           <strong>
             <span style={{ fontSize: "26px" }}>
-              <span data-custom-class="title" className="lg:text-7xl text-5xl  font-bold text-blue-600">Privacy Policy</span>
+              <span
+                data-custom-class="title"
+                className="lg:text-7xl text-5xl  font-bold text-blue-600"
+              >
+                Privacy Policy
+              </span>
             </span>
           </strong>
         </div>
         <div>
           <br />
         </div>
-        <div className="w-full flex justify-center" >
+        <div className="w-full flex justify-center">
           <span style={{ color: "rgb(127, 127, 127)" }}>
             <strong>
               <span style={{ fontSize: "15px" }}>
@@ -88,7 +97,7 @@ function Privacy() {
             </span>
           </span>
         </div>
-        <ul >
+        <ul>
           <li style={{ lineHeight: "1.5" }}>
             <span style={{ fontSize: "15px", color: "rgb(89, 89, 89)" }}>
               <span style={{ fontSize: "15px", color: "rgb(89, 89, 89)" }}>
@@ -209,30 +218,24 @@ function Privacy() {
             <span style={{ fontSize: "15px" }}>
               <span data-custom-class="body_text">
                 <strong>
-                  
-                    This summary provides key points from our privacy notice,
-                    but you can find out more details about any of these topics
-                    by clicking the link following each key point or by using
-                    our table of contents below to find the section you are
-                    looking for. You can also click&nbsp;
-                  
+                  This summary provides key points from our privacy notice, but
+                  you can find out more details about any of these topics by
+                  clicking the link following each key point or by using our
+                  table of contents below to find the section you are looking
+                  for. You can also click&nbsp;
                 </strong>
               </span>
             </span>
             <a data-custom-class="link" href="#toc">
               <span style={{ fontSize: "15px" }}>
                 <span data-custom-class="body_text">
-                  <strong>
-                    here
-                  </strong>
+                  <strong>here</strong>
                 </span>
               </span>
             </a>
             <span style={{ fontSize: "15px" }}>
               <span data-custom-class="body_text">
-                <strong>
-                  &nbsp;to go directly to our table of contents.
-                </strong>
+                <strong>&nbsp;to go directly to our table of contents.</strong>
               </span>
             </span>
           </div>
@@ -729,9 +732,7 @@ function Privacy() {
                         style={{ fontSize: "15px", color: "rgb(89, 89, 89)" }}
                       >
                         <span data-custom-class="body_text">
-                          <strong>
-                            In Short:
-                          </strong>
+                          <strong>In Short:</strong>
                         </span>
                       </span>
                     </span>
@@ -744,13 +745,9 @@ function Privacy() {
                         style={{ fontSize: "15px", color: "rgb(89, 89, 89)" }}
                       >
                         <span data-custom-class="body_text">
-                          <strong>
-                            &nbsp;
-                          </strong>
-                          
-                            We collect personal information that you provide to
-                            us.
-                          
+                          <strong>&nbsp;</strong>
+                          We collect personal information that you provide to
+                          us.
                         </span>
                       </span>
                     </span>
@@ -1350,16 +1347,12 @@ function Privacy() {
                         style={{ fontSize: "15px", color: "rgb(89, 89, 89)" }}
                       >
                         <span data-custom-class="body_text">
-                          <strong>
-                            In Short:&nbsp;
-                          </strong>
-                          
-                            We process your information to provide, improve, and
-                            administer our Services, communicate with you, for
-                            security and fraud prevention, and to comply with
-                            law. We may also process your information for other
-                            purposes with your consent.
-                          
+                          <strong>In Short:&nbsp;</strong>
+                          We process your information to provide, improve, and
+                          administer our Services, communicate with you, for
+                          security and fraud prevention, and to comply with law.
+                          We may also process your information for other
+                          purposes with your consent.
                         </span>
                       </span>
                     </span>
@@ -1804,48 +1797,46 @@ function Privacy() {
                                                         lineHeight: "1.5",
                                                       }}
                                                     >
-                                                      
-                                                        <span
-                                                          style={{
-                                                            fontSize: "15px",
-                                                          }}
-                                                        >
-                                                          <span data-custom-class="body_text">
-                                                            <strong>
-                                                              In Short:&nbsp;
-                                                            </strong>
-                                                            We only process your
-                                                            personal information
-                                                            when we believe it
-                                                            is necessary and we
-                                                            have a valid legal
-                                                            reason (i.e.
-                                                            <bdt className="block-component" />
-                                                            ,
-                                                            <bdt className="statement-end-if-in-editor" />{" "}
-                                                            legal basis) to do
-                                                            so under applicable
-                                                            law, like with your
-                                                            consent, to comply
-                                                            with laws, to
-                                                            provide you with
-                                                            services to enter
-                                                            into or{" "}
-                                                            <bdt className="block-component" />
-                                                            fulfill
-                                                            <bdt className="statement-end-if-in-editor" />{" "}
-                                                            our contractual
-                                                            obligations, to
-                                                            protect your rights,
-                                                            or to{" "}
-                                                            <bdt className="block-component" />
-                                                            fulfill
-                                                            <bdt className="statement-end-if-in-editor" />{" "}
-                                                            our legitimate
-                                                            business interests.
-                                                          </span>
+                                                      <span
+                                                        style={{
+                                                          fontSize: "15px",
+                                                        }}
+                                                      >
+                                                        <span data-custom-class="body_text">
+                                                          <strong>
+                                                            In Short:&nbsp;
+                                                          </strong>
+                                                          We only process your
+                                                          personal information
+                                                          when we believe it is
+                                                          necessary and we have
+                                                          a valid legal reason
+                                                          (i.e.
+                                                          <bdt className="block-component" />
+                                                          ,
+                                                          <bdt className="statement-end-if-in-editor" />{" "}
+                                                          legal basis) to do so
+                                                          under applicable law,
+                                                          like with your
+                                                          consent, to comply
+                                                          with laws, to provide
+                                                          you with services to
+                                                          enter into or{" "}
+                                                          <bdt className="block-component" />
+                                                          fulfill
+                                                          <bdt className="statement-end-if-in-editor" />{" "}
+                                                          our contractual
+                                                          obligations, to
+                                                          protect your rights,
+                                                          or to{" "}
+                                                          <bdt className="block-component" />
+                                                          fulfill
+                                                          <bdt className="statement-end-if-in-editor" />{" "}
+                                                          our legitimate
+                                                          business interests.
                                                         </span>
-                                                      
+                                                      </span>
+
                                                       <span
                                                         style={{
                                                           fontSize: "15px",
@@ -1871,25 +1862,23 @@ function Privacy() {
                                                         lineHeight: "1.5",
                                                       }}
                                                     >
-                                                      
-                                                        <span
-                                                          style={{
-                                                            fontSize: "15px",
-                                                          }}
-                                                        >
-                                                          <span data-custom-class="body_text">
-                                                            <strong>
-                                                              <u>
-                                                                If you are
-                                                                located in the
-                                                                EU or UK, this
-                                                                section applies
-                                                                to you.
-                                                              </u>
-                                                            </strong>
-                                                          </span>
+                                                      <span
+                                                        style={{
+                                                          fontSize: "15px",
+                                                        }}
+                                                      >
+                                                        <span data-custom-class="body_text">
+                                                          <strong>
+                                                            <u>
+                                                              If you are located
+                                                              in the EU or UK,
+                                                              this section
+                                                              applies to you.
+                                                            </u>
+                                                          </strong>
                                                         </span>
-                                                      
+                                                      </span>
+
                                                       <span
                                                         style={{
                                                           fontSize: "15px",
@@ -2416,19 +2405,16 @@ function Privacy() {
                                                                     >
                                                                       <strong>
                                                                         <u>
-                                                                          
-                                                                            If
-                                                                            you
-                                                                            are
-                                                                            located
-                                                                            in
-                                                                            Canada,
-                                                                            this
-                                                                            section
-                                                                            applies
-                                                                            to
-                                                                            you.
-                                                                          
+                                                                          If you
+                                                                          are
+                                                                          located
+                                                                          in
+                                                                          Canada,
+                                                                          this
+                                                                          section
+                                                                          applies
+                                                                          to
+                                                                          you.
                                                                         </u>
                                                                       </strong>
                                                                       <bdt className="statement-end-if-in-editor" />
@@ -3278,31 +3264,25 @@ function Privacy() {
                                                                     >
                                                                       <span data-custom-class="body_text">
                                                                         <strong>
-                                                                          
-                                                                            In
-                                                                            Short:
-                                                                          
+                                                                          In
+                                                                          Short:
                                                                         </strong>
-                                                                        
-                                                                          &nbsp;We
-                                                                          may
-                                                                          share
-                                                                          information
-                                                                          in
-                                                                          specific
-                                                                          situations
-                                                                          described
-                                                                          in
-                                                                          this
-                                                                          section
-                                                                          and/or
-                                                                          with
-                                                                          the
-                                                                          following{" "}
-                                                                          <bdt className="block-component" />
-                                                                          third
-                                                                          parties.
-                                                                        
+                                                                        &nbsp;We
+                                                                        may
+                                                                        share
+                                                                        information
+                                                                        in
+                                                                        specific
+                                                                        situations
+                                                                        described
+                                                                        in this
+                                                                        section
+                                                                        and/or
+                                                                        with the
+                                                                        following{" "}
+                                                                        <bdt className="block-component" />
+                                                                        third
+                                                                        parties.
                                                                       </span>
                                                                     </span>
                                                                   </span>
@@ -3772,27 +3752,23 @@ function Privacy() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <strong>
-                                                                                  
-                                                                                    In
-                                                                                    Short:
-                                                                                  
+                                                                                  In
+                                                                                  Short:
                                                                                 </strong>
-                                                                                
-                                                                                  &nbsp;We
-                                                                                  may
-                                                                                  use
-                                                                                  cookies
-                                                                                  and
-                                                                                  other
-                                                                                  tracking
-                                                                                  technologies
-                                                                                  to
-                                                                                  collect
-                                                                                  and
-                                                                                  store
-                                                                                  your
-                                                                                  information.
-                                                                                
+                                                                                &nbsp;We
+                                                                                may
+                                                                                use
+                                                                                cookies
+                                                                                and
+                                                                                other
+                                                                                tracking
+                                                                                technologies
+                                                                                to
+                                                                                collect
+                                                                                and
+                                                                                store
+                                                                                your
+                                                                                information.
                                                                               </span>
                                                                             </span>
                                                                           </span>
@@ -3878,6 +3854,7 @@ function Privacy() {
                                                                                 >
                                                                                   <span data-custom-class="body_text">
                                                                                     <bdt className="block-component" />
+
                                                                                     .
                                                                                   </span>
                                                                                   <span
@@ -4092,38 +4069,34 @@ function Privacy() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <strong>
-                                                                                  
-                                                                                    In
-                                                                                    Short:&nbsp;
-                                                                                  
+                                                                                  In
+                                                                                  Short:&nbsp;
                                                                                 </strong>
-                                                                                
-                                                                                  We
-                                                                                  keep
-                                                                                  your
-                                                                                  information
-                                                                                  for
-                                                                                  as
-                                                                                  long
-                                                                                  as
-                                                                                  necessary
-                                                                                  to{" "}
-                                                                                  <bdt className="block-component" />
-                                                                                  fulfill
-                                                                                  <bdt className="statement-end-if-in-editor" />{" "}
-                                                                                  the
-                                                                                  purposes
-                                                                                  outlined
-                                                                                  in
-                                                                                  this
-                                                                                  privacy
-                                                                                  notice
-                                                                                  unless
-                                                                                  otherwise
-                                                                                  required
-                                                                                  by
-                                                                                  law.
-                                                                                
+                                                                                We
+                                                                                keep
+                                                                                your
+                                                                                information
+                                                                                for
+                                                                                as
+                                                                                long
+                                                                                as
+                                                                                necessary
+                                                                                to{" "}
+                                                                                <bdt className="block-component" />
+                                                                                fulfill
+                                                                                <bdt className="statement-end-if-in-editor" />{" "}
+                                                                                the
+                                                                                purposes
+                                                                                outlined
+                                                                                in
+                                                                                this
+                                                                                privacy
+                                                                                notice
+                                                                                unless
+                                                                                otherwise
+                                                                                required
+                                                                                by
+                                                                                law.
                                                                               </span>
                                                                             </span>
                                                                           </span>
@@ -4265,6 +4238,7 @@ function Privacy() {
                                                                                     </span>
                                                                                   </span>
                                                                                 </span>
+
                                                                                 .
                                                                               </span>
                                                                             </span>
@@ -4475,31 +4449,27 @@ function Privacy() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <strong>
-                                                                                  
-                                                                                    In
-                                                                                    Short:&nbsp;
-                                                                                  
+                                                                                  In
+                                                                                  Short:&nbsp;
                                                                                 </strong>
-                                                                                
-                                                                                  We
-                                                                                  aim
-                                                                                  to
-                                                                                  protect
-                                                                                  your
-                                                                                  personal
-                                                                                  information
-                                                                                  through
-                                                                                  a
-                                                                                  system
-                                                                                  of{" "}
-                                                                                  <bdt className="block-component" />
-                                                                                  organizational
-                                                                                  <bdt className="statement-end-if-in-editor" />{" "}
-                                                                                  and
-                                                                                  technical
-                                                                                  security
-                                                                                  measures.
-                                                                                
+                                                                                We
+                                                                                aim
+                                                                                to
+                                                                                protect
+                                                                                your
+                                                                                personal
+                                                                                information
+                                                                                through
+                                                                                a
+                                                                                system
+                                                                                of{" "}
+                                                                                <bdt className="block-component" />
+                                                                                organizational
+                                                                                <bdt className="statement-end-if-in-editor" />{" "}
+                                                                                and
+                                                                                technical
+                                                                                security
+                                                                                measures.
                                                                               </span>
                                                                             </span>
                                                                           </span>
@@ -4779,32 +4749,28 @@ function Privacy() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <strong>
-                                                                                  
-                                                                                    In
-                                                                                    Short:
-                                                                                  
+                                                                                  In
+                                                                                  Short:
                                                                                 </strong>
-                                                                                
-                                                                                  &nbsp;We
-                                                                                  do
-                                                                                  not
-                                                                                  knowingly
-                                                                                  collect
-                                                                                  data
-                                                                                  from
-                                                                                  or
-                                                                                  market
-                                                                                  to{" "}
-                                                                                  <bdt className="block-component" />
-                                                                                  children
-                                                                                  under
-                                                                                  18
-                                                                                  years
-                                                                                  of
-                                                                                  age
-                                                                                  <bdt className="else-block" />
-                                                                                  .
-                                                                                
+                                                                                &nbsp;We
+                                                                                do
+                                                                                not
+                                                                                knowingly
+                                                                                collect
+                                                                                data
+                                                                                from
+                                                                                or
+                                                                                market
+                                                                                to{" "}
+                                                                                <bdt className="block-component" />
+                                                                                children
+                                                                                under
+                                                                                18
+                                                                                years
+                                                                                of
+                                                                                age
+                                                                                <bdt className="else-block" />
+                                                                                .
                                                                                 <bdt className="block-component" />
                                                                               </span>
                                                                             </span>
@@ -4961,6 +4927,7 @@ function Privacy() {
                                                                                     <bdt className="else-block" />
                                                                                   </span>
                                                                                 </span>
+
                                                                                 .
                                                                               </span>
                                                                               <span data-custom-class="body_text">
@@ -5069,97 +5036,90 @@ function Privacy() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <strong>
-                                                                                  
-                                                                                    In
-                                                                                    Short:
-                                                                                  
-                                                                                </strong>
-                                                                                
-                                                                                  &nbsp;
-                                                                                  <span
-                                                                                    style={{
-                                                                                      color:
-                                                                                        "rgb(89, 89, 89)",
-                                                                                    }}
-                                                                                  >
-                                                                                    <span
-                                                                                      style={{
-                                                                                        fontSize:
-                                                                                          "15px",
-                                                                                      }}
-                                                                                    >
-                                                                                      <span data-custom-class="body_text">
-                                                                                        
-                                                                                          <bdt className="block-component" />
-                                                                                        
-                                                                                      </span>
-                                                                                    </span>
-                                                                                  </span>
                                                                                   In
-                                                                                  some
-                                                                                  regions,
-                                                                                  such
-                                                                                  as{" "}
-                                                                                  <bdt className="block-component" />
-                                                                                  the
-                                                                                  European
-                                                                                  Economic
-                                                                                  Area
-                                                                                  (EEA),
-                                                                                  United
-                                                                                  Kingdom
-                                                                                  (UK),
-                                                                                  and
-                                                                                  Canada
-                                                                                  <bdt className="block-component" />
-                                                                                  ,
-                                                                                  you
-                                                                                  have
-                                                                                  rights
-                                                                                  that
-                                                                                  allow
-                                                                                  you
-                                                                                  greater
-                                                                                  access
-                                                                                  to
-                                                                                  and
-                                                                                  control
-                                                                                  over
-                                                                                  your
-                                                                                  personal
-                                                                                  information.
+                                                                                  Short:
+                                                                                </strong>
+                                                                                &nbsp;
+                                                                                <span
+                                                                                  style={{
+                                                                                    color:
+                                                                                      "rgb(89, 89, 89)",
+                                                                                  }}
+                                                                                >
                                                                                   <span
                                                                                     style={{
-                                                                                      color:
-                                                                                        "rgb(89, 89, 89)",
+                                                                                      fontSize:
+                                                                                        "15px",
                                                                                     }}
                                                                                   >
-                                                                                    <span
-                                                                                      style={{
-                                                                                        fontSize:
-                                                                                          "15px",
-                                                                                      }}
-                                                                                    >
-                                                                                      <span data-custom-class="body_text">
-                                                                                        
-                                                                                          <bdt className="statement-end-if-in-editor" />
-                                                                                        
-                                                                                      </span>
+                                                                                    <span data-custom-class="body_text">
+                                                                                      <bdt className="block-component" />
                                                                                     </span>
-                                                                                    &nbsp;
                                                                                   </span>
-                                                                                  You
-                                                                                  may
-                                                                                  review,
-                                                                                  change,
-                                                                                  or
-                                                                                  terminate
-                                                                                  your
-                                                                                  account
-                                                                                  at
-                                                                                  any
-                                                                                  time.
-                                                                                
+                                                                                </span>
+                                                                                In
+                                                                                some
+                                                                                regions,
+                                                                                such
+                                                                                as{" "}
+                                                                                <bdt className="block-component" />
+                                                                                the
+                                                                                European
+                                                                                Economic
+                                                                                Area
+                                                                                (EEA),
+                                                                                United
+                                                                                Kingdom
+                                                                                (UK),
+                                                                                and
+                                                                                Canada
+                                                                                <bdt className="block-component" />
+
+                                                                                ,
+                                                                                you
+                                                                                have
+                                                                                rights
+                                                                                that
+                                                                                allow
+                                                                                you
+                                                                                greater
+                                                                                access
+                                                                                to
+                                                                                and
+                                                                                control
+                                                                                over
+                                                                                your
+                                                                                personal
+                                                                                information.
+                                                                                <span
+                                                                                  style={{
+                                                                                    color:
+                                                                                      "rgb(89, 89, 89)",
+                                                                                  }}
+                                                                                >
+                                                                                  <span
+                                                                                    style={{
+                                                                                      fontSize:
+                                                                                        "15px",
+                                                                                    }}
+                                                                                  >
+                                                                                    <span data-custom-class="body_text">
+                                                                                      <bdt className="statement-end-if-in-editor" />
+                                                                                    </span>
+                                                                                  </span>
+                                                                                  &nbsp;
+                                                                                </span>
+                                                                                You
+                                                                                may
+                                                                                review,
+                                                                                change,
+                                                                                or
+                                                                                terminate
+                                                                                your
+                                                                                account
+                                                                                at
+                                                                                any
+                                                                                time.
                                                                                 <span
                                                                                   style={{
                                                                                     color:
@@ -5573,6 +5533,7 @@ function Privacy() {
                                                                                     </span>
                                                                                   </span>
                                                                                 </span>
+
                                                                                 .
                                                                               </span>
                                                                             </span>
@@ -5666,6 +5627,7 @@ function Privacy() {
                                                                                     </span>
                                                                                   </span>
                                                                                 </span>
+
                                                                                 .
                                                                               </span>
                                                                             </span>
@@ -5833,6 +5795,7 @@ function Privacy() {
                                                                                 your
                                                                                 preferences
                                                                                 <bdt className="statement-end-if-in-editor" />
+
                                                                                 .
                                                                               </span>
                                                                             </span>
@@ -6356,6 +6319,7 @@ function Privacy() {
                                                                                 <bdt className="block-component" />
                                                                                 "DNT"
                                                                                 <bdt className="statement-end-if-in-editor" />
+
                                                                                 )
                                                                                 feature
                                                                                 or
@@ -6400,6 +6364,7 @@ function Privacy() {
                                                                                 <bdt className="block-component" />
                                                                                 finalized
                                                                                 <bdt className="statement-end-if-in-editor" />
+
                                                                                 .
                                                                                 As
                                                                                 such,
@@ -6562,32 +6527,28 @@ function Privacy() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <strong>
-                                                                                  
-                                                                                    In
-                                                                                    Short:&nbsp;
-                                                                                  
+                                                                                  In
+                                                                                  Short:&nbsp;
                                                                                 </strong>
-                                                                                
-                                                                                  Yes,
-                                                                                  if
-                                                                                  you
-                                                                                  are
-                                                                                  a
-                                                                                  resident
-                                                                                  of
-                                                                                  California,
-                                                                                  you
-                                                                                  are
-                                                                                  granted
-                                                                                  specific
-                                                                                  rights
-                                                                                  regarding
-                                                                                  access
-                                                                                  to
-                                                                                  your
-                                                                                  personal
-                                                                                  information.
-                                                                                
+                                                                                Yes,
+                                                                                if
+                                                                                you
+                                                                                are
+                                                                                a
+                                                                                resident
+                                                                                of
+                                                                                California,
+                                                                                you
+                                                                                are
+                                                                                granted
+                                                                                specific
+                                                                                rights
+                                                                                regarding
+                                                                                access
+                                                                                to
+                                                                                your
+                                                                                personal
+                                                                                information.
                                                                               </span>
                                                                             </span>
                                                                           </span>
@@ -8283,6 +8244,7 @@ function Privacy() {
                                                                                         <bdt className="block-component" />
                                                                                         behavior
                                                                                         <bdt className="statement-end-if-in-editor" />
+
                                                                                         ,
                                                                                         interest
                                                                                         data,
@@ -10057,6 +10019,7 @@ function Privacy() {
                                                                                                             privacy
                                                                                                             notice
                                                                                                             <bdt className="block-component" />
+
                                                                                                             .
                                                                                                           </span>
                                                                                                         </span>
@@ -10153,6 +10116,7 @@ function Privacy() {
                                                                                                         <bdt className="question">
                                                                                                           team@visitasmart.com
                                                                                                         </bdt>
+
                                                                                                         ,{" "}
                                                                                                         <bdt className="statement-end-if-in-editor" />
                                                                                                         <bdt className="block-component" />
@@ -13355,6 +13319,7 @@ function Privacy() {
                                                                                                             <bdt className="question">
                                                                                                               team@visitasmart.com
                                                                                                             </bdt>
+
                                                                                                             ,{" "}
                                                                                                             <bdt className="statement-end-if-in-editor" />
                                                                                                             <bdt className="block-component" />
@@ -13561,39 +13526,37 @@ function Privacy() {
                                                                                                       "15px",
                                                                                                   }}
                                                                                                 >
-                                                                                                  
-                                                                                                    <strong>
-                                                                                                      <span data-custom-class="body_text">
-                                                                                                        In
-                                                                                                        Short:
-                                                                                                      </span>
-                                                                                                    </strong>
+                                                                                                  <strong>
                                                                                                     <span data-custom-class="body_text">
-                                                                                                      &nbsp;Yes,
-                                                                                                      if
-                                                                                                      you
-                                                                                                      are
-                                                                                                      a
-                                                                                                      resident
-                                                                                                      of
-                                                                                                      Virginia,
-                                                                                                      you
-                                                                                                      may
-                                                                                                      be
-                                                                                                      granted
-                                                                                                      specific
-                                                                                                      rights
-                                                                                                      regarding
-                                                                                                      access
-                                                                                                      to
-                                                                                                      and
-                                                                                                      use
-                                                                                                      of
-                                                                                                      your
-                                                                                                      personal
-                                                                                                      information.
+                                                                                                      In
+                                                                                                      Short:
                                                                                                     </span>
-                                                                                                  
+                                                                                                  </strong>
+                                                                                                  <span data-custom-class="body_text">
+                                                                                                    &nbsp;Yes,
+                                                                                                    if
+                                                                                                    you
+                                                                                                    are
+                                                                                                    a
+                                                                                                    resident
+                                                                                                    of
+                                                                                                    Virginia,
+                                                                                                    you
+                                                                                                    may
+                                                                                                    be
+                                                                                                    granted
+                                                                                                    specific
+                                                                                                    rights
+                                                                                                    regarding
+                                                                                                    access
+                                                                                                    to
+                                                                                                    and
+                                                                                                    use
+                                                                                                    of
+                                                                                                    your
+                                                                                                    personal
+                                                                                                    information.
+                                                                                                  </span>
                                                                                                 </span>
                                                                                               </div>
                                                                                               <div
@@ -14389,6 +14352,7 @@ function Privacy() {
                                                                                                       <bdt className="block-component" />
                                                                                                       "profiling"
                                                                                                       <bdt className="statement-end-if-in-editor" />
+
                                                                                                       )
                                                                                                     </span>
                                                                                                   </span>
@@ -14531,6 +14495,7 @@ function Privacy() {
                                                                                                   privacy
                                                                                                   notice
                                                                                                   <bdt className="block-component" />
+
                                                                                                   .
                                                                                                 </span>
                                                                                               </div>
@@ -14566,6 +14531,7 @@ function Privacy() {
                                                                                                     <bdt className="question">
                                                                                                       privacy@visitasmart.com
                                                                                                     </bdt>
+
                                                                                                     ,{" "}
                                                                                                     <bdt className="block-component" />
                                                                                                     by
@@ -14580,6 +14546,7 @@ function Privacy() {
                                                                                                       </a>
                                                                                                     </bdt>
                                                                                                     <bdt className="else-block" />
+
                                                                                                     ,
                                                                                                     or
                                                                                                     by
@@ -14932,6 +14899,7 @@ function Privacy() {
                                                                                                       privacy@visitasmart.com
                                                                                                     </bdt>
                                                                                                     <bdt className="else-block" />
+
                                                                                                     .
                                                                                                     Within
                                                                                                     sixty
@@ -15115,26 +15083,24 @@ function Privacy() {
                                                                                                     }}
                                                                                                   >
                                                                                                     <span data-custom-class="body_text">
-                                                                                                      
-                                                                                                        <strong>
-                                                                                                          In
-                                                                                                          Short:&nbsp;
-                                                                                                        </strong>
-                                                                                                        Yes,
-                                                                                                        we
-                                                                                                        will
-                                                                                                        update
-                                                                                                        this
-                                                                                                        notice
-                                                                                                        as
-                                                                                                        necessary
-                                                                                                        to
-                                                                                                        stay
-                                                                                                        compliant
-                                                                                                        with
-                                                                                                        relevant
-                                                                                                        laws.
-                                                                                                      
+                                                                                                      <strong>
+                                                                                                        In
+                                                                                                        Short:&nbsp;
+                                                                                                      </strong>
+                                                                                                      Yes,
+                                                                                                      we
+                                                                                                      will
+                                                                                                      update
+                                                                                                      this
+                                                                                                      notice
+                                                                                                      as
+                                                                                                      necessary
+                                                                                                      to
+                                                                                                      stay
+                                                                                                      compliant
+                                                                                                      with
+                                                                                                      relevant
+                                                                                                      laws.
                                                                                                     </span>
                                                                                                   </span>
                                                                                                 </span>
@@ -15598,6 +15564,7 @@ function Privacy() {
                                                                                                         }}
                                                                                                       >
                                                                                                         <bdt className="block-component" />
+
                                                                                                         ,{" "}
                                                                                                         <bdt className="question">
                                                                                                           Kerala
@@ -15960,7 +15927,6 @@ function Privacy() {
                                                                                                 }}
                                                                                               />
                                                                                             </div>
-                                                                                           
                                                                                           </div>
                                                                                         </div>
                                                                                       </div>

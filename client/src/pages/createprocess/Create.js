@@ -34,6 +34,9 @@ function Create() {
     ? location.state.franchisee_email
     : "no franchisee";
   let location_state = location.state ? true : false;
+  let state_company_name = location.state
+    ? location.state.state_company_name
+    : "";
 
   const toast = useToast();
   const toastIdRef = React.useRef();
@@ -500,15 +503,12 @@ function Create() {
         processIndex={processIndex}
         loading={loading}
         hideIndicators={false}
+        isEdit={true}
       />
 
       {/* Last Confirm Modal */}
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay
-          bg="whiteAlpha.1000"
-          backdropFilter="auto"
-          backdropBlur="20px"
-        />
+        <ModalOverlay />
         <ModalContent
           display="flex"
           flexDirection="column"
@@ -535,11 +535,8 @@ function Create() {
             justifyContent="center"
             alignItems="center"
           >
-            <span className="font-medium text-center">
+            <span className="font-semibold text-center">
               You can make sure that the information you provided is correct.{" "}
-              <span className="text-blue-600 ml-1">
-                However, you can edit it later
-              </span>
             </span>
           </ModalBody>
           <ModalFooter
@@ -582,7 +579,7 @@ function Create() {
                   });
               }}
             >
-              <span className="font-semibold">Yes' Create Website</span>
+              <span className="font-semibold">Create</span>
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -617,10 +614,13 @@ function Create() {
                 placeholder="Enter company name"
                 autoComplete="off"
                 required
+                defaultValue={
+                  state_company_name != "" ? state_company_name : ""
+                }
                 onChange={(e) => checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
-                class="company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class="company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
               />
 
               <p class="error-message mt-2 text-sm text-green-600 font-medium"></p>
@@ -746,7 +746,7 @@ function Create() {
                 required
                 id="category_input"
                 name="company_category"
-                className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -772,7 +772,7 @@ function Create() {
                   required={isPremium != true ? false : true}
                   id="tagline_input"
                   name="tagline"
-                  className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                  className=" font-medium block py-4      pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                 />
 
                 <p
@@ -804,7 +804,7 @@ function Create() {
                 required
                 id="large-input"
                 name="first_name"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -819,7 +819,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="last_name"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -834,7 +834,7 @@ function Create() {
                 id="large-input"
                 required
                 name="position"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -849,7 +849,7 @@ function Create() {
                 id="large-input"
                 required
                 name="phone_no"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -864,7 +864,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="alt_phone_no"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -879,7 +879,7 @@ function Create() {
                 required
                 id="large-input"
                 name="whatsapp_no"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -894,7 +894,7 @@ function Create() {
                 required
                 id="large-input"
                 name="address"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -909,7 +909,7 @@ function Create() {
                 required
                 id="large-input"
                 name="email_id"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -924,7 +924,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="website"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -939,7 +939,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="location"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -954,7 +954,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="gmap_location"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm   focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm   focus:border-indigo-500"
               />
 
               <label
@@ -969,7 +969,7 @@ function Create() {
                 id="large-input"
                 required
                 name="city"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -984,7 +984,7 @@ function Create() {
                 autoComplete="off"
                 id="large-input"
                 name="since"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -1001,7 +1001,7 @@ function Create() {
                   id="about_input"
                   required
                   name="about"
-                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                 />
 
                 <p
@@ -1034,7 +1034,7 @@ function Create() {
                   autoComplete="off"
                   id="specials_input"
                   name="specials"
-                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                 />
 
                 <p
@@ -1067,7 +1067,7 @@ function Create() {
                   autoComplete="off"
                   id="features_input"
                   name="features"
-                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                  class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                 />
 
                 <p
@@ -1109,7 +1109,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="facebook_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1124,7 +1124,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="instagram_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1139,7 +1139,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="twitter_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1154,7 +1154,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="linkedin_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1169,7 +1169,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="youtube_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1184,7 +1184,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="pinterest_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
           <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
             Youtube Video Links
@@ -1202,7 +1202,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_1_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1217,7 +1217,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1232,7 +1232,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_3_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1247,7 +1247,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_4_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1262,7 +1262,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_5_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           {/* File Video Links */}
@@ -1288,7 +1288,7 @@ function Create() {
                 accept="video/*"
                 type="file"
                 autoComplete="off"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -1306,7 +1306,7 @@ function Create() {
                 accept="video/*"
                 type="file"
                 autoComplete="off"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -1324,7 +1324,7 @@ function Create() {
                 accept="video/*"
                 type="file"
                 autoComplete="off"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -1342,7 +1342,7 @@ function Create() {
                 accept="video/*"
                 type="file"
                 autoComplete="off"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <label
@@ -1360,7 +1360,7 @@ function Create() {
                 accept="video/*"
                 type="file"
                 autoComplete="off"
-                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md     sm:text-sm text-sm  focus:border-indigo-500"
               />
 
               <input
@@ -1418,7 +1418,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="paytm_number"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1433,7 +1433,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="googlepay_number"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1448,7 +1448,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="phonepe"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <h1 className="text-xl mt-12 font-bold mb-12 flex justify-center">
@@ -1463,7 +1463,7 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e) => {
@@ -1485,7 +1485,7 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e) => {
@@ -1507,7 +1507,7 @@ function Create() {
             <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
           </label>
           <input
-            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+            className="font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-fullgrder fo-2cus:shadow-blue-600/30   sm:text-sm text-sm  focus:border-indigo-500 "
             id="large_size"
             type="file"
             onChange={(e) => {
@@ -1537,7 +1537,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_name"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1552,7 +1552,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="account_holder_name"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1567,7 +1567,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_account_number"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1582,7 +1582,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="bank_ifsc_code"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
           <label
@@ -1597,7 +1597,7 @@ function Create() {
             autoComplete="off"
             id="large-input"
             name="gst"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
         </div>
 
@@ -1623,7 +1623,7 @@ function Create() {
                 <div className="lg:w-full  lg:pb-8 pb-24   lg:mt-0  rounded-3xl flex lg:flex-row flex-col items-center  py-8  ">
                   <div class="flex border border-slate-800 py-[130px] lg:px-0 px-8 lg:mb-0 mb-6 justify-center  lg:w-[400px] w-[280px]   rounded-md  items-center">
                     <input
-                      className=" ml-6 font-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+                      className=" ml-6 font-medium block py-4     pr-[50px] pl-[20px] text-gray-900 transition-all   focus:shadowlge-600/3-20  sm:text-sm text-sm  focus:border-indigo-500 "
                       id="large_size"
                       type="file"
                       onChange={(e) => {
@@ -1644,7 +1644,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_name`}
-                      class=" font-medium block py-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium block py-4    lg: pl-[20px] lg:ml-6  pr-[30px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                     />
 
                     <input
@@ -1652,7 +1652,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_description`}
-                      class=" font-medium block py-4 mt-4    lg: pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium block py-4 mt-4    lg: pl-[20px] lg:ml-6  pr-[30px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                     />
 
                     <input
@@ -1660,7 +1660,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_orgprice`}
-                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6  pr-[30px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                     />
 
                     <input
@@ -1668,7 +1668,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_offerprice`}
-                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6  pr-[30px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                     />
 
                     <input
@@ -1676,7 +1676,7 @@ function Create() {
                       autoComplete="off"
                       id="large-input"
                       name={`product_${data}_link`}
-                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6 lg:pr-[200px] pr-[100px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500"
+                      class=" font-medium  mt-4 block py-4  pl-[20px] lg:ml-6  pr-[30px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -1708,7 +1708,7 @@ function Create() {
                 <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0   flex lg:flex-row flex-col items-center  py-8   border-b border-b-slate-800">
                   <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                     <input
-                      className="  font-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-indigo-500 "
+                      className="  font-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 "
                       id="large_size"
                       type="file"
                       onChange={(e) => {
@@ -1811,7 +1811,7 @@ function Create() {
               rounded={"full"}
               isLoading={loading}
               spinner={<Spinner />}
-                _loading={{opacity:"1"}}
+              _loading={{ opacity: "1" }}
               onClick={() => handleNextClick()}
               backgroundColor="#5046E4"
               className="w-[200px] font-semibold lg:mr-6"

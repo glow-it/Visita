@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
 import {
   Popover,
@@ -32,18 +27,12 @@ function Header() {
 
   let navigate = useNavigate();
 
-
   //   Header Drawer Open
   let [open, setOpen] = useState(false);
 
-
-
-
-
-
   return (
     <div>
-      <header className={` w-full h-20 flex  fixed z-[200] `}>
+      <header className={` w-full h-20 flex bg-white  fixed z-[200] `}>
         <div className="w-full h-full  flex items-center justify-center">
           <img
             src={require("../Images/logos/visitalogo.png")}
@@ -66,7 +55,7 @@ function Header() {
             <ul className="w-full h-full flex items-center justify-center">
               <p
                 onClick={() => navigate("/visita")}
-                className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 See demo
               </p>
@@ -76,19 +65,19 @@ function Header() {
                     state: { franchisee: false, franchisee_email: null },
                   })
                 }
-                className=" font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className=" font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Pricing
               </p>
               <a
                 href="#features"
-                className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Features
               </a>
               <a
                 href="#benefits"
-                className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
               >
                 Benefits
               </a>
@@ -96,7 +85,7 @@ function Header() {
               <p>
                 <Popover autoFocus={false} placement="bottom">
                   <PopoverTrigger>
-                    <h1 className="font-medium  cursor-pointer text-slate-500 hover:text-black  transition-colors flex items-center">
+                    <h1 className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  transition-colors flex items-center">
                       <span className="text-slate-500 px-3  rounded-full transition-all hover:text-black">
                         Manage website
                       </span>
@@ -115,7 +104,7 @@ function Header() {
                           autoComplete="off"
                           id="manage_card_comp_name"
                           placeholder="Enter company name"
-                          className="border focus:border focus:border-blue-600 py-2 w-full pl-4 rounded-full font-medium"
+                          className="border focus:border focus:border-[#5241FE] py-2 w-full pl-4 rounded-full font-medium"
                         />
                         <div className="w-full h-12 my-4 flex items-center">
                           <button
@@ -127,7 +116,7 @@ function Header() {
                                     .value.replace(/[ ]/g, "")
                               )
                             }
-                            className="px-6 py-1 bg-blue-600 rounded-full text-xl font-bold text-white"
+                            className="px-6 py-1 bg-[#5241FE] rounded-full text-xl font-bold text-white"
                           >
                             Continue
                           </button>
@@ -159,13 +148,13 @@ function Header() {
                   className="text-slate-500 hover:text-black"
                   rightIcon={<ChevronDownIcon />}
                 >
-                  <span className="font-medium  cursor-pointer text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
+                  <span className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
                     Support <ion-icon name="chevron-down-outline"></ion-icon>{" "}
                   </span>
                 </MenuButton>
                 <MenuList>
                   <MenuItem className="" onClick={() => navigate("/support")}>
-                    <a className="font-medium  cursor-pointer text-slate-500  px-3 rounded-3xl transition-colors flex items-center">
+                    <a className="font-medium  cursor-pointer text-md text-slate-500  px-3 rounded-3xl transition-colors flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="help-buoy-outline"></ion-icon>
                       </span>{" "}
@@ -179,7 +168,7 @@ function Header() {
                     }}
                     className=""
                   >
-                    <p className="font-medium  cursor-pointer text-slate-500    px-3 rounded-3xl transition-colors flex items-center">
+                    <p className="font-medium  cursor-pointer text-md text-slate-500    px-3 rounded-3xl transition-colors flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                       </span>
@@ -191,12 +180,10 @@ function Header() {
             </ul>
           </nav>
 
-
-
           {/* Client Currency On Header  */}
 
-{/*         
-<select onChange={(e)=> {localStorage.setItem("user_currency",e.target.value);window.location.reload()}} id="user_currency" className=" absolute lg:right-52 right-20 text-blue-600 font-medium border-2 w-[100px] cursor-pointer border-blue-600  text-sm rounded-full block  pl-4 py-2 ">
+          {/*         
+<select onChange={(e)=> {localStorage.setItem("user_currency",e.target.value);window.location.reload()}} id="user_currency" className=" absolute lg:right-52 right-20 text-[#5241FE] font-medium border-2 w-[100px] cursor-pointer border-[#5241FE]  text-sm rounded-full block  pl-4 py-2 ">
   <option selected value={localStorage.getItem("user_currency") || "₹INR" }>{localStorage.getItem("user_currency") || "₹INR" }</option>
   {
   localStorage.getItem("user_currency") == "₹INR"?
@@ -214,7 +201,7 @@ function Header() {
                 state: { franchisee: false, franchisee_email: null },
               })
             }
-            class=" absolute right-10 py-1.5 px-8 text-md  text-blue-600 lg:block hidden focus:outline-none bg-white rounded-full border-2 border-blue-600 cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-blue-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-medium"
+            class=" absolute right-10 py-1.5 px-8 text-md  text-[#5241FE] lg:block hidden focus:outline-none bg-white rounded-full border-2 border-[#5241FE] cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-[#5241FE] :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-medium"
           >
             Create now
           </p>
@@ -399,7 +386,7 @@ function Header() {
                                     navigate("/franchisee/register");
                                     setOpen(false);
                                   }}
-                                  className="font-medium mt-2 pl-4 bg-blue-600 rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
+                                  className="font-medium mt-2 pl-4 bg-[#5241FE] rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
                                 >
                                   <span className="flex items-center justify-center mr-1">
                                     <ion-icon name="log-in-outline"></ion-icon>
@@ -412,7 +399,7 @@ function Header() {
                                     navigate("/franchisee");
                                     setOpen(false);
                                   }}
-                                  className="font-medium mt-2 pl-4 bg-blue-600 rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
+                                  className="font-medium mt-2 pl-4 bg-[#5241FE] rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
                                 >
                                   Go to franchisee
                                   <span className="flex items-center justify-center ml-1">

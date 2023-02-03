@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 function ReturnPolicy() {
   useEffect(() => {
@@ -7,6 +8,11 @@ function ReturnPolicy() {
 
   return (
     <div>
+      <Helmet>
+        <title>Return Policy - Visita</title>
+        <meta name="description" content="Our return policy" />
+      </Helmet>
+
       <div
         data-custom-class="body"
         className="pt-44  pb-44 flex flex-col px-44 items-center text-center font-medium"
@@ -25,7 +31,12 @@ function ReturnPolicy() {
             >
               <strong>
                 <span style={{ fontSize: "46px" }}>
-                  <span data-custom-class="title" className="font-bold text-blue-600">Return Policy</span>
+                  <span
+                    data-custom-class="title"
+                    className="font-bold text-blue-600"
+                  >
+                    Return Policy
+                  </span>
                 </span>
               </strong>
             </div>

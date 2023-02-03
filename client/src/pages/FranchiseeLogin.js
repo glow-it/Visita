@@ -62,16 +62,16 @@ function FranchiseeLogin() {
   }
 
   return (
-    <div className=" min-h-screen absolute top-0 min-w-full">
-      <div className="h-12 py-12 w-full absolute top-0 flex items-center justify-center">
-        <img
-          className="mx-auto h-10 w-auto"
-          src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
-          alt="Your Company"
-        />
-      </div>
+    <div className=" min-h-screen absolute top-0 min-w-full flex justify-center lg:bg-blue-50/50">
+      <div className="flex min-h-full flex-col lg:bg-white lg:w-[500px]  items-center  justify-center lg:mt-16 mt-16 px-4 sm:px-6 lg:px-8">
+        <div className="h-12 py-12 w-full absolute top-32 flex items-center justify-center">
+          <img
+            className="mx-auto h-10 w-auto"
+            src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
+            alt="Your Company"
+          />
+        </div>
 
-      <div className="flex min-h-full flex-col  items-center  justify-center lg:mt-16 mt-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full  max-w-md  rounded-3xl  px-8 py-24  z-50">
           <div>
             <h2 className="mt-6 text-center lg:text-4xl text-3xl font-bold tracking-tight text-gray-900">
@@ -151,7 +151,7 @@ function FranchiseeLogin() {
               <Button
                 isLoading={loading}
                 spinner={<Spinner />}
-                _loading={{opacity:"1"}}
+                _loading={{ opacity: "1" }}
                 onClick={() => onFranchiseeeLoginClick()}
                 className="font-bold"
                 rounded="full"
@@ -173,10 +173,23 @@ function FranchiseeLogin() {
                   Register now
                 </span>
               </p>
-              <div className="flex mt-6 text-sm text-indigo-500" >
-          <Link to="/terms" className="underline cursor-pointer ml-1 mr-1 font-medium " > Terms of service</Link> -
-          <Link to="/privacy" className="underline cursor-pointer ml-1 font-medium " > Privacy policy</Link>
-          </div>
+              <div className="flex mt-6 text-sm text-indigo-500">
+                <Link
+                  to="/terms"
+                  className="underline cursor-pointer ml-1 mr-1 font-medium "
+                >
+                  {" "}
+                  Terms of service
+                </Link>{" "}
+                -
+                <Link
+                  to="/privacy"
+                  className="underline cursor-pointer ml-1 font-medium "
+                >
+                  {" "}
+                  Privacy policy
+                </Link>
+              </div>
             </div>
           </form>
         </div>

@@ -33,8 +33,37 @@ function Template() {
     .get(`${apiKeys.server_url}/card/` + company_name)
     .then((response) => {
       setIsCardLoading(false);
-
       setCardDatas(response.data);
+
+      const head = document.head;
+
+      const metaTitle = document.createElement("meta");
+      metaTitle.setAttribute("property", "og:title");
+      metaTitle.setAttribute("content", response.data.company_name);
+      head.appendChild(metaTitle);
+
+      const metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("property", "og:description");
+      metaDescription.setAttribute(
+        "content",
+        response.data.tagline != "" ? response.data.tagline : "Website"
+      );
+      head.appendChild(metaDescription);
+
+      const metaImage = document.createElement("meta");
+      metaImage.setAttribute("property", "og:image");
+      metaImage.setAttribute("content", response.data.logo);
+      head.appendChild(metaImage);
+
+      const metaUrl = document.createElement("meta");
+      metaUrl.setAttribute("property", "og:url");
+      metaUrl.setAttribute(
+        "content",
+        response.data.isPremium == "true"
+          ? response.data.clean_name + ".visitasmart.com"
+          : "visitasmart.com/" + response.data.clean_name
+      );
+      head.appendChild(metaUrl);
     })
     .catch((err) => {
       Toast({
