@@ -28,6 +28,24 @@ import Loading from "../../miniComponents/Loading";
 
 function EditCard() {
   let navigate = useNavigate();
+
+  useEffect(() => {
+    if (cardDatas.activated) {
+      var doc = prompt("Enter Website Password");
+
+      if (doc != null) {
+        if (doc != cardDatas.activated.access_password) {
+          navigate("/");
+        }
+      } else {
+        navigate("/");
+      }
+    }
+  }, [cardDatas]);
+
+
+
+
   let params = useParams();
   let company_name = params.comp_name;
 
@@ -69,19 +87,7 @@ function EditCard() {
   let image_gallery = cardDatas && cardDatas.image_gallery;
   let video_gallery = cardDatas && cardDatas.video_gallery;
 
-  // useEffect(() => {
-  //   if (cardDatas.activated) {
-  //     var doc = prompt("Enter Website Password");
-
-  //     if (doc != null) {
-  //       if (doc != cardDatas.activated.access_password) {
-  //         navigate("/");
-  //       }
-  //     } else {
-  //       navigate("/");
-  //     }
-  //   }
-  // }, [cardDatas]);
+  
 
   // Normal Use Effect
   useEffect(() => {
