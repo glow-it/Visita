@@ -31,7 +31,7 @@ function CustomerDetails() {
 
   return (
     <TableContainer>
-      <Table variant="striped" colorScheme="teal">
+      <Table variant="striped" colorScheme="">
         <Thead>
           <Tr className="font-bold">
             <Th className="font-bold">Name</Th>
@@ -57,21 +57,24 @@ function CustomerDetails() {
 
                 //calculate days difference by dividing total milliseconds in a day
                 var days_difference = time_difference / (1000 * 60 * 60 * 24);
-                let days;
 
-                if (Math.trunc(days_difference) == 0) {
-                  days = "today";
-                } else if (Math.trunc(days_difference) == 1) {
-                  days = "1 day ago";
-                } else {
-                  days = Math.trunc(days_difference) + " days ago";
-                }
+              
+  
+
+                let daysAgo = parseInt(days_difference);
+                let date = new Date();
+                date.setDate(date.getDate() - daysAgo);
+                let formattedDate = new Intl.DateTimeFormat("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                }).format(date);
 
                 return (
                   <Tr className="font-medium">
                     <Td>{data.name}</Td>
                     <Td>+91{data.phone_no}</Td>
-                    <Td>{days}</Td>
+                    <Td>{formattedDate}</Td>
                   </Tr>
                 );
               })}

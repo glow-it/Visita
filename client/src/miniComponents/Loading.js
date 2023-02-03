@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 
 function Loading({ isLoading }) {
+
+
+  
   return (
     <div
       className={`secondary_loading_wrapper ${

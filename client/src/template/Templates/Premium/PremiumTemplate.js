@@ -24,6 +24,7 @@ import Loading from "../../../miniComponents/Loading";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import InstallPwa from "../../../Tools/InstallPwaApp";
+import { abbrevateNumber } from "../../../Tools/abbrevateNumber";
 
 function PremiumTemplate1({ preview, cardDatas }) {
   const toast = useToast();
@@ -510,7 +511,7 @@ function PremiumTemplate1({ preview, cardDatas }) {
               <span
                 className={`z-50 absolute   right-4 text-black text-xs font-medium py-1 px-2 border border-black  rounded-full`}
               >
-                Views: {cardDatas.views}
+                Views: {abbrevateNumber(cardDatas.views)}
               </span>
               <span
                 className={`z-50 absolute  flex cursor-pointer items-center justify-center text-black text-lg right-28  font-medium   bg-slate-200 rounded-full  p-2`}

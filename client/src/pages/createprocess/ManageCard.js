@@ -13,6 +13,8 @@ import {
   AlertDialogOverlay,
 } from "@chakra-ui/react";
 import { Toast } from "../../miniComponents/Toast";
+import Loading from "../../miniComponents/Loading";
+import { abbrevateNumber } from "../../Tools/abbrevateNumber";
 
 function ManageCard() {
   let params = useParams();
@@ -22,6 +24,7 @@ function ManageCard() {
   let navigate = useNavigate();
   let toast = useToast();
   let [cardDatas, setCardDatas] = useState([]);
+  let [isLoading, setIsLoading] = useState(true);
   let [franchiseeDatas, setFranchiseeDatas] = useState([]);
   let [feedbacks, setFeedbacks] = useState([]);
 
@@ -35,6 +38,7 @@ function ManageCard() {
     axios.get(`${apiKeys.server_url}/card/` + company_name).then((response) => {
       if (response.data != null) {
         setCardDatas(response.data);
+        setIsLoading(false)
         setFeedbacks(response.data.feedbacks);
         if (response.data.franchisee != "no franchisee") {
           axios
@@ -152,6 +156,9 @@ function ManageCard() {
 
   return (
     <div className="flex justify-center">
+
+    <Loading isLoading={isLoading} />
+      
       <div className="flex flex-col  items-center w-[500px]">
         <AlertDialog
           isOpen={isOpen}
@@ -222,7 +229,7 @@ function ManageCard() {
                     for="card_pass_input"
                     class="form-label text-3xl font-bold inline-block mb-6 text-gray-700"
                   >
-                    Website Password
+                    Website password
                   </label>
                   <input
                     class="form-control block
@@ -290,21 +297,21 @@ function ManageCard() {
         Upgrade to premium <span className="flex items-center justify-center ml-1"><ion-icon name="arrow-forward-outline"></ion-icon></span>
       </h1> */}
 
-        <h1 className="text-3xl font-bold sticky top-0 z-50  mb-3 w-full py-6 flex text-white justify-center bg-slate-900 capitalize">
+        <h1 className="text-3xl font-bold sticky top-0 z-50  mb-3 w-full py-6 flex text-slate-900 justify-center bg-slate-50 capitalize">
           {company_name.replace(/[-]/g, " ")}
         </h1>
 
-        <div className="py-6 w-full flex  flex-col items-center justify-center ">
+        <div className=" w-full flex  flex-col items-center justify-center ">
           <button
             onClick={onOpen}
-            className="w-[80%] py-2 lg:mr-3    hover:bg-red-500 hover:text-white transition-colors bg-slate-50 border-2 border-red-500 text-red-500 rounded-full  font-bold"
+            className="w-full py-3 lg:m1-3     hover:text-white transition-colors  text-white  bg-red-500 font-bold"
           >
             Close website
           </button>
 
           <button
             onClick={() => navigate("/manage/" + company_name + "/edit")}
-            className="w-[80%] py-2  mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-full lg:mr-3  font-bold"
+            className="w-full py-3  mt-1 bg-blue-600 border-2 border-blue-600 text-white    font-bold"
           >
             Edit website
           </button>
@@ -314,7 +321,7 @@ function ManageCard() {
               onClick={() =>
                 navigate("/manage/" + company_name + "/customer-details")
               }
-              className="w-[80%] py-2  mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-full  font-bold"
+              className="w-full py-3  mt-1 bg-blue-600 border-2 border-blue-600 text-white   font-bold"
             >
               Customer details
             </button>
@@ -324,17 +331,19 @@ function ManageCard() {
 
           <button
             onClick={() => window.open("/create/successfull/" + company_name)}
-            className="w-[80%] py-2  mt-4 bg-blue-600 border-2 border-blue-600 text-white rounded-full lg:mr-3  font-bold"
+            className="w-full py-3  mt-1 bg-blue-600 border-2 border-blue-600 text-white    font-bold"
           >
             Other details
           </button>
         </div>
 
-        <div className="w-full  mt-4 flex flex-wrap items-center justify-center ">
+        <div className="w-full   flex flex-wrap items-center justify-center ">
           <div className="h-44 w-full bg-slate-50  lg:mr-6 border-b flex flex-col items-center justify-center">
             <h6 className="text-xl font-medium">Total views</h6>
             <h1 className="text-5xl font-bold mt-4 text-blue-600">
-              {cardDatas && cardDatas.views}
+              {
+                abbrevateNumber(parseInt(cardDatas && cardDatas.views))
+              }
             </h1>
           </div>
 

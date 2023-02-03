@@ -245,7 +245,7 @@ function AdminPage() {
                         <h1 className="text-lg">
                           {index + 1}.{" "}
                           <span className="ml-4 text-[#6635E3] capitalize">
-                            {data.comp_name}
+                            {data.comp_name.replace(/[-]/g, " ")}
                           </span>
                         </h1>
                         <div className="flex-1  h-full  flex justify-end items-center pr-12">

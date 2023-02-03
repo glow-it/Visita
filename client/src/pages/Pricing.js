@@ -17,6 +17,7 @@ function Pricing() {
     : null;
 
   useEffect(() => {
+    window.scrollTo(0,0)
     document.title = "Pricing - Visita";
     document.querySelector("header").style.display = "flex";
   }, []);
