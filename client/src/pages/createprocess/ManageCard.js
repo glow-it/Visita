@@ -222,7 +222,7 @@ function ManageCard() {
             id="manage_auth_wrapper"
             className="h-screen  w-full absolute font-medium bg-slate-50 100] flex pt-36 justify-center"
           >
-            <div class="block p-6 rounded-full  bg-slate-50 h-[300px] w-[1000px] px-8 lg:shadow-md  max-w-sm">
+            <div class="block p-6 rounded-xl  bg-slate-50 h-[300px] w-[1000px] px-8 lg:shadow-lg  max-w-sm">
               <div>
                 <div class="form-group mb-6">
                   <label
