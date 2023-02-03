@@ -29,19 +29,7 @@ import Loading from "../../miniComponents/Loading";
 function EditCard() {
   let navigate = useNavigate();
 
-  useEffect(() => {
-    if (cardDatas.activated) {
-      var doc = prompt("Enter Website Password");
-
-      if (doc != null) {
-        if (doc != cardDatas.activated.access_password) {
-          navigate("/");
-        }
-      } else {
-        navigate("/");
-      }
-    }
-  }, [cardDatas]);
+  
 
 
 
@@ -88,6 +76,19 @@ function EditCard() {
   let video_gallery = cardDatas && cardDatas.video_gallery;
 
   
+  useEffect(() => {
+    if (cardDatas.activated) {
+      var doc = prompt("Enter Website Password");
+
+      if (doc != null) {
+        if (doc != cardDatas.activated.access_password) {
+          navigate("/");
+        }
+      } else {
+        navigate("/");
+      }
+    }
+  }, [cardDatas]);
 
   // Normal Use Effect
   useEffect(() => {
@@ -1142,7 +1143,7 @@ function EditCard() {
                       {data != "" ? (
                         <video
                           controls
-                          src={data}
+                          src={data.replace(/^http:\/\//i, "https://")}
                           className="my-5 rounded-lg h-[300px]"
                         ></video>
                       ) : (
@@ -1427,7 +1428,7 @@ function EditCard() {
                     <div className=" flex-col flex border border-slate-800 py-[30px] lg:px-0 px-8 lg:mb-0 mb-6 justify-center  lg:w-[400px] w-[280px]   rounded-md  items-center">
                       {data.product_image != "" ? (
                         <img
-                          src={data.product_image}
+                          src={data.product_image.replace(/^http:\/\//i, "https://")}
                           className="  mb-10 h-[200px] w-[200px] rounded-xl border"
                         />
                       ) : (
@@ -1528,7 +1529,7 @@ function EditCard() {
                   </label>
                   <div className="lg:w-full lg:h-auto h-20 lg:pb-8 pb-24  lg:mt-0   flex lg:flex-row flex-col items-center  py-8   border-b border-b-slate-800">
                     <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
-                      <img src={data} className="lg:h-32 h-16 rounded-xl" />
+                      <img src={data.replace(/^http:\/\//i, "https://")} className="lg:h-32 h-16 rounded-xl" />
                       <input
                         className=" ml-6 font-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
                         id="image"
