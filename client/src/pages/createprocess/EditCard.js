@@ -1531,7 +1531,7 @@ function EditCard() {
                     <div class="flex justify-center lg:w-[400px] w-[250px] lg:py-0 pb-8 items-center">
                       <img src={data.replace(/^http:\/\//i, "https://")} className="lg:h-32 h-16 rounded-xl" />
                       <input
-                        className=" ml-6 font-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full border-2  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
+                        className=" ml-6 font-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
                         id="image"
                         type="file"
                         onChange={(e) => {
