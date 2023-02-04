@@ -182,8 +182,8 @@ function Successfull() {
           </p>
         </div>
 
-        <h1
-          onClick={() => navigate("/franchisee")}
+        <a
+          href="https://dashboard.visitasmart.com"
           className={`${
             cardDatas && cardDatas.franchisee === "no franchisee"
               ? "hidden"
@@ -191,7 +191,7 @@ function Successfull() {
           } hidden cursor-pointer hover:scale-105 transition-transform py-3 px-6 bg-indigo-600 font-bold rounded-full text-white absolute right-12 top-6`}
         >
           Go to franchisee
-        </h1>
+        </a>
 
         <div
           id="qrcode_div"

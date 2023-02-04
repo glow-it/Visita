@@ -84,7 +84,7 @@ function FranchiseeRegister() {
                           "franchisee_email",
                           formDataObj.email
                         );
-                        navigate(response.data.redirect_url);
+                        window.location.href = response.data.redirect_url
                       } else {
                         Toast({
                           status: "error",
@@ -129,26 +129,23 @@ function FranchiseeRegister() {
   }
 
   return (
-    <div className=" min-h-screen absolute top-0 min-w-full flex justify-center lg:bg-blue-50/50">
-      <div className="flex rounded-2xl lg:w-[500px] min-h-full  items-center  justify-center lg:mt-12 mt-16 px-4 sm:px-6 lg:px-8 lg:bg-white">
-        <div className="h-12 py-12 w-full absolute top-16  flex items-center justify-center">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://i.postimg.cc/xdZpZScW/visitalogo.png"
-            alt="Your Company"
-          />
-        </div>
+    <div className=" min-h-screen absolute top-0 min-w-full flex lg:flex-row flex-col  ">
+    
+      <div className="flex rounded-2xl lg:w-[50%] w-full min-h-full  items-center  justify-center  px-4 sm:px-6 lg:px-8 lg:bg-white">
 
-        <div className="   rounded-3xl  px-8 py-16 w-full max-w-md space-y-8 z-50">
+        <img onClick={()=>navigate('/')} src={require('../Images/logos/visitalogo.png')} className="h-12 absolute cursor-pointer left-14 top-6 lg:flex hidden" />
+      
+
+        <div className="   rounded-3xl  px-8  w-full max-w-md space-y-8 z-50">
           <div>
-            <h2 className="mt-6 text-center lg:text-4xl text-3xl font-bold tracking-tight text-gray-900">
-              Franchisee Register
+            <h2 className=" text-center lg:mt-0 mt-24  lg:text-4xl text-3xl font-bold tracking-tight text-gray-900">
+              Franchisee register
             </h2>
           </div>
           <form
             onSubmit={(e) => franchiseeRegisterClick(e)}
             id="franchisee_register_form"
-            className="mt-8 space-y-6"
+            className=" space-y-6"
           >
             <div className="relative rounded-md shadow-sm">
               <div>
@@ -157,9 +154,9 @@ function FranchiseeRegister() {
                   name="franchisee_name"
                   autoComplete="off"
                   required
-                  type={"text"}
+                  
                   id="franchisee_name"
-                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className="relative block transition-all rounded-xl  font-medium w-full appearance-none  border border-gray-200 pl-6  mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-md"
                   placeholder="Enter franchisee name"
                 />
               </div>
@@ -170,8 +167,8 @@ function FranchiseeRegister() {
                   id="franchisee_phone_no"
                   autoComplete="off"
                   required
-                  type={"tel"}
-                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  
+                  className="relative block transition-all rounded-xl  font-medium w-full appearance-none  border border-gray-200 pl-6  mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-md"
                   placeholder="Enter phone no"
                 />
               </div>
@@ -183,8 +180,8 @@ function FranchiseeRegister() {
                   id="franchisee_upi_id"
                   autoComplete="off"
                   required
-                  type={"text"}
-                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  
+                  className="relative block transition-all rounded-xl  font-medium w-full appearance-none  border border-gray-200 pl-6  mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-md"
                   placeholder="Enter UPI ID"
                 />
 
@@ -212,8 +209,8 @@ salary"
                   id="franchisee_email"
                   autoComplete="off"
                   required
-                  type={"email"}
-                  className="relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  
+                  className="relative block transition-all rounded-xl  font-medium w-full appearance-none  border border-gray-200 pl-6  mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-md"
                   placeholder="Enter email"
                 />
               </div>
@@ -224,9 +221,9 @@ salary"
                   name="password"
                   autoComplete="off"
                   required
-                  type={"password"}
+                  
                   id="franchisee_password"
-                  className=" relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                  className=" relative block transition-all rounded-xl  font-medium w-full appearance-none  border border-gray-320 pl-6  mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-md"
                   placeholder="Enter password"
                 />
               </div>
@@ -235,7 +232,7 @@ salary"
                 name="isFranchiseeFirstCardCreated"
                 autoComplete="off"
                 value={false}
-                className="hidden relative block transition-all franch-register-inputs font-medium w-full appearance-none rounded-full border border-gray-300 px-6 mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-lg"
+                className="hidden relative block transition-all rounded-xl  font-medium w-full appearance-none  border border-gray-200 pl-6  mt-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-md"
               />
             </div>
 
@@ -247,7 +244,7 @@ salary"
                 spinner={<Spinner />}
                 _loading={{ opacity: "1" }}
                 className="font-bold"
-                rounded="full"
+                rounded="xl"
                 _hover={{ backgroundColor: "rgb(66 56 157 / 1)" }}
                 backgroundColor="rgb(88 80 236 / 1)"
                 style={{ padding: "25px 60px", width: "100%" }}
@@ -266,7 +263,7 @@ salary"
                   Login
                 </span>
               </p>
-              <div className="flex mt-6 text-sm text-indigo-500">
+              <div className="flex mt-6 text-sm text-slate-400">
                 <Link
                   to="/terms"
                   className="underline cursor-pointer ml-1 mr-1 font-medium "
@@ -287,6 +284,12 @@ salary"
           </form>
         </div>
       </div>
+
+
+      <div style={{backgroundImage:`url(https://cdn.dribbble.com/users/61921/screenshots/15956057/media/44057596895135f96ffb6dc6dcacc156.png?compress=1&resize=1600x1200&vertical=top)`}} className="flex overflow-hidden w-[50%] min-h-full  items-center  justify-center  px-4 sm:px-6 lg:px-8 lg:bg-slate-50/50">
+</div>
+
+
     </div>
   );
 }

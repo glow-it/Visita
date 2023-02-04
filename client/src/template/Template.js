@@ -9,7 +9,7 @@ import BasicTemplate from "./Templates/BasicTemplate";
 import PremiumTemplate from "./Templates/Premium/PremiumTemplate";
 import { Helmet } from "react-helmet";
 
-function Template() {
+function Template({ subdomain }) {
   let params = useParams();
   let company_name = params.comp_name;
   let [isCardLoading, setIsCardLoading] = useState(true);
@@ -30,10 +30,24 @@ function Template() {
   }
 
   axios
-    .get(`${apiKeys.server_url}/card/` + company_name)
+    .get(
+      `${apiKeys.server_url}/card/${
+        subdomain != false ? subdomain : company_name
+      }`
+    )
     .then((response) => {
       setIsCardLoading(false);
       setCardDatas(response.data);
+
+      if(response.data.isPremium == "true"){
+        if(subdomain == false){
+          window.location.href = `https://${company_name}.visitasmart.com/`
+        }
+      }else{
+        if(subdomain != false){
+          window.location.href = `https://visitasmart.com/`
+        }
+      }
 
       const head = document.head;
 
@@ -87,9 +101,9 @@ function Template() {
         </Helmet>
 
         {cardDatas.isPremium == "true" ? (
-          <PremiumTemplate cardDatas={cardDatas} />
+          <PremiumTemplate subdomain={subdomain} cardDatas={cardDatas} />
         ) : (
-          <BasicTemplate cardDatas={cardDatas} />
+          <BasicTemplate  cardDatas={cardDatas} />
         )}
       </div>
     );

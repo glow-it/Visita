@@ -48,7 +48,7 @@ function FranchiseeLogin() {
           "franchisee_email",
           document.getElementById("franchisee_login_form").email.value
         );
-        navigate("/franchisee");
+        window.location.href = "https://dashboard.visitasmart.com"
       } else {
         setLoading(false);
         Toast({

@@ -12,6 +12,12 @@ import reactManifest from "react-manifest";
 import InstallPwa from "../Tools/InstallPwaApp";
 
 function ManageFranchisee() {
+
+
+    document.querySelectorAll('header').forEach((elem)=> {
+      elem.style.display = "none"
+    })
+
   let [franchiseeData, setFranchiseeData] = useState([]);
 
   let [createdCards, setCreatedCards] = useState([]);
@@ -47,6 +53,7 @@ function ManageFranchisee() {
   let navigate = useNavigate();
 
   useEffect(() => {
+    
     localStorage.setItem("franchisee_top_information_closed", false);
 
     document.querySelector("body").style.padding = "0 0 0 0";

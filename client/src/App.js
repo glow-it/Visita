@@ -27,11 +27,28 @@ import Cart from "./template/Pages/Cart";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import ReturnPolicy from "./pages/ReturnPolicy";
+import apiKeys from "./Api/apiKeys";
 
 function App() {
+
+
+  // Get Sub Domain
+  let full = window.location.host;
+  //window.location.host is subdomain.domain.com
+  let parts = full.split(".");
+  let subdomain = parts[0];
+
+
+
   return (
     <div className="App">
-      <Header />
+      {
+        subdomain == apiKeys.normal_subdomain ?
+        <Header />
+
+        : ""
+
+      }
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="support" element={<Support />} />
@@ -39,7 +56,7 @@ function App() {
         <Route path="create" element={<Create />} />
         <Route path="create/preview/:name" element={<CardPreview />} />
         <Route path="loading/:type" element={<Loading />} />
-        <Route exact path="/:comp_name" element={<Template />} />
+        <Route exact path="/:comp_name" element={<Template subdomain={false} />} />
         <Route path="/:comp_name/products" element={<ProductsPage />} />
         <Route
           path="/:comp_name/premiumproducts"
@@ -62,7 +79,6 @@ function App() {
         />
         <Route path="/franchisee/register" element={<FranchiseeRegister />} />
         <Route path="/franchisee/login" element={<FranchiseeLogin />} />
-        <Route path="/franchisee" element={<ManageFranchisee />} />
         <Route path="/admin/:type" element={<AdminPage />} />
         <Route path="/card-closed" element={<CardClosedPage />} />
         <Route

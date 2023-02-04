@@ -3,7 +3,6 @@ import React from "react";
 function HowItWorks() {
   return (
     <section
-      id="features"
       class="bg-black  pt-10 pb-20 text-white w-full font-semibold relative mt-24 lg:px-20 px-10  flex flex-col items-center "
     >
       <div className="w-full lg:py-10 flex lg:justify-center">
@@ -16,8 +15,8 @@ function HowItWorks() {
         >
           <div className="flex w-full lg:justify-center ">
             <img
-              src="https://cdn.dribbble.com/users/1339084/screenshots/6012375/media/a80788b99ec951a80ee3a0a6b1938eb7.png?compress=1&resize=1600x1200&vertical=top"
-              className="h-[280px] w-[280px] rounded-3xl"
+              src="https://i.postimg.cc/9QYcW5h8/Screenshot-2023-02-04-at-12-42-49-PM.png"
+              className="h-[280px] w-[280px] rounded-xl"
             />
           </div>
           <h1 className="mt-10 text-3xl">Build</h1>
@@ -32,14 +31,13 @@ function HowItWorks() {
         >
           <div className="flex w-full lg:justify-center ">
             <img
-              src="https://cdn.dribbble.com/users/2669355/screenshots/16012679/media/f2a4be97467d650b4ffa1324cc0f0f42.png?compress=1&resize=1600x1200&vertical=top"
-              className="h-[280px] w-[310px] rounded-3xl"
+              src="https://i.postimg.cc/YSgdBb73/Screenshot-2023-02-04-at-12-25-10-PM.png"
+              className="h-[280px] w-[310px] rounded-xl"
             />
           </div>
           <h1 className="mt-10 text-3xl">Publish</h1>
           <p className="font-medium mt-5 text-slate-400 lg:px-20 lg:text-center">
-            With the click of a button, publish your website and Save to your
-            device
+            With the click of a button, publish your website and Share your website
           </p>
         </div>
         <div
@@ -48,8 +46,8 @@ function HowItWorks() {
         >
           <div className="flex w-full lg:justify-center ">
             <img
-              src="https://cdn.dribbble.com/users/870476/screenshots/15460067/media/2acc14d36d0f943111e3a2276d37a4d3.jpg?compress=1&resize=1600x1200&vertical=top"
-              className="h-[280px] w-[310px] rounded-3xl"
+              src="https://i.postimg.cc/C52zsy1H/Screenshot-2023-02-04-at-12-46-06-PM.png"
+              className="h-[280px] w-[310px] rounded-xl"
             />
           </div>
           <h1 className="mt-10 text-3xl">Succeed</h1>

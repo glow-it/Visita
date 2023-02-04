@@ -115,7 +115,7 @@ function Hero() {
       <div className="lg:block hidden z-50">
         <div className="lg:h-[500px] z-50  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
           <img
-            src={require("../Images/heroimage.webp")}
+            src="https://cdn.dribbble.com/userupload/3352088/file/original-6eaf281a6ac1875db80b9abebb3bc173.png?compress=1&resize=1504x1128"
             muted
             autoPlay
             loop

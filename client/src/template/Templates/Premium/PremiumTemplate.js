@@ -26,7 +26,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import InstallPwa from "../../../Tools/InstallPwaApp";
 import { abbrevateNumber } from "../../../Tools/abbrevateNumber";
 
-function PremiumTemplate1({ preview, cardDatas }) {
+function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   const toast = useToast();
   let params = useParams();
 
@@ -44,13 +44,13 @@ function PremiumTemplate1({ preview, cardDatas }) {
 
   let main_company_name = params.comp_name;
 
-  axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
-    cardDatas.map((data) => {
-      if (data.name == cardDatas.theme_color) {
-        setBgImage(data.image_url);
-      }
-    });
-  });
+  // axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
+  //   cardDatas.map((data) => {
+  //     if (data.name == cardDatas.theme_color) {
+  //       setBgImage(data.image_url);
+  //     }
+  //   });
+  // });
 
   let cart_products;
   let cart_count;
@@ -734,7 +734,7 @@ function PremiumTemplate1({ preview, cardDatas }) {
 
                   <button
                     onClick={() =>
-                      navigate("/" + main_company_name + "/premiumproducts")
+                      navigate(`/${subdomain != false ? subdomain : main_company_name}/premiumproducts`)
                     }
                     className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-3 mr-3`}
                   >

@@ -135,12 +135,12 @@ function Header() {
                   Register franchisee
                 </Link>
               ) : (
-                <Link
-                  to="/franchisee"
+                <a
+                  href="https://dashboard.visitasmart.com"
                   className="font-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center"
                 >
                   Go to franchisee
-                </Link>
+                </a>
               )}
 
               <Menu>
@@ -394,18 +394,15 @@ function Header() {
                                   Register franchisee
                                 </p>
                               ) : (
-                                <p
-                                  onClick={() => {
-                                    navigate("/franchisee");
-                                    setOpen(false);
-                                  }}
+                                <a
+                                href="https://dashboard.visitasmart.com"
                                   className="font-medium mt-2 pl-4 bg-[#5241FE] rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
                                 >
                                   Go to franchisee
                                   <span className="flex items-center justify-center ml-1">
                                     <ion-icon name="arrow-forward"></ion-icon>
                                   </span>
-                                </p>
+                                </a>
                               )}
                             </div>
                           </div>
