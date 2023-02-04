@@ -78,8 +78,8 @@ function ManageFranchisee() {
                   res.data.franchisee_data.franchisee_name
                 ),
                 description: "Visita Franchisee",
-                start_url: `https://www.visitasmart.com/franchisee`,
-                scope: `https://www.visitasmart.com/franchisee`,
+                start_url: `https://dashboard.visitasmart.com`,
+                scope: `https://dashboard.visitasmart.com`,
                 background_color: "#fff",
                 theme_color: "#fff",
                 display: "standalone",
