@@ -11,9 +11,6 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 function Support() {
-  useEffect(() => {
-    document.title = "Visita - Support";
-  }, []);
 
   return (
     <div className=" w-full bg-white flex flex-col items-center overflow-scroll pb-56">

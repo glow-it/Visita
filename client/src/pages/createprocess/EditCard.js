@@ -74,6 +74,7 @@ function EditCard() {
   let products = cardDatas && cardDatas.products;
   let image_gallery = cardDatas && cardDatas.image_gallery;
   let video_gallery = cardDatas && cardDatas.video_gallery;
+  
 
   
   useEffect(() => {
@@ -1121,6 +1122,92 @@ function EditCard() {
             defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[4]}
             class=" company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
           />
+
+{
+            cardDatas && cardDatas.isPremium == "true" ?
+            <div>
+              <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 6{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 6"
+            autoComplete="off"
+            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[5]}
+            id="large-input"
+            name="ytvideo_6_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 7{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 7"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_7_link"
+            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[6]}
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 8{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 8"
+            autoComplete="off"
+            id="large-input"
+            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[7]}
+            name="ytvideo_8_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 9{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 9"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_9_link"
+            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[8]}
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 10{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 10"
+            autoComplete="off"
+            id="large-input"
+            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[9]}
+            name="ytvideo_10_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+            </div>
+          :""
+          }
 
           {/* File Video Links */}
 

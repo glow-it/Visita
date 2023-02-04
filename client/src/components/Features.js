@@ -37,11 +37,11 @@ function Features() {
           <div data-aos-delay="100">
             <div class="flex items-center mb-4 w-10 h-10 rounded-full bg-[#5241FE]-100 lg:h-12 lg:w-12 ">
               <span className="w-5 h-5 text-[#5241FE] text-3xl lg:w-6 lg:h-6 ">
-                <ion-icon name="document-outline"></ion-icon>
+                <ion-icon name="play"></ion-icon>
               </span>
             </div>
             <h3 class="mb-2 lg:text-lg text-md font-semibold :text-white">
-              Upload pdf documents
+              Video gallery
             </h3>
           </div>
 

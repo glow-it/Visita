@@ -14,13 +14,7 @@ function PlanDetails() {
               <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
                 <ion-icon name="close"></ion-icon>
               </span>{" "}
-              Unlimited Products In Ecommerce Store
-            </li>
-            <li className="my-6 lg:text-xl text-md flex  text-black ">
-              <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
-                <ion-icon name="close"></ion-icon>
-              </span>{" "}
-              Video Gallery
+              Video gallery
             </li>
             <li className="my-6 lg:text-xl text-md flex  text-black ">
               <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
@@ -40,12 +34,6 @@ function PlanDetails() {
                 <ion-icon name="close"></ion-icon>
               </span>{" "}
               Custom domain
-            </li>
-            <li className="my-6 lg:text-xl text-md flex">
-              <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
-                <ion-icon name="checkmark"></ion-icon>
-              </span>{" "}
-              No Visible Ads (Ads Free)
             </li>
           </ul>
         </div>
@@ -58,13 +46,7 @@ function PlanDetails() {
               <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
                 <ion-icon name="checkmark"></ion-icon>
               </span>{" "}
-              Unlimited Products In Ecommerce Store
-            </li>
-            <li className="my-6 lg:text-xl text-md flex  text-black ">
-              <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
-                <ion-icon name="checkmark"></ion-icon>
-              </span>{" "}
-              Video Gallery
+              Video gallery
             </li>
             <li className="my-6 lg:text-xl text-md flex  text-black ">
               <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
@@ -84,12 +66,6 @@ function PlanDetails() {
                 <ion-icon name="checkmark"></ion-icon>
               </span>{" "}
               Custom domain
-            </li>
-            <li className="my-6 lg:text-xl text-md flex">
-              <span className="lg:static flex items-center mr-1 lg:-translate-x-0 absolute -translate-x-7">
-                <ion-icon name="checkmark"></ion-icon>
-              </span>{" "}
-              No Visible Ads (Ads Free)
             </li>
           </ul>
         </div>

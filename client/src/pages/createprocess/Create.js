@@ -45,70 +45,8 @@ function Create() {
   let [skip, setSkip] = useState(false);
   let [processIndex, setProcessIndex] = useState(1);
   let [feature1, setFeature1] = useState(false);
-  let [imageGalleryQuantity, setImageGalleryQuantity] = useState([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-  ]);
-  let [productsQuantity, setProductsQuantity] = useState([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-    "26",
-    "27",
-    "28",
-    "29",
-    "30",
-    "31",
-    "32",
-    "33",
-    "34",
-    "35",
-    "36",
-    "37",
-    "38",
-    "39",
-    "40",
-    "41",
-    "42",
-    "43",
-    "44",
-    "45",
-    "46",
-    "47",
-    "48",
-    "49",
-    "50",
-  ]);
+  let [imageGalleryQuantity, setImageGalleryQuantity] = useState([]);
+  let [productsQuantity, setProductsQuantity] = useState([]);
 
   let [loading, setLoading] = useState(false);
   let [choosedThemeColor, setChoosedThemeColor] = useState("purple");
@@ -134,6 +72,173 @@ function Create() {
     "pink",
     "rose",
   ]);
+
+  useEffect(() => {
+    let premiumProductsQuantity = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83",
+      "84",
+      "85",
+      "86",
+      "87",
+      "88",
+      "89",
+      "90",
+      "91",
+      "92",
+      "93",
+      "94",
+      "95",
+      "96",
+      "97",
+      "98",
+      "99",
+      "100",
+    ];
+    let basicProductsQuantity = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ];
+    let basicImageGalleryQuantity = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ];
+
+    let premiumImageGalleryQuantity = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ];
+
+    
+    if(isPremium == true){
+      setProductsQuantity(premiumProductsQuantity);
+      setImageGalleryQuantity(premiumImageGalleryQuantity)
+    }else{
+      setProductsQuantity(basicProductsQuantity)
+      setImageGalleryQuantity(basicImageGalleryQuantity)
+    }
+
+  }, []);
 
   // Normal Use Effect
   useEffect(() => {
@@ -1264,6 +1369,87 @@ function Create() {
             name="ytvideo_5_link"
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
+
+          {
+            isPremium == true ?
+            <div>
+              <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 6{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 6"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_6_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 7{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 7"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_7_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 8{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 8"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_8_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 9{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 9"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_9_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+
+          <label
+            for="large-input"
+            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+          >
+            Youtube Video Link 10{" "}
+            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+          </label>
+          <input
+            placeholder="Youtube video link 10"
+            autoComplete="off"
+            id="large-input"
+            name="ytvideo_10_link"
+            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+          />
+            </div>
+          :""
+          }
 
           {/* File Video Links */}
 

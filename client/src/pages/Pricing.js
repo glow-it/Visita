@@ -84,91 +84,110 @@ function Pricing() {
         </div>
         <div class="grid max-w-screen-md gap-10 md:grid-cols-2 sm:mx-auto">
           <div data-aos-delay="200">
-            <div class="p-8 bg-gray-900 rounded-xl">
+            <div class="p-8 bg-white text-black border rounded-xl">
               <div class="mb-4 text-center">
-                <p class="text-xl font-medium tracking-wide text-white">
+                <p class="text-xl font-medium tracking-wide text-black">
                   Basic plan
                 </p>
                 <div class="flex items-center justify-center">
-                  <p class="mr-2 text-5xl font-semibold text-white lg:text-6xl">
+                  <p class="mr-2 text-5xl font-semibold text-black lg:text-6xl">
                     ₹699
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
                 </div>
               </div>
               <ul class="mb-8 space-y-2">
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Basic design</p>
-                </li>
+              
 
                 <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="close-outline" ></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-300">Products page</p>
+                  <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
                 <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="close-outline" ></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-300">All with one click</p>
+                  <p class="font-medium text-gray-600">Premium design</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="close-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Ecommerce page</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="close-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Custom domain</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">20 products or services</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">2 templates</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">No visible ads (Ads free)</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">One click save as app</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Update website unlimited times</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Feedback option available</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Manage feedbacks</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">5 photos in gallery</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">5 videos in youtube video gallery</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Payment section</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Contact form</p>
                 </li>
               </ul>
               <button
@@ -182,108 +201,128 @@ function Pricing() {
                     },
                   })
                 }
-                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-black  focus:shadow-outline focus:outline-none"
               >
                 Choose this
               </button>
               <button
                 onClick={() => navigate("/blueberrybakes")}
-                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-black transition duration-200 rounded-lg  bg-slate-100 hover:bg-slate-200 focus:shadow-outline focus:outline-none"
               >
                 See demo
               </button>
             </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-25" />
+            <div class="w-11/12 h-2 mx-auto bg-white text-black border rounded-b-xl opacity-75" />
+            <div class="w-10/12 h-2 mx-auto bg-white text-black border rounded-b-xl opacity-50" />
+            <div class="w-9/12 h-2 mx-auto bg-white text-black border rounded-b-xl opacity-25" />
           </div>
           <div data-aos-delay="200">
-            <div class="p-8 bg-gray-900 rounded-xl">
+            <div class="p-8 bg-white text-black border border-indigo-600  rounded-xl">
               <div class="mb-4 text-center">
-                <p class="text-xl font-medium tracking-wide text-white">
+                <p class="text-xl font-medium tracking-wide text-black">
                   Premium plan
                 </p>
                 <div class="flex items-center justify-center">
-                  <p class="mr-2 text-5xl font-semibold text-white lg:text-6xl">
+                  <p class="mr-2 text-5xl font-semibold text-black lg:text-6xl">
                     ₹999
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
                 </div>
               </div>
               <ul class="mb-8 space-y-2">
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Premium design</p>
-                </li>
+               
 
                 <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-300">Ecommerce</p>
+                  <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
                 <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-300">Custom domain name</p>
+                  <p class="font-medium text-gray-600">Premium design</p>
                 </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Ecommerce page</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Custom domain</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">100 products in ecommerce store</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">10+ templates</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">No visible ads (Ads free)</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">One click save as app</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Update website unlimited times</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Feedback option available</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Manage feedbacks</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">20 photos in gallery</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">20 videos in youtube video gallery</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Payment section</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                   <ion-icon name="checkmark-outline" ></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">Contact form</p>
+                </li>
+
               </ul>
               <button
                 onClick={() =>
@@ -296,20 +335,20 @@ function Pricing() {
                     },
                   })
                 }
-                class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded-lg shadow-md bg-teal-400 hover:bg-teal-700 hover:text-white focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-indigo-600 hover:bg-indigo-700  focus:shadow-outline focus:outline-none"
               >
                 Choose this
               </button>
               <button
                 onClick={() => window.location.href="https://visita.visitasmart.com"}
-                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
+                class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-black transition duration-200 rounded-lg  bg-slate-100 hover:bg-slate-200 focus:shadow-outline focus:outline-none"
               >
                 See demo
               </button>
             </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b-xl opacity-25" />
+            <div class="w-11/12 h-2 mx-auto bg-white text-black border border-indigo-600  rounded-b-xl opacity-75" />
+            <div class="w-10/12 h-2 mx-auto bg-white text-black border border-indigo-600  rounded-b-xl opacity-50" />
+            <div class="w-9/12 h-2 mx-auto bg-white text-black border border-indigo-600  rounded-b-xl opacity-25" />
           </div>
         </div>
       </div>
