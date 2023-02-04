@@ -99,7 +99,7 @@ function Hero() {
             </button>
 
             <a
-            href="https://visita.visitasmart.com"
+            href="https://applox.visitasmart.com"
               class="text-white bg-[#5241FE] lg:ml-0 ml-8  transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-[#5241FE]  rounded-full sm:text-xl text-xl font-medium px-10 py-2.5 mr-2 mb-2"
             >
               See demo

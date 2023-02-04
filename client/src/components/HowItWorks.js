@@ -15,8 +15,8 @@ function HowItWorks() {
         >
           <div className="flex w-full lg:justify-center ">
             <img
-              src="https://i.postimg.cc/9QYcW5h8/Screenshot-2023-02-04-at-12-42-49-PM.png"
-              className="h-[280px] w-[280px] rounded-xl"
+              src="https://i.postimg.cc/rphcCcnd/Screenshot-2023-02-04-at-8-56-18-PM.png"
+              className="h-[290px] w-[290px] rounded-xl"
             />
           </div>
           <h1 className="mt-10 text-3xl">Build</h1>
@@ -31,8 +31,8 @@ function HowItWorks() {
         >
           <div className="flex w-full lg:justify-center ">
             <img
-              src="https://i.postimg.cc/YSgdBb73/Screenshot-2023-02-04-at-12-25-10-PM.png"
-              className="h-[280px] w-[310px] rounded-xl"
+              src="https://i.postimg.cc/y8v22jFt/Screenshot-2023-02-04-at-8-56-59-PM.png"
+              className="h-[290px] w-[320px] rounded-xl"
             />
           </div>
           <h1 className="mt-10 text-3xl">Publish</h1>
@@ -46,8 +46,8 @@ function HowItWorks() {
         >
           <div className="flex w-full lg:justify-center ">
             <img
-              src="https://i.postimg.cc/C52zsy1H/Screenshot-2023-02-04-at-12-46-06-PM.png"
-              className="h-[280px] w-[310px] rounded-xl"
+              src="https://i.postimg.cc/Qdky1b4V/Screenshot-2023-02-04-at-8-48-39-PM.png"
+              className="h-[290px] w-[320px] rounded-xl"
             />
           </div>
           <h1 className="mt-10 text-3xl">Succeed</h1>

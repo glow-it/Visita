@@ -356,7 +356,7 @@ function Pricing() {
               </button>
               <button
                 onClick={() =>
-                  (window.location.href = "https://visita.visitasmart.com")
+                  (window.location.href = "https://applox.visitasmart.com")
                 }
                 class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-black transition duration-200 rounded-lg  bg-slate-100 hover:bg-slate-200 focus:shadow-outline focus:outline-none"
               >

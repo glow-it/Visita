@@ -140,17 +140,17 @@ function Successfull() {
         className="fixed -top-96 z-50 flex justify-center"
       ></canvas>
       <div className="z-10 bg-blue-50/50 w-full flex flex-col items-center">
-        <div className="w-full h-12 flex items-center lg:px-96 px-4 ">
+        <div classNam e="w-full h-12 flex items-center lg:px-96 px-4 ">
           {cardDatas && cardDatas.franchisee != "no franchisee" ? (
-            <Link
-              to="/franchisee"
+            <a
+              href="https://dashboard.visitasmart.com"
               className="font-medium flex items-center justify-center hover:text-indigo-600 cursor-pointer"
             >
               <span className="flex mr-1 items-center justify-center">
                 <ion-icon name="arrow-back-outline"></ion-icon>
               </span>
               Dashboard
-            </Link>
+            </a>
           ) : (
             ""
           )}
@@ -176,7 +176,7 @@ function Successfull() {
             className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-4 justify-center cursor-pointer"
           >
             {" "}
-            <span className="flex ml-1 items-center justify-center">
+            <span className="flex ml-1 mt-8 z-50 items-center justify-center">
               <ion-icon name="arrow-redo"></ion-icon>
             </span>
           </p>
@@ -202,11 +202,11 @@ function Successfull() {
           </h1>
           <h1 className="text-3xl font-bold mb-6 ">Share website</h1>
           <div
-            className={` lg:py-4 py-4 w-full mb-8 z-10 h-12 bg-${"purple"}-50 flex items-center justify-center  text-${"purple"}-600 `}
+            className={` lg:py-4 py-4 w-full mb-8 z-10 h-12 bg-${cardDatas && cardDatas.theme_color}-50 flex items-center justify-center  text-${cardDatas && cardDatas.theme_color}-600 `}
           >
             <h1
               id="website_url_text_successfull"
-              className="font-medium lg:text-xl text-center flex"
+              className="font-medium lg:text-xl text-center flex lowercase"
             >
               {cardDatas && cardDatas.isPremium == "true"
                 ? cardDatas.clean_name + ".visitasmart.com"
@@ -257,7 +257,7 @@ function Successfull() {
 
           <div
             id="qr-code-design"
-            className={` lg:px-0 px-6 transition-all flex-col  relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${"purple"}-50   z-10 flex items-center  justify-center`}
+            className={` lg:px-0 px-6 transition-all flex-col  relative w-full py-10 lg:pt-24 pb-16 pt-24 bg-${cardDatas && cardDatas.theme_color}-50   z-10 flex items-center  justify-center`}
           >
             <div
               className={`w-full h-28 absolute top-0  bg-${
@@ -283,13 +283,13 @@ function Successfull() {
                 logoHeight={60}
                 size={220}
                 qrStyle="dots"
-                fgColor={"purple"}
+                fgColor={cardDatas && cardDatas.theme_color}
                 bgColor="white"
               />
             </div>
 
-            <div className="py-3 px-6 rounded-full mt-6 bg-white">
-              <h1 className={`font-medium text-${"purple"}-600`}>
+            <div className="py-3 px-6 rounded-full mt-6 bg-white lowercase">
+              <h1 className={`font-medium text-${cardDatas && cardDatas.theme_color}-600`}>
                 {cardDatas && cardDatas.isPremium == "true"
                   ? cardDatas.clean_name + ".visitasmart.com"
                   : "visitasmart.com/" + cardDatas.clean_name}
@@ -332,7 +332,7 @@ function Successfull() {
 
           <div className="w-50 z-10 h-16 mt-16 flex items-center justify-center">
             <a
-              className="bg-indigo-600 hover:bg-indigo-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              className="bg-indigo-600 hover:bg-indigo-900 flex transition-colors justify-center mr-3 text-lg p-3 text-white rounded-full"
               href={share_facebook_url}
             >
               {" "}
@@ -340,7 +340,7 @@ function Successfull() {
             </a>
 
             <a
-              className="bg-blue-600 hover:bg-blue-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              className="bg-blue-600 hover:bg-blue-900 flex transition-colors justify-center mr-3 text-lg p-3 text-white rounded-full"
               href={share_twitter_url}
             >
               {" "}
@@ -348,7 +348,7 @@ function Successfull() {
             </a>
 
             <a
-              className="bg-sky-600 hover:bg-sky-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              className="bg-sky-600 hover:bg-sky-900 flex transition-colors justify-center mr-3 text-lg p-3 text-white rounded-full"
               href={share_linkedin_url}
             >
               {" "}
@@ -356,7 +356,7 @@ function Successfull() {
             </a>
 
             <a
-              className="bg-green-600 hover:bg-green-900 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              className="bg-green-600 hover:bg-green-900 flex transition-colors justify-center mr-3 text-lg p-3 text-white rounded-full"
               href={share_whatsapp_url}
             >
               {" "}
@@ -364,7 +364,7 @@ function Successfull() {
             </a>
 
             <a
-              className="bg-slate-900 hover:bg-slate-700 flex transition-colors justify-center mr-6 text-2xl p-3 text-white rounded-full"
+              className="bg-slate-900 hover:bg-slate-700 flex transition-colors justify-center mr-3 text-lg p-3 text-white rounded-full"
               href={share_sms_url}
             >
               {" "}
@@ -372,16 +372,16 @@ function Successfull() {
             </a>
           </div>
 
-          <div className="flex z-10 flex-col items-center mt-20 pb-20 bg-slate-900 text-white">
-            <h1 className="lg:text-xl text-xl font-bold mb-6 mt-10 ">
+          <div className="flex z-10 flex-col items-center mt-20 pb-20 bg-slate-100 text-white">
+            <h1 className="lg:text-xl text-xl font-bold mb-6 mt-10 text-slate-900 ">
               Manage or edit your website
             </h1>
 
-            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-800 flex items-center justify-center   text-white ">
+            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-100 shadow-lg text-slate-900 border rounded-lg flex items-center justify-center   text-white ">
               <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
                 <h1>Website manage link</h1>
               </div>
-              <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center">
+              <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center lowercase">
                 {manage_card_url}
               </h1>
               <div
@@ -395,7 +395,7 @@ function Successfull() {
               </div>
             </div>
 
-            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-800 flex items-center justify-center   text-white ">
+            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-100 shadow-lg text-slate-900 border rounded-lg flex items-center justify-center   text-white ">
               <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
                 <h1>Website password</h1>
               </div>

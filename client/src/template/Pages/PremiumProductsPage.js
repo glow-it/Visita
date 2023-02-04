@@ -271,7 +271,7 @@ function PremiumProductsPage() {
           </span>
         </div>
 
-        <form className="pb-4">
+        <form className="pb-4 mt-8">
           <label
             for="default-search"
             class="mb-2 text-sm font-medium text-gray-900 sr-only :text-white"
@@ -312,100 +312,101 @@ function PremiumProductsPage() {
         {products &&
           products
             .filter((data, index) => {
-              let prodname = data.product_name.toLowerCase();
-              return (
-                prodname != "" && prodname.includes(searchValue.toLowerCase())
-              );
+              return data.product_name != "" && data.product_name != null
             })
             .map((data, index) => {
-              return (
-                <div
-                  z
-                  div
-                  className={`w-full pb-12 mb-8 px-8 bg-slate-100    rounded-2xl flex flex-col items-center relative ${
-                    index == 0 ? "mt-10" : "mt-2"
-                  }`}
-                >
-                  <img
-                    src={data.product_image.replace(/^http:\/\//i, "https://")}
-                    className="  w-full rounded-3xl py-6  offer-image"
-                  />
-                  <h1 className=" pt-6 capitalize text-center text-xl font-bold">
-                    {data.product_name}
-                  </h1>
-
-                  <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
-                    {data.product_description}
-                  </h1>
-
-                  <h1 className=" pt-4 capitalize font-medium text-green-600 text-xl">
-                    <span className=" mr-2 text-slate-600 line-through">
+              let prodname = data.product_name.toLowerCase();
+              if(prodname != "" && prodname.includes(searchValue.toLowerCase())){
+                return (
+                  <div
+                    z
+                    div
+                    className={`w-full pb-12 mb-8 px-8 bg-slate-100    rounded-2xl flex flex-col items-center relative ${
+                      index == 0 ? "mt-10" : "mt-2"
+                    }`}
+                  >
+                    <img
+                      src={data.product_image.replace(/^http:\/\//i, "https://")}
+                      className="  w-full rounded-3xl py-6  offer-image"
+                    />
+                    <h1 className=" pt-6 capitalize text-center text-xl font-bold">
+                      {data.product_name}
+                    </h1>
+  
+                    <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
+                      {data.product_description}
+                    </h1>
+  
+                    <h1 className=" pt-4 capitalize font-medium text-green-600 text-xl">
+                      <span className=" mr-2 text-slate-600 line-through">
+                        {`${
+                          data.product_orgprice != ""
+                            ? "₹" + data.product_orgprice
+                            : ""
+                        }`}
+                      </span>
                       {`${
-                        data.product_orgprice != ""
-                          ? "₹" + data.product_orgprice
+                        data.product_offerprice != ""
+                          ? "₹" + data.product_offerprice
                           : ""
                       }`}
-                    </span>
-                    {`${
-                      data.product_offerprice != ""
-                        ? "₹" + data.product_offerprice
-                        : ""
-                    }`}
-                  </h1>
-                  <p
-                    onClick={(e) => {
-                      document
-                        .querySelectorAll(".cart-count")
-                        .forEach((elem) => {
-                          elem.innerText = parseInt(elem.innerText) + 1;
-                        });
-
-                      e.target.innerText = "Added to cart";
-
-                      let product_arr = [
-                        {
-                          image: data.product_image,
-                          name: data.product_name,
-                          description: data.product_description,
-                          price: data.product_offerprice,
-                        },
-                      ];
-
-                      if (localStorage.getItem("cart_products")) {
-                        let existing_arr = JSON.parse(
-                          localStorage.getItem("cart_products")
-                        );
-
-                        existing_arr.push(...product_arr);
-
-                        localStorage.setItem(
-                          "cart_products",
-                          JSON.stringify(existing_arr)
-                        );
-                      } else {
-                        localStorage.setItem(
-                          "cart_products",
-                          JSON.stringify(product_arr)
-                        );
-                      }
-                    }}
-                    className={`flex cursor-pointer justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
-                  >
-                    Add to cart
-                  </p>
-
-                  {data.product_link != "" ? (
-                    <a
-                      href={data.product_link}
-                      className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-600 text-${theme_color}-600 rounded-full   font-bold text-lg mt-2 `}
+                    </h1>
+                    <p
+                      onClick={(e) => {
+                        document
+                          .querySelectorAll(".cart-count")
+                          .forEach((elem) => {
+                            elem.innerText = parseInt(elem.innerText) + 1;
+                          });
+  
+                        e.target.innerText = "Added to cart";
+  
+                        let product_arr = [
+                          {
+                            image: data.product_image,
+                            name: data.product_name,
+                            description: data.product_description,
+                            price: data.product_offerprice,
+                          },
+                        ];
+  
+                        if (localStorage.getItem("cart_products")) {
+                          let existing_arr = JSON.parse(
+                            localStorage.getItem("cart_products")
+                          );
+  
+                          existing_arr.push(...product_arr);
+  
+                          localStorage.setItem(
+                            "cart_products",
+                            JSON.stringify(existing_arr)
+                          );
+                        } else {
+                          localStorage.setItem(
+                            "cart_products",
+                            JSON.stringify(product_arr)
+                          );
+                        }
+                      }}
+                      className={`flex cursor-pointer justify-center items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
                     >
-                      View Product
-                    </a>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              );
+                      Add to cart
+                    </p>
+  
+                    {data.product_link != "" ? (
+                      <a
+                        href={data.product_link}
+                        className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-600 text-${theme_color}-600 rounded-full   font-bold text-lg mt-2 `}
+                      >
+                        View Product
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                );
+              }
+              
             })}
       </div>
     </div>

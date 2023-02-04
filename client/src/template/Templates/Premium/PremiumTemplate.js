@@ -753,12 +753,12 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                     cardDatas.pinterest_link == ""
                       ? "invisible"
                       : "visible"
-                  } flex bg-white justify-center  px-4 h-12 my-16 items-center rounded-full`}
+                  } flex bg-white justify-center  px-10   flex-wrap my-16 items-center rounded-full`}
                 >
                   {cardDatas.facebook_link != "" ? (
                     <i
                       onClick={() => window.open(cardDatas.facebook_link)}
-                      className="  cursor-pointer fa-brands fa-facebook text-4xl my-12 rounded-full mr-4 text-blue-600 "
+                      className="  cursor-pointer fa-brands fa-facebook text-md my-2 rounded-full mr-4 bg-indigo-500 p-3 text-white "
                     ></i>
                   ) : (
                     ""
@@ -767,7 +767,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   {cardDatas.twitter_link != "" ? (
                     <i
                       onClick={() => window.open(cardDatas.twitter_link)}
-                      className=" cursor-pointer fa-brands fa-twitter text-3xl my-12 rounded-full mr-4 text-cyan-600 "
+                      className=" cursor-pointer fa-brands fa-twitter text-md my-2 rounded-full mr-4 bg-sky-500 p-3 text-white "
                     ></i>
                   ) : (
                     ""
@@ -776,7 +776,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   {cardDatas.instagram_link != "" ? (
                     <i
                       onClick={() => window.open(cardDatas.instagram_link)}
-                      className=" cursor-pointer fa-brands fa-instagram text-3xl my-12 rounded-full mr-4 text-purple-600 "
+                      className=" cursor-pointer fa-brands fa-instagram text-md my-2 rounded-full mr-4 bg-purple-500 p-3 text-white "
                     ></i>
                   ) : (
                     ""
@@ -785,7 +785,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   {cardDatas.linkedin_link != "" ? (
                     <i
                       onClick={() => window.open(cardDatas.linkedin_link)}
-                      className=" cursor-pointer fa-brands fa-linkedin text-3xl my-12 rounded-full mr-4 text-blue-600 "
+                      className=" cursor-pointer fa-brands fa-linkedin text-md my-2 rounded-full mr-4 bg-blue-500 p-3 text-white "
                     ></i>
                   ) : (
                     ""
@@ -794,7 +794,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   {cardDatas.youtube_link != "" ? (
                     <i
                       onClick={() => window.open(cardDatas.youtube_link)}
-                      className=" cursor-pointer fa-brands fa-youtube text-3xl my-12 rounded-full mr-4 text-red-600 "
+                      className=" cursor-pointer fa-brands fa-youtube text-md my-2 rounded-full mr-4 bg-red-500 p-3 text-white "
                     ></i>
                   ) : (
                     ""
@@ -803,7 +803,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   {cardDatas.pinterest_link != "" ? (
                     <i
                       onClick={() => window.open(cardDatas.pinterest_link)}
-                      className=" cursor-pointer fa-brands fa-pinterest text-3xl my-12 rounded-full mr-4 text-red-600 "
+                      className=" cursor-pointer fa-brands fa-pinterest text-md my-2 rounded-full mr-4 bg-rose-500 p-3 text-white "
                     ></i>
                   ) : (
                     ""
@@ -937,7 +937,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           {/* Specialities */}
 
           {cardDatas.specials != "" ? (
-            <div className=" flex flex-col items-start ml-6 pr-12">
+            <div className=" flex flex-col items-start ml-6 px-4">
               <span
                 className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}
               >
@@ -956,7 +956,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           )}
 
           {cardDatas.features != "" ? (
-            <div className=" flex flex-col items-start ml-6 pr-12">
+            <div className=" flex flex-col items-start ml-6 px-4">
               <span
                 className={`  text-xl text-${theme_color}-600 font-bold text-lg mt-8 mb-6 flex`}
               >
@@ -1133,7 +1133,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           {galleryImages &&
             galleryImages
               .filter((data) => {
-                return data != "";
+                return data != "" && data != null;
               })
               .map((data) => {
                 return (
@@ -1158,7 +1158,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           {videoGallery &&
             videoGallery
               .filter((data) => {
-                return data != "";
+                return data != "" && data != null;
               })
               .map((data) => {
                 return (
@@ -1186,7 +1186,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           {ytVideos &&
             ytVideos
               .filter((data) => {
-                return data != "";
+                return data != "" && data != null;
               })
               .map((data) => {
                 const videoUrl = data;
