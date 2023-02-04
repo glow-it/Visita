@@ -16,10 +16,11 @@ function Pricing() {
       : ""
     : null;
 
+    console.log(franchisee,franchisee_email);
+
   useEffect(() => {
     window.scrollTo(0,0)
     document.title = "Pricing - Visita";
-    document.querySelector("header").style.display = "flex";
   }, []);
 
   return (
@@ -300,7 +301,7 @@ function Pricing() {
                 Choose this
               </button>
               <button
-                onClick={() => navigate("/visita")}
+                onClick={() => window.location.href="https://visita.visitasmart.com"}
                 class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-lg shadow-md bg-slate-800 hover:bg-slate-600 focus:shadow-outline focus:outline-none"
               >
                 See demo
