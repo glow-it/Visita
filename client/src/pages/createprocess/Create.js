@@ -1897,6 +1897,7 @@ function Create() {
                       className="  font-medium block py-4    pr-[150px] pl-[20px] text-gray-900 transition-all   focus:shlg-blue-6-200/30   sm:text-sm text-sm  focus:border-indigo-500 "
                       id="large_size"
                       type="file"
+                      accept="image/*"
                       onChange={(e) => {
                         uploadImage(e.target.files, `image_${data}`);
                       }}

@@ -16,10 +16,10 @@ function Pricing() {
       : ""
     : null;
 
-    console.log(franchisee,franchisee_email);
+  console.log(franchisee, franchisee_email);
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     document.title = "Pricing - Visita";
   }, []);
 
@@ -97,95 +97,103 @@ function Pricing() {
                 </div>
               </div>
               <ul class="mb-8 space-y-2">
-              
-
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="close-outline" ></ion-icon>
+                    <ion-icon name="close-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="close-outline" ></ion-icon>
+                    <ion-icon name="close-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Premium design</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="close-outline" ></ion-icon>
+                    <ion-icon name="close-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Ecommerce page</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="close-outline" ></ion-icon>
+                    <ion-icon name="close-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Custom domain</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">20 products or services</p>
+                  <p class="font-medium text-gray-600">
+                    20 products or services
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">2 templates</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">No visible ads (Ads free)</p>
+                  <p class="font-medium text-gray-600">
+                    No visible ads (Ads free)
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">One click save as app</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Update website unlimited times</p>
+                  <p class="font-medium text-gray-600">
+                    Update website unlimited times
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Feedback option available</p>
+                  <p class="font-medium text-gray-600">
+                    Feedback option available
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Manage feedbacks</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">5 photos in gallery</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">5 videos in youtube video gallery</p>
+                  <p class="font-medium text-gray-600">
+                    5 videos in youtube video gallery
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Payment section</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Contact form</p>
                 </li>
@@ -224,105 +232,112 @@ function Pricing() {
                 </p>
                 <div class="flex items-center justify-center">
                   <p class="mr-2 text-5xl font-semibold text-black lg:text-6xl">
-                    ₹999
+                    ₹1299
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
                 </div>
               </div>
               <ul class="mb-8 space-y-2">
-               
-
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Premium design</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Ecommerce page</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Custom domain</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">100 products in ecommerce store</p>
+                  <p class="font-medium text-gray-600">
+                    100 products in ecommerce store
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">10+ templates</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">No visible ads (Ads free)</p>
+                  <p class="font-medium text-gray-600">
+                    No visible ads (Ads free)
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">One click save as app</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Update website unlimited times</p>
+                  <p class="font-medium text-gray-600">
+                    Update website unlimited times
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Feedback option available</p>
+                  <p class="font-medium text-gray-600">
+                    Feedback option available
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Manage feedbacks</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">20 photos in gallery</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">20 videos in youtube video gallery</p>
+                  <p class="font-medium text-gray-600">
+                    20 videos in youtube video gallery
+                  </p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Payment section</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
-                   <ion-icon name="checkmark-outline" ></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">Contact form</p>
                 </li>
-
               </ul>
               <button
                 onClick={() =>
@@ -340,7 +355,9 @@ function Pricing() {
                 Choose this
               </button>
               <button
-                onClick={() => window.location.href="https://visita.visitasmart.com"}
+                onClick={() =>
+                  (window.location.href = "https://visita.visitasmart.com")
+                }
                 class="inline-flex items-center mt-3 justify-center w-full h-12 px-6 font-semibold tracking-wide text-black transition duration-200 rounded-lg  bg-slate-100 hover:bg-slate-200 focus:shadow-outline focus:outline-none"
               >
                 See demo

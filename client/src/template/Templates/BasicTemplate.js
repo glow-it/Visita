@@ -941,9 +941,10 @@ function BasicTemplate({ preview, cardDatas }) {
           {galleryImages &&
             galleryImages
               .filter((data) => {
-                return data != "";
+                return data != "" && data != null;
               })
               .map((data) => {
+                
                 return (
                   <SwiperSlide>
                     <img src={data.replace(/^http:\/\//i, "https://")} />
@@ -963,7 +964,7 @@ function BasicTemplate({ preview, cardDatas }) {
           {ytVideos &&
             ytVideos
               .filter((data) => {
-                return data != "";
+                return data != "" && data != null;
               })
               .map((data) => {
                 const videoUrl = data;

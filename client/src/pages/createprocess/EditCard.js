@@ -1621,6 +1621,7 @@ function EditCard() {
                         className=" ml-6 font-medium block py-3.5    px-12  text-gray-900 transition-all rounded-full  sm:text-sm text-sm focus:shadow-blue-600/30 focus:ring-blue-500 focus:border-blue-500 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500 "
                         id="image"
                         type="file"
+                        accept="image/*"
                         onChange={(e) => {
                           uploadImage(e.target.files, `image_${index + 1}`);
                         }}

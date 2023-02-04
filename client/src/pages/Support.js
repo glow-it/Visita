@@ -1,12 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
-import apiKeys from "../Api/apiKeys";
-import emailjs from "@emailjs/browser";
-import { useToast } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { useState } from "react";
-import { Toast } from "../miniComponents/Toast";
-import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
