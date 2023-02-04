@@ -302,12 +302,12 @@ async function run() {
         .then(() => {
           res.cookie("isFranchiseeLogined", true);
           res.cookie("franchiseeEmail", req.body.email);
-          res.status(200).send({ redirect_url: "/franchisee" });
+          res.status(200).send({ redirect_url: "https://dashboard.visitasmart.com" });
           res.end();
         })
         .catch((err) => {
           res.cookie("isFranchiseeLogined", false);
-          res.status(404).send({ redirect_url: "/franchisee" });
+          res.status(404).send({ redirect_url: "https://dashboard.visitasmart.com" });
           res.end();
         });
     });
