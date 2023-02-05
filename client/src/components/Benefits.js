@@ -12,9 +12,9 @@ function Benefits() {
       </div>
       
       <div className="flex lg:mt-24 mt-12 flex-col items-center">
-      <div data-aos="fade-down" className="lg:w-[50%] lg:py-0  w-full lg:text-start text-center lg:h-full  benefits-1 flex justify-center lg:items-center lg:px-24 px-8">
+      <div data-aos="fade-down" className="lg:w-[50%] lg:flex hidden lg:py-0  w-full lg:text-start text-center lg:h-full  benefits-1  justify-center lg:items-center lg:px-24 px-8">
         <img
-          className="  lg:rounded-xl rounded-xl lg:h-[700px] h-[500px] min-w-[1000px]"
+          className="  lg:rounded-xl rounded-xl lg:h-[700px] h-[500px] lg:min-w-[1000px]"
           src="https://cdn.dribbble.com/userupload/4267260/file/original-bee8a80578bb29e786cbb8c9eb5c4e66.jpg?compress=1&resize=1504x1128"
           muted
           autoPlay={true}

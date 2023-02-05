@@ -18,7 +18,7 @@ function Hero() {
         <div  className="w-full h-full  absolute  left-0 overflow-hidden">
           <div className="h-full opacity-80 w-full bg-black absolute top-0 z-20"></div>
           <div className="h-[60px] blur-lg w-full bg-black absolute top-16 z-20"></div>
-          <div className="h-[400px] w-[120vw] blur-2xl -left-[10vw] bg-cyan-500 opacity-30 absolute bottom-[-21rem]  z-20"></div>
+          <div className="h-[400px] lg:w-[120vw] blur-2xl -left-[10vw] bg-cyan-500 opacity-30 absolute bottom-[-21rem]  z-20"></div>
           <div className="flex">
           <video autoPlay loop muted className="lg:h-[1200px] "  src="https://cdn.dribbble.com/users/374494/screenshots/16627368/media/4b2115e1994337b6195eaf0648521c0e.mp4"  />
           </div>

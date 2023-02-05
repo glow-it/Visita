@@ -14,7 +14,7 @@ function Footer() {
               <div class="w-full mb-10">
                 <p
                   class="inline-block
-                  font-medium max-w-[160px] mb-6 lg:-ml-0 -ml-6"
+                  font-medium lg:max-w-[160px] mb-6 lg:-ml-0 -ml-6"
                 >
                   <img
                     src={require("../Images/logos/visitalogo.png")}

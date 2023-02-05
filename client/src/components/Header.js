@@ -50,7 +50,7 @@ function Header() {
   return (
     <div>
       <header
-        className={` w-[100vw] h-20   flex flex-col   fixed  z-[200] `}
+        className={` w-[100vw] h-20    flex flex-col   fixed  z-[200] `}
       >
         <div className="w-full h-full  flex items-center justify-center">
           <img
@@ -222,9 +222,9 @@ function Header() {
           </a>
         </div>
 
-        <div className="lg:hidden block mr-8">
-          <div className="  w-full flex justify-end  items-center h-full">
-            <span className="text-3xl sm:-mr-24 cursor-pointer">
+        <div className="lg:hidden absolute  w-full h-full block mr-8">
+          <div className="  w-full flex justify-center  items-center h-full">
+            <span className="text-3xl absolute right-6  cursor-pointer">
               <ion-icon onClick={() => setOpen(true)} name="menu"></ion-icon>
             </span>
           </div>
@@ -233,8 +233,8 @@ function Header() {
 
       <div>
         {/* Header Drawer Open */}
-        <Transition.Root show={open} as={Fragment}>
-          <Dialog as="div" className="relative z-[300]" onClose={setOpen}>
+        <Transition.Root show={open} as={Fragment}  >
+          <Dialog as="div" className="relative z-[300] " onClose={setOpen}>
             <Transition.Child
               as={Fragment}
               enter="ease-in-out duration-500"

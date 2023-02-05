@@ -58,7 +58,7 @@ function LandingPage() {
           )}
         </div>
       ) : (
-        <div className="landing-page flex flex-col items-center">
+        <div className="landing-page flex flex-col items-center ">
           <Hero />
           <HowItWorks />
           <Features />

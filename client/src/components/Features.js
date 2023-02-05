@@ -7,7 +7,7 @@ function Features() {
       class="bg-white :bg-gray-900 w-full px-10 lg:pt-16  pb-10 font-semibold relative  "
     >
       <div data-aos="fade-up"
-            data-aos-delay="0" className="w-full lg:pt-14 flex items-center lg:justify-center">
+            data-aos-delay="0" className="w-full pt-14 flex items-center lg:justify-center">
         <h1 className="lg:text-8xl text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FE9E0E] to-[#FE10D7]">Top-notch features</h1>
       </div>
 
