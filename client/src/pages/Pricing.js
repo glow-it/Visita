@@ -75,6 +75,7 @@ function Pricing() {
             </span>{" "}
           </h2>
           <p
+          data-aos="fade-down"
             data-aos-delay="100"
             class="text-base text-gray-700 md:text-lg font-medium"
           >
@@ -83,14 +84,14 @@ function Pricing() {
           </p>
         </div>
         <div class="grid max-w-screen-md gap-10 md:grid-cols-2 sm:mx-auto">
-          <div data-aos-delay="200">
+          <div data-aos-delay="200" data-aos="fade-up">
             <div class="p-8 bg-white text-black border rounded-xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-black">
                   Basic plan
                 </p>
                 <div class="flex items-center justify-center">
-                  <p class="mr-2 text-5xl font-semibold text-black lg:text-6xl">
+                  <p class="mr-2 text-5xl font-bold text-black lg:text-6xl">
                     ₹699
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
@@ -224,14 +225,14 @@ function Pricing() {
             <div class="w-10/12 h-2 mx-auto bg-white text-black border rounded-b-xl opacity-50" />
             <div class="w-9/12 h-2 mx-auto bg-white text-black border rounded-b-xl opacity-25" />
           </div>
-          <div data-aos-delay="200">
+          <div data-aos-delay="300" data-aos="fade-up">
             <div class="p-8 bg-white text-black border border-indigo-600  rounded-xl">
               <div class="mb-4 text-center">
                 <p class="text-xl font-medium tracking-wide text-black">
                   Premium plan
                 </p>
                 <div class="flex items-center justify-center">
-                  <p class="mr-2 text-5xl font-semibold text-black lg:text-6xl">
+                  <p class="mr-2 text-5xl font-bold text-black lg:text-6xl">
                     ₹1299
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>

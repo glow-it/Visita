@@ -38,7 +38,7 @@ function Successfull() {
       setTooltipIsOpen(false);
     }, 6000);
 
-    document.title = "Website - " + capitalize(comp_name_clean);
+    document.title = "Share - " + capitalize(comp_name_clean);
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
@@ -47,6 +47,14 @@ function Successfull() {
       .get(`${apiKeys.server_url}/card/` + comp_name)
       .then((response) => {
         setCardDatas(response.data);
+        // Setting Favicon
+        var link =
+        document.querySelector("link[rel*='icon']") ||
+        document.createElement("link");
+      link.type = "image/x-icon";
+      link.rel = "shortcut icon";
+      link.href = response.data.logo;
+      document.getElementsByTagName("head")[0].appendChild(link);
 
         if (!response.data.activated) {
           navigate("/create/preview/" + comp_name);
@@ -137,7 +145,7 @@ function Successfull() {
 
       <canvas
         id="confetti-canvas"
-        className="fixed -top-96 z-50 flex justify-center"
+        className="fixed lg:flex hidden -top-96 z-50  justify-center"
       ></canvas>
       <div className="z-10 bg-blue-50/50 w-full flex flex-col items-center">
         <div classNam e="w-full h-12 flex items-center lg:px-96 px-4 ">

@@ -14,7 +14,15 @@ function Hero() {
 
   return (
     <div className="w-full">
-      <div className="lg:h-[88vh]   sm:p-10 mt-12">
+      <div className="lg:h-[75vh] relative  bg-black ">
+        <div  className="w-full h-full  absolute  left-0 overflow-hidden">
+          <div className="h-full opacity-80 w-full bg-black absolute top-0 z-20"></div>
+          <div className="h-[60px] blur-lg w-full bg-black absolute top-16 z-20"></div>
+          <div className="h-[400px] w-[120vw] blur-2xl -left-[10vw] bg-cyan-500 opacity-50 absolute bottom-[-21rem]  z-20"></div>
+          <div className="flex">
+          <video autoPlay loop muted className="lg:h-[1200px] "  src="https://cdn.dribbble.com/users/374494/screenshots/16627368/media/4b2115e1994337b6195eaf0648521c0e.mp4"  />
+          </div>
+        </div>
         {/* How to Modal */}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay
@@ -73,56 +81,55 @@ function Hero() {
         </Modal>
         {/* How to Modal */}
 
-        <div className="  w-full   flex flex-col  items-center justify-center ">
+        <div className="  w-full   flex flex-col lg:pb-0 pb-10  items-center justify-center lg:px-0 px-10">
+
+
+
           <h1
-            data-aos="fade-down"
-            className="z-50 lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center lg:ml-0 ml-8 pr-6 lg:pt-14 pt-20 lg:text-[5rem] text-5xl"
+            data-aos="fade-up"
+            data-aos-delay="0"
+            className="z-50 lg:leading-[5.7rem] leading-[3.4rem] font-extrabold tracking-tighter  lg:text-center  pr-6 lg:pt-14 pt-20 lg:mt-24 mt-12 lg:text-[5.5rem] text-5xl text-white"
           >
-            Easily Create A Website <br /> For Your Business
+            Build Business <br /> Website <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#02C7FF] to-[#01A1FE]" > Effortlessly.</span>
           </h1>
 
-          <p className="font-medium z-50  text-lg mt-6 lg:text-center text-start lg:ml-0 ml-8 lg:pr-0 pr-6  text-slate-600 ">
-            Build your business website in minutes with visita - No coding
+          <p data-aos="fade-up"
+            data-aos-delay="100" className="font-medium z-50  lg:text-2xl text-lg mt-6 lg:text-center text-start  lg:pr-0 pr-6  text-white ">
+            Build your business website in minutes with visita <br /> No coding
             required.
           </p>
 
           <div className="lg:mt-12 z-50 w-[100%] mt-6  py-2 flex lg:flex-row flex-col lg:ml-0  items-start lg:items-center justify-center">
-            <button
-              onClick={() =>
-                navigate("/pricing", {
-                  state: { franchisee: false, franchisee_email: null },
-                })
-              }
-              class="text-[#5241FE] lg:ml-0 ml-8 hover:-translate-y-[2px] hover:bg-[#5241FE] hover:text-white  transition-all border-2 border-[#5241FE] bg-white focus:ring-4 focus:ring-[#5241FE]  rounded-full sm:text-xl  text-xl font-medium px-10 py-2.5 mr-2 mb-2 :bg-[#5241FE] :hover:bg-[#5241FE] focus:outline-none :focus:ring-[#5241FE]"
+           
+
+            <button data-aos="fade-up"
+            data-aos-delay="200"
+            onClick={() =>
+              navigate("/pricing", {
+                state: { franchisee: false, franchisee_email: null },
+              })
+            }
+              class="text-white bg-gradient-to-r hover:bg-gradient-to-l  from-[#02C7FF] to-[#01A1FE] bg-[]   transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4  rounded-xl sm:text-2xl text-xl font-bold px-10 py-2.5 mr-2 mb-2"
             >
               Create now
             </button>
 
-            <a
+            <a data-aos="fade-up"
+            data-aos-delay="300"
             href="https://applox.visitasmart.com"
-              class="text-white bg-[#5241FE] lg:ml-0 ml-8  transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4 focus:ring-[#5241FE]  rounded-full sm:text-xl text-xl font-medium px-10 py-2.5 mr-2 mb-2"
+              class="text-white lg:hidden flex bg-gradient-to-r hover:bg-gradient-to-l  from-purple-500 to-cyan-500 bg-[]   transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4  rounded-xl sm:text-2xl text-xl font-bold px-10 py-2.5 mr-2 mb-2"
             >
               See demo
             </a>
           </div>
         </div>
 
-        <img
-          className="absolute lg:block hidden right-0  z-10 top-0 lg:h-[500px] h-[300px]"
+        {/* <img
+          className="absolute lg:block hidden right-0  z-10 top-0 lg:h-[300px] h-[300px]"
           src={require("../Images/herobg.png")}
-        />
+        /> */}
       </div>
-      <div className="lg:block hidden z-50">
-        <div className="lg:h-[500px] z-50  h-[150px] flex  lg:justify-center overflow-hidden lg:-mt-[200px] -mt-[150px]   w-full">
-          <img
-            src="https://cdn.dribbble.com/userupload/3352088/file/original-6eaf281a6ac1875db80b9abebb3bc173.png?compress=1&resize=1504x1128"
-            muted
-            autoPlay
-            loop
-            className=" lg:h-[680px] h-[210px] z-50 lg:ml-0 ml-8 rounded-[2rem]"
-          />
-        </div>
-      </div>
+      
     </div>
   );
 }

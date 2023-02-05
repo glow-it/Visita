@@ -6,7 +6,7 @@ function Footer() {
   let navigate = useNavigate();
 
   return (
-    <div className="lg:h-[70vh] z-10 w-full bg-white flex justify-center items-center lg:-mt-[200px]">
+    <div className="lg:h-[70vh] z-10 w-full bg-black flex justify-center items-center lg:-mt-[200px]">
       <footer class="pt-20 lg:pt-[120px] z-10 pb-10 lg:pb-20 px-8 relative  font-bold">
         <div class="container">
           <div class="flex flex-wrap -mx-4">
@@ -19,16 +19,16 @@ function Footer() {
                   <img
                     src={require("../Images/logos/visitalogo.png")}
                     alt="logo"
-                    class="comp-logo-footer  h-12"
+                    class="comp-logo-footer lg:ml-0 ml-5  h-12"
                   />
                 </p>
-                <p class="flex items-center text-sm text-black font-medium">
+                <p class="flex items-center text-sm text-white font-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                     <ion-icon name="call"></ion-icon>
                   </span>
                   <span>{apiKeys.call_phone_no}</span>
                 </p>
-                <p class="flex mt-6 items-center text-sm text-black font-medium">
+                <p class="flex mt-6 items-center text-sm text-white font-medium">
                   <span class="text-primary mr-3 flex items-center justify-center">
                     <ion-icon name="logo-whatsapp"></ion-icon>
                   </span>
@@ -36,7 +36,7 @@ function Footer() {
                 </p>
                 <a
                   href={`mailto:${apiKeys.visita_email}`}
-                  class="flex mt-6 items-center text-sm text-black font-medium"
+                  class="flex mt-6 items-center text-sm text-white font-medium"
                 >
                   <span class="text-primary mr-3 flex items-center justify-center">
                     <ion-icon name="mail"></ion-icon>
@@ -63,7 +63,7 @@ function Footer() {
                         font-medium
                         cursor-pointer
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -80,7 +80,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -97,7 +97,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -123,7 +123,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -140,7 +140,7 @@ function Footer() {
                         font-medium
                         cursor-pointer
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -157,7 +157,7 @@ function Footer() {
                         font-medium
                         cursor-pointer
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -174,7 +174,7 @@ function Footer() {
                         font-medium
                         cursor-pointer
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -205,7 +205,7 @@ function Footer() {
                         font-medium
                         cursor-pointer
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -222,7 +222,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -239,7 +239,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -257,7 +257,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -274,7 +274,7 @@ function Footer() {
                         inline-block
                         font-medium
                         hover:text-[#5241FE]
-                        text-black
+                        text-white
                         text-base text-body-color
                         hover:text-primary
                         leading-loose
@@ -304,7 +304,7 @@ function Footer() {
                      justify-center
                      rounded-full
                      border border-black
-                     text-black
+                     text-white
                      hover:text-[#5241FE] hover:bg-primary hover:border-primary
                      mr-2
                      sm:mr-4
@@ -326,7 +326,7 @@ function Footer() {
                      justify-center
                      rounded-full
                      border border-black
-                     text-black
+                     text-white
                      hover:text-[#5241FE] hover:bg-primary hover:border-primary
                      mr-2
                      sm:mr-4
@@ -337,7 +337,7 @@ function Footer() {
                     <ion-icon name="logo-twitter"></ion-icon>
                   </a>
                 </div>
-                <p class="text-base text-black font-medium">
+                <p class="text-base text-white font-medium">
                   © 2023 Visita. All rights reserved
                 </p>
               </div>

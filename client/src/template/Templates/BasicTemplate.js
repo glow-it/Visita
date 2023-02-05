@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { QRCode } from "react-qrcode-logo";
-import { Helmet } from "react-helmet";
 import reactManifest from "react-manifest";
 // core version + navigation, pagination modules:
 
@@ -107,19 +106,7 @@ function BasicTemplate({ preview, cardDatas }) {
     setSpecialities(cardDatas.specials.split(","));
     setFeatures(cardDatas.features.split(","));
 
-    if (cardDatas.isActivated) {
-      document.title =
-        capitalize(cardDatas.company_name) + " - " + cardDatas.tagline;
-
-      // Set Favicon
-      var link = document.querySelector("link[rel~='icon']");
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.getElementsByTagName("head")[0].appendChild(link);
-      }
-      link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
-    }
+   
 
     // Update View Count
     axios.post(`${apiKeys.server_url}/update/view/${cardDatas.company_name}`);
@@ -144,19 +131,7 @@ function BasicTemplate({ preview, cardDatas }) {
       }
     }
 
-    if (days < 1) {
-      document.title =
-        capitalize(cardDatas.company_name) + " - " + cardDatas.tagline;
-
-      // Set Favicon
-      var link = document.querySelector("link[rel~='icon']");
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.getElementsByTagName("head")[0].appendChild(link);
-      }
-      link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
-    }
+   
 
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
@@ -261,13 +236,8 @@ function BasicTemplate({ preview, cardDatas }) {
 
   return (
     <div className=" flex justify-center items-center pb-24">
-      {/* Add Meta Title And Descreption */}
-      <Helmet>
-        <title className="capitalize">
-          {cardDatas && cardDatas.company_name + " website"}
-        </title>
-        <meta name="description" content={cardDatas && cardDatas.tagline} />
-      </Helmet>
+
+     
 
       <div className={`${preview ? "w-full" : "lg:w-4/12"}  w-full `}>
         {localStorage.getItem("isAdmin") == "true" ? (

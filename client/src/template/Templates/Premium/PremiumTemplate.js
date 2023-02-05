@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import { Helmet } from "react-helmet";
 import reactManifest from "react-manifest";
 
 // core version + navigation, pagination modules:
@@ -25,6 +24,8 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import InstallPwa from "../../../Tools/InstallPwaApp";
 import { abbrevateNumber } from "../../../Tools/abbrevateNumber";
+import capitalize from "../../../Tools/capitalize";
+import { addCommas } from "../../../Tools/addCommas";
 
 function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   const toast = useToast();
@@ -158,19 +159,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
     setSpecialities(cardDatas.specials.split(","));
     setFeatures(cardDatas.features.split(","));
 
-    if (cardDatas.isActivated) {
-      document.title =
-        capitalize(cardDatas.company_name) + " - " + cardDatas.tagline;
-
-      // Set Favicon
-      var link = document.querySelector("link[rel~='icon']");
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.getElementsByTagName("head")[0].appendChild(link);
-      }
-      link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
-    }
+   
 
     // Update View Count
     axios.post(`${apiKeys.server_url}/update/view/${cardDatas.company_name}`);
@@ -195,19 +184,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
       }
     }
 
-    if (days < 1) {
-      document.title =
-        capitalize(cardDatas.company_name) + " - " + cardDatas.tagline;
-
-      // Set Favicon
-      var link = document.querySelector("link[rel~='icon']");
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.getElementsByTagName("head")[0].appendChild(link);
-      }
-      link.href = cardDatas.logo.replace(/^http:\/\//i, "https://");
-    }
+   
 
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
@@ -310,13 +287,6 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
   return (
     <div className=" flex justify-center items-center pb-24">
-      {/* Add Meta Title And Descreption */}
-      <Helmet>
-        <title className="capitalize">
-          {cardDatas.company_name + " website"}
-        </title>
-        <meta name="description" content={cardDatas.tagline} />
-      </Helmet>
 
       {/* Cart Modal Open */}
       <Transition.Root show={open} as={Fragment}>
@@ -385,7 +355,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                                         <h3>
                                           <a>{product.name}</a>
                                         </h3>
-                                        <p className="ml-4">₹{product.price}</p>
+                                        <p className="ml-4">₹{addCommas(product.price)}</p>
                                       </div>
                                       <p className="mt-1 text-sm text-gray-500">
                                         {product.description}
@@ -424,7 +394,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <p>Total</p>
-                          <p>₹{total_price}</p>
+                          <p>₹{addCommas(total_price)}</p>
                         </div>
 
                         <div className="mt-6">
@@ -494,6 +464,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
         {cardDatas.tagline ? (
           <div
+          data-aos="fade-up"
+          data-aos-delay="0"
             className={`w-full py-3   bg-${theme_color}-600 text-center px-4   text-white flex z-50 items-center justify-center  cursor-pointer  text-sm`}
           >
             <h1 className=" font-bold min-w-max">{cardDatas.tagline}</h1>
@@ -507,7 +479,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           className=" template-1 flex justify-center bg-no-repeat bg-cover "
         >
           <div className="card relative">
-            <div className="w-full h-20 flex items-center bg-slate-100  z-50">
+            <div data-aos="fade-up"
+          data-aos-delay="100" className="w-full h-20 flex items-center bg-slate-100  z-50">
               <span
                 className={`z-50 absolute   right-4 text-black text-xs font-medium py-1 px-2 border border-black  rounded-full`}
               >
@@ -540,6 +513,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
               <div className=" w-full mt-6 px-8  flex  items-center justify-center">
                 {cardDatas.logo != "" ? (
                   <img
+                  data-aos="fade-up"
+          data-aos-delay="200"
                     id="logo"
                     src={
                       cardDatas.logo &&
@@ -552,8 +527,9 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   ""
                 )}
 
-                <div className=" w-full h-full flex flex-col pl-2">
-                  <h1 className="capitalize text-black text-3xl font-bold  mt-6">
+                <div data-aos="fade-up"
+          data-aos-delay="300" className=" w-full h-full flex flex-col pl-2">
+                  <h1  className="capitalize text-black text-3xl font-bold  mt-6">
                     {cardDatas.company_name}
                   </h1>
                   <h1 className="capitalize text-black text-lg font-medium  mt-1">
@@ -565,6 +541,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
               <div className=" w-full h-24 mt-8 flex justify-evenly items-center">
                 {cardDatas.phone_no != "" ? (
                   <a
+                  data-aos="fade-up"
+          data-aos-delay="400"
                     href={call_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -578,6 +556,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.whatsapp_no != "" ? (
                   <a
+                  data-aos="fade-up"
+          data-aos-delay="500"
                     href={message_whatsapp_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -591,6 +571,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.email_id != "" ? (
                   <a
+                  data-aos="fade-up"
+          data-aos-delay="600"
                     href={mail_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -604,6 +586,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.website != "" ? (
                   <a
+                  data-aos="fade-up"
+          data-aos-delay="700"
                     href={website_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -618,6 +602,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
               <div className=" px-6">
                 <div
+                data-aos="fade-up"
+                data-aos-delay="800"
                   className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                 >
                   <span className=" ml-6 text-md flex items-center font-medium">
@@ -627,6 +613,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                 </div>
                 {cardDatas.alt_phone_no != "" ? (
                   <div
+                  data-aos="fade-up"
+          data-aos-delay="900"
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -642,6 +630,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.email_id != "" ? (
                   <div
+                  data-aos="fade-up"
+          data-aos-delay="1000"
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -655,6 +645,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.location != "" ? (
                   <div
+                  data-aos="fade-up"
+          data-aos-delay="1100"
                     className={`w-full  py-3 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -975,7 +967,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           )}
         </div>
 
-        {/* Products And Services */}
+        {/* Products  */}
         <div
           id="products"
           className=" w-full  flex flex-col items-center justify-center relative"
@@ -983,7 +975,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           <h1
             className={`text-lg sticky top-0 text-white  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute z-50 top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
           >
-            Products & Services
+            Products
           </h1>
 
           {/* Products */}
@@ -1022,13 +1014,13 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                         <span className=" mr-2 text-slate-600 line-through">
                           {`${
                             data.product_orgprice != ""
-                              ? "₹" + data.product_orgprice
+                              ? "₹" + addCommas(data.product_orgprice)
                               : ""
                           }`}
                         </span>
                         {`${
                           data.product_offerprice != ""
-                            ? "₹" + data.product_offerprice
+                            ? "₹" + addCommas(data.product_offerprice)
                             : ""
                         }`}
                       </h1>
@@ -1369,7 +1361,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
         </div>
 
         {/* Testimornial */}
-        <section class=" bg-gray-900">
+        <section id="feedbacks" class=" bg-gray-900">
           <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
             <div class="mx-auto max-w-screen-sm">
               <h2 class="mb-4 text-4xl tracking-tight font-extrabold  text-white">

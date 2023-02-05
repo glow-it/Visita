@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import LandingPage from "./pages/LandingPage";
 import Support from "./pages/Support";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Pricing from "./pages/Pricing";
 import Create from "./pages/createprocess/Create";
 import Loading from "./components/Loading";
@@ -28,8 +28,14 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import ReturnPolicy from "./pages/ReturnPolicy";
 import apiKeys from "./Api/apiKeys";
+import { useEffect } from "react";
+import AOS from "aos"
 
 function App() {
+
+  useEffect(()=> {
+    AOS.init()
+  },[])
 
 
   // Get Sub Domain
@@ -38,13 +44,13 @@ function App() {
   let parts = full.split(".");
   let subdomain = parts[0];
 
-
+  let location = useLocation()
 
   return (
     <div className="App">
       {
         subdomain == apiKeys.normal_subdomain ?
-        <Header />
+        <Header location={location} />
 
         : ""
 

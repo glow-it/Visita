@@ -38,14 +38,21 @@ function Template({ subdomain }) {
     .then((response) => {
       setIsCardLoading(false);
       setCardDatas(response.data);
-
-      if(response.data.isPremium == "true"){
-        if(subdomain == false){
-          window.location.href = `https://${company_name}.visitasmart.com/`
+      // Set Favicon
+      var link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+      link.href = response.data.logo.replace(/^http:\/\//i, "https://");
+      if (response.data.isPremium == "true") {
+        if (subdomain == false) {
+          window.location.href = `https://${company_name}.visitasmart.com/`;
         }
-      }else{
-        if(subdomain != false){
-          window.location.href = `https://visitasmart.com/`
+      } else {
+        if (subdomain != false) {
+          window.location.href = `https://visitasmart.com/`;
         }
       }
 
@@ -95,7 +102,9 @@ function Template({ subdomain }) {
         {/* Add Meta Title And Descreption */}
         <Helmet>
           <title className="capitalize">
-            {cardDatas && capitalize(cardDatas.company_name) + " Website"}
+            {capitalize(cardDatas.company_name) +
+              " - " +
+              capitalize(cardDatas.tagline)}
           </title>
           <meta name="description" content={cardDatas && cardDatas.tagline} />
         </Helmet>
@@ -103,7 +112,7 @@ function Template({ subdomain }) {
         {cardDatas.isPremium == "true" ? (
           <PremiumTemplate subdomain={subdomain} cardDatas={cardDatas} />
         ) : (
-          <BasicTemplate  cardDatas={cardDatas} />
+          <BasicTemplate cardDatas={cardDatas} />
         )}
       </div>
     );

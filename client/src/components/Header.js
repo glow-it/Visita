@@ -3,7 +3,7 @@ import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -13,26 +13,48 @@ import {
   PopoverBody,
 } from "@chakra-ui/react";
 
-function Header() {
-  window.onscroll = () => {
-    let header = document.querySelector("header");
-    if (window.scrollY >= 1) {
-      header.classList.remove("header-inactive");
-      header.classList.add("header-active");
-    } else {
-      header.classList.remove("header-active");
-      header.classList.add("header-inactive");
-    }
-  };
+function Header({location}) {
+  
 
   let navigate = useNavigate();
+
+  
+  
+  useEffect(()=> {
+  let header = document.querySelector("header");
+  if(location.pathname == "/" ){
+    header.classList.add("bg-black");
+    header.classList.replace("text-black","text-white")
+    window.onscroll = () => {
+      let header = document.querySelector("header");
+      if (window.scrollY >= 500 && window.scrollY <= 4950) {
+        header.classList.remove("bg-black");
+        header.classList.remove("text-white");
+        header.classList.add("text-black")
+      } else {
+        header.classList.add("bg-black");
+        header.classList.add("text-white");
+        header.classList.remove("text-black")
+      }
+    };
+
+  }else{
+    header.classList.remove("bg-black");
+    header.classList.replace("text-white","text-black")
+  }
+},[location])
+
+
+
+
+  
 
   //   Header Drawer Open
   let [open, setOpen] = useState(false);
 
   return (
     <div>
-      <header className={` w-full h-20 flex bg-white  fixed z-[200] `}>
+      <header className={` w-full h-20 bg-white text-black  flex   fixed z-[200] `}>
         <div className="w-full h-full  flex items-center justify-center">
           <img
             src={require("../Images/logos/visitalogo.png")}
@@ -53,31 +75,31 @@ function Header() {
 
           <nav className="w-full h-full   flex items-center justify-center  lg:block hidden">
             <ul className="w-full h-full flex items-center justify-center">
-              <p
-                onClick={() => navigate("/visita")}
-                className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+              <a
+                href="https://applox.visitasmart.com"
+                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
               >
                 See demo
-              </p>
+              </a>
               <p
                 onClick={() =>
                   navigate("/pricing", {
                     state: { franchisee: false, franchisee_email: null },
                   })
                 }
-                className=" font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className=" font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
               >
                 Pricing
               </p>
               <a
                 href="#features"
-                className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
               >
                 Features
               </a>
               <a
                 href="#benefits"
-                className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center"
+                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
               >
                 Benefits
               </a>
@@ -85,8 +107,8 @@ function Header() {
               <p>
                 <Popover autoFocus={false} placement="bottom">
                   <PopoverTrigger>
-                    <h1 className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  transition-colors flex items-center">
-                      <span className="text-slate-500 px-3  rounded-full transition-all hover:text-black">
+                    <h1 className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]   flex items-center">
+                      <span className=" px-3  rounded-full  hover:text-[#00BEFF]">
                         Manage website
                       </span>
                     </h1>
@@ -104,7 +126,7 @@ function Header() {
                           autoComplete="off"
                           id="manage_card_comp_name"
                           placeholder="Enter company name"
-                          className="border focus:border focus:border-[#5241FE] py-2 w-full pl-4 rounded-full font-medium"
+                          className="border focus:border text-black focus:border-[#5241FE] py-2 w-full pl-4 rounded-full font-medium"
                         />
                         <div className="w-full h-12 my-4 flex items-center">
                           <button
@@ -116,7 +138,7 @@ function Header() {
                                     .value.replace(/[ ]/g, "")
                               )
                             }
-                            className="px-6 py-1 bg-[#5241FE] rounded-full text-xl font-bold text-white"
+                            className="px-6 py-1 bg-[#5241FE] text-white rounded-full text-xl font-bold "
                           >
                             Continue
                           </button>
@@ -130,14 +152,14 @@ function Header() {
               {!localStorage.getItem("franchisee_email") ? (
                 <Link
                   to="/franchisee/register"
-                  className="font-medium text-slate-500 hover:text-black cursor-pointer transition-colors flex px-3 items-center"
+                  className="font-medium  hover:text-[#00BEFF] cursor-pointer  flex px-3 items-center"
                 >
                   Register franchisee
                 </Link>
               ) : (
                 <a
                   href="https://dashboard.visitasmart.com"
-                  className="font-medium text-slate-500 hover:text-black cursor-pointer  transition-colors flex px-3 items-center"
+                  className="font-medium  hover:text-[#00BEFF] cursor-pointer   flex px-3 items-center"
                 >
                   Go to franchisee
                 </a>
@@ -145,16 +167,16 @@ function Header() {
 
               <Menu>
                 <MenuButton
-                  className="text-slate-500 hover:text-black"
+                  className=" hover:text-[#00BEFF]"
                   rightIcon={<ChevronDownIcon />}
                 >
-                  <span className="font-medium  cursor-pointer text-md text-slate-500 hover:text-black  px-3 rounded-3xl transition-colors flex items-center">
+                  <span className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center">
                     Support <ion-icon name="chevron-down-outline"></ion-icon>{" "}
                   </span>
                 </MenuButton>
                 <MenuList>
                   <MenuItem className="" onClick={() => navigate("/support")}>
-                    <a className="font-medium  cursor-pointer text-md text-slate-500  px-3 rounded-3xl transition-colors flex items-center">
+                    <a className="font-medium text-black cursor-pointer text-md   px-3 rounded-3xl  flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="help-buoy-outline"></ion-icon>
                       </span>{" "}
@@ -168,7 +190,7 @@ function Header() {
                     }}
                     className=""
                   >
-                    <p className="font-medium  cursor-pointer text-md text-slate-500    px-3 rounded-3xl transition-colors flex items-center">
+                    <p className="font-medium text-black  cursor-pointer text-md     px-3 rounded-3xl  flex items-center">
                       <span className="mr-2 flex items-center">
                         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                       </span>
@@ -194,17 +216,13 @@ function Header() {
 
 </select> */}
 
-          <p
+          <a
             id="header_create_button"
-            onClick={() =>
-              navigate("/pricing", {
-                state: { franchisee: false, franchisee_email: null },
-              })
-            }
-            class=" absolute right-10 py-1.5 px-8 text-md  text-[#5241FE] lg:block hidden focus:outline-none bg-white rounded-full border-2 border-[#5241FE] cursor-pointer   hover:shadow-md  focus:z-10 focus:ring-4 focus:ring-[#5241FE] :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700 font-medium"
+           href="https://applox.visitasmart.com"
+            class=" absolute right-10 py-2  px-8 text-md   lg:block hidden focus:outline-none rounded-xl  cursor-pointer   hover:shadow-md text-white  focus:z-10 focus:ring-4 bg-gradient-to-r hover:bg-gradient-to-l  from-[#02C7FF] to-[#01A1FE] :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover: :hover:bg-gray-700 font-bold"
           >
-            Create now
-          </p>
+            See demo
+          </a>
         </div>
 
         <div className="lg:hidden block mr-8">
@@ -268,8 +286,8 @@ function Header() {
 
                           <div className="mt-8">
                             <div className="flow-root">
-                              <p
-                                onClick={() => navigate("/visita")}
+                              <a
+                                href="https://applox.visitasmart.com"
                                 className="font-bold cursor-pointer mt-4 border py-2 rounded-full"
                               >
                                 <span className=" text-md flex items-center text-primary ml-4">
@@ -278,7 +296,7 @@ function Header() {
                                     See Demo
                                   </span>
                                 </span>{" "}
-                              </p>
+                              </a>
 
                               <p
                                 onClick={() => {
@@ -386,7 +404,7 @@ function Header() {
                                     navigate("/franchisee/register");
                                     setOpen(false);
                                   }}
-                                  className="font-medium mt-2 pl-4 bg-[#5241FE] rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
+                                  className="font-medium mt-2 pl-4 bg-[#5241FE] text-white rounded-full  py-2  cursor-pointer   flex items-center"
                                 >
                                   <span className="flex items-center justify-center mr-1">
                                     <ion-icon name="log-in-outline"></ion-icon>
@@ -396,7 +414,7 @@ function Header() {
                               ) : (
                                 <a
                                 href="https://dashboard.visitasmart.com"
-                                  className="font-medium mt-2 pl-4 bg-[#5241FE] rounded-full  py-2  cursor-pointer text-white transition-colors flex items-center"
+                                  className="font-medium mt-2 pl-4 bg-[#5241FE] text-white rounded-full  py-2  cursor-pointer   flex items-center"
                                 >
                                   Go to franchisee
                                   <span className="flex items-center justify-center ml-1">
