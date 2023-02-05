@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 function Pricing() {
+
+
   let navigate = useNavigate();
   let location = useLocation();
 
@@ -21,7 +23,9 @@ function Pricing() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Pricing - Visita";
-  }, []);
+
+    
+  }, [location]);
 
   return (
     <div class="relative w-full bg-white h-full pt-14">

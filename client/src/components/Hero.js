@@ -18,7 +18,7 @@ function Hero() {
         <div  className="w-full h-full  absolute  left-0 overflow-hidden">
           <div className="h-full opacity-80 w-full bg-black absolute top-0 z-20"></div>
           <div className="h-[60px] blur-lg w-full bg-black absolute top-16 z-20"></div>
-          <div className="h-[400px] w-[120vw] blur-2xl -left-[10vw] bg-cyan-500 opacity-50 absolute bottom-[-21rem]  z-20"></div>
+          <div className="h-[400px] w-[120vw] blur-2xl -left-[10vw] bg-cyan-500 opacity-30 absolute bottom-[-21rem]  z-20"></div>
           <div className="flex">
           <video autoPlay loop muted className="lg:h-[1200px] "  src="https://cdn.dribbble.com/users/374494/screenshots/16627368/media/4b2115e1994337b6195eaf0648521c0e.mp4"  />
           </div>
@@ -117,7 +117,7 @@ function Hero() {
             <a data-aos="fade-up"
             data-aos-delay="300"
             href="https://applox.visitasmart.com"
-              class="text-white lg:hidden flex bg-gradient-to-r hover:bg-gradient-to-l  from-purple-500 to-cyan-500 bg-[]   transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4  rounded-xl sm:text-2xl text-xl font-bold px-10 py-2.5 mr-2 mb-2"
+              class="text-white lg:hidden flex bg-gradient-to-r hover:bg-gradient-to-l  from-[#02C7FF] to-[#01A1FE] bg-[]   transition-all  hover:-translate-y-[2px] cursor-pointer  focus:ring-4  rounded-xl sm:text-2xl text-xl font-bold px-10 py-2.5 mr-2 mb-2"
             >
               See demo
             </a>

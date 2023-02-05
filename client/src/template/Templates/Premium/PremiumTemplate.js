@@ -230,60 +230,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   let share_twitter_url = `https://twitter.com/intent/tweet?text=${window.location.href}`;
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}`;
 
-  function addFeedbackCard({ name, feedback }) {
-    let feedback_card_wrapper = document.getElementById(
-      "feedback_card_wrapper"
-    );
-
-    const div = document.createElement("div");
-    div.className = "flex flex-wrap -m-3";
-
-    const innerDiv = document.createElement("div");
-    innerDiv.className = "w-full p-3";
-
-    const innerInnerDiv = document.createElement("div");
-    innerInnerDiv.className =
-      "p-6 h-full bg-white bg-opacity-60 border rounded-3xl";
-
-    const innerInnerInnerDiv = document.createElement("div");
-    innerInnerInnerDiv.className = "flex flex-col justify-between h-full";
-
-    const nameDiv = document.createElement("div");
-    nameDiv.className = "mb-5 block";
-
-    const nameInnerDiv = document.createElement("div");
-    nameInnerDiv.className = "flex flex-wrap mb-4 -m-2";
-
-    const nameInnerInnerDiv = document.createElement("div");
-    nameInnerInnerDiv.className = "w-auto p-2";
-
-    const h3 = document.createElement("h3");
-    h3.className = "font-bold leading-normal";
-    h3.textContent = name;
-
-    const p = document.createElement("p");
-    p.className = "text-lg font-medium";
-    p.textContent = feedback;
-
-    const todayDiv = document.createElement("div");
-    todayDiv.className = "block";
-
-    const todayP = document.createElement("p");
-    todayP.className = "text-md text-gray-600 font-medium";
-    todayP.textContent = "today";
-
-    nameInnerInnerDiv.appendChild(h3);
-    nameInnerDiv.appendChild(nameInnerInnerDiv);
-    nameDiv.appendChild(nameInnerDiv);
-    innerInnerInnerDiv.appendChild(nameDiv);
-    innerInnerInnerDiv.appendChild(p);
-    innerInnerInnerDiv.appendChild(todayDiv);
-    innerInnerDiv.appendChild(innerInnerInnerDiv);
-    innerDiv.appendChild(innerInnerDiv);
-    div.appendChild(innerDiv);
-
-    feedback_card_wrapper.appendChild(div);
-  }
+  
 
   return (
     <div className=" flex justify-center items-center pb-24">
@@ -1419,7 +1366,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
         <div class="w-full px-4 flex flex-col items-center mt-6">
           <form
             class="bg-white  rounded-3xl w-full px-6  pt-6 pb-8 mb-4"
-            id="feedback-form"
+            id="feedback-form-premium"
           >
             <div class="mb-4">
               <label
@@ -1450,20 +1397,22 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                 onClick={(event) => {
                   event.preventDefault();
                   // Submit Feedback Form
-                  let form = document.getElementById("feedback-form");
+                  let form = document.getElementById("feedback-form-premium");
 
                   let obj = {
                     name: form.name.value,
                     feedback: form.feedback.value,
                     date: new Date().getTime(),
                   };
-                  addFeedbackCard({ name: obj.name, feedback: obj.feedback });
+                 
 
                   form.name.value = "";
                   form.feedback.value = "";
 
                   axios.post(
-                    `${apiKeys.server_url}/update/feedback/${cardDatas.clean_name}`,
+                    `${apiKeys.server_url}/update/feedback/${
+                      cardDatas && cardDatas.clean_name
+                    }`,
                     obj
                   );
                 }}

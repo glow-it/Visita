@@ -29,6 +29,34 @@ function Create() {
   let navigate = useNavigate();
   let location = useLocation();
 
+  useEffect(()=> {
+    document.getElementById('cardForm').addEventListener("input", (event) => {
+      const input = event.target;
+      
+      input.classList.replace("border-red-500","border-slate-800")
+      
+    });
+  },[])
+
+
+    window.onbeforeunload = () => true;
+
+    const handle = () => {
+      if (window.confirm("Changes you have made not saved")) {
+       window.location.href = '/pricing'
+      } else {
+        navigate(+1)
+        window.confirm = null
+      }
+    };
+
+    window.history.pushState({}, null, window.location.href);
+    window.onpopstate = handle;
+  
+  
+
+  
+
   let isPremium = location.state ? location.state.isPremium : false;
   let franchisee_email = location.state
     ? location.state.franchisee_email
@@ -196,15 +224,9 @@ function Create() {
       "17",
       "18",
       "19",
-      "20"
+      "20",
     ];
-    let basicImageGalleryQuantity = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5"
-    ];
+    let basicImageGalleryQuantity = ["1", "2", "3", "4", "5"];
 
     let premiumImageGalleryQuantity = [
       "1",
@@ -226,18 +248,16 @@ function Create() {
       "17",
       "18",
       "19",
-      "20"
+      "20",
     ];
 
-    
-    if(isPremium == true){
+    if (isPremium == true) {
       setProductsQuantity(premiumProductsQuantity);
-      setImageGalleryQuantity(premiumImageGalleryQuantity)
-    }else{
-      setProductsQuantity(basicProductsQuantity)
-      setImageGalleryQuantity(basicImageGalleryQuantity)
+      setImageGalleryQuantity(premiumImageGalleryQuantity);
+    } else {
+      setProductsQuantity(basicProductsQuantity);
+      setImageGalleryQuantity(basicImageGalleryQuantity);
     }
-
   }, []);
 
   // Normal Use Effect
@@ -364,25 +384,19 @@ function Create() {
         currentForm = document.getElementById("process7");
       }
 
-      let allAreFilled = true;
-      currentForm.querySelectorAll("[required]").forEach(function (i) {
-        if (!allAreFilled) return;
-        if (i.type === "radio") {
-          let radioValueCheck = false;
-          currentForm
-            .querySelectorAll(`[name=${i.name}]`)
-            .forEach(function (r) {
-              if (r.checked) radioValueCheck = true;
-            });
-          allAreFilled = radioValueCheck;
-          return;
-        }
-        if (!i.value) {
-          allAreFilled = false;
-          return;
+      let requiredInputs = currentForm.querySelectorAll("input[required]");
+      let missingInputs = [];
+
+      requiredInputs.forEach((input) => {
+        if (!input.value) {
+          missingInputs.push(input);
         }
       });
-      if (!allAreFilled) {
+
+      if (missingInputs.length > 0) {
+        missingInputs.forEach((elem)=> {
+          elem.classList.replace("border-slate-800","border-red-500")
+        })
         Toast({
           status: "error",
           title: "Fill all required fields",
@@ -391,6 +405,7 @@ function Create() {
           toast,
         });
       } else {
+        console.log("All required inputs have values");
         // Submit Datas
         if (processIndex == maximumProcesses) {
           let process_title = document.getElementById("process_title");
@@ -472,6 +487,7 @@ function Create() {
     let company_name_input = document.querySelector(".company_name_input");
     let company_name = value;
     axios.get(`${apiKeys.server_url}/card/all`).then((response) => {
+      console.log(response.data);
       response.data
         .filter((data) => {
           company_name_input.classList.add(
@@ -513,7 +529,7 @@ function Create() {
           document.querySelector(".error-message").innerText =
             "Well Done! Company name is available";
 
-          return data.company_name.toLowerCase() == company_name.toLowerCase();
+          return data.clean_name.toLowerCase() == company_name.toLowerCase();
         })
         .map((data) => {
           if (data) {
@@ -1370,86 +1386,86 @@ function Create() {
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
-          {
-            isPremium == true ?
+          {isPremium == true ? (
             <div>
               <label
-            for="large-input"
-            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
-          >
-            Youtube Video Link 6{" "}
-            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
-          </label>
-          <input
-            placeholder="Youtube video link 6"
-            autoComplete="off"
-            id="large-input"
-            name="ytvideo_6_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
-          />
+                for="large-input"
+                class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+              >
+                Youtube Video Link 6{" "}
+                <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+              </label>
+              <input
+                placeholder="Youtube video link 6"
+                autoComplete="off"
+                id="large-input"
+                name="ytvideo_6_link"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+              />
 
-          <label
-            for="large-input"
-            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
-          >
-            Youtube Video Link 7{" "}
-            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
-          </label>
-          <input
-            placeholder="Youtube video link 7"
-            autoComplete="off"
-            id="large-input"
-            name="ytvideo_7_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
-          />
+              <label
+                for="large-input"
+                class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+              >
+                Youtube Video Link 7{" "}
+                <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+              </label>
+              <input
+                placeholder="Youtube video link 7"
+                autoComplete="off"
+                id="large-input"
+                name="ytvideo_7_link"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+              />
 
-          <label
-            for="large-input"
-            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
-          >
-            Youtube Video Link 8{" "}
-            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
-          </label>
-          <input
-            placeholder="Youtube video link 8"
-            autoComplete="off"
-            id="large-input"
-            name="ytvideo_8_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
-          />
+              <label
+                for="large-input"
+                class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+              >
+                Youtube Video Link 8{" "}
+                <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+              </label>
+              <input
+                placeholder="Youtube video link 8"
+                autoComplete="off"
+                id="large-input"
+                name="ytvideo_8_link"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+              />
 
-          <label
-            for="large-input"
-            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
-          >
-            Youtube Video Link 9{" "}
-            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
-          </label>
-          <input
-            placeholder="Youtube video link 9"
-            autoComplete="off"
-            id="large-input"
-            name="ytvideo_9_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
-          />
+              <label
+                for="large-input"
+                class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+              >
+                Youtube Video Link 9{" "}
+                <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+              </label>
+              <input
+                placeholder="Youtube video link 9"
+                autoComplete="off"
+                id="large-input"
+                name="ytvideo_9_link"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+              />
 
-          <label
-            for="large-input"
-            class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
-          >
-            Youtube Video Link 10{" "}
-            <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
-          </label>
-          <input
-            placeholder="Youtube video link 10"
-            autoComplete="off"
-            id="large-input"
-            name="ytvideo_10_link"
-            class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
-          />
+              <label
+                for="large-input"
+                class="block mb-2 mt-6 text-lg font-medium text-gray-900 border-slate-800 :text-gray-300"
+              >
+                Youtube Video Link 10{" "}
+                <span className="text-slate-400 ml-1 text-sm">(Optional)</span>
+              </label>
+              <input
+                placeholder="Youtube video link 10"
+                autoComplete="off"
+                id="large-input"
+                name="ytvideo_10_link"
+                class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
+              />
             </div>
-          :""
-          }
+          ) : (
+            ""
+          )}
 
           {/* File Video Links */}
 

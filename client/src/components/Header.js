@@ -13,39 +13,34 @@ import {
   PopoverBody,
 } from "@chakra-ui/react";
 
-function Header({location}) {
-  
-
+function Header() {
   let navigate = useNavigate();
+  let location = useLocation()
 
+  useEffect(() => {
+    let header = document.querySelector("header");
+    if (location.pathname === "/") {
+      header.classList.add("bg-black");
+      header.classList.add("text-white");
+      window.onscroll = () => {
+        if (window.scrollY >= 500 && window.scrollY <= 4950) {
+          header.classList.replace("bg-black", "bg-white");
+          header.classList.replace("text-white", "text-black");
+        } else {
+          header.classList.replace("bg-white", "bg-black");
+          header.classList.replace("text-black", "text-white");
+        }
+      };
+    } else {
+      header.classList.add("bg-white");
+      header.classList.add("text-black");
+      window.onscroll = null;
+    }
+  }, [location]);
   
   
-  useEffect(()=> {
-  let header = document.querySelector("header");
-  if(location.pathname == "/" ){
-    header.classList.add("bg-black");
-    header.classList.replace("text-black","text-white")
-    window.onscroll = () => {
-      let header = document.querySelector("header");
-      if (window.scrollY >= 500 && window.scrollY <= 4950) {
-        header.classList.remove("bg-black");
-        header.classList.remove("text-white");
-        header.classList.add("text-black")
-      } else {
-        header.classList.add("bg-black");
-        header.classList.add("text-white");
-        header.classList.remove("text-black")
-      }
-    };
-
-  }else{
-    header.classList.remove("bg-black");
-    header.classList.replace("text-white","text-black")
-  }
-},[location])
-
-
-
+  
+  
 
   
 
@@ -54,7 +49,9 @@ function Header({location}) {
 
   return (
     <div>
-      <header className={` w-full h-20 bg-white text-black  flex   fixed z-[200] `}>
+      <header
+        className={` w-[100vw] h-20   flex flex-col   fixed  z-[200] `}
+      >
         <div className="w-full h-full  flex items-center justify-center">
           <img
             src={require("../Images/logos/visitalogo.png")}
@@ -204,7 +201,7 @@ function Header({location}) {
 
           {/* Client Currency On Header  */}
 
-          {/*         
+          {/*                   
 <select onChange={(e)=> {localStorage.setItem("user_currency",e.target.value);window.location.reload()}} id="user_currency" className=" absolute lg:right-52 right-20 text-[#5241FE] font-medium border-2 w-[100px] cursor-pointer border-[#5241FE]  text-sm rounded-full block  pl-4 py-2 ">
   <option selected value={localStorage.getItem("user_currency") || "₹INR" }>{localStorage.getItem("user_currency") || "₹INR" }</option>
   {
@@ -218,7 +215,7 @@ function Header({location}) {
 
           <a
             id="header_create_button"
-           href="https://applox.visitasmart.com"
+            href="https://applox.visitasmart.com"
             class=" absolute right-10 py-2  px-8 text-md   lg:block hidden focus:outline-none rounded-xl  cursor-pointer   hover:shadow-md text-white  focus:z-10 focus:ring-4 bg-gradient-to-r hover:bg-gradient-to-l  from-[#02C7FF] to-[#01A1FE] :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover: :hover:bg-gray-700 font-bold"
           >
             See demo
@@ -286,18 +283,6 @@ function Header({location}) {
 
                           <div className="mt-8">
                             <div className="flow-root">
-                              <a
-                                href="https://applox.visitasmart.com"
-                                className="font-bold cursor-pointer mt-4 border py-2 rounded-full"
-                              >
-                                <span className=" text-md flex items-center text-primary ml-4">
-                                  <ion-icon name="albums-outline"></ion-icon>{" "}
-                                  <span className="ml-2 text-slate-600">
-                                    See Demo
-                                  </span>
-                                </span>{" "}
-                              </a>
-
                               <p
                                 onClick={() => {
                                   navigate("/pricing", {
@@ -413,7 +398,7 @@ function Header({location}) {
                                 </p>
                               ) : (
                                 <a
-                                href="https://dashboard.visitasmart.com"
+                                  href="https://dashboard.visitasmart.com"
                                   className="font-medium mt-2 pl-4 bg-[#5241FE] text-white rounded-full  py-2  cursor-pointer   flex items-center"
                                 >
                                   Go to franchisee

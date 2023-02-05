@@ -8,7 +8,11 @@ function CreateHeader({
   live_preview_url,
   isUpdate = false,
 }) {
-  let navigate = useNavigate();
+
+
+ 
+  
+
   return (
     <header
       id="create-header"
@@ -28,8 +32,8 @@ function CreateHeader({
       >
         <img
           src={require("../Images/logos/visitalogo.png")}
-          className="h-10  cursor-pointer"
-          onClick={() => navigate("/")}
+          className="h-10 "
+         
         />
       </div>
 

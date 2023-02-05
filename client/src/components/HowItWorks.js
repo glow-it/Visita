@@ -33,7 +33,7 @@ function HowItWorks() {
           </div>
           <div data-aos="fade-up"
             data-aos-delay="300" className="w-[50%] h-full flex justify-start">
-          <p className="-mt-[5%] ml-12" >...Publish 🚀</p>
+          <p className="-mt-[5%] ml-12" >...Publish🚀</p>
           </div>
         </div>
         <img data-aos="fade-right"

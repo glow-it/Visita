@@ -44,13 +44,13 @@ function App() {
   let parts = full.split(".");
   let subdomain = parts[0];
 
-  let location = useLocation()
+
 
   return (
     <div className="App">
       {
         subdomain == apiKeys.normal_subdomain ?
-        <Header location={location} />
+        <Header />
 
         : ""
 

@@ -377,15 +377,7 @@ footer {
   height: 500px;
   left: 550px;
 }
-.header-active {
-  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  background-color: white;
-}
 
-.header-inactive {
-  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  background-color: transparent;
-}
 .support input {
   border-radius: 0.75rem;
 }
@@ -687,11 +679,7 @@ footer {
   transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.header-logo-bg-active {
-  margin-top: 0 !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
+
 
 #header_logo_bg:hover {
   margin-top: 0;

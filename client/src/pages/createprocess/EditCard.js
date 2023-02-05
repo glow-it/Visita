@@ -48,6 +48,20 @@ function EditCard() {
   let [loading, setLoading] = useState(false);
   let [isDatasLoading, setDatasLoading] = useState(true);
 
+  window.onbeforeunload = () => true;
+
+    const handle = () => {
+      if (window.confirm("Changes you have made not saved")) {
+       window.location.href = '/manage/' + cardDatas.clean_name
+      } else {
+        navigate(+1)
+        window.confirm = null
+      }
+    };
+
+    window.history.pushState({}, null, window.location.href);
+    window.onpopstate = handle;
+
   let [choosedThemeColor, setChoosedThemeColor] = useState("purple");
   let [themeColors, setThemeColors] = useState([
     "purple",
@@ -83,10 +97,10 @@ function EditCard() {
 
       if (doc != null) {
         if (doc != cardDatas.activated.access_password) {
-          navigate("/");
+          navigate("/manage/" + company_name);
         }
       } else {
-        navigate("/");
+        navigate("/manage/" + company_name);
       }
     }
   }, [cardDatas]);
