@@ -42,9 +42,12 @@ function AdminPage() {
     });
   }, []);
 
+
+
   let profit_for_franchisee = 300;
   let profit_for_company = 299;
   let card_price = 699;
+  let premium_card_price = 1299;
   let price_for_create_franchisee = 999;
 
   let total_expence = 0;
@@ -63,7 +66,7 @@ function AdminPage() {
   createdCards &&
     createdCards.filter((data) => {
       if (data.franchisee_email != "no franchisee") {
-        income_via_franchisee += card_price;
+        income_via_franchisee += data.isPremium == "true" ? premium_card_price : card_price;
       }
     });
   createdCards &&
@@ -73,17 +76,37 @@ function AdminPage() {
       }
     });
 
-  let income_via_normal_card_creation =
-    (createdCards && createdCards.length - cards_created_via_franchisee) *
-    card_price;
+    let premium_cards = createdCards.filter((data)=> {
+      return data.isPremium == "true"
+    }).map((data)=> {
+      return data
+    })
+
+    let normal_cards = createdCards.filter((data)=> {
+      return data.isPremium != "true"
+    }).map((data)=> {
+      return data
+    })
+
+  // let income_via_normal_card_creation =
+  //   (createdCards && createdCards.length - cards_created_via_franchisee) *
+  //   (premium_cards.length *card_price);
+
+  let no_franchisee_cards = createdCards.filter((data)=> {
+    return data.franchisee_email != "no franchisee"
+  }).map((data)=> {
+    return data
+  })
+
+  let income_via_normal_card_creation = (premium_cards.length * premium_card_price) + (normal_cards.length * card_price)
+
+  console.log(premium_cards.length);
 
   let total_earnings =
-    income_via_franchisee +
     income_via_normal_card_creation +
     (franchisees && franchisees.length * price_for_create_franchisee);
 
-  let total_card_earnings =
-    income_via_franchisee + income_via_normal_card_creation;
+
 
   let earnings_from_franchisee_creation =
     total_franchisees * price_for_create_franchisee;
@@ -113,12 +136,12 @@ function AdminPage() {
         index={index}
         className="mt-6 font-bold"
         isFitted
-        variant="solid-rounded"
+        variant="line"
         colorScheme="purple"
       >
         <TabList>
           <Tab onClick={() => setIndex(0)}>Overview</Tab>
-          <Tab onClick={() => setIndex(1)}>Created Cards</Tab>
+          <Tab onClick={() => setIndex(1)}>Created Website</Tab>
           <Tab onClick={() => setIndex(2)}>Franchisees</Tab>
           <Tab onClick={() => setIndex(3)}>Pay Salary</Tab>
         </TabList>
@@ -145,12 +168,10 @@ function AdminPage() {
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Earnings From Card</h1>
+                <h1 className="-mt-6">Earnings From Website</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   ₹
-                  {total_card_earnings
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  {income_via_normal_card_creation}
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
@@ -187,15 +208,27 @@ function AdminPage() {
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Total Cards Created</h1>
+                <h1 className="-mt-6">Total Websites Created</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   {total_cards_created}
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Cards Created Via Franchisee</h1>
+                <h1 className="-mt-6">Websites Created Via Franchisee</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   {cards_created_via_franchisee}
+                </h1>
+              </div>
+              <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
+                <h1 className="-mt-6">Premium Websites</h1>
+                <h1 className="text-5xl text-purple-600 mt-4">
+                  {premium_cards.length}
+                </h1>
+              </div>
+              <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
+                <h1 className="-mt-6">Non Premium Websites</h1>
+                <h1 className="text-5xl text-purple-600 mt-4">
+                  {normal_cards.length}
                 </h1>
               </div>
             </div>
@@ -231,6 +264,7 @@ function AdminPage() {
                 />
               </div>
             </form>
+            
 
             <div className="w-full h-screen flex flex-col items-center  overflow-scroll">
               {createdCards &&
@@ -240,6 +274,10 @@ function AdminPage() {
                     return comp_name.includes(cardSearch);
                   })
                   .map((data, index) => {
+                    const timestamp = data.created_at;
+                    const date = new Date(timestamp);
+                    const options = { month: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "numeric", hour12: true };
+                    const formattedDate = date.toLocaleString("en-US", options);
                     return (
                       <div className="w-full pl-12 min-h-[64px] border border-purple-100 rounded-xl shadow-sm shadow-black/5 flex items-center mt-4">
                         <h1 className="text-lg">
@@ -257,6 +295,7 @@ function AdminPage() {
                           </h1>
 
                           <h1 className="mr-4">+91{data.phone_no}</h1>
+                          <h1 className="mr-4">{formattedDate}</h1>
 
                           {data.franchisee_email != "no franchisee" ? (
                             <Tooltip
@@ -288,6 +327,16 @@ function AdminPage() {
                               No Franchisee
                             </span>
                           )}
+                          {
+                            data.isPremium == "true" ?
+                            <span class="cursor-pointer bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full :bg-purple-200 :text-purple-800 ml-4">
+                            Premium
+                          </span>
+                          :
+                          <span class="cursor-pointer bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full :bg-purple-200 :text-purple-800 ml-4">
+                          No Premium
+                        </span>
+                          }
                         </div>
                       </div>
                     );
@@ -353,7 +402,7 @@ function AdminPage() {
                           <h1 className="ml-4">{data.franchisee_id}</h1>
 
                           <h1 className="px-3 ml-4 py-1 text-sm rounded-full border border-purple-600">
-                            Cards Created
+                            Website Created
                             <span class="ml-3 bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full :bg-blue-200 :text-blue-800">
                               {data.created_cards_total}
                             </span>

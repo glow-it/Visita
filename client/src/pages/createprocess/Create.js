@@ -29,6 +29,33 @@ function Create() {
   let navigate = useNavigate();
   let location = useLocation();
 
+  // Save Function
+
+  // useEffect(()=> {
+  //   const form = document.getElementById("cardForm");
+
+
+  //   const inputs = Array.from(form.elements).filter((input) => input.nodeName !== "INPUT" || input.type !== "file");
+
+  //   form.addEventListener("input", (event) => {
+  //     const formData = {};
+  //     inputs.forEach((input) => {
+  //       formData[input.name] = input.value;
+  //     });
+  //     localStorage.setItem("formData", JSON.stringify(formData));
+  //   });
+    
+  //   // Retrieve the saved form data on page load
+  //   const savedFormData = JSON.parse(localStorage.getItem("formData"));
+  //   if (savedFormData) {
+  //     inputs.forEach((input) => {
+  //       input.value = savedFormData[input.name] || "";
+  //     });
+  //   }
+
+  // },[location])
+
+
   useEffect(()=> {
     document.getElementById('cardForm').addEventListener("input", (event) => {
       const input = event.target;
@@ -741,7 +768,7 @@ function Create() {
                 onChange={(e) => checkCompanyNameExists(e.target.value)}
                 id="large-input"
                 name="company_name"
-                class="company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
+                class="company_name_input   focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
               />
 
               <p class="error-message mt-2 text-sm text-green-600 font-medium"></p>

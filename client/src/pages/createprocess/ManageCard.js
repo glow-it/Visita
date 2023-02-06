@@ -298,7 +298,7 @@ function ManageCard() {
       </h1> */}
 
         <h1 className="text-3xl font-bold sticky top-0 z-50  mb-3 w-full py-6 flex text-slate-900 justify-center bg-slate-50 capitalize">
-          {company_name.replace(/[-]/g, " ")}
+          {cardDatas && cardDatas.company_name}
         </h1>
 
         <div className=" w-full flex  flex-col items-center justify-center ">

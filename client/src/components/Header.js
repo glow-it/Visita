@@ -19,6 +19,18 @@ function Header() {
 
   useEffect(() => {
     let header = document.querySelector("header");
+    
+    if (location.pathname === "/specific-route") {
+      header.style.display = "none";
+    } else {
+      header.style.display = "block";
+    }
+  }, [location]);
+
+
+  useEffect(() => {
+    let header = document.querySelector("header");
+    header.style.display = "flex"
     if (location.pathname === "/") {
       header.classList.add("bg-black");
       header.classList.add("text-white");

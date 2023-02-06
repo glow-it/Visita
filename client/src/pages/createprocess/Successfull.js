@@ -151,7 +151,7 @@ function Successfull() {
 
       <canvas
         id="confetti-canvas"
-        className="fixed lg:flex hidden -top-96 z-50  justify-center"
+        className="fixed  -top-96 z-50  justify-center"
       ></canvas>
       <div className="z-10 bg-blue-50/50 w-full flex flex-col items-center">
         <div classNam e="w-full h-12 flex items-center lg:px-96 px-4 ">
@@ -320,14 +320,14 @@ function Successfull() {
                   :"https://www." + "visitasmart.com/" + cardDatas.clean_name
                 )
               }
-              className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold"
+              className=" py-3 w-full bg-white text-black  border transition-colors hover my-1 cursor-pointer rounded-full font-bold"
             >
               Open your website
             </button>
 
             <button
               onClick={() => downloadQrCode()}
-              className="relative flex items-center justify-center py-3 w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"
+              className="relative flex items-center justify-center py-3 w-full bg-white text-black my-1  border transition-colors   cursor-pointer rounded-full font-bold"
             >
               <span className=" absolute left-6 flex items-center justify-center">
                 <ion-icon name="arrow-down-outline"></ion-icon>
@@ -337,7 +337,7 @@ function Successfull() {
 
             <button
               onClick={() => downloadQrCodeDesign()}
-              className="relative py-3 flex items-center justify-center w-full bg-white text-indigo-600 my-1  border transition-colors hover:bg-indigo-600  hover:text-white cursor-pointer rounded-full font-bold"
+              className="relative py-3 flex items-center justify-center w-full bg-white text-black my-1  border transition-colors  -600 cursor-pointer rounded-full font-bold"
             >
               <span className=" absolute left-6  flex items-center justify-center">
                 <ion-icon name="arrow-down-outline"></ion-icon>
@@ -393,11 +393,11 @@ function Successfull() {
               Manage or edit your website
             </h1>
 
-            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-100 shadow-lg text-slate-900 border rounded-lg flex items-center justify-center   text-white ">
-              <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
+            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-100  text-slate-900 border flex items-center justify-center    ">
+              <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md  -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
                 <h1>Website manage link</h1>
               </div>
-              <h1 className="font-medium lg:w-auto w-[70%]  lg:text-xl text-center lowercase">
+              <h1 className="font-medium lg:w-auto w-[70%]   lg:text-xl text-center lowercase">
                 {manage_card_url}
               </h1>
               <div
@@ -411,11 +411,11 @@ function Successfull() {
               </div>
             </div>
 
-            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-100 shadow-lg text-slate-900 border rounded-lg flex items-center justify-center   text-white ">
-              <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md rounded-t-xl -top-10 h-10 flex items-center justify-center bg-indigo-200">
+            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-100  text-slate-900 border flex items-center justify-center    ">
+              <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md  -top-10 h-10 flex items-center justify-center bg-indigo-200">
                 <h1>Website password</h1>
               </div>
-              <h1 className="font-medium lg:text-xl text-2xl text-center">
+              <h1 className="font-medium lg:text-xl  text-2xl text-center">
                 {/* Website password has been send to your email */}
                 {cardDatas.activated && cardDatas.activated.access_password}
               </h1>
@@ -430,7 +430,7 @@ function Successfull() {
               </div>
             </div>
 
-            <div className="flex flex-col rounded-3xl  px-12 py-12 mt-10 bg-slate-900">
+            <div className="flex flex-col   px-12 py-12 mt-10 bg-slate-900">
               <div className="flex flex-col items-start">
                 <span className="lg:text-xl text-sm font-medium">
                   1. Go To <br />{" "}
@@ -486,8 +486,27 @@ function Successfull() {
             </h1>
 
             <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4">
-              © Visita - all rights reserved
+              ©2023 Visita - all rights reserved
             </h1>
+
+            <div className="flex mt-6 text-sm text-indigo-500">
+                <Link
+                  to="/terms"
+                  className="underline cursor-pointer ml-1 mr-1 font-medium "
+                >
+                  {" "}
+                  Terms of service
+                </Link>{" "}
+                -
+                <Link
+                  to="/privacy"
+                  className="underline cursor-pointer ml-1 font-medium "
+                >
+                  {" "}
+                  Privacy policy
+                </Link>
+              </div>
+
           </div>
         </div>
       </div>

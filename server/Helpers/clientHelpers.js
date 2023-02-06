@@ -1988,7 +1988,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       client_db
         .collection(client_collections.visiting_card_datas)
-        .updateOne({ clean_name: card_name }, { $push: { feedbacks: data } })
+        .updateOne({ clean_name: { $regex: new RegExp(card_name, "i") } }, { $push: { feedbacks: data } })
         .then((response) => {
           resolve(response);
         })
@@ -2019,7 +2019,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       client_db
         .collection(client_collections.visiting_card_datas)
-        .updateOne({ clean_name: comp_name }, { $inc: { views: 1 } });
+        .updateOne({ clean_name: { $regex: new RegExp(comp_name, "i") } }, { $inc: { views: 1 } });
     });
   },
 
@@ -2090,7 +2090,7 @@ module.exports = {
       client_db
         .collection(client_collections.visiting_card_datas)
         .updateOne(
-          { clean_name: company_name },
+          { clean_name: { $regex: new RegExp(company_name, "i") } },
           {
             $set: {
               specials: all_data.specials,

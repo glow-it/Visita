@@ -168,6 +168,7 @@ function CardPreview() {
                 activated_at: new Date().getTime(),
                 phone_no: cardDatas.phone_no,
                 franchisee_email: cardDatas.franchisee,
+                isPremium: cardDatas.isPremium
               },
             }).then((response) => {
               if (response.data.status) {

@@ -37,6 +37,7 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(
   session({
     secret:
@@ -198,7 +199,8 @@ async function run() {
               admin_db,
               req.params.comp_name,
               req.body.phone_no,
-              req.body.franchisee_email
+              req.body.franchisee_email,
+              req.body.isPremium
             )
             .then(() => {
               if (req.body.franchisee_email != "no franchisee") {

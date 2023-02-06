@@ -562,7 +562,7 @@ function EditCard() {
                 onChange={(e) => checkCompanyNameExists(e.target.value)}
                 defaultValue={cardDatas && cardDatas.company_name}
                 name="company_name"
-                class="company_name_input company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
+                class="company_name_input company_name_input   focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
               />
 
               <p class="error-message mt-2 text-sm text-green-600 font-medium"></p>

@@ -13,12 +13,12 @@ module.exports = {
     });
   },
 
-  updateCreatedCard: (admin_db, comp_name, phone_no, franchisee_email) => {
+  updateCreatedCard: (admin_db, comp_name, phone_no, franchisee_email, isPremium) => {
     return new Promise((resolve, reject) => {
       let obj = {
         comp_name: comp_name,
         created_at: Date.now(),
-        created_date: new Date(),
+        isPremium,
         phone_no,
         franchisee_email,
       };
