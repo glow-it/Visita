@@ -92,7 +92,7 @@ function EditCard() {
 
   
   useEffect(() => {
-    if (cardDatas.activated) {
+    if (cardDatas && cardDatas.activated) {
       var doc = prompt("Enter Website Password");
 
       if (doc != null) {
@@ -435,7 +435,7 @@ function EditCard() {
       <input
         type="text"
         name="isPremium"
-        value={cardDatas.isPremium}
+        value={cardDatas && cardDatas.isPremium}
         className="hidden"
       />
 
@@ -514,7 +514,7 @@ function EditCard() {
                     } else {
                       Toast({
                         status: "error",
-                        title: "We are troubling to create website",
+                        title: "We are troubling to update website",
                         postition: "top",
                         description: "Contact visita team",
                         toast,
@@ -1073,7 +1073,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_1_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[0]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[0]}
             class=" company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
           />
 
@@ -1088,7 +1088,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_2_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[1]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[1]}
             class=" company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
           />
 
@@ -1103,7 +1103,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_3_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[2]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[2]}
             class=" company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
           />
 
@@ -1118,7 +1118,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_4_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[3]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[3]}
             class=" company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
           />
 
@@ -1133,7 +1133,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_5_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[4]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[4]}
             class=" company_name_input  focus:border-indigo-500 font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm"
           />
 
@@ -1150,7 +1150,7 @@ function EditCard() {
           <input
             placeholder="Youtube video link 6"
             autoComplete="off"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[5]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[5]}
             id="large-input"
             name="ytvideo_6_link"
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
@@ -1168,7 +1168,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_7_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[6]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[6]}
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
@@ -1183,7 +1183,7 @@ function EditCard() {
             placeholder="Youtube video link 8"
             autoComplete="off"
             id="large-input"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[7]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[7]}
             name="ytvideo_8_link"
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
@@ -1200,7 +1200,7 @@ function EditCard() {
             autoComplete="off"
             id="large-input"
             name="ytvideo_9_link"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[8]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[8]}
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
 
@@ -1215,7 +1215,7 @@ function EditCard() {
             placeholder="Youtube video link 10"
             autoComplete="off"
             id="large-input"
-            defaultValue={cardDatas.yt_videos && cardDatas.yt_videos[9]}
+            defaultValue={cardDatas && cardDatas.yt_videos && cardDatas.yt_videos[9]}
             name="ytvideo_10_link"
             class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
           />
@@ -1516,7 +1516,14 @@ function EditCard() {
           }  my-3 process5_wrapper pb-40 overflow-scroll w-full`}
         >
           {products &&
-            products.map((data, index) => {
+            products.filter((data,index)=> {
+              if(cardDatas && cardDatas.isPremium == "true"){
+                return data
+              }else{
+                return index < 20
+              }
+              return 
+            }).map((data, index) => {
               return (
                 <div className="flex flex-col lg:items-start items-center">
                   <label
@@ -1619,8 +1626,14 @@ function EditCard() {
           }  my-3 process6_wrapper pb-40 overflow-scroll w-full`}
         >
           {image_gallery &&
-            image_gallery.map((data, index) => {
-              if(data != ""  ){
+            image_gallery.filter((data,index)=> {
+              if(cardDatas && cardDatas.isPremium == "true"){
+                return index < 20
+              }else{
+                return index < 5
+              }
+              return 
+            }).map((data, index) => {
                 return (
                   <div>
                     <label
@@ -1653,7 +1666,7 @@ function EditCard() {
                     </div>
                   </div>
                 );
-              }
+              
               
               
             })}

@@ -17,6 +17,12 @@ function Successfull() {
     );
   }
 
+  window.onbeforeunload = null
+
+ 
+
+  window.history.pushState({}, null, null);
+
   let params = useParams();
   let comp_name = params.comp_name;
   let comp_name_clean = comp_name.replace(/[-]/g, " ");
@@ -309,7 +315,9 @@ function Successfull() {
             <button
               onClick={() =>
                 window.open(
-                  "https://" + cardDatas.clean_name + ".visitasmart.com"
+                  cardDatas && cardDatas.isPremium == "true"
+                  ?"https://" + cardDatas.clean_name + ".visitasmart.com"
+                  :"https://www." + "visitasmart.com/" + cardDatas.clean_name
                 )
               }
               className=" py-3 w-full bg-white text-indigo-600  border transition-colors hover:bg-indigo-600 my-1  hover:text-white cursor-pointer rounded-full font-bold"

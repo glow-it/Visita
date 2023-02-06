@@ -14,7 +14,7 @@ const aiHelpers = require("./Helpers/aiHelpers");
 const dotenv = require("dotenv");
 const Sentry = require("@sentry/node");
 const Tracing = require("@sentry/tracing");
-
+ 
 Sentry.init({
   dsn: "https://e824924890794db9b3156f486fd6b090@o4504582273630208.ingest.sentry.io/4504582315507712",
 
@@ -58,7 +58,7 @@ app.get("/", function (req, res) {
 
 // Replace the uri string with your connection string.
 const uri = process.env.mongo_uri;
-
+ 
 const client = new MongoClient(uri);
 
 async function run() {
