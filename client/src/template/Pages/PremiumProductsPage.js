@@ -322,7 +322,7 @@ function PremiumProductsPage() {
                 return data.product_name != "" && data.product_name != null
               })
               .map((data, index) => {
-                let prodname = data.product_name.toLowerCase();
+                let prodname = data.product_name != null ? data.product_name.toLowerCase() : '';
                 if(prodname != "" && prodname.includes(searchValue.toLowerCase())){
                   return (
                     <div

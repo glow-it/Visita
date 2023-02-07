@@ -93,7 +93,7 @@ function ProductsPage() {
         {products &&
           products
             .filter((data, index) => {
-              let prodname = data.product_name.toLowerCase();
+              let prodname = data.product_name != null ? data.product_name.toLowerCase() : "";
               return (
                 prodname != "" && prodname.includes(searchValue.toLowerCase())
               );

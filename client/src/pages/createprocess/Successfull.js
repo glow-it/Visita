@@ -32,7 +32,7 @@ function Successfull() {
   let navigate = useNavigate();
   let base_url = "visitasmart.com/";
   let https_base_url = "https://visitasmart.com/";
-  let manage_card_url = cardDatas && cardDatas.isPremium == "true" ? "https://" + comp_name + ".visitasmart.com/manage" : https_base_url + "manage/" + cardDatas.clean_name;
+  let manage_card_url = cardDatas && cardDatas.isPremium == "true" ? "https://" + comp_name + ".visitasmart.com/manage" : https_base_url + "/" + cardDatas.clean_name + "/manage";
   let toast = useToast();
   let clean_compname = params.comp_name.replace(/[-]/g, " ");
 
