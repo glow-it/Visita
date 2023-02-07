@@ -155,11 +155,11 @@ function Successfull() {
         className="fixed  -top-96 z-50  justify-center"
       ></canvas>
       <div className="z-10 bg-blue-50/50 w-full flex flex-col items-center">
-        <div classNam e="w-full h-12 flex items-center lg:px-96 px-4 ">
+        <div className="w-full flex items-center  justify-center">
           {cardDatas && cardDatas.franchisee != "no franchisee" ? (
             <a
               href="https://dashboard.visitasmart.com"
-              className="font-medium flex items-center justify-center hover:text-indigo-600 cursor-pointer"
+              className="font-medium flex py-6 items-center justify-center hover:text-indigo-600 cursor-pointer"
             >
               <span className="flex mr-1 items-center justify-center">
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -170,31 +170,7 @@ function Successfull() {
             ""
           )}
 
-          <p
-            onClick={() => {
-              if (navigator.share) {
-                navigator
-                  .share({
-                    title:
-                      params.comp_name.split("-", " ") +
-                      " Business Website Details",
-                    url: window.location.href,
-                  })
-                  .then(() => {
-                    console.log("Thanks for sharing!");
-                  })
-                  .catch(console.error);
-              } else {
-                // fallback
-              }
-            }}
-            className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-10 justify-center cursor-pointer"
-          >
-            {" "}
-            <span className="flex ml-1 mt-8 z-50 items-center justify-center">
-              <ion-icon name="arrow-redo"></ion-icon>
-            </span>
-          </p>
+       
         </div>
 
         <a
