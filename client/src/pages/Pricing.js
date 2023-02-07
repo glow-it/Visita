@@ -102,11 +102,17 @@ function Pricing() {
                 </div>
               </div>
               <ul class="mb-8 space-y-2">
+              <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">SEO optimized</p>
+                </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="close-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Video gallery</p>
+                  <p class="font-medium text-gray-600">Custom domain</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -120,12 +126,14 @@ function Pricing() {
                   </div>
                   <p class="font-medium text-gray-600">Ecommerce page</p>
                 </li>
+                
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="close-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Custom domain</p>
+                  <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
+               
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
@@ -243,11 +251,17 @@ function Pricing() {
                 </div>
               </div>
               <ul class="mb-8 space-y-2">
+              <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">SEO optimized</p>
+                </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Video gallery</p>
+                  <p class="font-medium text-gray-600">Custom domain</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -261,12 +275,14 @@ function Pricing() {
                   </div>
                   <p class="font-medium text-gray-600">Ecommerce page</p>
                 </li>
+             
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Custom domain</p>
+                  <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
+              
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>

@@ -17,6 +17,20 @@ function Template({ subdomain }) {
   let toast = useToast();
   let navigate = useNavigate();
 
+  // Set Manifest Icon and Name Dynamically
+  let iconUrl =
+  cardDatas && cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/");
+let manifest = {
+  name: cardDatas && cardDatas.company_name,
+  icons: [{ src: iconUrl, sizes: "512x512", type: "image/png" }],
+};
+let content = encodeURIComponent(JSON.stringify(manifest));
+let url = "data:application/manifest+json," + content;
+let element = document.createElement("link");
+element.setAttribute("rel", "manifest");
+element.setAttribute("href", url);
+document.querySelector("head").appendChild(element);
+
   useEffect(() => {
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";

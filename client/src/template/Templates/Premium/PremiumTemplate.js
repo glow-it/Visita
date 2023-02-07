@@ -26,6 +26,7 @@ import InstallPwa from "../../../Tools/InstallPwaApp";
 import { abbrevateNumber } from "../../../Tools/abbrevateNumber";
 import capitalize from "../../../Tools/capitalize";
 import { addCommas } from "../../../Tools/addCommas";
+import { Helmet } from "react-helmet";
 
 function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   const toast = useToast();
@@ -134,15 +135,15 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
       {
         name: capitalize(cardDatas.company_name),
         short_name: capitalize(cardDatas.company_name),
-        description: capitalize(cardDatas.about),
-        start_url: `https://${cardDatas.clean_name}.visitasmart.com/` ,
-        scope: `https://${cardDatas.clean_name}.visitasmart.com/`,
+        description: capitalize(cardDatas.about).substring(0, 250) + "...",
+        start_url: `https://${cardDatas.clean_name}.visitasmart.com` ,
+        scope: `https://${cardDatas.clean_name}.visitasmart.com`,
         background_color: "#fff",
         theme_color: "#fff",
         display: "standalone",
         icons: [
           {
-            src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
+            src: cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/"),
             sizes: "256x256",
             type: "image/png",
           },
@@ -188,7 +189,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
-      cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, "https://");
+      cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/");
     let manifest = {
       name: cardDatas.company_name,
       icons: [{ src: iconUrl, sizes: "512x512", type: "image/png" }],
@@ -234,6 +235,16 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
   return (
     <div className=" flex justify-center items-center pb-24">
+
+       {/* Add Meta Title And Descreption */}
+       <Helmet>
+          <title className="capitalize">
+            {capitalize(cardDatas.company_name) +
+              " - " +
+              capitalize(cardDatas.tagline)}
+          </title>
+          <meta name="description" content={cardDatas && cardDatas.tagline} />
+        </Helmet>
 
       {/* Cart Modal Open */}
       <Transition.Root show={open} as={Fragment}>

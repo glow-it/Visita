@@ -90,7 +90,7 @@ function BasicTemplate({ preview, cardDatas }) {
         display: "standalone",
         icons: [
           {
-            src: cardDatas.logo.replace(/^http:\/\//i, "https://"),
+            src: cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/"),
             sizes: "256x256",
             type: "image/png",
           },
@@ -135,7 +135,7 @@ function BasicTemplate({ preview, cardDatas }) {
 
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
-      cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, "https://");
+      cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/");
     let manifest = {
       name: cardDatas && cardDatas.company_name,
       icons: [{ src: iconUrl, sizes: "512x512", type: "image/png" }],

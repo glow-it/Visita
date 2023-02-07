@@ -161,14 +161,12 @@ function EditCard() {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(files);
         fileReader.addEventListener("load", function () {
-          imgPreview.style.display = "block";
           imgPreview.querySelector("img").setAttribute("src", this.result);
           imgPreview
             .querySelector("img")
             .classList.replace("invisible", "visible");
           imgPreview
             .querySelector("img")
-            .classList.add("min-w-[100px]", "min-h-[100px]");
           chooseLogoButton.innerText = "Change Logo";
           chooseLogoButton.style.marginLeft = "-20px";
           choose_theme_color.classList.add("active-choose-theme");
@@ -301,15 +299,23 @@ function EditCard() {
     formData.append("file", files[0]);
     formData.append("upload_preset", "xav0wsx1");
 
-    let response = await axios.post(
+    axios.post(
       "https://api.cloudinary.com/v1_1/dmi3cfl2v/image/upload",
       formData
-    );
-    document.getElementById(id).value = response.data.url;
+    ).then((response)=> {
 
-    if (toastIdRef.current) {
-      toast.close(toastIdRef.current);
-    }
+      console.log(response.data.url);
+
+      document.getElementById(id).value = response.data.url;
+
+      if (toastIdRef.current) {
+        toast.close(toastIdRef.current);
+      }
+    }).catch((err)=> {
+      console.log(err);
+    })
+
+    
   }
 
   // Upload Video Files To Cloud
@@ -571,14 +577,14 @@ function EditCard() {
                 for="large-input"
                 class="block mb-6 text-lg font-medium text-gray-900 :text-gray-300 mt-8"
               >
-                Upload Company Logo
+                Upload Company Logo  
               </label>
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
                   <img
                     src={cardDatas && cardDatas.logo}
-                    className={`ring-4  transition-all  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`}
+                    className={`ring-4  transition-all max-w-[100px] max-h-[100px] min-w-[100px] min-h-[100px]  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`}
                   />
                 </div>
                 <input
@@ -587,7 +593,7 @@ function EditCard() {
                     uploadImage(e.target.files, "logo");
                   }}
                   id="create-choose-logo"
-                  accept="image/*"
+                  accept="image/jpg,image/png,image/svg,image/webp"
                 />
                 <input
                   type="text"

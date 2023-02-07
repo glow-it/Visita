@@ -314,6 +314,7 @@ function Create() {
     // Logo Preview Show
     const chooseFile = document.getElementById("create-choose-logo");
     const imgPreview = document.getElementById("create-logo-preview");
+    const create_logo_wrapper = document.getElementById("create-logo-wrapper");
     const chooseLogoButton = document.getElementById("choose_logo_button");
     const choose_theme_color = document.getElementById("choose_theme_color");
 
@@ -327,14 +328,8 @@ function Create() {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(files);
         fileReader.addEventListener("load", function () {
-          imgPreview.style.display = "block";
           imgPreview.querySelector("img").setAttribute("src", this.result);
-          imgPreview
-            .querySelector("img")
-            .classList.replace("invisible", "visible");
-          imgPreview
-            .querySelector("img")
-            .classList.add("min-w-[100px]", "min-h-[100px]");
+          create_logo_wrapper.classList.remove("hidden");
           document.getElementById("logo-upload-svg").style.display = "none";
           chooseLogoButton.innerText = "Change Logo";
           chooseLogoButton.style.marginLeft = "-20px";
@@ -783,9 +778,9 @@ function Create() {
 
               <div className="create-logo-upload flex items-center">
                 <div id="create-logo-preview">
-                  <img
-                    className={`ring-4 invisible transition-all  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`}
-                  />
+                  <div id="create-logo-wrapper" className="hidden"><img
+                    className={`ring-4   transition-all max-w-[100px] max-h-[100px] min-w-[100px] min-h-[100px]  ring-offset-8 rounded-full ring-${choosedThemeColor}-600`}
+                  /></div>
                   <svg
                     id="logo-upload-svg"
                     xmlns="http://www.w3.org/2000/svg"
@@ -819,7 +814,7 @@ function Create() {
                     uploadImage(e.target.files, "logo");
                   }}
                   id="create-choose-logo"
-                  accept="image/*"
+                  accept="image/jpg,image/png,image/svg,image/webp"
                 />
                 <input type="text" name="logo" id="logo" className="hidden" />
                 <label
