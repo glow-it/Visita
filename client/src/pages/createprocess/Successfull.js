@@ -31,7 +31,8 @@ function Successfull() {
   let [isLoading, setIsLoading] = useState(true);
   let navigate = useNavigate();
   let base_url = "visitasmart.com/";
-  let manage_card_url = base_url + "manage/" + cardDatas.clean_name;
+  let https_base_url = "https://visitasmart.com/";
+  let manage_card_url = cardDatas && cardDatas.isPremium == "true" ? "https://" + comp_name + ".visitasmart.com/manage" : https_base_url + "manage/" + cardDatas.clean_name;
   let toast = useToast();
   let clean_compname = params.comp_name.replace(/[-]/g, " ");
 
@@ -187,7 +188,7 @@ function Successfull() {
                 // fallback
               }
             }}
-            className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-4 justify-center cursor-pointer"
+            className="font-medium flex items-center hover:text-indigo-600 absolute lg:right-96 right-10 justify-center cursor-pointer"
           >
             {" "}
             <span className="flex ml-1 mt-8 z-50 items-center justify-center">
@@ -311,7 +312,14 @@ function Successfull() {
             </div>
           </div>
 
-          <div className="lg:w-[70%] w-full mt-16 h-32 flex flex-col items-center justify-center z-10">
+          <div className="lg:w-[70%] w-full mt-16 h-52 flex flex-col items-center justify-center z-10">
+            <button
+              onClick={()=> window.open(manage_card_url)}
+              className=" py-3 w-full bg-black text-white  transition-colors hover my-1 cursor-pointer rounded-full font-bold"
+            >
+              Go to manage page →
+            </button>
+
             <button
               onClick={() =>
                 window.open(
@@ -388,108 +396,48 @@ function Successfull() {
             </a>
           </div>
 
-          <div className="flex z-10 flex-col items-center mt-20 pb-20 bg-slate-100 text-white">
+          <div className="flex z-10 flex-col w-full items-center mt-20 pb-14 bg-slate-50 text-white">
             <h1 className="lg:text-xl text-xl font-bold mb-6 mt-10 text-slate-900 ">
               Manage or edit your website
             </h1>
 
-            <div className="lg:px-10 lg:h-12 h-24 relative w-[80%]  mt-20 bg-slate-100  text-slate-900 border flex items-center justify-center    ">
-              <div className="lg:w-full w-[70%] absolute text-indigo-600 lg:text-xl text-md  -top-10 h-10 flex items-center justify-center font-semibold bg-indigo-200">
-                <h1>Website manage link</h1>
+            
+
+            <div className="px-10 lg:h-16 h-24 w-[80%]   relative mt-10 bg-slate-50  text-slate-900 border flex items-center justify-center    ">
+              <div className={`lg:w-full w-[70%] absolute  font-bold text-${cardDatas && cardDatas.theme_color}-600 lg:text-xl text-md  -top-10 h-10 flex items-center py-6 justify-center bg-${cardDatas && cardDatas.theme_color}-100`}>
+                <h1 className="text-md" >
+                  {cardDatas.activated && cardDatas.activated.access_password}
+                  {/* Website password has been send to your email */}
+                  </h1>
               </div>
-              <h1 className="font-medium lg:w-auto w-[70%]   lg:text-xl text-center lowercase">
-                {manage_card_url}
+              <h1 className="font-medium  text-sm   text-center">
+                Website password
+                
               </h1>
-              <div
-                id="tooltip-light"
-                role="tooltip"
-                class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
-              >
-                <span className="font-medium" id="copy-tooltip">
-                  Copy manage link
-                </span>
-              </div>
+
+             
+
+             
             </div>
 
-            <div className="px-10 lg:h-12 h-24 w-[80%]   relative mt-16 bg-slate-100  text-slate-900 border flex items-center justify-center    ">
-              <div className="lg:w-full w-[70%] absolute  font-semibold text-indigo-600 lg:text-xl text-md  -top-10 h-10 flex items-center justify-center bg-indigo-200">
-                <h1>Website password</h1>
-              </div>
-              <h1 className="font-medium lg:text-xl  text-2xl text-center">
-                {/* Website password has been send to your email */}
-                {cardDatas.activated && cardDatas.activated.access_password}
-              </h1>
-              <div
-                id="tooltip-light"
-                role="tooltip"
-                class="inline-block absolute invisible py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 tooltip"
-              >
-                <span className="font-medium" id="copy-tooltip">
-                  Copy manage link
-                </span>
-              </div>
-            </div>
 
-            <div className="flex flex-col   px-12 py-12 mt-10 bg-slate-900">
-              <div className="flex flex-col items-start">
-                <span className="lg:text-xl text-sm font-medium">
-                  1. Go To <br />{" "}
-                  <a
-                    href={"https://" + manage_card_url}
-                    target="_blank"
-                    className="text-indigo-600 "
-                  >
-                    {manage_card_url}
-                  </a>
-                </span>
-                <span className="lg:text-xl text-sm font-medium mt-4">
-                  2. You'll be asked to enter a password
-                </span>
-                <span className="lg:text-xl text-sm font-medium mt-4">
-                  3. Then enter the Website password you have send to your email
-                </span>
-              </div>
+            <button onClick={()=> window.open(manage_card_url)} className="px-8 py-3 mt-8 bg-black text-white rounded-full font-semibold">
+                Go to manage page →
+              </button>
+         
+            
 
-              <div className="flex z-10 flex-col items-center  ">
-                <h1 className="lg:text-xl text-sm text-indigo-600 font-bold mb-6 mt-10 capitalize">
-                  Or
-                </h1>
-              </div>
+          </div>
 
-              <div className="flex flex-col items-start">
-                <span className="lg:text-xl text-sm font-medium mt-6">
-                  1. Go To{" "}
-                  <a href={base_url} className="text-indigo-600 ">
-                    {base_url}
-                  </a>
-                </span>
-                <span className="lg:text-xl text-sm font-medium mt-4">
-                  2. And Click On Manage Website Button In The Header
-                </span>
-                <span className="lg:text-xl text-sm font-medium mt-4">
-                  3. You'll be asked to enter a password
-                </span>
-                <span className="lg:text-xl text-sm font-medium mt-4">
-                  4. Then enter the Website password you have send to your email
-                </span>
-              </div>
-            </div>
 
-            <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-10 ">
-              Any Help? Contact Visita{" "}
-              <a
-                href="/support"
-                className="text-indigo-600 hover: ml-2 cursor-pointer"
-              >
-                Help Center{" "}
-              </a>
-            </h1>
 
-            <h1 className="lg:text-lg text-sm font-medium text-slate-400 mt-4">
+        
+
+            <h1 className="lg:text-sm text-sm font-medium text-slate-400 mt-24">
               ©2023 Visita - all rights reserved
             </h1>
 
-            <div className="flex mt-6 text-sm text-indigo-500">
+            <div className="flex mt-2 text-sm text-indigo-500">
                 <Link
                   to="/terms"
                   className="underline cursor-pointer ml-1 mr-1 font-medium "
@@ -507,7 +455,7 @@ function Successfull() {
                 </Link>
               </div>
 
-          </div>
+
         </div>
       </div>
     </div>

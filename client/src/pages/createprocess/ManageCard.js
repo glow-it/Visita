@@ -18,9 +18,18 @@ import { abbrevateNumber } from "../../Tools/abbrevateNumber";
 
 function ManageCard() {
   let params = useParams();
-  let company_name = params.comp_name;
+
+  
+
+   // Get Sub Domain
+   let full = window.location.host;
+   //window.location.host is subdomain.domain.com
+   let parts = full.split(".");
+   let subdomain = parts[0];
+
+  let company_name = params.comp_name || subdomain;
   let clean_company_name =
-    params.comp_name && params.comp_name.replace(/[-]/g, " ");
+  company_name && company_name.replace(/[-]/g, " ");
   let navigate = useNavigate();
   let toast = useToast();
   let [cardDatas, setCardDatas] = useState([]);
@@ -28,8 +37,17 @@ function ManageCard() {
   let [franchiseeDatas, setFranchiseeDatas] = useState([]);
   let [feedbacks, setFeedbacks] = useState([]);
 
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
+
+  if(subdomain == "www"){
+    if(cardDatas && cardDatas.isPremium == "true"){
+      window.location.href = "https://" + company_name + ".visitasmart.com/manage"
+    }
+  }
+
+  
 
   useEffect(() => {
     document.querySelectorAll("header").forEach((elem) => {
@@ -297,14 +315,14 @@ function ManageCard() {
         Upgrade to premium <span className="flex items-center justify-center ml-1"><ion-icon name="arrow-forward-outline"></ion-icon></span>
       </h1> */}
 
-        <h1 className="text-3xl font-bold sticky top-0 z-50  mb-3 w-full py-6 flex text-slate-900 justify-center bg-slate-50 capitalize">
+        <h1 className="text-3xl font-bold sticky top-0 z-50   w-full py-6 flex text-slate-900 justify-center bg-slate-50 capitalize">
           {cardDatas && cardDatas.company_name}
         </h1>
 
         <div className=" w-full flex  flex-col items-center justify-center ">
           <button
             onClick={onOpen}
-            className="w-full py-3 lg:m1-3     hover:text-white transition-colors  text-white  bg-red-500 font-bold"
+            className="w-full py-3      hover:text-white transition-colors  text-white  bg-red-500 font-bold"
           >
             Close website
           </button>
@@ -338,7 +356,7 @@ function ManageCard() {
         </div>
 
         <div className="w-full   flex flex-wrap items-center justify-center ">
-          <div className="h-44 w-full bg-slate-50  lg:mr-6 border-b flex flex-col items-center justify-center">
+          <div className="h-44 w-full bg-slate-50   border-b flex flex-col items-center justify-center">
             <h6 className="text-xl font-medium">Total views</h6>
             <h1 className="text-5xl font-bold mt-4 text-blue-600">
               {
@@ -347,7 +365,7 @@ function ManageCard() {
             </h1>
           </div>
 
-          <div className="h-44 w-full bg-slate-50  lg:mr-6   flex flex-col items-center justify-center">
+          <div className="h-44 w-full bg-slate-50     flex flex-col items-center justify-center">
             <h6 className="text-xl font-medium">Total feedbaks</h6>
             <h1 className="text-5xl font-bold mt-4 text-blue-600">
               {cardDatas.feedbacks && cardDatas.feedbacks.length}
@@ -356,19 +374,19 @@ function ManageCard() {
         </div>
 
         {franchiseeDatas.length != 0 ? (
-          <div className=" w-[576px]  mt-5 flex flex-col items-center justify-center ">
-            <div className="h-16 w-full bg-slate-50  mt-4 border flex  items-center justify-center">
-              <h6 className="text-xl font-medium">Created via</h6>
-              <h1 className="text-xl font-bold ml-2  text-blue-600">
+          <div className=" w-full   flex flex-col items-center justify-center ">
+            <div className="h-20 w-full bg-slate-50   border-t  flex  items-center justify-center">
+              <h6 className="text-lg font-medium">Created by</h6>
+              <h1 className="text-lg font-bold ml-2  text-blue-600">
                 {franchiseeDatas && franchiseeDatas.franchisee_name}
               </h1>
             </div>
 
-            <div className="h-16 w-full bg-slate-50  mt-4 border flex  items-center justify-center">
-              <h6 className="text-xl font-medium">
-                Contact {franchiseeDatas && franchiseeDatas.franchisee_name}
+            <div className="h-20 w-full bg-slate-50    border-t flex  items-center justify-center">
+              <h6 className="text-lg font-medium">
+                Contact creator
               </h6>
-              <h1 className="text-xl font-bold ml-2  text-blue-600">
+              <h1 className="text-lg font-bold ml-2  text-blue-600">
                 +91 {franchiseeDatas && franchiseeDatas.phone_no}
               </h1>
             </div>

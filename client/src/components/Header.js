@@ -141,10 +141,10 @@ function Header() {
                           <button
                             onClick={() =>
                               navigate(
-                                "/manage/" +
+                                "/" +
                                   document
                                     .getElementById("manage_card_comp_name")
-                                    .value.replace(/[ ]/g, "")
+                                    .value.replace(/[ ]/g, "") + "/manage"
                               )
                             }
                             className="px-6 py-1 bg-[#5241FE] text-white rounded-full text-xl font-bold "
@@ -347,7 +347,7 @@ function Header() {
 
                                   if (doc != null) {
                                     navigate(
-                                      "/manage/" + doc.replace(/[ ]/g, "")
+                                      "/" + doc.replace(/[ ]/g, "") + "/manage"
                                     );
                                   }
                                   setOpen(false);

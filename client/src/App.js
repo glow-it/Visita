@@ -77,7 +77,8 @@ function App() {
           path="/create/successfull/:comp_name"
           element={<Successfull />}
         />
-        <Route path="manage/:comp_name" element={<ManageCard />} />
+        <Route path=":comp_name/manage" element={<ManageCard />} />
+        <Route path="/manage" element={<ManageCard />} />
         <Route path="manage/:comp_name/edit" element={<EditCard />} />
         <Route
           path="/manage/:comp_name/customer-details"

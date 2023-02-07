@@ -92,15 +92,18 @@ function EditCard() {
 
   
   useEffect(() => {
+
+   
+
     if (cardDatas && cardDatas.activated) {
       var doc = prompt("Enter Website Password");
 
       if (doc != null) {
         if (doc != cardDatas.activated.access_password) {
-          navigate("/manage/" + company_name);
+          navigate(cardDatas.isPremium != "true" ? "/" + company_name + "/manage" : "/manage");
         }
       } else {
-        navigate("/manage/" + company_name);
+        navigate("/" + company_name + "/manage");
       }
     }
   }, [cardDatas]);
@@ -1247,7 +1250,7 @@ function EditCard() {
                       >
                         Video {index + 1}
                       </label>
-                      {data != "" ? (
+                      {data != "" && data != null ? (
                         <video
                           controls
                           src={data.replace(/^http:\/\//i, "https://")}
