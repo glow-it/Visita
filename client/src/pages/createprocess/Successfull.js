@@ -129,10 +129,9 @@ function Successfull() {
       max: 300,
       size: 2,
       colors: [
-        [0, 255, 17],
-        [255, 0, 21],
-        [0, 157, 255],
-        [255, 255, 0],
+        [98, 0, 255],[
+          0, 247, 255
+          ]
       ],
       respawn: false,
       height: 1300,
@@ -159,7 +158,7 @@ function Successfull() {
           {cardDatas && cardDatas.franchisee != "no franchisee" ? (
             <a
               href="https://dashboard.visitasmart.com"
-              className="font-medium flex py-6 items-center justify-center hover:text-indigo-600 cursor-pointer"
+              className="font-medium flex py-3 items-center justify-center hover:text-indigo-600 cursor-pointer"
             >
               <span className="flex mr-1 items-center justify-center">
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -381,9 +380,34 @@ function Successfull() {
 
             <div className="px-10 lg:h-16 h-24 w-[80%]   relative mt-10 bg-slate-50  text-slate-900 border flex items-center justify-center    ">
               <div className={`lg:w-full w-[70%] absolute  font-bold text-${cardDatas && cardDatas.theme_color}-600 lg:text-xl text-md  -top-10 h-10 flex items-center py-6 justify-center bg-${cardDatas && cardDatas.theme_color}-100`}>
-                <h1 className="text-md" >
+
+
+              <span
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      document.getElementById("website_password_text_succesfull")
+                        .innerText
+                    );
+
+                    Toast({
+                      status: "success",
+                      title: "Copied",
+                      postition: "top",
+                      toast,
+                    });
+                  }}
+                  className="flex items-center justify-center absolute right-6 cursor-pointer"
+                >
+                  <ion-icon name="copy-outline"></ion-icon>
+                </span>
+
+
+                <h1 className="text-md" id="website_password_text_succesfull" >
                   {cardDatas.activated && cardDatas.activated.access_password}
                   {/* Website password has been send to your email */}
+
+                  
+
                   </h1>
               </div>
               <h1 className="font-medium  text-sm   text-center">
