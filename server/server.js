@@ -201,7 +201,7 @@ async function run() {
               req.body.phone_no,
               req.body.franchisee_email,
               req.body.isPremium
-            )
+            )   
             .then(() => {
               if (req.body.franchisee_email != "no franchisee") {
                 FranchiseeHelpers.updateCreatedCards(

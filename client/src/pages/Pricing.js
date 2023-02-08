@@ -245,7 +245,7 @@ function Pricing() {
                 </p>
                 <div class="flex items-center justify-center">
                   <p class="mr-2 text-5xl font-bold text-black lg:text-6xl">
-                    ₹1299
+                    ₹999
                   </p>
                   <p class="text-lg text-gray-500">/ year</p>
                 </div>

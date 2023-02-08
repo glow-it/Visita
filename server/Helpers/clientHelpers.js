@@ -2024,7 +2024,9 @@ module.exports = {
   },
 
   afterPaymentCompleteProcessess: (activated, client_db) => {
-    let company_name = activated.company_name.replace(/[-]/g, " ");
+    let company_name = activated.company_name
+
+    console.log(company_name)
 
     return new Promise((resolve, reject) => {
       client_db

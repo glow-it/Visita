@@ -18,6 +18,9 @@ function CardPreview() {
   let navigate = useNavigate();
   let send_pass_form = document.getElementById("send_pass_form");
   let [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  let [noPayment,setnoPayment] = useState(true)
+
+
 
   useEffect(() => {
     document.title = "Preview - Visita";
@@ -51,82 +54,77 @@ function CardPreview() {
 
   // Handle Complete Purchase Click
   const handleCompletePurchase = async () => {
-    axios({
-      method: "post",
-      url: `${apiKeys.server_url}/complete-purchase`,
-      data: { isPremium: cardDatas.isPremium },
-    })
-      .then((response) => {
-        // Check Website Creation Is First
+    if (noPayment == true) {
+      axios({
+        method: "post",
+        url: `${apiKeys.server_url}/payment-successfull/` + name,
+        data: {
+          company_name: name,
+          razorpay: null,
+          franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
+          access_password: `${name.substring(0, 2)}${Math.floor(
+            Math.random() * 99
+          )}`,
+          activated_at: new Date().getTime(),
+          phone_no: cardDatas.phone_no,
+          franchisee_email: cardDatas.franchisee,
+        },
+      }).then((response) => {
+        if (response.data.status) {
+          let card_pass = send_pass_form.childNodes[2];
+          card_pass.value = response.data.req_datas.access_password;
+          navigate("/create/successfull/" + name);
 
-        if (response.data.isFirst == true) {
-          axios({
-            method: "post",
-            url: `${apiKeys.server_url}/payment-successfull/` + name,
-            data: {
-              company_name: name,
-              razorpay: null,
-              franchisee: cardDatas.franchisee ? cardDatas.franchisee : false,
-              access_password: `${name.substring(0, 2)}${Math.floor(
-                Math.random() * 99
-              )}`,
-              activated_at: new Date().getTime(),
-              phone_no: cardDatas.phone_no,
-              franchisee_email: cardDatas.franchisee,
-            },
-          }).then((response) => {
-            if (response.data.status) {
-              let card_pass = send_pass_form.childNodes[2];
-              card_pass.value = response.data.req_datas.access_password;
-              navigate("/create/successfull/" + name);
-
-              // emailjs
-              //   .sendForm(
-              //     apiKeys.emailjs_serviceId,
-              //     apiKeys.emailjs_templateId2,
-              //     send_pass_form,
-              //     apiKeys.emailjs_publicKey
-              //   )
-              //   .then(
-              //     (result) => {
-              //       navigate("/create/successfull/" + name);
-              //     },
-              //     (error) => {
-              //       Toast({
-              //         status: "error",
-              //         title: "Unable to send website password to your mail",
-              //         postition: "top",
-              //         description: "Contact Visita",
-              //         toast,
-              //       });
-              //       navigate("/create/successfull/" + name);
-              //       console.log(error);
-              //     }
-              //   );
-            } else {
-              Toast({
-                status: "error",
-                title: "An error occured",
-                postition: "top",
-                description: "Try again!",
-                toast,
-              });
-            }
-          });
-
-          navigate("/loading/processing-website");
+          // emailjs
+          //   .sendForm(
+          //     apiKeys.emailjs_serviceId,
+          //     apiKeys.emailjs_templateId2,
+          //     send_pass_form,
+          //     apiKeys.emailjs_publicKey
+          //   )
+          //   .then(
+          //     (result) => {
+          //       navigate("/create/successfull/" + name);
+          //     },
+          //     (error) => {
+          //       Toast({
+          //         status: "error",
+          //         title: "Unable to send website password to your mail",
+          //         postition: "top",
+          //         description: "Contact Visita",
+          //         toast,
+          //       });
+          //       navigate("/create/successfull/" + name);
+          //       console.log(error);
+          //     }
+          //   );
         } else {
-          openPayment(response.data.sub_data);
+          navigate("/create/successfull/" + name);
         }
-      })
-      .catch((err) => {
-        Toast({
-          status: "error",
-          title: err.message,
-          postition: "top",
-          toast,
-        });
       });
+
+
+      navigate('/loading/processing-website')
+
+
+    } else {
+      axios({
+        method: "post",
+        url: `${apiKeys.server_url}/complete-purchase`,
+        data: { isPremium: cardDatas.isPremium },
+      })
+        .then((response) => {
+          openPayment(response.data.sub_data);
+        })
+        .catch((err) => {
+          Toast({
+            status: "error",
+            title: err.message,
+            postition: "top",
+            toast,
+          });
+        });
+    }
   };
 
   // Open Payment Checkout When Create Subscription Is Successfull
@@ -168,7 +166,7 @@ function CardPreview() {
                 activated_at: new Date().getTime(),
                 phone_no: cardDatas.phone_no,
                 franchisee_email: cardDatas.franchisee,
-                isPremium: cardDatas.isPremium
+                isPremium: cardDatas.isPremium,
               },
             }).then((response) => {
               if (response.data.status) {
