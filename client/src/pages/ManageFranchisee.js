@@ -121,7 +121,7 @@ function ManageFranchisee() {
                 });
               });
           } else {
-            navigate("/franchisee/login");
+            navigate("/login");
           }
         } else {
           Toast({
@@ -195,8 +195,10 @@ function ManageFranchisee() {
             className="lg:block hidden cursor-pointer h-12 left-12 absolute"
             src=" https://i.postimg.cc/ZKnK7rC2/visitalogo.png />"
           />
-          <h1 className="font-bold text-3xl text-indigo-600 capitalize">
-            {franchiseeData && franchiseeData.franchisee_name}
+          <h1 className="font-bold text-3xl flex items-center justify-center text-indigo-600 capitalize">
+            {franchiseeData && franchiseeData.franchisee_name} <span onClick={()=> {localStorage.removeItem("franchisee_email");window.location.href = "/"}} className="flex absolute cursor-pointer lg:right-10 right-4 items-center p-2 bg-slate-50 rounded-full ml-2 text-lg border justify-center">
+            <ion-icon name="log-out-outline"></ion-icon>
+            </span>
           </h1>
 
           <h1
