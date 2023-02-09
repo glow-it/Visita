@@ -4,17 +4,7 @@ export default async function downloadVCard(name, number, logoURL) {
                 "N:" + name + "\n" +
                 "TEL;TYPE=CELL:" + number + "\n";
     
-    if (logoURL) {
-      let response = await fetch(logoURL);
-      let blob = await response.blob();
-      
-      let reader = new FileReader();
-      reader.onloadend = function() {
-        let data = reader.result.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
-        vCard += "PHOTO;ENCODING=BASE64;TYPE=JPEG:\n" + data + "\n";
-      };
-      reader.readAsDataURL(blob);
-    }
+   
     
     vCard += "END:VCARD";
     

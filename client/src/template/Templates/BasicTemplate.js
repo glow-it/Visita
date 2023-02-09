@@ -482,7 +482,7 @@ function BasicTemplate({ preview, cardDatas }) {
 
 
                     <button
-                      onClick={() => downloadVCard(cardDatas.company_name, cardDatas.phone_no, cardDatas.logo)}
+                      onClick={() => downloadVCard(cardDatas.company_name, cardDatas.phone_no)}
                       className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg `}
                     >
                       Save contact

@@ -716,7 +716,6 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                       downloadVCard(
                         cardDatas.company_name,
                         cardDatas.phone_no,
-                        cardDatas.logo
                       )
                     }
                     className={`flex cursor-pointer justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-md mt-3 mr-3`}
