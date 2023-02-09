@@ -406,7 +406,7 @@ function ManageCard() {
                 Loves from clients
               </p>
             </div>
-            <div class="grid mb-8 lg:mb-12 lg:grid-cols-2">
+            <div class="grid mb-8 lg:mb-12 lg:grid-cols-2 ">
               {cardDatas &&
                 feedbacks.map((data) => {
                   var date1, date2;

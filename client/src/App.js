@@ -84,10 +84,8 @@ function App() {
           path="/manage/:comp_name/customer-details"
           element={<CustomerDetails />}
         />
-        <Route path="/franchisee/register" element={<FranchiseeRegister />} />
-        <Route path="/franchisee/login" element={<FranchiseeLogin />} />
-        <Route path="/admin/overview" element={<AdminPage />} />
-        <Route path="/admin/pay-salary" element={<AdminPage />} />
+        <Route path="/register" element={<FranchiseeRegister />} />
+        <Route path="/login" element={<FranchiseeLogin />} />
         <Route path="/card-closed" element={<CardClosedPage />} />
         <Route
           path="/franchisee/forgot-password/:franchisee_email"

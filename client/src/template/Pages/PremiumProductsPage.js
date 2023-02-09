@@ -34,7 +34,7 @@ function PremiumProductsPage() {
   let total_price = 0;
 
   cart_products.map((data) => {
-    total_price += parseInt(data.price);
+    total_price += parseInt(data.price * parseInt(data.quantity));
   });
 
   let productsList = cart_products.map((product, index) => {
@@ -46,7 +46,9 @@ function PremiumProductsPage() {
 
     ${product.description}
 
-    ₹${product.price}
+    ₹${addCommas(product.price)}
+
+    Quanity: ${product.quantity}
 
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     
@@ -165,14 +167,14 @@ function PremiumProductsPage() {
                                           <h3>
                                             <a>{product.name}</a>
                                           </h3>
-                                          <p className="ml-4">₹{addCommas(product.price)}</p>
+                                          <p className="ml-4">₹{addCommas(product.price * parseInt(product.quantity))}</p>
                                         </div>
                                         <p className="mt-1 text-sm text-gray-500">
                                           {product.description}
                                         </p>
                                       </div>
                                       <div className="flex flex-1 items-end justify-between text-sm">
-                                        <p className="text-gray-500">Qty 1</p>
+                                        <p className="text-gray-500">Qty {product.quantity}</p>
   
                                         <div className="flex">
                                           <button
@@ -210,6 +212,7 @@ function PremiumProductsPage() {
                           <div className="mt-6">
                             <p
                               onClick={() => {
+                                localStorage.removeItem("cart_products")
                                 let phoneNumber = "+91" + cardDatas.phone_no;
   
                                 let message = `
@@ -217,11 +220,11 @@ function PremiumProductsPage() {
                                   
                                   ${productsList}
   
-                                  TOTAL : ₹${total_price}
+                                  TOTAL : ₹${addCommas(total_price)}
   
                                   `;
   
-                                console.log(message);
+
   
                                 let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
                                   message
@@ -294,7 +297,8 @@ function PremiumProductsPage() {
             >
               Search
             </label>
-            <div class="relative">
+            <div  data-aos="fade-up"
+              data-aos-delay="300" class="relative">
               <div class="absolute z-20 text-slate-400 text-xl inset-y-0 left-3 flex justify-center items-center pl-3 pointer-events-none">
                 <span className="z-20 flex items-center justify-center">
                 <ion-icon name="search-outline"></ion-icon>
@@ -302,8 +306,7 @@ function PremiumProductsPage() {
               
               </div>
               <input
-              data-aos="fade-up"
-              data-aos-delay="300"
+             
                 autoComplete="off"
                 onChange={(e) => setSeachValue(e.target.value)}
                 id="default-search"
@@ -356,6 +359,52 @@ function PremiumProductsPage() {
                             : ""
                         }`}
                       </h1>
+                      <div class="flex flex-row h-10 w-[100px] rounded-lg relative bg-transparent mt-6">
+                          <button
+                            onClick={() =>
+                              {
+                                if(document.getElementById(
+                                  `quanity_input_2_${index}`
+                                ).innerText != "1"){
+
+                                  (document.getElementById(
+                                    `quanity_input_2_${index}`
+                                  ).innerText =
+                                    parseInt(
+                                      document.getElementById(`quanity_input_2_${index}`)
+                                        .innerText
+                                    ) - 1)
+
+                                }
+                                
+                              }
+                            }
+                            class=" bg-gray-200 text-gray-600 px-2 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-l cursor-pointer outline-none"
+                          >
+                            <span class="m-auto text-2xl font-thin">-</span>
+                          </button>
+                          <div
+                            id={`quanity_input_2_${index}`}
+                            type="number"
+                            class=" focus:outline-none border-none text-center w-full bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700 justify-center  outline-none"
+                            min={1}
+                            max={99}
+                          >1</div>
+                          <button
+                            onClick={() =>
+                              (document.getElementById(
+                                `quanity_input_2_${index}`
+                              ).innerText =
+                                parseInt(
+                                  document.getElementById(`quanity_input_2_${index}`)
+                                    .innerText
+                                ) + 1)
+                            }
+                            class="bg-gray-200 text-gray-600 px-2 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-r cursor-pointer"
+                          >
+                            <span class="m-auto text-2xl font-thin">+</span>
+                          </button>
+                        </div>
                       <p
                         onClick={(e) => {
                           document
@@ -372,6 +421,8 @@ function PremiumProductsPage() {
                               name: data.product_name,
                               description: data.product_description,
                               price: data.product_offerprice,
+                              quantity: document.getElementById(`quanity_input_2_${index}`)
+                              .innerText
                             },
                           ];
     

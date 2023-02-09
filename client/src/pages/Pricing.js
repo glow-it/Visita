@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Header from "../components/Header";
 
 function Pricing() {
+
+  document.querySelectorAll("header").forEach((elem) => {
+    elem.style.display = "none";
+  });
 
 
   let navigate = useNavigate();
@@ -28,6 +33,8 @@ function Pricing() {
   }, [location]);
 
   return (
+   <div>
+    <Header  />
     <div class="relative w-full bg-white h-full pt-14">
       <Helmet>
         <title>Pricing - Visita</title>
@@ -133,6 +140,15 @@ function Pricing() {
                   </div>
                   <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
+
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">
+                    Youtube video gallery
+                  </p>
+                </li>
                
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -141,12 +157,6 @@ function Pricing() {
                   <p class="font-medium text-gray-600">
                     20 products or services
                   </p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3 text-teal-500 text-xl">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                  </div>
-                  <p class="font-medium text-gray-600">2 templates</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -161,6 +171,12 @@ function Pricing() {
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">One click save as app</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">One click save contact</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -182,22 +198,9 @@ function Pricing() {
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Manage feedbacks</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3 text-teal-500 text-xl">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                  </div>
                   <p class="font-medium text-gray-600">5 photos in gallery</p>
                 </li>
-                <li class="flex items-center">
-                  <div class="mr-3 text-teal-500 text-xl">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                  </div>
-                  <p class="font-medium text-gray-600">
-                    5 videos in youtube video gallery
-                  </p>
-                </li>
+               
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
@@ -282,6 +285,15 @@ function Pricing() {
                   </div>
                   <p class="font-medium text-gray-600">Video gallery</p>
                 </li>
+
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">
+                    Youtube video gallery
+                  </p>
+                </li>
               
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -290,12 +302,6 @@ function Pricing() {
                   <p class="font-medium text-gray-600">
                     100 products in ecommerce store
                   </p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3 text-teal-500 text-xl">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                  </div>
-                  <p class="font-medium text-gray-600">10+ templates</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -310,6 +316,12 @@ function Pricing() {
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">One click save as app</p>
+                </li>
+                <li class="flex items-center">
+                  <div class="mr-3 text-teal-500 text-xl">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                  </div>
+                  <p class="font-medium text-gray-600">One click save contact</p>
                 </li>
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
@@ -331,22 +343,9 @@ function Pricing() {
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
-                  <p class="font-medium text-gray-600">Manage feedbacks</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3 text-teal-500 text-xl">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                  </div>
                   <p class="font-medium text-gray-600">20 photos in gallery</p>
                 </li>
-                <li class="flex items-center">
-                  <div class="mr-3 text-teal-500 text-xl">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                  </div>
-                  <p class="font-medium text-gray-600">
-                    20 videos in youtube video gallery
-                  </p>
-                </li>
+               
                 <li class="flex items-center">
                   <div class="mr-3 text-teal-500 text-xl">
                     <ion-icon name="checkmark-outline"></ion-icon>
@@ -391,6 +390,7 @@ function Pricing() {
         </div>
       </div>
     </div>
+   </div>
   );
 }
 

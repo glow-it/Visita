@@ -63,8 +63,8 @@ function FranchiseeLogin() {
 
   return (
     <div className=" min-h-screen absolute top-0 min-w-full flex justify-center lg:bg-blue-50/50">
-      <div className="flex min-h-full flex-col lg:bg-white lg:w-[500px]  items-center  justify-center lg:mt-16 mt-16 px-4 sm:px-6 lg:px-8">
-        <div className="h-12 py-12 w-full absolute top-32 flex items-center justify-center">
+      <div className="flex min-h-full flex-col lg:bg-white lg:w-[500px]  items-center  justify-center lg:mt-16  px-4 sm:px-6 lg:px-8">
+        <div className="h-12 py-12 w-full absolute lg:top-32 top-16 flex items-center justify-center">
           <img
             className="mx-auto h-10 w-auto"
             src="https://i.postimg.cc/xdZpZScW/visitalogo.png"

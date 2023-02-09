@@ -24,6 +24,7 @@ import apiKeys from "../../Api/apiKeys";
 import Loading from "../../miniComponents/Loading";
 import { Helmet } from "react-helmet";
 import Spinner from "../../miniComponents/Spinner";
+import Header from "../../components/Header";
 
 function Create() {
   let navigate = useNavigate();
@@ -615,6 +616,8 @@ function Create() {
   }
 
   return (
+   <div>
+    <Header />
     <form id="cardForm" className="h-screen w-full flex flex-col items-center">
       <Helmet>
         <meta
@@ -1134,7 +1137,7 @@ function Create() {
                 for="large-input"
                 class="block mb-2 lg:text-lg text-md font-medium mt-6 text-gray-900 border-slate-800 :text-gray-300"
               >
-                About Company <span className="text-blue-600">*</span>
+                About Company <span className="text-slate-400 text-sm"> (Optional)</span>
               </label>
 
               <div className="relative flex items-center ">
@@ -1142,7 +1145,7 @@ function Create() {
                   placeholder="About your company"
                   autoComplete="off"
                   id="about_input"
-                  required
+                  
                   name="about"
                   class=" font-medium block py-4     pl-[20px] lg:min-w-[600px] min-w-[300px] text-gray-900 border-slate-800 transition-all rounded-md border    sm:text-sm text-sm  focus:border-indigo-500"
                 />
@@ -2065,6 +2068,7 @@ function Create() {
         </div>
       </div>
     </form>
+   </div>
   );
 }
 

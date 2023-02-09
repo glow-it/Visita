@@ -20,6 +20,7 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../miniComponents/Toast";
 import apiKeys from "../../Api/apiKeys";
 import InstallPwa from "../../Tools/InstallPwaApp";
+import downloadVCard from "../../Tools/downloadVCard";
 
 function BasicTemplate({ preview, cardDatas }) {
   const toast = useToast();
@@ -43,6 +44,16 @@ function BasicTemplate({ preview, cardDatas }) {
         letter.toUpperCase()
       );
     }
+
+ 
+    
+    axios.get(`${apiKeys.server_url}/bg-images`).then((response) => {
+      response.data.map((data) => {
+        if (data.name == cardDatas.theme_color) {
+          setBgImage(data.image_url);
+        }
+      });
+    });
 
     const head = document.head;
 
@@ -266,13 +277,14 @@ function BasicTemplate({ preview, cardDatas }) {
 
         <div
           id="home"
-          className=" template-1 flex justify-center bg-no-repeat bg-cover "
+          style={{backgroundImage:`url(${bgImage})`}}
+          className=" template-1 flex justify-center text-white bg-no-repeat bg-cover "
         >
           {/* <Loading isLoading={isCardLoading} /> */}
 
           <div className="card relative">
             <span
-              className={`z-50 absolute top-6  right-4 text-purple-600 text-xs font-medium py-1 px-2 border border-purple-600  rounded-full`}
+              className={`z-50 absolute top-6  right-4 text-white text-xs font-medium py-1 px-2 border border-white  rounded-full`}
             >
               Views: {cardDatas && cardDatas.views}
             </span>
@@ -301,10 +313,10 @@ function BasicTemplate({ preview, cardDatas }) {
                 )}
 
                 <div className=" w-full h-full flex flex-col items-center">
-                  <h1 className="capitalize text-black text-3xl font-bold ml-4 mt-6">
+                  <h1 className="capitalize text-white text-3xl font-bold ml-4 mt-6">
                     {cardDatas && cardDatas.company_name}
                   </h1>
-                  <h1 className="capitalize text-black text-xl font-medium ml-4 mt-1">
+                  <h1 className="capitalize text-white text-xl font-medium ml-4 mt-1">
                     {cardDatas && cardDatas.company_category}
                   </h1>
                 </div>
@@ -366,7 +378,7 @@ function BasicTemplate({ preview, cardDatas }) {
 
               <div className=" px-6">
                 <div
-                  className={`w-full h-12 border-2  border-${theme_color}-600 text-black mt-4 flex items-center rounded-full`}
+                  className={`w-full h-12 border-2  border-${theme_color}-600 text-white mt-4 flex items-center rounded-full`}
                 >
                   <span className=" ml-6 text-lg flex items-center font-medium">
                     <ion-icon name="call"></ion-icon>{" "}
@@ -377,7 +389,7 @@ function BasicTemplate({ preview, cardDatas }) {
                 </div>
                 {cardDatas && cardDatas.alt_phone_no != "" ? (
                   <div
-                    className={`w-full h-12 border-2  border-${theme_color}-600 text-black mt-4 flex items-center rounded-full`}
+                    className={`w-full h-12 border-2  border-${theme_color}-600 text-white mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-lg flex items-center font-medium">
                       <ion-icon name="call"></ion-icon>{" "}
@@ -392,7 +404,7 @@ function BasicTemplate({ preview, cardDatas }) {
 
                 {cardDatas && cardDatas.email_id != "" ? (
                   <div
-                    className={`w-full h-12 border-2  border-${theme_color}-600 text-black mt-4 flex items-center rounded-full`}
+                    className={`w-full h-12 border-2  border-${theme_color}-600 text-white mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-sm flex items-center font-medium">
                       <ion-icon name="mail"></ion-icon>{" "}
@@ -405,7 +417,7 @@ function BasicTemplate({ preview, cardDatas }) {
 
                 {cardDatas && cardDatas.location != "" ? (
                   <div
-                    className={`w-full  py-3 border-2  border-${theme_color}-600 text-black mt-4 flex items-center rounded-full`}
+                    className={`w-full  py-3 border-2  border-${theme_color}-600 text-white mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-sm flex items-center font-medium">
                       <ion-icon name="location"></ion-icon>{" "}
@@ -468,6 +480,16 @@ function BasicTemplate({ preview, cardDatas }) {
                     ""
                   )}
 
+
+                    <button
+                      onClick={() => downloadVCard(cardDatas.company_name, cardDatas.phone_no, cardDatas.logo)}
+                      className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg `}
+                    >
+                      Save contact
+                      <span className=" ml-1 text-white text-xl"></span>
+                      <ion-icon name="person-add-outline"></ion-icon>
+                    </button>
+
                   <button
                     onClick={() => {
                       if (navigator.share) {
@@ -485,7 +507,7 @@ function BasicTemplate({ preview, cardDatas }) {
                         // fallback
                       }
                     }}
-                    className={`flex justify-center items-center py-3 mr-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
+                    className={`flex justify-center items-center py-3 mt-3 mr-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
                   >
                     Share
                     <span className=" ml-1 text-white text-xl"></span>
@@ -740,7 +762,7 @@ function BasicTemplate({ preview, cardDatas }) {
             )}
 
             <br />
-            {cardDatas && cardDatas.about}
+            {cardDatas && cardDatas.about != "" ? cardDatas && cardDatas.about : ""}
           </h1>
 
           {/* Specialities */}

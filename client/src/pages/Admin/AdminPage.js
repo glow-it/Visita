@@ -20,16 +20,26 @@ function AdminPage() {
   let [franchiseeSearch, setFranchiseeSearch] = useState("");
   let [index, setIndex] = useState(0);
 
-  let params = useParams();
+
 
   useEffect(() => {
-    if (params.type == "pay-salary") {
-      setIndex(3);
-    }
+    
+
+    document.title = "Admin - Visita"
+    
+   
 
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "none";
     });
+
+    var doc = prompt("Password");
+
+      if (doc != null) {
+        if (doc != "8086991705") {
+          window.location.href = "https://visitasmart.com"
+        }
+      }
 
     axios
       .get(`${apiKeys.server_url}/get-all-created-cards`)
@@ -100,8 +110,6 @@ function AdminPage() {
 
   let income_via_normal_card_creation = (premium_cards.length * premium_card_price) + (normal_cards.length * card_price)
 
-  console.log(premium_cards.length);
-
   let total_earnings =
     income_via_normal_card_creation +
     (franchisees && franchisees.length * price_for_create_franchisee);
@@ -118,7 +126,7 @@ function AdminPage() {
       .post(`${apiKeys.server_url}/salary-payed/` + franchisee_email)
       .then((response) => {
         if (response.status) {
-          window.location.href = "/admin/pay-salary";
+          setIndex(3)
         } else {
           Toast({
             status: "error",
@@ -133,7 +141,7 @@ function AdminPage() {
   return (
     <div>
       <Tabs
-        index={index}
+        defaultIndex={index}
         className="mt-6 font-bold"
         isFitted
         variant="line"

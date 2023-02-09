@@ -48,7 +48,7 @@ function Header() {
       header.classList.add("text-black");
       window.onscroll = null;
     }
-  }, [location]);
+  }, []);
   
   
   
@@ -160,7 +160,7 @@ function Header() {
 
               {!localStorage.getItem("franchisee_email") ? (
                 <Link
-                  to="/franchisee/register"
+                  to="https://dashboard.visitasmart.com/register"
                   className="font-medium  hover:text-[#00BEFF] cursor-pointer  flex px-3 items-center"
                 >
                   Register franchisee
@@ -396,18 +396,15 @@ function Header() {
                               {/* <Link to='/franchisee/login' className=" font-bold cursor-pointer mt-2 border py-2 rounded-full pb-8" ><span className="text-md flex items-center text-primary ml-4" ><ion-icon name="log-in"></ion-icon> <span className="ml-2 text-slate-600" >Franchisee Login</span></span> </Link> */}
 
                               {!localStorage.getItem("franchisee_email") ? (
-                                <p
-                                  onClick={() => {
-                                    navigate("/franchisee/register");
-                                    setOpen(false);
-                                  }}
+                                <a
+                                  href="https://dashboard.visitasmart.com/register"
                                   className="font-medium mt-2 pl-4 bg-[#5241FE] text-white rounded-full  py-2  cursor-pointer   flex items-center"
                                 >
                                   <span className="flex items-center justify-center mr-1">
                                     <ion-icon name="log-in-outline"></ion-icon>
                                   </span>{" "}
                                   Register franchisee
-                                </p>
+                                </a>
                               ) : (
                                 <a
                                   href="https://dashboard.visitasmart.com"

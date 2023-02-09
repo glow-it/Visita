@@ -13,6 +13,7 @@ import Template from "../template/Template";
 import ManageFranchisee from "./ManageFranchisee";
 import Support from "./Support";
 import Pricing from "./Pricing";
+import AdminPage from "./Admin/AdminPage";
 
 function LandingPage() {
   let toast = useToast();
@@ -53,6 +54,9 @@ function LandingPage() {
             <Support />
           ) : subdomain == "pricing" ? (
             <Pricing />
+          ) :
+           subdomain == "admin" ? (
+            <AdminPage />
           ) : (
             <Template subdomain={subdomain} />
           )}

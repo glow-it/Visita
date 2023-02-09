@@ -27,6 +27,7 @@ import { abbrevateNumber } from "../../../Tools/abbrevateNumber";
 import capitalize from "../../../Tools/capitalize";
 import { addCommas } from "../../../Tools/addCommas";
 import { Helmet } from "react-helmet";
+import downloadVCard from "../../../Tools/downloadVCard";
 
 function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   const toast = useToast();
@@ -70,7 +71,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   let total_price = 0;
 
   cart_products.map((data) => {
-    total_price += parseInt(data.price);
+    total_price += parseInt(data.price * parseInt(data.quantity));
   });
 
   let productsList = cart_products.map((product, index) => {
@@ -82,7 +83,9 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
     ${product.description}
 
-    ₹${product.price}
+    ₹${addCommas(product.price)}
+
+    Quantity : ${product.quantity}
 
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     
@@ -136,14 +139,16 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
         name: capitalize(cardDatas.company_name),
         short_name: capitalize(cardDatas.company_name),
         description: capitalize(cardDatas.about).substring(0, 250) + "...",
-        start_url: `https://${cardDatas.clean_name}.visitasmart.com` ,
+        start_url: `https://${cardDatas.clean_name}.visitasmart.com`,
         scope: `https://${cardDatas.clean_name}.visitasmart.com`,
         background_color: "#fff",
         theme_color: "#fff",
         display: "standalone",
         icons: [
           {
-            src: cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/"),
+            src: cardDatas.logo
+              .replace(/^http:\/\//i, "https://")
+              .replace("upload/", "upload/w_256,h_256,c_scale/"),
             sizes: "256x256",
             type: "image/png",
           },
@@ -159,8 +164,6 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
     setFeedbacks(cardDatas.feedbacks);
     setSpecialities(cardDatas.specials.split(","));
     setFeatures(cardDatas.features.split(","));
-
-   
 
     // Update View Count
     axios.post(`${apiKeys.server_url}/update/view/${cardDatas.company_name}`);
@@ -185,11 +188,12 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
       }
     }
 
-   
-
     // Set Manifest Icon and Name Dynamically
     let iconUrl =
-      cardDatas.logo && cardDatas.logo.replace(/^http:\/\//i, "https://").replace("upload/", "upload/w_256,h_256,c_scale/");
+      cardDatas.logo &&
+      cardDatas.logo
+        .replace(/^http:\/\//i, "https://")
+        .replace("upload/", "upload/w_256,h_256,c_scale/");
     let manifest = {
       name: cardDatas.company_name,
       icons: [{ src: iconUrl, sizes: "512x512", type: "image/png" }],
@@ -231,20 +235,17 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
   let share_twitter_url = `https://twitter.com/intent/tweet?text=${window.location.href}`;
   let share_linkedin_url = `https://www.linkedin.com/cws/share?url=${window.location.href}`;
 
-  
-
   return (
     <div className=" flex justify-center items-center pb-24">
-
-       {/* Add Meta Title And Descreption */}
-       <Helmet>
-          <title className="capitalize">
-            {capitalize(cardDatas.company_name) +
-              " - " +
-              capitalize(cardDatas.tagline)}
-          </title>
-          <meta name="description" content={cardDatas && cardDatas.tagline} />
-        </Helmet>
+      {/* Add Meta Title And Descreption */}
+      <Helmet>
+        <title className="capitalize">
+          {capitalize(cardDatas.company_name) +
+            " - " +
+            capitalize(cardDatas.tagline)}
+        </title>
+        <meta name="description" content={cardDatas && cardDatas.tagline} />
+      </Helmet>
 
       {/* Cart Modal Open */}
       <Transition.Root show={open} as={Fragment}>
@@ -313,14 +314,16 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                                         <h3>
                                           <a>{product.name}</a>
                                         </h3>
-                                        <p className="ml-4">₹{addCommas(product.price)}</p>
+                                        <p className="ml-4">
+                                          ₹{addCommas(product.price * parseInt(product.quantity))}
+                                        </p>
                                       </div>
                                       <p className="mt-1 text-sm text-gray-500">
                                         {product.description}
                                       </p>
                                     </div>
                                     <div className="flex flex-1 items-end justify-between text-sm">
-                                      <p className="text-gray-500">Qty 1</p>
+                                      <p className="text-gray-500">Qty {product.quantity}</p>
 
                                       <div className="flex">
                                         <button
@@ -358,6 +361,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                         <div className="mt-6">
                           <p
                             onClick={() => {
+                              localStorage.removeItem("cart_products");
                               let phoneNumber = "+91" + cardDatas.phone_no;
 
                               let message = `
@@ -365,7 +369,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                                 
                                 ${productsList}
 
-                                TOTAL : ₹${total_price}
+                                TOTAL : ₹${addCommas(total_price)}
 
                                 `;
 
@@ -422,8 +426,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
         {cardDatas.tagline ? (
           <div
-          data-aos="fade-up"
-          data-aos-delay="0"
+            data-aos="fade-up"
+            data-aos-delay="0"
             className={`w-full py-3   bg-${theme_color}-600 text-center px-4   text-white flex z-50 items-center justify-center  cursor-pointer  text-sm`}
           >
             <h1 className=" font-bold min-w-max">{cardDatas.tagline}</h1>
@@ -437,8 +441,11 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
           className=" template-1 flex justify-center bg-no-repeat bg-cover "
         >
           <div className="card relative">
-            <div data-aos="fade-up"
-          data-aos-delay="100" className="w-full h-20 flex items-center bg-slate-100  z-50">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="w-full h-20 flex items-center bg-slate-100  z-50"
+            >
               <span
                 className={`z-50 absolute   right-4 text-black text-xs font-medium py-1 px-2 border border-black  rounded-full`}
               >
@@ -471,8 +478,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
               <div className=" w-full mt-6 px-8  flex  items-center justify-center">
                 {cardDatas.logo != "" ? (
                   <img
-                  data-aos="fade-up"
-          data-aos-delay="200"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
                     id="logo"
                     src={
                       cardDatas.logo &&
@@ -485,9 +492,12 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   ""
                 )}
 
-                <div data-aos="fade-up"
-          data-aos-delay="300" className=" w-full h-full flex flex-col pl-2">
-                  <h1  className="capitalize text-black text-3xl font-bold  mt-6">
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                  className=" w-full h-full flex flex-col pl-2"
+                >
+                  <h1 className="capitalize text-black text-3xl font-bold  mt-6">
                     {cardDatas.company_name}
                   </h1>
                   <h1 className="capitalize text-black text-lg font-medium  mt-1">
@@ -499,8 +509,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
               <div className=" w-full h-24 mt-8 flex justify-evenly items-center">
                 {cardDatas.phone_no != "" ? (
                   <a
-                  data-aos="fade-up"
-          data-aos-delay="400"
+                    data-aos="fade-up"
+                    data-aos-delay="400"
                     href={call_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -514,8 +524,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.whatsapp_no != "" ? (
                   <a
-                  data-aos="fade-up"
-          data-aos-delay="500"
+                    data-aos="fade-up"
+                    data-aos-delay="500"
                     href={message_whatsapp_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -529,8 +539,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.email_id != "" ? (
                   <a
-                  data-aos="fade-up"
-          data-aos-delay="600"
+                    data-aos="fade-up"
+                    data-aos-delay="600"
                     href={mail_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -544,8 +554,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.website != "" ? (
                   <a
-                  data-aos="fade-up"
-          data-aos-delay="700"
+                    data-aos="fade-up"
+                    data-aos-delay="700"
                     href={website_url}
                     className={`h-14 cursor-pointer w-14 bg-slate-100  rounded-full flex justify-center items-center`}
                   >
@@ -560,8 +570,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
               <div className=" px-6">
                 <div
-                data-aos="fade-up"
-                data-aos-delay="800"
+                  data-aos="fade-up"
+                  data-aos-delay="800"
                   className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                 >
                   <span className=" ml-6 text-md flex items-center font-medium">
@@ -571,8 +581,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                 </div>
                 {cardDatas.alt_phone_no != "" ? (
                   <div
-                  data-aos="fade-up"
-          data-aos-delay="900"
+                    data-aos="fade-up"
+                    data-aos-delay="900"
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -588,8 +598,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.email_id != "" ? (
                   <div
-                  data-aos="fade-up"
-          data-aos-delay="1000"
+                    data-aos="fade-up"
+                    data-aos-delay="1000"
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -603,8 +613,8 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.location != "" ? (
                   <div
-                  data-aos="fade-up"
-          data-aos-delay="1100"
+                    data-aos="fade-up"
+                    data-aos-delay="1100"
                     className={`w-full  py-3 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -633,11 +643,15 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                         `https://api.whatsapp.com/send/?phone=+91${send_whatsapp_number}&text=${window.location.href}`
                       );
                     }}
-                    className={`cursor-pointer  h-10 rounded-full bg-gradient-to-r  from-${theme_color}-700 to-${theme_color}-600 w-44 bg-red-600 absolute right-0 flex items-center justify-center`}
+                    className={`cursor-pointer  h-10 rounded-full bg-gradient-to-r  from-${theme_color}-700 to-${theme_color}-600 w-32 bg-red-600 absolute right-0 flex items-center justify-center`}
                   >
                     <span className=" text-sm flex items-center font-medium text-white">
-                      <ion-icon name="logo-whatsapp-outline"></ion-icon>{" "}
-                      <span className=" ml-1">Share To Whatsapp</span>{" "}
+                      <span className=" ml-1 flex items-center justify-center">
+                        Share to{" "}
+                        <span className="flex items-center  bg-white rounded-full text-green-500 p-1 ml-1 justify-center">
+                          <ion-icon name="logo-whatsapp"></ion-icon>
+                        </span>
+                      </span>{" "}
                     </span>
                   </div>
                 </div>
@@ -646,7 +660,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                   {cardDatas.gmap_location ? (
                     <button
                       onClick={() => window.open(cardDatas.gmap_location)}
-                      className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mr-3`}
+                      className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-md mr-3`}
                     >
                       Location{" "}
                       <span className=" ml-1 text-white text-xl"></span>
@@ -675,7 +689,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                         // fallback
                       }
                     }}
-                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg`}
+                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-md`}
                   >
                     Share
                     <span className=" ml-1 text-white text-xl"></span>
@@ -684,13 +698,32 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                   <button
                     onClick={() =>
-                      navigate(`/${subdomain != false ? subdomain : main_company_name}/premiumproducts`)
+                      navigate(
+                        `/${
+                          subdomain != false ? subdomain : main_company_name
+                        }/premiumproducts`
+                      )
                     }
-                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-3 mr-3`}
+                    className={`flex justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-md mt-3 mr-3`}
                   >
                     Our Products
                     <span className=" ml-1 text-white text-xl"></span>
                     <ion-icon name="bag-outline"></ion-icon>
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      downloadVCard(
+                        cardDatas.company_name,
+                        cardDatas.phone_no,
+                        cardDatas.logo
+                      )
+                    }
+                    className={`flex cursor-pointer justify-center items-center py-3 px-6 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-md mt-3 mr-3`}
+                  >
+                    Save contact
+                    <span className=" ml-1 text-white text-xl"></span>
+                    <ion-icon name="person-add-outline"></ion-icon>
                   </button>
                 </div>
                 <div
@@ -881,7 +914,9 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
             )}
 
             <br />
-            {cardDatas.about}
+            {cardDatas && cardDatas.about != ""
+              ? cardDatas && cardDatas.about
+              : ""}
           </h1>
 
           {/* Specialities */}
@@ -926,235 +961,307 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
         </div>
 
         {/* Products  */}
-        <div
-          id="products"
-          className=" w-full  flex flex-col items-center justify-center relative"
-        >
-          <h1
-            className={`text-lg sticky top-0 text-white  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute z-50 top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
+
+        {products[0] &&
+        products[0].product_name != "" &&
+        products[0].product_name != null ? (
+          <div
+            id="products"
+            className=" w-full  flex flex-col items-center justify-center relative"
           >
-            Products
-          </h1>
+            <h1
+              className={`text-lg sticky top-0 text-white  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 absolute z-50 top-0 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600`}
+            >
+              Products
+            </h1>
 
-          {/* Products */}
+            {/* Products */}
 
-          <div className="px-6">
-            {products &&
-              products
-                .filter((data, index) => {
-                  return data.product_name != "" && index < 3;
-                })
-                .map((data, index) => {
-                  return (
-                    <div
-                      z
-                      div
-                      className={`w-full pb-12 mb-8 px-8 bg-slate-100  rounded-2xl flex flex-col items-center relative ${
-                        index == 0 ? "mt-20" : "mt-2"
-                      }`}
-                    >
-                      <img
-                        src={data.product_image.replace(
-                          /^http:\/\//i,
-                          "https://"
-                        )}
-                        className="  w-full rounded-2xl py-6  offer-image"
-                      />
-                      <h1 className=" pt-6 capitalize text-center text-xl font-bold">
-                        {data.product_name}
-                      </h1>
+            <div className="px-6">
+              {products &&
+                products
+                  .filter((data, index) => {
+                    return data.product_name != "" && index < 3;
+                  })
+                  .map((data, index) => {
+                    return (
+                      <div
+                        z
+                        div
+                        className={`w-full pb-12 mb-8 px-8 bg-slate-100  rounded-2xl flex flex-col items-center relative ${
+                          index == 0 ? "mt-20" : "mt-2"
+                        }`}
+                      >
+                        <img
+                          src={data.product_image.replace(
+                            /^http:\/\//i,
+                            "https://"
+                          )}
+                          className="  w-full rounded-2xl py-6  offer-image"
+                        />
+                        <h1 className=" pt-6 capitalize text-center text-xl font-bold">
+                          {data.product_name}
+                        </h1>
 
-                      <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
-                        {data.product_description}
-                      </h1>
+                        <h1 className=" mt-4 capitalize text-center  text-md font-medium text-slate-400">
+                          {data.product_description}
+                        </h1>
 
-                      <h1 className=" pt-4 capitalize font-medium text-green-600 text-xl">
-                        <span className=" mr-2 text-slate-600 line-through">
+                        <h1 className=" pt-4 capitalize font-medium text-green-600 text-xl">
+                          <span className=" mr-2 text-slate-600 line-through">
+                            {`${
+                              data.product_orgprice != ""
+                                ? "₹" + addCommas(data.product_orgprice)
+                                : ""
+                            }`}
+                          </span>
                           {`${
-                            data.product_orgprice != ""
-                              ? "₹" + addCommas(data.product_orgprice)
+                            data.product_offerprice != ""
+                              ? "₹" + addCommas(data.product_offerprice)
                               : ""
                           }`}
-                        </span>
-                        {`${
-                          data.product_offerprice != ""
-                            ? "₹" + addCommas(data.product_offerprice)
-                            : ""
-                        }`}
-                      </h1>
-                      <p
-                        onClick={(e) => {
-                          document
-                            .querySelectorAll(".cart-count")
-                            .forEach((elem) => {
-                              elem.innerText = parseInt(elem.innerText) + 1;
-                            });
+                        </h1>
+                        <div class="flex flex-row h-10 w-[100px] rounded-lg relative bg-transparent mt-6">
+                          <button
+                            onClick={() =>
+                              {
+                                if(document.getElementById(
+                                  `quanity_input_${index}`
+                                ).innerText != "1"){
 
-                          e.target.innerText = "Added to cart";
+                                  (document.getElementById(
+                                    `quanity_input_${index}`
+                                  ).innerText =
+                                    parseInt(
+                                      document.getElementById(`quanity_input_${index}`)
+                                        .innerText
+                                    ) - 1)
 
-                          let product_arr = [
-                            {
-                              image: data.product_image,
-                              name: data.product_name,
-                              description: data.product_description,
-                              price: data.product_offerprice,
-                            },
-                          ];
+                                }
+                                
+                              }
+                            }
+                            class=" bg-gray-200 text-gray-600 px-2 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-l cursor-pointer outline-none"
+                          >
+                            <span class="m-auto text-2xl font-thin">-</span>
+                          </button>
+                          <div
+                            id={`quanity_input_${index}`}
+                            type="number"
+                            class=" focus:outline-none border-none text-center w-full bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700 justify-center  outline-none"
+                            min={1}
+                            max={99}
+                          >1</div>
+                          <button
+                            onClick={() =>
+                              (document.getElementById(
+                                `quanity_input_${index}`
+                              ).innerText =
+                                parseInt(
+                                  document.getElementById(`quanity_input_${index}`)
+                                    .innerText
+                                ) + 1)
+                            }
+                            class="bg-gray-200 text-gray-600 px-2 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-r cursor-pointer"
+                          >
+                            <span class="m-auto text-2xl font-thin">+</span>
+                          </button>
+                        </div>
+                        <p
+                          onClick={(e) => {
+                            document
+                              .querySelectorAll(".cart-count")
+                              .forEach((elem) => {
+                                elem.innerText = parseInt(elem.innerText) + 1;
+                              });
 
-                          if (localStorage.getItem("cart_products")) {
-                            let existing_arr = JSON.parse(
-                              localStorage.getItem("cart_products")
-                            );
+                            e.target.innerText = "Added to cart";
 
-                            existing_arr.push(...product_arr);
+                            let product_arr = [
+                              {
+                                image: data.product_image,
+                                name: data.product_name,
+                                description: data.product_description,
+                                price: data.product_offerprice,
+                                quantity: document.getElementById(`quanity_input_${index}`)
+                                .innerText
+                                
+                              },
+                            ];
 
-                            localStorage.setItem(
-                              "cart_products",
-                              JSON.stringify(existing_arr)
-                            );
-                          } else {
-                            localStorage.setItem(
-                              "cart_products",
-                              JSON.stringify(product_arr)
-                            );
-                          }
-                        }}
-                        className={`flex justify-center cursor-pointer items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
-                      >
-                        Add to cart
-                      </p>
+                            if (localStorage.getItem("cart_products")) {
+                              let existing_arr = JSON.parse(
+                                localStorage.getItem("cart_products")
+                              );
 
-                      {data.product_link != "" ? (
-                        <a
-                          href={data.product_link}
-                          className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-600 text-${theme_color}-600 rounded-full   font-bold text-lg mt-2 `}
+                              existing_arr.push(...product_arr);
+
+                              localStorage.setItem(
+                                "cart_products",
+                                JSON.stringify(existing_arr)
+                              );
+                            } else {
+                              localStorage.setItem(
+                                "cart_products",
+                                JSON.stringify(product_arr)
+                              );
+                            }
+                          }}
+                          className={`flex justify-center cursor-pointer items-center py-3 px-12 bg-gradient-to-r text-white rounded-full from-${theme_color}-700 to-${theme_color}-600  font-bold text-lg mt-6`}
                         >
-                          View Product
-                        </a>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  );
-                })}
-          </div>
+                          Add to cart
+                        </p>
 
-          {products && products.length != 0 ? (
-            <div className="w-full h-32  flex items-center justify-center">
-              <button
-                onClick={() => {
-                  navigate("/" + cardDatas.clean_name + "/premiumproducts");
-                }}
-                className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-bold text-sm -mt-6`}
-              >
-                View more products
-                <span className=" ml-1 text-white text-xl"></span>
-                <ion-icon name="arrow-forward"></ion-icon>
-              </button>
+                        {data.product_link != "" ? (
+                          <a
+                            href={data.product_link}
+                            className={`flex justify-center  items-center py-3 px-12 border-2 border-${theme_color}-600 text-${theme_color}-600 rounded-full   font-bold text-lg mt-2 `}
+                          >
+                            View Product
+                          </a>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    );
+                  })}
             </div>
-          ) : (
-            ""
-          )}
-        </div>
+
+            {products && products.length != 0 ? (
+              <div className="w-full h-32  flex items-center justify-center">
+                <button
+                  onClick={() => {
+                    navigate("/" + cardDatas.clean_name + "/premiumproducts");
+                  }}
+                  className={`flex justify-center items-center py-3 px-12 border text-${theme_color}-600 rounded-full border-${theme_color}-600  font-bold text-sm -mt-6`}
+                >
+                  View more products
+                  <span className=" ml-1 text-white text-xl"></span>
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* Image Gallery */}
 
-        <h1
-          id="imagegallery"
-          className={`text-lg text-white z-10 sticky top-0  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-6`}
-        >
-          Image Gallery
-        </h1>
+        {galleryImages && galleryImages[0] != "" && galleryImages[0] != null ? (
+          <div>
+            <h1
+              id="imagegallery"
+              className={`text-lg text-white z-10 sticky top-0  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-6`}
+            >
+              Image Gallery
+            </h1>
 
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2600,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className=" mySwiper"
-        >
-          {galleryImages &&
-            galleryImages
-              .filter((data) => {
-                return data != "" && data != null;
-              })
-              .map((data) => {
-                return (
-                  <SwiperSlide>
-                    <img src={data.replace(/^http:\/\//i, "https://")} />
-                  </SwiperSlide>
-                );
-              })}
-        </Swiper>
+            <Swiper
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 2600,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
+              className=" mySwiper"
+            >
+              {galleryImages &&
+                galleryImages
+                  .filter((data) => {
+                    return data != "" && data != null;
+                  })
+                  .map((data) => {
+                    return (
+                      <SwiperSlide>
+                        <img src={data.replace(/^http:\/\//i, "https://")} />
+                      </SwiperSlide>
+                    );
+                  })}
+            </Swiper>
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* Gallery Videos */}
-        <div
-          id="videogallery"
-          className=" flex flex-col items-center mt-6  bg-slate-900"
-        >
-          <h1
-            className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-8`}
-          >
-            Videos Gallery
-          </h1>
 
-          {videoGallery &&
-            videoGallery
-              .filter((data) => {
-                return data != "" && data != null;
-              })
-              .map((data) => {
-                return (
-                  <video
-                    className="mb-8 rounded-lg"
-                    width="90%"
-                    controls
-                    src={data.replace(/^http:\/\//i, "https://")}
-                  ></video>
-                );
-              })}
-        </div>
+        {videoGallery && videoGallery[0] != null && videoGallery[0] != "" ? (
+          <div
+            id="videogallery"
+            className=" flex flex-col items-center mt-6  bg-slate-900"
+          >
+            <h1
+              className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-8`}
+            >
+              Videos Gallery
+            </h1>
+
+            {videoGallery &&
+              videoGallery
+                .filter((data) => {
+                  return data != "" && data != null;
+                })
+                .map((data) => {
+                  return (
+                    <video
+                      className="mb-8 rounded-lg"
+                      width="90%"
+                      controls
+                      src={data.replace(/^http:\/\//i, "https://")}
+                    ></video>
+                  );
+                })}
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* Youtube Videos */}
-        <div
-          id="ytvideos"
-          className=" flex flex-col items-center pb-16 bg-slate-900"
-        >
-          <h1
-            className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-12`}
+
+        {ytVideos && ytVideos[0] != "" && ytVideos[0] != null ? (
+          <div
+            id="ytvideos"
+            className=" flex flex-col items-center pb-16 bg-slate-900"
           >
-            Youtube Videos
-          </h1>
+            <h1
+              className={`text-lg text-white  sticky top-0 z-20  flex  justify-center items-center font-bold bg-${theme_color}-600 w-full py-3 bg-gradient-to-r from-${theme_color}-700 to-${theme_color}-600 mb-12`}
+            >
+              Youtube Videos
+            </h1>
 
-          {ytVideos &&
-            ytVideos
-              .filter((data) => {
-                return data != "" && data != null;
-              })
-              .map((data) => {
-                const videoUrl = data;
-                const videoId = videoUrl.split("be/")[1];
-                const embedUrl = "https://www.youtube.com/embed/" + videoId;
+            {ytVideos &&
+              ytVideos
+                .filter((data) => {
+                  return data != "" && data != null;
+                })
+                .map((data) => {
+                  const videoUrl = data;
+                  const videoId = videoUrl.split("be/")[1];
+                  const embedUrl = "https://www.youtube.com/embed/" + videoId;
 
-                return (
-                  <iframe
-                    className=" rounded-xl my-4"
-                    src={embedUrl}
-                    title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                );
-              })}
-        </div>
+                  return (
+                    <iframe
+                      className=" rounded-xl my-4"
+                      src={embedUrl}
+                      title="Introducing Dynamic Island on iPhone 14 Pro | Apple"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe>
+                  );
+                })}
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* Payment Info */}
         <div id="paymentinfo" className=" flex flex-col  ">
@@ -1415,7 +1522,6 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
                     feedback: form.feedback.value,
                     date: new Date().getTime(),
                   };
-                 
 
                   form.name.value = "";
                   form.feedback.value = "";

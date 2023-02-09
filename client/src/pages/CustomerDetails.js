@@ -47,28 +47,11 @@ function CustomerDetails() {
                 return index != 0;
               })
               .map((data) => {
-                var date1, date2;
-                //define two date object variables with dates inside it
-                date1 = data.date;
-                date2 = new Date();
-
-                //calculate time difference
-                var time_difference = date2.getTime() - parseInt(date1);
-
-                //calculate days difference by dividing total milliseconds in a day
-                var days_difference = time_difference / (1000 * 60 * 60 * 24);
-
-              
-  
-
-                let daysAgo = parseInt(days_difference);
-                let date = new Date();
-                date.setDate(date.getDate() - daysAgo);
-                let formattedDate = new Intl.DateTimeFormat("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                }).format(date);
+               
+                const timestamp = data.date;
+                    const date = new Date(timestamp);
+                    const options = { month: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "numeric", hour12: true };
+                    const formattedDate = date.toLocaleString("en-US", options);
 
                 return (
                   <Tr className="font-medium">
