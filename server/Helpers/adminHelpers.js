@@ -13,8 +13,8 @@ module.exports = {
     });
   },
 
-  updateCreatedCard: (admin_db, comp_name, phone_no, franchisee_email, isPremium) => {
-    return new Promise((resolve, reject) => {
+  updateCreatedCard: async (admin_db, comp_name, phone_no, franchisee_email, isPremium, franchisee_db) => {
+    try {
       let obj = {
         comp_name: comp_name,
         created_at: Date.now(),
@@ -22,17 +22,24 @@ module.exports = {
         phone_no,
         franchisee_email,
       };
-      admin_db
-        .collection(admin_collections.created_cards)
-        .insertOne(obj)
-        .then(() => {
-          resolve();
-        })
-        .catch((err) => {
-          console.log(err)
-          reject(err);
-        });
-    });
+      await admin_db.collection(admin_collections.created_cards).insertOne(obj);
+
+      if(franchisee_email != "no franchisee"){
+        await franchisee_db.collection(franchisee_collections.franchisees).updateOne(
+          { email: franchisee_email },
+          { $inc: { created_cards_thismonth: 1, created_cards_total: 1 } }
+        );
+    
+        await franchisee_db.collection(franchisee_collections.franchisees).updateOne(
+          { email: franchisee_email },
+          { $set: { isFranchiseeFirstCardCreated: "true" } }
+        );
+      }
+
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   },
 
   getAllCreatedDatas: (admin_db) => {

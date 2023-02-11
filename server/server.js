@@ -184,24 +184,11 @@ async function run() {
               req.params.comp_name,
               req.body.phone_no, 
               req.body.franchisee_email,
-              req.body.isPremium
+              req.body.isPremium,
+              franchisee_db
             )   
             .then(() => {
-              if (req.body.franchisee_email != "no franchisee") {
-                FranchiseeHelpers.updateCreatedCards(
-                  req.body.franchisee_email,
-                  franchisee_db
-                ) 
-                  .then(() => {
-                    res.json({ status: true, req_datas: req.body });
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                    res.json({ status: false, err: err.message });
-                  });
-              } else {
-                res.json({ status: true, req_datas: req.body });
-              }
+              res.json({ status: true, req_datas: req.body });
             })
             .catch((err) => {
               console.log(err);
