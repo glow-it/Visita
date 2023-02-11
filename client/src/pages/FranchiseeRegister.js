@@ -255,7 +255,7 @@ salary"
             </div>
             <div className="w-full flex flex-col justify-center items-center">
               <p
-                onClick={() => navigate("/franchisee/login")}
+                onClick={() => navigate("/login")}
                 className="font-medium"
               >
                 already have a franchisee?{" "}

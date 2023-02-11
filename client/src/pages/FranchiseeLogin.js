@@ -165,7 +165,7 @@ function FranchiseeLogin() {
             </div>
             <div className="w-full flex flex-col justify-center items-center">
               <p
-                onClick={() => navigate("/franchisee/register")}
+                onClick={() => navigate("/register")}
                 className="font-medium"
               >
                 not yet a franchisee?{" "}
