@@ -2023,38 +2023,33 @@ module.exports = {
     });
   },
 
-  afterPaymentCompleteProcessess: (activated, client_db) => {
+  afterPaymentCompleteProcessess: async(activated, client_db) => {
     let company_name = activated.company_name
 
-    console.log(company_name)
 
-    return new Promise((resolve, reject) => {
-      client_db
+    try {
+      await client_db
         .collection(client_collections.visiting_card_datas)
         .updateOne(
           { clean_name: company_name },
           { $set: { activated } },
           false,
           true
-        )
-        .then(() => {
-          client_db
-            .collection(client_collections.visiting_card_datas)
-            .updateOne(
-              { clean_name: company_name },
-              { $set: { isActivated: true } }
-            )
-            .then(() => {
-              resolve();
-            })
-            .catch((err) => {
-              reject(err);
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+        );
+      await client_db
+        .collection(client_collections.visiting_card_datas)
+        .updateOne(
+          { clean_name: company_name },
+          { $set: { isActivated: true } }
+        );
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+    
+
+
+    
   },
 
   cancelPurchase: (client_db, comp_name) => {

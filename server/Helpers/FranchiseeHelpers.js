@@ -71,11 +71,13 @@ module.exports = {
             .then(() => {
               resolve();
             })
-            .catch(() => {
-              reject();
+            .catch((err) => {
+              console.log(err)
+              reject(err);
             });
         })
         .catch((err) => {
+          console.log(err)
           reject(err);
         });
     });

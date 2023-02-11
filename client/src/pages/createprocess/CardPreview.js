@@ -6,7 +6,6 @@ import CreateHeader from "../../components/CreateHeader";
 import emailjs from "@emailjs/browser";
 import apiKeys from "../../Api/apiKeys";
 import { Toast } from "../../miniComponents/Toast";
-import { Alert, AlertIcon } from "@chakra-ui/react";
 import Spinner from "../../miniComponents/Spinner";
 
 function CardPreview() {
@@ -68,6 +67,7 @@ function CardPreview() {
           activated_at: new Date().getTime(),
           phone_no: cardDatas.phone_no,
           franchisee_email: cardDatas.franchisee,
+          isPremium: cardDatas.isPremium
         },
       }).then((response) => {
         if (response.data.status) {
@@ -101,7 +101,9 @@ function CardPreview() {
         } else {
           navigate("/create/successfull/" + name);
         }
-      });
+      }).catch((err)=> {
+        console.log(err);
+      })
 
 
       navigate('/loading/processing-website')
@@ -132,7 +134,7 @@ function CardPreview() {
     var options = {
       key: apiKeys.razorpay_key,
       subscription_id: res.id,
-      name: "Visita - Website Builder",
+      name: "Visita",
       description: "Payment For Create Business Website",
       image:
         "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
@@ -172,29 +174,30 @@ function CardPreview() {
               if (response.data.status) {
                 let card_pass = send_pass_form.childNodes[2];
                 card_pass.value = response.data.req_datas.access_password;
+                navigate("/create/successfull/" + name);
+                // emailjs
+                //   .sendForm(
+                //     apiKeys.emailjs_serviceId,
+                //     apiKeys.emailjs_templateId2,
+                //     send_pass_form,
+                //     apiKeys.emailjs_publicKey
+                //   )
+                //   .then(
+                //     (result) => {
+                //       navigate("/create/successfull/" + name);
+                //     },
+                //     (error) => {
+                //       Toast({
+                //         status: "error",
+                //         title: "Unable to send website password to your mail",
+                //         postition: "top",
+                //         description: "Contact Visita",
+                //         toast,
+                //       });
+                //       navigate("/create/successfull/" + name);
+                //     }
+                //   );
 
-                emailjs
-                  .sendForm(
-                    apiKeys.emailjs_serviceId,
-                    apiKeys.emailjs_templateId2,
-                    send_pass_form,
-                    apiKeys.emailjs_publicKey
-                  )
-                  .then(
-                    (result) => {
-                      navigate("/create/successfull/" + name);
-                    },
-                    (error) => {
-                      Toast({
-                        status: "error",
-                        title: "Unable to send website password to your mail",
-                        postition: "top",
-                        description: "Contact Visita",
-                        toast,
-                      });
-                      navigate("/create/successfull/" + name);
-                    }
-                  );
               } else {
                 Toast({
                   status: "error",

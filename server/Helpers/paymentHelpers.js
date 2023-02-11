@@ -12,7 +12,7 @@ var instance = new Razorpay({
 module.exports = {
   createSubscription: (isPremium) => {
     return new Promise(async (resolve, reject) => {
-      console.log(isPremium);
+
       const params = {
         plan_id:
           isPremium == "false"

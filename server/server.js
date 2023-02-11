@@ -151,32 +151,16 @@ async function run() {
     }); 
 
     app.post("/complete-purchase", (req, res, next) => {
-      // Check Is This First Card
-      if (req.body.length == 0) {
-        paymentHelpers
-          .createSubscription(req.body.isPremium)
-          .then((response) => {
-            res.json({ sub_data: response, isFirst: false });
-          })
-          .catch((err) => {
-            console.log(err);
-            res.json({ message: "Payment Failed", err: err.message });
-          });
-      } else {
-        if (req.body.isFranchiseeFirstCardCreated == "false") {
-          res.json({ isFirst: true });
-        } else {
           paymentHelpers
             .createSubscription(req.body.isPremium)
             .then((response) => {
-              res.json({ sub_data: response, isFirst: false });
+              res.json({ sub_data: response});
             })
             .catch((err) => {
               console.log(err);
               res.json({ message: "Payment Failed", err: err.message });
             });
-        }
-      }
+        
     });
 
     app.post("/verify-payment", (req, res, next) => {
@@ -198,7 +182,7 @@ async function run() {
             .updateCreatedCard(
               admin_db,
               req.params.comp_name,
-              req.body.phone_no,
+              req.body.phone_no, 
               req.body.franchisee_email,
               req.body.isPremium
             )   
@@ -207,11 +191,12 @@ async function run() {
                 FranchiseeHelpers.updateCreatedCards(
                   req.body.franchisee_email,
                   franchisee_db
-                )
+                ) 
                   .then(() => {
                     res.json({ status: true, req_datas: req.body });
                   })
                   .catch((err) => {
+                    console.log(err);
                     res.json({ status: false, err: err.message });
                   });
               } else {
@@ -219,10 +204,11 @@ async function run() {
               }
             })
             .catch((err) => {
+              console.log(err);
               res.json({ status: false, err: err.message });
             });
         })
-        .catch((err) => {
+        .catch((err) => {  
           console.log(err.message);
           res.json({ status: false, err: err.message });
         });
