@@ -29,11 +29,6 @@ module.exports = {
           { email: franchisee_email },
           { $inc: { created_cards_thismonth: 1, created_cards_total: 1 } }
         );
-    
-        await franchisee_db.collection(franchisee_collections.franchisees).updateOne(
-          { email: franchisee_email },
-          { $set: { isFranchiseeFirstCardCreated: "true" } }
-        );
       }
 
     } catch (err) {

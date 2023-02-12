@@ -25,7 +25,7 @@ function ManageFranchisee() {
   let [createdCardsToday, setCreatedCardsToday] = useState([]);
   let [isLoading, setIsLoading] = useState([]);
 
-  let franchisee_profit = 300; //This Is The Profit Of Franchisee For Each Cards Created
+  let franchisee_profit = 200; //This Is The Profit Of Franchisee For Each Cards Created
 
   let earnings_this_month =
     createdCardsThisMonth &&

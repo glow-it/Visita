@@ -54,10 +54,9 @@ function AdminPage() {
 
 
 
-  let profit_for_franchisee = 300;
-  let profit_for_company = 299;
-  let card_price = 699;
-  let premium_card_price = 1299;
+  let profit_for_franchisee = 200;
+  let card_price = 399;
+  let premium_card_price = 699;
   let price_for_create_franchisee = 999;
 
   let total_expence = 0;
