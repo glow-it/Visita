@@ -624,7 +624,7 @@ function Create() {
           name="description"
           content="
           
-          Create a professional business website in minutes with our user-friendly website builder. Choose from customizable templates, add your own content and go live in no time. Start building your online presence now!
+          Create a professional business digital vCard in minutes with our user-friendly vCard builder. Choose from customizable templates, add your own content and go live in no time. Start building your online presence now!
 
 
           "
@@ -716,7 +716,7 @@ function Create() {
                     } else {
                       Toast({
                         status: "error",
-                        title: "We are troubling to create website",
+                        title: "We are troubling to create card",
                         postition: "top",
                         description: "Contact visita team",
                         toast,
@@ -1999,9 +1999,9 @@ function Create() {
                     <span className="font-medium mt-4 lg:w-[600px]  w-[300px] text-slate-400">
                       This will help you to get all your customer details like
                       name,phone number etc.when your customer enters to your
-                      website it will be show a popup for enter name and phone
+                      card it will be show a popup for enter name and phone
                       number.if the customer enter his details and submit you
-                      will get the details on your website manage page
+                      will get the details on your card manage page
                     </span>
                   </h1>
                 </FormLabel>
@@ -2047,7 +2047,7 @@ function Create() {
               color="white"
             >
               {processIndex == maximumProcesses
-                ? "Create Website"
+                ? "Create card"
                 : "Save & continue"}
             </Button>
 

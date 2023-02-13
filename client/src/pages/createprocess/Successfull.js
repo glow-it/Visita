@@ -190,12 +190,12 @@ function Successfull() {
           <h1 className="text-7xl font-bold mb-2 text-green-500">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </h1>
-          <h1 className="text-3xl font-bold mb-6 ">Share website</h1>
+          <h1 className="text-3xl font-bold mb-6 ">Share card</h1>
           <div
             className={` lg:py-4 py-4 w-full mb-8 z-10 h-12 bg-${cardDatas && cardDatas.theme_color}-50 flex items-center justify-center  text-${cardDatas && cardDatas.theme_color}-600 `}
           >
             <h1
-              id="website_url_text_successfull"
+              id="card_url_text_successfull"
               className="font-medium lg:text-xl text-center flex lowercase"
             >
               {cardDatas && cardDatas.isPremium == "true"
@@ -217,7 +217,7 @@ function Successfull() {
                 <span
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      document.getElementById("website_url_text_successfull")
+                      document.getElementById("card_url_text_successfull")
                         .innerText
                     );
 
@@ -305,7 +305,7 @@ function Successfull() {
               }
               className=" py-3 w-full bg-white text-black  border transition-colors hover my-1 cursor-pointer rounded-full font-bold"
             >
-              Open your website
+              Open your card
             </button>
 
             <button
@@ -373,7 +373,7 @@ function Successfull() {
 
           <div className="flex z-10 flex-col w-full items-center mt-20 pb-14 bg-slate-50 text-white">
             <h1 className="lg:text-xl text-xl font-bold mb-6 mt-10 text-slate-900 ">
-              Manage or edit your website
+              Manage or edit your card
             </h1>
 
             
@@ -385,7 +385,7 @@ function Successfull() {
               <span
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      document.getElementById("website_password_text_succesfull")
+                      document.getElementById("card_password_text_succesfull")
                         .innerText
                     );
 
@@ -402,16 +402,16 @@ function Successfull() {
                 </span>
 
 
-                <h1 className="text-md" id="website_password_text_succesfull" >
+                <h1 className="text-md" id="card_password_text_succesfull" >
                   {cardDatas.activated && cardDatas.activated.access_password}
-                  {/* Website password has been send to your email */}
+                  {/* card password has been send to your email */}
 
                   
 
                   </h1>
               </div>
               <h1 className="font-medium  text-sm   text-center">
-                Website password
+                card password
                 
               </h1>
 

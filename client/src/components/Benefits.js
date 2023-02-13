@@ -12,10 +12,10 @@ function Benefits() {
       </div>
       
       <div className="flex lg:mt-24 mt-12 flex-col items-center">
-      <div data-aos="fade-down" className="lg:w-[50%] lg:flex hidden lg:py-0  w-full lg:text-start text-center lg:h-full  benefits-1  justify-center lg:items-center lg:px-24 px-8">
+      <div data-aos="fade-down" className="lg:w-[50%] flex lg:py-0  w-full lg:text-start text-center lg:h-full  benefits-1  justify-center lg:items-center lg:px-24 px-8">
         <img
-          className="  lg:rounded-xl rounded-xl lg:h-[700px] h-[500px] lg:min-w-[1000px]"
-          src="https://cdn.dribbble.com/userupload/4267260/file/original-bee8a80578bb29e786cbb8c9eb5c4e66.jpg?compress=1&resize=1504x1128"
+          className="  lg:rounded-xl rounded-xl scale-125"
+          src="https://blog.beaconstac.com/wp-content/uploads/2022/12/The-8-digital-business-card-benefits.png"
           muted
           autoPlay={true}
           loop
@@ -31,7 +31,7 @@ function Benefits() {
         >
          
           <h1 className="font-medium lg:text-lg text-[15px] text-center    text-black">
-            You can modify or update the website as many times as you want,
+            You can modify or update the card as many times as you want,
             There's no need to depend on developers.
           </h1>
         </div>
@@ -42,7 +42,7 @@ function Benefits() {
         >
          
           <h1 className="font-medium lg:text-lg text-[15px] text-center    text-black">
-            Customers can easily save your website to their mobile device.
+            Customers can easily save your card to their mobile device.
           </h1>
         </div>
         <div
@@ -59,7 +59,7 @@ function Benefits() {
         <div data-aos-delay="150" data-aos="fade-down" className="w-full  flex justify-center bg-slate-50 hover:bg-slate-100 py-6 px-12  cursor-pointer ">
          
           <h1 className="font-medium lg:text-lg text-[15px] text-center   text-black">
-            Share websites with anyone, Unlimited times
+            Share cards with anyone, Unlimited times
           </h1>
         </div>
         <div
@@ -69,7 +69,7 @@ function Benefits() {
         >
          
           <h1 className="font-medium lg:text-lg text-[15px] text-center    text-black">
-            A great business website makes an impression and can convert sales.
+            A great business card makes an impression and can convert sales.
           </h1>
         </div>
 

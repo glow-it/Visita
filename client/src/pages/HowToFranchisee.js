@@ -22,7 +22,7 @@ function HowToFranchisee() {
         </h1>
 
         <p className=" border border-slate-200 shadow-black/5 text-lg text-slate-600 py-8 px-8 rounded-lg font-medium lg:w-[700px] w-[300px] mt-6 text-center">
-          Register for a franchisee.Create website for clients through your
+          Register for a franchisee.Create card for clients through your
           franchisee
         </p>
 
@@ -40,16 +40,16 @@ function HowToFranchisee() {
         </h1>
 
         <p className=" border border-slate-200 shadow-black/5 text-lg text-slate-600 py-8 px-8 rounded-lg font-medium lg:w-[700px] w-[300px] mt-6 text-center">
-          When you make a Website to your customer you will get ₹300 without any
+          When you make a card to your customer you will get ₹300 without any
           cost
         </p>
 
         <p className=" border border-slate-200 shadow-black/5 text-lg text-slate-600 py-8 px-8 rounded-lg font-medium lg:w-[700px] w-[300px] mt-6 text-center">
-          It only takes a little time to create a Website.
+          It only takes a little time to create a card.
         </p>
 
         <p className=" border border-slate-200 shadow-black/5 text-lg  py-8 px-8 rounded-lg font-medium lg:w-[700px] w-[300px] mt-6 text-center">
-          You can create at least 10 Websites per day. If so your daily income
+          You can create at least 10 cards per day. If so your daily income
           is ₹3000
         </p>
 

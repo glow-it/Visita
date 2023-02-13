@@ -17,43 +17,6 @@ function Header() {
   let navigate = useNavigate();
   let location = useLocation()
 
-  useEffect(() => {
-    let header = document.querySelector("header");
-    
-    if (location.pathname === "/specific-route") {
-      header.style.display = "none";
-    } else {
-      header.style.display = "block";
-    }
-  }, [location]);
-
-
-  useEffect(() => {
-    let header = document.querySelector("header");
-    header.style.display = "flex"
-    if (location.pathname === "/") {
-      header.classList.add("bg-black");
-      header.classList.add("text-white");
-      window.onscroll = () => {
-        if (window.scrollY >= 500 && window.scrollY <= 4950) {
-          header.classList.replace("bg-black", "bg-white");
-          header.classList.replace("text-white", "text-black");
-        } else {
-          header.classList.replace("bg-white", "bg-black");
-          header.classList.replace("text-black", "text-white");
-        }
-      };
-    } else {
-      header.classList.add("bg-white");
-      header.classList.add("text-black");
-      window.onscroll = null;
-    }
-  }, []);
-  
-  
-  
-  
-
   
 
   //   Header Drawer Open
@@ -62,7 +25,7 @@ function Header() {
   return (
     <div>
       <header
-        className={` w-[100vw] h-20    flex flex-col   fixed  z-[200] `}
+        className={` w-[100vw] h-20  text-black bg-white  flex flex-col   fixed  z-[200] `}
       >
         <div className="w-full h-full  flex items-center justify-center">
           <img
@@ -86,7 +49,7 @@ function Header() {
             <ul className="w-full h-full flex items-center justify-center">
               <a
                 href="https://applox.visitasmart.com"
-                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
+                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF] transition-colors  px-3 rounded-3xl  flex items-center"
               >
                 See demo
               </a>
@@ -96,19 +59,19 @@ function Header() {
                     state: { franchisee: false, franchisee_email: null },
                   })
                 }
-                className=" font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
+                className=" font-medium  cursor-pointer text-md  hover:text-[#00BEFF] transition-colors  px-3 rounded-3xl  flex items-center"
               >
                 Pricing
               </p>
               <a
                 href="#features"
-                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
+                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF] transition-colors  px-3 rounded-3xl  flex items-center"
               >
                 Features
               </a>
               <a
                 href="#benefits"
-                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center"
+                className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF] transition-colors  px-3 rounded-3xl  flex items-center"
               >
                 Benefits
               </a>
@@ -116,9 +79,9 @@ function Header() {
               <p>
                 <Popover autoFocus={false} placement="bottom">
                   <PopoverTrigger>
-                    <h1 className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]   flex items-center">
-                      <span className=" px-3  rounded-full  hover:text-[#00BEFF]">
-                        Manage website
+                    <h1 className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF] transition-colors   flex items-center">
+                      <span className=" px-3  rounded-full  hover:text-[#00BEFF] transition-colors">
+                        Manage card
                       </span>
                     </h1>
                   </PopoverTrigger>
@@ -161,14 +124,14 @@ function Header() {
               {!localStorage.getItem("franchisee_email") ? (
                 <Link
                   to="https://dashboard.visitasmart.com/register"
-                  className="font-medium  hover:text-[#00BEFF] cursor-pointer  flex px-3 items-center"
+                  className="font-medium  hover:text-[#00BEFF] transition-colors cursor-pointer  flex px-3 items-center"
                 >
                   Register franchisee
                 </Link>
               ) : (
                 <a
                   href="https://dashboard.visitasmart.com"
-                  className="font-medium  hover:text-[#00BEFF] cursor-pointer   flex px-3 items-center"
+                  className="font-medium  hover:text-[#00BEFF] transition-colors cursor-pointer   flex px-3 items-center"
                 >
                   Go to franchisee
                 </a>
@@ -176,10 +139,10 @@ function Header() {
 
               <Menu>
                 <MenuButton
-                  className=" hover:text-[#00BEFF]"
+                  className=" hover:text-[#00BEFF] transition-colors"
                   rightIcon={<ChevronDownIcon />}
                 >
-                  <span className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF]  px-3 rounded-3xl  flex items-center">
+                  <span className="font-medium  cursor-pointer text-md  hover:text-[#00BEFF] transition-colors  px-3 rounded-3xl  flex items-center">
                     Support <ion-icon name="chevron-down-outline"></ion-icon>{" "}
                   </span>
                 </MenuButton>
@@ -225,13 +188,17 @@ function Header() {
 
 </select> */}
 
-          <a
-            id="header_create_button"
+          <p
+             onClick={() =>
+              navigate("/pricing", {
+                state: { franchisee: false, franchisee_email: null },
+              })
+            }
             href="https://applox.visitasmart.com"
             class=" absolute right-10 py-2  px-8 text-md   lg:block hidden focus:outline-none rounded-xl  cursor-pointer   hover:shadow-md text-white  focus:z-10 focus:ring-4 bg-gradient-to-r hover:bg-gradient-to-l  from-[#02C7FF] to-[#01A1FE] :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover: :hover:bg-gray-700 font-bold"
           >
-            See demo
-          </a>
+            Create now
+          </p>
         </div>
 
         <div className="lg:hidden absolute  w-full h-full block mr-8">
@@ -358,7 +325,7 @@ function Header() {
                                   {" "}
                                   <ion-icon name="create-outline"></ion-icon>{" "}
                                   <span className="ml-2 text-slate-600">
-                                    Manage Website
+                                    Manage card
                                   </span>
                                 </span>{" "}
                               </p>

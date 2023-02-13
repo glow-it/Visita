@@ -148,7 +148,7 @@ function AdminPage() {
       >
         <TabList>
           <Tab onClick={() => setIndex(0)}>Overview</Tab>
-          <Tab onClick={() => setIndex(1)}>Created Website</Tab>
+          <Tab onClick={() => setIndex(1)}>Created card</Tab>
           <Tab onClick={() => setIndex(2)}>Franchisees</Tab>
           <Tab onClick={() => setIndex(3)}>Pay Salary</Tab>
         </TabList>
@@ -175,7 +175,7 @@ function AdminPage() {
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Earnings From Website</h1>
+                <h1 className="-mt-6">Earnings From card</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   ₹
                   {income_via_normal_card_creation}
@@ -215,25 +215,25 @@ function AdminPage() {
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Total Websites Created</h1>
+                <h1 className="-mt-6">Total cards Created</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   {total_cards_created}
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Websites Created Via Franchisee</h1>
+                <h1 className="-mt-6">cards Created Via Franchisee</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   {cards_created_via_franchisee}
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Premium Websites</h1>
+                <h1 className="-mt-6">Premium cards</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   {premium_cards.length}
                 </h1>
               </div>
               <div className="w-[300px] h-[200px] border rounded-3xl mx-4 my-4 flex flex-col items-center justify-center">
-                <h1 className="-mt-6">Non Premium Websites</h1>
+                <h1 className="-mt-6">Non Premium cards</h1>
                 <h1 className="text-5xl text-purple-600 mt-4">
                   {normal_cards.length}
                 </h1>
@@ -409,7 +409,7 @@ function AdminPage() {
                           <h1 className="ml-4">{data.franchisee_id}</h1>
 
                           <h1 className="px-3 ml-4 py-1 text-sm rounded-full border border-purple-600">
-                            Website Created
+                            card Created
                             <span class="ml-3 bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full :bg-blue-200 :text-blue-800">
                               {data.created_cards_total}
                             </span>

@@ -19,7 +19,7 @@ function ActivateWarning() {
   return (
     <div className="w-full h-screen flex flex-col items-center pt-24 px-8">
       <h1 className="font-bold text-indigo-600 lg:text-xl text-xl text-center  rounded-full px-8 py-3">
-        Complete purchase to activate your website
+        Complete purchase to activate your card
       </h1>
 
       <div className="my-6 ">

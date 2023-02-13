@@ -598,8 +598,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.email_id != "" ? (
                   <div
-                    data-aos="fade-up"
-                    data-aos-delay="1000"
+                   
                     className={`w-full h-12 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">
@@ -613,8 +612,7 @@ function PremiumTemplate1({ preview, cardDatas, subdomain }) {
 
                 {cardDatas.location != "" ? (
                   <div
-                    data-aos="fade-up"
-                    data-aos-delay="1100"
+                   
                     className={`w-full  py-3 bg-slate-100 text-slate-600 mt-4 flex items-center rounded-full`}
                   >
                     <span className=" ml-6 text-md flex items-center font-medium">

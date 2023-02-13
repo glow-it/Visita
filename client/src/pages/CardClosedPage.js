@@ -13,7 +13,7 @@ function CardClosedPage() {
   return (
     <div className="flex flex-col h-screen w-full items-center pt-56">
       <h1 className="text-green-600 font-bold text-4xl text-center">
-        Successfully Your Website Was Closed!
+        Successfully Your Card Was Closed!
       </h1>
       <h1 className=" font-bold text-xl mt-4">
         And Your{" "}

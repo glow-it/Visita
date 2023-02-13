@@ -42,7 +42,7 @@ function Pricing() {
           name="description"
           content="
           
-          Our website builder offers flexible pricing options to fit the needs of any business. Our basic plan includes essential features such as customizable template and hosting for a low annually fee. Upgrade to our premium plan for added features such as e-commerce integration and premium design.
+          Our card builder offers flexible pricing options to fit the needs of any business. Our basic plan includes essential features such as customizable template and hosting for a low annually fee. Upgrade to our premium plan for added features such as e-commerce integration and premium design.
 
 
           "
@@ -183,7 +183,7 @@ function Pricing() {
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">
-                    Update website unlimited times
+                    Update card unlimited times
                   </p>
                 </li>
                 <li class="flex items-center">
@@ -328,7 +328,7 @@ function Pricing() {
                     <ion-icon name="checkmark-outline"></ion-icon>
                   </div>
                   <p class="font-medium text-gray-600">
-                    Update website unlimited times
+                    Update card unlimited times
                   </p>
                 </li>
                 <li class="flex items-center">

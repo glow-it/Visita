@@ -89,7 +89,7 @@ function CardPreview() {
           //     (error) => {
           //       Toast({
           //         status: "error",
-          //         title: "Unable to send website password to your mail",
+          //         title: "Unable to send card password to your mail",
           //         postition: "top",
           //         description: "Contact Visita",
           //         toast,
@@ -106,7 +106,7 @@ function CardPreview() {
       })
 
 
-      navigate('/loading/processing-website')
+      navigate('/loading/processing-card')
 
 
     } else {
@@ -135,7 +135,7 @@ function CardPreview() {
       key: apiKeys.razorpay_key,
       subscription_id: res.id,
       name: "Visita",
-      description: "Payment For Create Business Website",
+      description: "Payment For Create Business card",
       image:
         "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",
       prefill: {
@@ -189,7 +189,7 @@ function CardPreview() {
                 //     (error) => {
                 //       Toast({
                 //         status: "error",
-                //         title: "Unable to send website password to your mail",
+                //         title: "Unable to send card password to your mail",
                 //         postition: "top",
                 //         description: "Contact Visita",
                 //         toast,
@@ -215,7 +215,7 @@ function CardPreview() {
               postition: "top",
               toast,
             });
-            navigate("/loading/processing-website");
+            navigate("/loading/processing-card");
           } else {
             Toast({
               status: "error",
@@ -241,7 +241,7 @@ function CardPreview() {
         if (res.data.status) {
           Toast({
             status: "success",
-            title: "Website is cancelled",
+            title: "card is cancelled",
             postition: "top",
             toast,
           });
@@ -251,7 +251,7 @@ function CardPreview() {
             status: "error",
             title: "Ohh snap!!",
             postition: "top",
-            description: "We are struggling to cancel website",
+            description: "We are struggling to cancel card",
             toast,
           });
         }
@@ -296,8 +296,8 @@ function CardPreview() {
 
           <h1 className="lg:text-3xl text-2xl font-bold lg:text-start  text-center mb-3">
             {cardDatas && cardDatas.activated
-              ? "Successfully your website is "
-              : "Successfully your website was "}
+              ? "Successfully your card is "
+              : "Successfully your card was "}
 
             <span>
               {cardDatas && cardDatas.activated ? "activated!" : "created"}
@@ -315,7 +315,7 @@ function CardPreview() {
           >
             {cardDatas && cardDatas.activated
               ? "Payment was successfull"
-              : "Complete purchase to activate your website"}
+              : "Complete purchase to activate your card"}
           </h1>
 
           {cardDatas && cardDatas.activated ? "" : ""}

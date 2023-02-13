@@ -36,7 +36,7 @@ function FranchiseeRegister() {
             key: apiKeys.razorpay_key, // Enter the Key ID generated from the Dashboard
             amount: 99900, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
-            name: "Visita - Website Builder",
+            name: "Visita",
             description: "Payment For Register Franchisee",
             image:
               "https://res.cloudinary.com/dmi3cfl2v/image/upload/v1668306156/Visiting%20Card%20Images/cpy6rm8xssyluwpsbufd.jpg",

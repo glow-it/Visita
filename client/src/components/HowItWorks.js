@@ -13,7 +13,7 @@ function HowItWorks() {
       <div className="w-full z-20 lg:py-4 flex flex-col lg:items-center">
         <h1 data-aos="fade-up" data-aos-delay="300" className=" lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-[#02C7FF] to-[#01A1FE] font-extrabold text-5xl">Build, publish, done.</h1>
         <p data-aos="fade-up"
-            data-aos-delay="0" className="lg:mt-14 mt-8 lg:text-[2.25rem] text-[1.125rem] lg:text-center lg:w-[900px]" >Visita is a website builder <br className="lg:hidden block"  /> that lets businesses easily create <br className="lg:hidden block"  /> a professional website in under <br className="lg:hidden block"  /> 10 minutes <br className="lg:hidden block"  /> without needing developers.</p>
+            data-aos-delay="0" className="lg:mt-14 mt-8 lg:text-[2.25rem] text-[1.125rem] lg:text-center lg:w-[900px]" >Visita is a digital vCard builder <br className="lg:hidden block"  /> that lets businesses easily create <br className="lg:hidden block"  /> a professional vCard in under <br className="lg:hidden block"  /> 10 minutes <br className="lg:hidden block"  /> without needing technical skills.</p>
       </div> 
       <div className="pb-16 mt-8 z-20 w-full flex lg:justify-center">
       <p data-aos="fade-up"

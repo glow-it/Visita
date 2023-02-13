@@ -96,7 +96,7 @@ function EditCard() {
    
 
     if (cardDatas && cardDatas.activated) {
-      var doc = prompt("Enter Website Password");
+      var doc = prompt("Enter card Password");
 
       if (doc != null) {
         if (doc != cardDatas.activated.access_password) {
@@ -523,7 +523,7 @@ function EditCard() {
                     } else {
                       Toast({
                         status: "error",
-                        title: "We are troubling to update website",
+                        title: "We are troubling to update card",
                         postition: "top",
                         description: "Contact visita team",
                         toast,
@@ -1718,7 +1718,7 @@ function EditCard() {
               color="white"
             >
               {processIndex == maximumProcesses
-                ? "Update Website"
+                ? "Update card"
                 : "Save & continue"}
             </Button>
 

@@ -27,7 +27,7 @@ function LandingPage() {
 
   useEffect(() => {
     document.title =
-      "Visita - Build Business Website In Minutes - No Coding Required.";
+      "Visita - Create Your Own Custom Digital Business Card";
     document.querySelectorAll("header").forEach((elem) => {
       elem.style.display = "flex";
     });

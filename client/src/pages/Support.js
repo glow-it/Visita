@@ -12,7 +12,7 @@ function Support() {
           name="description"
           content="
           
-          Get the support you need to make the most of your business website with our dedicated customer support team. From technical assistance to design advice, we're here to help you succeed online.
+          Get the support you need to make the most of your business vCard with our dedicated customer support team. From technical assistance to design advice, we're here to help you succeed online.
 
 
           "

@@ -116,7 +116,7 @@ function ManageCard() {
       if (response.status) {
         Toast({
           status: "success",
-          title: "Website was closed",
+          title: "card was closed",
           postition: "top",
           toast,
         });
@@ -124,14 +124,14 @@ function ManageCard() {
       } else {
         Toast({
           status: "error",
-          title: "Website closing failed",
+          title: "card closing failed",
           description: "Try again!",
           postition: "top",
           toast,
         });
       }
     });
-    navigate("/loading/closing-website");
+    navigate("/loading/closing-card");
   }
 
   let send_pass_form_2 = document.getElementById("send_pass_form_2");
@@ -150,7 +150,7 @@ function ManageCard() {
         (result) => {
           Toast({
             status: "success",
-            title: `Website password has been send to ${
+            title: `card password has been send to ${
               cardDatas && cardDatas.email_id
             }`,
             postition: "top",
@@ -162,7 +162,7 @@ function ManageCard() {
           console.log(error);
           Toast({
             status: "error",
-            title: "Website password send failed",
+            title: "card password send failed",
             description: "Try again!",
             postition: "top",
             toast,
@@ -190,7 +190,7 @@ function ManageCard() {
           >
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                <span className="font-bold">Close Website</span>
+                <span className="font-bold">Close card</span>
               </AlertDialogHeader>
 
               <AlertDialogBody>
@@ -209,7 +209,7 @@ function ManageCard() {
                   onClick={() => HandleCloseCard()}
                   ml={3}
                 >
-                  <span className="font-bold">Yes' Close Website</span>
+                  <span className="font-bold">Yes' Close card</span>
                 </Button>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -247,7 +247,7 @@ function ManageCard() {
                     for="card_pass_input"
                     class="form-label text-3xl font-bold inline-block mb-6 text-gray-700"
                   >
-                    Website password
+                    card password
                   </label>
                   <input
                     class="form-control block
@@ -324,14 +324,14 @@ function ManageCard() {
             onClick={onOpen}
             className="w-full py-3      hover:text-white transition-colors  text-white  bg-red-500 font-bold"
           >
-            Close website
+            Close card
           </button>
 
           <button
             onClick={() => navigate("/manage/" + company_name + "/edit")}
             className="w-full py-3  mt-1 bg-blue-600 border-2 border-blue-600 text-white    font-bold"
           >
-            Edit website
+            Edit card
           </button>
 
           {cardDatas && cardDatas.show_customer_details_popop == "true" ? (
